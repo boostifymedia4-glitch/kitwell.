@@ -1,0 +1,41 @@
+import type { ToolImplementation } from '../types';
+
+type Loader = () => Promise<{ default: ToolImplementation }>;
+
+/**
+ * Lazy implementation map. Each entry becomes its own chunk, so a tool page only downloads the
+ * code (and heavy libraries such as pdf-lib or PDF.js) that it actually uses.
+ */
+export const implLoaders: Record<string, Loader> = {
+  'image-convert': () => import('./image/ImageConvert'),
+  'image-compress': () => import('./image/ImageCompress'),
+  'image-resize': () => import('./image/ImageResize'),
+  'image-crop': () => import('./image/ImageCrop'),
+  'image-transform': () => import('./image/ImageTransform'),
+  'image-to-base64': () => import('./image/ImageToBase64'),
+  'base64-to-image': () => import('./image/Base64ToImage'),
+  'image-color-picker': () => import('./image/ImageColorPicker'),
+  'images-to-pdf': () => import('./pdf/ImagesToPdf'),
+  'pdf-merge': () => import('./pdf/PdfMerge'),
+  'pdf-split': () => import('./pdf/PdfSplit'),
+  'pdf-organize': () => import('./pdf/PdfOrganize'),
+  'pdf-to-image': () => import('./pdf/PdfToImage'),
+  'pdf-viewer': () => import('./pdf/PdfViewer'),
+  'pdf-metadata': () => import('./pdf/PdfMetadata'),
+  'word-counter': () => import('./text/WordCounter'),
+  'character-counter': () => import('./text/CharacterCounter'),
+  'case-converter': () => import('./text/CaseConverter'),
+  'remove-duplicates': () => import('./text/RemoveDuplicates'),
+  'text-sorter': () => import('./text/TextSorter'),
+  'text-cleaner': () => import('./text/TextCleaner'),
+  'text-diff': () => import('./text/TextDiff'),
+  'json-tool': () => import('./developer/JsonTool'),
+  'xml-formatter': () => import('./developer/XmlFormatter'),
+  'encode-decode': () => import('./developer/EncodeDecode'),
+  'regex-tester': () => import('./developer/RegexTester'),
+  'markdown-previewer': () => import('./developer/MarkdownPreviewer'),
+  'password-generator': () => import('./developer/PasswordGenerator'),
+  'uuid-generator': () => import('./developer/UuidGenerator'),
+  'timestamp-converter': () => import('./developer/TimestampConverter'),
+  'color-converter': () => import('./developer/ColorConverter'),
+};
