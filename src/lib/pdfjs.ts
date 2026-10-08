@@ -25,7 +25,7 @@ export async function openPdf(bytes: Uint8Array): Promise<PDFDocumentProxy> {
     return await pdfjs.getDocument({ data: bytes.slice() }).promise;
   } catch (err) {
     if (err instanceof pdfjs.PasswordException) {
-      throw new PdfError('This PDF is password-protected. Remove the password in the app that created it, then try again.');
+      throw new PdfError('This PDF is password-protected. Remove the password with our Unlock PDF tool first, then try again.');
     }
     throw new PdfError('This file could not be read as a PDF. It may be corrupted or not a PDF at all.');
   }

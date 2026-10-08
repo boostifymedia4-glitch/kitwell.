@@ -7,7 +7,7 @@ import { EncryptedPDFError, PDFDocument, degrees, PageSizes } from '@cantoo/pdf-
 export class PdfError extends Error {}
 
 const ENCRYPTED_MESSAGE =
-  'This PDF is password-protected. Remove the password in the app that created it, then try again.';
+  'This PDF is password-protected. Remove the password with our Unlock PDF tool first, then try again.';
 const INVALID_MESSAGE = 'This file could not be read as a PDF. It may be corrupted or not a PDF at all.';
 
 function looksLikePdf(bytes: Uint8Array): boolean {

@@ -7,7 +7,7 @@ const privacyFaq: FaqItem = {
 
 const encryptedFaq: FaqItem = {
   q: 'Can it open password-protected PDFs?',
-  a: 'No. Encrypted PDFs are detected and rejected with a clear message. Remove the password in the app that created it first.',
+  a: 'No. Encrypted PDFs are detected and rejected with a clear message. Remove the password first with our Unlock PDF tool.',
 };
 
 const common = { category: 'pdf' as const, fileTool: true };
