@@ -1,6 +1,6 @@
 # Kitwell
 
-A fast, privacy-friendly website of 47 everyday tools (image, PDF, text, developer). Every tool runs **in the visitor's browser**; the server only serves static files.
+A fast, privacy-friendly website of 61 everyday tools (image, PDF, text, developer). Every tool runs **in the visitor's browser**; the server only serves static files.
 
 **Stack:** Vite + React 19 + TypeScript, build-time prerendering (one static HTML file per URL, then hydrated), a small Express server for headers/compression/404s. Brand name is a placeholder: change it in `src/config/site.ts` and colours in `src/styles/tokens.css`.
 
@@ -11,9 +11,9 @@ A fast, privacy-friendly website of 47 everyday tools (image, PDF, text, develop
 | `npm install` | Install dependencies (Node 20+) |
 | `npm run dev` | Dev server with hot reload (no prerender) |
 | `npm run check` | Type check, lint, tests, then production build |
-| `npm run build` | Production build + prerender of all 58 routes into `dist/` |
+| `npm run build` | Production build + prerender of all 72 routes into `dist/` |
 | `npm start` | Serve `dist/` on `PORT` (default 3000) |
-| `npm test` | Vitest (78 tests; server tests need a prior build) |
+| `npm test` | Vitest (148 tests; server tests need a prior build) |
 
 ## Deployment
 
@@ -38,7 +38,8 @@ A fast, privacy-friendly website of 47 everyday tools (image, PDF, text, develop
 
 ## Privacy and security notes
 
-- No uploads and no API endpoints: files never reach the server. Regex and image processing run in Web Workers; heavy libraries (pdf-lib, PDF.js, marked, diff) load only on pages that use them.
+- No uploads and no API endpoints: files never reach the server. Regex and image processing run in Web Workers; heavy libraries (@cantoo/pdf-lib, PDF.js, pica, jsQR, marked, diff) load only on pages that use them.
+- PDF editing uses [@cantoo/pdf-lib](https://github.com/cantoo-scribe/pdf-lib) (an MIT-licensed, maintained fork of pdf-lib) because it can encrypt and decrypt PDFs. Image enlarging uses pica without WebAssembly so the strict Content-Security-Policy (no `wasm-unsafe-eval`) stays in place.
 - Markdown preview is sanitised with DOMPurify; Base64-to-image rejects SVG.
 - `npm audit`: 0 known vulnerabilities at time of writing.
 
@@ -48,7 +49,12 @@ A fast, privacy-friendly website of 47 everyday tools (image, PDF, text, develop
 
 ## Known limitations
 
-- PDF tools copy, merge, split, reorder, rotate and render pages. They do **not** edit existing PDF text, compress PDFs, or open password-protected files.
+- PDF tools merge, split, reorder, rotate, crop, watermark, number, protect, unlock, read text from and edit the metadata of PDFs. They do **not** edit existing PDF text, compress PDFs, OCR scans, or sign documents.
+- Crop PDF hides the area outside the box (it sets the visible page area); it does not delete that content from the file.
+- Watermark PDF text is limited to Latin letters, digits and common symbols, because PDF built-in fonts have no other alphabets. Use an image watermark for other scripts.
+- Protect PDF uses AES-256 and accepts passwords of printable ASCII characters only. Unlock PDF needs the real password (it never guesses passwords).
+- Extract Text from PDF reads the text layer only; scanned PDFs need OCR, which is not included.
+- QR Code Scanner reads uploaded images only (no camera access). Enlarge Image is smooth high-quality resampling, not AI upscaling.
 - WebP output needs a browser that can encode WebP; HEIC/TIFF/RAW inputs are unsupported; animated images use the first frame.
 - PDF rendering (PDF to JPG/PNG, viewer, thumbnails) is slowed by browsers when the tab is in the background.
 - Not built (by design): background removal / object removal (need large ML models), YouTube tools (need API/terms review; no scraping), PDF compression (no reliable free browser method yet).

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ErrorMessage, ProcessingState, RejectionList } from '@/components/tool/Feedback';
 import { CheckField, ColorField, Field, NumberField, RangeField, Segmented, SelectField } from '@/components/tool/Fields';
 import { PdfSource } from '@/components/tool/PdfSource';
@@ -36,6 +36,10 @@ const PdfWatermark: ToolImplementation = () => {
   const [angle, setAngle] = useState<number | ''>(45);
   const [layout, setLayout] = useState<'center' | 'tile'>('center');
   const [pages, setPages] = useState('');
+
+  // A page range typed for one PDF makes no sense for the next one.
+  const current = pdf.state.status === 'ready' ? pdf.state.file : null;
+  useEffect(() => setPages(''), [current]);
 
   const choose = (k: Kind) => {
     setKind(k);

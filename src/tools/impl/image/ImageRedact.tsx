@@ -29,7 +29,13 @@ const ImageRedact: ToolImplementation = () => {
   const start = useRef<{ x: number; y: number } | null>(null);
   const [natural, setNatural] = useState<{ w: number; h: number } | null>(null);
   const [regions, setRegions] = useState<Region[]>([]);
-  const [draft, setDraft] = useState<Region | null>(null);
+  const [draft, setDraftState] = useState<Region | null>(null);
+  // The box being drawn is also kept in a ref so that releasing the pointer never reads a stale render.
+  const draftRef = useRef<Region | null>(null);
+  const setDraft = (r: Region | null) => {
+    draftRef.current = r;
+    setDraftState(r);
+  };
   const [effect, setEffect] = useState<RegionEffect>('blur');
   const [strength, setStrength] = useState(60);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -76,7 +82,8 @@ const ImageRedact: ToolImplementation = () => {
     if (start.current && natural) setDraft(between(start.current, toImage(e)));
   };
   const up = () => {
-    if (draft && draft.w >= MIN_DRAW && draft.h >= MIN_DRAW) setRegions((r) => [...r, draft]);
+    const drawn = draftRef.current;
+    if (drawn && drawn.w >= MIN_DRAW && drawn.h >= MIN_DRAW) setRegions((r) => [...r, drawn]);
     start.current = null;
     setDraft(null);
   };

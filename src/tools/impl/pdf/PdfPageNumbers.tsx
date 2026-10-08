@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ErrorMessage, ProcessingState } from '@/components/tool/Feedback';
 import { ColorField, NumberField, RangeField, SelectField } from '@/components/tool/Fields';
 import { PdfSource } from '@/components/tool/PdfSource';
@@ -35,6 +35,13 @@ const PdfPageNumbers: ToolImplementation = () => {
   const [size, setSize] = useState(12);
   const [margin, setMargin] = useState<number | ''>(28);
   const [color, setColor] = useState('#000000');
+
+  // Page numbers typed for one PDF may be out of range for the next one.
+  const current = pdf.state.status === 'ready' ? pdf.state.file : null;
+  useEffect(() => {
+    setFromPage(1);
+    setToPage('');
+  }, [current]);
 
   return (
     <PdfSource pdf={pdf}>

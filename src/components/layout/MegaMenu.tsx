@@ -20,11 +20,14 @@ export function MegaMenu() {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const timer = useRef<number>(0);
+  // True while the menu was opened by hovering, so the click that usually follows keeps it open instead of closing it.
+  const openedByHover = useRef(false);
   const { pathname } = useLocation();
   const baseId = useId();
 
   const close = useCallback(() => {
     window.clearTimeout(timer.current);
+    openedByHover.current = false;
     setOpen(false);
   }, []);
 
@@ -71,6 +74,14 @@ export function MegaMenu() {
     tabRefs.current[categories[next].id]?.focus();
   };
 
+  const onTrigger = () => {
+    if (open && openedByHover.current) {
+      openedByHover.current = false;
+      return;
+    }
+    setOpen(!open);
+  };
+
   const cat = getCategory(active)!;
   const panelId = `${baseId}-panel`;
 
@@ -82,6 +93,7 @@ export function MegaMenu() {
       onMouseEnter={() => {
         if (!hoverCapable()) return;
         window.clearTimeout(timer.current);
+        if (!open) openedByHover.current = true;
         setOpen(true);
       }}
       onMouseLeave={() => {
@@ -89,7 +101,7 @@ export function MegaMenu() {
         timer.current = window.setTimeout(() => setOpen(false), CLOSE_DELAY_MS);
       }}
     >
-      <button ref={buttonRef} type="button" className="nav-link mega-trigger" aria-expanded={open} aria-controls="mega-panel" onClick={() => setOpen((v) => !v)}>
+      <button ref={buttonRef} type="button" className="nav-link mega-trigger" aria-expanded={open} aria-controls="mega-panel" onClick={onTrigger}>
         All tools
         <Icon name="chevron-down" size={15} className="mega-chevron" />
       </button>

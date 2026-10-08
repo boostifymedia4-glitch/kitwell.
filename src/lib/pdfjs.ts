@@ -62,6 +62,22 @@ export async function renderPageToCanvas(
   }
 }
 
+/** Renders a page so that its canvas is `targetWidth` pixels wide. Returns the canvas size. */
+export async function renderPageToWidth(doc: PDFDocumentProxy, pageNumber: number, targetWidth: number, canvas: HTMLCanvasElement): Promise<{ w: number; h: number }> {
+  const page = await doc.getPage(pageNumber);
+  try {
+    // The size is read and the page rendered in one go: cleaning a page up before rendering it can stall PDF.js.
+    const viewport = page.getViewport({ scale: targetWidth / page.getViewport({ scale: 1 }).width });
+    if (viewport.width * viewport.height > MAX_RENDER_PIXELS) throw new PdfError('This page is too large to preview.');
+    canvas.width = Math.ceil(viewport.width);
+    canvas.height = Math.ceil(viewport.height);
+    await page.render({ canvas, viewport }).promise;
+    return { w: canvas.width, h: canvas.height };
+  } finally {
+    page.cleanup();
+  }
+}
+
 export function canvasToBlob(canvas: HTMLCanvasElement, mime: string, quality?: number): Promise<Blob> {
   return new Promise((resolve, reject) => {
     canvas.toBlob(

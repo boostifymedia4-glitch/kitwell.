@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ErrorMessage, Notice, ProcessingState } from '@/components/tool/Feedback';
 import { CheckField, Field } from '@/components/tool/Fields';
 import { PdfSource } from '@/components/tool/PdfSource';
@@ -16,6 +16,10 @@ const PdfExtractText: ToolImplementation = () => {
   const { pdf, task, reset, running } = usePdfTool<ExtractResult>();
   const [pages, setPages] = useState('');
   const [markers, setMarkers] = useState(true);
+
+  // A page range typed for one PDF makes no sense for the next one.
+  const current = pdf.state.status === 'ready' ? pdf.state.file : null;
+  useEffect(() => setPages(''), [current]);
 
   return (
     <PdfSource pdf={pdf}>

@@ -6,16 +6,18 @@ import { Field, NumberField, Segmented } from '@/components/tool/Fields';
 import { PdfSource } from '@/components/tool/PdfSource';
 import { PdfResult } from '@/components/tool/Results';
 import { Icon } from '@/components/Icon';
-import { areaToMargins, initialRect, marginsToArea, type Margins, type Rect } from '@/lib/cropRect';
+import { areaToMargins, marginsToArea, type Margins, type Rect } from '@/lib/cropRect';
 import { baseName, errorMessage } from '@/lib/format';
 import { cropPdf } from '@/lib/pdfEdit';
 import { PdfError, parsePageList } from '@/lib/pdfOps';
-import { destroyPdf, openPdf, renderPageToCanvas } from '@/lib/pdfjs';
+import { destroyPdf, openPdf, renderPageToWidth } from '@/lib/pdfjs';
 import { useTask } from '@/lib/hooks';
 import { usePdfTool } from '@/lib/usePdfFile';
 import type { ToolImplementation } from '../../types';
 
 const PREVIEW_PX = 760;
+/** Starting crop as fractions of the page: a 10% margin on every side. */
+const START_AREA: Rect = { x: 0.1, y: 0.1, w: 0.8, h: 0.8 };
 
 /** Page preview with a crop box. The crop area is kept as fractions of the page so it survives switching pages. */
 function Cropper({ bytes, name, pageCount, onReset }: { bytes: Uint8Array; name: string; pageCount: number; onReset: () => void }) {
@@ -25,7 +27,7 @@ function Cropper({ bytes, name, pageCount, onReset }: { bytes: Uint8Array; name:
   const [loadError, setLoadError] = useState<string | null>(null);
   const [previewPage, setPreviewPage] = useState<number | ''>(1);
   const [size, setSize] = useState<{ w: number; h: number } | null>(null);
-  const [area, setArea] = useState<Rect>(() => initialRect(1, 1));
+  const [area, setArea] = useState<Rect>(START_AREA);
   const [scope, setScope] = useState<'all' | 'some'>('all');
   const [pages, setPages] = useState('');
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -51,13 +53,9 @@ function Cropper({ bytes, name, pageCount, onReset }: { bytes: Uint8Array; name:
     const canvas = canvasRef.current;
     if (!doc || !canvas) return;
     let cancelled = false;
-    (async () => {
-      const page = await doc.getPage(shown);
-      const base = page.getViewport({ scale: 1 });
-      page.cleanup();
-      await renderPageToCanvas(doc, shown, PREVIEW_PX / base.width, canvas);
-      if (!cancelled) setSize({ w: canvas.width, h: canvas.height });
-    })().catch((e) => !cancelled && setLoadError(errorMessage(e)));
+    renderPageToWidth(doc, shown, PREVIEW_PX, canvas)
+      .then((s) => !cancelled && setSize(s))
+      .catch((e) => !cancelled && setLoadError(errorMessage(e)));
     return () => {
       cancelled = true;
     };
@@ -125,7 +123,7 @@ function Cropper({ bytes, name, pageCount, onReset }: { bytes: Uint8Array; name:
           <Icon name="crop" size={18} />
           Crop PDF
         </button>
-        <button type="button" className="btn btn-ghost" onClick={() => setArea(initialRect(1, 1))} disabled={running}>
+        <button type="button" className="btn btn-ghost" onClick={() => setArea(START_AREA)} disabled={running}>
           Reset crop box
         </button>
       </div>
