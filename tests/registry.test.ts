@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { implLoaders } from '../src/tools/impl';
 import { allPaths, breadcrumbsFor, getPageMeta } from '../src/pageMeta';
 import { hasIcon } from '../src/components/Icon';
-import { categories, featuredTools, groups, groupsInCategory, searchTools, toolPath, toolsInGroup, tools, getTool, relatedTools } from '../src/tools/registry';
+import { categories, featuredTools, popularTools, showcaseTools, groups, groupsInCategory, searchTools, toolPath, toolsInGroup, tools, getTool, relatedTools } from '../src/tools/registry';
 import { computeSize } from '../src/lib/imageProcessor';
 
 describe('tool registry', () => {
@@ -74,7 +74,7 @@ describe('tool catalogue structure', () => {
     for (const c of categories) {
       const seen = new Map<string, string>();
       for (const t of tools.filter((x) => x.category === c.id)) {
-        const key = `${t.icon}|${t.badge ?? ''}`;
+        const key = `${t.icon}|${t.convert?.join('>') ?? ''}`;
         expect(seen.has(key), `${t.slug} and ${seen.get(key)} share icon ${key}`).toBe(false);
         seen.set(key, t.slug);
       }
@@ -83,7 +83,7 @@ describe('tool catalogue structure', () => {
 
   it('keeps menu and card descriptions short enough to read', () => {
     for (const t of tools) {
-      expect(t.description.length, t.slug).toBeLessThanOrEqual(120);
+      expect(t.description.length, t.slug).toBeLessThanOrEqual(90); // cards show up to 4 lines; longer text would be clipped
       expect(t.name.length, t.slug).toBeLessThanOrEqual(28);
     }
   });
@@ -94,6 +94,25 @@ describe('tool catalogue structure', () => {
       expect(list.length).toBeGreaterThanOrEqual(7);
       expect(list.every((t) => t.category === c.id)).toBe(true);
       expect(new Set(list.map((t) => t.slug)).size).toBe(list.length);
+    }
+  });
+
+  it('has a balanced popular list that the homepage category sections do not repeat', () => {
+    const popular = popularTools();
+    expect(popular).toHaveLength(8);
+    expect(new Set(popular.map((t) => t.category)).size).toBe(categories.length);
+    const popularSlugs = new Set(popular.map((t) => t.slug));
+    for (const c of categories) {
+      const list = showcaseTools(c.id);
+      expect(list.length, c.id).toBeGreaterThanOrEqual(4);
+      expect(list.some((t) => popularSlugs.has(t.slug))).toBe(false);
+    }
+  });
+
+  it('draws conversion formats only for tools that convert, with short labels', () => {
+    for (const t of tools.filter((x) => x.convert)) {
+      expect(t.convert![0]).not.toBe(t.convert![1]);
+      for (const label of t.convert!) expect(label.length, t.slug).toBeLessThanOrEqual(4);
     }
   });
 

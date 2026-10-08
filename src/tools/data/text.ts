@@ -6,12 +6,11 @@ export const textTools: ToolDef[] = [
   {
     ...common,
     slug: 'word-counter',
-    group: 'Analyze text',
+    group: 'Analyze and compare',
     name: 'Word Counter',
     icon: 'text',
     impl: 'word-counter',
-    popular: true,
-    description: 'Count words, characters, sentences and paragraphs, and estimate reading time as you type.',
+    description: 'Count words, characters and sentences, and estimate reading time as you type.',
     metaDescription:
       'Free online word counter. Count words, characters, sentences and paragraphs and estimate reading and speaking time instantly.',
     keywords: ['count words', 'word count', 'reading time'],
@@ -32,7 +31,7 @@ export const textTools: ToolDef[] = [
   {
     ...common,
     slug: 'character-counter',
-    group: 'Analyze text',
+    group: 'Analyze and compare',
     name: 'Character Counter',
     icon: 'hash',
     impl: 'character-counter',
@@ -57,7 +56,7 @@ export const textTools: ToolDef[] = [
   {
     ...common,
     slug: 'case-converter',
-    group: 'Format text',
+    group: 'Clean up and format',
     name: 'Case Converter',
     icon: 'case',
     impl: 'case-converter',
@@ -78,11 +77,10 @@ export const textTools: ToolDef[] = [
   {
     ...common,
     slug: 'remove-duplicate-lines',
-    group: 'Clean up text',
+    group: 'Clean up and format',
     name: 'Remove Duplicate Lines',
     icon: 'list-x',
     impl: 'remove-duplicates',
-    popular: true,
     description: 'Remove repeated lines from a list while keeping the original order.',
     metaDescription:
       'Free online duplicate line remover. Delete repeated lines from lists, with options for case, whitespace and empty lines.',
@@ -100,7 +98,7 @@ export const textTools: ToolDef[] = [
   {
     ...common,
     slug: 'text-sorter',
-    group: 'Format text',
+    group: 'Clean up and format',
     name: 'Text Sorter',
     icon: 'list-ordered',
     impl: 'text-sorter',
@@ -121,7 +119,7 @@ export const textTools: ToolDef[] = [
   {
     ...common,
     slug: 'text-cleaner',
-    group: 'Clean up text',
+    group: 'Clean up and format',
     name: 'Text Cleaner',
     icon: 'eraser',
     impl: 'text-cleaner',
@@ -142,7 +140,7 @@ export const textTools: ToolDef[] = [
   {
     ...common,
     slug: 'text-diff-checker',
-    group: 'Analyze text',
+    group: 'Analyze and compare',
     name: 'Text Diff Checker',
     icon: 'diff',
     impl: 'text-diff',

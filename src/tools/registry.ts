@@ -57,20 +57,17 @@ export const categories: Category[] = [
 /** Sections shown on category pages, in display order. Every tool's `group` must match one of these. */
 export const groups: ToolGroup[] = [
   { category: 'image', name: 'Convert images', description: 'Switch between JPG, PNG and WebP, one file or a whole batch.' },
-  { category: 'image', name: 'Optimize and resize', description: 'Make images smaller in file size or change their dimensions.' },
-  { category: 'image', name: 'Edit images', description: 'Crop, rotate and flip photos with a live preview.' },
+  { category: 'image', name: 'Optimize and edit', description: 'Shrink file size, resize, crop, rotate and flip photos with a live preview.' },
   { category: 'image', name: 'Encode and inspect', description: 'Turn images into Base64, decode them back, or pick exact colours.' },
   { category: 'pdf', name: 'Organize PDF', description: 'Combine, split, rearrange and rotate pages.' },
   { category: 'pdf', name: 'Convert to PDF', description: 'Turn photos and screenshots into PDF documents.' },
   { category: 'pdf', name: 'Convert from PDF', description: 'Render PDF pages as high-quality images.' },
   { category: 'pdf', name: 'View and inspect', description: 'Read a PDF privately and check its properties.' },
-  { category: 'text', name: 'Analyze text', description: 'Count words and characters, or compare two versions.' },
-  { category: 'text', name: 'Clean up text', description: 'Remove clutter, stray spaces and duplicate lines.' },
-  { category: 'text', name: 'Format text', description: 'Change letter case and sort lines.' },
+  { category: 'text', name: 'Analyze and compare', description: 'Count words and characters, or compare two versions of a text.' },
+  { category: 'text', name: 'Clean up and format', description: 'Remove clutter and duplicate lines, change letter case and sort lines.' },
   { category: 'developer', name: 'JSON and XML', description: 'Format, validate and minify structured data.' },
   { category: 'developer', name: 'Encode and decode', description: 'Convert text for URLs, HTML and Base64.' },
-  { category: 'developer', name: 'Test and preview', description: 'Try regular expressions and preview Markdown.' },
-  { category: 'developer', name: 'Generators and converters', description: 'Create passwords and UUIDs, convert timestamps and colours.' },
+  { category: 'developer', name: 'Test and generate', description: 'Try regular expressions, preview Markdown, and create passwords, UUIDs and timestamps.' },
 ];
 
 export const tools: ToolDef[] = [...imageTools, ...pdfTools, ...textTools, ...developerTools];
@@ -94,7 +91,12 @@ export const featuredTools = (id: CategoryId) =>
 export const groupsInCategory = (id: CategoryId) => groups.filter((g) => g.category === id);
 export const toolsInGroup = (id: CategoryId, name: string) => tools.filter((t) => t.category === id && t.group === name);
 export const groupId = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-export const popularTools = () => tools.filter((t) => t.popular);
+/** The most-used tools, spread across all four categories. Order is the display order. */
+const popularSlugs = ['jpg-to-png', 'image-compressor', 'merge-pdf', 'split-pdf', 'pdf-to-jpg', 'json-formatter', 'word-counter', 'password-generator'];
+const popularSet = new Set(popularSlugs);
+export const popularTools = () => popularSlugs.map((s) => bySlug.get(s)).filter((t): t is ToolDef => Boolean(t));
+/** A category's featured tools without the ones already shown in "Popular tools", so the homepage does not repeat cards. */
+export const showcaseTools = (id: CategoryId) => featuredTools(id).filter((t) => !popularSet.has(t.slug));
 export const relatedTools = (tool: ToolDef) =>
   tool.related.map((s) => bySlug.get(s)).filter((t): t is ToolDef => Boolean(t));
 
@@ -122,7 +124,7 @@ export function searchTools(query: string, limit = 8): ToolDef[] {
       if (words.every((w) => name.includes(w))) score += 30;
       if (t.keywords.some((k) => k.includes(q))) score += 10;
       if (t.group.toLowerCase().includes(q)) score += 4;
-      if (t.popular) score += 2;
+      if (popularSet.has(t.slug)) score += 2;
       return { t, score };
     })
     .filter((x): x is { t: ToolDef; score: number } => x !== null)

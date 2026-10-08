@@ -11,7 +11,6 @@ export const developerTools: ToolDef[] = [
     icon: 'braces',
     impl: 'json-tool',
     config: { mode: 'format' },
-    popular: true,
     description: 'Format and pretty-print JSON with your choice of indentation and key sorting.',
     metaDescription:
       'Free online JSON formatter and beautifier. Pretty-print JSON with 2 or 4 spaces or tabs, sort keys, and see precise error locations.',
@@ -147,7 +146,6 @@ export const developerTools: ToolDef[] = [
     icon: 'binary',
     impl: 'encode-decode',
     config: { kind: 'base64' },
-    popular: true,
     description: 'Encode text to Base64 or decode Base64 back to text, with full UTF-8 support.',
     metaDescription:
       'Free online Base64 encoder and decoder. Convert text to Base64 and back with UTF-8 support and an optional URL-safe alphabet.',
@@ -169,7 +167,7 @@ export const developerTools: ToolDef[] = [
   {
     ...common,
     slug: 'regex-tester',
-    group: 'Test and preview',
+    group: 'Test and generate',
     name: 'Regex Tester',
     icon: 'regex',
     impl: 'regex-tester',
@@ -194,7 +192,7 @@ export const developerTools: ToolDef[] = [
   {
     ...common,
     slug: 'markdown-previewer',
-    group: 'Test and preview',
+    group: 'Test and generate',
     name: 'Markdown Previewer',
     icon: 'markdown',
     impl: 'markdown-previewer',
@@ -215,12 +213,11 @@ export const developerTools: ToolDef[] = [
   {
     ...common,
     slug: 'password-generator',
-    group: 'Generators and converters',
+    group: 'Test and generate',
     name: 'Password Generator',
     icon: 'key',
     impl: 'password-generator',
-    popular: true,
-    description: 'Generate strong random passwords with your browser’s cryptographic random number generator.',
+    description: 'Generate strong random passwords using your browser’s secure random generator.',
     metaDescription:
       'Free secure password generator. Create random passwords up to 128 characters using cryptographic randomness in your browser.',
     keywords: ['random password', 'strong password generator', 'passphrase generator'],
@@ -241,7 +238,7 @@ export const developerTools: ToolDef[] = [
   {
     ...common,
     slug: 'uuid-generator',
-    group: 'Generators and converters',
+    group: 'Test and generate',
     name: 'UUID Generator',
     icon: 'fingerprint',
     impl: 'uuid-generator',
@@ -262,7 +259,7 @@ export const developerTools: ToolDef[] = [
   {
     ...common,
     slug: 'timestamp-converter',
-    group: 'Generators and converters',
+    group: 'Test and generate',
     name: 'Timestamp Converter',
     icon: 'clock',
     impl: 'timestamp-converter',
@@ -283,7 +280,7 @@ export const developerTools: ToolDef[] = [
   {
     ...common,
     slug: 'color-converter',
-    group: 'Generators and converters',
+    group: 'Test and generate',
     name: 'Color Converter',
     icon: 'palette',
     impl: 'color-converter',

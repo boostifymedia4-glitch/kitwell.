@@ -34,8 +34,8 @@ export interface ToolDef {
   icon: string;
   /** Section of the category page this tool belongs to (must match a group in registry.ts). */
   group: string;
-  /** Short format label drawn on the icon for conversion tools, e.g. 'PNG'. Decorative only. */
-  badge?: string;
+  /** For conversion tools: [from, to] format labels drawn inside the icon, e.g. ['JPG', 'PNG']. Decorative only. */
+  convert?: [string, string];
   /** Overrides the generated <title>. */
   title?: string;
   /** Overrides the generated meta description. */
@@ -46,7 +46,6 @@ export interface ToolDef {
   limits: string[];
   related: string[];
   keywords: string[];
-  popular?: boolean;
   /** Key into the lazy implementation map (src/tools/impl/index.ts). */
   impl: string;
   /** Extra per-tool settings consumed by the implementation. */

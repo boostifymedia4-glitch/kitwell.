@@ -8,7 +8,7 @@ import { ToolIcon } from '@/components/ui/ToolIcon';
 import { ToolSearch } from '@/components/ui/ToolSearch';
 import { site } from '@/config/site';
 import { getPageMeta } from '@/pageMeta';
-import { categories, categoryPath, featuredTools, getTool, popularTools, toolPath, toolsInCategory, tools } from '@/tools/registry';
+import { categories, categoryPath, getTool, showcaseTools, popularTools, toolPath, toolsInCategory, tools } from '@/tools/registry';
 
 const SHORTCUTS = ['jpg-to-png', 'image-compressor', 'merge-pdf', 'pdf-to-jpg', 'json-formatter', 'word-counter']
   .map(getTool)
@@ -63,7 +63,7 @@ export default function Home() {
               All {tools.length} tools <Icon name="arrow-right" size={14} />
             </Link>
           </div>
-          <ToolGrid tools={popularTools().slice(0, 8)} showCategory />
+          <ToolGrid tools={popularTools()} showCategory />
         </section>
 
         {categories.map((c) => (
@@ -82,7 +82,7 @@ export default function Home() {
                 View all {toolsInCategory(c.id).length} <Icon name="arrow-right" size={14} />
               </Link>
             </div>
-            <ToolGrid tools={featuredTools(c.id)} />
+            <ToolGrid tools={showcaseTools(c.id)} />
           </section>
         ))}
 
