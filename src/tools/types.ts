@@ -19,6 +19,12 @@ export interface Category {
   intro: string;
 }
 
+export interface ToolGroup {
+  category: CategoryId;
+  name: string;
+  description: string;
+}
+
 export interface ToolDef {
   slug: string;
   category: CategoryId;
@@ -26,6 +32,10 @@ export interface ToolDef {
   /** One-sentence summary shown on cards and under the H1. */
   description: string;
   icon: string;
+  /** Section of the category page this tool belongs to (must match a group in registry.ts). */
+  group: string;
+  /** Short format label drawn on the icon for conversion tools, e.g. 'PNG'. Decorative only. */
+  badge?: string;
   /** Overrides the generated <title>. */
   title?: string;
   /** Overrides the generated meta description. */

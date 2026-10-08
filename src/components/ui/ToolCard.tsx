@@ -1,29 +1,33 @@
 import { Link } from 'react-router-dom';
-import { toolPath } from '@/tools/registry';
+import { getCategory, toolPath } from '@/tools/registry';
 import type { ToolDef } from '@/tools/types';
-import { Icon } from '../Icon';
+import { ToolIcon } from './ToolIcon';
 
-type Heading = 'h2' | 'h3';
+export type HeadingLevel = 'h2' | 'h3' | 'h4';
 
-export function ToolCard({ tool, as: H = 'h3' }: { tool: ToolDef; as?: Heading }) {
+interface CardProps {
+  tool: ToolDef;
+  /** Heading level for the tool name, chosen to fit the page's outline. */
+  as?: HeadingLevel;
+  showCategory?: boolean;
+}
+
+export function ToolCard({ tool, as: H = 'h3', showCategory = false }: CardProps) {
   return (
     <Link to={toolPath(tool)} className="card tool-card">
-      <span className={`chip chip-${tool.category}`}>
-        <Icon name={tool.icon} size={20} />
-      </span>
-      <span>
-        <H>{tool.name}</H>
-        <p>{tool.description}</p>
-      </span>
+      <ToolIcon tool={tool} />
+      <H className="tool-card-title">{tool.name}</H>
+      <p className="tool-card-desc">{tool.description}</p>
+      {showCategory && <span className="tool-card-meta">{getCategory(tool.category)?.name}</span>}
     </Link>
   );
 }
 
-export function ToolGrid({ tools, headingLevel = 'h3' }: { tools: ToolDef[]; headingLevel?: Heading }) {
+export function ToolGrid({ tools, headingLevel = 'h3', showCategory }: { tools: ToolDef[]; headingLevel?: HeadingLevel; showCategory?: boolean }) {
   return (
     <div className="grid grid-tools">
       {tools.map((t) => (
-        <ToolCard key={t.slug} tool={t} as={headingLevel} />
+        <ToolCard key={t.slug} tool={t} as={headingLevel} showCategory={showCategory} />
       ))}
     </div>
   );

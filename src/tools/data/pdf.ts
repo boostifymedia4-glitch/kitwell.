@@ -22,6 +22,8 @@ export const pdfTools: ToolDef[] = [
   {
     ...common,
     slug: 'jpg-to-pdf',
+    group: 'Convert to PDF',
+    badge: 'JPG→PDF',
     name: 'JPG to PDF',
     icon: 'file-image',
     impl: 'images-to-pdf',
@@ -48,6 +50,8 @@ export const pdfTools: ToolDef[] = [
   {
     ...common,
     slug: 'png-to-pdf',
+    group: 'Convert to PDF',
+    badge: 'PNG→PDF',
     name: 'PNG to PDF',
     icon: 'file-image',
     impl: 'images-to-pdf',
@@ -70,8 +74,10 @@ export const pdfTools: ToolDef[] = [
   {
     ...common,
     slug: 'images-to-pdf',
+    group: 'Convert to PDF',
+    badge: 'PDF',
     name: 'Images to PDF',
-    icon: 'file-image',
+    icon: 'layers',
     impl: 'images-to-pdf',
     config: { accept: 'any' },
     popular: true,
@@ -101,6 +107,7 @@ export const pdfTools: ToolDef[] = [
   {
     ...common,
     slug: 'merge-pdf',
+    group: 'Organize PDF',
     name: 'Merge PDF',
     icon: 'merge',
     impl: 'pdf-merge',
@@ -128,6 +135,7 @@ export const pdfTools: ToolDef[] = [
   {
     ...common,
     slug: 'split-pdf',
+    group: 'Organize PDF',
     name: 'Split PDF',
     icon: 'split',
     impl: 'pdf-split',
@@ -154,6 +162,7 @@ export const pdfTools: ToolDef[] = [
   {
     ...common,
     slug: 'rotate-pdf',
+    group: 'Organize PDF',
     name: 'Rotate PDF',
     icon: 'rotate',
     impl: 'pdf-organize',
@@ -180,6 +189,7 @@ export const pdfTools: ToolDef[] = [
   {
     ...common,
     slug: 'extract-pdf-pages',
+    group: 'Organize PDF',
     name: 'PDF Page Extractor',
     icon: 'file-output',
     impl: 'pdf-organize',
@@ -206,6 +216,7 @@ export const pdfTools: ToolDef[] = [
   {
     ...common,
     slug: 'reorder-pdf-pages',
+    group: 'Organize PDF',
     name: 'PDF Page Reordering',
     icon: 'arrow-down-up',
     impl: 'pdf-organize',
@@ -232,8 +243,10 @@ export const pdfTools: ToolDef[] = [
   {
     ...common,
     slug: 'pdf-to-jpg',
+    group: 'Convert from PDF',
+    badge: 'PDF→JPG',
     name: 'PDF to JPG',
-    icon: 'file-image',
+    icon: 'file-text',
     impl: 'pdf-to-image',
     config: { format: 'jpeg' },
     popular: true,
@@ -263,8 +276,10 @@ export const pdfTools: ToolDef[] = [
   {
     ...common,
     slug: 'pdf-to-png',
+    group: 'Convert from PDF',
+    badge: 'PDF→PNG',
     name: 'PDF to PNG',
-    icon: 'file-image',
+    icon: 'file-text',
     impl: 'pdf-to-image',
     config: { format: 'png' },
     description: 'Render PDF pages as sharp, lossless PNG images.',
@@ -285,6 +300,7 @@ export const pdfTools: ToolDef[] = [
   {
     ...common,
     slug: 'pdf-viewer',
+    group: 'View and inspect',
     name: 'PDF Viewer',
     icon: 'eye',
     impl: 'pdf-viewer',
@@ -306,6 +322,7 @@ export const pdfTools: ToolDef[] = [
   {
     ...common,
     slug: 'pdf-metadata-viewer',
+    group: 'View and inspect',
     name: 'PDF Metadata Viewer',
     icon: 'info',
     impl: 'pdf-metadata',

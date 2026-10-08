@@ -6,6 +6,7 @@ export const developerTools: ToolDef[] = [
   {
     ...common,
     slug: 'json-formatter',
+    group: 'JSON and XML',
     name: 'JSON Formatter',
     icon: 'braces',
     impl: 'json-tool',
@@ -32,6 +33,7 @@ export const developerTools: ToolDef[] = [
   {
     ...common,
     slug: 'json-validator',
+    group: 'JSON and XML',
     name: 'JSON Validator',
     icon: 'badge-check',
     impl: 'json-tool',
@@ -53,8 +55,9 @@ export const developerTools: ToolDef[] = [
   {
     ...common,
     slug: 'json-minifier',
+    group: 'JSON and XML',
     name: 'JSON Minifier',
-    icon: 'minimize',
+    icon: 'shrink',
     impl: 'json-tool',
     config: { mode: 'minify' },
     description: 'Remove whitespace from JSON to make it as compact as possible.',
@@ -74,6 +77,7 @@ export const developerTools: ToolDef[] = [
   {
     ...common,
     slug: 'xml-formatter',
+    group: 'JSON and XML',
     name: 'XML Formatter',
     icon: 'file-code',
     impl: 'xml-formatter',
@@ -94,6 +98,7 @@ export const developerTools: ToolDef[] = [
   {
     ...common,
     slug: 'url-encoder-decoder',
+    group: 'Encode and decode',
     name: 'URL Encoder / Decoder',
     icon: 'link',
     impl: 'encode-decode',
@@ -115,6 +120,7 @@ export const developerTools: ToolDef[] = [
   {
     ...common,
     slug: 'html-encoder-decoder',
+    group: 'Encode and decode',
     name: 'HTML Encoder / Decoder',
     icon: 'code',
     impl: 'encode-decode',
@@ -136,6 +142,7 @@ export const developerTools: ToolDef[] = [
   {
     ...common,
     slug: 'base64-encoder-decoder',
+    group: 'Encode and decode',
     name: 'Base64 Encoder / Decoder',
     icon: 'binary',
     impl: 'encode-decode',
@@ -162,6 +169,7 @@ export const developerTools: ToolDef[] = [
   {
     ...common,
     slug: 'regex-tester',
+    group: 'Test and preview',
     name: 'Regex Tester',
     icon: 'regex',
     impl: 'regex-tester',
@@ -186,6 +194,7 @@ export const developerTools: ToolDef[] = [
   {
     ...common,
     slug: 'markdown-previewer',
+    group: 'Test and preview',
     name: 'Markdown Previewer',
     icon: 'markdown',
     impl: 'markdown-previewer',
@@ -206,6 +215,7 @@ export const developerTools: ToolDef[] = [
   {
     ...common,
     slug: 'password-generator',
+    group: 'Generators and converters',
     name: 'Password Generator',
     icon: 'key',
     impl: 'password-generator',
@@ -231,6 +241,7 @@ export const developerTools: ToolDef[] = [
   {
     ...common,
     slug: 'uuid-generator',
+    group: 'Generators and converters',
     name: 'UUID Generator',
     icon: 'fingerprint',
     impl: 'uuid-generator',
@@ -251,6 +262,7 @@ export const developerTools: ToolDef[] = [
   {
     ...common,
     slug: 'timestamp-converter',
+    group: 'Generators and converters',
     name: 'Timestamp Converter',
     icon: 'clock',
     impl: 'timestamp-converter',
@@ -271,6 +283,7 @@ export const developerTools: ToolDef[] = [
   {
     ...common,
     slug: 'color-converter',
+    group: 'Generators and converters',
     name: 'Color Converter',
     icon: 'palette',
     impl: 'color-converter',

@@ -3,7 +3,7 @@ import {
   CircleAlert, CircleCheck, Clock, Code, Copy, Crop, Diff, Download, Eraser, Eye, FileCode, FileImage, FileOutput,
   FileText, Fingerprint, FlipHorizontal, Hash, Heading, Image as ImageIcon, Info, KeyRound, Link, ListX, Lock, Menu,
   Merge, Minimize2, Palette, Pipette, Plus, Regex, Repeat, RotateCcw, RotateCw, Scaling, Search, ShieldCheck, Split,
-  Terminal, Text, Trash2, TriangleAlert, UploadCloud, X, Zap, ZoomIn, ZoomOut, Layers, Globe, Sparkles,
+  Terminal, Text, Trash2, ChevronDown, LayoutGrid, ListOrdered, Shrink, TriangleAlert, UploadCloud, X, Zap, ZoomIn, ZoomOut, Layers, Globe, Sparkles,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -17,7 +17,7 @@ const icons: Record<string, LucideIcon> = {
   palette: Palette, pipette: Pipette, plus: Plus, regex: Regex, repeat: Repeat, 'rotate-ccw': RotateCcw, rotate: RotateCw,
   scaling: Scaling, search: Search, shield: ShieldCheck, split: Split, terminal: Terminal, text: Text, trash: Trash2,
   warning: TriangleAlert, upload: UploadCloud, x: X, zap: Zap, 'zoom-in': ZoomIn, 'zoom-out': ZoomOut, layers: Layers,
-  globe: Globe, sparkles: Sparkles,
+  globe: Globe, sparkles: Sparkles, 'chevron-down': ChevronDown, grid: LayoutGrid, 'list-ordered': ListOrdered, shrink: Shrink,
 };
 
 interface IconProps {
@@ -25,6 +25,8 @@ interface IconProps {
   size?: number;
   className?: string;
 }
+
+export const hasIcon = (name: string) => name in icons;
 
 export function Icon({ name, size = 20, className }: IconProps) {
   const Cmp = icons[name] ?? FileText;

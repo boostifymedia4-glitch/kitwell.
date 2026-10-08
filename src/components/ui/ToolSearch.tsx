@@ -2,6 +2,7 @@ import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from 
 import { useNavigate } from 'react-router-dom';
 import { getCategory, searchTools, toolPath } from '@/tools/registry';
 import { Icon } from '../Icon';
+import { ToolIcon } from './ToolIcon';
 
 interface Props {
   variant?: 'header' | 'hero';
@@ -117,12 +118,13 @@ export function ToolSearch({ variant = 'header', shortcut = false, onNavigate }:
                   }}
                   tabIndex={-1}
                 >
-                  <span className={`chip chip-sm chip-${t.category}`}>
-                    <Icon name={t.icon} size={16} />
-                  </span>
-                  <span>
-                    <strong>{t.name}</strong>
-                    <small>{getCategory(t.category)?.name}</small>
+                  <ToolIcon tool={t} size="sm" />
+                  <span className="search-text">
+                    <strong>
+                      {t.name}
+                      <span className="search-cat">{getCategory(t.category)?.name}</span>
+                    </strong>
+                    <small>{t.description}</small>
                   </span>
                 </a>
               </li>

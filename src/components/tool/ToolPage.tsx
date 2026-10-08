@@ -9,6 +9,7 @@ import { AdSlot } from '../ui/AdSlot';
 import { Breadcrumbs } from '../ui/Breadcrumbs';
 import { Faq } from '../ui/Faq';
 import { ToolGrid } from '../ui/ToolCard';
+import { ToolIcon } from '../ui/ToolIcon';
 import { ErrorMessage, PrivacyNotice } from './Feedback';
 import { getPageMeta } from '@/pageMeta';
 
@@ -74,9 +75,7 @@ export function ToolPage({ tool }: { tool: ToolDef }) {
         <header className="page-head" style={{ paddingBottom: 0 }}>
           <Breadcrumbs path={path} />
           <div className="tool-head">
-            <span className={`chip chip-${tool.category}`}>
-              <Icon name={tool.icon} size={26} />
-            </span>
+            <ToolIcon tool={tool} size="lg" />
             <div>
               <h1>{tool.name}</h1>
               <p className="lead">{tool.description}</p>

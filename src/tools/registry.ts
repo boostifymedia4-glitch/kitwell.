@@ -3,7 +3,7 @@ import { developerTools } from './data/developer';
 import { imageTools } from './data/image';
 import { pdfTools } from './data/pdf';
 import { textTools } from './data/text';
-import type { Category, CategoryId, ToolDef } from './types';
+import type { Category, CategoryId, ToolDef, ToolGroup } from './types';
 
 export const categories: Category[] = [
   {
@@ -54,7 +54,34 @@ export const categories: Category[] = [
   },
 ];
 
+/** Sections shown on category pages, in display order. Every tool's `group` must match one of these. */
+export const groups: ToolGroup[] = [
+  { category: 'image', name: 'Convert images', description: 'Switch between JPG, PNG and WebP, one file or a whole batch.' },
+  { category: 'image', name: 'Optimize and resize', description: 'Make images smaller in file size or change their dimensions.' },
+  { category: 'image', name: 'Edit images', description: 'Crop, rotate and flip photos with a live preview.' },
+  { category: 'image', name: 'Encode and inspect', description: 'Turn images into Base64, decode them back, or pick exact colours.' },
+  { category: 'pdf', name: 'Organize PDF', description: 'Combine, split, rearrange and rotate pages.' },
+  { category: 'pdf', name: 'Convert to PDF', description: 'Turn photos and screenshots into PDF documents.' },
+  { category: 'pdf', name: 'Convert from PDF', description: 'Render PDF pages as high-quality images.' },
+  { category: 'pdf', name: 'View and inspect', description: 'Read a PDF privately and check its properties.' },
+  { category: 'text', name: 'Analyze text', description: 'Count words and characters, or compare two versions.' },
+  { category: 'text', name: 'Clean up text', description: 'Remove clutter, stray spaces and duplicate lines.' },
+  { category: 'text', name: 'Format text', description: 'Change letter case and sort lines.' },
+  { category: 'developer', name: 'JSON and XML', description: 'Format, validate and minify structured data.' },
+  { category: 'developer', name: 'Encode and decode', description: 'Convert text for URLs, HTML and Base64.' },
+  { category: 'developer', name: 'Test and preview', description: 'Try regular expressions and preview Markdown.' },
+  { category: 'developer', name: 'Generators and converters', description: 'Create passwords and UUIDs, convert timestamps and colours.' },
+];
+
 export const tools: ToolDef[] = [...imageTools, ...pdfTools, ...textTools, ...developerTools];
+
+/** Curated, ordered tools shown per category in the All tools menu and on the homepage. */
+const featuredSlugs: Record<CategoryId, string[]> = {
+  image: ['jpg-to-png', 'png-to-jpg', 'jpg-to-webp', 'image-compressor', 'image-resizer', 'image-cropper', 'image-format-converter', 'image-to-base64'],
+  pdf: ['merge-pdf', 'split-pdf', 'extract-pdf-pages', 'reorder-pdf-pages', 'rotate-pdf', 'jpg-to-pdf', 'images-to-pdf', 'pdf-to-jpg'],
+  text: ['word-counter', 'character-counter', 'case-converter', 'remove-duplicate-lines', 'text-sorter', 'text-cleaner', 'text-diff-checker'],
+  developer: ['json-formatter', 'json-validator', 'base64-encoder-decoder', 'url-encoder-decoder', 'regex-tester', 'uuid-generator', 'password-generator', 'timestamp-converter'],
+};
 
 const bySlug = new Map(tools.map((t) => [t.slug, t]));
 const catById = new Map(categories.map((c) => [c.id, c]));
@@ -62,6 +89,11 @@ const catById = new Map(categories.map((c) => [c.id, c]));
 export const getTool = (slug: string) => bySlug.get(slug);
 export const getCategory = (id: string): Category | undefined => catById.get(id as CategoryId);
 export const toolsInCategory = (id: CategoryId) => tools.filter((t) => t.category === id);
+export const featuredTools = (id: CategoryId) =>
+  featuredSlugs[id].map((s) => bySlug.get(s)).filter((t): t is ToolDef => Boolean(t));
+export const groupsInCategory = (id: CategoryId) => groups.filter((g) => g.category === id);
+export const toolsInGroup = (id: CategoryId, name: string) => tools.filter((t) => t.category === id && t.group === name);
+export const groupId = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 export const popularTools = () => tools.filter((t) => t.popular);
 export const relatedTools = (tool: ToolDef) =>
   tool.related.map((s) => bySlug.get(s)).filter((t): t is ToolDef => Boolean(t));
@@ -73,21 +105,23 @@ export function toolTitle(t: ToolDef) {
   return t.title ?? `${t.name} – Free Online Tool | ${site.name}`;
 }
 
-/** Simple ranked search across name, keywords and description. */
+/** Ranked search across name, keywords, description, group and category. */
 export function searchTools(query: string, limit = 8): ToolDef[] {
   const q = query.trim().toLowerCase();
   if (!q) return [];
-  const words = q.split(/\s+/);
+  const words = q.split(/s+/);
   return tools
     .map((t) => {
       const name = t.name.toLowerCase();
-      const hay = `${name} ${t.keywords.join(' ')} ${t.description.toLowerCase()} ${t.category}`;
+      const cat = catById.get(t.category)?.name.toLowerCase() ?? '';
+      const hay = `${name} ${t.keywords.join(' ')} ${t.description.toLowerCase()} ${t.group.toLowerCase()} ${cat} ${t.category}`;
       if (!words.every((w) => hay.includes(w))) return null;
       let score = 0;
       if (name === q) score += 100;
       if (name.startsWith(q)) score += 50;
-      if (name.includes(q)) score += 25;
+      if (words.every((w) => name.includes(w))) score += 30;
       if (t.keywords.some((k) => k.includes(q))) score += 10;
+      if (t.group.toLowerCase().includes(q)) score += 4;
       if (t.popular) score += 2;
       return { t, score };
     })

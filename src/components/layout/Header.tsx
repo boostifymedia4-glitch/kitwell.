@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { site } from '@/config/site';
-import { categories, categoryPath } from '@/tools/registry';
+import { categories, categoryPath, featuredTools, toolPath, toolsInCategory } from '@/tools/registry';
 import { Icon } from '../Icon';
+import { ToolIcon } from '../ui/ToolIcon';
 import { ToolSearch } from '../ui/ToolSearch';
+import { MegaMenu } from './MegaMenu';
 
 export function BrandMark() {
   return (
@@ -12,6 +14,59 @@ export function BrandMark() {
         <path d="M10 6v20M10 16l10-10M13 13.5l9 12.5" />
       </svg>
     </span>
+  );
+}
+
+/** Mobile equivalent of the mega menu: one expandable section per category. */
+function MobileNav({ onNavigate }: { onNavigate: () => void }) {
+  const [expanded, setExpanded] = useState<string | null>(null);
+  return (
+    <div className="mobile-nav" id="mobile-nav">
+      <div className="container">
+        <div className="mobile-search">
+          <ToolSearch onNavigate={onNavigate} />
+        </div>
+        <nav aria-label="Mobile">
+          {categories.map((c) => {
+            const isOpen = expanded === c.id;
+            return (
+              <div key={c.id} className="acc">
+                <button type="button" className="acc-btn" aria-expanded={isOpen} aria-controls={`acc-${c.id}`} onClick={() => setExpanded(isOpen ? null : c.id)}>
+                  <span className={`tool-icon tool-icon-sm chip-${c.id}`} aria-hidden="true">
+                    <Icon name={c.icon} size={16} />
+                  </span>
+                  {c.name}
+                  <Icon name="chevron-down" size={18} className={`acc-chevron ${isOpen ? 'is-open' : ''}`} />
+                </button>
+                {isOpen && (
+                  <ul className="acc-panel" id={`acc-${c.id}`}>
+                    {featuredTools(c.id).map((t) => (
+                      <li key={t.slug}>
+                        <Link to={toolPath(t)} onClick={onNavigate}>
+                          <ToolIcon tool={t} size="sm" />
+                          {t.name}
+                        </Link>
+                      </li>
+                    ))}
+                    <li>
+                      <Link to={categoryPath(c.id)} className="acc-viewall" onClick={onNavigate}>
+                        View all {toolsInCategory(c.id).length} {c.short.toLowerCase()} tools <Icon name="arrow-right" size={14} />
+                      </Link>
+                    </li>
+                  </ul>
+                )}
+              </div>
+            );
+          })}
+          <Link to="/tools" className="acc-link" onClick={onNavigate}>
+            All tools
+          </Link>
+          <Link to="/about" className="acc-link" onClick={onNavigate}>
+            About
+          </Link>
+        </nav>
+      </div>
+    </div>
   );
 }
 
@@ -30,13 +85,11 @@ export function Header() {
         </Link>
         <nav className="nav" aria-label="Primary">
           {categories.map((c) => (
-            <NavLink key={c.id} to={categoryPath(c.id)}>
+            <NavLink key={c.id} to={categoryPath(c.id)} className="nav-link">
               {c.short}
             </NavLink>
           ))}
-          <NavLink to="/tools" end>
-            All tools
-          </NavLink>
+          <MegaMenu />
         </nav>
         <div className="header-search">
           <ToolSearch shortcut />
@@ -52,27 +105,7 @@ export function Header() {
           <Icon name={open ? 'x' : 'menu'} size={22} />
         </button>
       </div>
-      {open && (
-        <div className="mobile-nav" id="mobile-nav">
-          <div className="container">
-            <div className="search">
-              <ToolSearch onNavigate={() => setOpen(false)} />
-            </div>
-            <nav aria-label="Mobile">
-              {categories.map((c) => (
-                <Link key={c.id} to={categoryPath(c.id)}>
-                  <span className={`chip chip-sm chip-${c.id}`}>
-                    <Icon name={c.icon} size={16} />
-                  </span>
-                  {c.name}
-                </Link>
-              ))}
-              <Link to="/tools">All tools</Link>
-              <Link to="/about">About</Link>
-            </nav>
-          </div>
-        </div>
-      )}
+      {open && <MobileNav onNavigate={() => setOpen(false)} />}
     </header>
   );
 }

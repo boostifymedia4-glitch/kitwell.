@@ -22,8 +22,10 @@ export const imageTools: ToolDef[] = [
   {
     ...common,
     slug: 'jpg-to-png',
+    group: 'Convert images',
+    badge: 'JPG→PNG',
     name: 'JPG to PNG',
-    icon: 'image',
+    icon: 'file-image',
     impl: 'image-convert',
     config: { from: 'jpeg', to: 'png' },
     popular: true,
@@ -53,8 +55,10 @@ export const imageTools: ToolDef[] = [
   {
     ...common,
     slug: 'png-to-jpg',
+    group: 'Convert images',
+    badge: 'PNG→JPG',
     name: 'PNG to JPG',
-    icon: 'image',
+    icon: 'file-image',
     impl: 'image-convert',
     config: { from: 'png', to: 'jpeg' },
     popular: true,
@@ -84,8 +88,10 @@ export const imageTools: ToolDef[] = [
   {
     ...common,
     slug: 'jpg-to-webp',
+    group: 'Convert images',
+    badge: 'JPG→WEBP',
     name: 'JPG to WebP',
-    icon: 'image',
+    icon: 'file-image',
     impl: 'image-convert',
     config: { from: 'jpeg', to: 'webp' },
     description: 'Convert JPG photos to modern WebP for smaller files and faster pages.',
@@ -110,8 +116,10 @@ export const imageTools: ToolDef[] = [
   {
     ...common,
     slug: 'png-to-webp',
+    group: 'Convert images',
+    badge: 'PNG→WEBP',
     name: 'PNG to WebP',
-    icon: 'image',
+    icon: 'file-image',
     impl: 'image-convert',
     config: { from: 'png', to: 'webp' },
     description: 'Convert PNG images to WebP and keep transparency at a fraction of the size.',
@@ -136,8 +144,10 @@ export const imageTools: ToolDef[] = [
   {
     ...common,
     slug: 'webp-to-jpg',
+    group: 'Convert images',
+    badge: 'WEBP→JPG',
     name: 'WebP to JPG',
-    icon: 'image',
+    icon: 'file-image',
     impl: 'image-convert',
     config: { from: 'webp', to: 'jpeg' },
     description: 'Convert WebP images to widely compatible JPG files.',
@@ -158,8 +168,10 @@ export const imageTools: ToolDef[] = [
   {
     ...common,
     slug: 'webp-to-png',
+    group: 'Convert images',
+    badge: 'WEBP→PNG',
     name: 'WebP to PNG',
-    icon: 'image',
+    icon: 'file-image',
     impl: 'image-convert',
     config: { from: 'webp', to: 'png' },
     description: 'Convert WebP images to lossless PNG and keep transparency.',
@@ -180,6 +192,7 @@ export const imageTools: ToolDef[] = [
   {
     ...common,
     slug: 'image-compressor',
+    group: 'Optimize and resize',
     name: 'Image Compressor',
     icon: 'minimize',
     impl: 'image-compress',
@@ -210,6 +223,7 @@ export const imageTools: ToolDef[] = [
   {
     ...common,
     slug: 'image-resizer',
+    group: 'Optimize and resize',
     name: 'Image Resizer',
     icon: 'scaling',
     impl: 'image-resize',
@@ -240,6 +254,7 @@ export const imageTools: ToolDef[] = [
   {
     ...common,
     slug: 'image-cropper',
+    group: 'Edit images',
     name: 'Image Cropper',
     icon: 'crop',
     impl: 'image-crop',
@@ -265,6 +280,7 @@ export const imageTools: ToolDef[] = [
   {
     ...common,
     slug: 'image-rotator',
+    group: 'Edit images',
     name: 'Image Rotator',
     icon: 'rotate',
     impl: 'image-transform',
@@ -287,6 +303,7 @@ export const imageTools: ToolDef[] = [
   {
     ...common,
     slug: 'image-flipper',
+    group: 'Edit images',
     name: 'Image Flipper',
     icon: 'flip',
     impl: 'image-transform',
@@ -308,6 +325,7 @@ export const imageTools: ToolDef[] = [
   {
     ...common,
     slug: 'image-format-converter',
+    group: 'Convert images',
     name: 'Image Format Converter',
     icon: 'repeat',
     impl: 'image-convert',
@@ -335,8 +353,10 @@ export const imageTools: ToolDef[] = [
   {
     ...common,
     slug: 'image-to-base64',
+    group: 'Encode and inspect',
+    badge: 'B64',
     name: 'Image to Base64',
-    icon: 'code',
+    icon: 'image',
     impl: 'image-to-base64',
     description: 'Encode an image as a Base64 data URI for CSS, HTML or JSON.',
     metaDescription:
@@ -357,8 +377,10 @@ export const imageTools: ToolDef[] = [
     ...common,
     fileTool: false,
     slug: 'base64-to-image',
+    group: 'Encode and inspect',
+    badge: 'IMG',
     name: 'Base64 to Image',
-    icon: 'code',
+    icon: 'binary',
     impl: 'base64-to-image',
     description: 'Decode a Base64 string or data URI back into a downloadable image.',
     metaDescription:
@@ -385,6 +407,7 @@ export const imageTools: ToolDef[] = [
   {
     ...common,
     slug: 'image-color-picker',
+    group: 'Encode and inspect',
     name: 'Image Color Picker',
     icon: 'pipette',
     impl: 'image-color-picker',

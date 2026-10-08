@@ -6,6 +6,7 @@ export const textTools: ToolDef[] = [
   {
     ...common,
     slug: 'word-counter',
+    group: 'Analyze text',
     name: 'Word Counter',
     icon: 'text',
     impl: 'word-counter',
@@ -31,6 +32,7 @@ export const textTools: ToolDef[] = [
   {
     ...common,
     slug: 'character-counter',
+    group: 'Analyze text',
     name: 'Character Counter',
     icon: 'hash',
     impl: 'character-counter',
@@ -55,6 +57,7 @@ export const textTools: ToolDef[] = [
   {
     ...common,
     slug: 'case-converter',
+    group: 'Format text',
     name: 'Case Converter',
     icon: 'case',
     impl: 'case-converter',
@@ -75,6 +78,7 @@ export const textTools: ToolDef[] = [
   {
     ...common,
     slug: 'remove-duplicate-lines',
+    group: 'Clean up text',
     name: 'Remove Duplicate Lines',
     icon: 'list-x',
     impl: 'remove-duplicates',
@@ -96,8 +100,9 @@ export const textTools: ToolDef[] = [
   {
     ...common,
     slug: 'text-sorter',
+    group: 'Format text',
     name: 'Text Sorter',
-    icon: 'arrow-down-up',
+    icon: 'list-ordered',
     impl: 'text-sorter',
     description: 'Sort lines alphabetically, numerically, by length, or randomly.',
     metaDescription:
@@ -116,6 +121,7 @@ export const textTools: ToolDef[] = [
   {
     ...common,
     slug: 'text-cleaner',
+    group: 'Clean up text',
     name: 'Text Cleaner',
     icon: 'eraser',
     impl: 'text-cleaner',
@@ -136,6 +142,7 @@ export const textTools: ToolDef[] = [
   {
     ...common,
     slug: 'text-diff-checker',
+    group: 'Analyze text',
     name: 'Text Diff Checker',
     icon: 'diff',
     impl: 'text-diff',

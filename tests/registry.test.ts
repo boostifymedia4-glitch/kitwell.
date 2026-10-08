@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { implLoaders } from '../src/tools/impl';
 import { allPaths, breadcrumbsFor, getPageMeta } from '../src/pageMeta';
-import { categories, getTool, relatedTools, searchTools, toolPath, tools } from '../src/tools/registry';
+import { hasIcon } from '../src/components/Icon';
+import { categories, featuredTools, groups, groupsInCategory, searchTools, toolPath, toolsInGroup, tools, getTool, relatedTools } from '../src/tools/registry';
 import { computeSize } from '../src/lib/imageProcessor';
 
 describe('tool registry', () => {
@@ -49,6 +50,61 @@ describe('tool registry', () => {
     expect(searchTools('json')[0].category).toBe('developer');
     expect(searchTools('   ')).toEqual([]);
     expect(searchTools('zzzzqq')).toEqual([]);
+  });
+});
+
+describe('tool catalogue structure', () => {
+  it('assigns every tool to a defined group of its own category', () => {
+    for (const t of tools) {
+      const g = groups.find((x) => x.name === t.group && x.category === t.category);
+      expect(g, `${t.slug} -> ${t.group}`).toBeDefined();
+    }
+  });
+
+  it('has no empty groups and no duplicate group names within a category', () => {
+    for (const c of categories) {
+      const gs = groupsInCategory(c.id);
+      expect(new Set(gs.map((g) => g.name)).size).toBe(gs.length);
+      for (const g of gs) expect(toolsInGroup(c.id, g.name).length, g.name).toBeGreaterThan(0);
+    }
+  });
+
+  it('gives every tool a real icon, distinct within its category', () => {
+    for (const t of tools) expect(hasIcon(t.icon), `${t.slug} icon ${t.icon}`).toBe(true);
+    for (const c of categories) {
+      const seen = new Map<string, string>();
+      for (const t of tools.filter((x) => x.category === c.id)) {
+        const key = `${t.icon}|${t.badge ?? ''}`;
+        expect(seen.has(key), `${t.slug} and ${seen.get(key)} share icon ${key}`).toBe(false);
+        seen.set(key, t.slug);
+      }
+    }
+  });
+
+  it('keeps menu and card descriptions short enough to read', () => {
+    for (const t of tools) {
+      expect(t.description.length, t.slug).toBeLessThanOrEqual(120);
+      expect(t.name.length, t.slug).toBeLessThanOrEqual(28);
+    }
+  });
+
+  it('only features tools that exist, in the right category, without repeats', () => {
+    for (const c of categories) {
+      const list = featuredTools(c.id);
+      expect(list.length).toBeGreaterThanOrEqual(7);
+      expect(list.every((t) => t.category === c.id)).toBe(true);
+      expect(new Set(list.map((t) => t.slug)).size).toBe(list.length);
+    }
+  });
+
+  it('search finds tools by task, format and category', () => {
+    const slugs = (q: string) => searchTools(q).map((t) => t.slug);
+    expect(slugs('compress')).toContain('image-compressor');
+    expect(slugs('json').slice(0, 3)).toEqual(expect.arrayContaining(['json-formatter', 'json-minifier']));
+    expect(slugs('pdf').every((s) => getTool(s))).toBe(true);
+    expect(searchTools('pdf').filter((t) => t.category === 'pdf').length).toBeGreaterThanOrEqual(6);
+    expect(slugs('combine')).toContain('merge-pdf');
+    expect(slugs('base64')).toEqual(expect.arrayContaining(['image-to-base64', 'base64-encoder-decoder']));
   });
 });
 
