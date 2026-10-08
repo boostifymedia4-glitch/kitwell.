@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { site } from '@/config/site';
-import { categories, categoryPath, featuredTools, toolPath, toolsInCategory } from '@/tools/registry';
+import { categories, categoryPath, groupsInCategory, toolPath, toolsInCategory, toolsInGroup } from '@/tools/registry';
 import { Icon } from '../Icon';
 import { ToolIcon } from '../ui/ToolIcon';
 import { ToolSearch } from '../ui/ToolSearch';
@@ -40,12 +40,19 @@ function MobileNav({ onNavigate }: { onNavigate: () => void }) {
                 </button>
                 {isOpen && (
                   <ul className="acc-panel" id={`acc-${c.id}`}>
-                    {featuredTools(c.id).map((t) => (
-                      <li key={t.slug}>
-                        <Link to={toolPath(t)} onClick={onNavigate}>
-                          <ToolIcon tool={t} size="sm" />
-                          {t.name}
-                        </Link>
+                    {groupsInCategory(c.id).map((g) => (
+                      <li key={g.name} className="acc-group">
+                        <span className="acc-group-title">{g.name}</span>
+                        <ul>
+                          {toolsInGroup(c.id, g.name).map((t) => (
+                            <li key={t.slug}>
+                              <Link to={toolPath(t)} onClick={onNavigate}>
+                                <ToolIcon tool={t} size="sm" />
+                                {t.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
                       </li>
                     ))}
                     <li>

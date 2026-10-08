@@ -6,9 +6,10 @@ import { categories, featuredTools, popularTools, showcaseTools, groups, groupsI
 import { computeSize } from '../src/lib/imageProcessor';
 
 describe('tool registry', () => {
-  it('has the expected MVP tool counts', () => {
+  it('has the expected tool counts', () => {
     const count = (c: string) => tools.filter((t) => t.category === c).length;
-    expect([count('image'), count('pdf'), count('text') + count('developer')]).toEqual([15, 12, 20]);
+    expect([count('image'), count('pdf'), count('text'), count('developer')]).toEqual([20, 20, 7, 14]);
+    expect(tools).toHaveLength(61);
   });
 
   it('uses unique slugs and names', () => {

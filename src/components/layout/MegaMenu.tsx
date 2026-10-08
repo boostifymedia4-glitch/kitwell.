@@ -1,21 +1,27 @@
-import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from 'react';
+import { useCallback, useEffect, useId, useRef, useState, type KeyboardEvent } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { categories, categoryPath, featuredTools, toolPath, toolsInCategory, tools } from '@/tools/registry';
+import { categories, categoryPath, getCategory, groupsInCategory, toolPath, toolsInCategory, toolsInGroup, tools } from '@/tools/registry';
+import type { CategoryId } from '@/tools/types';
 import { Icon } from '../Icon';
 import { ToolIcon } from '../ui/ToolIcon';
 
 const CLOSE_DELAY_MS = 180;
 
 /**
- * The "All tools" menu. Opens on click or keyboard, and on hover for mouse users.
- * Lists the featured tools of every category plus a "View all" link, using the live tool registry.
+ * The "All tools" menu: categories on the left, the selected category's tool groups on the right.
+ * Everything comes from the tool registry, so new tools appear here without editing this file.
+ * Opens on click or keyboard, and on hover for mouse users. The category list works like tabs
+ * (arrow keys move between categories, Tab moves into the tools).
  */
 export function MegaMenu() {
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState<CategoryId>(categories[0].id);
   const rootRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const timer = useRef<number>(0);
   const { pathname } = useLocation();
+  const baseId = useId();
 
   const close = useCallback(() => {
     window.clearTimeout(timer.current);
@@ -38,6 +44,8 @@ export function MegaMenu() {
     };
   }, [open, close]);
 
+  const hoverCapable = () => window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
   const onKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'Escape' && open) {
       close();
@@ -45,7 +53,26 @@ export function MegaMenu() {
     }
   };
 
-  const hoverCapable = () => window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const onTabKeys = (e: KeyboardEvent) => {
+    const i = categories.findIndex((c) => c.id === active);
+    const last = categories.length - 1;
+    const moves: Record<string, number> = {
+      ArrowDown: (i + 1) % categories.length,
+      ArrowRight: (i + 1) % categories.length,
+      ArrowUp: (i - 1 + categories.length) % categories.length,
+      ArrowLeft: (i - 1 + categories.length) % categories.length,
+      Home: 0,
+      End: last,
+    };
+    const next = moves[e.key];
+    if (next === undefined) return;
+    e.preventDefault();
+    setActive(categories[next].id);
+    tabRefs.current[categories[next].id]?.focus();
+  };
+
+  const cat = getCategory(active)!;
+  const panelId = `${baseId}-panel`;
 
   return (
     <div
@@ -69,30 +96,61 @@ export function MegaMenu() {
       {open && (
         <div className="mega-panel" id="mega-panel" role="region" aria-label="All tools">
           <div className="container">
-            <div className="mega-grid">
-              {categories.map((c) => (
-                <section key={c.id} className="mega-col" aria-labelledby={`mega-${c.id}`}>
-                  <h2 className="mega-heading" id={`mega-${c.id}`}>
-                    <Link to={categoryPath(c.id)} onClick={close}>
+            <div className="mega-body">
+              <div className="mega-rail" role="tablist" aria-label="Tool categories" aria-orientation="vertical" onKeyDown={onTabKeys}>
+                {categories.map((c) => (
+                  <button
+                    key={c.id}
+                    ref={(el) => {
+                      tabRefs.current[c.id] = el;
+                    }}
+                    type="button"
+                    role="tab"
+                    id={`${baseId}-tab-${c.id}`}
+                    aria-selected={active === c.id}
+                    aria-controls={panelId}
+                    tabIndex={active === c.id ? 0 : -1}
+                    className="mega-tab"
+                    onClick={() => setActive(c.id)}
+                    onMouseEnter={() => hoverCapable() && setActive(c.id)}
+                    onFocus={() => setActive(c.id)}
+                  >
+                    <span className={`tool-icon tool-icon-sm chip-${c.id}`} aria-hidden="true">
+                      <Icon name={c.icon} size={16} />
+                    </span>
+                    <span className="mega-tab-text">
                       {c.name}
-                    </Link>
-                  </h2>
-                  <ul>
-                    {featuredTools(c.id).map((t) => (
-                      <li key={t.slug}>
-                        <Link to={toolPath(t)} className="mega-item" onClick={close}>
-                          <ToolIcon tool={t} size="sm" />
-                          <span>{t.name}</span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link to={categoryPath(c.id)} className="mega-viewall" onClick={close}>
-                    View all {toolsInCategory(c.id).length} {c.short.toLowerCase()} tools
+                      <small>{toolsInCategory(c.id).length} tools</small>
+                    </span>
+                  </button>
+                ))}
+              </div>
+              <div className="mega-content" role="tabpanel" id={panelId} aria-labelledby={`${baseId}-tab-${active}`}>
+                <div className="mega-content-head">
+                  <p>{cat.description}</p>
+                  <Link to={categoryPath(cat.id)} className="mega-viewall" onClick={close}>
+                    View all {toolsInCategory(cat.id).length} {cat.short.toLowerCase()} tools
                     <Icon name="arrow-right" size={14} />
                   </Link>
-                </section>
-              ))}
+                </div>
+                <div className="mega-groups">
+                  {groupsInCategory(cat.id).map((g) => (
+                    <section key={g.name} aria-label={g.name}>
+                      <h2 className="mega-heading">{g.name}</h2>
+                      <ul>
+                        {toolsInGroup(cat.id, g.name).map((t) => (
+                          <li key={t.slug}>
+                            <Link to={toolPath(t)} className="mega-item" onClick={close}>
+                              <ToolIcon tool={t} size="sm" />
+                              <span>{t.name}</span>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+                  ))}
+                </div>
+              </div>
             </div>
             <div className="mega-foot">
               <span>{tools.length} free tools. Files stay in your browser.</span>

@@ -58,26 +58,28 @@ export const categories: Category[] = [
 export const groups: ToolGroup[] = [
   { category: 'image', name: 'Convert images', description: 'Switch between JPG, PNG and WebP, one file or a whole batch.' },
   { category: 'image', name: 'Optimize and edit', description: 'Shrink file size, resize, crop, rotate and flip photos with a live preview.' },
-  { category: 'image', name: 'Encode and inspect', description: 'Turn images into Base64, decode them back, or pick exact colours.' },
-  { category: 'pdf', name: 'Organize PDF', description: 'Combine, split, rearrange and rotate pages.' },
+  { category: 'image', name: 'Encode and inspect', description: 'Turn images into Base64, decode them back, pick exact colours or read QR codes.' },
+  { category: 'pdf', name: 'Organize PDF', description: 'Combine, split, remove, rearrange and rotate pages.' },
+  { category: 'pdf', name: 'Edit PDF', description: 'Add page numbers and watermarks, crop pages and edit document properties.' },
+  { category: 'pdf', name: 'Secure PDF', description: 'Lock a PDF with a password, or remove a password you know.' },
   { category: 'pdf', name: 'Convert to PDF', description: 'Turn photos and screenshots into PDF documents.' },
-  { category: 'pdf', name: 'Convert from PDF', description: 'Render PDF pages as high-quality images.' },
+  { category: 'pdf', name: 'Convert from PDF', description: 'Render PDF pages as images or copy out their text.' },
   { category: 'pdf', name: 'View and inspect', description: 'Read a PDF privately and check its properties.' },
   { category: 'text', name: 'Analyze and compare', description: 'Count words and characters, or compare two versions of a text.' },
   { category: 'text', name: 'Clean up and format', description: 'Remove clutter and duplicate lines, change letter case and sort lines.' },
   { category: 'developer', name: 'JSON and XML', description: 'Format, validate and minify structured data.' },
   { category: 'developer', name: 'Encode and decode', description: 'Convert text for URLs, HTML and Base64.' },
-  { category: 'developer', name: 'Test and generate', description: 'Try regular expressions, preview Markdown, and create passwords, UUIDs and timestamps.' },
+  { category: 'developer', name: 'Test and generate', description: 'Try regular expressions, preview Markdown, and create passwords, UUIDs, timestamps and QR codes.' },
 ];
 
 export const tools: ToolDef[] = [...imageTools, ...pdfTools, ...textTools, ...developerTools];
 
 /** Curated, ordered tools shown per category in the All tools menu and on the homepage. */
 const featuredSlugs: Record<CategoryId, string[]> = {
-  image: ['jpg-to-png', 'png-to-jpg', 'jpg-to-webp', 'image-compressor', 'image-resizer', 'image-cropper', 'image-format-converter', 'image-to-base64'],
-  pdf: ['merge-pdf', 'split-pdf', 'extract-pdf-pages', 'reorder-pdf-pages', 'rotate-pdf', 'jpg-to-pdf', 'images-to-pdf', 'pdf-to-jpg'],
+  image: ['jpg-to-png', 'png-to-jpg', 'svg-converter', 'image-compressor', 'image-resizer', 'enlarge-image', 'image-watermark', 'blur-image-area'],
+  pdf: ['merge-pdf', 'split-pdf', 'remove-pdf-pages', 'protect-pdf', 'unlock-pdf', 'add-page-numbers', 'watermark-pdf', 'pdf-to-jpg'],
   text: ['word-counter', 'character-counter', 'case-converter', 'remove-duplicate-lines', 'text-sorter', 'text-cleaner', 'text-diff-checker'],
-  developer: ['json-formatter', 'json-validator', 'base64-encoder-decoder', 'url-encoder-decoder', 'regex-tester', 'uuid-generator', 'password-generator', 'timestamp-converter'],
+  developer: ['json-formatter', 'json-validator', 'base64-encoder-decoder', 'url-encoder-decoder', 'regex-tester', 'uuid-generator', 'password-generator', 'qr-code-generator'],
 };
 
 const bySlug = new Map(tools.map((t) => [t.slug, t]));

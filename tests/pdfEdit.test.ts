@@ -241,6 +241,18 @@ describe('protect and unlock', () => {
     expect(raw).not.toContain('/Standard');
   });
 
+  it.each(['AES-256', 'AES-128', 'RC4-128'] as const)('unlocks files encrypted with %s', async (algorithm) => {
+    const doc = await PDFDocument.create();
+    const font = await doc.embedFont(StandardFonts.Helvetica);
+    doc.addPage().drawText('cipher test', { x: 20, y: 20, font });
+    doc.encrypt({ userPassword: 'pw-1', ownerPassword: 'own-1', algorithm, allowWeakCryptography: true });
+    const encrypted = await doc.save();
+    expect(await unlockPdf(encrypted)).toEqual({ status: 'needs-password' });
+    const res = await unlockPdf(encrypted, 'pw-1');
+    if (res.status !== 'unlocked') throw new Error('expected unlocked');
+    expect((await textItems(res.bytes)).items.map((i) => i.str)).toContain('cipher test');
+  });
+
   it('reports PDFs that are not protected', async () => {
     expect(await unlockPdf(await makePdf(1))).toEqual({ status: 'not-protected' });
     await expect(unlockPdf(new TextEncoder().encode('nope'))).rejects.toThrow(PdfError);

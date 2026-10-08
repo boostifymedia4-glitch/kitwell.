@@ -88,3 +88,19 @@ export function ResultFiles({ files, zipName }: { files: ResultFile[]; zipName: 
     </div>
   );
 }
+
+/** Result of a tool that produces one PDF: size, a download button, and a way to start over. */
+export function PdfResult({ blob, name, onReset, title = 'Your PDF is ready', note }: { blob: Blob; name: string; onReset: () => void; title?: string; note?: string }) {
+  return (
+    <ResultPanel title={title}>
+      <p className="muted">
+        {formatBytes(blob.size)}
+        {note ? ` · ${note}` : ''}
+      </p>
+      <div className="toolbar">
+        <DownloadButton blob={blob} name={name} label={`Download ${name}`} />
+        <ResetButton onClick={onReset} />
+      </div>
+    </ResultPanel>
+  );
+}

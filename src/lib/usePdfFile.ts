@@ -1,7 +1,7 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { validateFiles, type FileRules } from './files';
 import { errorMessage } from './format';
-import type { Rejection } from './hooks';
+import { useTask, type Rejection } from './hooks';
 import { loadPdf } from './pdfOps';
 
 export const PDF_RULES: FileRules = { extensions: ['pdf'], maxBytes: 100 * 1024 * 1024, maxFiles: 1 };
@@ -41,4 +41,23 @@ export function usePdfFile() {
   }, []);
 
   return { state, load, reset, rejections };
+}
+
+/**
+ * Everything a one-PDF tool needs: the loaded file, a task for the work, and a reset.
+ * A finished result is cleared whenever a different PDF is chosen, so it never shows next to the wrong file.
+ */
+export function usePdfTool<T = Blob>() {
+  const pdf = usePdfFile();
+  const task = useTask<T>();
+  const file = pdf.state.status === 'ready' ? pdf.state.file : null;
+  const { reset: resetTask } = task;
+  useEffect(() => {
+    resetTask();
+  }, [file, resetTask]);
+  const reset = useCallback(() => {
+    pdf.reset();
+    resetTask();
+  }, [pdf, resetTask]);
+  return { pdf, task, reset, running: task.state.status === 'running' };
 }

@@ -49,7 +49,7 @@ export const imageTools: ToolDef[] = [
       privacyFaq,
     ],
     limits: convertLimits,
-    related: ['png-to-jpg', 'image-compressor', 'image-resizer', 'image-format-converter', 'jpg-to-webp'],
+    related: ['png-to-jpg', 'image-compressor', 'image-resizer', 'image-format-converter', 'jpg-to-webp', 'svg-converter'],
   },
   {
     ...common,
@@ -215,7 +215,7 @@ export const imageTools: ToolDef[] = [
       metadataFaq,
     ],
     limits: [...convertLimits, 'Best results come from JPG or WebP output; PNG output is lossless and may not shrink.'],
-    related: ['image-resizer', 'jpg-to-webp', 'png-to-jpg', 'image-format-converter', 'image-cropper'],
+    related: ['image-resizer', 'jpg-to-webp', 'png-to-jpg', 'image-format-converter', 'image-cropper', 'enlarge-image'],
   },
   {
     ...common,
@@ -245,7 +245,7 @@ export const imageTools: ToolDef[] = [
       metadataFaq,
     ],
     limits: [...convertLimits, 'Output is capped at 16,000 px per side.'],
-    related: ['image-compressor', 'image-cropper', 'image-rotator', 'jpg-to-png', 'image-format-converter'],
+    related: ['image-compressor', 'image-cropper', 'image-rotator', 'jpg-to-png', 'image-format-converter', 'enlarge-image', 'image-watermark'],
   },
   {
     ...common,
@@ -271,7 +271,7 @@ export const imageTools: ToolDef[] = [
       privacyFaq,
     ],
     limits: ['One image at a time.', 'Maximum 25 MB per file.', 'Animated images use the first frame.'],
-    related: ['image-resizer', 'image-rotator', 'image-flipper', 'image-compressor', 'jpg-to-png'],
+    related: ['image-resizer', 'image-rotator', 'image-flipper', 'image-compressor', 'jpg-to-png', 'blur-image-area'],
   },
   {
     ...common,
@@ -294,7 +294,7 @@ export const imageTools: ToolDef[] = [
       privacyFaq,
     ],
     limits: convertLimits,
-    related: ['image-flipper', 'image-cropper', 'image-resizer', 'rotate-pdf', 'image-compressor'],
+    related: ['image-flipper', 'image-cropper', 'image-resizer', 'rotate-pdf', 'image-compressor', 'blur-image-area'],
   },
   {
     ...common,
@@ -343,7 +343,7 @@ export const imageTools: ToolDef[] = [
       privacyFaq,
     ],
     limits: [...convertLimits, 'HEIC/HEIF, TIFF and RAW files are not supported.'],
-    related: ['jpg-to-png', 'png-to-jpg', 'jpg-to-webp', 'image-compressor', 'image-resizer'],
+    related: ['jpg-to-png', 'png-to-jpg', 'jpg-to-webp', 'image-compressor', 'image-resizer', 'svg-converter'],
   },
   {
     ...common,
@@ -366,7 +366,7 @@ export const imageTools: ToolDef[] = [
       privacyFaq,
     ],
     limits: ['Maximum 5 MB per image, since Base64 text becomes very large.', 'One image at a time.'],
-    related: ['base64-to-image', 'base64-encoder-decoder', 'image-compressor', 'image-resizer', 'image-format-converter'],
+    related: ['base64-to-image', 'base64-encoder-decoder', 'image-compressor', 'image-resizer', 'image-format-converter', 'qr-code-scanner'],
   },
   {
     ...common,
@@ -423,6 +423,144 @@ export const imageTools: ToolDef[] = [
       privacyFaq,
     ],
     limits: ['One image at a time.', 'Colours are sampled from the displayed sRGB pixels; colour profiles are ignored.'],
-    related: ['color-converter', 'image-cropper', 'image-resizer', 'image-format-converter', 'image-to-base64'],
+    related: ['color-converter', 'image-cropper', 'image-resizer', 'image-format-converter', 'image-to-base64', 'qr-code-scanner'],
+  },
+  {
+    ...common,
+    slug: 'image-watermark',
+    group: 'Optimize and edit',
+    name: 'Image Watermark',
+    icon: 'stamp',
+    impl: 'image-watermark',
+    description: 'Add a text or logo watermark to many images at once, single or tiled.',
+    metaDescription:
+      'Add a watermark to images online for free. Stamp text or a logo on JPG, PNG and WebP photos in bulk, with opacity and position. Runs in your browser.',
+    keywords: ['watermark photos', 'add logo to image', 'stamp text on picture'],
+    steps: [
+      'Add your images.',
+      'Choose text or a logo, then set its size, opacity, position and layout.',
+      'Apply it and download the results or a ZIP.',
+    ],
+    faq: [
+      { q: 'Can I use Urdu or other alphabets?', a: 'Yes. Image watermarks use your device’s fonts, so any script your system can show will work.' },
+      { q: 'Does it change my originals?', a: 'No. Marked copies are saved as new files.' },
+      metadataFaq,
+    ],
+    limits: [...convertLimits, 'Logo files: PNG, JPG or WebP, up to 25 MB.'],
+    related: ['watermark-pdf', 'image-resizer', 'image-compressor', 'image-cropper', 'blur-image-area'],
+  },
+  {
+    ...common,
+    slug: 'svg-converter',
+    group: 'Convert images',
+    name: 'SVG to PNG / JPG',
+    icon: 'file-image',
+    convert: ['SVG', 'PNG'],
+    impl: 'svg-convert',
+    description: 'Turn SVG vector graphics into PNG, JPG or WebP images at any size.',
+    metaDescription:
+      'Convert SVG to PNG or JPG online for free. Choose a scale or exact width for sharp results; PNG keeps transparency. Runs in your browser.',
+    keywords: ['svg to png', 'svg to jpg', 'rasterize svg'],
+    steps: ['Add your SVG files.', 'Choose PNG, JPG or WebP and the output size.', 'Convert and download.'],
+    faq: [
+      { q: 'Will the image stay sharp at large sizes?', a: 'Yes. The SVG is drawn at the size you choose, so a 4× export is as crisp as a 1× one.' },
+      {
+        q: 'Why does my SVG look different?',
+        a: 'Browsers do not support every SVG feature, and SVGs that rely on external fonts or images fall back to defaults. Embed fonts and images inside the SVG for the best result.',
+      },
+      { q: 'Is it safe to open SVG files here?', a: 'Yes. The SVG is drawn as a picture, so scripts inside it do not run.' },
+      privacyFaq,
+    ],
+    limits: [
+      'Maximum 25 MB per file and 20 files per batch.',
+      'Fonts, images and styles linked from outside the SVG are not loaded.',
+      'An SVG with no size uses its viewBox, or 300 × 150 px if neither is set.',
+    ],
+    related: ['image-format-converter', 'png-to-jpg', 'jpg-to-png', 'image-resizer', 'image-compressor'],
+  },
+  {
+    ...common,
+    slug: 'enlarge-image',
+    group: 'Optimize and edit',
+    name: 'Enlarge Image',
+    icon: 'maximize',
+    impl: 'image-enlarge',
+    description: 'Make images bigger with smooth, sharp resampling, 2× to 4× or to a set width.',
+    metaDescription:
+      'Enlarge images online for free. Scale JPG, PNG and WebP up 2×, 3×, 4× or to an exact width with Lanczos resampling and optional sharpening.',
+    keywords: ['upscale image', 'increase image size', 'enlarge photo'],
+    steps: ['Add your images.', 'Choose a factor or a target width, and whether to sharpen.', 'Enlarge and download.'],
+    faq: [
+      {
+        q: 'Is this AI upscaling?',
+        a: 'No. It uses high-quality resampling, which makes enlarged images smooth and clean but cannot invent missing detail. Very small or blurry photos will still look soft.',
+      },
+      { q: 'How large can the result be?', a: 'Up to 16,000 px per side and about 100 megapixels, depending on what your browser can handle.' },
+      metadataFaq,
+    ],
+    limits: [...convertLimits, 'It does not add detail, so it is not AI upscaling.', 'Output is capped at 16,000 px per side.'],
+    related: ['image-resizer', 'image-compressor', 'image-cropper', 'image-format-converter', 'image-watermark'],
+  },
+  {
+    ...common,
+    slug: 'blur-image-area',
+    group: 'Optimize and edit',
+    name: 'Blur or Pixelate Area',
+    icon: 'eye-off',
+    impl: 'image-redact',
+    description: 'Hide faces, plates or private details by blurring, pixelating or covering areas.',
+    metaDescription:
+      'Blur or pixelate part of an image online for free. Draw boxes over faces, licence plates or text and hide them, right in your browser.',
+    keywords: ['blur face', 'pixelate image', 'censor photo', 'hide license plate'],
+    steps: [
+      'Add an image.',
+      'Drag on the picture to draw boxes over what you want to hide.',
+      'Choose blur, pixelate or a black box, apply it, and download.',
+    ],
+    faq: [
+      {
+        q: 'Is blurring safe for sensitive details?',
+        a: 'For anything that must stay private, such as ID numbers or licence plates, use the black box. Blur and pixelation can sometimes be partly reversed.',
+      },
+      { q: 'Does it find faces automatically?', a: 'No. You draw the boxes yourself. Automatic detection needs a large AI model that is not included.' },
+      { q: 'Can I change my mind?', a: 'Yes. Remove or redraw boxes before you apply. Your original file is never changed.' },
+      metadataFaq,
+    ],
+    limits: ['One image at a time, up to 25 MB.', 'Areas are chosen by hand; there is no face detection.', 'Animated images use the first frame.'],
+    related: ['image-cropper', 'image-watermark', 'image-resizer', 'image-compressor', 'image-rotator'],
+  },
+  {
+    ...common,
+    slug: 'qr-code-scanner',
+    group: 'Encode and inspect',
+    name: 'QR Code Scanner',
+    icon: 'scan',
+    impl: 'qr-scanner',
+    description: 'Read QR codes from photos and screenshots and see exactly what they contain.',
+    metaDescription:
+      'Scan a QR code from an image online for free. Upload a photo or screenshot to read its link, text or Wi-Fi details. Runs in your browser.',
+    keywords: ['read qr code', 'qr reader', 'decode qr from image'],
+    steps: [
+      'Add one or more images that contain a QR code.',
+      'The code is read automatically.',
+      'Copy the result, or open a link after checking it.',
+    ],
+    faq: [
+      {
+        q: 'Can it scan with my camera?',
+        a: 'Not yet. This tool reads QR codes from image files. On a phone, take a photo of the code and choose it here, or use your camera app.',
+      },
+      {
+        q: 'Is it safe to open scanned links?',
+        a: 'Check the address first. The full link is shown, and only web (http or https) links can be opened from here. Script and data links are never opened.',
+      },
+      {
+        q: 'Why was no code found?',
+        a: 'The code may be blurry, cropped, too small or low in contrast. Try a sharper, closer image that shows the whole code with a clear margin around it.',
+      },
+      { q: 'Are my images uploaded?', a: 'No. The image is read in your browser and this tool does not send it anywhere.' },
+    ],
+    limits: ['Up to 10 images, 25 MB each.', 'One code is read per image.', 'Standard QR codes only; other barcodes are not supported.'],
+    related: ['qr-code-generator', 'image-color-picker', 'image-to-base64', 'image-cropper', 'url-encoder-decoder'],
   },
 ];

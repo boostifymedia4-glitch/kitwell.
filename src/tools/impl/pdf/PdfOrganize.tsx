@@ -12,7 +12,7 @@ import { destroyPdf, openPdf, renderThumbnail } from '@/lib/pdfjs';
 import { usePdfFile } from '@/lib/usePdfFile';
 import type { ToolImplementation } from '../../types';
 
-type Mode = 'rotate' | 'extract' | 'reorder';
+type Mode = 'rotate' | 'extract' | 'reorder' | 'remove';
 
 interface PageState {
   id: number; // zero-based index in the source PDF
@@ -141,10 +141,11 @@ function Organizer({ bytes, pageCount, name, mode }: { bytes: Uint8Array; pageCo
   const keptSpecs = (): PageSpec[] => {
     if (mode === 'rotate') return pages.map((p) => ({ index: p.id, rotate: p.rotate }));
     if (mode === 'extract') return pages.filter((p) => p.selected).map((p) => ({ index: p.id }));
+    if (mode === 'remove') return pages.filter((p) => !p.selected).map((p) => ({ index: p.id }));
     return pages.filter((p) => !p.removed).map((p) => ({ index: p.id, rotate: p.rotate }));
   };
 
-  const suffix = { rotate: 'rotated', extract: 'extracted', reorder: 'reordered' }[mode];
+  const suffix = { rotate: 'rotated', extract: 'extracted', reorder: 'reordered', remove: 'pages-removed' }[mode];
   const save = () =>
     task.run(async () => {
       const out = await buildFromPages(bytes, keptSpecs());
@@ -153,9 +154,17 @@ function Organizer({ bytes, pageCount, name, mode }: { bytes: Uint8Array; pageCo
 
   const selectedCount = pages.filter((p) => p.selected).length;
   const keptCount = pages.filter((p) => !p.removed).length;
-  const canSave = mode === 'extract' ? selectedCount > 0 : mode === 'reorder' ? keptCount > 0 : true;
+  // Selecting pages (to keep or to delete) needs at least one page, and removing must leave at least one behind.
+  const selecting = mode === 'extract' || mode === 'remove';
+  const canSave = mode === 'extract' ? selectedCount > 0 : mode === 'remove' ? selectedCount > 0 && selectedCount < pageCount : mode === 'reorder' ? keptCount > 0 : true;
   const actionLabel =
-    mode === 'rotate' ? 'Save rotated PDF' : mode === 'extract' ? `Extract ${plural(selectedCount, 'page')}` : `Save ${plural(keptCount, 'page')} in this order`;
+    mode === 'rotate'
+      ? 'Save rotated PDF'
+      : mode === 'extract'
+        ? `Extract ${plural(selectedCount, 'page')}`
+        : mode === 'remove'
+          ? `Remove ${plural(selectedCount, 'page')}`
+          : `Save ${plural(keptCount, 'page')} in this order`;
 
   if (docError) return <ErrorMessage>{docError}</ErrorMessage>;
 
@@ -174,7 +183,7 @@ function Organizer({ bytes, pageCount, name, mode }: { bytes: Uint8Array; pageCo
           </button>
         </div>
       )}
-      {mode === 'extract' && (
+      {selecting && (
         <div className="stack-sm">
           <div className="row" style={{ alignItems: 'flex-end' }}>
             <div style={{ flex: '1 1 240px' }}>
@@ -203,7 +212,13 @@ function Organizer({ bytes, pageCount, name, mode }: { bytes: Uint8Array; pageCo
             </button>
           </div>
           {rangeError && <ErrorMessage>{rangeError}</ErrorMessage>}
-          <p className="hint">{plural(selectedCount, 'page')} selected. Pages keep their original order.</p>
+          <p className="hint">
+            {mode === 'remove'
+              ? selectedCount >= pageCount
+                ? 'You cannot remove every page. Keep at least one.'
+                : `${plural(selectedCount, 'page')} selected for removal. The other pages keep their order.`
+              : `${plural(selectedCount, 'page')} selected. Pages keep their original order.`}
+          </p>
         </div>
       )}
       {mode === 'reorder' && <p className="hint">Drag pages to reorder them, or use the arrow buttons. Remove pages you do not want to keep.</p>}
@@ -213,7 +228,7 @@ function Organizer({ bytes, pageCount, name, mode }: { bytes: Uint8Array; pageCo
           <li
             key={p.id}
             className="page-card"
-            data-selected={mode === 'extract' && p.selected}
+            data-selected={selecting && p.selected}
             data-dragover={dragOver === i && dragFrom !== i}
             draggable={mode === 'reorder' && !running}
             style={p.removed ? { opacity: 0.4 } : undefined}
@@ -251,10 +266,10 @@ function Organizer({ bytes, pageCount, name, mode }: { bytes: Uint8Array; pageCo
                   </button>
                 </>
               )}
-              {mode === 'extract' && (
+              {selecting && (
                 <label className="check" style={{ padding: 4 }}>
                   <input type="checkbox" checked={p.selected} onChange={(e) => update(i, { selected: e.target.checked })} />
-                  Select
+                  {mode === 'remove' ? 'Remove' : 'Select'}
                   <span className="visually-hidden"> page {p.id + 1}</span>
                 </label>
               )}

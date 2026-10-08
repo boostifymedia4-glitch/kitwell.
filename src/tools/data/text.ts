@@ -26,7 +26,7 @@ export const textTools: ToolDef[] = [
       },
     ],
     limits: ['Counts are based on whitespace, so languages written without spaces (such as Chinese or Japanese) will show one word per run of text.'],
-    related: ['character-counter', 'case-converter', 'text-cleaner', 'remove-duplicate-lines', 'text-diff-checker'],
+    related: ['character-counter', 'case-converter', 'text-cleaner', 'remove-duplicate-lines', 'text-diff-checker', 'extract-pdf-text'],
   },
   {
     ...common,

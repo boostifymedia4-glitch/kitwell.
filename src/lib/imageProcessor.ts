@@ -35,10 +35,10 @@ export interface ImageResult {
 export const MAX_SIDE = 16_000;
 export const MAX_PIXELS = 100_000_000;
 
-type Canvas2D = OffscreenCanvas | HTMLCanvasElement;
-type Ctx2D = OffscreenCanvasRenderingContext2D | CanvasRenderingContext2D;
+export type Canvas2D = OffscreenCanvas | HTMLCanvasElement;
+export type Ctx2D = OffscreenCanvasRenderingContext2D | CanvasRenderingContext2D;
 
-function makeCanvas(w: number, h: number): Canvas2D {
+export function makeCanvas(w: number, h: number): Canvas2D {
   if (typeof OffscreenCanvas !== 'undefined') return new OffscreenCanvas(w, h);
   const c = document.createElement('canvas');
   c.width = w;
@@ -46,7 +46,7 @@ function makeCanvas(w: number, h: number): Canvas2D {
   return c;
 }
 
-async function canvasToBlob(canvas: Canvas2D, mime: OutputMime, quality: number): Promise<Blob> {
+export async function canvasToBlob(canvas: Canvas2D, mime: OutputMime, quality: number): Promise<Blob> {
   const q = mime === 'image/png' ? undefined : quality;
   const blob =
     'convertToBlob' in canvas

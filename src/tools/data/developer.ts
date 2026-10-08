@@ -114,7 +114,7 @@ export const developerTools: ToolDef[] = [
       },
     ],
     limits: ['Decoding fails on malformed percent sequences such as a lone %.'],
-    related: ['base64-encoder-decoder', 'html-encoder-decoder', 'json-formatter', 'regex-tester', 'uuid-generator'],
+    related: ['base64-encoder-decoder', 'html-encoder-decoder', 'json-formatter', 'regex-tester', 'uuid-generator', 'qr-code-generator'],
   },
   {
     ...common,
@@ -233,7 +233,7 @@ export const developerTools: ToolDef[] = [
       },
     ],
     limits: ['The strength estimate is based on entropy of the character set, not on breach databases.'],
-    related: ['uuid-generator', 'base64-encoder-decoder', 'word-counter', 'url-encoder-decoder', 'timestamp-converter'],
+    related: ['uuid-generator', 'base64-encoder-decoder', 'word-counter', 'url-encoder-decoder', 'timestamp-converter', 'qr-code-generator', 'protect-pdf'],
   },
   {
     ...common,
@@ -254,7 +254,7 @@ export const developerTools: ToolDef[] = [
       },
     ],
     limits: ['Only version 4 (random) UUIDs are generated.'],
-    related: ['password-generator', 'timestamp-converter', 'base64-encoder-decoder', 'json-formatter', 'url-encoder-decoder'],
+    related: ['password-generator', 'timestamp-converter', 'base64-encoder-decoder', 'json-formatter', 'url-encoder-decoder', 'qr-code-generator'],
   },
   {
     ...common,
@@ -297,5 +297,40 @@ export const developerTools: ToolDef[] = [
     ],
     limits: ['sRGB only; CSS Color 4 spaces such as LAB, LCH and Display-P3 are not supported.', 'Transparency (alpha) values are accepted but ignored.'],
     related: ['image-color-picker', 'html-encoder-decoder', 'base64-encoder-decoder', 'json-formatter', 'password-generator'],
+  },
+  {
+    ...common,
+    slug: 'qr-code-generator',
+    group: 'Test and generate',
+    name: 'QR Code Generator',
+    icon: 'qr-code',
+    impl: 'qr-generator',
+    description: 'Create QR codes for links, text, Wi-Fi, email or phone numbers, as PNG or SVG.',
+    metaDescription:
+      'Free QR code generator. Make QR codes for URLs, text, Wi-Fi, email and phone numbers and download them as PNG or SVG. Created in your browser.',
+    keywords: ['make qr code', 'qr code maker', 'wifi qr code'],
+    steps: [
+      'Choose what the code should contain and fill in the details.',
+      'Adjust the size, colours and error correction if you wish.',
+      'Download the PNG or SVG, and test it with your phone before printing.',
+    ],
+    faq: [
+      {
+        q: 'Do the codes expire?',
+        a: 'No. These are static codes: the data is stored in the code itself, so they work forever and nothing is tracked.',
+      },
+      {
+        q: 'Which error-correction level should I choose?',
+        a: 'Medium suits most uses. Choose Quartile or High if the code may get dirty or damaged, but higher levels make the code denser and harder to scan at small sizes.',
+      },
+      { q: 'Can I use the codes commercially?', a: 'Yes. The QR code standard is open, and codes made here carry no fees, watermarks or tracking from us.' },
+      { q: 'Is my data sent anywhere?', a: 'No. The code is generated in your browser, and Wi-Fi passwords you enter stay on your device.' },
+    ],
+    limits: [
+      'Static codes only: no scan tracking and no editable codes.',
+      'Very long text makes a dense code that is hard to scan, so keep it short.',
+      'Dark-on-light colours with strong contrast scan best.',
+    ],
+    related: ['qr-code-scanner', 'url-encoder-decoder', 'password-generator', 'uuid-generator', 'base64-encoder-decoder'],
   },
 ];
