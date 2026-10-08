@@ -1,4 +1,4 @@
-import { PDFDocument, degrees } from 'pdf-lib';
+import { PDFDocument, degrees } from '@cantoo/pdf-lib';
 import { describe, expect, it } from 'vitest';
 import {
   buildFromPages, everyNGroups, imagesToPdf, loadPdf, mergePdfs, parsePageList, parseSplitGroups, PdfError, readMetadata,

@@ -1,8 +1,8 @@
 /**
- * Pure PDF operations built on pdf-lib. No DOM access, so they run in tests and could move to a worker.
+ * Pure PDF operations built on @cantoo/pdf-lib (a maintained fork of pdf-lib). No DOM access, so they run in tests and could move to a worker.
  * pdf-lib can copy, reorder, rotate and embed pages. It cannot edit existing text or render pages.
  */
-import { EncryptedPDFError, PDFDocument, degrees, PageSizes } from 'pdf-lib';
+import { EncryptedPDFError, PDFDocument, degrees, PageSizes } from '@cantoo/pdf-lib';
 
 export class PdfError extends Error {}
 
