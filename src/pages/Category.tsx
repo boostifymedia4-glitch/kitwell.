@@ -1,17 +1,23 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Icon } from '@/components/Icon';
 import { Seo } from '@/components/Seo';
+import { useI18n } from '@/i18n';
+import { useLocalize } from '@/i18n/useLocalize';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { GroupedTools } from '@/components/ui/GroupedTools';
-import { getPageMeta, NOT_FOUND_META } from '@/pageMeta';
+import { useNotFoundMeta, usePageMeta } from '@/i18n/usePageMeta';
 import { categories, categoryPath, getCategory, groupId, groupsInCategory, toolsInCategory } from '@/tools/registry';
 import { normalizePath } from '@/routes';
 
 export default function Category() {
+  const { t } = useI18n();
+  const loc = useLocalize();
   const path = normalizePath(useLocation().pathname);
-  const cat = getCategory(path.split('/')[2] ?? '');
-  const meta = getPageMeta(path);
-  if (!cat || !meta) return <Seo {...NOT_FOUND_META} />;
+  const source = getCategory(path.split('/')[2] ?? '');
+  const cat = source && loc.category(source);
+  const meta = usePageMeta(path);
+  const notFound = useNotFoundMeta();
+  if (!cat || !meta) return <Seo {...notFound} />;
   const groups = groupsInCategory(cat.id);
   const others = categories.filter((c) => c.id !== cat.id);
   return (
@@ -27,15 +33,15 @@ export default function Category() {
             <div>
               <h1>{cat.name}</h1>
               <p className="lead">
-                {cat.intro} <span className="muted">{toolsInCategory(cat.id).length} tools.</span>
+                {cat.intro} <span className="muted">{t('category.count', { count: toolsInCategory(cat.id).length })}</span>
               </p>
             </div>
           </div>
           {groups.length > 1 && (
-            <nav aria-label={`Sections in ${cat.name}`} className="jump">
+            <nav aria-label={t('category.sections', { name: cat.name })} className="jump">
               {groups.map((g) => (
                 <a key={g.name} href={`#${groupId(g.name)}`} className="jump-link">
-                  {g.name}
+                  {loc.group(g).name}
                 </a>
               ))}
             </nav>
@@ -44,13 +50,13 @@ export default function Category() {
         <GroupedTools category={cat.id} />
         <section className="section" aria-labelledby="other-cats">
           <h2 id="other-cats" className="group-title" style={{ marginBottom: 'var(--space-4)' }}>
-            More tool categories
+            {t('category.more')}
           </h2>
           <div className="row">
             {others.map((c) => (
               <Link key={c.id} to={categoryPath(c.id)} className="jump-link">
                 <Icon name={c.icon} size={16} />
-                {c.name}
+                {t(`cat.${c.id}`)}
               </Link>
             ))}
           </div>

@@ -50,13 +50,13 @@ export function LanguageSelector() {
             const current = l.code === lang.code;
             return (
               <li key={l.code}>
-                <button type="button" className="lang-option" aria-label={`${l.name} (${l.english})`} aria-current={current ? 'true' : undefined} disabled={pending !== null} onClick={() => void choose(l.code)}>
+                <button type="button" className="lang-option" aria-label={t('lang.optionLabel', { name: l.name, english: l.english })} aria-current={current ? 'true' : undefined} disabled={pending !== null} onClick={() => void choose(l.code)}>
                   <span className="lang-name" lang={l.code}>
                     {l.name}
                   </span>
                   <span className="lang-english">
                     {l.english}
-                    {l.coverage === 'partial' && <em title="Only part of the menus and homepage is translated; the rest appears in English."> · partial</em>}
+                    {l.coverage === 'partial' && <em title={t('lang.partialHint')}> · {t('lang.partial')}</em>}
                   </span>
                   {pending === l.code ? <span className="spinner" aria-hidden="true" /> : current ? <Icon name="check" size={18} className="lang-check" /> : null}
                 </button>

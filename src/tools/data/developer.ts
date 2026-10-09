@@ -237,7 +237,7 @@ export const developerTools: ToolDef[] = [
       },
       {
         q: 'Why only a few symbols?',
-        a: 'Generated passwords use only @ # $ * + - ! because they are accepted by almost every website and are easy to type on any keyboard.',
+        a: 'Generated passwords use only the four symbols @ # $ * because they are accepted by almost every website and are easy to type on any keyboard.',
       },
       {
         q: 'How long should a password be?',

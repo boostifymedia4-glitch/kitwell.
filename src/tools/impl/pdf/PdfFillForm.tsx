@@ -7,6 +7,7 @@ import { Icon } from '@/components/Icon';
 import { baseName, errorMessage } from '@/lib/format';
 import { fieldIsFillable, fillForm, readFormFields, type FieldValue, type FormField, type FormInfo } from '@/lib/pdfForms';
 import { usePdfTool } from '@/lib/usePdfFile';
+import { useI18n } from '@/i18n';
 import type { ToolImplementation } from '../../types';
 
 function sameValue(a: FieldValue, b: FieldValue) {
@@ -14,13 +15,14 @@ function sameValue(a: FieldValue, b: FieldValue) {
 }
 
 function FieldControl({ field, value, onChange }: { field: FormField; value: FieldValue; onChange: (v: FieldValue) => void }) {
+  const { t } = useI18n();
   const id = useId();
   const disabled = !fieldIsFillable(field);
   const label = (
     <label className="label" htmlFor={id}>
       {field.name}
-      {field.required && <span aria-label="required"> *</span>}
-      {field.readOnly && <span className="hint"> (read-only)</span>}
+      {field.required && <span aria-label={t('pdfFillForm.required')}> *</span>}
+      {field.readOnly && <span className="hint"> {t('pdfFillForm.readOnly')}</span>}
     </label>
   );
 
@@ -46,7 +48,7 @@ function FieldControl({ field, value, onChange }: { field: FormField; value: Fie
           ))}
           {value !== '' && (
             <button type="button" className="btn btn-ghost btn-sm" onClick={() => onChange('')}>
-              Clear
+              {t('pdfFillForm.clear')}
             </button>
           )}
         </div>
@@ -58,7 +60,7 @@ function FieldControl({ field, value, onChange }: { field: FormField; value: Fie
       <div className="form-field">
         {label}
         <select id={id} className="select" value={String(value)} disabled={disabled} onChange={(e) => onChange(e.target.value)}>
-          <option value="">(none)</option>
+          <option value="">{t('pdfFillForm.none')}</option>
           {field.options.map((o) => (
             <option key={o} value={o}>
               {o}
@@ -74,7 +76,7 @@ function FieldControl({ field, value, onChange }: { field: FormField; value: Fie
       <fieldset className="form-field" disabled={disabled} style={{ border: 0, padding: 0, margin: 0 }}>
         <legend className="label">
           {field.name}
-          {field.multiselect ? ' (choose any)' : ''}
+          {field.multiselect ? ` ${t('pdfFillForm.chooseAny')}` : ''}
         </legend>
         <div className="stack-sm">
           {field.options.map((o) => (
@@ -101,19 +103,20 @@ function FieldControl({ field, value, onChange }: { field: FormField; value: Fie
         ) : (
           <input id={id} className="input" value={String(value)} maxLength={field.maxLength} disabled={disabled} onChange={(e) => onChange(e.target.value)} />
         )}
-        {field.maxLength !== undefined && <span className="hint">{String(value).length} / {field.maxLength} characters</span>}
+        {field.maxLength !== undefined && <span className="hint">{t('pdfFillForm.characters', { count: String(value).length, max: field.maxLength })}</span>}
       </div>
     );
   }
   return (
     <div className="form-field">
       <span className="label">{field.name}</span>
-      <span className="hint">{field.kind === 'signature' ? 'Signature field. Use Sign PDF to place a signature.' : 'This field cannot be filled here.'}</span>
+      <span className="hint">{field.kind === 'signature' ? t('pdfFillForm.signatureField') : t('pdfFillForm.cannotFill')}</span>
     </div>
   );
 }
 
 const PdfFillForm: ToolImplementation = () => {
+  const { t } = useI18n();
   const { pdf, task, reset, running } = usePdfTool();
   const [info, setInfo] = useState<FormInfo | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -159,21 +162,21 @@ const PdfFillForm: ToolImplementation = () => {
           });
 
         if (loadError) return <ErrorMessage>{loadError}</ErrorMessage>;
-        if (!info) return <ProcessingState label="Looking for form fields…" />;
+        if (!info) return <ProcessingState label={t('pdfFillForm.looking')} />;
         if (info.fields.length === 0) {
           return (
             <Notice tone="warn">
-              <strong>This PDF has no fillable form fields.</strong>{' '}
-              {info.xfa ? 'It uses XFA (dynamic) forms, which this tool does not support.' : 'It may be a flat document or a scan. To add your name, use Sign PDF; to add text on top, use Watermark PDF.'}
+              <strong>{t('pdfFillForm.noFields')}</strong>{' '}
+              {info.xfa ? t('pdfFillForm.xfaOnly') : t('pdfFillForm.flatDocument')}
             </Notice>
           );
         }
-        const title = (page: number | undefined) => (page ? `Page ${page}` : 'Other fields');
+        const title = (page: number | undefined) => (page ? t('pdfFillForm.page', { page }) : t('pdfFillForm.otherFields'));
         return (
           <>
-            {info.xfa && <Notice tone="warn">This form also contains XFA data. Only the standard form fields below can be filled.</Notice>}
+            {info.xfa && <Notice tone="warn">{t('pdfFillForm.xfaAlso')}</Notice>}
             <p className="hint">
-              {info.fillable} fillable fields found{changed > 0 ? ` · ${changed} changed` : ''}.
+              {changed > 0 ? t('pdfFillForm.foundChanged', { count: info.fillable, changed }) : t('pdfFillForm.found', { count: info.fillable })}
             </p>
             {byPage.map(([page, fields]) => (
               <section key={page ?? 'none'} className="form-section" aria-label={title(page)}>
@@ -185,17 +188,17 @@ const PdfFillForm: ToolImplementation = () => {
                 </div>
               </section>
             ))}
-            <CheckField label="Flatten the form (answers can no longer be edited)" checked={flatten} onChange={setFlatten} />
+            <CheckField label={t('pdfFillForm.flatten')} checked={flatten} onChange={setFlatten} />
             <div className="toolbar">
               <button type="button" className="btn btn-primary btn-lg" onClick={run} disabled={running}>
                 <Icon name="text-cursor" size={18} />
-                {changed > 0 || flatten ? 'Save filled PDF' : 'Save PDF'}
+                {changed > 0 || flatten ? t('pdfFillForm.saveFilled') : t('pdfFillForm.save')}
               </button>
             </div>
-            {running && <ProcessingState label="Filling the form…" />}
+            {running && <ProcessingState label={t('pdfFillForm.filling')} />}
             {task.state.status === 'error' && <ErrorMessage>{task.state.error}</ErrorMessage>}
             {task.state.status === 'done' && (
-              <PdfResult blob={task.state.result} name={`${baseName(file?.name ?? 'form')}-filled.pdf`} onReset={reset} note={flatten ? 'Flattened: the answers are part of the page.' : 'Still an editable form.'} />
+              <PdfResult blob={task.state.result} name={`${baseName(file?.name ?? 'form')}-filled.pdf`} onReset={reset} note={flatten ? t('pdfFillForm.noteFlattened') : t('pdfFillForm.noteEditable')} />
             )}
           </>
         );

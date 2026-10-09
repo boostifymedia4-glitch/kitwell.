@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { CopyButton } from '@/components/tool/CopyButton';
 import { ErrorMessage } from '@/components/tool/Feedback';
 import { ClearButton, TextInput } from '@/components/tool/TextIO';
+import { useI18n } from '@/i18n';
 import { downloadText } from '@/lib/download';
 import type { ToolImplementation } from '../../types';
 
@@ -56,9 +57,10 @@ async function loadRenderer(): Promise<Renderer> {
 }
 
 const MarkdownPreviewer: ToolImplementation = () => {
+  const { t } = useI18n();
   const [text, setText] = useState(SAMPLE);
   const [renderer, setRenderer] = useState<Renderer | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(false);
   const [html, setHtml] = useState('');
   const preview = useMemo(() => (html ? demoteHeadings(html) : ''), [html]);
 
@@ -66,7 +68,7 @@ const MarkdownPreviewer: ToolImplementation = () => {
     let cancelled = false;
     loadRenderer()
       .then((r) => !cancelled && setRenderer(r))
-      .catch(() => !cancelled && setError('The Markdown engine could not be loaded. Check your connection and reload the page.'));
+      .catch(() => !cancelled && setError(true));
     return () => {
       cancelled = true;
     };
@@ -74,18 +76,18 @@ const MarkdownPreviewer: ToolImplementation = () => {
 
   useEffect(() => {
     if (!renderer) return;
-    const t = window.setTimeout(() => setHtml(renderer.render(text)), 120);
-    return () => window.clearTimeout(t);
+    const timer = window.setTimeout(() => setHtml(renderer.render(text)), 120);
+    return () => window.clearTimeout(timer);
   }, [renderer, text]);
 
   return (
     <div className="stack">
-      {error && <ErrorMessage>{error}</ErrorMessage>}
+      {error && <ErrorMessage>{t('markdownPreviewer.loadError')}</ErrorMessage>}
       <div className="two-col">
-        <TextInput label="Markdown" value={text} onChange={setText} rows={20} actions={<ClearButton onClick={() => setText('')} disabled={!text} />} />
+        <TextInput label={t('markdownPreviewer.markdown')} value={text} onChange={setText} rows={20} actions={<ClearButton onClick={() => setText('')} disabled={!text} />} />
         <div className="field">
           <span className="label" id="md-preview-label">
-            Preview
+            {t('markdownPreviewer.preview')}
           </span>
           <div
             className="md-preview"
@@ -99,13 +101,13 @@ const MarkdownPreviewer: ToolImplementation = () => {
         </div>
       </div>
       <div className="toolbar">
-        <CopyButton text={text} label="Copy Markdown" />
-        <CopyButton text={html} label="Copy HTML" />
+        <CopyButton text={text} label={t('markdownPreviewer.copyMarkdown')} />
+        <CopyButton text={html} label={t('markdownPreviewer.copyHtml')} />
         <button type="button" className="btn btn-secondary btn-sm" disabled={!html} onClick={() => downloadText(html, 'preview.html', 'text/html')}>
-          Download HTML
+          {t('markdownPreviewer.downloadHtml')}
         </button>
       </div>
-      <p className="hint">Remote images are not loaded in this preview. Links open in a new tab.</p>
+      <p className="hint">{t('markdownPreviewer.note')}</p>
     </div>
   );
 };

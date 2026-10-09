@@ -9,11 +9,13 @@ import { baseName, errorMessage } from '@/lib/format';
 import { useFileQueue, useTask } from '@/lib/hooks';
 import { unlockPdf } from '@/lib/pdfEdit';
 import { PDF_RULES } from '@/lib/usePdfFile';
+import { useI18n } from '@/i18n';
 import type { ToolImplementation } from '../../types';
 
 type Outcome = { kind: 'unlocked'; blob: Blob } | { kind: 'needs-password' } | { kind: 'not-protected' };
 
 const PdfUnlock: ToolImplementation = () => {
+  const { t } = useI18n();
   const queue = useFileQueue(PDF_RULES, false);
   const file = queue.items[0]?.file ?? null;
   const task = useTask<Outcome>();
@@ -51,11 +53,11 @@ const PdfUnlock: ToolImplementation = () => {
 
   return (
     <div className="stack">
-      {!file && <UploadDropzone extensions={PDF_RULES.extensions} maxBytes={PDF_RULES.maxBytes} onFiles={queue.add} title="Drop a protected PDF here or click to choose" />}
+      {!file && <UploadDropzone extensions={PDF_RULES.extensions} maxBytes={PDF_RULES.maxBytes} onFiles={queue.add} title={t('pdfUnlock.drop')} />}
       <RejectionList items={queue.rejections} onDismiss={queue.dismissRejections} />
       {file && <FileList items={queue.items} kind="pdf" onRemove={start} disabled={running} />}
 
-      {file && running && <ProcessingState label="Checking the PDF…" />}
+      {file && running && <ProcessingState label={t('pdfUnlock.checking')} />}
 
       {file && asksPassword && result?.kind !== 'unlocked' && !running && (
         <form
@@ -65,14 +67,14 @@ const PdfUnlock: ToolImplementation = () => {
             if (password) void attempt(file, password);
           }}
         >
-          <Notice>This PDF is protected with a password. Enter it to save an unprotected copy.</Notice>
-          <Field label="Password">
+          <Notice>{t('pdfUnlock.protected')}</Notice>
+          <Field label={t('pdfUnlock.password')}>
             {(id) => <input id={id} className="input" type="password" autoComplete="current-password" spellCheck={false} value={password} onChange={(e) => setPassword(e.target.value)} />}
           </Field>
           <div className="toolbar">
             <button type="submit" className="btn btn-primary btn-lg" disabled={!password}>
               <Icon name="lock-open" size={18} />
-              Unlock PDF
+              {t('pdfUnlock.unlock')}
             </button>
           </div>
         </form>
@@ -81,16 +83,16 @@ const PdfUnlock: ToolImplementation = () => {
       {task.state.status === 'error' && <ErrorMessage>{task.state.error ?? errorMessage(null)}</ErrorMessage>}
       {result?.kind === 'not-protected' && (
         <Notice tone="success">
-          This PDF is not password-protected, so there is nothing to unlock.{' '}
+          {t('pdfUnlock.notProtected')}{' '}
           <button type="button" className="btn btn-ghost btn-sm" onClick={start}>
-            Choose another PDF
+            {t('pdfUnlock.chooseAnother')}
           </button>
         </Notice>
       )}
       {result?.kind === 'unlocked' && file && (
-        <PdfResult blob={result.blob} name={`${baseName(file.name)}-unlocked.pdf`} onReset={start} title="Your unlocked PDF is ready" />
+        <PdfResult blob={result.blob} name={`${baseName(file.name)}-unlocked.pdf`} onReset={start} title={t('pdfUnlock.ready')} />
       )}
-      <p className="hint">Only unlock files you own or have permission to open. This tool never guesses or cracks passwords.</p>
+      <p className="hint">{t('pdfUnlock.hint')}</p>
     </div>
   );
 };

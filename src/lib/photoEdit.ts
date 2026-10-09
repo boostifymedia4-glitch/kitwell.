@@ -33,16 +33,16 @@ export const NEUTRAL: Adjustments = { brightness: 0, contrast: 0, saturation: 0,
 
 export type FilterId = 'none' | 'grayscale' | 'sepia' | 'vintage' | 'cool' | 'warm' | 'dramatic' | 'fade' | 'invert';
 
-export const FILTERS: { id: FilterId; label: string }[] = [
-  { id: 'none', label: 'Original' },
-  { id: 'grayscale', label: 'Black & white' },
-  { id: 'sepia', label: 'Sepia' },
-  { id: 'vintage', label: 'Vintage' },
-  { id: 'cool', label: 'Cool' },
-  { id: 'warm', label: 'Warm' },
-  { id: 'dramatic', label: 'Dramatic' },
-  { id: 'fade', label: 'Faded' },
-  { id: 'invert', label: 'Negative' },
+export const FILTERS: { id: FilterId }[] = [
+  { id: 'none' },
+  { id: 'grayscale' },
+  { id: 'sepia' },
+  { id: 'vintage' },
+  { id: 'cool' },
+  { id: 'warm' },
+  { id: 'dramatic' },
+  { id: 'fade' },
+  { id: 'invert' },
 ];
 
 export const isNeutral = (a: Adjustments, filter: FilterId) => filter === 'none' && (Object.keys(NEUTRAL) as (keyof Adjustments)[]).every((k) => a[k] === NEUTRAL[k]);
@@ -261,13 +261,13 @@ export function applyEdits(px: Pixels, adj: Adjustments, filter: FilterId, previ
   if (adj.vignette > 0) vignettePixels(px, adj.vignette);
 }
 
-export const ADJUST_CONTROLS: { key: keyof Adjustments; label: string; min: number; max: number; unit?: string }[] = [
-  { key: 'brightness', label: 'Brightness', min: -100, max: 100 },
-  { key: 'contrast', label: 'Contrast', min: -100, max: 100 },
-  { key: 'saturation', label: 'Saturation', min: -100, max: 100 },
-  { key: 'hue', label: 'Hue shift', min: -180, max: 180, unit: '°' },
-  { key: 'temperature', label: 'Warmth', min: -100, max: 100 },
-  { key: 'sharpen', label: 'Sharpen', min: 0, max: 100 },
-  { key: 'blur', label: 'Blur', min: 0, max: 20 },
-  { key: 'vignette', label: 'Vignette', min: 0, max: 100 },
+export const ADJUST_CONTROLS: { key: keyof Adjustments; min: number; max: number; unit?: string }[] = [
+  { key: 'brightness', min: -100, max: 100 },
+  { key: 'contrast', min: -100, max: 100 },
+  { key: 'saturation', min: -100, max: 100 },
+  { key: 'hue', min: -180, max: 180, unit: '°' },
+  { key: 'temperature', min: -100, max: 100 },
+  { key: 'sharpen', min: 0, max: 100 },
+  { key: 'blur', min: 0, max: 20 },
+  { key: 'vignette', min: 0, max: 100 },
 ];

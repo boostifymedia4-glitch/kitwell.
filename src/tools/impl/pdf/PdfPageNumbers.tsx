@@ -4,28 +4,18 @@ import { ColorField, NumberField, RangeField, SelectField } from '@/components/t
 import { PdfSource } from '@/components/tool/PdfSource';
 import { PdfResult } from '@/components/tool/Results';
 import { Icon } from '@/components/Icon';
+import { useI18n } from '@/i18n';
 import { baseName } from '@/lib/format';
 import { addPageNumbers, formatPageNumber, type NumberFormat, type NumberPosition } from '@/lib/pdfEdit';
 import { usePdfTool } from '@/lib/usePdfFile';
 import type { ToolImplementation } from '../../types';
 
-const POSITIONS: { value: NumberPosition; label: string }[] = [
-  { value: 'bottom-center', label: 'Bottom centre' },
-  { value: 'bottom-right', label: 'Bottom right' },
-  { value: 'bottom-left', label: 'Bottom left' },
-  { value: 'top-center', label: 'Top centre' },
-  { value: 'top-right', label: 'Top right' },
-  { value: 'top-left', label: 'Top left' },
-];
+const POSITIONS: NumberPosition[] = ['bottom-center', 'bottom-right', 'bottom-left', 'top-center', 'top-right', 'top-left'];
 
-const FORMATS: { value: NumberFormat; label: string }[] = [
-  { value: 'n', label: '1, 2, 3' },
-  { value: 'page-n', label: 'Page 1, Page 2' },
-  { value: 'n-of-total', label: '1 of 10, 2 of 10' },
-  { value: 'page-n-of-total', label: 'Page 1 of 10' },
-];
+const FORMATS: NumberFormat[] = ['n', 'page-n', 'n-of-total', 'page-n-of-total'];
 
 const PdfPageNumbers: ToolImplementation = () => {
+  const { t } = useI18n();
   const { pdf, task, reset, running } = usePdfTool();
   const [position, setPosition] = useState<NumberPosition>('bottom-center');
   const [format, setFormat] = useState<NumberFormat>('n');
@@ -68,25 +58,25 @@ const PdfPageNumbers: ToolImplementation = () => {
         return (
           <>
             <div className="options-grid">
-              <SelectField label="Position" value={position} onChange={setPosition} options={POSITIONS} />
-              <SelectField label="Format" value={format} onChange={setFormat} options={FORMATS} />
-              <NumberField label="First page to number" value={fromPage} min={1} max={ready.pageCount} onChange={setFromPage} hint="Use 2 to skip a cover page." />
-              <NumberField label="Last page to number" value={toPage} min={1} max={ready.pageCount} onChange={setToPage} hint={`Empty means page ${ready.pageCount}.`} />
-              <NumberField label="Number shown on the first page" value={startAt} min={0} max={99999} onChange={setStartAt} />
-              <RangeField label="Font size" value={size} min={8} max={36} onChange={setSize} format={(v) => `${v} pt`} />
-              <NumberField label="Distance from edge (pt)" value={margin} min={0} max={200} onChange={setMargin} />
-              <ColorField label="Colour" value={color} onChange={setColor} />
+              <SelectField label={t('pdfPageNumbers.position')} value={position} onChange={setPosition} options={POSITIONS.map((value) => ({ value, label: t(`pdfPageNumbers.pos.${value}`) }))} />
+              <SelectField label={t('pdfPageNumbers.format')} value={format} onChange={setFormat} options={FORMATS.map((value) => ({ value, label: t(`pdfPageNumbers.fmt.${value}`) }))} />
+              <NumberField label={t('pdfPageNumbers.from')} value={fromPage} min={1} max={ready.pageCount} onChange={setFromPage} hint={t('pdfPageNumbers.from.hint')} />
+              <NumberField label={t('pdfPageNumbers.to')} value={toPage} min={1} max={ready.pageCount} onChange={setToPage} hint={t('pdfPageNumbers.to.hint', { count: ready.pageCount })} />
+              <NumberField label={t('pdfPageNumbers.startAt')} value={startAt} min={0} max={99999} onChange={setStartAt} />
+              <RangeField label={t('pdfPageNumbers.fontSize')} value={size} min={8} max={36} onChange={setSize} format={(v) => `${v} pt`} />
+              <NumberField label={t('pdfPageNumbers.margin')} value={margin} min={0} max={200} onChange={setMargin} />
+              <ColorField label={t('pdfPageNumbers.colour')} value={color} onChange={setColor} />
             </div>
             <p className="hint" aria-live="polite">
-              Example: the first numbered page will show “{formatPageNumber(format, start, lastNumber)}”.
+              {t('pdfPageNumbers.example', { example: formatPageNumber(format, start, lastNumber) })}
             </p>
             <div className="toolbar">
               <button type="button" className="btn btn-primary btn-lg" onClick={run} disabled={running}>
                 <Icon name="hash" size={18} />
-                Add page numbers
+                {t('pdfPageNumbers.add')}
               </button>
             </div>
-            {running && <ProcessingState label="Adding page numbers…" />}
+            {running && <ProcessingState label={t('pdfPageNumbers.processing')} />}
             {task.state.status === 'error' && <ErrorMessage>{task.state.error}</ErrorMessage>}
             {task.state.status === 'done' && <PdfResult blob={task.state.result} name={`${baseName(ready.file.name)}-numbered.pdf`} onReset={reset} />}
           </>

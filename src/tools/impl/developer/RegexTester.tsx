@@ -2,20 +2,16 @@ import { Fragment, useEffect, useMemo, useState } from 'react';
 import { ErrorMessage, Notice, ProcessingState } from '@/components/tool/Feedback';
 import { CheckField, Field } from '@/components/tool/Fields';
 import { OutputBox, Stats, TextInput } from '@/components/tool/TextIO';
+import { useI18n } from '@/i18n';
 import { MAX_REGEX_MATCHES, type RegexRun } from '@/lib/dev';
 import { errorMessage } from '@/lib/format';
 import { disposeRegexWorker, runRegexSafe } from '@/lib/regexRunner';
 import type { ToolImplementation } from '../../types';
 
-const FLAGS = [
-  { flag: 'g', label: 'Global (g)' },
-  { flag: 'i', label: 'Ignore case (i)' },
-  { flag: 'm', label: 'Multiline (m)' },
-  { flag: 's', label: 'Dot matches newline (s)' },
-  { flag: 'u', label: 'Unicode (u)' },
-];
+const FLAGS = ['g', 'i', 'm', 's', 'u'];
 
 const RegexTester: ToolImplementation = () => {
+  const { t } = useI18n();
   const [pattern, setPattern] = useState('');
   const [flags, setFlags] = useState('g');
   const [text, setText] = useState('');
@@ -35,7 +31,7 @@ const RegexTester: ToolImplementation = () => {
     }
     let stale = false;
     setBusy(true);
-    const t = window.setTimeout(() => {
+    const timer = window.setTimeout(() => {
       runRegexSafe(pattern, flags, text, showReplace ? replacement : undefined)
         .then((r) => {
           if (stale) return;
@@ -51,7 +47,7 @@ const RegexTester: ToolImplementation = () => {
     }, 200);
     return () => {
       stale = true;
-      window.clearTimeout(t);
+      window.clearTimeout(timer);
     };
   }, [pattern, flags, text, replacement, showReplace]);
 
@@ -75,7 +71,7 @@ const RegexTester: ToolImplementation = () => {
 
   return (
     <div className="stack">
-      <Field label="Regular expression" hint="JavaScript syntax, without the surrounding slashes.">
+      <Field label={t('regexTester.expression')} hint={t('regexTester.expressionHint')}>
         {(id) => (
           <div className="row" style={{ flexWrap: 'nowrap' }}>
             <span className="mono muted">/</span>
@@ -86,22 +82,22 @@ const RegexTester: ToolImplementation = () => {
       </Field>
       <div className="row" style={{ gap: 18 }}>
         {FLAGS.map((f) => (
-          <CheckField key={f.flag} label={f.label} checked={flags.includes(f.flag)} onChange={(v) => toggleFlag(f.flag, v)} />
+          <CheckField key={f} label={t(`regexTester.flag.${f}`)} checked={flags.includes(f)} onChange={(v) => toggleFlag(f, v)} />
         ))}
       </div>
-      <TextInput label="Test text" value={text} onChange={setText} rows={8} placeholder="Paste the text to test against…" />
-      {busy && pattern && <ProcessingState label="Matching…" />}
+      <TextInput label={t('regexTester.testText')} value={text} onChange={setText} rows={8} placeholder={t('regexTester.testTextPlaceholder')} />
+      {busy && pattern && <ProcessingState label={t('regexTester.matching')} />}
       {run?.error && <ErrorMessage>{run.error}</ErrorMessage>}
       {failure && <ErrorMessage>{failure}</ErrorMessage>}
       {run && !run.error && pattern && (
         <div className="stack" aria-live="polite">
-          <Stats items={[{ label: 'Matches', value: run.matches.length + (run.truncated ? '+' : '') }]} />
-          {run.truncated && <Notice tone="warn">Showing the first {MAX_REGEX_MATCHES.toLocaleString('en-US')} matches only.</Notice>}
-          {!flags.includes('g') && run.matches.length > 0 && <p className="hint">Without the global flag, only the first match is shown.</p>}
+          <Stats items={[{ label: t('regexTester.matches'), value: run.matches.length + (run.truncated ? '+' : '') }]} />
+          {run.truncated && <Notice tone="warn">{t('regexTester.truncated', { max: MAX_REGEX_MATCHES.toLocaleString('en-US') })}</Notice>}
+          {!flags.includes('g') && run.matches.length > 0 && <p className="hint">{t('regexTester.noGlobal')}</p>}
           <div className="stack-sm">
-            <span className="label">Highlighted matches</span>
-            <div className="highlight-box" tabIndex={0} role="region" aria-label="Text with matches highlighted">
-              {segments ? segments.map((s, i) => (s.match ? <mark key={i} className="match">{s.text}</mark> : <Fragment key={i}>{s.text}</Fragment>)) : text || <span className="subtle">No text to search.</span>}
+            <span className="label">{t('regexTester.highlighted')}</span>
+            <div className="highlight-box" tabIndex={0} role="region" aria-label={t('regexTester.highlightedRegion')}>
+              {segments ? segments.map((s, i) => (s.match ? <mark key={i} className="match">{s.text}</mark> : <Fragment key={i}>{s.text}</Fragment>)) : text || <span className="subtle">{t('regexTester.noText')}</span>}
             </div>
           </div>
           {run.matches.length > 0 && (
@@ -110,9 +106,9 @@ const RegexTester: ToolImplementation = () => {
                 <thead>
                   <tr>
                     <th scope="col" style={{ width: 60 }}>#</th>
-                    <th scope="col" style={{ width: 90 }}>Index</th>
-                    <th scope="col">Match</th>
-                    {hasGroups && <th scope="col">Groups</th>}
+                    <th scope="col" style={{ width: 90 }}>{t('regexTester.index')}</th>
+                    <th scope="col">{t('regexTester.match')}</th>
+                    {hasGroups && <th scope="col">{t('regexTester.groups')}</th>}
                   </tr>
                 </thead>
                 <tbody>
@@ -120,7 +116,7 @@ const RegexTester: ToolImplementation = () => {
                     <tr key={i}>
                       <td>{i + 1}</td>
                       <td>{m.index}</td>
-                      <td className="mono">{m.text || <span className="subtle">(empty)</span>}</td>
+                      <td className="mono">{m.text || <span className="subtle">{t('regexTester.empty')}</span>}</td>
                       {hasGroups && (
                         <td className="mono">
                           {m.groups.map((g, gi) => (
@@ -139,18 +135,18 @@ const RegexTester: ToolImplementation = () => {
                   ))}
                 </tbody>
               </table>
-              {run.matches.length > 200 && <p className="hint">Table shows the first 200 matches.</p>}
+              {run.matches.length > 200 && <p className="hint">{t('regexTester.tableLimit', { max: 200 })}</p>}
             </div>
           )}
         </div>
       )}
-      <CheckField label="Preview a replacement" checked={showReplace} onChange={setShowReplace} />
+      <CheckField label={t('regexTester.previewReplacement')} checked={showReplace} onChange={setShowReplace} />
       {showReplace && (
         <div className="stack">
-          <Field label="Replace with" hint="Use $1, $2 or $<name> to insert groups, and $& for the whole match.">
+          <Field label={t('regexTester.replaceWith')} hint={t('regexTester.replaceHint')}>
             {(id) => <input id={id} className="input mono" value={replacement} onChange={(e) => setReplacement(e.target.value)} />}
           </Field>
-          <OutputBox label="Result" value={run?.replaced ?? ''} rows={6} placeholder="Enter a pattern and text to preview the replacement." />
+          <OutputBox label={t('regexTester.result')} value={run?.replaced ?? ''} rows={6} placeholder={t('regexTester.resultPlaceholder')} />
         </div>
       )}
     </div>

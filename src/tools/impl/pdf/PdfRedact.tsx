@@ -12,6 +12,7 @@ import { PdfError } from '@/lib/pdfOps';
 import { buildMatchers, countBoxes, findTextBoxes, redactPdf, type PositionedText, type RedactBox, type RedactPlan } from '@/lib/pdfRedact';
 import { destroyPdf, openPdf, renderPageToWidth } from '@/lib/pdfjs';
 import { usePdfTool } from '@/lib/usePdfFile';
+import { useI18n } from '@/i18n';
 import type { ToolImplementation } from '../../types';
 
 const PREVIEW_PX = 760;
@@ -22,9 +23,9 @@ type UiBox = RedactBox & { label: string };
 type UiPlan = Record<number, UiBox[]>;
 
 const QUALITY = [
-  { value: '150', label: 'Standard (150 DPI)' },
-  { value: '200', label: 'High (200 DPI, larger file)' },
-  { value: '110', label: 'Small file (110 DPI)' },
+  { value: '150', label: 'pdfRedact.quality.standard' },
+  { value: '200', label: 'pdfRedact.quality.high' },
+  { value: '110', label: 'pdfRedact.quality.small' },
 ] as const;
 
 interface Outcome {
@@ -43,6 +44,7 @@ const contains = (a: RedactBox, b: RedactBox) => {
 };
 
 function Redactor({ bytes, name, pageCount, onReset }: { bytes: Uint8Array; name: string; pageCount: number; onReset: () => void }) {
+  const { t } = useI18n();
   const task = useTask<Outcome>();
   const running = task.state.status === 'running';
   const [doc, setDoc] = useState<PDFDocumentProxy | null>(null);
@@ -120,7 +122,7 @@ function Redactor({ bytes, name, pageCount, onReset }: { bytes: Uint8Array; name
   };
   const up = () => {
     const box = draftRef.current;
-    if (box && box.w >= MIN_DRAW && box.h >= MIN_DRAW) setPlan((p) => ({ ...p, [shown]: [...(p[shown] ?? []), { ...box, label: 'Drawn box' }] }));
+    if (box && box.w >= MIN_DRAW && box.h >= MIN_DRAW) setPlan((p) => ({ ...p, [shown]: [...(p[shown] ?? []), { ...box, label: '' }] }));
     start.current = null;
     setDraftBox(null);
   };
@@ -138,7 +140,7 @@ function Redactor({ bytes, name, pageCount, onReset }: { bytes: Uint8Array; name
     if (!doc) return;
     const matchers = buildMatchers({ terms: terms.split('\n'), emails, phones, longNumbers: numbers });
     if (matchers.length === 0) {
-      setFindMessage('Type a word to search for, or tick one of the options.');
+      setFindMessage(t('pdfRedact.typeWord'));
       return;
     }
     setFinding(true);
@@ -174,12 +176,10 @@ function Redactor({ bytes, name, pageCount, onReset }: { bytes: Uint8Array; name
         }
         return next;
       });
-      const extra = pages.length < pageCount && scope === 'all' ? ` Only the first ${MAX_SEARCH_PAGES} pages were searched.` : '';
-      setFindMessage(
-        (found > 0 ? `Marked ${found} match${found === 1 ? '' : 'es'}.` : 'No matches found.') +
-          (blank > 0 ? ` ${blank} searched page${blank === 1 ? ' has' : 's have'} no selectable text (scans); draw boxes on ${blank === 1 ? 'it' : 'them'} by hand.` : '') +
-          extra,
-      );
+      const messages = [found > 0 ? t('pdfRedact.marked', { count: found }) : t('pdfRedact.noMatches')];
+      if (blank > 0) messages.push(t('pdfRedact.blankPages', { count: blank }));
+      if (pages.length < pageCount && scope === 'all') messages.push(t('pdfRedact.onlyFirst', { max: MAX_SEARCH_PAGES }));
+      setFindMessage(messages.join(' '));
     } catch (e) {
       setFindMessage(errorMessage(e));
     } finally {
@@ -189,18 +189,18 @@ function Redactor({ bytes, name, pageCount, onReset }: { bytes: Uint8Array; name
 
   const apply = () =>
     task.run(async (report) => {
-      if (!doc) throw new PdfError('Wait for the document to finish loading.');
+      if (!doc) throw new PdfError(t('pdfRedact.err.loading'));
       const clean: RedactPlan = {};
       for (const [k, v] of Object.entries(plan)) clean[Number(k)] = v.map(({ x, y, w, h }) => ({ x, y, w, h }));
       const quality = Number(dpi) >= 200 ? 0.9 : 0.85;
       const out = await redactPdf(bytes, clean, (n, boxes) => renderPageAsJpeg(doc, n, Number(dpi), quality, boxes), {
         keepProperties,
-        onProgress: (done, total) => report(done, total, `Processing page ${Math.min(done + 1, total)} of ${total}`),
+        onProgress: (done, total) => report(done, total, t('pdfRedact.progress', { page: Math.min(done + 1, total), total })),
       });
 
       // Check the new file: redacted pages must hold no text at all, and searched words must not appear anywhere.
       const check = await openPdf(out);
-      const searched = terms.split('\n').map((t) => t.trim()).filter(Boolean);
+      const searched = terms.split('\n').map((term) => term.trim()).filter(Boolean);
       const leftovers = new Set<string>();
       let redactedHaveNoText = true;
       try {
@@ -209,7 +209,7 @@ function Redactor({ bytes, name, pageCount, onReset }: { bytes: Uint8Array; name
           const text = (await page.getTextContent()).items.map((i) => ('str' in i ? i.str : '')).join(' ');
           page.cleanup();
           if (plan[n] && text.trim()) redactedHaveNoText = false;
-          for (const t of searched) if (text.toLowerCase().includes(t.toLowerCase())) leftovers.add(`${t} (page ${n})`);
+          for (const term of searched) if (text.toLowerCase().includes(term.toLowerCase())) leftovers.add(t('pdfRedact.leftover', { term, page: n }));
         }
       } finally {
         await destroyPdf(check);
@@ -238,15 +238,15 @@ function Redactor({ bytes, name, pageCount, onReset }: { bytes: Uint8Array; name
   return (
     <div className="stack">
       <Notice tone="warn">
-        <strong>Redacted pages become pictures.</strong> The text underneath is destroyed, but those pages can no longer be selected or searched. Pages without redactions are kept as they are. Review the result before you share it.
+        <strong>{t('pdfRedact.noticeTitle')}</strong> {t('pdfRedact.notice')}
       </Notice>
 
       <div className="options-grid">
-        <NumberField label={`Page (1–${pageCount})`} value={previewPage} min={1} max={pageCount} onChange={setPreviewPage} disabled={running} />
+        <NumberField label={t('pdfRedact.page', { max: pageCount })} value={previewPage} min={1} max={pageCount} onChange={setPreviewPage} disabled={running} />
       </div>
       <div className="preview-box" style={{ background: 'var(--bg-sunken)', padding: 'var(--space-4)' }}>
         <div className="region-stage">
-          <canvas ref={canvasRef} role="img" aria-label={`Page ${shown}. Draw boxes on the page to choose what to black out.`} />
+          <canvas ref={canvasRef} role="img" aria-label={t('pdfRedact.canvas', { page: shown })} />
           {size && (
             <div ref={layerRef} className="region-layer" onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up} aria-hidden="true">
               {here.map((b, i) => boxView(b, `b${i}`, String(i + 1)))}
@@ -255,58 +255,58 @@ function Redactor({ bytes, name, pageCount, onReset }: { bytes: Uint8Array; name
           )}
         </div>
       </div>
-      {!size && <ProcessingState label="Rendering page…" />}
-      <p className="hint">Drag on the page to draw a box over what must disappear. The boxes turn solid black in the result.</p>
+      {!size && <ProcessingState label={t('pdfRedact.rendering')} />}
+      <p className="hint">{t('pdfRedact.dragHint')}</p>
 
-      <section className="stack-sm" aria-label="Find text to redact">
-        <h3 className="redact-heading">Find and mark text automatically</h3>
-        <Field label="Words or phrases (one per line)" hint="Matches inside a single line of text are marked. Check every page afterwards.">
-          {(id) => <textarea id={id} className="textarea" rows={3} value={terms} placeholder={'Jane Doe\n4111 1111 1111 1111'} onChange={(e) => setTerms(e.target.value)} disabled={running} />}
+      <section className="stack-sm" aria-label={t('pdfRedact.findLabel')}>
+        <h3 className="redact-heading">{t('pdfRedact.findHeading')}</h3>
+        <Field label={t('pdfRedact.terms')} hint={t('pdfRedact.termsHint')}>
+          {(id) => <textarea id={id} className="textarea" rows={3} value={terms} placeholder={t('pdfRedact.termsPlaceholder')} onChange={(e) => setTerms(e.target.value)} disabled={running} />}
         </Field>
         <div className="row" style={{ gap: 20 }}>
-          <CheckField label="Email addresses" checked={emails} onChange={setEmails} disabled={running} />
-          <CheckField label="Phone numbers" checked={phones} onChange={setPhones} disabled={running} />
-          <CheckField label="Long numbers (9+ digits)" checked={numbers} onChange={setNumbers} disabled={running} />
+          <CheckField label={t('pdfRedact.emails')} checked={emails} onChange={setEmails} disabled={running} />
+          <CheckField label={t('pdfRedact.phones')} checked={phones} onChange={setPhones} disabled={running} />
+          <CheckField label={t('pdfRedact.numbers')} checked={numbers} onChange={setNumbers} disabled={running} />
         </div>
         <div className="toolbar">
           <button type="button" className="btn btn-secondary" onClick={() => void find('page')} disabled={running || finding || !doc}>
-            Find on this page
+            {t('pdfRedact.findPage')}
           </button>
           <button type="button" className="btn btn-secondary" onClick={() => void find('all')} disabled={running || finding || !doc}>
-            Find on all pages
+            {t('pdfRedact.findAll')}
           </button>
         </div>
-        {finding && <ProcessingState label="Searching…" />}
+        {finding && <ProcessingState label={t('pdfRedact.searching')} />}
         {findMessage && <p className="hint" role="status">{findMessage}</p>}
       </section>
 
-      <section className="stack-sm" aria-label="Areas to redact">
+      <section className="stack-sm" aria-label={t('pdfRedact.areasLabel')}>
         <div className="row row-between">
           <span className="label">
-            Areas to redact: {totalAreas} on {pagesWithBoxes.length} page{pagesWithBoxes.length === 1 ? '' : 's'}
+            {t('pdfRedact.areas', { areas: totalAreas, count: pagesWithBoxes.length })}
           </span>
           <button type="button" className="btn btn-ghost btn-sm" onClick={() => setPlan({})} disabled={running || totalAreas === 0}>
-            Clear all
+            {t('pdfRedact.clearAll')}
           </button>
         </div>
         {pagesWithBoxes.length > 0 && (
           <div className="chip-row">
             {pagesWithBoxes.map((n) => (
-              <button key={n} type="button" className={`chip-check${n === shown ? ' is-on' : ''}`} onClick={() => setPreviewPage(n)} aria-label={`Go to page ${n}, ${plan[n].length} areas`}>
-                Page {n} · {plan[n].length}
+              <button key={n} type="button" className={`chip-check${n === shown ? ' is-on' : ''}`} onClick={() => setPreviewPage(n)} aria-label={t('pdfRedact.goToPage', { page: n, count: plan[n].length })}>
+                {t('pdfRedact.pageChip', { page: n, count: plan[n].length })}
               </button>
             ))}
           </div>
         )}
         {here.length === 0 ? (
-          <p className="hint">Nothing marked on page {shown} yet.</p>
+          <p className="hint">{t('pdfRedact.nothingMarked', { page: shown })}</p>
         ) : (
           <ul className="region-list">
             {here.map((b, i) => (
               <li key={i} className="redact-row">
                 <strong>#{i + 1}</strong>
-                <span className="redact-label">{b.label}</span>
-                <button type="button" className="icon-btn" aria-label={`Remove area ${i + 1} on page ${shown}`} onClick={() => removeBox(shown, i)} disabled={running}>
+                <span className="redact-label">{b.label || t('pdfRedact.drawnBox')}</span>
+                <button type="button" className="icon-btn" aria-label={t('pdfRedact.removeArea', { index: i + 1, page: shown })} onClick={() => removeBox(shown, i)} disabled={running}>
                   <Icon name="trash" size={16} />
                 </button>
               </li>
@@ -316,31 +316,29 @@ function Redactor({ bytes, name, pageCount, onReset }: { bytes: Uint8Array; name
       </section>
 
       <div className="options-grid">
-        <SelectField label="Quality of redacted pages" value={dpi} onChange={setDpi} options={[...QUALITY]} />
+        <SelectField label={t('pdfRedact.quality')} value={dpi} onChange={setDpi} options={QUALITY.map((o) => ({ value: o.value, label: t(o.label) }))} />
       </div>
-      <CheckField label="Keep document properties (title, author…)" checked={keepProperties} onChange={setKeepProperties} disabled={running} />
+      <CheckField label={t('pdfRedact.keepProperties')} checked={keepProperties} onChange={setKeepProperties} disabled={running} />
       <div className="toolbar">
         <button type="button" className="btn btn-primary btn-lg" onClick={apply} disabled={running || totalAreas === 0 || !doc}>
           <Icon name="redact" size={18} />
-          Apply redactions
+          {t('pdfRedact.apply')}
         </button>
       </div>
-      {running && <ProcessingState label="Redacting…" progress={task.progress} />}
+      {running && <ProcessingState label={t('pdfRedact.redacting')} progress={task.progress} />}
       {task.state.status === 'error' && <ErrorMessage>{task.state.error}</ErrorMessage>}
       {done && (
         <>
           {done.leftovers.length > 0 ? (
             <Notice tone="warn">
-              <strong>Not everything you searched for was marked.</strong> These still appear in the text: {done.leftovers.slice(0, 8).join(', ')}
-              {done.leftovers.length > 8 ? '…' : ''}. Go back, mark them, and apply again.
+              <strong>{t('pdfRedact.leftoversTitle')}</strong> {t('pdfRedact.leftovers', { list: done.leftovers.slice(0, 8).join(', ') + (done.leftovers.length > 8 ? '…' : '') })}
             </Notice>
           ) : (
             <Notice tone="success">
-              {done.redactedHaveNoText ? `Checked: the ${done.pages} redacted page${done.pages === 1 ? '' : 's'} now contain no text at all` : 'The redacted pages still contain some text, so do not share this file'}
-              {terms.trim() && done.redactedHaveNoText ? ', and none of your search words appear anywhere in the file.' : '.'}
+              {done.redactedHaveNoText ? (terms.trim() ? t('pdfRedact.checkedTerms', { count: done.pages }) : t('pdfRedact.checked', { count: done.pages })) : t('pdfRedact.stillText')}
             </Notice>
           )}
-          <PdfResult blob={done.blob} name={`${baseName(name)}-redacted.pdf`} onReset={onReset} note={`${done.areas} areas on ${done.pages} pages redacted`} />
+          <PdfResult blob={done.blob} name={`${baseName(name)}-redacted.pdf`} onReset={onReset} note={t('pdfRedact.resultNote', { areas: done.areas, count: done.pages })} />
         </>
       )}
     </div>

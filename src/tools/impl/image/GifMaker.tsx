@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { tr, useI18n } from '@/i18n';
 import { IMAGE_EXTENSIONS, MAX_IMAGE_BYTES } from '@/components/tool/BatchImageTool';
 import { ErrorMessage, Notice, ProcessingState, RejectionList } from '@/components/tool/Feedback';
 import { CheckField, ColorField, NumberField, RangeField, SelectField } from '@/components/tool/Fields';
@@ -20,49 +21,46 @@ interface Result {
   durationMs: number;
 }
 
-const SHAPES = [
-  { value: 'first', label: 'Same shape as the first picture' },
-  { value: '1', label: 'Square (1:1)' },
-  { value: '1.7778', label: 'Wide (16:9)' },
-  { value: '1.3333', label: 'Landscape (4:3)' },
-  { value: '0.75', label: 'Portrait (3:4)' },
-  { value: '0.5625', label: 'Tall (9:16)' },
-] as const;
-
-const FIT_OPTIONS: { value: FitMode; label: string }[] = [
-  { value: 'contain', label: 'Fit inside (keep whole picture, add bars)' },
-  { value: 'cover', label: 'Fill the frame (crop the edges)' },
-  { value: 'stretch', label: 'Stretch to fit' },
-];
-
-const LOOPS = [
-  { value: '0', label: 'Forever' },
-  { value: '1', label: 'Once' },
-  { value: '2', label: '2 times' },
-  { value: '3', label: '3 times' },
-  { value: '5', label: '5 times' },
-  { value: '10', label: '10 times' },
-] as const;
-
-const COLOURS = [
-  { value: '256', label: '256 (best quality)' },
-  { value: '128', label: '128' },
-  { value: '64', label: '64' },
-  { value: '32', label: '32 (smaller)' },
-  { value: '16', label: '16 (smallest)' },
-] as const;
-
-type Shape = (typeof SHAPES)[number]['value'];
+type Shape = 'first' | '1' | '1.7778' | '1.3333' | '0.75' | '0.5625';
 
 async function decode(file: File): Promise<ImageBitmap> {
   try {
     return await createImageBitmap(file);
   } catch {
-    throw new Error(`“${file.name}” could not be read as a picture. It may be damaged or in a format your browser cannot open.`);
+    throw new Error(tr('gifMaker.err.unreadable', { name: file.name }));
   }
 }
 
 const GifMaker: ToolImplementation = () => {
+  const { t } = useI18n();
+  const SHAPES = [
+    { value: 'first', label: t('gifMaker.shape.first') },
+    { value: '1', label: t('gifMaker.shape.square') },
+    { value: '1.7778', label: t('gifMaker.shape.wide') },
+    { value: '1.3333', label: t('gifMaker.shape.landscape') },
+    { value: '0.75', label: t('gifMaker.shape.portrait') },
+    { value: '0.5625', label: t('gifMaker.shape.tall') },
+  ] as const;
+  const FIT_OPTIONS: { value: FitMode; label: string }[] = [
+    { value: 'contain', label: t('gifMaker.fit.contain') },
+    { value: 'cover', label: t('gifMaker.fit.cover') },
+    { value: 'stretch', label: t('gifMaker.fit.stretch') },
+  ];
+  const LOOPS = [
+    { value: '0', label: t('gifMaker.loops.forever') },
+    { value: '1', label: t('gifMaker.loops.once') },
+    { value: '2', label: t('gifMaker.loops.times', { count: 2 }) },
+    { value: '3', label: t('gifMaker.loops.times', { count: 3 }) },
+    { value: '5', label: t('gifMaker.loops.times', { count: 5 }) },
+    { value: '10', label: t('gifMaker.loops.times', { count: 10 }) },
+  ] as const;
+  const COLOURS = [
+    { value: '256', label: t('gifMaker.colours.best') },
+    { value: '128', label: '128' },
+    { value: '64', label: '64' },
+    { value: '32', label: t('gifMaker.colours.smaller') },
+    { value: '16', label: t('gifMaker.colours.smallest') },
+  ] as const;
   const queue = useFileQueue({ extensions: IMAGE_EXTENSIONS, maxBytes: MAX_IMAGE_BYTES, maxFiles: MAX_GIF_FRAMES }, true);
   const task = useTask<Result>();
   const running = task.state.status === 'running';
@@ -91,9 +89,9 @@ const GifMaker: ToolImplementation = () => {
 
   const create = () =>
     task.run(async (report) => {
-      if (files.length === 0) throw new Error('Add at least one picture.');
+      if (files.length === 0) throw new Error(t('gifMaker.err.noPictures'));
       const w = Math.round(Number(width));
-      if (!(w >= 16 && w <= 1200)) throw new Error('The width must be between 16 and 1200 pixels.');
+      if (!(w >= 16 && w <= 1200)) throw new Error(t('gifMaker.err.width'));
       let aspect: number;
       if (shape === 'first') {
         const first = await decode(files[0]);
@@ -108,7 +106,7 @@ const GifMaker: ToolImplementation = () => {
       canvas.width = w;
       canvas.height = h;
       const ctx = canvas.getContext('2d', { willReadFrequently: true });
-      if (!ctx) throw new Error('Your browser could not create a drawing surface.');
+      if (!ctx) throw new Error(t('gifMaker.err.noCanvas'));
 
       const bytes = await encodeGif(
         {
@@ -132,7 +130,7 @@ const GifMaker: ToolImplementation = () => {
           },
         },
         { width: w, height: h, plays: Number(loops), colors: Number(colours), transparent },
-        (d, total) => report(d, total, `Building frame ${Math.min(d + 1, total)} of ${total}`),
+        (d, total) => report(d, total, t('gifMaker.progress', { current: Math.min(d + 1, total), total })),
       );
       const info = parseGif(bytes);
       return { blob: new Blob([bytes as BlobPart], { type: 'image/gif' }), width: info.width, height: info.height, frames: info.frames, durationMs: info.delaysMs.reduce((a, b) => a + b, 0) };
@@ -140,64 +138,63 @@ const GifMaker: ToolImplementation = () => {
 
   return (
     <div className="stack">
-      {files.length === 0 && <UploadDropzone multiple extensions={IMAGE_EXTENSIONS} maxBytes={MAX_IMAGE_BYTES} maxFiles={MAX_GIF_FRAMES} onFiles={queue.add} title="Drop pictures here or click to choose" />}
+      {files.length === 0 && <UploadDropzone multiple extensions={IMAGE_EXTENSIONS} maxBytes={MAX_IMAGE_BYTES} maxFiles={MAX_GIF_FRAMES} onFiles={queue.add} title={t('gifMaker.dropTitle')} />}
       <RejectionList items={queue.rejections} onDismiss={queue.dismissRejections} />
       {files.length > 0 && (
         <>
           <FileList items={queue.items} kind="image" onRemove={(id) => { queue.remove(id); resetTask(); }} onMove={(a, b) => { queue.move(a, b); resetTask(); }} disabled={running} />
           {files.length < MAX_GIF_FRAMES && (
-            <UploadDropzone multiple compact extensions={IMAGE_EXTENSIONS} maxBytes={MAX_IMAGE_BYTES} maxFiles={MAX_GIF_FRAMES} onFiles={(f) => { queue.add(f); resetTask(); }} disabled={running} title="Add more pictures" />
+            <UploadDropzone multiple compact extensions={IMAGE_EXTENSIONS} maxBytes={MAX_IMAGE_BYTES} maxFiles={MAX_GIF_FRAMES} onFiles={(f) => { queue.add(f); resetTask(); }} disabled={running} title={t('gifMaker.addMore')} />
           )}
           <p className="hint">
-            {files.length} picture{files.length === 1 ? '' : 's'}, in play order. Drag to reorder or use the arrows.
-            {files.length === 1 && ' With one picture the GIF will be a still image.'}
+            {t('gifMaker.order', { count: files.length })}
           </p>
 
           <div className="options-grid">
-            <NumberField label="Width (px)" value={width} min={16} max={1200} onChange={setWidth} disabled={running} hint="Smaller widths make much smaller GIFs." />
-            <SelectField label="Frame shape" value={shape} onChange={setShape} options={[...SHAPES]} />
-            <SelectField label="Fit pictures" value={fit} onChange={setFit} options={FIT_OPTIONS} />
-            <SelectField label="Plays" value={loops} onChange={setLoops} options={[...LOOPS]} />
-            <SelectField label="Colours per frame" value={colours} onChange={setColours} options={[...COLOURS]} />
-            <NumberField label="Pause on the last frame (ms)" value={lastPause} min={0} max={10000} step={100} onChange={setLastPause} disabled={running} />
+            <NumberField label={t('gifMaker.width')} value={width} min={16} max={1200} onChange={setWidth} disabled={running} hint={t('gifMaker.widthHint')} />
+            <SelectField label={t('gifMaker.frameShape')} value={shape} onChange={setShape} options={[...SHAPES]} />
+            <SelectField label={t('gifMaker.fitPictures')} value={fit} onChange={setFit} options={FIT_OPTIONS} />
+            <SelectField label={t('gifMaker.plays')} value={loops} onChange={setLoops} options={[...LOOPS]} />
+            <SelectField label={t('gifMaker.colours')} value={colours} onChange={setColours} options={[...COLOURS]} />
+            <NumberField label={t('gifMaker.lastPause')} value={lastPause} min={0} max={10000} step={100} onChange={setLastPause} disabled={running} />
           </div>
-          <RangeField label="Time per frame" value={delay} min={50} max={3000} step={10} onChange={setDelay} format={(v) => `${(v / 1000).toFixed(2)} s`} />
+          <RangeField label={t('gifMaker.timePerFrame')} value={delay} min={50} max={3000} step={10} onChange={setDelay} format={(v) => `${(v / 1000).toFixed(2)} s`} />
           <div className="row" style={{ gap: 20, alignItems: 'center' }}>
-            <CheckField label="Keep transparent areas" checked={transparent} onChange={setTransparent} />
-            {!transparent && <ColorField label="Background colour" value={background} onChange={setBackground} />}
-            <CheckField label="Play forwards, then backwards" checked={pingPong} onChange={setPingPong} disabled={files.length < 3} />
+            <CheckField label={t('gifMaker.transparent')} checked={transparent} onChange={setTransparent} />
+            {!transparent && <ColorField label={t('gifMaker.background')} value={background} onChange={setBackground} />}
+            <CheckField label={t('gifMaker.pingPong')} checked={pingPong} onChange={setPingPong} disabled={files.length < 3} />
           </div>
-          {transparent && <p className="hint">GIF transparency is on or off for each pixel, so soft edges become hard.</p>}
+          {transparent && <p className="hint">{t('gifMaker.transparentHint')}</p>}
 
           <div className="toolbar">
             <button type="button" className="btn btn-primary btn-lg" onClick={create} disabled={running}>
               <Icon name="film" size={18} />
-              Create GIF
+              {t('gifMaker.create')}
             </button>
             <button type="button" className="btn btn-ghost" onClick={() => { queue.clear(); resetTask(); }} disabled={running}>
-              Clear all
+              {t('gifMaker.clearAll')}
             </button>
           </div>
         </>
       )}
-      {running && <ProcessingState label="Creating your GIF…" progress={task.progress} />}
+      {running && <ProcessingState label={t('gifMaker.creating')} progress={task.progress} />}
       {task.state.status === 'error' && <ErrorMessage>{task.state.error}</ErrorMessage>}
       {done && url && (
-        <ResultPanel title="Your GIF is ready">
+        <ResultPanel title={t('gifMaker.ready')}>
           <div className="gif-preview">
-            <img src={url} alt={`Animated GIF preview, ${done.frames} frames`} width={done.width} height={done.height} />
+            <img src={url} alt={t('gifMaker.previewAlt', { frames: done.frames })} width={done.width} height={done.height} />
           </div>
           <Stats
             items={[
-              { label: 'Size', value: formatBytes(done.blob.size) },
-              { label: 'Dimensions', value: `${done.width} × ${done.height}` },
-              { label: 'Frames', value: done.frames },
-              { label: 'Length', value: `${(done.durationMs / 1000).toFixed(1)} s` },
+              { label: t('gifMaker.stat.size'), value: formatBytes(done.blob.size) },
+              { label: t('gifMaker.stat.dimensions'), value: `${done.width} × ${done.height}` },
+              { label: t('gifMaker.stat.frames'), value: done.frames },
+              { label: t('gifMaker.stat.length'), value: `${(done.durationMs / 1000).toFixed(1)} s` },
             ]}
           />
-          {done.blob.size > 10 * 1024 * 1024 && <Notice tone="warn">This GIF is over 10 MB. Many websites and chat apps reject files that large. Use a smaller width, fewer colours or fewer frames.</Notice>}
+          {done.blob.size > 10 * 1024 * 1024 && <Notice tone="warn">{t('gifMaker.tooBig')}</Notice>}
           <div className="toolbar">
-            <DownloadButton blob={done.blob} name="animation.gif" label="Download animation.gif" />
+            <DownloadButton blob={done.blob} name="animation.gif" label={t('gifMaker.download')} />
             <ResetButton onClick={() => { queue.clear(); resetTask(); }} />
           </div>
         </ResultPanel>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { tr, useI18n } from '@/i18n';
 import { IMAGE_EXTENSIONS } from '@/components/tool/BatchImageTool';
 import { CopyButton } from '@/components/tool/CopyButton';
 import { ErrorMessage, ProcessingState, RejectionList } from '@/components/tool/Feedback';
@@ -17,12 +18,13 @@ function readAsDataUrl(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = () => resolve(String(reader.result));
-    reader.onerror = () => reject(new Error('The file could not be read.'));
+    reader.onerror = () => reject(new Error(tr('imageToBase64.err.read')));
     reader.readAsDataURL(file);
   });
 }
 
 const ImageToBase64: ToolImplementation = () => {
+  const { t } = useI18n();
   const queue = useFileQueue({ extensions: IMAGE_EXTENSIONS, maxBytes: MAX_BYTES, maxFiles: 1 }, false);
   const file = queue.items[0]?.file ?? null;
   const preview = useObjectUrl(file);
@@ -62,45 +64,45 @@ const ImageToBase64: ToolImplementation = () => {
       {file && (
         <>
           <div className="two-col">
-            <div className="preview-box">{preview && <img src={preview} alt={`Preview of ${file.name}`} />}</div>
+            <div className="preview-box">{preview && <img src={preview} alt={t('imageToBase64.previewAlt', { name: file.name })} />}</div>
             <div className="stack">
               <div className="stat-grid">
                 <div className="stat">
                   <b>{formatBytes(file.size)}</b>
-                  <span>Original size</span>
+                  <span>{t('imageToBase64.originalSize')}</span>
                 </div>
                 <div className="stat">
                   <b>{dataUrl ? formatBytes(raw.length) : '…'}</b>
-                  <span>Base64 text</span>
+                  <span>{t('imageToBase64.base64Text')}</span>
                 </div>
               </div>
               <SelectField
-                label="Output format"
+                label={t('imageToBase64.outputFormat')}
                 value={style}
                 onChange={setStyle}
                 options={[
-                  { value: 'datauri', label: 'Data URI' },
-                  { value: 'base64', label: 'Base64 only' },
-                  { value: 'html', label: 'HTML <img> tag' },
-                  { value: 'css', label: 'CSS background-image' },
+                  { value: 'datauri', label: t('imageToBase64.style.datauri') },
+                  { value: 'base64', label: t('imageToBase64.style.base64') },
+                  { value: 'html', label: t('imageToBase64.style.html') },
+                  { value: 'css', label: t('imageToBase64.style.css') },
                 ]}
               />
               <div className="toolbar">
-                <CopyButton text={output} label="Copy result" variant="primary" size="md" disabled={!dataUrl} />
+                <CopyButton text={output} label={t('imageToBase64.copy')} variant="primary" size="md" disabled={!dataUrl} />
                 <button type="button" className="btn btn-secondary" disabled={!dataUrl} onClick={() => downloadText(output, `${baseName(file.name)}-base64.txt`)}>
-                  Download .txt
+                  {t('imageToBase64.download')}
                 </button>
                 <button type="button" className="btn btn-ghost" onClick={queue.clear}>
-                  Choose another image
+                  {t('imageToBase64.chooseAnother')}
                 </button>
               </div>
             </div>
           </div>
-          {!dataUrl && !error && <ProcessingState label="Encoding…" />}
+          {!dataUrl && !error && <ProcessingState label={t('imageToBase64.encoding')} />}
           {dataUrl && (
             <div className="field">
               <label className="label" htmlFor="b64-out">
-                Result
+                {t('imageToBase64.result')}
               </label>
               <textarea id="b64-out" className="textarea" readOnly value={output} rows={8} onFocus={(e) => e.currentTarget.select()} />
             </div>

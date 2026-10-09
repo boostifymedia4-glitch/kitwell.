@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
-import { LegalNotice, PageShell, Placeholder } from '@/components/ui/PageShell';
+import { LegalBody, LegalNotice, PageShell, Placeholder } from '@/components/ui/PageShell';
 import { site } from '@/config/site';
+import { useI18n } from '@/i18n';
 
 export default function Privacy() {
+  const { t } = useI18n();
   return (
-    <PageShell path="/privacy" title="Privacy Policy" lead={`How ${site.name} handles your files and data.`}>
+    <PageShell path="/privacy" title={t('legal.privacy.title')} lead={t('legal.privacy.lead', { site: site.name })}>
       <LegalNotice />
+      <LegalBody>
       <p className="muted">
         Effective date: <Placeholder>DATE</Placeholder>
       </p>
@@ -75,6 +78,7 @@ export default function Privacy() {
 
       <h2>9. Changes</h2>
       <p>We may update this policy. The effective date above shows when it last changed.</p>
+      </LegalBody>
     </PageShell>
   );
 }

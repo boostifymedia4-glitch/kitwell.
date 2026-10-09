@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type PointerEvent } from 'react';
+import { useI18n } from '@/i18n';
 import { IMAGE_EXTENSIONS, MAX_IMAGE_BYTES } from '@/components/tool/BatchImageTool';
 import { ErrorMessage, Notice, ProcessingState, RejectionList } from '@/components/tool/Feedback';
 import { RangeField, SelectField } from '@/components/tool/Fields';
@@ -14,13 +15,15 @@ import type { ToolImplementation } from '../../types';
 
 const MIN_DRAW = 6;
 
-const EFFECTS: { value: RegionEffect; label: string }[] = [
-  { value: 'blur', label: 'Blur' },
-  { value: 'pixelate', label: 'Pixelate' },
-  { value: 'cover', label: 'Black box (safest)' },
-];
-
 const ImageRedact: ToolImplementation = () => {
+  const { t } = useI18n();
+  const EFFECTS: { value: RegionEffect; label: string }[] = [
+    { value: 'blur', label: t('imageRedact.effect.blur') },
+    { value: 'pixelate', label: t('imageRedact.effect.pixelate') },
+    { value: 'cover', label: t('imageRedact.effect.cover') },
+  ];
+  const fieldLabelKeys = { x: 'imageRedact.fieldLabel.x', y: 'imageRedact.fieldLabel.y', w: 'imageRedact.fieldLabel.w', h: 'imageRedact.fieldLabel.h' } as const;
+  const fieldNames = { x: t('imageRedact.field.x'), y: t('imageRedact.field.y'), w: t('imageRedact.field.w'), h: t('imageRedact.field.h') };
   const queue = useFileQueue({ extensions: IMAGE_EXTENSIONS, maxBytes: MAX_IMAGE_BYTES, maxFiles: 1 }, false);
   const file = queue.items[0]?.file ?? null;
   const url = useObjectUrl(file);
@@ -113,7 +116,7 @@ const ImageRedact: ToolImplementation = () => {
 
   const apply = () =>
     task.run(async () => {
-      if (!file) throw new Error('Add an image first.');
+      if (!file) throw new Error(t('imageRedact.err.noImage'));
       const fmt = FORMATS[sameFormatAs(file)];
       const result = await redactImage(file, regions, effect, strength, { mime: fmt.mime, quality: 0.92, background: '#ffffff' });
       return { name: outputName(file.name, fmt.ext, '-hidden'), blob: result.blob, note: `${result.width} × ${result.height} px` };
@@ -148,10 +151,10 @@ const ImageRedact: ToolImplementation = () => {
               <img
                 ref={imgRef}
                 src={url}
-                alt={`${file.name}. Draw boxes on the picture to choose what to hide.`}
+                alt={t('imageRedact.imageAlt', { name: file.name })}
                 draggable={false}
                 onLoad={() => imgRef.current && setNatural({ w: imgRef.current.naturalWidth, h: imgRef.current.naturalHeight })}
-                onError={() => setLoadError('This file could not be read as an image. It may be corrupted or in an unsupported format.')}
+                onError={() => setLoadError(t('imageRedact.err.unreadable'))}
               />
               {natural && (
                 <div ref={layerRef} className="region-layer" onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up} aria-hidden="true">
@@ -165,40 +168,40 @@ const ImageRedact: ToolImplementation = () => {
           {natural && (
             <>
               <p className="hint">
-                Original: {natural.w} × {natural.h} px. Drag on the picture to draw a box over what you want to hide, or press “Add a box”.
+                {t('imageRedact.original', { width: natural.w, height: natural.h })}
               </p>
               <div className="options-grid">
-                <SelectField label="Effect" value={effect} onChange={setEffect} options={EFFECTS} />
-                {effect !== 'cover' && <RangeField label="Strength" value={strength} min={10} max={100} onChange={setStrength} format={(v) => `${v}%`} />}
+                <SelectField label={t('imageRedact.effect')} value={effect} onChange={setEffect} options={EFFECTS} />
+                {effect !== 'cover' && <RangeField label={t('imageRedact.strength')} value={strength} min={10} max={100} onChange={setStrength} format={(v) => `${v}%`} />}
               </div>
               {effect !== 'cover' && (
-                <Notice tone="warn">Blur and pixelation can sometimes be partly reversed. For ID numbers, licence plates or other secrets, choose the black box.</Notice>
+                <Notice tone="warn">{t('imageRedact.warn')}</Notice>
               )}
 
               <div className="stack-sm">
                 <div className="row row-between">
-                  <span className="label">Areas to hide ({regions.length})</span>
+                  <span className="label">{t('imageRedact.areas', { count: regions.length })}</span>
                   <div className="toolbar">
                     <button type="button" className="btn btn-secondary btn-sm" onClick={addCentred} disabled={running}>
-                      <Icon name="plus" size={14} /> Add a box
+                      <Icon name="plus" size={14} /> {t('imageRedact.addBox')}
                     </button>
                     <button type="button" className="btn btn-ghost btn-sm" onClick={() => setRegions([])} disabled={running || regions.length === 0}>
-                      Clear all
+                      {t('imageRedact.clearAll')}
                     </button>
                   </div>
                 </div>
-                {regions.length === 0 && <p className="hint">No areas yet.</p>}
+                {regions.length === 0 && <p className="hint">{t('imageRedact.noAreas')}</p>}
                 <ul className="region-list">
                   {regions.map((r, i) => (
                     <li key={i} className="region-row">
                       <strong>#{i + 1}</strong>
                       {(['x', 'y', 'w', 'h'] as const).map((k) => (
                         <label key={k} className="mini-field">
-                          <span>{{ x: 'X', y: 'Y', w: 'Width', h: 'Height' }[k]}</span>
-                          <input className="input" type="number" inputMode="numeric" min={0} aria-label={`Box ${i + 1} ${{ x: 'X position', y: 'Y position', w: 'width', h: 'height' }[k]} in pixels`} value={Math.round(r[k])} onChange={(e) => edit(i, k, e.target.value)} />
+                          <span>{fieldNames[k]}</span>
+                          <input className="input" type="number" inputMode="numeric" min={0} aria-label={t(fieldLabelKeys[k], { number: i + 1 })} value={Math.round(r[k])} onChange={(e) => edit(i, k, e.target.value)} />
                         </label>
                       ))}
-                      <button type="button" className="icon-btn" aria-label={`Remove box ${i + 1}`} onClick={() => setRegions((list) => list.filter((_, idx) => idx !== i))}>
+                      <button type="button" className="icon-btn" aria-label={t('imageRedact.removeBox', { number: i + 1 })} onClick={() => setRegions((list) => list.filter((_, idx) => idx !== i))}>
                         <Icon name="trash" size={16} />
                       </button>
                     </li>
@@ -209,23 +212,23 @@ const ImageRedact: ToolImplementation = () => {
               <div className="toolbar">
                 <button type="button" className="btn btn-primary btn-lg" onClick={apply} disabled={running || regions.length === 0}>
                   <Icon name="eye-off" size={18} />
-                  Hide selected areas
+                  {t('imageRedact.apply')}
                 </button>
                 <button type="button" className="btn btn-ghost" onClick={reset} disabled={running}>
-                  Choose another image
+                  {t('imageRedact.chooseAnother')}
                 </button>
               </div>
             </>
           )}
         </>
       )}
-      {running && <ProcessingState label="Applying…" />}
+      {running && <ProcessingState label={t('imageRedact.applying')} />}
       {task.state.status === 'error' && <ErrorMessage>{task.state.error}</ErrorMessage>}
       {task.state.status === 'done' && (
         <ResultPanel>
           {resultUrl && (
             <div className="preview-box">
-              <img src={resultUrl} alt="Result with the selected areas hidden" />
+              <img src={resultUrl} alt={t('imageRedact.resultAlt')} />
             </div>
           )}
           <ResultFiles files={[task.state.result]} zipName="hidden.zip" />

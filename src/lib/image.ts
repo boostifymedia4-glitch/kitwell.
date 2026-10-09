@@ -1,4 +1,5 @@
 import { processOnCurrentThread, type ImagePlan, type ImageResult } from './imageProcessor';
+import { tr } from '@/i18n/translate';
 
 export type { ImagePlan, ImageResult, OutputMime } from './imageProcessor';
 export { decode } from './imageProcessor';
@@ -24,7 +25,7 @@ function getWorker(): Worker | null {
       if (!p) return;
       pending.delete(e.data.id);
       if (e.data.ok && e.data.result) p.resolve(e.data.result);
-      else p.reject(new Error(e.data.error ?? 'Processing failed.'));
+      else p.reject(new Error(e.data.error ?? tr('err.image.processingFailed')));
     };
     worker.onerror = () => {
       // The worker failed to load or crashed: use the main thread for the rest of the session.

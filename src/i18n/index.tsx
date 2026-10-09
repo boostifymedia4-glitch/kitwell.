@@ -1,49 +1,57 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { en, type MessageKey, type PartialMessages } from './en';
+import type { PartialMessages } from './en';
 import { DEFAULT_LANGUAGE, getLanguage, type Language } from './languages';
 import { localeLoaders } from './loaders';
+import type { ToolTextMap } from './toolText';
+import { setActiveLanguage, translateWith, type Vars } from './translate';
 
-export type { MessageKey } from './en';
-
-type Vars = Record<string, string | number>;
+export type MessageKey = string;
+export { tr } from './translate';
 
 interface I18n {
   lang: Language;
   /** Translates a key, filling {placeholders}. Falls back to English when a translation is missing. */
   t: (key: MessageKey, vars?: Vars) => string;
   setLanguage: (code: string) => Promise<void>;
+  /** The language's translated text for the whole site, for components that localise structured content. */
+  messages: PartialMessages;
+  /** Translated tool names, descriptions, steps, FAQ and limits, keyed by tool slug. */
+  toolText: ToolTextMap;
   /** True while a language file is loading. */
   loading: boolean;
 }
 
 const STORAGE_KEY = 'kitwell-language';
 
-function format(template: string, vars?: Vars): string {
-  return vars ? template.replace(/\{(\w+)\}/g, (whole, name: string) => (name in vars ? String(vars[name]) : whole)) : template;
-}
-
 const english = getLanguage(DEFAULT_LANGUAGE)!;
 
 const Context = createContext<I18n>({
   lang: english,
-  t: (key, vars) => format(en[key], vars),
+  t: (key, vars) => translateWith('en', {}, key, vars),
   setLanguage: async () => undefined,
+  messages: {},
+  toolText: {},
   loading: false,
 });
 
 export const useI18n = () => useContext(Context);
 
-const cache = new Map<string, PartialMessages>();
+interface Loaded {
+  messages: PartialMessages;
+  toolText: ToolTextMap;
+}
+const cache = new Map<string, Loaded>();
 
-async function loadMessages(code: string): Promise<PartialMessages> {
-  if (code === DEFAULT_LANGUAGE) return {};
+async function loadMessages(code: string): Promise<Loaded> {
+  if (code === DEFAULT_LANGUAGE) return { messages: {}, toolText: {} };
   const hit = cache.get(code);
   if (hit) return hit;
   const loader = localeLoaders[code];
   if (!loader) throw new Error(`No translations registered for "${code}".`);
-  const messages = (await loader()).default;
-  cache.set(code, messages);
-  return messages;
+  const mod = await loader();
+  const loaded = { messages: mod.default, toolText: mod.tools };
+  cache.set(code, loaded);
+  return loaded;
 }
 
 function readStored(): string | null {
@@ -69,7 +77,7 @@ function store(code: string) {
  * matches the prerendered HTML; a saved choice is applied right after mount.
  */
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [state, setState] = useState<{ lang: Language; messages: PartialMessages }>({ lang: english, messages: {} });
+  const [state, setState] = useState<{ lang: Language; messages: PartialMessages; toolText: ToolTextMap }>({ lang: english, messages: {}, toolText: {} });
   const [loading, setLoading] = useState(false);
   const request = useRef(0);
 
@@ -79,9 +87,10 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     const mine = ++request.current;
     setLoading(true);
     try {
-      const messages = await loadMessages(lang.code);
+      const { messages, toolText } = await loadMessages(lang.code);
       if (mine !== request.current) return;
-      setState({ lang, messages });
+      setActiveLanguage(lang.code, messages);
+      setState({ lang, messages, toolText });
       store(lang.code);
     } catch {
       // The language file could not be loaded (for example offline): stay on the current language.
@@ -104,8 +113,10 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   const value = useMemo<I18n>(
     () => ({
       lang: state.lang,
-      t: (key, vars) => format(state.messages[key] ?? en[key], vars),
+      t: (key, vars) => translateWith(state.lang.code, state.messages, key, vars),
       setLanguage,
+      messages: state.messages,
+      toolText: state.toolText,
       loading,
     }),
     [state, setLanguage, loading],

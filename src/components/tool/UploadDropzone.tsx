@@ -1,4 +1,5 @@
 import { useId, useRef, useState, type DragEvent } from 'react';
+import { useI18n } from '@/i18n';
 import { formatBytes } from '@/lib/format';
 import { Icon } from '../Icon';
 
@@ -15,10 +16,11 @@ interface Props {
 }
 
 export function UploadDropzone({ extensions, multiple = false, maxBytes, maxFiles, onFiles, disabled, title, compact }: Props) {
+  const { t } = useI18n();
   const inputRef = useRef<HTMLInputElement>(null);
   const [dragging, setDragging] = useState(false);
   const hintId = useId();
-  const label = title ?? (multiple ? 'Drop files here or click to choose' : 'Drop a file here or click to choose');
+  const label = title ?? (multiple ? t('ui.dropzone.files') : t('ui.dropzone.file'));
 
   const handleDrop = (e: DragEvent) => {
     e.preventDefault();
@@ -48,8 +50,9 @@ export function UploadDropzone({ extensions, multiple = false, maxBytes, maxFile
         <Icon name="upload" size={compact ? 26 : 34} className="dz-icon" />
         <strong>{label}</strong>
         <span className="hint" id={hintId}>
-          {extensions.map((e) => e.toUpperCase()).join(', ')} · up to {formatBytes(maxBytes)} each
-          {multiple && maxFiles ? ` · max ${maxFiles} files` : ''}
+          {multiple && maxFiles
+            ? t('ui.dropzone.hintMax', { types: extensions.map((e) => e.toUpperCase()).join(', '), size: formatBytes(maxBytes), max: maxFiles })
+            : t('ui.dropzone.hint', { types: extensions.map((e) => e.toUpperCase()).join(', '), size: formatBytes(maxBytes) })}
         </span>
       </button>
       <input

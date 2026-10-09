@@ -8,11 +8,13 @@ import { baseName } from '@/lib/format';
 import { PdfError } from '@/lib/pdfOps';
 import { protectPdf } from '@/lib/pdfEdit';
 import { usePdfTool } from '@/lib/usePdfFile';
+import { useI18n } from '@/i18n';
 import type { ToolImplementation } from '../../types';
 
-const hintFor = (pw: string) => (pw.length === 0 ? 'Use at least 8 characters; longer is stronger.' : pw.length < 8 ? 'Short passwords are easy to guess. Aim for 12 or more.' : pw.length < 12 ? 'Fair. Twelve or more characters is better.' : 'Good length.');
+const hintFor = (pw: string) => (pw.length === 0 ? 'pdfProtect.hint.empty' : pw.length < 8 ? 'pdfProtect.hint.short' : pw.length < 12 ? 'pdfProtect.hint.fair' : 'pdfProtect.hint.good');
 
 const PdfProtect: ToolImplementation = () => {
+  const { t } = useI18n();
   const { pdf, task, reset, running } = usePdfTool();
   const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState('');
@@ -34,7 +36,7 @@ const PdfProtect: ToolImplementation = () => {
       {(ready) => {
         const run = () =>
           task.run(async () => {
-            if (password !== confirm) throw new PdfError('The two passwords do not match.');
+            if (password !== confirm) throw new PdfError(t('pdfProtect.mismatch'));
             const out = await protectPdf(ready.bytes, { userPassword: password, allowPrinting, allowCopying, allowModifying });
             return new Blob([out.buffer as ArrayBuffer], { type: 'application/pdf' });
           });
@@ -42,41 +44,41 @@ const PdfProtect: ToolImplementation = () => {
         return (
           <>
             <div className="options-grid">
-              <Field label="Password" hint={hintFor(password)}>
+              <Field label={t('pdfProtect.password')} hint={t(hintFor(password))}>
                 {(id) => (
                   <input id={id} className="input" type={show ? 'text' : 'password'} autoComplete="new-password" spellCheck={false} maxLength={127} value={password} onChange={(e) => setPassword(e.target.value)} />
                 )}
               </Field>
-              <Field label="Repeat password" hint={mismatch ? 'The passwords do not match.' : undefined}>
+              <Field label={t('pdfProtect.repeat')} hint={mismatch ? t('pdfProtect.mismatch') : undefined}>
                 {(id) => (
                   <input id={id} className="input" type={show ? 'text' : 'password'} autoComplete="new-password" spellCheck={false} maxLength={127} aria-invalid={mismatch} value={confirm} onChange={(e) => setConfirm(e.target.value)} />
                 )}
               </Field>
             </div>
-            <CheckField label="Show passwords" checked={show} onChange={setShow} />
+            <CheckField label={t('pdfProtect.show')} checked={show} onChange={setShow} />
             <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
               <legend className="label" style={{ marginBottom: 8 }}>
-                Readers who open it may
+                {t('pdfProtect.readersMay')}
               </legend>
               <div className="row" style={{ gap: 20 }}>
-                <CheckField label="Print" checked={allowPrinting} onChange={setAllowPrinting} />
-                <CheckField label="Copy text and images" checked={allowCopying} onChange={setAllowCopying} />
-                <CheckField label="Edit and annotate" checked={allowModifying} onChange={setAllowModifying} />
+                <CheckField label={t('pdfProtect.print')} checked={allowPrinting} onChange={setAllowPrinting} />
+                <CheckField label={t('pdfProtect.copy')} checked={allowCopying} onChange={setAllowCopying} />
+                <CheckField label={t('pdfProtect.edit')} checked={allowModifying} onChange={setAllowModifying} />
               </div>
             </fieldset>
             <Notice tone="warn">
-              If you forget this password, the file cannot be opened. Nothing is stored or sent anywhere, so there is no way to recover it. Keep your original PDF.
+              {t('pdfProtect.warning')}
             </Notice>
             <div className="toolbar">
               <button type="button" className="btn btn-primary btn-lg" onClick={run} disabled={running || !password || !confirm}>
                 <Icon name="lock" size={18} />
-                Protect PDF
+                {t('pdfProtect.protect')}
               </button>
             </div>
-            {running && <ProcessingState label="Encrypting…" />}
+            {running && <ProcessingState label={t('pdfProtect.encrypting')} />}
             {task.state.status === 'error' && <ErrorMessage>{task.state.error}</ErrorMessage>}
             {task.state.status === 'done' && (
-              <PdfResult blob={task.state.result} name={`${baseName(ready.file.name)}-protected.pdf`} onReset={clearAll} title="Your protected PDF is ready" note="AES-256 encrypted" />
+              <PdfResult blob={task.state.result} name={`${baseName(ready.file.name)}-protected.pdf`} onReset={clearAll} title={t('pdfProtect.ready')} note={t('pdfProtect.note')} />
             )}
           </>
         );

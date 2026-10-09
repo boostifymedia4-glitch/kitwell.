@@ -1,9 +1,13 @@
 import type { PartialMessages } from './en';
+import type { ToolTextMap } from './toolText';
 
-type Loader = () => Promise<{ default: PartialMessages }>;
+export interface LocaleModule {
+  default: PartialMessages;
+  tools: ToolTextMap;
+}
 
 /** One lazy chunk per language, so visitors only download the language they choose. */
-export const localeLoaders: Record<string, Loader> = {
+export const localeLoaders: Record<string, () => Promise<LocaleModule>> = {
   ur: () => import('./locales/ur'),
   ar: () => import('./locales/ar'),
   es: () => import('./locales/es'),

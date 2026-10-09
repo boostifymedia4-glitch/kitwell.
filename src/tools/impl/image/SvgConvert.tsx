@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useI18n } from '@/i18n';
 import { BatchImageTool } from '@/components/tool/BatchImageTool';
 import { ColorField, NumberField, RangeField, Segmented, SelectField } from '@/components/tool/Fields';
 import { outputName } from '@/lib/format';
@@ -6,9 +7,9 @@ import { rasterizeSvg, type SvgSize } from '@/lib/imageEdits';
 import { FORMAT_OPTIONS, FORMATS, type FormatKey } from '@/lib/imageFormats';
 import type { ToolImplementation } from '../../types';
 
-const SCALES = ['1', '2', '3', '4'].map((v) => ({ value: v, label: `${v}× the SVG’s own size` }));
-
 const SvgConvert: ToolImplementation = () => {
+  const { t } = useI18n();
+  const SCALES = ['1', '2', '3', '4'].map((v) => ({ value: v, label: t('svgConvert.scaleOption', { scale: v }) }));
   const [target, setTarget] = useState<FormatKey>('png');
   const [mode, setMode] = useState<'scale' | 'width'>('scale');
   const [scale, setScale] = useState('2');
@@ -20,28 +21,28 @@ const SvgConvert: ToolImplementation = () => {
   return (
     <BatchImageTool
       extensions={['svg']}
-      actionLabel={`Convert to ${fmt.label}`}
+      actionLabel={t('svgConvert.action', { format: fmt.label })}
       zipName={`svg-to-${fmt.ext}.zip`}
       disabled={mode === 'width' && !width}
       options={
         <>
-          <SelectField label="Output format" value={target} options={FORMAT_OPTIONS} onChange={setTarget} />
+          <SelectField label={t('svgConvert.outputFormat')} value={target} options={FORMAT_OPTIONS} onChange={setTarget} />
           <Segmented
-            label="Size by"
+            label={t('svgConvert.sizeBy')}
             value={mode}
             onChange={setMode}
             options={[
-              { value: 'scale', label: 'Scale' },
-              { value: 'width', label: 'Width in px' },
+              { value: 'scale', label: t('svgConvert.sizeBy.scale') },
+              { value: 'width', label: t('svgConvert.sizeBy.width') },
             ]}
           />
           {mode === 'scale' ? (
-            <SelectField label="Scale" value={scale} options={SCALES} onChange={setScale} />
+            <SelectField label={t('svgConvert.scale')} value={scale} options={SCALES} onChange={setScale} />
           ) : (
-            <NumberField label="Width (px)" value={width} min={1} max={16000} onChange={setWidth} hint="Height follows the SVG’s proportions." />
+            <NumberField label={t('svgConvert.width')} value={width} min={1} max={16000} onChange={setWidth} hint={t('svgConvert.widthHint')} />
           )}
-          {target !== 'png' && <RangeField label="Quality" value={quality} min={10} max={100} onChange={setQuality} format={(v) => `${v}%`} />}
-          {target === 'jpeg' && <ColorField label="Background (JPG has no transparency)" value={background} onChange={setBackground} />}
+          {target !== 'png' && <RangeField label={t('svgConvert.quality')} value={quality} min={10} max={100} onChange={setQuality} format={(v) => `${v}%`} />}
+          {target === 'jpeg' && <ColorField label={t('svgConvert.background')} value={background} onChange={setBackground} />}
         </>
       }
       process={async (file) => {

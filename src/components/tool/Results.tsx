@@ -1,33 +1,37 @@
 import { useState, type ReactNode } from 'react';
+import { useI18n } from '@/i18n';
 import { downloadBlob, downloadZip, type NamedBlob } from '@/lib/download';
 import { formatBytes } from '@/lib/format';
 import { Icon } from '../Icon';
 import { ErrorMessage } from './Feedback';
 
 export function DownloadButton({ blob, name, label, variant = 'primary' }: { blob: Blob; name: string; label?: string; variant?: 'primary' | 'secondary' }) {
+  const { t } = useI18n();
   return (
     <button type="button" className={`btn btn-${variant}`} onClick={() => downloadBlob(blob, name)}>
       <Icon name="download" size={16} />
-      {label ?? 'Download'}
+      {label ?? t('ui.download')}
     </button>
   );
 }
 
-export function ResetButton({ onClick, label = 'Start over' }: { onClick: () => void; label?: string }) {
+export function ResetButton({ onClick, label }: { onClick: () => void; label?: string }) {
+  const { t } = useI18n();
   return (
     <button type="button" className="btn btn-secondary" onClick={onClick}>
       <Icon name="rotate-ccw" size={16} />
-      {label}
+      {label ?? t('ui.startOver')}
     </button>
   );
 }
 
-export function ResultPanel({ title = 'Done', children }: { title?: string; children: ReactNode }) {
+export function ResultPanel({ title, children }: { title?: string; children: ReactNode }) {
+  const { t } = useI18n();
   return (
-    <section className="result-panel" aria-label="Result" aria-live="polite">
+    <section className="result-panel" aria-label={t('ui.result')} aria-live="polite">
       <div className="result-title">
         <Icon name="check-circle" size={20} />
-        {title}
+        {title ?? t('ui.resultTitle')}
       </div>
       {children}
     </section>
@@ -40,6 +44,7 @@ export interface ResultFile extends NamedBlob {
 
 /** Lists produced files with per-file download and a ZIP option for batches. */
 export function ResultFiles({ files, zipName }: { files: ResultFile[]; zipName: string }) {
+  const { t } = useI18n();
   const [zipError, setZipError] = useState<string | null>(null);
   const [zipping, setZipping] = useState(false);
 
@@ -49,7 +54,7 @@ export function ResultFiles({ files, zipName }: { files: ResultFile[]; zipName: 
     try {
       await downloadZip(files, zipName);
     } catch {
-      setZipError('The ZIP file could not be created, probably because the files are too large for your device’s memory. Download the files individually instead.');
+      setZipError(t('ui.zipFailed'));
     } finally {
       setZipping(false);
     }
@@ -69,9 +74,9 @@ export function ResultFiles({ files, zipName }: { files: ResultFile[]; zipName: 
                 {f.note ? ` · ${f.note}` : ''}
               </div>
             </div>
-            <button type="button" className="btn btn-secondary btn-sm" onClick={() => downloadBlob(f.blob, f.name)} aria-label={`Download ${f.name}`}>
+            <button type="button" className="btn btn-secondary btn-sm" onClick={() => downloadBlob(f.blob, f.name)} aria-label={t('ui.downloadFile', { name: f.name })}>
               <Icon name="download" size={14} />
-              Download
+              {t('ui.download')}
             </button>
           </li>
         ))}
@@ -80,7 +85,7 @@ export function ResultFiles({ files, zipName }: { files: ResultFile[]; zipName: 
         <div className="toolbar">
           <button type="button" className="btn btn-primary" onClick={zip} disabled={zipping}>
             <Icon name="download" size={16} />
-            {zipping ? 'Preparing ZIP…' : `Download all (${files.length}) as ZIP`}
+            {zipping ? t('ui.preparingZip') : t('ui.downloadAll', { count: files.length })}
           </button>
         </div>
       )}
@@ -90,15 +95,16 @@ export function ResultFiles({ files, zipName }: { files: ResultFile[]; zipName: 
 }
 
 /** Result of a tool that produces one PDF: size, a download button, and a way to start over. */
-export function PdfResult({ blob, name, onReset, title = 'Your PDF is ready', note }: { blob: Blob; name: string; onReset: () => void; title?: string; note?: string }) {
+export function PdfResult({ blob, name, onReset, title, note }: { blob: Blob; name: string; onReset: () => void; title?: string; note?: string }) {
+  const { t } = useI18n();
   return (
-    <ResultPanel title={title}>
+    <ResultPanel title={title ?? t('ui.pdfReady')}>
       <p className="muted">
         {formatBytes(blob.size)}
         {note ? ` · ${note}` : ''}
       </p>
       <div className="toolbar">
-        <DownloadButton blob={blob} name={name} label={`Download ${name}`} />
+        <DownloadButton blob={blob} name={name} label={t('ui.downloadFile', { name })} />
         <ResetButton onClick={onReset} />
       </div>
     </ResultPanel>

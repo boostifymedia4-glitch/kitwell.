@@ -1,3 +1,4 @@
+import { tr } from '@/i18n/translate';
 /**
  * Image pipeline shared by the Web Worker and the main-thread fallback:
  * decode -> crop -> resize -> flip/rotate -> encode.
@@ -52,11 +53,11 @@ export async function canvasToBlob(canvas: Canvas2D, mime: OutputMime, quality: 
     'convertToBlob' in canvas
       ? await canvas.convertToBlob({ type: mime, quality: q })
       : await new Promise<Blob | null>((res) => canvas.toBlob(res, mime, q));
-  if (!blob) throw new Error('The browser could not encode this image.');
+  if (!blob) throw new Error(tr('err.image.encodeFailed'));
   if (blob.type !== mime) {
     const wanted = mime.split('/')[1].toUpperCase();
     throw new Error(
-      `Your browser cannot save ${wanted} images. Try a different output format or a current version of Chrome, Edge or Firefox.`,
+      tr('err.image.formatUnsupported', { format: wanted }),
     );
   }
   return blob;
@@ -66,7 +67,7 @@ export async function decode(source: Blob): Promise<ImageBitmap> {
   try {
     return await createImageBitmap(source);
   } catch {
-    throw new Error('This file could not be read as an image. It may be corrupted or in an unsupported format.');
+    throw new Error(tr('err.image.unreadable'));
   }
 }
 
@@ -103,13 +104,13 @@ export async function runPipeline(bitmap: ImageBitmap, plan: ImagePlan): Promise
 
   if (cw > MAX_SIDE || ch > MAX_SIDE || cw * ch > MAX_PIXELS) {
     throw new Error(
-      `The result would be ${cw} × ${ch} px, which is larger than this browser tool can safely create (max ${MAX_SIDE.toLocaleString('en-US')} px per side).`,
+      tr('err.image.resultTooBig', { width: cw, height: ch, max: MAX_SIDE.toLocaleString('en-US') }),
     );
   }
 
   const canvas = makeCanvas(cw, ch);
   const ctx = canvas.getContext('2d') as Ctx2D | null;
-  if (!ctx) throw new Error('Could not create a drawing surface. The image may be too large for this device.');
+  if (!ctx) throw new Error(tr('err.image.noCanvas'));
   if (plan.mime === 'image/jpeg') {
     ctx.fillStyle = plan.background;
     ctx.fillRect(0, 0, cw, ch);

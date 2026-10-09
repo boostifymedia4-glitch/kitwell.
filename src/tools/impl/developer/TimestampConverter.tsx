@@ -2,13 +2,14 @@ import { useEffect, useMemo, useState } from 'react';
 import { ErrorMessage } from '@/components/tool/Feedback';
 import { Field, SelectField } from '@/components/tool/Fields';
 import { CopyRow } from '@/components/tool/CopyButton';
+import { useI18n } from '@/i18n';
 import { parseTimestamp, relativeTime, type TimestampUnit } from '@/lib/dev';
 import { errorMessage } from '@/lib/format';
 import type { ToolImplementation } from '../../types';
 
 const localZone = () => Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-function zoneOptions(): { value: string; label: string }[] {
+function zoneOptions(yourZone: (zone: string) => string): { value: string; label: string }[] {
   const local = localZone();
   let zones: string[];
   try {
@@ -17,7 +18,7 @@ function zoneOptions(): { value: string; label: string }[] {
     zones = [];
   }
   const unique = Array.from(new Set(['UTC', local, ...zones]));
-  return unique.map((z) => ({ value: z, label: z === local ? `${z} (your time zone)` : z }));
+  return unique.map((z) => ({ value: z, label: z === local ? yourZone(z) : z }));
 }
 
 function formatIn(date: Date, timeZone: string): string {
@@ -27,7 +28,8 @@ function formatIn(date: Date, timeZone: string): string {
 const toInputValue = (d: Date) => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
 
 const TimestampConverter: ToolImplementation = () => {
-  const zones = useMemo(zoneOptions, []);
+  const { t } = useI18n();
+  const zones = useMemo(() => zoneOptions((zone) => t('timestampConverter.yourZone', { zone })), [t]);
   const [now, setNow] = useState(() => new Date());
   const [input, setInput] = useState(() => String(Math.floor(Date.now() / 1000)));
   const [unit, setUnit] = useState<TimestampUnit>('auto');
@@ -36,8 +38,8 @@ const TimestampConverter: ToolImplementation = () => {
   const [dateAsUtc, setDateAsUtc] = useState(false);
 
   useEffect(() => {
-    const t = window.setInterval(() => setNow(new Date()), 1000);
-    return () => window.clearInterval(t);
+    const timer = window.setInterval(() => setNow(new Date()), 1000);
+    return () => window.clearInterval(timer);
   }, []);
 
   const parsed = useMemo(() => {
@@ -61,47 +63,47 @@ const TimestampConverter: ToolImplementation = () => {
       <div className="stat-grid">
         <div className="stat">
           <b className="mono">{Math.floor(now.getTime() / 1000)}</b>
-          <span>Current Unix time (seconds)</span>
+          <span>{t('timestampConverter.currentSeconds')}</span>
         </div>
         <div className="stat">
           <b className="mono">{now.getTime()}</b>
-          <span>Current Unix time (milliseconds)</span>
+          <span>{t('timestampConverter.currentMilliseconds')}</span>
         </div>
       </div>
 
       <section className="stack" aria-labelledby="ts-to-date">
         <h2 id="ts-to-date" style={{ fontSize: 'var(--text-lg)' }}>
-          Timestamp to date
+          {t('timestampConverter.toDate')}
         </h2>
         <div className="options-grid">
-          <Field label="Unix timestamp">
+          <Field label={t('timestampConverter.unixTimestamp')}>
             {(id) => <input id={id} className="input mono" inputMode="numeric" value={input} onChange={(e) => setInput(e.target.value)} aria-invalid={Boolean(parsed?.error)} />}
           </Field>
           <SelectField
-            label="Unit"
+            label={t('timestampConverter.unit')}
             value={unit}
             onChange={setUnit}
             options={[
-              { value: 'auto', label: 'Auto-detect' },
-              { value: 's', label: 'Seconds' },
-              { value: 'ms', label: 'Milliseconds' },
+              { value: 'auto', label: t('timestampConverter.unit.auto') },
+              { value: 's', label: t('timestampConverter.unit.s') },
+              { value: 'ms', label: t('timestampConverter.unit.ms') },
             ]}
           />
-          <SelectField label="Show time in" value={zone} onChange={setZone} options={zones} />
+          <SelectField label={t('timestampConverter.showIn')} value={zone} onChange={setZone} options={zones} />
         </div>
         <div className="toolbar">
           <button type="button" className="btn btn-secondary btn-sm" onClick={() => setInput(String(Math.floor(Date.now() / 1000)))}>
-            Use current time
+            {t('timestampConverter.useCurrent')}
           </button>
         </div>
         {parsed?.error && <ErrorMessage>{parsed.error}</ErrorMessage>}
         {parsed?.date && (
           <div className="stack-sm">
-            <p className="hint">Interpreted as {parsed.unit === 's' ? 'seconds' : 'milliseconds'}.</p>
+            <p className="hint">{parsed.unit === 's' ? t('timestampConverter.interpretedSeconds') : t('timestampConverter.interpretedMilliseconds')}</p>
             <CopyRow label="ISO 8601 (UTC)" value={parsed.date.toISOString()} />
-            <CopyRow label={`In ${zone}`} value={formatIn(parsed.date, zone)} />
+            <CopyRow label={t('timestampConverter.inZone', { zone })} value={formatIn(parsed.date, zone)} />
             <CopyRow label="UTC" value={parsed.date.toUTCString()} />
-            <CopyRow label="Relative" value={relativeTime(parsed.date, now)} />
+            <CopyRow label={t('timestampConverter.relative')} value={relativeTime(parsed.date, now)} />
           </div>
         )}
       </section>
@@ -110,30 +112,30 @@ const TimestampConverter: ToolImplementation = () => {
 
       <section className="stack" aria-labelledby="date-to-ts">
         <h2 id="date-to-ts" style={{ fontSize: 'var(--text-lg)' }}>
-          Date to timestamp
+          {t('timestampConverter.toTimestamp')}
         </h2>
         <div className="options-grid">
-          <Field label="Date and time">
+          <Field label={t('timestampConverter.dateTime')}>
             {(id) => <input id={id} className="input" type="datetime-local" step={1} value={dateInput} onChange={(e) => setDateInput(e.target.value)} />}
           </Field>
           <SelectField
-            label="Interpret as"
+            label={t('timestampConverter.interpretAs')}
             value={dateAsUtc ? 'utc' : 'local'}
             onChange={(v) => setDateAsUtc(v === 'utc')}
             options={[
-              { value: 'local', label: `Your local time (${localZone()})` },
+              { value: 'local', label: t('timestampConverter.localTime', { zone: localZone() }) },
               { value: 'utc', label: 'UTC' },
             ]}
           />
         </div>
         {fromDate ? (
           <div className="stack-sm">
-            <CopyRow label="Unix timestamp (seconds)" value={String(Math.floor(fromDate.getTime() / 1000))} />
-            <CopyRow label="Unix timestamp (milliseconds)" value={String(fromDate.getTime())} />
+            <CopyRow label={t('timestampConverter.timestampSeconds')} value={String(Math.floor(fromDate.getTime() / 1000))} />
+            <CopyRow label={t('timestampConverter.timestampMilliseconds')} value={String(fromDate.getTime())} />
             <CopyRow label="ISO 8601 (UTC)" value={fromDate.toISOString()} />
           </div>
         ) : (
-          <p className="hint">Choose a valid date and time.</p>
+          <p className="hint">{t('timestampConverter.invalidDate')}</p>
         )}
       </section>
     </div>

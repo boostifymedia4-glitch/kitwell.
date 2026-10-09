@@ -16,6 +16,7 @@ import {
   type PDFDocument,
 } from '@cantoo/pdf-lib';
 import { PdfError, loadPdf } from './pdfOps';
+import { tr } from '@/i18n/translate';
 
 export type FieldKind = 'text' | 'checkbox' | 'radio' | 'dropdown' | 'list' | 'button' | 'signature' | 'unknown';
 export type FieldValue = string | boolean | string[];
@@ -114,7 +115,7 @@ export async function readFormFields(bytes: Uint8Array): Promise<FormInfo> {
   try {
     fields = doc.getForm().getFields();
   } catch {
-    throw new PdfError('The form fields in this PDF could not be read. The file may use an unusual form structure.');
+    throw new PdfError(tr('err.pdf.formRead'));
   }
   const pages = widgetPages(doc);
   const described = fields.map((f) => describe(f, pages));
@@ -127,7 +128,7 @@ export interface FillOptions {
 }
 
 const encodingHint = (name: string) =>
-  new PdfError(`The value of “${name}” contains a character that the form’s font cannot display. Use plain Latin letters, digits and common symbols in this field.`);
+  new PdfError(tr('err.pdf.formFieldChar', { name }));
 
 /** Writes values into the matching fields. Fields not mentioned in `values` keep their current value. */
 export async function fillForm(bytes: Uint8Array, values: Record<string, FieldValue>, opts: FillOptions): Promise<Uint8Array> {
@@ -141,14 +142,14 @@ export async function fillForm(bytes: Uint8Array, values: Record<string, FieldVa
     try {
       field = form.getField(name);
     } catch {
-      throw new PdfError(`The field “${name}” does not exist in this PDF.`);
+      throw new PdfError(tr('err.pdf.formNoField', { name }));
     }
     if (field.isReadOnly()) continue;
     try {
       if (field instanceof PDFTextField) {
         const text = String(value);
         const max = field.getMaxLength();
-        if (max !== undefined && text.length > max) throw new PdfError(`“${name}” allows at most ${max} characters.`);
+        if (max !== undefined && text.length > max) throw new PdfError(tr('err.pdf.formMaxLength', { name, max }));
         if (!drawable(text)) throw encodingHint(name);
         if (text === '') field.setText(undefined);
         else field.setText(text);
@@ -171,7 +172,7 @@ export async function fillForm(bytes: Uint8Array, values: Record<string, FieldVa
       if (err instanceof PdfError) throw err;
       const message = err instanceof Error ? err.message : '';
       if (/WinAnsi|cannot encode|encode/i.test(message)) throw encodingHint(name);
-      throw new PdfError(`“${name}” could not be filled: ${message || 'unknown error'}.`);
+      throw new PdfError(tr('err.pdf.formFillFailed', { name, message: message || tr('err.unknown') }));
     }
   }
   try {
@@ -179,8 +180,8 @@ export async function fillForm(bytes: Uint8Array, values: Record<string, FieldVa
     if (opts.flatten) form.flatten();
   } catch (err) {
     const message = err instanceof Error ? err.message : '';
-    if (/WinAnsi|cannot encode|encode/i.test(message)) throw new PdfError('A field contains a character that the form’s font cannot display. Use plain Latin letters, digits and common symbols.');
-    throw new PdfError(`The filled form could not be saved: ${message || 'unknown error'}.`);
+    if (/WinAnsi|cannot encode|encode/i.test(message)) throw new PdfError(tr('err.pdf.formChar'));
+    throw new PdfError(tr('err.pdf.formSaveFailed', { message: message || tr('err.unknown') }));
   }
   return doc.save();
 }

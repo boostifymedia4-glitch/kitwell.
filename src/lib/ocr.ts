@@ -6,6 +6,7 @@
 import { PDFNumber, PDFOperator, StandardFonts, TextRenderingMode, beginText, endText, setFontAndSize, setTextMatrix, setTextRenderingMode, showText, type PDFFont } from '@cantoo/pdf-lib';
 import { visibleBox, visibleToPage } from './pdfEdit';
 import { PdfError, loadPdf } from './pdfOps';
+import { tr } from '@/i18n/translate';
 
 export interface OcrWord {
   text: string;
@@ -48,7 +49,7 @@ export async function addTextLayer(bytes: Uint8Array, results: OcrPageResult[]):
   let placed = 0;
   for (const result of results) {
     const page = pages[result.page - 1];
-    if (!page) throw new PdfError(`Page ${result.page} does not exist in this document.`);
+    if (!page) throw new PdfError(tr('err.pdf.pageMissing', { page: result.page }));
     if (!(result.width > 0 && result.height > 0)) continue;
     const vb = visibleBox(page);
     const sx = vb.visibleWidth / result.width;

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { MB } from '@/lib/files';
 import { errorMessage } from '@/lib/format';
 import { useFileQueue, useTask } from '@/lib/hooks';
+import { useI18n } from '@/i18n';
 import { Icon } from '../Icon';
 import { ErrorMessage, ProcessingState, RejectionList } from './Feedback';
 import { FileList, type ItemStatus } from './FileList';
@@ -28,6 +29,7 @@ interface Props {
  * download individually or as ZIP. Per-file failures never block the rest of the batch.
  */
 export function BatchImageTool({ extensions = IMAGE_EXTENSIONS, actionLabel, options, disabled, zipName, process }: Props) {
+  const { t } = useI18n();
   const queue = useFileQueue({ extensions, maxBytes: MAX_IMAGE_BYTES, maxFiles: MAX_IMAGES }, true);
   const task = useTask<ResultFile[]>();
   const [statuses, setStatuses] = useState<Record<string, { status: ItemStatus; message?: string }>>({});
@@ -50,7 +52,7 @@ export function BatchImageTool({ extensions = IMAGE_EXTENSIONS, actionLabel, opt
       const next: Record<string, { status: ItemStatus; message?: string }> = {};
       for (let i = 0; i < items.length; i++) {
         const item = items[i];
-        report(i, items.length, `Processing ${item.file.name}`);
+        report(i, items.length, t('batchImage.processing', { name: item.file.name }));
         setStatuses((s) => ({ ...s, [item.id]: { status: 'processing' } }));
         try {
           out.push(await processRef.current(item.file, i));
@@ -65,7 +67,7 @@ export function BatchImageTool({ extensions = IMAGE_EXTENSIONS, actionLabel, opt
       report(items.length, items.length);
       if (out.length === 0) {
         const first = Object.values(next).find((n) => n.message)?.message;
-        throw new Error(first ?? 'None of the files could be processed.');
+        throw new Error(first ?? t('batchImage.noneProcessed'));
       }
       return out;
     });
@@ -88,7 +90,7 @@ export function BatchImageTool({ extensions = IMAGE_EXTENSIONS, actionLabel, opt
         maxFiles={MAX_IMAGES}
         disabled={running}
         compact={queue.items.length > 0}
-        title={queue.items.length ? 'Add more images' : undefined}
+        title={queue.items.length ? t('batchImage.addMore') : undefined}
         onFiles={queue.add}
       />
       <RejectionList items={queue.rejections} onDismiss={queue.dismissRejections} />
@@ -103,7 +105,7 @@ export function BatchImageTool({ extensions = IMAGE_EXTENSIONS, actionLabel, opt
               {actionLabel}
             </button>
             <button type="button" className="btn btn-ghost" onClick={reset} disabled={running}>
-              Clear all
+              {t('batchImage.clearAll')}
             </button>
           </div>
         </>
@@ -112,7 +114,7 @@ export function BatchImageTool({ extensions = IMAGE_EXTENSIONS, actionLabel, opt
       {task.state.status === 'running' && <ProcessingState progress={task.state.progress} />}
       {task.state.status === 'error' && <ErrorMessage>{task.state.error}</ErrorMessage>}
       {task.state.status === 'done' && (
-        <ResultPanel title={failed ? `Done · ${failed} file${failed === 1 ? '' : 's'} failed` : 'Done'}>
+        <ResultPanel title={failed ? t('batchImage.doneFailed', { count: failed }) : t('batchImage.done')}>
           <ResultFiles files={task.state.result} zipName={zipName} />
           <ResetButton onClick={reset} />
         </ResultPanel>

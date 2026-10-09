@@ -4,12 +4,14 @@ import { CheckField, ColorField, NumberField, RangeField, Segmented } from '@/co
 import { outputName } from '@/lib/format';
 import { processImage } from '@/lib/image';
 import { FORMATS, sameFormatAs } from '@/lib/imageFormats';
+import { useI18n } from '@/i18n';
 import type { ToolImplementation } from '../../types';
 
 type Preset = '90' | '180' | '270' | 'custom';
 
 /** Rotate or flip images; `tool.config.mode` selects which controls are shown. */
 const ImageTransform: ToolImplementation = ({ tool }) => {
+  const { t } = useI18n();
   const rotateMode = tool.config?.mode === 'rotate';
   const [preset, setPreset] = useState<Preset>('90');
   const [custom, setCustom] = useState<number | ''>(15);
@@ -23,7 +25,7 @@ const ImageTransform: ToolImplementation = ({ tool }) => {
 
   return (
     <BatchImageTool
-      actionLabel={rotateMode ? 'Rotate images' : 'Flip images'}
+      actionLabel={rotateMode ? t('imageTransform.rotate') : t('imageTransform.flip')}
       zipName={rotateMode ? 'rotated-images.zip' : 'flipped-images.zip'}
       disabled={invalid}
       options={
@@ -31,27 +33,27 @@ const ImageTransform: ToolImplementation = ({ tool }) => {
           {rotateMode ? (
             <>
               <Segmented
-                label="Rotation"
+                label={t('imageTransform.rotation')}
                 value={preset}
                 onChange={setPreset}
                 options={[
-                  { value: '90', label: '90° right' },
-                  { value: '180', label: '180°' },
-                  { value: '270', label: '90° left' },
-                  { value: 'custom', label: 'Custom' },
+                  { value: '90', label: t('imageTransform.right90') },
+                  { value: '180', label: t('imageTransform.180') },
+                  { value: '270', label: t('imageTransform.left90') },
+                  { value: 'custom', label: t('imageTransform.custom') },
                 ]}
               />
-              {preset === 'custom' && <NumberField label="Angle (degrees, clockwise)" value={custom} min={-360} max={360} step={0.5} onChange={setCustom} />}
+              {preset === 'custom' && <NumberField label={t('imageTransform.angle')} value={custom} min={-360} max={360} step={0.5} onChange={setCustom} />}
             </>
           ) : (
             <div className="stack-sm">
-              <span className="label">Flip direction</span>
-              <CheckField label="Horizontal (mirror left / right)" checked={flipH} onChange={setFlipH} />
-              <CheckField label="Vertical (mirror top / bottom)" checked={flipV} onChange={setFlipV} />
+              <span className="label">{t('imageTransform.flipDirection')}</span>
+              <CheckField label={t('imageTransform.horizontal')} checked={flipH} onChange={setFlipH} />
+              <CheckField label={t('imageTransform.vertical')} checked={flipV} onChange={setFlipV} />
             </div>
           )}
-          <RangeField label="Quality (JPG/WebP)" value={quality} min={10} max={100} onChange={setQuality} format={(v) => `${v}%`} />
-          {rotateMode && preset === 'custom' && <ColorField label="Background for JPG corners" value={background} onChange={setBackground} />}
+          <RangeField label={t('imageTransform.quality')} value={quality} min={10} max={100} onChange={setQuality} format={(v) => `${v}%`} />
+          {rotateMode && preset === 'custom' && <ColorField label={t('imageTransform.background')} value={background} onChange={setBackground} />}
         </>
       }
       process={async (file) => {
@@ -67,7 +69,7 @@ const ImageTransform: ToolImplementation = ({ tool }) => {
         return {
           name: outputName(file.name, fmt.ext, rotateMode ? '-rotated' : '-flipped'),
           blob: result.blob,
-          note: `${result.width} × ${result.height} px`,
+          note: t('imageTransform.note', { width: result.width, height: result.height }),
         };
       }}
     />

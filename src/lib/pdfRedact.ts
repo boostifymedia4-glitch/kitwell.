@@ -8,6 +8,7 @@
 import { PDFDocument } from '@cantoo/pdf-lib';
 import { PdfError, loadPdf } from './pdfOps';
 import type { RenderedPage } from './pdfFlatten';
+import { tr } from '@/i18n/translate';
 
 /** A box as fractions (0-1) of the visible page, origin top-left, like the on-screen preview. */
 export interface RedactBox {
@@ -41,12 +42,12 @@ export function countBoxes(plan: RedactPlan): number {
 }
 
 export async function redactPdf(bytes: Uint8Array, plan: RedactPlan, render: PageRenderer, opts: RedactOptions): Promise<Uint8Array> {
-  if (countBoxes(plan) === 0) throw new PdfError('Mark at least one area or search term to redact.');
+  if (countBoxes(plan) === 0) throw new PdfError(tr('err.pdf.redactNothing'));
   const source = await loadPdf(bytes);
   const total = source.getPageCount();
   for (const key of Object.keys(plan)) {
     const n = Number(key);
-    if (!Number.isInteger(n) || n < 1 || n > total) throw new PdfError(`Page ${key} does not exist in this document.`);
+    if (!Number.isInteger(n) || n < 1 || n > total) throw new PdfError(tr('err.pdf.pageMissing', { page: key }));
   }
   const out = await PDFDocument.create();
   out.setProducer('Kitwell');

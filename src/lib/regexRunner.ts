@@ -1,4 +1,5 @@
 import { runRegex, type RegexRun } from './dev';
+import { tr } from '@/i18n/translate';
 
 const TIMEOUT_MS = 1500;
 let worker: Worker | null = null;
@@ -10,7 +11,7 @@ function spawn(): Worker {
 
 export class RegexTimeoutError extends Error {
   constructor() {
-    super('This pattern took too long to run and was stopped. It may cause catastrophic backtracking (for example nested repetition like (a+)+).');
+    super(tr('err.regex.timeout'));
   }
 }
 

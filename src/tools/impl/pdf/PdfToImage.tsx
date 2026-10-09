@@ -4,6 +4,7 @@ import { Field, RangeField, SelectField } from '@/components/tool/Fields';
 import { PdfSource } from '@/components/tool/PdfSource';
 import { ResetButton, ResultFiles, ResultPanel, type ResultFile } from '@/components/tool/Results';
 import { Icon } from '@/components/Icon';
+import { useI18n } from '@/i18n';
 import { baseName } from '@/lib/format';
 import { useTask } from '@/lib/hooks';
 import { parsePageList } from '@/lib/pdfOps';
@@ -14,6 +15,7 @@ import type { ToolImplementation } from '../../types';
 const MAX_PAGES = 300;
 
 const PdfToImage: ToolImplementation = ({ tool }) => {
+  const { t } = useI18n();
   const asJpeg = tool.config?.format === 'jpeg';
   const ext = asJpeg ? 'jpg' : 'png';
   const pdf = usePdfFile();
@@ -35,7 +37,7 @@ const PdfToImage: ToolImplementation = ({ tool }) => {
         const convert = () =>
           task.run(async (report) => {
             const indexes = pages.trim() ? parsePageList(pages, ready.pageCount) : Array.from({ length: ready.pageCount }, (_, i) => i);
-            if (indexes.length > MAX_PAGES) throw new Error(`Please convert at most ${MAX_PAGES} pages at a time. Use the page range field.`);
+            if (indexes.length > MAX_PAGES) throw new Error(t('pdfToImage.tooMany', { max: MAX_PAGES }));
             const doc = await openPdf(ready.bytes);
             const canvas = document.createElement('canvas');
             const base = baseName(ready.file.name);
@@ -44,7 +46,7 @@ const PdfToImage: ToolImplementation = ({ tool }) => {
             try {
               for (let i = 0; i < indexes.length; i++) {
                 const n = indexes[i] + 1;
-                report(i, indexes.length, `Rendering page ${n}`);
+                report(i, indexes.length, t('pdfToImage.renderingPage', { n }));
                 await renderPageToCanvas(doc, n, Number(dpi) / 72, canvas);
                 const blob = await canvasToBlob(canvas, asJpeg ? 'image/jpeg' : 'image/png', asJpeg ? quality / 100 : undefined);
                 out.push({ name: `${base}-page-${String(n).padStart(pad, '0')}.${ext}`, blob, note: `${canvas.width} × ${canvas.height} px` });
@@ -61,36 +63,36 @@ const PdfToImage: ToolImplementation = ({ tool }) => {
           <>
             <div className="options-grid">
               <SelectField
-                label="Resolution"
+                label={t('pdfToImage.resolution')}
                 value={dpi}
                 onChange={setDpi}
                 options={[
-                  { value: '72', label: '72 DPI (small, screen)' },
-                  { value: '150', label: '150 DPI (recommended)' },
-                  { value: '200', label: '200 DPI' },
-                  { value: '300', label: '300 DPI (print)' },
+                  { value: '72', label: t('pdfToImage.dpi.72') },
+                  { value: '150', label: t('pdfToImage.dpi.150') },
+                  { value: '200', label: t('pdfToImage.dpi.200') },
+                  { value: '300', label: t('pdfToImage.dpi.300') },
                 ]}
               />
-              <Field label="Pages (optional)" hint={`Leave empty for all ${ready.pageCount} pages, or enter e.g. 1-3, 5.`}>
-                {(id) => <input id={id} className="input mono" value={pages} placeholder="All pages" onChange={(e) => setPages(e.target.value)} />}
+              <Field label={t('pdfToImage.pages')} hint={t('pdfToImage.pages.hint', { count: ready.pageCount })}>
+                {(id) => <input id={id} className="input mono" value={pages} placeholder={t('pdfToImage.pages.placeholder')} onChange={(e) => setPages(e.target.value)} />}
               </Field>
-              {asJpeg && <RangeField label="JPG quality" value={quality} min={40} max={100} onChange={setQuality} format={(v) => `${v}%`} />}
+              {asJpeg && <RangeField label={t('pdfToImage.quality')} value={quality} min={40} max={100} onChange={setQuality} format={(v) => `${v}%`} />}
             </div>
             <div className="toolbar">
               <button type="button" className="btn btn-primary btn-lg" onClick={convert} disabled={running}>
                 <Icon name="file-image" size={18} />
-                Convert to {ext.toUpperCase()}
+                {t('pdfToImage.convert', { format: ext.toUpperCase() })}
               </button>
             </div>
             {running && (
               <>
-                <ProcessingState label="Rendering pages…" progress={task.progress} />
-                <p className="hint">Keep this tab open and visible until it finishes; browsers slow down background tabs.</p>
+                <ProcessingState label={t('pdfToImage.processing')} progress={task.progress} />
+                <p className="hint">{t('pdfToImage.keepOpen')}</p>
               </>
             )}
             {task.state.status === 'error' && <ErrorMessage>{task.state.error}</ErrorMessage>}
             {task.state.status === 'done' && (
-              <ResultPanel title={`Created ${task.state.result.length} ${task.state.result.length === 1 ? 'image' : 'images'}`}>
+              <ResultPanel title={t('pdfToImage.created', { count: task.state.result.length })}>
                 <ResultFiles files={task.state.result} zipName={`${baseName(ready.file.name)}-${ext}.zip`} />
                 <ResetButton onClick={reset} />
               </ResultPanel>

@@ -5,6 +5,7 @@
 import { degrees } from '@cantoo/pdf-lib';
 import { visibleBox, visibleToPage } from './pdfEdit';
 import { PdfError, loadPdf } from './pdfOps';
+import { tr } from '@/i18n/translate';
 
 export interface SignaturePlacement {
   /** 1-based page number. */
@@ -19,18 +20,18 @@ export interface SignaturePlacement {
 const inside = (n: number) => Number.isFinite(n) && n >= 0 && n <= 1;
 
 export async function signPdf(bytes: Uint8Array, signaturePng: Uint8Array, placements: SignaturePlacement[]): Promise<Uint8Array> {
-  if (placements.length === 0) throw new PdfError('Choose where the signature should go.');
+  if (placements.length === 0) throw new PdfError(tr('err.pdf.signNoPlacement'));
   const doc = await loadPdf(bytes);
   let image;
   try {
     image = await doc.embedPng(signaturePng);
   } catch {
-    throw new PdfError('The signature image could not be read. Draw, type or upload a PNG or JPG signature.');
+    throw new PdfError(tr('err.pdf.signImageUnreadable'));
   }
   const pages = doc.getPages();
   for (const p of placements) {
-    if (!Number.isInteger(p.page) || p.page < 1 || p.page > pages.length) throw new PdfError(`Page ${p.page} does not exist in this document.`);
-    if (![p.x, p.y, p.w, p.h].every(inside) || p.w < 0.01 || p.h < 0.005 || p.x + p.w > 1.0001 || p.y + p.h > 1.0001) throw new PdfError('The signature must fit inside the page.');
+    if (!Number.isInteger(p.page) || p.page < 1 || p.page > pages.length) throw new PdfError(tr('err.pdf.pageMissing', { page: p.page }));
+    if (![p.x, p.y, p.w, p.h].every(inside) || p.w < 0.01 || p.h < 0.005 || p.x + p.w > 1.0001 || p.y + p.h > 1.0001) throw new PdfError(tr('err.pdf.signOutside'));
     const page = pages[p.page - 1];
     const vb = visibleBox(page);
     const width = p.w * vb.visibleWidth;

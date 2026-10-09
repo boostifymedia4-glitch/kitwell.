@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { validateFiles, type FileRules } from './files';
 import { errorMessage } from './format';
+import { tr } from '@/i18n/translate';
 
 let idCounter = 0;
 export const nextId = () => `f${++idCounter}`;
@@ -46,7 +47,7 @@ export function useFileQueue(rules: FileRules, multiple: boolean) {
     (files: File[]) => {
       const base = multiple ? itemsRef.current : [];
       const { accepted, rejected } = validateFiles(multiple ? files : files.slice(0, 1), rulesRef.current, base.length);
-      const extra = multiple ? [] : files.slice(1).map((f) => ({ name: f.name, reason: 'Only one file can be used at a time.' }));
+      const extra = multiple ? [] : files.slice(1).map((f) => ({ name: f.name, reason: tr('err.files.onlyOne') }));
       setRejections([...rejected, ...extra]);
       if (accepted.length > 0) setItems([...base, ...accepted.map((file) => ({ id: nextId(), file }))]);
     },

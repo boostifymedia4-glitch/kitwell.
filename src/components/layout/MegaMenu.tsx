@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useId, useRef, useState, type KeyboardEvent } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { categories, categoryPath, getCategory, groupsInCategory, toolPath, toolsInCategory, toolsInGroup, tools } from '@/tools/registry';
-import { English } from '@/i18n/English';
+import { useLocalize } from '@/i18n/useLocalize';
 import { useI18n, type MessageKey } from '@/i18n';
 import type { CategoryId } from '@/tools/types';
 import { Icon } from '../Icon';
@@ -27,6 +27,7 @@ export function MegaMenu() {
   const { pathname } = useLocation();
   const baseId = useId();
   const { t } = useI18n();
+  const loc = useLocalize();
 
   const close = useCallback(() => {
     window.clearTimeout(timer.current);
@@ -112,7 +113,7 @@ export function MegaMenu() {
         <div className="mega-panel" id="mega-panel" role="region" aria-label={t('nav.allTools')}>
           <div className="container">
             <div className="mega-body">
-              <div className="mega-rail" role="tablist" aria-label="Tool categories" aria-orientation="vertical" onKeyDown={onTabKeys}>
+              <div className="mega-rail" role="tablist" aria-label={t('mega.categories')} aria-orientation="vertical" onKeyDown={onTabKeys}>
                 {categories.map((c) => (
                   <button
                     key={c.id}
@@ -142,25 +143,22 @@ export function MegaMenu() {
               </div>
               <div className="mega-content" role="tabpanel" id={panelId} aria-labelledby={`${baseId}-tab-${active}`}>
                 <div className="mega-content-head">
-                  <English as="p" style={{ display: 'block' }}>
-                    {cat.description}
-                  </English>
+                  <p>{t(`cat.${cat.id}.description`)}</p>
                   <Link to={categoryPath(cat.id)} className="mega-viewall" onClick={close}>
                     {t('mega.viewAll', { count: toolsInCategory(cat.id).length })}
                     <Icon name="arrow-right" size={14} />
                   </Link>
                 </div>
-                <English>
                 <div className="mega-groups">
                   {groupsInCategory(cat.id).map((g) => (
-                    <section key={g.name} aria-label={g.name}>
-                      <h2 className="mega-heading">{g.name}</h2>
+                    <section key={g.name} aria-label={loc.group(g).name}>
+                      <h2 className="mega-heading">{loc.group(g).name}</h2>
                       <ul>
-                        {toolsInGroup(cat.id, g.name).map((t) => (
-                          <li key={t.slug}>
-                            <Link to={toolPath(t)} className="mega-item" onClick={close}>
-                              <ToolIcon tool={t} size="sm" />
-                              <span>{t.name}</span>
+                        {toolsInGroup(cat.id, g.name).map((tool) => (
+                          <li key={tool.slug}>
+                            <Link to={toolPath(tool)} className="mega-item" onClick={close}>
+                              <ToolIcon tool={tool} size="sm" />
+                              <span>{loc.tool(tool).name}</span>
                             </Link>
                           </li>
                         ))}
@@ -168,7 +166,6 @@ export function MegaMenu() {
                     </section>
                   ))}
                 </div>
-                </English>
               </div>
             </div>
             <div className="mega-foot">

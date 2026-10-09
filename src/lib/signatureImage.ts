@@ -44,14 +44,14 @@ export function whiteToTransparent(data: Uint8ClampedArray, threshold = 235): nu
 
 /** The ink colours offered for drawn and typed signatures. */
 export const INK_COLOURS = [
-  { value: '#111111', label: 'Black' },
-  { value: '#1d3fa8', label: 'Blue' },
-  { value: '#8a1c1c', label: 'Dark red' },
+  { value: '#111111' },
+  { value: '#1d3fa8' },
+  { value: '#8a1c1c' },
 ] as const;
 
 /** Handwriting-style font stacks. What is installed differs per device, so each ends in a generic fallback. */
 export const SIGNATURE_FONTS = [
-  { id: 'script', label: 'Script', stack: '"Segoe Script", "Brush Script MT", "Snell Roundhand", "Apple Chancery", cursive', italic: false },
-  { id: 'casual', label: 'Casual handwriting', stack: '"Bradley Hand", "Segoe Print", "Comic Sans MS", "Chalkboard SE", cursive', italic: false },
-  { id: 'formal', label: 'Formal italic', stack: 'Georgia, "Times New Roman", serif', italic: true },
+  { id: 'script', stack: '"Segoe Script", "Brush Script MT", "Snell Roundhand", "Apple Chancery", cursive', italic: false },
+  { id: 'casual', stack: '"Bradley Hand", "Segoe Print", "Comic Sans MS", "Chalkboard SE", cursive', italic: false },
+  { id: 'formal', stack: 'Georgia, "Times New Roman", serif', italic: true },
 ] as const;

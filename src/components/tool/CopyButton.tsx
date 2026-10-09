@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
+import { useI18n } from '@/i18n';
 import { copyText } from '@/lib/download';
 import { Icon } from '../Icon';
 
-export function CopyButton({ text, label = 'Copy', variant = 'secondary', size = 'sm', disabled }: { text: string; label?: string; variant?: 'primary' | 'secondary' | 'ghost'; size?: 'sm' | 'md'; disabled?: boolean }) {
+export function CopyButton({ text, label, variant = 'secondary', size = 'sm', disabled }: { text: string; label?: string; variant?: 'primary' | 'secondary' | 'ghost'; size?: 'sm' | 'md'; disabled?: boolean }) {
+  const { t } = useI18n();
   const [state, setState] = useState<'idle' | 'copied' | 'failed'>('idle');
   const timer = useRef<number>(0);
   useEffect(() => () => window.clearTimeout(timer.current), []);
@@ -17,7 +19,7 @@ export function CopyButton({ text, label = 'Copy', variant = 'secondary', size =
   return (
     <button type="button" className={`btn btn-${variant} ${size === 'sm' ? 'btn-sm' : ''}`} onClick={onClick} disabled={disabled || !text}>
       <Icon name={state === 'copied' ? 'check' : 'copy'} size={14} />
-      <span aria-live="polite">{state === 'copied' ? 'Copied' : state === 'failed' ? 'Copy failed' : label}</span>
+      <span aria-live="polite">{state === 'copied' ? t('ui.copied') : state === 'failed' ? t('ui.copyFailed') : (label ?? t('ui.copy'))}</span>
     </button>
   );
 }

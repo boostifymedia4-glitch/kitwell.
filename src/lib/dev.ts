@@ -1,3 +1,4 @@
+import { tr } from '@/i18n/translate';
 /** Pure developer-tool utilities: JSON, XML, encoding, regex, generators, time and colour. */
 
 // ---------- JSON ----------
@@ -43,24 +44,24 @@ function scanJson(text: string): { pos: number; message: string } | null {
       if (c === '\\') {
         const n = text[i + 1];
         if (n === 'u') {
-          if (!/^[0-9a-fA-F]{4}$/.test(text.slice(i + 2, i + 6))) fail('Invalid unicode escape');
+          if (!/^[0-9a-fA-F]{4}$/.test(text.slice(i + 2, i + 6))) fail(tr('err.json.badUnicode'));
           i += 6;
         } else if (n !== undefined && '"\\/bfnrt'.includes(n)) i += 2;
-        else fail('Invalid escape sequence in string');
-      } else if (c < ' ') fail('Unescaped control character in string (use \\n for line breaks)');
+        else fail(tr('err.json.badEscape'));
+      } else if (c < ' ') fail(tr('err.json.controlChar'));
       else i++;
     }
-    fail('Unterminated string');
+    fail(tr('err.json.unterminatedString'));
   };
   const num = () => {
     const m = /^-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d+)?/.exec(text.slice(i));
-    if (!m) fail('Invalid number');
+    if (!m) fail(tr('err.json.invalidNumber'));
     else i += m[0].length;
   };
   const value = (): void => {
     ws();
     const c = text[i];
-    if (c === undefined) fail('Unexpected end of JSON');
+    if (c === undefined) fail(tr('err.json.unexpectedEnd'));
     else if (c === '{') {
       i++;
       ws();
@@ -70,7 +71,7 @@ function scanJson(text: string): { pos: number; message: string } | null {
       }
       for (;;) {
         ws();
-        if (text[i] !== '"') fail(text[i] === '}' ? 'Trailing comma is not allowed in JSON' : 'Expected a property name in double quotes');
+        if (text[i] !== '"') fail(text[i] === '}' ? tr('err.json.trailingComma') : tr('err.json.propertyName'));
         str();
         ws();
         if (text[i] !== ':') fail('Expected ":" after property name');
@@ -96,7 +97,7 @@ function scanJson(text: string): { pos: number; message: string } | null {
       }
       for (;;) {
         ws();
-        if (text[i] === ']') fail('Trailing comma is not allowed in JSON');
+        if (text[i] === ']') fail(tr('err.json.trailingComma'));
         value();
         ws();
         if (text[i] === ',') {
@@ -114,12 +115,12 @@ function scanJson(text: string): { pos: number; message: string } | null {
     else if (c === 'f') literal('false');
     else if (c === 'n') literal('null');
     else if (c === '-' || (c >= '0' && c <= '9')) num();
-    else fail(c === "'" ? 'Strings must use double quotes' : `Unexpected character "${c}"`);
+    else fail(c === "'" ? tr('err.json.doubleQuotes') : tr('err.json.unexpectedChar', { char: c }));
   };
   try {
     value();
     ws();
-    if (i < text.length) fail('Unexpected content after the end of the JSON value');
+    if (i < text.length) fail(tr('err.json.trailingContent'));
     return null;
   } catch (e) {
     if (typeof e === 'object' && e && 'pos' in e) return e as { pos: number; message: string };
@@ -128,13 +129,13 @@ function scanJson(text: string): { pos: number; message: string } | null {
 }
 
 export function parseJson(text: string): JsonResult<unknown> {
-  if (!text.trim()) return { ok: false, error: { message: 'Enter some JSON to continue.', line: 1, column: 1 } };
+  if (!text.trim()) return { ok: false, error: { message: tr('err.json.empty'), line: 1, column: 1 } };
   try {
     return { ok: true, value: JSON.parse(text) };
   } catch (err) {
     const located = scanJson(text);
     if (located) return { ok: false, error: { message: located.message, ...positionToLineCol(text, located.pos) } };
-    return { ok: false, error: { message: err instanceof Error ? err.message : 'Invalid JSON', line: 1, column: 1 } };
+    return { ok: false, error: { message: err instanceof Error ? err.message : tr('err.json.invalid'), line: 1, column: 1 } };
   }
 }
 
@@ -211,7 +212,7 @@ export function parseXml(text: string): { ok: true; nodes: XmlNode[] } | { ok: f
     let next: number;
     if (text.startsWith('<!--', i)) {
       next = rawEnd('<!--', '-->');
-      if (next < 0) return err('Unterminated comment', i);
+      if (next < 0) return err(tr('err.xml.unterminatedComment'), i);
       stack[stack.length - 1].children.push({ kind: 'raw', value: text.slice(i, next) });
     } else if (text.startsWith('<![CDATA[', i)) {
       next = rawEnd('<![CDATA[', ']]>');
@@ -219,7 +220,7 @@ export function parseXml(text: string): { ok: true; nodes: XmlNode[] } | { ok: f
       stack[stack.length - 1].children.push({ kind: 'raw', value: text.slice(i, next) });
     } else if (text.startsWith('<?', i)) {
       next = rawEnd('<?', '?>');
-      if (next < 0) return err('Unterminated processing instruction', i);
+      if (next < 0) return err(tr('err.xml.unterminatedPi'), i);
       stack[stack.length - 1].children.push({ kind: 'raw', value: text.slice(i, next) });
     } else if (text.startsWith('<!', i)) {
       // DOCTYPE, possibly with an internal subset in brackets.
@@ -230,7 +231,7 @@ export function parseXml(text: string): { ok: true; nodes: XmlNode[] } | { ok: f
         else if (text[j] === ']') depth--;
         else if (text[j] === '>' && depth <= 0) break;
       }
-      if (j >= text.length) return err('Unterminated declaration', i);
+      if (j >= text.length) return err(tr('err.xml.unterminatedDeclaration'), i);
       next = j + 1;
       stack[stack.length - 1].children.push({ kind: 'raw', value: text.slice(i, next) });
     } else {
@@ -244,18 +245,18 @@ export function parseXml(text: string): { ok: true; nodes: XmlNode[] } | { ok: f
         } else if (c === '"' || c === "'") quote = c;
         else if (c === '>') break;
       }
-      if (j >= text.length) return err(quote ? 'Unterminated attribute value' : 'Unterminated tag', i);
+      if (j >= text.length) return err(quote ? tr('err.xml.unterminatedAttribute') : tr('err.xml.unterminatedTag'), i);
       const inner = text.slice(i + 1, j);
       next = j + 1;
       if (inner.startsWith('/')) {
         const name = inner.slice(1).trim();
         const top = stack[stack.length - 1];
-        if (stack.length === 1) return err(`Unexpected closing tag </${name}>`, i);
-        if (top.name !== name) return err(`Mismatched closing tag: expected </${top.name}> but found </${name}>`, i);
+        if (stack.length === 1) return err(tr('err.xml.unexpectedClosing', { name }), i);
+        if (top.name !== name) return err(tr('err.xml.mismatched', { expected: top.name, found: name }), i);
         stack.pop();
       } else {
         const m = /^([^\s/>]+)([\s\S]*?)(\/?)$/.exec(inner);
-        if (!m || !/^[A-Za-z_:][\w:.-]*$/.test(m[1])) return err(`Invalid tag name "${inner.split(/\s/)[0]}"`, i);
+        if (!m || !/^[A-Za-z_:][\w:.-]*$/.test(m[1])) return err(tr('err.xml.invalidTagName', { name: inner.split(/\s/)[0] }), i);
         const node: XmlNode = { kind: 'element', name: m[1], attrs: m[2].trim(), selfClosing: m[3] === '/', children: [] };
         stack[stack.length - 1].children.push(node);
         if (!node.selfClosing) stack.push({ name: node.name, pos: i, children: node.children });
@@ -265,18 +266,18 @@ export function parseXml(text: string): { ok: true; nodes: XmlNode[] } | { ok: f
   }
   if (stack.length > 1) {
     const open = stack[stack.length - 1];
-    return err(`Unclosed tag <${open.name}>`, open.pos);
+    return err(tr('err.xml.unclosedTag', { name: open.name }), open.pos);
   }
   const elements = root.filter((n) => n.kind === 'element');
-  if (elements.length === 0) return err('No XML element found', 0);
-  if (elements.length > 1) return err('An XML document must have a single root element', 0);
+  if (elements.length === 0) return err(tr('err.xml.noElement'), 0);
+  if (elements.length > 1) return err(tr('err.xml.singleRoot'), 0);
   const stray = root.find((n) => n.kind === 'text' && n.value.trim() !== '');
-  if (stray) return err('Text is not allowed outside the root element', text.indexOf((stray as { value: string }).value.trim()));
+  if (stray) return err(tr('err.xml.strayText'), text.indexOf((stray as { value: string }).value.trim()));
   return { ok: true, nodes: root };
 }
 
 export function formatXml(text: string, indent: number | 'tab', minify: boolean): { ok: true; value: string } | { ok: false; error: XmlError } {
-  if (!text.trim()) return { ok: false, error: { message: 'Enter some XML to continue.', line: 1, column: 1 } };
+  if (!text.trim()) return { ok: false, error: { message: tr('err.xml.empty'), line: 1, column: 1 } };
   const parsed = parseXml(text);
   if (!parsed.ok) return parsed;
   const unit = indent === 'tab' ? '\t' : ' '.repeat(indent);
@@ -343,7 +344,7 @@ export function urlDecode(text: string, mode: UrlMode, plusAsSpace: boolean): st
   try {
     return mode === 'component' ? decodeURIComponent(input) : decodeURI(input);
   } catch {
-    throw new Error('The text contains a malformed percent sequence (for example a "%" not followed by two hex digits).');
+    throw new Error(tr('err.dev.malformedPercent'));
   }
 }
 
@@ -358,14 +359,14 @@ export function base64Encode(text: string, urlSafe: boolean): string {
 export function base64ToBytes(input: string): Uint8Array {
   const cleaned = input.replace(/\s+/g, '').replace(/-/g, '+').replace(/_/g, '/');
   if (!/^[A-Za-z0-9+/]*={0,2}$/.test(cleaned) || cleaned.length % 4 === 1) {
-    throw new Error('This is not valid Base64. Check for missing, extra or unsupported characters.');
+    throw new Error(tr('err.dev.badBase64'));
   }
   const padded = cleaned + '='.repeat((4 - (cleaned.length % 4)) % 4);
   let bin: string;
   try {
     bin = atob(padded);
   } catch {
-    throw new Error('This is not valid Base64. Check for missing, extra or unsupported characters.');
+    throw new Error(tr('err.dev.badBase64'));
   }
   return Uint8Array.from(bin, (c) => c.charCodeAt(0));
 }
@@ -375,7 +376,7 @@ export function base64Decode(input: string): string {
   try {
     return new TextDecoder('utf-8', { fatal: true }).decode(bytes);
   } catch {
-    throw new Error('The decoded data is not valid UTF-8 text. It may be binary data such as an image.');
+    throw new Error(tr('err.dev.notUtf8'));
   }
 }
 
@@ -403,7 +404,7 @@ export function runRegex(pattern: string, flags: string, text: string, replaceme
   try {
     re = new RegExp(pattern, flags.includes('g') ? flags : flags + 'g');
   } catch (e) {
-    return { error: e instanceof Error ? e.message : 'Invalid regular expression', matches: [], truncated: false };
+    return { error: e instanceof Error ? e.message : tr('err.regex.invalid'), matches: [], truncated: false };
   }
   const matches: RegexMatch[] = [];
   let truncated = false;
@@ -436,6 +437,22 @@ export function secureRandomInt(max: number): number {
   return buf[0] % max;
 }
 
+/** True for passwords with three or more identical characters in a row, or a run of four consecutive characters (1234, abcd, 9876). */
+export function hasWeakPattern(password: string): boolean {
+  const lower = password.toLowerCase();
+  for (let i = 0; i + 2 < lower.length; i++) {
+    if (lower[i] === lower[i + 1] && lower[i] === lower[i + 2]) return true;
+  }
+  for (let i = 0; i + 3 < lower.length; i++) {
+    const a = lower.charCodeAt(i);
+    const d1 = lower.charCodeAt(i + 1) - a;
+    if ((d1 === 1 || d1 === -1) && lower.charCodeAt(i + 2) - lower.charCodeAt(i + 1) === d1 && lower.charCodeAt(i + 3) - lower.charCodeAt(i + 2) === d1) {
+      if (/^[a-z0-9]{4}$/.test(lower.slice(i, i + 4))) return true;
+    }
+  }
+  return false;
+}
+
 export interface PasswordOptions {
   length: number;
   lower: boolean;
@@ -449,7 +466,7 @@ const SETS = {
   lower: 'abcdefghijklmnopqrstuvwxyz',
   upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
   digits: '0123456789',
-  symbols: '@#$*+-!',
+  symbols: '@#$*',
 };
 const AMBIGUOUS = /[Il1O0o]/g;
 
@@ -461,8 +478,17 @@ export function passwordPools(o: PasswordOptions): string[] {
 }
 
 export function generatePassword(o: PasswordOptions): string {
+  // A random password that happens to contain 1111 or abcd is rare, but would be easy to guess, so try again.
+  for (let i = 0; i < 50; i++) {
+    const candidate = buildPassword(o);
+    if (!hasWeakPattern(candidate)) return candidate;
+  }
+  return buildPassword(o);
+}
+
+function buildPassword(o: PasswordOptions): string {
   const pools = passwordPools(o);
-  if (pools.length === 0) throw new Error('Select at least one character type.');
+  if (pools.length === 0) throw new Error(tr('err.dev.noCharType'));
   const length = Math.min(128, Math.max(pools.length, Math.floor(o.length)));
   const all = pools.join('');
   // Guarantee at least one character from every selected pool, then fill and shuffle.
@@ -495,11 +521,11 @@ export type TimestampUnit = 'auto' | 's' | 'ms';
 
 export function parseTimestamp(input: string, unit: TimestampUnit): { date: Date; unit: 's' | 'ms' } {
   const trimmed = input.trim();
-  if (!/^-?\d+(\.\d+)?$/.test(trimmed)) throw new Error('Enter a number of seconds or milliseconds since 1970-01-01 UTC.');
+  if (!/^-?\d+(\.\d+)?$/.test(trimmed)) throw new Error(tr('err.dev.timestampFormat'));
   const resolved: 's' | 'ms' = unit === 'auto' ? (trimmed.replace('-', '').split('.')[0].length >= 13 ? 'ms' : 's') : unit;
   const ms = Number(trimmed) * (resolved === 's' ? 1000 : 1);
   const date = new Date(ms);
-  if (Number.isNaN(date.getTime())) throw new Error('That timestamp is outside the supported date range.');
+  if (Number.isNaN(date.getTime())) throw new Error(tr('err.dev.timestampRange'));
   return { date, unit: resolved };
 }
 

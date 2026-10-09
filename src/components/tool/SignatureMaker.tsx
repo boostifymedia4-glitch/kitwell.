@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type PointerEvent } from 'react';
 import { MB } from '@/lib/files';
 import { useFileQueue } from '@/lib/hooks';
+import { tr, useI18n } from '@/i18n';
 import { INK_COLOURS, SIGNATURE_FONTS, contentBounds, whiteToTransparent } from '@/lib/signatureImage';
 import { Icon } from '../Icon';
 import { CheckField, Field, Segmented } from './Fields';
@@ -43,10 +44,11 @@ function finish(source: HTMLCanvasElement, withDate: boolean, ink: string): HTML
   return out;
 }
 
-const toBlob = (canvas: HTMLCanvasElement) => new Promise<Blob>((resolve, reject) => canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('The signature could not be saved.'))), 'image/png'));
+const toBlob = (canvas: HTMLCanvasElement) => new Promise<Blob>((resolve, reject) => canvas.toBlob((b) => (b ? resolve(b) : reject(new Error(tr('signatureMaker.err.save')))), 'image/png'));
 
 /** Lets people create a signature by drawing, typing or uploading, and hands back a transparent PNG. */
 export function SignatureMaker({ onReady }: { onReady: (sig: SignatureImage) => void }) {
+  const { t } = useI18n();
   const [tab, setTab] = useState<Tab>('draw');
   const [ink, setInk] = useState<string>(INK_COLOURS[0].value);
   const [withDate, setWithDate] = useState(false);
@@ -119,7 +121,7 @@ export function SignatureMaker({ onReady }: { onReady: (sig: SignatureImage) => 
         setError(null);
         setUploadReady(true);
       })
-      .catch(() => !cancelled && setError('That picture could not be read. Use a valid PNG or JPG.'));
+      .catch(() => !cancelled && setError(tr('signatureMaker.err.read')));
     return () => {
       cancelled = true;
     };
@@ -174,30 +176,30 @@ export function SignatureMaker({ onReady }: { onReady: (sig: SignatureImage) => 
     if (!source) return;
     const trimmed = finish(source, withDate, ink);
     if (!trimmed) {
-      setError('There is nothing to use yet. Draw, type or upload your signature first.');
+      setError(t('signatureMaker.err.empty'));
       return;
     }
     try {
       const blob = await toBlob(trimmed);
       onReady({ blob, bytes: new Uint8Array(await blob.arrayBuffer()), aspect: trimmed.width / trimmed.height });
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'The signature could not be saved.');
+      setError(e instanceof Error ? e.message : t('signatureMaker.err.save'));
     }
   };
 
   return (
     <div className="stack">
       <Segmented
-        label="Create your signature"
+        label={t('signatureMaker.create')}
         value={tab}
-        onChange={(t) => {
-          setTab(t);
+        onChange={(next) => {
+          setTab(next);
           setError(null);
         }}
         options={[
-          { value: 'draw', label: 'Draw' },
-          { value: 'type', label: 'Type' },
-          { value: 'upload', label: 'Upload' },
+          { value: 'draw', label: t('signatureMaker.tab.draw') },
+          { value: 'type', label: t('signatureMaker.tab.type') },
+          { value: 'upload', label: t('signatureMaker.tab.upload') },
         ]}
       />
 
@@ -207,16 +209,16 @@ export function SignatureMaker({ onReady }: { onReady: (sig: SignatureImage) => 
             ref={drawRef}
             className="signature-pad"
             role="img"
-            aria-label="Signature drawing area. Draw with a mouse, finger or pen."
+            aria-label={t('signatureMaker.drawArea')}
             onPointerDown={down}
             onPointerMove={move}
             onPointerUp={up}
             onPointerCancel={up}
           />
           <div className="row row-between">
-            <span className="hint">Sign inside the box using your mouse, finger or pen.</span>
+            <span className="hint">{t('signatureMaker.drawHint')}</span>
             <button type="button" className="btn btn-ghost btn-sm" onClick={clearDrawing} disabled={!hasInk}>
-              <Icon name="eraser" size={14} /> Clear
+              <Icon name="eraser" size={14} /> {t('signatureMaker.clear')}
             </button>
           </div>
         </div>
@@ -225,36 +227,36 @@ export function SignatureMaker({ onReady }: { onReady: (sig: SignatureImage) => 
       {tab === 'type' && (
         <div className="stack-sm">
           <div className="options-grid">
-            <Field label="Your name" hint="Type the name to sign with.">
-              {(id) => <input id={id} className="input" value={name} maxLength={60} placeholder="Ayesha Khan" onChange={(e) => setName(e.target.value)} />}
+            <Field label={t('signatureMaker.name')} hint={t('signatureMaker.nameHint')}>
+              {(id) => <input id={id} className="input" value={name} maxLength={60} placeholder={t('signatureMaker.namePlaceholder')} onChange={(e) => setName(e.target.value)} />}
             </Field>
-            <Field label="Style" hint="Fonts depend on your device.">
+            <Field label={t('signatureMaker.style')} hint={t('signatureMaker.styleHint')}>
               {(id) => (
                 <select id={id} className="select" value={fontId} onChange={(e) => setFontId(e.target.value as typeof fontId)}>
                   {SIGNATURE_FONTS.map((f) => (
                     <option key={f.id} value={f.id}>
-                      {f.label}
+                      {t(`signatureMaker.font.${f.id}`)}
                     </option>
                   ))}
                 </select>
               )}
             </Field>
           </div>
-          <canvas ref={typedRef} className="signature-pad" width={DRAW_W} height={DRAW_H / 2} role="img" aria-label={name.trim() ? `Typed signature preview: ${name}` : 'Typed signature preview'} />
+          <canvas ref={typedRef} className="signature-pad" width={DRAW_W} height={DRAW_H / 2} role="img" aria-label={name.trim() ? t('signatureMaker.typedPreviewNamed', { name }) : t('signatureMaker.typedPreview')} />
         </div>
       )}
 
       {tab === 'upload' && (
         <div className="stack-sm">
-          {!uploadFile && <UploadDropzone extensions={['png', 'jpg', 'jpeg']} maxBytes={5 * MB} compact title="Add a picture of your signature" onFiles={upload.add} />}
+          {!uploadFile && <UploadDropzone extensions={['png', 'jpg', 'jpeg']} maxBytes={5 * MB} compact title={t('signatureMaker.addPicture')} onFiles={upload.add} />}
           <RejectionList items={upload.rejections} onDismiss={upload.dismissRejections} />
           {uploadFile && (
             <>
-              <canvas ref={uploadRef} className="signature-pad signature-pad-upload" role="img" aria-label="Uploaded signature preview" />
+              <canvas ref={uploadRef} className="signature-pad signature-pad-upload" role="img" aria-label={t('signatureMaker.uploadedPreview')} />
               <div className="row row-between">
-                <CheckField label="Make the white background transparent" checked={removeWhite} onChange={setRemoveWhite} />
+                <CheckField label={t('signatureMaker.transparent')} checked={removeWhite} onChange={setRemoveWhite} />
                 <button type="button" className="btn btn-ghost btn-sm" onClick={upload.clear}>
-                  Choose another picture
+                  {t('signatureMaker.chooseAnother')}
                 </button>
               </div>
             </>
@@ -263,13 +265,13 @@ export function SignatureMaker({ onReady }: { onReady: (sig: SignatureImage) => 
         </div>
       )}
 
-      {tab !== 'upload' && <Segmented label="Ink colour" value={ink} onChange={setInk} options={INK_COLOURS.map((c) => ({ value: c.value, label: c.label }))} />}
-      <CheckField label="Add today’s date under the signature" checked={withDate} onChange={setWithDate} />
+      {tab !== 'upload' && <Segmented label={t('signatureMaker.ink')} value={ink} onChange={setInk} options={INK_COLOURS.map((c) => ({ value: c.value, label: t(`signatureMaker.ink.${c.value.slice(1)}`) }))} />}
+      <CheckField label={t('signatureMaker.date')} checked={withDate} onChange={setWithDate} />
       {error && <ErrorMessage onDismiss={() => setError(null)}>{error}</ErrorMessage>}
       <div className="toolbar">
         <button type="button" className="btn btn-primary" onClick={use} disabled={!canUse}>
           <Icon name="check" size={16} />
-          Use this signature
+          {t('signatureMaker.use')}
         </button>
       </div>
     </div>

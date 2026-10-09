@@ -7,9 +7,9 @@ import { ToolGrid } from '@/components/ui/ToolCard';
 import { ToolIcon } from '@/components/ui/ToolIcon';
 import { ToolSearch } from '@/components/ui/ToolSearch';
 import { site } from '@/config/site';
-import { English } from '@/i18n/English';
+import { useLocalize } from '@/i18n/useLocalize';
 import { useI18n, type MessageKey } from '@/i18n';
-import { getPageMeta } from '@/pageMeta';
+import { usePageMeta } from '@/i18n/usePageMeta';
 import { categories, categoryPath, getTool, showcaseTools, popularTools, toolPath, toolsInCategory, tools } from '@/tools/registry';
 
 const SHORTCUTS = ['jpg-to-png', 'image-compressor', 'merge-pdf', 'pdf-to-jpg', 'json-formatter', 'word-counter']
@@ -22,16 +22,13 @@ const TRUST: { icon: string; title: MessageKey; text: MessageKey }[] = [
   { icon: 'info', title: 'home.trust3Title', text: 'home.trust3Text' },
 ];
 
-const FAQ = [
-  { q: 'Are the tools really free?', a: `Yes. There is no sign-up and no per-use fee. ${site.name} may be supported by advertising in future; ads will always be labelled and kept away from tool controls and download buttons.` },
-  { q: 'Are my files uploaded?', a: 'No. Image, PDF, text and developer tools run in your browser using JavaScript. Files are read locally and results are created locally. See the Privacy Policy for details.' },
-  { q: 'Which browsers work best?', a: 'Current versions of Chrome, Edge, Firefox and Safari. A few features, such as saving WebP images, depend on what your browser supports; the tool will tell you if something is unavailable.' },
-  { q: 'Is there a file size limit?', a: 'Because work happens on your device, limits depend on your memory. Each tool sets a sensible cap (for example 25 MB per image and 100 MB per PDF) and shows it before you upload.' },
-];
+const FAQ_COUNT = 4;
 
 export default function Home() {
-  const meta = getPageMeta('/');
+  const meta = usePageMeta('/');
   const { t } = useI18n();
+  const loc = useLocalize();
+  const faq = Array.from({ length: FAQ_COUNT }, (_, i) => ({ q: t(`home.faq${i + 1}.q`), a: t(`home.faq${i + 1}.a`, { site: site.name }) }));
   return (
     <>
       {meta && <Seo {...meta} />}
@@ -42,16 +39,16 @@ export default function Home() {
             {t('home.lead', { count: tools.length })}
           </p>
           <ToolSearch variant="hero" />
-          <English><ul className="shortcuts" aria-label={t('home.popular')}>
-            {SHORTCUTS.map((t) => (
-              <li key={t.slug}>
-                <Link to={toolPath(t)} className="shortcut">
-                  <ToolIcon tool={t} size="sm" />
-                  {t.name}
+          <ul className="shortcuts" aria-label={t('home.popular')}>
+            {SHORTCUTS.map((s) => (
+              <li key={s.slug}>
+                <Link to={toolPath(s)} className="shortcut">
+                  <ToolIcon tool={s} size="sm" />
+                  {loc.tool(s).name}
                 </Link>
               </li>
             ))}
-          </ul></English>
+          </ul>
         </div>
       </section>
 
@@ -66,9 +63,7 @@ export default function Home() {
               {t('home.allTools', { count: tools.length })} <Icon name="arrow-right" size={14} />
             </Link>
           </div>
-          <English>
-            <ToolGrid tools={popularTools()} showCategory />
-          </English>
+          <ToolGrid tools={popularTools()} showCategory />
         </section>
 
         {categories.map((c) => (
@@ -80,16 +75,14 @@ export default function Home() {
                 </span>
                 <div>
                   <h2 id={`home-${c.id}`}>{t(`cat.${c.id}` as MessageKey)}</h2>
-                  <English as="p" style={{ display: 'block' }}>{c.description}</English>
+                  <p>{t(`cat.${c.id}.description`)}</p>
                 </div>
               </div>
               <Link to={categoryPath(c.id)} className="btn btn-secondary btn-sm">
                 {t('home.viewAll', { count: toolsInCategory(c.id).length })} <Icon name="arrow-right" size={14} />
               </Link>
             </div>
-            <English>
-              <ToolGrid tools={showcaseTools(c.id)} />
-            </English>
+            <ToolGrid tools={showcaseTools(c.id)} />
           </section>
         ))}
 
@@ -115,14 +108,12 @@ export default function Home() {
           </div>
         </section>
 
-        <English>
-          <section className="section" aria-labelledby="faq">
-            <div className="section-head">
-              <h2 id="faq">Questions, answered</h2>
-            </div>
-            <Faq items={FAQ} />
-          </section>
-        </English>
+        <section className="section" aria-labelledby="faq">
+          <div className="section-head">
+            <h2 id="faq">{t('home.faqTitle')}</h2>
+          </div>
+          <Faq items={faq} />
+        </section>
       </div>
     </>
   );

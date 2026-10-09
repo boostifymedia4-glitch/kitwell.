@@ -4,11 +4,13 @@ import { ColorField, RangeField, SelectField } from '@/components/tool/Fields';
 import { formatBytes, outputName } from '@/lib/format';
 import { processImage } from '@/lib/image';
 import { FORMATS, sameFormatAs, type FormatKey } from '@/lib/imageFormats';
+import { useI18n } from '@/i18n';
 import type { ToolImplementation } from '../../types';
 
 type Target = 'same' | FormatKey;
 
 const ImageCompress: ToolImplementation = () => {
+  const { t } = useI18n();
   const [target, setTarget] = useState<Target>('same');
   const [quality, setQuality] = useState(75);
   const [maxDim, setMaxDim] = useState('0');
@@ -16,37 +18,37 @@ const ImageCompress: ToolImplementation = () => {
 
   return (
     <BatchImageTool
-      actionLabel="Compress images"
+      actionLabel={t('imageCompress.action')}
       zipName="compressed-images.zip"
       options={
         <>
           <SelectField
-            label="Output format"
+            label={t('imageCompress.outputFormat')}
             value={target}
             onChange={setTarget}
             options={[
-              { value: 'same', label: 'Same as original' },
-              { value: 'jpeg', label: 'JPG (smallest for photos)' },
-              { value: 'webp', label: 'WebP (smaller, modern)' },
-              { value: 'png', label: 'PNG (lossless)' },
+              { value: 'same', label: t('imageCompress.format.same') },
+              { value: 'jpeg', label: t('imageCompress.format.jpeg') },
+              { value: 'webp', label: t('imageCompress.format.webp') },
+              { value: 'png', label: t('imageCompress.format.png') },
             ]}
           />
-          <RangeField label="Quality" value={quality} min={10} max={100} onChange={setQuality} format={(v) => `${v}%`} />
+          <RangeField label={t('imageCompress.quality')} value={quality} min={10} max={100} onChange={setQuality} format={(v) => `${v}%`} />
           <SelectField
-            label="Maximum size"
+            label={t('imageCompress.maxSize')}
             value={maxDim}
             onChange={setMaxDim}
-            hint="Larger images are scaled down, never up."
+            hint={t('imageCompress.maxSize.hint')}
             options={[
-              { value: '0', label: 'Keep original size' },
-              { value: '3840', label: '3840 px (4K)' },
-              { value: '2560', label: '2560 px' },
-              { value: '1920', label: '1920 px (Full HD)' },
-              { value: '1280', label: '1280 px' },
-              { value: '800', label: '800 px' },
+              { value: '0', label: t('imageCompress.maxSize.keep') },
+              { value: '3840', label: t('imageCompress.maxSize.4k') },
+              { value: '2560', label: t('imageCompress.maxSize.2560') },
+              { value: '1920', label: t('imageCompress.maxSize.fullHd') },
+              { value: '1280', label: t('imageCompress.maxSize.1280') },
+              { value: '800', label: t('imageCompress.maxSize.800') },
             ]}
           />
-          <ColorField label="Background for transparency" value={background} onChange={setBackground} />
+          <ColorField label={t('imageCompress.background')} value={background} onChange={setBackground} />
         </>
       }
       process={async (file) => {
@@ -61,8 +63,8 @@ const ImageCompress: ToolImplementation = () => {
         const saved = Math.round((1 - result.blob.size / file.size) * 100);
         const note =
           result.blob.size < file.size
-            ? `${formatBytes(file.size)} → ${formatBytes(result.blob.size)} (-${saved}%)`
-            : `${formatBytes(file.size)} → ${formatBytes(result.blob.size)} (larger; keep the original or lower the quality)`;
+            ? t('imageCompress.noteSmaller', { before: formatBytes(file.size), after: formatBytes(result.blob.size), saved })
+            : t('imageCompress.noteLarger', { before: formatBytes(file.size), after: formatBytes(result.blob.size) });
         return { name: outputName(file.name, fmt.ext, '-compressed'), blob: result.blob, note };
       }}
     />

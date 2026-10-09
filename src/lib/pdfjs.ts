@@ -3,6 +3,7 @@
  */
 import type { PDFDocumentProxy } from 'pdfjs-dist';
 import { PdfError } from './pdfOps';
+import { tr } from '@/i18n/translate';
 
 let loader: Promise<typeof import('pdfjs-dist')> | null = null;
 
@@ -25,9 +26,9 @@ export async function openPdf(bytes: Uint8Array): Promise<PDFDocumentProxy> {
     return await pdfjs.getDocument({ data: bytes.slice() }).promise;
   } catch (err) {
     if (err instanceof pdfjs.PasswordException) {
-      throw new PdfError('This PDF is password-protected. Remove the password with our Unlock PDF tool first, then try again.');
+      throw new PdfError(tr('err.pdf.passwordProtected'));
     }
-    throw new PdfError('This file could not be read as a PDF. It may be corrupted or not a PDF at all.');
+    throw new PdfError(tr('err.pdf.unreadable'));
   }
 }
 
@@ -52,7 +53,7 @@ export async function renderPageToCanvas(
   try {
     const viewport = page.getViewport({ scale });
     if (viewport.width * viewport.height > MAX_RENDER_PIXELS) {
-      throw new PdfError('This page is too large to render at the chosen resolution. Try a lower DPI.');
+      throw new PdfError(tr('err.pdf.renderTooLarge'));
     }
     canvas.width = Math.ceil(viewport.width);
     canvas.height = Math.ceil(viewport.height);
@@ -68,7 +69,7 @@ export async function renderPageToWidth(doc: PDFDocumentProxy, pageNumber: numbe
   try {
     // The size is read and the page rendered in one go: cleaning a page up before rendering it can stall PDF.js.
     const viewport = page.getViewport({ scale: targetWidth / page.getViewport({ scale: 1 }).width });
-    if (viewport.width * viewport.height > MAX_RENDER_PIXELS) throw new PdfError('This page is too large to preview.');
+    if (viewport.width * viewport.height > MAX_RENDER_PIXELS) throw new PdfError(tr('err.pdf.previewTooLarge'));
     canvas.width = Math.ceil(viewport.width);
     canvas.height = Math.ceil(viewport.height);
     await page.render({ canvas, viewport }).promise;
@@ -81,7 +82,7 @@ export async function renderPageToWidth(doc: PDFDocumentProxy, pageNumber: numbe
 export function canvasToBlob(canvas: HTMLCanvasElement, mime: string, quality?: number): Promise<Blob> {
   return new Promise((resolve, reject) => {
     canvas.toBlob(
-      (b) => (b ? resolve(b) : reject(new Error('The browser could not encode this page as an image.'))),
+      (b) => (b ? resolve(b) : reject(new Error(tr('err.pdf.encodePage')))),
       mime,
       quality,
     );

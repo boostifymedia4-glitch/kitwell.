@@ -3,6 +3,7 @@ import { validateFiles, type FileRules } from './files';
 import { errorMessage } from './format';
 import { useTask, type Rejection } from './hooks';
 import { loadPdf } from './pdfOps';
+import { tr } from '@/i18n/translate';
 
 export const PDF_RULES: FileRules = { extensions: ['pdf'], maxBytes: 100 * 1024 * 1024, maxFiles: 1 };
 
@@ -19,7 +20,7 @@ export function usePdfFile() {
 
   const load = useCallback(async (files: File[]) => {
     const { accepted, rejected } = validateFiles(files.slice(0, 1), PDF_RULES);
-    const extra = files.slice(1).map((f) => ({ name: f.name, reason: 'Only one PDF can be used at a time.' }));
+    const extra = files.slice(1).map((f) => ({ name: f.name, reason: tr('err.pdf.onlyOne') }));
     setRejections([...rejected, ...extra]);
     if (accepted.length === 0) return;
     const file = accepted[0];

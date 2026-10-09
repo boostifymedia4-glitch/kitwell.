@@ -1,5 +1,6 @@
 /** Animated GIF creation (using the small, MIT-licensed gifenc encoder) plus helpers that are testable without a browser. */
 import { GIFEncoder, applyPalette, quantize } from 'gifenc';
+import { tr } from '@/i18n/translate';
 
 export const MAX_GIF_FRAMES = 100;
 export const MIN_DELAY_MS = 20;
@@ -35,19 +36,19 @@ export const clampDelay = (ms: number) => Math.min(MAX_DELAY_MS, Math.max(MIN_DE
 
 export async function encodeGif(source: GifFrame[] | LazyFrames, opts: GifOptions, onProgress?: (done: number, total: number) => void): Promise<Uint8Array> {
   const frames: LazyFrames = Array.isArray(source) ? { count: source.length, get: async (i) => source[i] } : source;
-  if (frames.count === 0) throw new GifError('Add at least one image.');
-  if (frames.count > MAX_GIF_FRAMES) throw new GifError(`A GIF can have at most ${MAX_GIF_FRAMES} frames.`);
-  if (!(Number.isInteger(opts.width) && Number.isInteger(opts.height) && opts.width >= 1 && opts.height >= 1)) throw new GifError('The GIF size must be a whole number of pixels.');
-  if (opts.width > 65_535 || opts.height > 65_535) throw new GifError('The GIF is too large.');
-  if (opts.width * opts.height * frames.count > MAX_GIF_PIXELS) throw new GifError('This GIF would be too large for your browser to build. Use a smaller size or fewer frames.');
-  if (![256, 128, 64, 32, 16].includes(opts.colors)) throw new GifError('Choose 16, 32, 64, 128 or 256 colours.');
+  if (frames.count === 0) throw new GifError(tr('err.gif.noImages'));
+  if (frames.count > MAX_GIF_FRAMES) throw new GifError(tr('err.gif.tooManyFrames', { max: MAX_GIF_FRAMES }));
+  if (!(Number.isInteger(opts.width) && Number.isInteger(opts.height) && opts.width >= 1 && opts.height >= 1)) throw new GifError(tr('err.gif.sizeNotInteger'));
+  if (opts.width > 65_535 || opts.height > 65_535) throw new GifError(tr('err.gif.tooLarge'));
+  if (opts.width * opts.height * frames.count > MAX_GIF_PIXELS) throw new GifError(tr('err.gif.tooLargeToBuild'));
+  if (![256, 128, 64, 32, 16].includes(opts.colors)) throw new GifError(tr('err.gif.colours'));
   const expected = opts.width * opts.height * 4;
   const gif = GIFEncoder();
   const repeat = opts.plays <= 0 ? 0 : opts.plays === 1 ? -1 : opts.plays - 1;
   for (let i = 0; i < frames.count; i++) {
     onProgress?.(i, frames.count);
     const { rgba, delayMs } = await frames.get(i);
-    if (rgba.length !== expected) throw new GifError('A frame does not match the GIF size.');
+    if (rgba.length !== expected) throw new GifError(tr('err.gif.frameMismatch'));
     if (opts.transparent) {
       const palette = quantize(rgba, opts.colors, { format: 'rgba4444', oneBitAlpha: true });
       const index = applyPalette(rgba, palette, 'rgba4444');
@@ -111,7 +112,7 @@ export interface GifInfo {
 export function parseGif(bytes: Uint8Array): GifInfo {
   const text = (a: number, b: number) => String.fromCharCode(...bytes.subarray(a, b));
   const header = text(0, 6);
-  if (header !== 'GIF87a' && header !== 'GIF89a') throw new GifError('Not a GIF file.');
+  if (header !== 'GIF87a' && header !== 'GIF89a') throw new GifError(tr('err.gif.notGif'));
   const u16 = (i: number) => bytes[i] | (bytes[i + 1] << 8);
   const info: GifInfo = { version: header, width: u16(6), height: u16(8), frames: 0, delaysMs: [], loopCount: undefined, hasTransparency: false };
   let p = 13;
@@ -142,7 +143,7 @@ export function parseGif(bytes: Uint8Array): GifInfo {
       info.frames++;
       info.delaysMs.push(pendingDelay);
       pendingDelay = 0;
-    } else throw new GifError('The GIF data is damaged.');
+    } else throw new GifError(tr('err.gif.damaged'));
   }
-  throw new GifError('The GIF data is incomplete.');
+  throw new GifError(tr('err.gif.incomplete'));
 }

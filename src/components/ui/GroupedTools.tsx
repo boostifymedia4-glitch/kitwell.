@@ -1,9 +1,11 @@
+import { useLocalize } from '@/i18n/useLocalize';
 import { groupId, groupsInCategory, toolsInGroup } from '@/tools/registry';
 import type { CategoryId } from '@/tools/types';
 import { ToolGrid, type HeadingLevel } from './ToolCard';
 
 /** A category's tools, split into titled sections with a short description each. */
 export function GroupedTools({ category, groupLevel = 'h2', idPrefix = '' }: { category: CategoryId; groupLevel?: 'h2' | 'h3'; idPrefix?: string }) {
+  const loc = useLocalize();
   const Title = groupLevel;
   const cardLevel: HeadingLevel = groupLevel === 'h2' ? 'h3' : 'h4';
   return (
@@ -14,9 +16,9 @@ export function GroupedTools({ category, groupLevel = 'h2', idPrefix = '' }: { c
           <section key={g.name} className="tool-group" id={id} aria-labelledby={`${id}-title`}>
             <header className="group-head">
               <Title id={`${id}-title`} className="group-title">
-                {g.name}
+                {loc.group(g).name}
               </Title>
-              <p>{g.description}</p>
+              <p>{loc.group(g).description}</p>
             </header>
             <ToolGrid tools={toolsInGroup(category, g.name)} headingLevel={cardLevel} />
           </section>

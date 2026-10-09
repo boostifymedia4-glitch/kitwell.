@@ -1,8 +1,8 @@
 import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { English } from '@/i18n/English';
 import { useI18n } from '@/i18n';
-import { getCategory, searchTools, toolPath } from '@/tools/registry';
+import { useLocalize } from '@/i18n/useLocalize';
+import { searchTools, toolPath } from '@/tools/registry';
 import { Icon } from '../Icon';
 import { ToolIcon } from './ToolIcon';
 
@@ -15,6 +15,7 @@ interface Props {
 
 export function ToolSearch({ variant = 'header', shortcut = false, onNavigate }: Props) {
   const { t } = useI18n();
+  const loc = useLocalize();
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
@@ -22,7 +23,8 @@ export function ToolSearch({ variant = 'header', shortcut = false, onNavigate }:
   const inputRef = useRef<HTMLInputElement>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const listId = useId();
-  const results = useMemo(() => searchTools(query), [query]);
+  // Search also looks inside the translated name and description, so people can search in their own language.
+  const results = useMemo(() => searchTools(query, 8, (tool) => { const x = loc.tool(tool); return `${x.name} ${x.description}`; }), [query, loc]);
 
   useEffect(() => {
     if (!shortcut) return;
@@ -122,15 +124,13 @@ export function ToolSearch({ variant = 'header', shortcut = false, onNavigate }:
                   tabIndex={-1}
                 >
                   <ToolIcon tool={tool} size="sm" />
-                  <English as="span">
                   <span className="search-text">
                     <strong>
-                      {tool.name}
-                      <span className="search-cat">{getCategory(tool.category)?.name}</span>
+                      {loc.tool(tool).name}
+                      <span className="search-cat">{t(`cat.${tool.category}`)}</span>
                     </strong>
-                    <small>{tool.description}</small>
+                    <small>{loc.tool(tool).description}</small>
                   </span>
-                  </English>
                 </a>
               </li>
             ))

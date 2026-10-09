@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { ErrorMessage } from '@/components/tool/Feedback';
 import { CheckField, Segmented } from '@/components/tool/Fields';
 import { ClearButton, OutputBox, TextInput } from '@/components/tool/TextIO';
+import { useI18n } from '@/i18n';
 import { base64Decode, base64Encode, htmlDecode, htmlEncode, urlDecode, urlEncode, type UrlMode } from '@/lib/dev';
 import { errorMessage } from '@/lib/format';
 import type { ToolImplementation } from '../../types';
@@ -9,6 +10,7 @@ import type { ToolImplementation } from '../../types';
 type Direction = 'encode' | 'decode';
 
 const EncodeDecode: ToolImplementation = ({ tool }) => {
+  const { t } = useI18n();
   const kind = tool.config?.kind ?? 'url';
   const [direction, setDirection] = useState<Direction>('encode');
   const [text, setText] = useState('');
@@ -39,37 +41,37 @@ const EncodeDecode: ToolImplementation = ({ tool }) => {
     <div className="stack">
       <div className="options-grid">
         <Segmented
-          label="Direction"
+          label={t('encodeDecode.direction')}
           value={direction}
           onChange={setDirection}
           options={[
-            { value: 'encode', label: 'Encode' },
-            { value: 'decode', label: 'Decode' },
+            { value: 'encode', label: t('encodeDecode.encode') },
+            { value: 'decode', label: t('encodeDecode.decode') },
           ]}
         />
         {kind === 'url' && (
           <>
             <Segmented
-              label="Scope"
+              label={t('encodeDecode.scope')}
               value={urlMode}
               onChange={setUrlMode}
               options={[
-                { value: 'component', label: 'Component' },
-                { value: 'full', label: 'Full URL' },
+                { value: 'component', label: t('encodeDecode.component') },
+                { value: 'full', label: t('encodeDecode.fullUrl') },
               ]}
             />
-            <CheckField label={direction === 'encode' ? 'Use + for spaces (form encoding)' : 'Treat + as a space'} checked={space} onChange={setSpace} />
+            <CheckField label={direction === 'encode' ? t('encodeDecode.url.plusEncode') : t('encodeDecode.url.plusDecode')} checked={space} onChange={setSpace} />
           </>
         )}
-        {kind === 'base64' && <CheckField label="URL-safe alphabet (- and _, no padding)" checked={urlSafe} onChange={setUrlSafe} disabled={direction === 'decode'} />}
-        {kind === 'html' && <CheckField label="Also encode non-ASCII characters" checked={nonAscii} onChange={setNonAscii} disabled={direction === 'decode'} />}
+        {kind === 'base64' && <CheckField label={t('encodeDecode.base64.urlSafe')} checked={urlSafe} onChange={setUrlSafe} disabled={direction === 'decode'} />}
+        {kind === 'html' && <CheckField label={t('encodeDecode.html.nonAscii')} checked={nonAscii} onChange={setNonAscii} disabled={direction === 'decode'} />}
       </div>
-      <TextInput label={direction === 'encode' ? 'Text to encode' : 'Text to decode'} value={text} onChange={setText} rows={8} invalid={Boolean(result.error)} actions={<ClearButton onClick={() => setText('')} disabled={!text} />} />
+      <TextInput label={direction === 'encode' ? t('encodeDecode.textToEncode') : t('encodeDecode.textToDecode')} value={text} onChange={setText} rows={8} invalid={Boolean(result.error)} actions={<ClearButton onClick={() => setText('')} disabled={!text} />} />
       {result.error && <ErrorMessage>{result.error}</ErrorMessage>}
-      <OutputBox label="Result" value={result.output} rows={8} filename={`${kind}-${direction}d.txt`} />
+      <OutputBox label={t('encodeDecode.result')} value={result.output} rows={8} filename={`${kind}-${direction}d.txt`} />
       <div className="toolbar">
         <button type="button" className="btn btn-secondary" onClick={swap} disabled={!result.output}>
-          Use result as input ({direction === 'encode' ? 'then decode' : 'then encode'})
+          {direction === 'encode' ? t('encodeDecode.useResult.thenDecode') : t('encodeDecode.useResult.thenEncode')}
         </button>
       </div>
     </div>

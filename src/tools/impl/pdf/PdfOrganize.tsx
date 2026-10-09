@@ -5,7 +5,8 @@ import { Field } from '@/components/tool/Fields';
 import { PdfSource } from '@/components/tool/PdfSource';
 import { DownloadButton, ResultPanel } from '@/components/tool/Results';
 import { Icon } from '@/components/Icon';
-import { baseName, errorMessage, formatBytes, plural } from '@/lib/format';
+import { useI18n } from '@/i18n';
+import { baseName, errorMessage, formatBytes } from '@/lib/format';
 import { useTask } from '@/lib/hooks';
 import { buildFromPages, parsePageList, type PageSpec } from '@/lib/pdfOps';
 import { destroyPdf, openPdf, renderThumbnail } from '@/lib/pdfjs';
@@ -72,6 +73,7 @@ function PageThumb({ doc, id, rotate }: { doc: PDFDocumentProxy; id: number; rot
 }
 
 function Organizer({ bytes, pageCount, name, mode }: { bytes: Uint8Array; pageCount: number; name: string; mode: Mode }) {
+  const { t } = useI18n();
   const [doc, setDoc] = useState<PDFDocumentProxy | null>(null);
   const [docError, setDocError] = useState<string | null>(null);
   const [pages, setPages] = useState<PageState[]>(() =>
@@ -159,12 +161,12 @@ function Organizer({ bytes, pageCount, name, mode }: { bytes: Uint8Array; pageCo
   const canSave = mode === 'extract' ? selectedCount > 0 : mode === 'remove' ? selectedCount > 0 && selectedCount < pageCount : mode === 'reorder' ? keptCount > 0 : true;
   const actionLabel =
     mode === 'rotate'
-      ? 'Save rotated PDF'
+      ? t('pdfOrganize.save.rotate')
       : mode === 'extract'
-        ? `Extract ${plural(selectedCount, 'page')}`
+        ? t('pdfOrganize.save.extract', { count: selectedCount })
         : mode === 'remove'
-          ? `Remove ${plural(selectedCount, 'page')}`
-          : `Save ${plural(keptCount, 'page')} in this order`;
+          ? t('pdfOrganize.save.remove', { count: selectedCount })
+          : t('pdfOrganize.save.reorder', { count: keptCount });
 
   if (docError) return <ErrorMessage>{docError}</ErrorMessage>;
 
@@ -173,13 +175,13 @@ function Organizer({ bytes, pageCount, name, mode }: { bytes: Uint8Array; pageCo
       {mode === 'rotate' && (
         <div className="toolbar">
           <button type="button" className="btn btn-secondary btn-sm" onClick={() => rotateAll(-90)}>
-            <Icon name="rotate-ccw" size={14} /> Rotate all left
+            <Icon name="rotate-ccw" size={14} /> {t('pdfOrganize.rotateAllLeft')}
           </button>
           <button type="button" className="btn btn-secondary btn-sm" onClick={() => rotateAll(90)}>
-            <Icon name="rotate" size={14} /> Rotate all right
+            <Icon name="rotate" size={14} /> {t('pdfOrganize.rotateAllRight')}
           </button>
           <button type="button" className="btn btn-ghost btn-sm" onClick={resetRotation}>
-            Reset rotation
+            {t('pdfOrganize.resetRotation')}
           </button>
         </div>
       )}
@@ -187,7 +189,7 @@ function Organizer({ bytes, pageCount, name, mode }: { bytes: Uint8Array; pageCo
         <div className="stack-sm">
           <div className="row" style={{ alignItems: 'flex-end' }}>
             <div style={{ flex: '1 1 240px' }}>
-              <Field label="Select by range" hint="For example 1-3, 8, 10-">
+              <Field label={t('pdfOrganize.range')} hint={t('pdfOrganize.range.hint')}>
                 {(id) => (
                   <input
                     id={id}
@@ -202,28 +204,28 @@ function Organizer({ bytes, pageCount, name, mode }: { bytes: Uint8Array; pageCo
               </Field>
             </div>
             <button type="button" className="btn btn-secondary" onClick={applyRange}>
-              Apply range
+              {t('pdfOrganize.applyRange')}
             </button>
             <button type="button" className="btn btn-ghost" onClick={() => selectAll(true)}>
-              Select all
+              {t('pdfOrganize.selectAll')}
             </button>
             <button type="button" className="btn btn-ghost" onClick={() => selectAll(false)}>
-              Clear
+              {t('pdfOrganize.clear')}
             </button>
           </div>
           {rangeError && <ErrorMessage>{rangeError}</ErrorMessage>}
           <p className="hint">
             {mode === 'remove'
               ? selectedCount >= pageCount
-                ? 'You cannot remove every page. Keep at least one.'
-                : `${plural(selectedCount, 'page')} selected for removal. The other pages keep their order.`
-              : `${plural(selectedCount, 'page')} selected. Pages keep their original order.`}
+                ? t('pdfOrganize.cannotRemoveAll')
+                : t('pdfOrganize.selectedForRemoval', { count: selectedCount })
+              : t('pdfOrganize.selected', { count: selectedCount })}
           </p>
         </div>
       )}
-      {mode === 'reorder' && <p className="hint">Drag pages to reorder them, or use the arrow buttons. Remove pages you do not want to keep.</p>}
+      {mode === 'reorder' && <p className="hint">{t('pdfOrganize.reorderHint')}</p>}
 
-      <ul className="page-grid" aria-label="PDF pages">
+      <ul className="page-grid" aria-label={t('pdfOrganize.pagesList')}>
         {pages.map((p, i) => (
           <li
             key={p.id}
@@ -251,17 +253,17 @@ function Organizer({ bytes, pageCount, name, mode }: { bytes: Uint8Array; pageCo
           >
             {doc ? <PageThumb doc={doc} id={p.id} rotate={p.rotate} /> : <div className="page-thumb"><span className="spinner" aria-hidden="true" /></div>}
             <div className="page-label">
-              <span>Page {p.id + 1}</span>
+              <span>{t('pdfOrganize.page', { n: p.id + 1 })}</span>
               {mode === 'reorder' && <span>#{i + 1}</span>}
               {mode === 'rotate' && p.rotate !== 0 && <span>{p.rotate}°</span>}
             </div>
             <div className="page-actions">
               {mode === 'rotate' && (
                 <>
-                  <button type="button" className="icon-btn" aria-label={`Rotate page ${p.id + 1} left`} onClick={() => rotateBy(i, -90)}>
+                  <button type="button" className="icon-btn" aria-label={t('pdfOrganize.rotatePageLeft', { n: p.id + 1 })} onClick={() => rotateBy(i, -90)}>
                     <Icon name="rotate-ccw" size={16} />
                   </button>
-                  <button type="button" className="icon-btn" aria-label={`Rotate page ${p.id + 1} right`} onClick={() => rotateBy(i, 90)}>
+                  <button type="button" className="icon-btn" aria-label={t('pdfOrganize.rotatePageRight', { n: p.id + 1 })} onClick={() => rotateBy(i, 90)}>
                     <Icon name="rotate" size={16} />
                   </button>
                 </>
@@ -269,19 +271,19 @@ function Organizer({ bytes, pageCount, name, mode }: { bytes: Uint8Array; pageCo
               {selecting && (
                 <label className="check" style={{ padding: 4 }}>
                   <input type="checkbox" checked={p.selected} onChange={(e) => update(i, { selected: e.target.checked })} />
-                  {mode === 'remove' ? 'Remove' : 'Select'}
-                  <span className="visually-hidden"> page {p.id + 1}</span>
+                  {mode === 'remove' ? t('pdfOrganize.checkRemove') : t('pdfOrganize.checkSelect')}
+                  <span className="visually-hidden"> {t('pdfOrganize.checkPage', { n: p.id + 1 })}</span>
                 </label>
               )}
               {mode === 'reorder' && (
                 <>
-                  <button type="button" className="icon-btn" aria-label={`Move page ${p.id + 1} earlier`} disabled={i === 0} onClick={() => move(i, i - 1)}>
+                  <button type="button" className="icon-btn" aria-label={t('pdfOrganize.moveEarlier', { n: p.id + 1 })} disabled={i === 0} onClick={() => move(i, i - 1)}>
                     <Icon name="arrow-left" size={16} />
                   </button>
-                  <button type="button" className="icon-btn" aria-label={p.removed ? `Restore page ${p.id + 1}` : `Remove page ${p.id + 1}`} onClick={() => update(i, { removed: !p.removed })}>
+                  <button type="button" className="icon-btn" aria-label={p.removed ? t('pdfOrganize.restorePage', { n: p.id + 1 }) : t('pdfOrganize.removePage', { n: p.id + 1 })} onClick={() => update(i, { removed: !p.removed })}>
                     <Icon name={p.removed ? 'rotate-ccw' : 'trash'} size={16} />
                   </button>
-                  <button type="button" className="icon-btn" aria-label={`Move page ${p.id + 1} later`} disabled={i === pages.length - 1} onClick={() => move(i, i + 1)}>
+                  <button type="button" className="icon-btn" aria-label={t('pdfOrganize.moveLater', { n: p.id + 1 })} disabled={i === pages.length - 1} onClick={() => move(i, i + 1)}>
                     <Icon name="arrow-right" size={16} />
                   </button>
                 </>
@@ -297,13 +299,13 @@ function Organizer({ bytes, pageCount, name, mode }: { bytes: Uint8Array; pageCo
           {actionLabel}
         </button>
       </div>
-      {running && <ProcessingState label="Building PDF…" />}
+      {running && <ProcessingState label={t('pdfOrganize.building')} />}
       {task.state.status === 'error' && <ErrorMessage>{task.state.error}</ErrorMessage>}
       {task.state.status === 'done' && (
-        <ResultPanel title="Your PDF is ready">
+        <ResultPanel title={t('pdfOrganize.ready')}>
           <p className="muted">{formatBytes(task.state.result.size)}</p>
           <div className="toolbar">
-            <DownloadButton blob={task.state.result} name={`${baseName(name)}-${suffix}.pdf`} label={`Download ${baseName(name)}-${suffix}.pdf`} />
+            <DownloadButton blob={task.state.result} name={`${baseName(name)}-${suffix}.pdf`} label={t('pdfOrganize.download', { name: `${baseName(name)}-${suffix}.pdf` })} />
           </div>
         </ResultPanel>
       )}

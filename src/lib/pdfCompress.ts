@@ -12,20 +12,18 @@ import { loadPdf } from './pdfOps';
 export type CompressLevel = 'light' | 'recommended' | 'strong';
 
 export interface LevelSettings {
-  label: string;
   /** JPEG quality 0-1 used when re-encoding images. */
   quality: number;
   /** Longest side, in pixels, that embedded images are scaled down to. */
   maxSide: number;
   /** Resolution used by the "flatten pages" mode. */
   dpi: number;
-  summary: string;
 }
 
 export const LEVELS: Record<CompressLevel, LevelSettings> = {
-  light: { label: 'Light', quality: 0.8, maxSide: 2600, dpi: 150, summary: 'Best quality, smaller savings' },
-  recommended: { label: 'Recommended', quality: 0.65, maxSide: 1800, dpi: 120, summary: 'Good balance of size and quality' },
-  strong: { label: 'Strong', quality: 0.45, maxSide: 1200, dpi: 90, summary: 'Smallest file, visible quality loss' },
+  light: { quality: 0.8, maxSide: 2600, dpi: 150 },
+  recommended: { quality: 0.65, maxSide: 1800, dpi: 120 },
+  strong: { quality: 0.45, maxSide: 1200, dpi: 90 },
 };
 
 export interface EncodedJpeg {

@@ -1,10 +1,12 @@
 import type { ReactNode } from 'react';
-import { getPageMeta } from '@/pageMeta';
+import { useI18n } from '@/i18n';
+import { English } from '@/i18n/English';
+import { usePageMeta } from '@/i18n/usePageMeta';
 import { Seo } from '../Seo';
 import { Breadcrumbs } from './Breadcrumbs';
 
 export function PageShell({ path, title, lead, children, wide }: { path: string; title: string; lead?: string; children?: ReactNode; wide?: boolean }) {
-  const meta = getPageMeta(path);
+  const meta = usePageMeta(path);
   return (
     <>
       {meta && <Seo {...meta} />}
@@ -27,12 +29,26 @@ export function Placeholder({ children }: { children: ReactNode }) {
   return <span className="placeholder">[{children}]</span>;
 }
 
+/** Legal text exists only in English. In other languages a note says so and the text is marked as English for screen readers. */
+export function LegalBody({ children }: { children: ReactNode }) {
+  const { t, lang } = useI18n();
+  return (
+    <>
+      {lang.code !== 'en' && (
+        <p className="note" role="note">
+          {t('legal.englishOnly')}
+        </p>
+      )}
+      <English>{children}</English>
+    </>
+  );
+}
+
 export function LegalNotice() {
+  const { t } = useI18n();
   return (
     <p className="note" role="note">
-      <strong>Starter document.</strong> This text is a template written for a browser-based tools website. It must be reviewed and completed by a
-      qualified legal professional for Pakistan and for the countries where you have visitors (for example the EU/UK GDPR and California CCPA) before the
-      site goes live. Items in <Placeholder>brackets</Placeholder> need your information.
+      {t('ui.legalNotice')}
     </p>
   );
 }

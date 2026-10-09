@@ -6,6 +6,7 @@ import { PDFDocument } from '@cantoo/pdf-lib';
 import type { PDFDocumentProxy } from 'pdfjs-dist';
 import { MAX_RENDER_PIXELS } from './pdfjs';
 import { PdfError } from './pdfOps';
+import { tr } from '@/i18n/translate';
 
 export interface RenderedPage {
   jpeg: Uint8Array;
@@ -26,12 +27,12 @@ export async function renderPageAsJpeg(
   try {
     const base = page.getViewport({ scale: 1 });
     const viewport = page.getViewport({ scale: dpi / 72 });
-    if (viewport.width * viewport.height > MAX_RENDER_PIXELS) throw new PdfError('A page is too large to process at this quality. Choose a lower quality setting.');
+    if (viewport.width * viewport.height > MAX_RENDER_PIXELS) throw new PdfError(tr('err.pdf.flattenTooLarge'));
     const canvas = document.createElement('canvas');
     canvas.width = Math.ceil(viewport.width);
     canvas.height = Math.ceil(viewport.height);
     const ctx = canvas.getContext('2d');
-    if (!ctx) throw new PdfError('Your browser could not create a drawing surface for this page.');
+    if (!ctx) throw new PdfError(tr('err.pdf.noCanvas'));
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     await page.render({ canvas, canvasContext: ctx, viewport }).promise;
@@ -43,7 +44,7 @@ export async function renderPageAsJpeg(
       ctx.fillRect(x, y, Math.ceil((b.x + b.w) * canvas.width) - x, Math.ceil((b.y + b.h) * canvas.height) - y);
     }
     const blob: Blob = await new Promise((resolve, reject) =>
-      canvas.toBlob((b) => (b ? resolve(b) : reject(new PdfError('The browser could not encode a page image.'))), 'image/jpeg', quality),
+      canvas.toBlob((b) => (b ? resolve(b) : reject(new PdfError(tr('err.pdf.encodePageImage')))), 'image/jpeg', quality),
     );
     canvas.width = canvas.height = 0; // release the pixel memory right away
     return { jpeg: new Uint8Array(await blob.arrayBuffer()), widthPt: base.width, heightPt: base.height };

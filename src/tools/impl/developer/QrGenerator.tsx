@@ -3,6 +3,7 @@ import { CopyButton } from '@/components/tool/CopyButton';
 import { ErrorMessage, Notice } from '@/components/tool/Feedback';
 import { CheckField, ColorField, Field, NumberField, Segmented, SelectField } from '@/components/tool/Fields';
 import { Icon } from '@/components/Icon';
+import { useI18n } from '@/i18n';
 import { downloadBlob } from '@/lib/download';
 import {
   QrError, emailPayload, phonePayload, qrContrast, qrMatrix, qrOutputSize, qrPixels, qrSvg, wifiPayload, type ErrorCorrection,
@@ -11,14 +12,14 @@ import type { ToolImplementation } from '../../types';
 
 type Kind = 'text' | 'wifi' | 'email' | 'phone';
 
-const LEVELS: { value: ErrorCorrection; label: string }[] = [
-  { value: 'L', label: 'Low (7%)' },
-  { value: 'M', label: 'Medium (15%)' },
-  { value: 'Q', label: 'Quartile (25%)' },
-  { value: 'H', label: 'High (30%)' },
+const LEVELS: { value: ErrorCorrection; key: string }[] = [
+  { value: 'L', key: 'qrGenerator.level.L' },
+  { value: 'M', key: 'qrGenerator.level.M' },
+  { value: 'Q', key: 'qrGenerator.level.Q' },
+  { value: 'H', key: 'qrGenerator.level.H' },
 ];
 
-const SIZES = ['256', '512', '1024', '2048'].map((v) => ({ value: v, label: `About ${v} px` }));
+const SIZE_VALUES = ['256', '512', '1024', '2048'];
 
 const luminance = (hex: string) => {
   const n = parseInt(hex.slice(1), 16);
@@ -30,6 +31,9 @@ const luminance = (hex: string) => {
 };
 
 const QrGenerator: ToolImplementation = () => {
+  const { t } = useI18n();
+  const sizes = SIZE_VALUES.map((v) => ({ value: v, label: t('qrGenerator.size', { px: v }) }));
+  const levels = LEVELS.map((l) => ({ value: l.value, label: t(l.key) }));
   const [kind, setKind] = useState<Kind>('text');
   const [text, setText] = useState('https://');
   const [ssid, setSsid] = useState('');
@@ -58,9 +62,9 @@ const QrGenerator: ToolImplementation = () => {
         kind === 'text' ? text : kind === 'wifi' ? wifiPayload({ ssid, password: wifiPassword, security, hidden }) : kind === 'email' ? emailPayload(mailTo, subject, body) : phonePayload(phone);
       return { payload, matrix: qrMatrix(payload, level), error: null };
     } catch (e) {
-      return { payload: '', matrix: null, error: e instanceof QrError ? e.message : 'Could not create this QR code.' };
+      return { payload: '', matrix: null, error: e instanceof QrError ? e.message : t('qrGenerator.createError') };
     }
-  }, [untouched, kind, text, ssid, wifiPassword, security, hidden, mailTo, subject, body, phone, level]);
+  }, [untouched, kind, text, ssid, wifiPassword, security, hidden, mailTo, subject, body, phone, level, t]);
 
   const render = { margin: margin === '' ? 4 : Math.min(8, Math.max(0, margin)), dark, light };
 
@@ -94,70 +98,68 @@ const QrGenerator: ToolImplementation = () => {
   return (
     <div className="stack">
       <Segmented
-        label="QR code content"
+        label={t('qrGenerator.content')}
         value={kind}
         onChange={setKind}
         options={[
-          { value: 'text', label: 'Link or text' },
-          { value: 'wifi', label: 'Wi-Fi' },
-          { value: 'email', label: 'Email' },
-          { value: 'phone', label: 'Phone' },
+          { value: 'text', label: t('qrGenerator.kind.text') },
+          { value: 'wifi', label: t('qrGenerator.kind.wifi') },
+          { value: 'email', label: t('qrGenerator.kind.email') },
+          { value: 'phone', label: t('qrGenerator.kind.phone') },
         ]}
       />
       <div className="two-col" style={{ alignItems: 'start' }}>
         <div className="stack">
           {kind === 'text' && (
-            <Field label="Link or text" hint="Include https:// for web addresses so phones open them as links.">
+            <Field label={t('qrGenerator.kind.text')} hint={t('qrGenerator.textHint')}>
               {(id) => <textarea id={id} className="textarea prose-font" rows={4} style={{ minHeight: 110 }} value={text} onChange={(e) => setText(e.target.value)} />}
             </Field>
           )}
           {kind === 'wifi' && (
             <>
-              <Field label="Network name (SSID)">{(id) => <input id={id} className="input" value={ssid} maxLength={32} autoComplete="off" onChange={(e) => setSsid(e.target.value)} />}</Field>
+              <Field label={t('qrGenerator.ssid')}>{(id) => <input id={id} className="input" value={ssid} maxLength={32} autoComplete="off" onChange={(e) => setSsid(e.target.value)} />}</Field>
               <SelectField
-                label="Security"
+                label={t('qrGenerator.security')}
                 value={security}
                 onChange={setSecurity}
                 options={[
                   { value: 'WPA', label: 'WPA / WPA2 / WPA3' },
-                  { value: 'WEP', label: 'WEP (old)' },
-                  { value: 'nopass', label: 'No password' },
+                  { value: 'WEP', label: t('qrGenerator.wepOld') },
+                  { value: 'nopass', label: t('qrGenerator.noPassword') },
                 ]}
               />
               {security !== 'nopass' && (
-                <Field label="Password">
+                <Field label={t('qrGenerator.password')}>
                   {(id) => <input id={id} className="input" type={showPw ? 'text' : 'password'} autoComplete="off" spellCheck={false} value={wifiPassword} onChange={(e) => setWifiPassword(e.target.value)} />}
                 </Field>
               )}
-              {security !== 'nopass' && <CheckField label="Show password" checked={showPw} onChange={setShowPw} />}
-              <CheckField label="Hidden network" checked={hidden} onChange={setHidden} />
+              {security !== 'nopass' && <CheckField label={t('qrGenerator.showPassword')} checked={showPw} onChange={setShowPw} />}
+              <CheckField label={t('qrGenerator.hiddenNetwork')} checked={hidden} onChange={setHidden} />
             </>
           )}
           {kind === 'email' && (
             <>
-              <Field label="Email address">{(id) => <input id={id} className="input" type="email" value={mailTo} onChange={(e) => setMailTo(e.target.value)} />}</Field>
-              <Field label="Subject (optional)">{(id) => <input id={id} className="input" value={subject} onChange={(e) => setSubject(e.target.value)} />}</Field>
-              <Field label="Message (optional)">{(id) => <textarea id={id} className="textarea prose-font" rows={3} style={{ minHeight: 80 }} value={body} onChange={(e) => setBody(e.target.value)} />}</Field>
+              <Field label={t('qrGenerator.emailAddress')}>{(id) => <input id={id} className="input" type="email" value={mailTo} onChange={(e) => setMailTo(e.target.value)} />}</Field>
+              <Field label={t('qrGenerator.subject')}>{(id) => <input id={id} className="input" value={subject} onChange={(e) => setSubject(e.target.value)} />}</Field>
+              <Field label={t('qrGenerator.message')}>{(id) => <textarea id={id} className="textarea prose-font" rows={3} style={{ minHeight: 80 }} value={body} onChange={(e) => setBody(e.target.value)} />}</Field>
             </>
           )}
           {kind === 'phone' && (
-            <Field label="Phone number" hint="Digits with an optional leading +, for example +923001234567.">
+            <Field label={t('qrGenerator.phoneNumber')} hint={t('qrGenerator.phoneHint')}>
               {(id) => <input id={id} className="input" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} />}
             </Field>
           )}
 
           <div className="options-grid">
-            <SelectField label="Error correction" value={level} onChange={setLevel} options={LEVELS} hint="Higher survives more damage but makes a denser code." />
-            <SelectField label="Image size" value={size} onChange={setSize} options={SIZES} />
-            <NumberField label="Quiet border (modules)" value={margin} min={0} max={8} onChange={setMargin} hint="4 is the standard." />
-            <ColorField label="Code colour" value={dark} onChange={setDark} />
-            <ColorField label="Background" value={light} onChange={setLight} />
+            <SelectField label={t('qrGenerator.errorCorrection')} value={level} onChange={setLevel} options={levels} hint={t('qrGenerator.errorCorrectionHint')} />
+            <SelectField label={t('qrGenerator.imageSize')} value={size} onChange={setSize} options={sizes} />
+            <NumberField label={t('qrGenerator.border')} value={margin} min={0} max={8} onChange={setMargin} hint={t('qrGenerator.borderHint')} />
+            <ColorField label={t('qrGenerator.codeColour')} value={dark} onChange={setDark} />
+            <ColorField label={t('qrGenerator.background')} value={light} onChange={setLight} />
           </div>
           {(inverted || contrast < 3) && (
             <Notice tone="warn">
-              {inverted
-                ? 'Light code on a dark background is not read by every scanner. Dark on light is safest.'
-                : 'These colours have low contrast, which makes the code hard to scan. Choose a darker code or a lighter background.'}
+              {inverted ? t('qrGenerator.invertedWarning') : t('qrGenerator.lowContrastWarning')}
             </Notice>
           )}
         </div>
@@ -166,27 +168,27 @@ const QrGenerator: ToolImplementation = () => {
           {built.error && <ErrorMessage>{built.error}</ErrorMessage>}
           {!built.matrix && !built.error && (
             <div className="empty card" style={{ padding: 'var(--space-6)' }}>
-              Fill in the details and your QR code appears here.
+              {t('qrGenerator.empty')}
             </div>
           )}
           {built.matrix && (
             <>
               <div className="preview-box" style={{ padding: 'var(--space-4)' }}>
-                <canvas ref={canvasRef} role="img" aria-label="Your QR code" style={{ width: 'min(100%, 320px)', height: 'auto', imageRendering: 'pixelated' }} />
+                <canvas ref={canvasRef} role="img" aria-label={t('qrGenerator.canvasLabel')} style={{ width: 'min(100%, 320px)', height: 'auto', imageRendering: 'pixelated' }} />
               </div>
               <p className="hint">
-                {built.matrix.size} × {built.matrix.size} modules. The PNG will be {finalSize} × {finalSize} px.
+                {t('qrGenerator.dimensions', { modules: built.matrix.size, px: finalSize })}
               </p>
               <div className="toolbar">
                 <button type="button" className="btn btn-primary" onClick={downloadPng}>
-                  <Icon name="download" size={16} /> Download PNG
+                  <Icon name="download" size={16} /> {t('qrGenerator.downloadPng')}
                 </button>
                 <button type="button" className="btn btn-secondary" onClick={downloadSvg}>
-                  <Icon name="download" size={16} /> Download SVG
+                  <Icon name="download" size={16} /> {t('qrGenerator.downloadSvg')}
                 </button>
-                <CopyButton text={built.payload} label="Copy content" />
+                <CopyButton text={built.payload} label={t('qrGenerator.copyContent')} />
               </div>
-              <p className="hint">Scan it with your phone before you print or share it.</p>
+              <p className="hint">{t('qrGenerator.scanHint')}</p>
             </>
           )}
         </div>

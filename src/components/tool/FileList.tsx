@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useI18n } from '@/i18n';
 import { formatBytes } from '@/lib/format';
 import { useObjectUrl, type QueueItem } from '@/lib/hooks';
 import { Icon } from '../Icon';
@@ -31,12 +32,13 @@ interface Props {
 }
 
 export function FileList({ items, kind, onRemove, onMove, disabled }: Props) {
+  const { t } = useI18n();
   const [dragFrom, setDragFrom] = useState<number | null>(null);
   const [dragOver, setDragOver] = useState<number | null>(null);
   if (items.length === 0) return null;
 
   return (
-    <ul className="file-list" aria-label="Selected files">
+    <ul className="file-list" aria-label={t('ui.fileList')}>
       {items.map((item, i) => (
         <li
           key={item.id}
@@ -67,22 +69,22 @@ export function FileList({ items, kind, onRemove, onMove, disabled }: Props) {
             </div>
             <div className="file-sub">
               {formatBytes(item.file.size)}
-              {item.status === 'processing' && ' · Processing…'}
-              {item.status === 'done' && <span className="file-status-done"> · Done</span>}
-              {item.status === 'error' && <span className="file-status-error"> · {item.message ?? 'Failed'}</span>}
+              {item.status === 'processing' && ` · ${t('ui.processing')}`}
+              {item.status === 'done' && <span className="file-status-done"> · {t('ui.done')}</span>}
+              {item.status === 'error' && <span className="file-status-error"> · {item.message ?? t('ui.failed')}</span>}
             </div>
           </div>
           {onMove && items.length > 1 && (
             <>
-              <button type="button" className="icon-btn" aria-label={`Move ${item.file.name} up`} disabled={disabled || i === 0} onClick={() => onMove(i, i - 1)}>
+              <button type="button" className="icon-btn" aria-label={t('ui.moveUp', { name: item.file.name })} disabled={disabled || i === 0} onClick={() => onMove(i, i - 1)}>
                 <Icon name="arrow-up" size={16} />
               </button>
-              <button type="button" className="icon-btn" aria-label={`Move ${item.file.name} down`} disabled={disabled || i === items.length - 1} onClick={() => onMove(i, i + 1)}>
+              <button type="button" className="icon-btn" aria-label={t('ui.moveDown', { name: item.file.name })} disabled={disabled || i === items.length - 1} onClick={() => onMove(i, i + 1)}>
                 <Icon name="arrow-down" size={16} />
               </button>
             </>
           )}
-          <button type="button" className="icon-btn" aria-label={`Remove ${item.file.name}`} disabled={disabled} onClick={() => onRemove(item.id)}>
+          <button type="button" className="icon-btn" aria-label={t('ui.remove', { name: item.file.name })} disabled={disabled} onClick={() => onRemove(item.id)}>
             <Icon name="x" size={18} />
           </button>
         </li>

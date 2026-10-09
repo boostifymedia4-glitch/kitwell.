@@ -8,6 +8,8 @@ const ToolRoute = lazyPage(() => import('./pages/ToolRoute'));
 const About = lazyPage(() => import('./pages/About'));
 const Contact = lazyPage(() => import('./pages/Contact'));
 const Help = lazyPage(() => import('./pages/Help'));
+const Blog = lazyPage(() => import('./pages/Blog'));
+const BlogPost = lazyPage(() => import('./pages/BlogPost'));
 const Privacy = lazyPage(() => import('./pages/Privacy'));
 const Terms = lazyPage(() => import('./pages/Terms'));
 const Cookies = lazyPage(() => import('./pages/Cookies'));
@@ -19,6 +21,7 @@ const fixed: Record<string, LazyPage> = {
   '/about': About,
   '/contact': Contact,
   '/help': Help,
+  '/blog': Blog,
   '/privacy': Privacy,
   '/terms': Terms,
   '/cookies': Cookies,
@@ -34,5 +37,6 @@ export function matchPage(pathname: string): LazyPage {
   const path = normalizePath(pathname);
   if (path in fixed && path in staticPages) return fixed[path];
   if (!getPageMeta(path)) return NotFound;
+  if (path.startsWith('/blog/')) return BlogPost;
   return path.split('/').filter(Boolean).length === 2 ? Category : ToolRoute;
 }

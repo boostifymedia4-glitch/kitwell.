@@ -5,6 +5,7 @@
 import jsQR from 'jsqr';
 import QRCode from 'qrcode';
 import { decode, makeCanvas, type Ctx2D } from './imageProcessor';
+import { tr } from '@/i18n/translate';
 
 export type ErrorCorrection = 'L' | 'M' | 'Q' | 'H';
 
@@ -16,19 +17,19 @@ export interface QrMatrix {
 export class QrError extends Error {}
 
 export function qrMatrix(text: string, level: ErrorCorrection): QrMatrix {
-  if (!text) throw new QrError('Enter some text or a link first.');
+  if (!text) throw new QrError(tr('err.qr.noText'));
   try {
     const qr = QRCode.create(text, { errorCorrectionLevel: level });
     const { size } = qr.modules;
     return { size, isDark: (x, y) => qr.modules.get(y, x) === 1 };
   } catch {
-    throw new QrError('That is too much data for a QR code at this error-correction level. Shorten the text or choose a lower level.');
+    throw new QrError(tr('err.qr.tooMuchData'));
   }
 }
 
 const HEX = /^#[0-9a-f]{6}$/i;
 const parseHex = (hex: string): [number, number, number] => {
-  if (!HEX.test(hex)) throw new QrError('Choose valid colours.');
+  if (!HEX.test(hex)) throw new QrError(tr('err.qr.badColours'));
   const n = parseInt(hex.slice(1), 16);
   return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
 };
@@ -118,22 +119,22 @@ export interface WifiInput {
 }
 
 export function wifiPayload({ ssid, password, security, hidden }: WifiInput): string {
-  if (!ssid) throw new QrError('Enter the network name.');
-  if (security !== 'nopass' && !password) throw new QrError('Enter the Wi-Fi password, or choose “No password”.');
+  if (!ssid) throw new QrError(tr('err.qr.wifiName'));
+  if (security !== 'nopass' && !password) throw new QrError(tr('err.qr.wifiPassword'));
   const pw = security === 'nopass' ? '' : `P:${escapeWifi(password)};`;
   return `WIFI:T:${security};S:${escapeWifi(ssid)};${pw}H:${hidden ? 'true' : 'false'};;`;
 }
 
 export function emailPayload(address: string, subject = '', body = ''): string {
   const to = address.trim();
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to)) throw new QrError('Enter a valid email address.');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to)) throw new QrError(tr('err.qr.email'));
   const params = [subject && `subject=${encodeURIComponent(subject)}`, body && `body=${encodeURIComponent(body)}`].filter(Boolean).join('&');
   return `mailto:${to}${params ? `?${params}` : ''}`;
 }
 
 export function phonePayload(number: string): string {
   const cleaned = number.replace(/[\s().-]/g, '');
-  if (!/^\+?\d{3,15}$/.test(cleaned)) throw new QrError('Enter a phone number using digits, with an optional leading +.');
+  if (!/^\+?\d{3,15}$/.test(cleaned)) throw new QrError(tr('err.qr.phone'));
   return `tel:${cleaned}`;
 }
 
@@ -210,7 +211,7 @@ export async function scanImageFile(file: Blob): Promise<string | null> {
       const h = Math.max(1, Math.round(bitmap.height * k));
       const canvas = makeCanvas(w, h);
       const ctx = canvas.getContext('2d', { willReadFrequently: true }) as Ctx2D | null;
-      if (!ctx) throw new QrError('Could not read this image. It may be too large for this device.');
+      if (!ctx) throw new QrError(tr('err.qr.unreadableImage'));
       ctx.fillStyle = '#ffffff'; // transparent pixels would otherwise read as black
       ctx.fillRect(0, 0, w, h);
       ctx.drawImage(bitmap, 0, 0, w, h);

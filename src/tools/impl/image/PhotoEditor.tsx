@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { tr, useI18n } from '@/i18n';
 import { IMAGE_EXTENSIONS, MAX_IMAGE_BYTES } from '@/components/tool/BatchImageTool';
 import { CropSelector } from '@/components/tool/CropSelector';
 import { ErrorMessage, Notice, ProcessingState, RejectionList } from '@/components/tool/Feedback';
@@ -6,7 +7,7 @@ import { CheckField, ColorField, Field, RangeField, Segmented, SelectField } fro
 import { DownloadButton, ResetButton, ResultPanel } from '@/components/tool/Results';
 import { UploadDropzone } from '@/components/tool/UploadDropzone';
 import { Icon } from '@/components/Icon';
-import { CROP_RATIOS, applyRatio, initialRect, type Rect } from '@/lib/cropRect';
+import { applyRatio, cropRatioOptions, initialRect, type Rect } from '@/lib/cropRect';
 import { baseName, formatBytes } from '@/lib/format';
 import { useFileQueue, useTask } from '@/lib/hooks';
 import { canvasToBlob, type OutputMime } from '@/lib/imageProcessor';
@@ -52,21 +53,34 @@ const INITIAL: Edit = {
 const PREVIEW_SIDE = 900;
 const MAX_PIXELS = 50_000_000;
 
-const FORMATS: { value: 'png' | 'jpeg' | 'webp'; label: string; mime: OutputMime; ext: string }[] = [
-  { value: 'png', label: 'PNG (lossless)', mime: 'image/png', ext: 'png' },
-  { value: 'jpeg', label: 'JPG', mime: 'image/jpeg', ext: 'jpg' },
-  { value: 'webp', label: 'WebP', mime: 'image/webp', ext: 'webp' },
+const FORMATS: { value: 'png' | 'jpeg' | 'webp'; mime: OutputMime; ext: string }[] = [
+  { value: 'png', mime: 'image/png', ext: 'png' },
+  { value: 'jpeg', mime: 'image/jpeg', ext: 'jpg' },
+  { value: 'webp', mime: 'image/webp', ext: 'webp' },
 ];
 
-const PLACES: { value: TextPlace; label: string }[] = [
-  { value: 'top-left', label: 'Top left' },
-  { value: 'top-center', label: 'Top centre' },
-  { value: 'top-right', label: 'Top right' },
-  { value: 'middle-center', label: 'Middle' },
-  { value: 'bottom-left', label: 'Bottom left' },
-  { value: 'bottom-center', label: 'Bottom centre' },
-  { value: 'bottom-right', label: 'Bottom right' },
-];
+const FILTER_KEY: Record<FilterId, string> = {
+  none: 'photoEditor.filter.none',
+  grayscale: 'photoEditor.filter.grayscale',
+  sepia: 'photoEditor.filter.sepia',
+  vintage: 'photoEditor.filter.vintage',
+  cool: 'photoEditor.filter.cool',
+  warm: 'photoEditor.filter.warm',
+  dramatic: 'photoEditor.filter.dramatic',
+  fade: 'photoEditor.filter.fade',
+  invert: 'photoEditor.filter.invert',
+};
+
+const ADJUST_KEY: Record<keyof Adjustments, string> = {
+  brightness: 'photoEditor.adjust.brightness',
+  contrast: 'photoEditor.adjust.contrast',
+  saturation: 'photoEditor.adjust.saturation',
+  hue: 'photoEditor.adjust.hue',
+  temperature: 'photoEditor.adjust.temperature',
+  sharpen: 'photoEditor.adjust.sharpen',
+  blur: 'photoEditor.adjust.blur',
+  vignette: 'photoEditor.adjust.vignette',
+};
 
 /** Draws the rotated, flipped and straightened picture. Output size is the (turned) size scaled by `scale`. */
 function drawGeometry(bitmap: ImageBitmap, edit: Edit, scale: number): HTMLCanvasElement {
@@ -77,7 +91,7 @@ function drawGeometry(bitmap: ImageBitmap, edit: Edit, scale: number): HTMLCanva
   canvas.width = w;
   canvas.height = h;
   const ctx = canvas.getContext('2d', { willReadFrequently: true });
-  if (!ctx) throw new Error('Your browser could not create a drawing surface.');
+  if (!ctx) throw new Error(tr('photoEditor.err.noCanvas'));
   ctx.imageSmoothingQuality = 'high';
   ctx.translate(w / 2, h / 2);
   ctx.rotate((((edit.turns % 4) * 90 + edit.straighten) * Math.PI) / 180);
@@ -102,7 +116,7 @@ function renderEdit(bitmap: ImageBitmap, edit: Edit, scale: number, applyCrop: b
     canvas.getContext('2d', { willReadFrequently: true })?.drawImage(geo, sx, sy, sw, sh, 0, 0, sw, sh);
   }
   const ctx = canvas.getContext('2d', { willReadFrequently: true });
-  if (!ctx) throw new Error('Your browser could not create a drawing surface.');
+  if (!ctx) throw new Error(tr('photoEditor.err.noCanvas'));
   if (!isNeutral(edit.adjustments, edit.filter)) {
     const image = ctx.getImageData(0, 0, canvas.width, canvas.height);
     applyEdits(image, edit.adjustments, edit.filter, scale);
@@ -131,6 +145,7 @@ function renderEdit(bitmap: ImageBitmap, edit: Edit, scale: number, applyCrop: b
 }
 
 function FilterThumbs({ bitmap, current, onPick }: { bitmap: ImageBitmap; current: FilterId; onPick: (f: FilterId) => void }) {
+  const { t } = useI18n();
   const thumbs = useMemo(() => {
     const scale = 96 / Math.max(bitmap.width, bitmap.height);
     const base = document.createElement('canvas');
@@ -151,11 +166,11 @@ function FilterThumbs({ bitmap, current, onPick }: { bitmap: ImageBitmap; curren
     });
   }, [bitmap]);
   return (
-    <div className="filter-grid" role="radiogroup" aria-label="Filters">
+    <div className="filter-grid" role="radiogroup" aria-label={t('photoEditor.filters')}>
       {thumbs.map((f) => (
         <button key={f.id} type="button" role="radio" aria-checked={current === f.id} className="filter-tile" data-active={current === f.id || undefined} onClick={() => onPick(f.id)}>
           <img src={f.url} alt="" />
-          <span>{f.label}</span>
+          <span>{t(FILTER_KEY[f.id])}</span>
         </button>
       ))}
     </div>
@@ -163,6 +178,18 @@ function FilterThumbs({ bitmap, current, onPick }: { bitmap: ImageBitmap; curren
 }
 
 const PhotoEditor: ToolImplementation = () => {
+  const { t } = useI18n();
+  const PLACES: { value: TextPlace; label: string }[] = [
+    { value: 'top-left', label: t('photoEditor.place.topLeft') },
+    { value: 'top-center', label: t('photoEditor.place.topCenter') },
+    { value: 'top-right', label: t('photoEditor.place.topRight') },
+    { value: 'middle-center', label: t('photoEditor.place.middleCenter') },
+    { value: 'bottom-left', label: t('photoEditor.place.bottomLeft') },
+    { value: 'bottom-center', label: t('photoEditor.place.bottomCenter') },
+    { value: 'bottom-right', label: t('photoEditor.place.bottomRight') },
+  ];
+  const formatLabels = { png: t('photoEditor.format.png'), jpeg: 'JPG', webp: 'WebP' };
+  const ratioOptions = cropRatioOptions();
   const queue = useFileQueue({ extensions: IMAGE_EXTENSIONS, maxBytes: MAX_IMAGE_BYTES, maxFiles: 1 }, false);
   const file = queue.items[0]?.file ?? null;
   const [bitmap, setBitmap] = useState<ImageBitmap | null>(null);
@@ -192,12 +219,12 @@ const PhotoEditor: ToolImplementation = () => {
         if (cancelled) return b.close();
         if (b.width * b.height > MAX_PIXELS) {
           b.close();
-          setLoadError('This picture is too large for the editor (over 50 megapixels). Make it smaller with the Image Resizer first.');
+          setLoadError(tr('photoEditor.err.tooLarge'));
           return;
         }
         setBitmap(b);
       })
-      .catch(() => !cancelled && setLoadError('This file could not be read as an image. It may be corrupted or in an unsupported format.'));
+      .catch(() => !cancelled && setLoadError(tr('photoEditor.err.unreadable')));
     return () => {
       cancelled = true;
     };
@@ -245,7 +272,7 @@ const PhotoEditor: ToolImplementation = () => {
 
   const exportPicture = () =>
     task.run(async () => {
-      if (!bitmap || !file) throw new Error('Add a photo first.');
+      if (!bitmap || !file) throw new Error(t('photoEditor.err.noPhoto'));
       const fmt = FORMATS.find((f) => f.value === format)!;
       const canvas = renderEdit(bitmap, edit, 1, true);
       let source: HTMLCanvasElement = canvas;
@@ -270,18 +297,18 @@ const PhotoEditor: ToolImplementation = () => {
 
   return (
     <div className="stack">
-      {!file && <UploadDropzone extensions={IMAGE_EXTENSIONS} maxBytes={MAX_IMAGE_BYTES} onFiles={queue.add} title="Drop a photo here or click to choose" />}
+      {!file && <UploadDropzone extensions={IMAGE_EXTENSIONS} maxBytes={MAX_IMAGE_BYTES} onFiles={queue.add} title={t('photoEditor.dropTitle')} />}
       <RejectionList items={queue.rejections} onDismiss={queue.dismissRejections} />
       {loadError && <ErrorMessage>{loadError}</ErrorMessage>}
-      {file && !bitmap && !loadError && <ProcessingState label="Opening your photo…" />}
+      {file && !bitmap && !loadError && <ProcessingState label={t('photoEditor.opening')} />}
       {file && bitmap && (
         <>
           <div className="row row-between">
             <span className="file-name" title={file.name}>
-              {file.name} · {bitmap.width} × {bitmap.height} px
+              {t('photoEditor.fileInfo', { name: file.name, width: bitmap.width, height: bitmap.height })}
             </span>
             <button type="button" className="btn btn-ghost btn-sm" onClick={queue.clear} disabled={running}>
-              Choose another photo
+              {t('photoEditor.chooseAnother')}
             </button>
           </div>
           <div className="editor-layout">
@@ -291,35 +318,35 @@ const PhotoEditor: ToolImplementation = () => {
                 height={previewSize?.h ?? 1}
                 rect={cropPx ?? { x: 0, y: 0, w: 0, h: 0 }}
                 ratio={ratio}
-                label="Crop area"
+                label={t('photoEditor.cropArea')}
                 hidden={!cropping || !cropPx}
                 onChange={(r) => previewSize && patch({ crop: { x: r.x / previewSize.w, y: r.y / previewSize.h, w: r.w / previewSize.w, h: r.h / previewSize.h } })}
               >
-                <canvas ref={previewRef} role="img" aria-label="Preview of your edited photo" />
+                <canvas ref={previewRef} role="img" aria-label={t('photoEditor.previewLabel')} />
               </CropSelector>
             </div>
 
             <div className="editor-panel stack">
               <Segmented
-                label="Tools"
+                label={t('photoEditor.tools')}
                 value={tab}
                 onChange={chooseTab}
                 options={[
-                  { value: 'adjust', label: 'Adjust' },
-                  { value: 'filters', label: 'Filters' },
-                  { value: 'transform', label: 'Rotate' },
-                  { value: 'crop', label: 'Crop' },
-                  { value: 'text', label: 'Text' },
+                  { value: 'adjust', label: t('photoEditor.tab.adjust') },
+                  { value: 'filters', label: t('photoEditor.tab.filters') },
+                  { value: 'transform', label: t('photoEditor.tab.transform') },
+                  { value: 'crop', label: t('photoEditor.tab.crop') },
+                  { value: 'text', label: t('photoEditor.tab.text') },
                 ]}
               />
 
               {tab === 'adjust' && (
                 <div className="stack-sm">
                   {ADJUST_CONTROLS.map((c) => (
-                    <RangeField key={c.key} label={c.label} value={edit.adjustments[c.key]} min={c.min} max={c.max} onChange={(v) => adjust(c.key, v)} format={(v) => `${v}${c.unit ?? ''}`} />
+                    <RangeField key={c.key} label={t(ADJUST_KEY[c.key])} value={edit.adjustments[c.key]} min={c.min} max={c.max} onChange={(v) => adjust(c.key, v)} format={(v) => `${v}${c.unit ?? ''}`} />
                   ))}
                   <button type="button" className="btn btn-ghost btn-sm" onClick={() => patch({ adjustments: NEUTRAL })} disabled={isNeutral(edit.adjustments, 'none')}>
-                    Reset adjustments
+                    {t('photoEditor.resetAdjust')}
                   </button>
                 </div>
               )}
@@ -330,22 +357,22 @@ const PhotoEditor: ToolImplementation = () => {
                 <div className="stack-sm">
                   <div className="toolbar">
                     <button type="button" className="btn btn-secondary btn-sm" onClick={() => patch({ turns: (edit.turns + 3) % 4, crop: null })}>
-                      <Icon name="rotate-ccw" size={14} /> Rotate left
+                      <Icon name="rotate-ccw" size={14} /> {t('photoEditor.rotateLeft')}
                     </button>
                     <button type="button" className="btn btn-secondary btn-sm" onClick={() => patch({ turns: (edit.turns + 1) % 4, crop: null })}>
-                      <Icon name="rotate" size={14} /> Rotate right
+                      <Icon name="rotate" size={14} /> {t('photoEditor.rotateRight')}
                     </button>
                     <button type="button" className="btn btn-secondary btn-sm" onClick={() => patch({ flipH: !edit.flipH })} aria-pressed={edit.flipH}>
-                      <Icon name="flip" size={14} /> Flip horizontally
+                      <Icon name="flip" size={14} /> {t('photoEditor.flipH')}
                     </button>
                     <button type="button" className="btn btn-secondary btn-sm" onClick={() => patch({ flipV: !edit.flipV })} aria-pressed={edit.flipV}>
-                      <Icon name="arrow-down-up" size={14} /> Flip vertically
+                      <Icon name="arrow-down-up" size={14} /> {t('photoEditor.flipV')}
                     </button>
                   </div>
-                  <RangeField label="Straighten" value={edit.straighten} min={-45} max={45} step={0.5} onChange={(v) => patch({ straighten: v, crop: null })} format={(v) => `${v}°`} />
-                  <p className="hint">Straightening zooms in slightly so no empty corners show.</p>
+                  <RangeField label={t('photoEditor.straighten')} value={edit.straighten} min={-45} max={45} step={0.5} onChange={(v) => patch({ straighten: v, crop: null })} format={(v) => `${v}°`} />
+                  <p className="hint">{t('photoEditor.straightenHint')}</p>
                   <button type="button" className="btn btn-ghost btn-sm" onClick={() => patch({ turns: 0, flipH: false, flipV: false, straighten: 0, crop: null })}>
-                    Reset rotation
+                    {t('photoEditor.resetRotation')}
                   </button>
                 </div>
               )}
@@ -353,23 +380,23 @@ const PhotoEditor: ToolImplementation = () => {
               {tab === 'crop' && (
                 <div className="stack-sm">
                   <SelectField
-                    label="Shape"
+                    label={t('photoEditor.shape')}
                     value={ratioId}
                     onChange={(id) => {
                       setRatioId(id);
                       startCrop(id === 'free' ? null : Number(id));
                     }}
-                    options={CROP_RATIOS}
+                    options={ratioOptions}
                   />
-                  <p className="hint">Drag the box to move it and the corner dot to resize. Switch tabs to see the cropped result.</p>
+                  <p className="hint">{t('photoEditor.cropHint')}</p>
                   <div className="toolbar">
                     {edit.crop ? (
                       <button type="button" className="btn btn-ghost btn-sm" onClick={() => patch({ crop: null })}>
-                        Remove crop
+                        {t('photoEditor.removeCrop')}
                       </button>
                     ) : (
                       <button type="button" className="btn btn-secondary btn-sm" onClick={() => startCrop(ratio)}>
-                        Add a crop box
+                        {t('photoEditor.addCrop')}
                       </button>
                     )}
                   </div>
@@ -378,15 +405,15 @@ const PhotoEditor: ToolImplementation = () => {
 
               {tab === 'text' && (
                 <div className="stack-sm">
-                  <Field label="Text on the photo" hint="Leave empty for no text.">
+                  <Field label={t('photoEditor.text.label')} hint={t('photoEditor.text.hint')}>
                     {(id) => <input id={id} className="input" value={edit.text} maxLength={120} onChange={(e) => patch({ text: e.target.value })} />}
                   </Field>
-                  <RangeField label="Size" value={edit.textSize} min={2} max={30} onChange={(v) => patch({ textSize: v })} format={(v) => `${v}% of height`} />
-                  <SelectField label="Position" value={edit.textPlace} onChange={(v) => patch({ textPlace: v })} options={PLACES} />
+                  <RangeField label={t('photoEditor.text.size')} value={edit.textSize} min={2} max={30} onChange={(v) => patch({ textSize: v })} format={(v) => t('photoEditor.text.sizeValue', { value: v })} />
+                  <SelectField label={t('photoEditor.text.position')} value={edit.textPlace} onChange={(v) => patch({ textPlace: v })} options={PLACES} />
                   <div className="row" style={{ gap: 20, alignItems: 'center' }}>
-                    <ColorField label="Colour" value={edit.textColour} onChange={(v) => patch({ textColour: v })} />
-                    <CheckField label="Bold" checked={edit.textBold} onChange={(v) => patch({ textBold: v })} />
-                    <CheckField label="Outline" checked={edit.textOutline} onChange={(v) => patch({ textOutline: v })} />
+                    <ColorField label={t('photoEditor.text.colour')} value={edit.textColour} onChange={(v) => patch({ textColour: v })} />
+                    <CheckField label={t('photoEditor.text.bold')} checked={edit.textBold} onChange={(v) => patch({ textBold: v })} />
+                    <CheckField label={t('photoEditor.text.outline')} checked={edit.textOutline} onChange={(v) => patch({ textOutline: v })} />
                   </div>
                 </div>
               )}
@@ -394,29 +421,29 @@ const PhotoEditor: ToolImplementation = () => {
           </div>
 
           <div className="options-grid">
-            <SelectField label="Save as" value={format} onChange={setFormat} options={FORMATS.map((f) => ({ value: f.value, label: f.label }))} />
-            {format !== 'png' && <RangeField label="Quality" value={quality} min={40} max={100} onChange={setQuality} format={(v) => `${v}%`} />}
+            <SelectField label={t('photoEditor.saveAs')} value={format} onChange={setFormat} options={FORMATS.map((f) => ({ value: f.value, label: formatLabels[f.value] }))} />
+            {format !== 'png' && <RangeField label={t('photoEditor.quality')} value={quality} min={40} max={100} onChange={setQuality} format={(v) => `${v}%`} />}
           </div>
           <div className="toolbar">
             <button type="button" className="btn btn-primary btn-lg" onClick={exportPicture} disabled={running}>
               <Icon name="download" size={18} />
-              Create edited photo
+              {t('photoEditor.create')}
             </button>
             <button type="button" className="btn btn-ghost" onClick={() => { setEdit(INITIAL); setRatioId('free'); }} disabled={running || !changed}>
-              Reset all edits
+              {t('photoEditor.resetAll')}
             </button>
           </div>
-          {running && <ProcessingState label="Creating your photo…" />}
+          {running && <ProcessingState label={t('photoEditor.creating')} />}
           {task.state.status === 'error' && <ErrorMessage>{task.state.error}</ErrorMessage>}
           {done && (
-            <ResultPanel title="Your edited photo is ready">
+            <ResultPanel title={t('photoEditor.ready')}>
               <p className="muted">
-                {done.width} × {done.height} px · {formatBytes(done.blob.size)}
+                {t('photoEditor.resultInfo', { width: done.width, height: done.height, size: formatBytes(done.blob.size) })}
               </p>
-              {!changed && <Notice>No edits were made, so this is a copy of your photo in the chosen format.</Notice>}
+              {!changed && <Notice>{t('photoEditor.noEdits')}</Notice>}
               <div className="toolbar">
-                <DownloadButton blob={done.blob} name={done.name} label={`Download ${done.name}`} />
-                <ResetButton onClick={queue.clear} label="Edit another photo" />
+                <DownloadButton blob={done.blob} name={done.name} label={t('photoEditor.download', { name: done.name })} />
+                <ResetButton onClick={queue.clear} label={t('photoEditor.editAnother')} />
               </div>
             </ResultPanel>
           )}

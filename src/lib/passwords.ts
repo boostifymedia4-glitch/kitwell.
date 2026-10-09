@@ -1,8 +1,9 @@
-import { secureRandomInt } from './dev';
+import { hasWeakPattern, secureRandomInt } from './dev';
 import { ALL_WORDS, SUFFIX_WORDS } from './wordlists';
+import { tr } from '@/i18n/translate';
 
 /** The only symbols used in generated passwords: common, easy to type on any keyboard. */
-export const PASSWORD_SYMBOLS = '@#$*+-!';
+export const PASSWORD_SYMBOLS = '@#$*';
 
 export interface NamePasswordOptions {
   /** Total length, 8-64. */
@@ -15,36 +16,34 @@ export interface NamePasswordOptions {
   lower: boolean;
 }
 
-export interface GeneratedPassword {
-  password: string;
-  /** Rough strength in bits, assuming an attacker who knows exactly how these passwords are built. */
-  bits: number;
-}
-
 export const NAME_LENGTH = { min: 8, max: 64 } as const;
-const MAX_DIGITS = 6;
+/** A run of digits is between 2 and 8 long, so longer passwords get more words rather than endless digits. */
 const MIN_DIGITS = 2;
+const MAX_DIGITS = 8;
+/** Name-based passwords use at most this many symbols. */
+export const MAX_NAME_SYMBOLS = 2;
 
 const pick = <T>(items: readonly T[]): T => items[secureRandomInt(items.length)];
+const chance = (p: number) => secureRandomInt(1000) < p * 1000;
 const cap = (w: string) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
 
-type Style = 'title' | 'upper' | 'lower' | 'flip' | 'inner';
+type Style = 'title' | 'upper' | 'flip' | 'inner';
 
 /** Applies a random capitalisation style to a word, limited to what the options allow. */
 function styleWord(word: string, upper: boolean, lower: boolean): string {
   if (upper && !lower) return word.toUpperCase();
   if (lower && !upper) return word.toLowerCase();
-  const style = pick<Style>(['title', 'title', 'title', 'upper', 'flip', 'inner']);
+  const style = pick<Style>(['title', 'title', 'title', 'title', 'upper', 'flip', 'inner']);
   switch (style) {
     case 'upper':
       return word.toUpperCase();
     case 'flip':
       return word.charAt(0).toLowerCase() + word.charAt(1).toUpperCase() + word.slice(2).toLowerCase();
     case 'inner': {
-      const lowerWord = cap(word);
-      if (lowerWord.length < 3) return lowerWord;
-      const i = 1 + secureRandomInt(lowerWord.length - 1);
-      return lowerWord.slice(0, i) + lowerWord.charAt(i).toUpperCase() + lowerWord.slice(i + 1);
+      const t = cap(word);
+      if (t.length < 3) return t;
+      const i = 1 + secureRandomInt(t.length - 1);
+      return t.slice(0, i) + t.charAt(i).toUpperCase() + t.slice(i + 1);
     }
     default:
       return cap(word);
@@ -53,85 +52,92 @@ function styleWord(word: string, upper: boolean, lower: boolean): string {
 
 const digitsBlock = (n: number) => Array.from({ length: n }, () => String(secureRandomInt(10))).join('');
 
-// Orders in which the pieces can appear. W = name, D = digits, S = symbol, X = extra word(s).
-const TEMPLATES = ['WDSX', 'WSDX', 'XSWD', 'WXSD', 'WDXS', 'DWSX'] as const;
+// Pieces: W = the name, X = extra word(s) that make up the length, D = digits, S = a symbol. The order is always
+// name or words first, then numbers, then the symbol(s): nothing but symbols ever follows the numbers. The variety comes from the words, the numbers, the capitalisation
+// and from using one or two symbols, not from shuffling the order.
+const TEMPLATE_ONE_SYMBOL = 'WXDS';
+const TEMPLATE_TWO_SYMBOLS = 'WXDSS';
 
-/** Chooses extra words so that digits fill exactly the space left (or nothing is left when digits are off). */
-function fitExtras(room: number, digits: boolean): { words: string[]; digits: number } | null {
-  let r = room;
+interface Fit {
+  words: string[];
+  digits: number;
+}
+
+/**
+ * Chooses extra words so that the numbers fill exactly the space that is left (2 to 8 digits), or so that
+ * nothing is left when numbers are switched off. Returns null when this try cannot be made to fit.
+ */
+function fitExtras(room: number, digits: boolean, pool: string[]): Fit | null {
   const words: string[] = [];
-  for (let i = 0; i < 9; i++) {
-    if (digits ? r >= MIN_DIGITS && r <= MAX_DIGITS : r === 0) return { words, digits: digits ? r : 0 };
+  let r = room;
+  for (let i = 0; i < 10; i++) {
+    if (digits) {
+      if (r < MIN_DIGITS) return null;
+      if (r <= MAX_DIGITS && chance(words.length === 0 ? 0.55 : 0.8)) return { words, digits: r };
+    } else if (r === 0) return { words, digits: 0 };
     const limit = digits ? r - MIN_DIGITS : r;
-    const fits = SUFFIX_WORDS.filter((w) => w.length <= limit);
-    if (fits.length === 0) return null;
+    // Short curated words most of the time, and a word from the chosen categories now and then.
+    const fromPool = chance(0.4);
+    const source = fromPool ? pool : SUFFIX_WORDS;
+    const fits = source.filter((w) => w.length <= limit);
+    if (fits.length === 0) return digits && r <= MAX_DIGITS ? { words, digits: r } : null;
     const w = pick(fits);
     words.push(w);
     r -= w.length;
   }
-  return digits ? (r >= MIN_DIGITS && r <= MAX_DIGITS ? { words, digits: r } : null) : r === 0 ? { words, digits: 0 } : null;
+  if (digits) return r >= MIN_DIGITS && r <= MAX_DIGITS ? { words, digits: r } : null;
+  return r === 0 ? { words, digits: 0 } : null;
 }
 
-function build(opts: NamePasswordOptions, pool: string[]): GeneratedPassword | null {
-  const symbolLen = opts.symbols ? 1 : 0;
+function build(opts: NamePasswordOptions, pool: string[]): string | null {
+  const symbolCount = opts.symbols ? (opts.length >= 10 ? pick([1, 2]) : 1) : 0;
   const name = pick(pool);
-  const room = opts.length - name.length - symbolLen;
+  const room = opts.length - name.length - symbolCount;
   if (room < (opts.digits ? MIN_DIGITS : 0)) return null;
-  const fit = fitExtras(room, opts.digits);
+  const fit = fitExtras(room, opts.digits, pool);
   if (!fit) return null;
 
-  const pieces: Record<string, string> = {
-    W: styleWord(name, opts.upper, opts.lower),
-    D: fit.digits ? digitsBlock(fit.digits) : '',
-    S: opts.symbols ? pick([...PASSWORD_SYMBOLS]) : '',
-    X: fit.words.map((w) => styleWord(w, opts.upper, opts.lower)).join(''),
+  const symbols: string[] = [];
+  while (symbols.length < symbolCount) {
+    const s = pick([...PASSWORD_SYMBOLS]);
+    if (!symbols.includes(s)) symbols.push(s);
+  }
+  const used = { S: 0 };
+  const pieces: Record<string, () => string> = {
+    W: () => styleWord(name, opts.upper, opts.lower),
+    D: () => (fit.digits ? digitsBlock(fit.digits) : ''),
+    X: () => fit.words.map((w) => styleWord(w, opts.upper, opts.lower)).join(''),
+    S: () => symbols[used.S++] ?? '',
   };
-  const template = pick(TEMPLATES);
-  const password = [...template].map((k) => pieces[k]).join('');
+  const template = symbolCount === 2 ? TEMPLATE_TWO_SYMBOLS : TEMPLATE_ONE_SYMBOL;
+  const password = [...template].map((k) => pieces[k]()).join('');
   if (password.length !== opts.length) return null;
   if (opts.upper && !/[A-Z]/.test(password)) return null;
   if (opts.lower && !/[a-z]/.test(password)) return null;
-
-  const wordCasing = opts.upper && opts.lower ? Math.log2(5) : 0;
-  const bits =
-    Math.log2(pool.length) +
-    fit.words.length * (Math.log2(SUFFIX_WORDS.length) + wordCasing) +
-    fit.digits * Math.log2(10) +
-    (opts.symbols ? Math.log2(PASSWORD_SYMBOLS.length) : 0) +
-    Math.log2(TEMPLATES.length) +
-    wordCasing;
-  return { password, bits: Math.floor(bits) };
+  if (hasWeakPattern(password)) return null;
+  return password;
 }
 
 /**
- * A password built from a recognisable name or word, a short extra word, random digits, one symbol and
- * random capitalisation, e.g. Nvidia132@Star. Easier to remember than fully random text, but weaker.
+ * A password built from a recognisable name or word, random digits, optional extra words and one or two
+ * symbols, e.g. Nvidia482Star@. Easier to remember than fully random text, but weaker: its strength is
+ * estimated by ./passwordStrength.ts, which counts every known word as a single pick from a word list.
  */
-export function generateNamePassword(opts: NamePasswordOptions): GeneratedPassword {
-  if (!opts.upper && !opts.lower) throw new Error('Choose uppercase letters, lowercase letters, or both.');
+export function generateNamePassword(opts: NamePasswordOptions): string {
+  if (!opts.upper && !opts.lower) throw new Error(tr('err.passwords.chooseCase'));
   const length = Math.floor(opts.length);
-  if (!(length >= NAME_LENGTH.min && length <= NAME_LENGTH.max)) throw new Error(`Choose a length between ${NAME_LENGTH.min} and ${NAME_LENGTH.max}.`);
+  if (!(length >= NAME_LENGTH.min && length <= NAME_LENGTH.max)) throw new Error(tr('err.passwords.length', { min: NAME_LENGTH.min, max: NAME_LENGTH.max }));
   const full = ALL_WORDS(opts.categories);
-  if (full.length === 0) throw new Error('Choose at least one word category.');
+  if (full.length === 0) throw new Error(tr('err.passwords.chooseCategory'));
   const base = { ...opts, length };
 
-  // Prefer names that leave room for the other parts; fall back to any name if the length is very short.
-  const roomy = full.filter((w) => w.length <= length - (opts.symbols ? 1 : 0) - (opts.digits ? MIN_DIGITS : 0));
-  const pools = [roomy.length ? roomy : full];
-  for (let attempt = 0; attempt < 400; attempt++) {
-    const made = build(base, pools[0]);
+  // Prefer names that leave room for the other parts.
+  const symbolRoom = opts.symbols ? 1 : 0;
+  const roomy = full.filter((w) => w.length <= length - symbolRoom - (opts.digits ? MIN_DIGITS : 0) - 0);
+  const pool = roomy.length ? roomy : full;
+  for (let attempt = 0; attempt < 600; attempt++) {
+    const made = build(base, pool);
     if (made) return made;
   }
-  // Should be unreachable; keep the result valid anyway by padding with random characters.
-  const name = styleWord(pick(pools[0]).slice(0, Math.max(3, length - 4)), opts.upper, opts.lower);
-  const padLen = Math.max(0, length - name.length);
-  const pad = Array.from({ length: padLen }, () => (opts.digits ? String(secureRandomInt(10)) : styleWord('abcdefghij'.charAt(secureRandomInt(10)), opts.upper, opts.lower))).join('');
-  return { password: (name + pad).slice(0, length), bits: Math.floor(Math.log2(pools[0].length) + padLen * Math.log2(opts.digits ? 10 : 26)) };
-}
-
-export function strengthOf(bits: number): { label: string; tone: 'danger' | 'warning' | 'success'; pct: number } {
-  if (bits < 40) return { label: 'Weak', tone: 'danger', pct: 25 };
-  if (bits < 60) return { label: 'Fair', tone: 'warning', pct: 50 };
-  if (bits < 90) return { label: 'Strong', tone: 'success', pct: 78 };
-  return { label: 'Very strong', tone: 'success', pct: 100 };
+  throw new Error(tr('err.passwords.cannotBuild'));
 }

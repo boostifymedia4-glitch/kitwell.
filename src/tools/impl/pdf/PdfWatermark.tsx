@@ -5,6 +5,7 @@ import { PdfSource } from '@/components/tool/PdfSource';
 import { PdfResult } from '@/components/tool/Results';
 import { UploadDropzone } from '@/components/tool/UploadDropzone';
 import { Icon } from '@/components/Icon';
+import { useI18n } from '@/i18n';
 import { MB } from '@/lib/files';
 import { baseName, errorMessage, formatBytes } from '@/lib/format';
 import { useFileQueue } from '@/lib/hooks';
@@ -23,11 +24,12 @@ function imageType(bytes: Uint8Array): 'png' | 'jpg' | null {
 }
 
 const PdfWatermark: ToolImplementation = () => {
+  const { t } = useI18n();
   const { pdf, task, reset, running } = usePdfTool();
   const logo = useFileQueue({ extensions: ['png', 'jpg', 'jpeg'], maxBytes: 5 * MB, maxFiles: 1 }, false);
   const logoFile = logo.items[0]?.file ?? null;
   const [kind, setKind] = useState<Kind>('text');
-  const [text, setText] = useState('CONFIDENTIAL');
+  const [text, setText] = useState(() => t('pdfWatermark.defaultText'));
   const [size, setSize] = useState(60);
   const [bold, setBold] = useState(true);
   const [color, setColor] = useState('#c2410c');
@@ -64,10 +66,10 @@ const PdfWatermark: ToolImplementation = () => {
             if (kind === 'text') {
               out = await addWatermark(ready.bytes, { ...common, mark: { kind: 'text', text, size, bold, color } });
             } else {
-              if (!logoFile) throw new PdfError('Add the watermark image first.');
+              if (!logoFile) throw new PdfError(t('pdfWatermark.imageFirst'));
               const bytes = new Uint8Array(await logoFile.arrayBuffer());
               const type = imageType(bytes);
-              if (!type) throw new PdfError('The watermark image must be a PNG or JPG file.');
+              if (!type) throw new PdfError(t('pdfWatermark.imageType'));
               out = await addWatermark(ready.bytes, { ...common, mark: { kind: 'image', bytes, type, scale: scale / 100 } });
             }
             return new Blob([out.buffer as ArrayBuffer], { type: 'application/pdf' });
@@ -76,26 +78,26 @@ const PdfWatermark: ToolImplementation = () => {
         return (
           <>
             <Segmented
-              label="Watermark type"
+              label={t('pdfWatermark.type')}
               value={kind}
               onChange={choose}
               options={[
-                { value: 'text', label: 'Text' },
-                { value: 'image', label: 'Image' },
+                { value: 'text', label: t('pdfWatermark.type.text') },
+                { value: 'image', label: t('pdfWatermark.type.image') },
               ]}
             />
             {kind === 'text' ? (
               <div className="options-grid">
-                <Field label="Text" hint="Latin letters, digits and common symbols.">
+                <Field label={t('pdfWatermark.text')} hint={t('pdfWatermark.text.hint')}>
                   {(id) => <input id={id} className="input" value={text} maxLength={100} onChange={(e) => setText(e.target.value)} />}
                 </Field>
-                <RangeField label="Font size" value={size} min={12} max={200} onChange={setSize} format={(v) => `${v} pt`} />
-                <ColorField label="Colour" value={color} onChange={setColor} />
-                <CheckField label="Bold" checked={bold} onChange={setBold} />
+                <RangeField label={t('pdfWatermark.fontSize')} value={size} min={12} max={200} onChange={setSize} format={(v) => `${v} pt`} />
+                <ColorField label={t('pdfWatermark.colour')} value={color} onChange={setColor} />
+                <CheckField label={t('pdfWatermark.bold')} checked={bold} onChange={setBold} />
               </div>
             ) : (
               <div className="stack-sm">
-                {!logoFile && <UploadDropzone extensions={['png', 'jpg', 'jpeg']} maxBytes={5 * MB} compact title="Add the watermark image" onFiles={logo.add} />}
+                {!logoFile && <UploadDropzone extensions={['png', 'jpg', 'jpeg']} maxBytes={5 * MB} compact title={t('pdfWatermark.addImage')} onFiles={logo.add} />}
                 <RejectionList items={logo.rejections} onDismiss={logo.dismissRejections} />
                 {logoFile && (
                   <div className="file-item">
@@ -104,36 +106,36 @@ const PdfWatermark: ToolImplementation = () => {
                       <div className="file-sub">{formatBytes(logoFile.size)}</div>
                     </div>
                     <button type="button" className="btn btn-ghost btn-sm" onClick={logo.clear}>
-                      Change image
+                      {t('pdfWatermark.changeImage')}
                     </button>
                   </div>
                 )}
-                <RangeField label="Image width" value={scale} min={5} max={100} onChange={setScale} format={(v) => `${v}% of page width`} />
+                <RangeField label={t('pdfWatermark.imageWidth')} value={scale} min={5} max={100} onChange={setScale} format={(v) => t('pdfWatermark.imageWidth.value', { value: v })} />
               </div>
             )}
             <div className="options-grid">
-              <RangeField label="Opacity" value={opacity} min={5} max={100} onChange={setOpacity} format={(v) => `${v}%`} />
-              <NumberField label="Rotation (degrees, anticlockwise)" value={angle} min={-180} max={180} onChange={setAngle} />
+              <RangeField label={t('pdfWatermark.opacity')} value={opacity} min={5} max={100} onChange={setOpacity} format={(v) => `${v}%`} />
+              <NumberField label={t('pdfWatermark.rotation')} value={angle} min={-180} max={180} onChange={setAngle} />
               <SelectField
-                label="Layout"
+                label={t('pdfWatermark.layout')}
                 value={layout}
                 onChange={setLayout}
                 options={[
-                  { value: 'center', label: 'One mark, centred' },
-                  { value: 'tile', label: 'Repeated across the page' },
+                  { value: 'center', label: t('pdfWatermark.layout.center') },
+                  { value: 'tile', label: t('pdfWatermark.layout.tile') },
                 ]}
               />
-              <Field label="Pages (optional)" hint={`Empty means all ${ready.pageCount} pages. Or enter e.g. 1-3, 5.`}>
-                {(id) => <input id={id} className="input mono" value={pages} placeholder="All pages" onChange={(e) => setPages(e.target.value)} />}
+              <Field label={t('pdfWatermark.pages')} hint={t('pdfWatermark.pages.hint', { count: ready.pageCount })}>
+                {(id) => <input id={id} className="input mono" value={pages} placeholder={t('pdfWatermark.pages.placeholder')} onChange={(e) => setPages(e.target.value)} />}
               </Field>
             </div>
             <div className="toolbar">
               <button type="button" className="btn btn-primary btn-lg" onClick={run} disabled={running || (kind === 'text' && !text.trim()) || (kind === 'image' && !logoFile)}>
                 <Icon name="stamp" size={18} />
-                Add watermark
+                {t('pdfWatermark.add')}
               </button>
             </div>
-            {running && <ProcessingState label="Adding watermark…" />}
+            {running && <ProcessingState label={t('pdfWatermark.processing')} />}
             {task.state.status === 'error' && <ErrorMessage>{task.state.error}</ErrorMessage>}
             {task.state.status === 'done' && <PdfResult blob={task.state.result} name={`${baseName(ready.file.name)}-watermarked.pdf`} onReset={reset} />}
           </>

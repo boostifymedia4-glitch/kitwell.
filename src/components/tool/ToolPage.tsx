@@ -1,5 +1,7 @@
 import { Component, Suspense, lazy, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
+import { useI18n } from '@/i18n';
+import { useLocalize } from '@/i18n/useLocalize';
 import { categoryPath, getCategory, relatedTools, toolPath } from '@/tools/registry';
 import { implLoaders } from '@/tools/impl';
 import type { ToolDef } from '@/tools/types';
@@ -11,16 +13,31 @@ import { Faq } from '../ui/Faq';
 import { ToolGrid } from '../ui/ToolCard';
 import { ToolIcon } from '../ui/ToolIcon';
 import { ErrorMessage, PrivacyNotice } from './Feedback';
-import { getPageMeta } from '@/pageMeta';
+import { usePageMeta } from '@/i18n/usePageMeta';
 
 /** Heights approximate the loaded UI (file tools ~208px, text/developer tools taller) to avoid layout shift. */
 function ToolSkeleton({ fileTool }: { fileTool: boolean }) {
+  const { t } = useI18n();
   return (
-    <div className="empty" style={{ minHeight: fileTool ? 208 : 460, padding: 0, display: 'grid', placeItems: 'center' }} role="status">
+    <div className="empty tool-skeleton" style={{ minHeight: fileTool ? 208 : 460, padding: 0, display: 'grid', placeItems: 'center' }} role="status">
       <div className="processing">
         <span className="spinner" aria-hidden="true" />
-        Loading tool…
+        {t('tool.loading')}
       </div>
+    </div>
+  );
+}
+
+function ToolLoadError() {
+  const { t } = useI18n();
+  return (
+    <div className="stack">
+      <ErrorMessage>
+        {t('tool.loadFailed')}{' '}
+        <button type="button" className="btn btn-ghost btn-sm" onClick={() => window.location.reload()}>
+          {t('tool.reload')}
+        </button>
+      </ErrorMessage>
     </div>
   );
 }
@@ -32,18 +49,7 @@ class ToolBoundary extends Component<{ children: ReactNode }, { failed: boolean 
     return { failed: true };
   }
   render() {
-    if (!this.state.failed) return this.props.children;
-    return (
-      <div className="stack">
-        <ErrorMessage>
-          This tool could not be loaded. Check your connection and{' '}
-          <button type="button" className="btn btn-ghost btn-sm" onClick={() => window.location.reload()}>
-            reload the page
-          </button>
-          .
-        </ErrorMessage>
-      </div>
-    );
+    return this.state.failed ? <ToolLoadError /> : this.props.children;
   }
 }
 
@@ -62,9 +68,12 @@ function ToolInterface({ tool }: { tool: ToolDef }) {
   );
 }
 
-export function ToolPage({ tool }: { tool: ToolDef }) {
+export function ToolPage({ tool: source }: { tool: ToolDef }) {
+  const { t } = useI18n();
+  const loc = useLocalize();
+  const tool = loc.tool(source);
   const path = toolPath(tool);
-  const meta = getPageMeta(path);
+  const meta = usePageMeta(path);
   const cat = getCategory(tool.category);
   const related = relatedTools(tool);
 
@@ -83,7 +92,7 @@ export function ToolPage({ tool }: { tool: ToolDef }) {
           </div>
         </header>
 
-        <section className="card tool-panel" aria-label={`${tool.name} tool`} key={tool.slug}>
+        <section className="card tool-panel" aria-label={t('tool.region', { name: tool.name })} key={tool.slug}>
           <ToolInterface tool={tool} />
         </section>
         <PrivacyNotice fileTool={tool.fileTool} />
@@ -91,7 +100,7 @@ export function ToolPage({ tool }: { tool: ToolDef }) {
 
         <div className="info-grid">
           <section className="card info-card" aria-labelledby="how-to">
-            <h2 id="how-to">How to use {tool.name}</h2>
+            <h2 id="how-to">{t('tool.howTo', { name: tool.name })}</h2>
             <ol className="steps">
               {tool.steps.map((s) => (
                 <li key={s}>{s}</li>
@@ -99,7 +108,7 @@ export function ToolPage({ tool }: { tool: ToolDef }) {
             </ol>
           </section>
           <section className="card info-card" aria-labelledby="limits">
-            <h2 id="limits">Supported formats &amp; limits</h2>
+            <h2 id="limits">{t('tool.limits')}</h2>
             <ul className="limit-list">
               {tool.limits.map((l) => (
                 <li key={l}>{l}</li>
@@ -110,17 +119,17 @@ export function ToolPage({ tool }: { tool: ToolDef }) {
 
         <section aria-labelledby="faq">
           <h2 id="faq" style={{ marginBottom: 'var(--space-3)' }}>
-            Frequently asked questions
+            {t('tool.faq')}
           </h2>
           <Faq items={tool.faq} />
         </section>
 
         <section aria-labelledby="related">
           <div className="section-head">
-            <h2 id="related">Related tools</h2>
+            <h2 id="related">{t('tool.related')}</h2>
             {cat && (
               <Link to={categoryPath(cat.id)} className="btn btn-ghost btn-sm">
-                All {cat.short.toLowerCase()} tools
+                {t('tool.allInCategory', { category: loc.category(cat).short })}
                 <Icon name="arrow-right" size={14} />
               </Link>
             )}

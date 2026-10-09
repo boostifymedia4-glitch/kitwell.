@@ -11,12 +11,13 @@ import { compareDocuments, pixelDiff, textReport, withContext, type CompareOptio
 import { destroyPdf, openPdf, renderPageToWidth } from '@/lib/pdfjs';
 import { itemsToText, type TextItemLike } from '@/lib/pdfText';
 import { usePdfFile } from '@/lib/usePdfFile';
+import { useI18n } from '@/i18n';
 import type { ToolImplementation } from '../../types';
 
 const MAX_PAGES = 100;
 const VISUAL_WIDTH = 640;
 
-const STATUS_LABEL: Record<PageStatus, string> = { same: 'Identical', changed: 'Changed', added: 'Only in revised', removed: 'Only in original' };
+const STATUS_LABEL: Record<PageStatus, string> = { same: 'pdfCompare.status.same', changed: 'pdfCompare.status.changed', added: 'pdfCompare.status.added', removed: 'pdfCompare.status.removed' };
 
 async function pageTexts(doc: PDFDocumentProxy, limit: number): Promise<string[]> {
   const out: string[] = [];
@@ -39,6 +40,7 @@ interface Loaded {
 }
 
 function Comparison({ bytesA, bytesB, nameA, nameB, onReset }: { bytesA: Uint8Array; bytesB: Uint8Array; nameA: string; nameB: string; onReset: () => void }) {
+  const { t } = useI18n();
   const [loaded, setLoaded] = useState<Loaded | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [options, setOptions] = useState<CompareOptions>({ ignoreCase: false, ignoreWhitespace: true });
@@ -104,7 +106,7 @@ function Comparison({ bytesA, bytesB, nameA, nameB, onReset }: { bytesA: Uint8Ar
       if (!hasA || !hasB) {
         const only = hasA ? { doc: docA, c: a } : { doc: docB, c: b };
         await renderPageToWidth(only.doc, current.page, VISUAL_WIDTH, only.c);
-        if (!cancelled) setVisual({ percent: 100, note: hasA ? 'This page exists only in the original file.' : 'This page exists only in the revised file.' });
+        if (!cancelled) setVisual({ percent: 100, note: hasA ? t('pdfCompare.onlyOriginal') : t('pdfCompare.onlyRevised') });
         return;
       }
       const size = await renderPageToWidth(docA, current.page, VISUAL_WIDTH, a);
@@ -125,7 +127,7 @@ function Comparison({ bytesA, bytesB, nameA, nameB, onReset }: { bytesA: Uint8Ar
       d.height = size.h;
       d.getContext('2d')?.putImageData(new ImageData(diff.overlay as Uint8ClampedArray<ArrayBuffer>, size.w, size.h), 0, 0);
       const sameShape = Math.abs(sizeB.h / sizeB.w - size.h / size.w) < 0.01;
-      if (!cancelled) setVisual({ percent: diff.percent, note: sameShape ? null : 'The two pages have different sizes, so the revised page was stretched to fit before comparing.' });
+      if (!cancelled) setVisual({ percent: diff.percent, note: sameShape ? null : t('pdfCompare.sizeDiffers') });
     })()
       .catch((e) => !cancelled && setError(errorMessage(e)))
       .finally(() => !cancelled && setVisualBusy(false));
@@ -135,54 +137,54 @@ function Comparison({ bytesA, bytesB, nameA, nameB, onReset }: { bytesA: Uint8Ar
   }, [view, loaded, current?.page]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (error) return <ErrorMessage>{error}</ErrorMessage>;
-  if (!loaded || !result) return <ProcessingState label="Reading both PDFs…" />;
+  if (!loaded || !result) return <ProcessingState label={t('pdfCompare.reading')} />;
 
-  const t = result.totals;
-  const differences = t.changedPages + t.addedPages + t.removedPages;
+  const totals = result.totals;
+  const differences = totals.changedPages + totals.addedPages + totals.removedPages;
   const scannedBoth = result.pages.every((p) => p.noText);
   const truncated = Math.max(loaded.docA.numPages, loaded.docB.numPages) > MAX_PAGES;
   const report = textReport(nameA, nameB, result);
 
   return (
     <div className="stack">
-      {truncated && <Notice tone="warn">Only the first {MAX_PAGES} pages of each file were compared.</Notice>}
+      {truncated && <Notice tone="warn">{t('pdfCompare.truncated', { max: MAX_PAGES })}</Notice>}
       <Stats
         items={[
-          { label: 'Pages changed', value: t.changedPages },
-          { label: 'Pages identical', value: t.identicalPages },
-          { label: 'Words added', value: t.addedWords },
-          { label: 'Words removed', value: t.removedWords },
+          { label: t('pdfCompare.stat.changed'), value: totals.changedPages },
+          { label: t('pdfCompare.stat.identical'), value: totals.identicalPages },
+          { label: t('pdfCompare.stat.added'), value: totals.addedWords },
+          { label: t('pdfCompare.stat.removed'), value: totals.removedWords },
         ]}
       />
-      {t.pagesA !== t.pagesB && (
+      {totals.pagesA !== totals.pagesB && (
         <Notice tone="info">
-          The original has {loaded.docA.numPages} pages and the revised file has {loaded.docB.numPages}. Pages are compared by number.
+          {t('pdfCompare.pageCountDiffers', { a: loaded.docA.numPages, b: loaded.docB.numPages })}
         </Notice>
       )}
       {scannedBoth && (
         <Notice tone="warn">
-          Neither file has selectable text (they look like scans), so there is no text to compare. Use the visual comparison, or run OCR PDF on both files first.
+          {t('pdfCompare.scanned')}
         </Notice>
       )}
-      {differences === 0 && !scannedBoth && <Notice tone="success">No differences in the text were found. Check the visual view for layout or image changes.</Notice>}
+      {differences === 0 && !scannedBoth && <Notice tone="success">{t('pdfCompare.noDifferences')}</Notice>}
 
       <div className="options-grid">
-        <CheckField label="Ignore upper/lower case" checked={options.ignoreCase} onChange={(v) => setOptions((o) => ({ ...o, ignoreCase: v }))} />
-        <CheckField label="Ignore differences in spacing and line breaks" checked={options.ignoreWhitespace} onChange={(v) => setOptions((o) => ({ ...o, ignoreWhitespace: v }))} />
-        <CheckField label="Show only pages with changes" checked={onlyChanged} onChange={setOnlyChanged} />
+        <CheckField label={t('pdfCompare.ignoreCase')} checked={options.ignoreCase} onChange={(v) => setOptions((o) => ({ ...o, ignoreCase: v }))} />
+        <CheckField label={t('pdfCompare.ignoreWhitespace')} checked={options.ignoreWhitespace} onChange={(v) => setOptions((o) => ({ ...o, ignoreWhitespace: v }))} />
+        <CheckField label={t('pdfCompare.onlyChanged')} checked={onlyChanged} onChange={setOnlyChanged} />
       </div>
 
       <div className="compare-layout">
-        <nav aria-label="Pages" className="compare-pages">
+        <nav aria-label={t('pdfCompare.pages')} className="compare-pages">
           <ul>
             {visiblePages.map((p) => (
               <li key={p.page}>
                 <button type="button" className="compare-page" aria-current={current?.page === p.page ? 'true' : undefined} onClick={() => setSelected(p.page)}>
-                  <strong>Page {p.page}</strong>
-                  <span className={`badge badge-${p.status}`}>{STATUS_LABEL[p.status]}</span>
+                  <strong>{t('pdfCompare.page', { page: p.page })}</strong>
+                  <span className={`badge badge-${p.status}`}>{t(STATUS_LABEL[p.status])}</span>
                   {(p.addedWords > 0 || p.removedWords > 0) && (
                     <small>
-                      +{p.addedWords} −{p.removedWords} words
+                      {t('pdfCompare.wordsDelta', { added: p.addedWords, removed: p.removedWords })}
                     </small>
                   )}
                 </button>
@@ -190,22 +192,22 @@ function Comparison({ bytesA, bytesB, nameA, nameB, onReset }: { bytesA: Uint8Ar
             ))}
           </ul>
         </nav>
-        <section className="compare-detail" aria-label={current ? `Page ${current.page} comparison` : 'Comparison'}>
+        <section className="compare-detail" aria-label={current ? t('pdfCompare.pageComparison', { page: current.page }) : t('pdfCompare.comparison')}>
           <Segmented
-            label="View"
+            label={t('pdfCompare.view')}
             value={view}
             onChange={setView}
             options={[
-              { value: 'text', label: 'Text changes' },
-              { value: 'visual', label: 'Visual changes' },
+              { value: 'text', label: t('pdfCompare.view.text') },
+              { value: 'visual', label: t('pdfCompare.view.visual') },
             ]}
           />
           {current && view === 'text' && (
-            <div className="compare-text" tabIndex={0} role="region" aria-label={`Text changes on page ${current.page}`}>
+            <div className="compare-text" tabIndex={0} role="region" aria-label={t('pdfCompare.textChangesOnPage', { page: current.page })}>
               {current.noText ? (
-                <p className="muted">This page has no selectable text.</p>
+                <p className="muted">{t('pdfCompare.noText')}</p>
               ) : current.status === 'same' ? (
-                <p className="muted">The text on this page is identical.</p>
+                <p className="muted">{t('pdfCompare.textIdentical')}</p>
               ) : (
                 <p>
                   {withContext(current.parts, 10).map((part, i, all) =>
@@ -227,45 +229,48 @@ function Comparison({ bytesA, bytesB, nameA, nameB, onReset }: { bytesA: Uint8Ar
                 </p>
               )}
               <p className="hint">
-                <ins>Green</ins> was added in the revised file, <del>red</del> was removed from the original.
+                <ins>{t('pdfCompare.legendAdded')}</ins>
+                {', '}
+                <del>{t('pdfCompare.legendRemoved')}</del>.
               </p>
             </div>
           )}
           <div hidden={view !== 'visual'}>
             <Segmented
-              label="Show"
+              label={t('pdfCompare.show')}
               value={layer}
               onChange={setLayer}
               options={[
-                { value: 'diff', label: 'Differences' },
-                { value: 'a', label: 'Original' },
-                { value: 'b', label: 'Revised' },
+                { value: 'diff', label: t('pdfCompare.layer.diff') },
+                { value: 'a', label: t('pdfCompare.layer.a') },
+                { value: 'b', label: t('pdfCompare.layer.b') },
               ]}
             />
-            {visualBusy && <ProcessingState label="Comparing pages…" />}
+            {visualBusy && <ProcessingState label={t('pdfCompare.comparing')} />}
             {visual && (
               <p className="hint" role="status">
-                {visual.percent === 0 ? 'No visible differences on this page.' : `${visual.percent}% of this page looks different.`} {visual.note}
+                {visual.percent === 0 ? t('pdfCompare.noVisible') : t('pdfCompare.percentDifferent', { percent: visual.percent })} {visual.note}
               </p>
             )}
             <div className="compare-canvases">
-              <canvas ref={refDiff} hidden={layer !== 'diff'} role="img" aria-label="Differences highlighted in red" />
-              <canvas ref={refA} hidden={layer !== 'a'} role="img" aria-label="Original page" />
-              <canvas ref={refB} hidden={layer !== 'b'} role="img" aria-label="Revised page" />
+              <canvas ref={refDiff} hidden={layer !== 'diff'} role="img" aria-label={t('pdfCompare.canvasDiff')} />
+              <canvas ref={refA} hidden={layer !== 'a'} role="img" aria-label={t('pdfCompare.canvasA')} />
+              <canvas ref={refB} hidden={layer !== 'b'} role="img" aria-label={t('pdfCompare.canvasB')} />
             </div>
           </div>
         </section>
       </div>
 
       <div className="toolbar">
-        <DownloadButton blob={new Blob([report], { type: 'text/plain;charset=utf-8' })} name="pdf-comparison.txt" label="Download text report" variant="secondary" />
-        <ResetButton onClick={onReset} label="Compare other files" />
+        <DownloadButton blob={new Blob([report], { type: 'text/plain;charset=utf-8' })} name="pdf-comparison.txt" label={t('pdfCompare.downloadReport')} variant="secondary" />
+        <ResetButton onClick={onReset} label={t('pdfCompare.compareOther')} />
       </div>
     </div>
   );
 }
 
 const PdfCompare: ToolImplementation = () => {
+  const { t } = useI18n();
   const a = usePdfFile();
   const b = usePdfFile();
   const [started, setStarted] = useState<{ a: Uint8Array; b: Uint8Array; nameA: string; nameB: string } | null>(null);
@@ -285,11 +290,11 @@ const PdfCompare: ToolImplementation = () => {
     <div className="stack">
       <div className="compare-sources">
         <div className="stack-sm">
-          <h3 className="compare-label">1. Original PDF</h3>
+          <h3 className="compare-label">{t('pdfCompare.original')}</h3>
           <PdfSource pdf={a}>{() => null}</PdfSource>
         </div>
         <div className="stack-sm">
-          <h3 className="compare-label">2. Revised PDF</h3>
+          <h3 className="compare-label">{t('pdfCompare.revised')}</h3>
           <PdfSource pdf={b}>{() => null}</PdfSource>
         </div>
       </div>
@@ -297,7 +302,7 @@ const PdfCompare: ToolImplementation = () => {
         <div className="toolbar">
           <button type="button" className="btn btn-primary btn-lg" onClick={() => setStarted({ a: readyA.bytes, b: readyB.bytes, nameA: readyA.file.name, nameB: readyB.file.name })}>
             <Icon name="git-compare" size={18} />
-            Compare PDFs
+            {t('pdfCompare.compare')}
           </button>
         </div>
       )}

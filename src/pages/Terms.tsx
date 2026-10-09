@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
-import { LegalNotice, PageShell, Placeholder } from '@/components/ui/PageShell';
+import { LegalBody, LegalNotice, PageShell, Placeholder } from '@/components/ui/PageShell';
 import { site } from '@/config/site';
+import { useI18n } from '@/i18n';
 
 export default function Terms() {
+  const { t } = useI18n();
   return (
-    <PageShell path="/terms" title="Terms & Conditions" lead={`The terms that apply when you use ${site.name}.`}>
+    <PageShell path="/terms" title={t('legal.terms.title')} lead={t('legal.terms.lead', { site: site.name })}>
       <LegalNotice />
+      <LegalBody>
       <p className="muted">
         Effective date: <Placeholder>DATE</Placeholder>
       </p>
@@ -56,6 +59,7 @@ export default function Terms() {
       <p>
         Questions about these terms? See the <Link to="/contact">contact page</Link>.
       </p>
+      </LegalBody>
     </PageShell>
   );
 }

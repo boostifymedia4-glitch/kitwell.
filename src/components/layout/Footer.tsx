@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { site } from '@/config/site';
 import { useI18n, type MessageKey } from '@/i18n';
-import { English } from '@/i18n/English';
+import { useLocalize } from '@/i18n/useLocalize';
 import { categories, categoryPath, featuredTools, popularTools, toolPath, toolsInCategory, tools } from '@/tools/registry';
 import { Icon } from '../Icon';
 import { BrandMark } from './Header';
@@ -10,6 +10,7 @@ import { LanguageSelector } from './LanguageSelector';
 /** Footer: tool columns first (they are the reason people come back), then help and company links. */
 export function Footer() {
   const { t } = useI18n();
+  const loc = useLocalize();
   const legal: { to: string; label: MessageKey }[] = [
     { to: '/privacy', label: 'footer.privacy' },
     { to: '/terms', label: 'footer.terms' },
@@ -41,28 +42,28 @@ export function Footer() {
           <div className="footer-cols">
             <nav aria-labelledby="footer-popular">
               <h2 id="footer-popular">{t('footer.popular')}</h2>
-              <English as="ul" style={{ display: 'grid' }}>
+              <ul>
                 {popularTools().map((tool) => (
                   <li key={tool.slug}>
-                    <Link to={toolPath(tool)}>{tool.name}</Link>
+                    <Link to={toolPath(tool)}>{loc.tool(tool).name}</Link>
                   </li>
                 ))}
-              </English>
+              </ul>
             </nav>
             {categories.map((c) => (
               <nav key={c.id} aria-labelledby={`footer-${c.id}`}>
                 <h2 id={`footer-${c.id}`}>
                   <Link to={categoryPath(c.id)}>{t(`cat.${c.id}` as MessageKey)}</Link>
                 </h2>
-                <English as="ul" style={{ display: 'grid' }}>
+                <ul>
                   {featuredTools(c.id)
                     .slice(0, 7)
                     .map((tool) => (
                       <li key={tool.slug}>
-                        <Link to={toolPath(tool)}>{tool.name}</Link>
+                        <Link to={toolPath(tool)}>{loc.tool(tool).name}</Link>
                       </li>
                     ))}
-                </English>
+                </ul>
                 <Link to={categoryPath(c.id)} className="footer-all">
                   {t('footer.seeAll', { count: toolsInCategory(c.id).length })}
                   <Icon name="arrow-right" size={14} />
@@ -79,6 +80,9 @@ export function Footer() {
                 </li>
                 <li>
                   <Link to="/help">{t('footer.help')}</Link>
+                </li>
+                <li>
+                  <Link to="/blog">{t('footer.blog')}</Link>
                 </li>
                 <li>
                   <a href="/sitemap.xml">{t('footer.sitemap')}</a>

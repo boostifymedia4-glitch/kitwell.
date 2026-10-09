@@ -1,4 +1,5 @@
 import { processOnCurrentThread, type ImagePlan } from './imageProcessor';
+import { tr } from '@/i18n/translate';
 
 interface Request {
   id: number;
@@ -12,6 +13,6 @@ self.onmessage = async (event: MessageEvent<Request>) => {
     const result = await processOnCurrentThread(file, plan);
     self.postMessage({ id, ok: true, result });
   } catch (err) {
-    self.postMessage({ id, ok: false, error: err instanceof Error ? err.message : 'Processing failed.' });
+    self.postMessage({ id, ok: false, error: err instanceof Error ? err.message : tr('err.image.processingFailed') });
   }
 };

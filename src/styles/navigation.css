@@ -157,6 +157,3 @@
 .help-section h2 { margin-bottom: var(--space-3); font-size: var(--text-2xl); }
 
 
-/* English-only lists inside a right-to-left page line up with the translated headings above them. */
-[dir='rtl'] .footer-cols ul[dir='ltr'] { text-align: right; }
-[dir='rtl'] .footer-cols ul[dir='ltr'] li a { text-align: right; }

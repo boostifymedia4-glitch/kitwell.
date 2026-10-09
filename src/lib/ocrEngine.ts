@@ -5,8 +5,9 @@
  */
 import { createWorker, type Worker } from 'tesseract.js';
 import type { OcrWord } from './ocr';
+import { tr } from '@/i18n/translate';
 
-export const OCR_LANGUAGES = [{ code: 'eng', label: 'English' }] as const;
+export const OCR_LANGUAGES = [{ code: 'eng' }] as const;
 
 export interface OcrRecognition {
   text: string;
@@ -32,7 +33,7 @@ export async function createOcrEngine(onStatus?: (status: string, progress: numb
       logger: (m) => onStatus?.(m.status, m.progress),
     });
   } catch {
-    throw new Error('The OCR engine could not be started. Reload the page and try again; if it keeps failing, your browser may not support WebAssembly.');
+    throw new Error(tr('err.ocr.engineStart'));
   }
   return {
     async recognize(image) {

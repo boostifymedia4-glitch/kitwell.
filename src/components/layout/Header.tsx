@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { site } from '@/config/site';
-import { English } from '@/i18n/English';
+import { useLocalize } from '@/i18n/useLocalize';
 import { useI18n, type MessageKey } from '@/i18n';
 import { categories, categoryPath, groupsInCategory, toolPath, toolsInCategory, toolsInGroup } from '@/tools/registry';
 import { Icon } from '../Icon';
@@ -23,6 +23,7 @@ export function BrandMark() {
 function MobileNav({ onNavigate }: { onNavigate: () => void }) {
   const [expanded, setExpanded] = useState<string | null>(null);
   const { t } = useI18n();
+  const loc = useLocalize();
   return (
     <div className="mobile-nav" id="mobile-nav">
       <div className="container">
@@ -42,17 +43,16 @@ function MobileNav({ onNavigate }: { onNavigate: () => void }) {
                   <Icon name="chevron-down" size={18} className={`acc-chevron ${isOpen ? 'is-open' : ''}`} />
                 </button>
                 {isOpen && (
-                  <English>
                   <ul className="acc-panel" id={`acc-${c.id}`}>
                     {groupsInCategory(c.id).map((g) => (
                       <li key={g.name} className="acc-group">
-                        <span className="acc-group-title">{g.name}</span>
+                        <span className="acc-group-title">{loc.group(g).name}</span>
                         <ul>
-                          {toolsInGroup(c.id, g.name).map((t) => (
-                            <li key={t.slug}>
-                              <Link to={toolPath(t)} onClick={onNavigate}>
-                                <ToolIcon tool={t} size="sm" />
-                                {t.name}
+                          {toolsInGroup(c.id, g.name).map((tool) => (
+                            <li key={tool.slug}>
+                              <Link to={toolPath(tool)} onClick={onNavigate}>
+                                <ToolIcon tool={tool} size="sm" />
+                                {loc.tool(tool).name}
                               </Link>
                             </li>
                           ))}
@@ -65,7 +65,6 @@ function MobileNav({ onNavigate }: { onNavigate: () => void }) {
                       </Link>
                     </li>
                   </ul>
-                  </English>
                 )}
               </div>
             );
@@ -73,8 +72,14 @@ function MobileNav({ onNavigate }: { onNavigate: () => void }) {
           <Link to="/tools" className="acc-link" onClick={onNavigate}>
             {t('nav.allTools')}
           </Link>
+          <Link to="/blog" className="acc-link" onClick={onNavigate}>
+            {t('nav.blog')}
+          </Link>
           <Link to="/about" className="acc-link" onClick={onNavigate}>
             {t('nav.about')}
+          </Link>
+          <Link to="/contact" className="acc-link" onClick={onNavigate}>
+            {t('nav.contact')}
           </Link>
         </nav>
       </div>
@@ -103,6 +108,9 @@ export function Header() {
             </NavLink>
           ))}
           <MegaMenu />
+          <NavLink to="/blog" className="nav-link">
+            {t('nav.blog')}
+          </NavLink>
         </nav>
         <div className="header-search">
           <ToolSearch shortcut />

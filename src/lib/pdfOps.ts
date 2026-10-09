@@ -3,12 +3,9 @@
  * pdf-lib can copy, reorder, rotate and embed pages. It cannot edit existing text or render pages.
  */
 import { EncryptedPDFError, PDFDocument, degrees, PageSizes } from '@cantoo/pdf-lib';
+import { tr } from '@/i18n/translate';
 
 export class PdfError extends Error {}
-
-const ENCRYPTED_MESSAGE =
-  'This PDF is password-protected. Remove the password with our Unlock PDF tool first, then try again.';
-const INVALID_MESSAGE = 'This file could not be read as a PDF. It may be corrupted or not a PDF at all.';
 
 function looksLikePdf(bytes: Uint8Array): boolean {
   // The header may be preceded by a little junk; the spec allows it within the first 1024 bytes.
@@ -17,15 +14,15 @@ function looksLikePdf(bytes: Uint8Array): boolean {
 }
 
 export async function loadPdf(bytes: Uint8Array, opts: { ignoreEncryption?: boolean } = {}): Promise<PDFDocument> {
-  if (!looksLikePdf(bytes)) throw new PdfError(INVALID_MESSAGE);
+  if (!looksLikePdf(bytes)) throw new PdfError(tr('err.pdf.unreadable'));
   let doc: PDFDocument;
   try {
     doc = await PDFDocument.load(bytes, { ignoreEncryption: opts.ignoreEncryption ?? false, updateMetadata: false });
     // pdf-lib is lenient and will "load" some garbage as an empty document; treat that as corruption.
     if (doc.getPageCount() < 1) throw new Error('no pages');
   } catch (err) {
-    if (err instanceof EncryptedPDFError) throw new PdfError(ENCRYPTED_MESSAGE);
-    throw new PdfError(INVALID_MESSAGE);
+    if (err instanceof EncryptedPDFError) throw new PdfError(tr('err.pdf.passwordProtected'));
+    throw new PdfError(tr('err.pdf.unreadable'));
   }
   return doc;
 }
@@ -38,7 +35,7 @@ export async function mergePdfs(
   files: Uint8Array[],
   opts: { names?: string[]; onProgress?: (done: number, total: number) => void } = {},
 ): Promise<Uint8Array> {
-  if (files.length < 2) throw new PdfError('Add at least two PDF files to merge.');
+  if (files.length < 2) throw new PdfError(tr('err.pdf.mergeNeedTwo'));
   const out = await PDFDocument.create();
   for (let i = 0; i < files.length; i++) {
     opts.onProgress?.(i, files.length);
@@ -46,7 +43,7 @@ export async function mergePdfs(
     try {
       src = await loadPdf(files[i]);
     } catch (err) {
-      throw new PdfError(`${opts.names?.[i] ?? `File ${i + 1}`}: ${(err as Error).message}`);
+      throw new PdfError(tr('err.pdf.mergeFile', { name: opts.names?.[i] ?? tr('err.pdf.fileN', { n: i + 1 }), message: (err as Error).message }));
     }
     const pages = await out.copyPages(src, src.getPageIndices());
     pages.forEach((p) => out.addPage(p));
@@ -64,10 +61,10 @@ export interface PageSpec {
 
 /** Build a new PDF from a list of pages of `bytes`, in the given order, with optional rotation. */
 export async function buildFromPages(bytes: Uint8Array, specs: PageSpec[]): Promise<Uint8Array> {
-  if (specs.length === 0) throw new PdfError('Select at least one page.');
+  if (specs.length === 0) throw new PdfError(tr('err.pdf.selectPage'));
   const src = await loadPdf(bytes);
   const total = src.getPageCount();
-  if (specs.some((s) => s.index < 0 || s.index >= total)) throw new PdfError('A selected page does not exist in this PDF.');
+  if (specs.some((s) => s.index < 0 || s.index >= total)) throw new PdfError(tr('err.pdf.selectedPageMissing'));
   const out = await PDFDocument.create();
   const copied = await out.copyPages(src, specs.map((s) => s.index));
   copied.forEach((page, i) => {
@@ -105,21 +102,21 @@ export async function splitPdf(
  */
 export function parsePageList(input: string, pageCount: number): number[] {
   const text = input.trim();
-  if (!text) throw new PdfError('Enter the pages you want, for example 1-3, 5.');
+  if (!text) throw new PdfError(tr('err.pdf.enterPages'));
   const seen = new Set<number>();
   const result: number[] = [];
   for (const part of text.split(',')) {
     const token = part.trim();
     if (!token) continue;
     const m = /^(\d+)\s*(?:-\s*(\d*))?$/.exec(token);
-    if (!m) throw new PdfError(`"${token}" is not a valid page or range.`);
+    if (!m) throw new PdfError(tr('err.pdf.badRange', { token }));
     const start = Number(m[1]);
     const hasDash = token.includes('-');
     const end = hasDash ? (m[2] ? Number(m[2]) : pageCount) : start;
     if (start < 1 || end < 1 || start > pageCount || end > pageCount) {
-      throw new PdfError(`"${token}" is outside this document, which has ${pageCount} page${pageCount === 1 ? '' : 's'}.`);
+      throw new PdfError(tr('err.pdf.rangeOutside', { token, count: pageCount }));
     }
-    if (end < start) throw new PdfError(`"${token}" is backwards. Write ranges from low to high, like ${end}-${start}.`);
+    if (end < start) throw new PdfError(tr('err.pdf.rangeBackwards', { token, example: `${end}-${start}` }));
     for (let p = start; p <= end; p++) {
       if (!seen.has(p)) {
         seen.add(p);
@@ -127,20 +124,20 @@ export function parsePageList(input: string, pageCount: number): number[] {
       }
     }
   }
-  if (result.length === 0) throw new PdfError('Enter the pages you want, for example 1-3, 5.');
+  if (result.length === 0) throw new PdfError(tr('err.pdf.enterPages'));
   return result;
 }
 
 /** Parse "1-3, 4-6, 7+9" into separate output files. `+` joins pieces into a single file. */
 export function parseSplitGroups(input: string, pageCount: number): number[][] {
   const text = input.trim();
-  if (!text) throw new PdfError('Enter the ranges for each output file, for example 1-3, 4-6.');
+  if (!text) throw new PdfError(tr('err.pdf.enterRanges'));
   const groups = text
     .split(',')
     .map((g) => g.trim())
     .filter(Boolean)
     .map((g) => parsePageList(g.replace(/\+/g, ','), pageCount));
-  if (groups.length === 0) throw new PdfError('Enter the ranges for each output file, for example 1-3, 4-6.');
+  if (groups.length === 0) throw new PdfError(tr('err.pdf.enterRanges'));
   return groups;
 }
 
@@ -168,14 +165,14 @@ export interface ImagesToPdfOptions {
 const PX_TO_PT = 0.75;
 
 export async function imagesToPdf(images: ImageInput[], opts: ImagesToPdfOptions): Promise<Uint8Array> {
-  if (images.length === 0) throw new PdfError('Add at least one image.');
+  if (images.length === 0) throw new PdfError(tr('err.pdf.noImages'));
   const doc = await PDFDocument.create();
   for (const img of images) {
     let embedded;
     try {
       embedded = img.kind === 'jpg' ? await doc.embedJpg(img.bytes) : await doc.embedPng(img.bytes);
     } catch {
-      throw new PdfError('One of the images could not be embedded. It may be corrupted or use an unsupported variant.');
+      throw new PdfError(tr('err.pdf.imageEmbed'));
     }
     const iw = embedded.width * PX_TO_PT;
     const ih = embedded.height * PX_TO_PT;

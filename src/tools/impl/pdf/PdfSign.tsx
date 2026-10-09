@@ -14,6 +14,7 @@ import { PdfError, parsePageList } from '@/lib/pdfOps';
 import { defaultSignatureBox, signPdf, type SignaturePlacement } from '@/lib/pdfSign';
 import { destroyPdf, openPdf, renderPageToWidth } from '@/lib/pdfjs';
 import { usePdfTool } from '@/lib/usePdfFile';
+import { useI18n } from '@/i18n';
 import type { ToolImplementation } from '../../types';
 
 const PREVIEW_PX = 760;
@@ -22,6 +23,7 @@ type Scope = 'this' | 'all' | 'first' | 'last' | 'custom';
 
 /** Page preview with the signature picture on a draggable, resizable box. Position is kept as fractions of the page. */
 function Placer({ bytes, name, pageCount, sig, onChangeSignature, onReset }: { bytes: Uint8Array; name: string; pageCount: number; sig: SignatureImage; onChangeSignature: () => void; onReset: () => void }) {
+  const { t } = useI18n();
   const task = useTask<Blob>();
   const running = task.state.status === 'running';
   const [doc, setDoc] = useState<PDFDocumentProxy | null>(null);
@@ -75,7 +77,7 @@ function Placer({ bytes, name, pageCount, sig, onChangeSignature, onReset }: { b
 
   const run = () =>
     task.run(async () => {
-      if (!area || !doc) throw new PdfError('Wait for the page preview to appear first.');
+      if (!area || !doc) throw new PdfError(t('pdfSign.err.preview'));
       let targets: number[];
       if (scope === 'this') targets = [shown];
       else if (scope === 'first') targets = [1];
@@ -106,9 +108,9 @@ function Placer({ bytes, name, pageCount, sig, onChangeSignature, onReset }: { b
   return (
     <div className="stack">
       <div className="row row-between">
-        <span className="label">Your signature</span>
+        <span className="label">{t('pdfSign.yourSignature')}</span>
         <button type="button" className="btn btn-ghost btn-sm" onClick={onChangeSignature} disabled={running}>
-          Change signature
+          {t('pdfSign.change')}
         </button>
       </div>
       <div className="preview-box" style={{ background: 'var(--bg-sunken)', padding: 'var(--space-4)' }}>
@@ -117,49 +119,49 @@ function Placer({ bytes, name, pageCount, sig, onChangeSignature, onReset }: { b
           height={size?.h ?? 1}
           rect={px ?? { x: 0, y: 0, w: 0, h: 0 }}
           ratio={sig.aspect}
-          label="Signature position"
+          label={t('pdfSign.position')}
           hidden={!size || !px}
           shade={false}
           boxContent={sigUrl ? <img src={sigUrl} alt="" /> : null}
           onChange={(r) => size && setArea({ x: r.x / size.w, y: r.y / size.h, w: r.w / size.w, h: r.h / size.h })}
         >
-          <canvas ref={canvasRef} role="img" aria-label={`Preview of page ${shown}`} />
+          <canvas ref={canvasRef} role="img" aria-label={t('pdfSign.preview', { page: shown })} />
         </CropSelector>
       </div>
-      {!size && <ProcessingState label="Rendering preview…" />}
-      <p className="hint">Drag the signature to move it, or drag the corner dot to resize it. Arrow keys also move it.</p>
+      {!size && <ProcessingState label={t('pdfSign.rendering')} />}
+      <p className="hint">{t('pdfSign.dragHint')}</p>
       <div className="options-grid">
-        <NumberField label={`Preview page (1–${pageCount})`} value={previewPage} min={1} max={pageCount} onChange={setPreviewPage} />
+        <NumberField label={t('pdfSign.previewPage', { max: pageCount })} value={previewPage} min={1} max={pageCount} onChange={setPreviewPage} />
         <Segmented
-          label="Sign"
+          label={t('pdfSign.sign')}
           value={scope}
           onChange={setScope}
           options={[
-            { value: 'this', label: 'This page' },
-            { value: 'all', label: 'All pages' },
-            { value: 'first', label: 'First page' },
-            { value: 'last', label: 'Last page' },
-            { value: 'custom', label: 'Choose pages' },
+            { value: 'this', label: t('pdfSign.scope.this') },
+            { value: 'all', label: t('pdfSign.scope.all') },
+            { value: 'first', label: t('pdfSign.scope.first') },
+            { value: 'last', label: t('pdfSign.scope.last') },
+            { value: 'custom', label: t('pdfSign.scope.custom') },
           ]}
         />
         {scope === 'custom' && (
-          <Field label="Pages" hint="For example 1-3, 5">
-            {(id) => <input id={id} className="input mono" value={pages} placeholder={`1-${pageCount}`} onChange={(e) => setPages(e.target.value)} />}
+          <Field label={t('pdfSign.pages')} hint={t('pdfSign.pagesHint')}>
+            {(id) => <input id={id} className="input mono" value={pages} placeholder={t('pdfSign.pagesPlaceholder', { max: pageCount })} onChange={(e) => setPages(e.target.value)} />}
           </Field>
         )}
       </div>
       <Notice tone="warn">
-        <strong>Visual signature only.</strong> This places a picture of your signature on the page. It is not a cryptographic digital signature: it has no certificate and cannot prove who signed or detect later changes.
+        <strong>{t('pdfSign.visualOnlyTitle')}</strong> {t('pdfSign.visualOnly')}
       </Notice>
       <div className="toolbar">
         <button type="button" className="btn btn-primary btn-lg" onClick={run} disabled={running || !size || !area || (scope === 'custom' && !pages.trim())}>
           <Icon name="signature" size={18} />
-          Sign PDF
+          {t('pdfSign.signPdf')}
         </button>
       </div>
-      {running && <ProcessingState label="Signing…" />}
+      {running && <ProcessingState label={t('pdfSign.signing')} />}
       {task.state.status === 'error' && <ErrorMessage>{task.state.error}</ErrorMessage>}
-      {task.state.status === 'done' && <PdfResult blob={task.state.result} name={`${baseName(name)}-signed.pdf`} onReset={onReset} note="Visual signature, not a digital certificate." />}
+      {task.state.status === 'done' && <PdfResult blob={task.state.result} name={`${baseName(name)}-signed.pdf`} onReset={onReset} note={t('pdfSign.note')} />}
     </div>
   );
 }

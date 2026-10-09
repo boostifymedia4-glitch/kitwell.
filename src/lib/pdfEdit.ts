@@ -20,6 +20,7 @@ import {
   type PDFPage,
 } from '@cantoo/pdf-lib';
 import { PdfError, loadPdf } from './pdfOps';
+import { tr } from '@/i18n/translate';
 
 // ---------- Geometry: draw in "visible" space, whatever the page rotation is ----------
 
@@ -78,13 +79,10 @@ function rotateVec(x: number, y: number, deg: number) {
 
 export function hexToRgb(hex: string) {
   const m = /^#?([0-9a-f]{6})$/i.exec(hex.trim());
-  if (!m) throw new PdfError('Choose a valid colour.');
+  if (!m) throw new PdfError(tr('err.pdf.badColour'));
   const n = parseInt(m[1], 16);
   return rgb(((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255);
 }
-
-const LATIN_ONLY =
-  'Only Latin letters, digits and common symbols can be used here, because PDF’s built-in fonts do not include other alphabets.';
 
 /** Embeds a standard font and checks that every character can be drawn with it. */
 async function textFont(doc: PDFDocument, text: string, bold: boolean): Promise<PDFFont> {
@@ -92,7 +90,7 @@ async function textFont(doc: PDFDocument, text: string, bold: boolean): Promise<
   // The library silently "encodes" unsupported characters as garbage, so check the font's real character set.
   const supported = new Set(font.getCharacterSet());
   for (const ch of text) {
-    if (!supported.has(ch.codePointAt(0) as number)) throw new PdfError(LATIN_ONLY);
+    if (!supported.has(ch.codePointAt(0) as number)) throw new PdfError(tr('err.pdf.latinOnly'));
   }
   return font;
 }
@@ -101,7 +99,7 @@ async function textFont(doc: PDFDocument, text: string, bold: boolean): Promise<
 function pageSet(doc: PDFDocument, pages?: number[]): Set<number> {
   const total = doc.getPageCount();
   if (!pages) return new Set(Array.from({ length: total }, (_, i) => i));
-  if (pages.length === 0 || pages.some((p) => p < 0 || p >= total)) throw new PdfError('Choose valid pages.');
+  if (pages.length === 0 || pages.some((p) => p < 0 || p >= total)) throw new PdfError(tr('err.pdf.badPages'));
   return new Set(pages);
 }
 
@@ -143,14 +141,14 @@ export async function addPageNumbers(bytes: Uint8Array, opts: PageNumberOptions)
   const count = doc.getPageCount();
   const to = opts.toPage ?? count;
   if (!Number.isInteger(opts.fromPage) || opts.fromPage < 1 || opts.fromPage > count) {
-    throw new PdfError(`The first page to number must be between 1 and ${count}.`);
+    throw new PdfError(tr('err.pdf.numberFirst', { count }));
   }
   if (!Number.isInteger(to) || to < opts.fromPage || to > count) {
-    throw new PdfError(`The last page to number must be between ${opts.fromPage} and ${count}.`);
+    throw new PdfError(tr('err.pdf.numberLast', { from: opts.fromPage, count }));
   }
-  if (!Number.isInteger(opts.startAt) || opts.startAt < 0 || opts.startAt > 99999) throw new PdfError('Start numbering at a whole number from 0 to 99,999.');
-  if (!(opts.size >= 6 && opts.size <= 72)) throw new PdfError('Font size must be between 6 and 72.');
-  if (!(opts.margin >= 0 && opts.margin <= 200)) throw new PdfError('Margin must be between 0 and 200.');
+  if (!Number.isInteger(opts.startAt) || opts.startAt < 0 || opts.startAt > 99999) throw new PdfError(tr('err.pdf.numberStart'));
+  if (!(opts.size >= 6 && opts.size <= 72)) throw new PdfError(tr('err.pdf.fontSize72'));
+  if (!(opts.margin >= 0 && opts.margin <= 200)) throw new PdfError(tr('err.pdf.margin'));
 
   const color = hexToRgb(opts.color);
   const font = await doc.embedFont(StandardFonts.Helvetica);
@@ -201,8 +199,8 @@ export interface WatermarkOptions {
 const MAX_MARKS_PER_PAGE = 300;
 
 export async function addWatermark(bytes: Uint8Array, opts: WatermarkOptions): Promise<Uint8Array> {
-  if (!(opts.opacity >= 0.05 && opts.opacity <= 1)) throw new PdfError('Opacity must be between 5% and 100%.');
-  if (!(opts.angle >= -180 && opts.angle <= 180)) throw new PdfError('Angle must be between -180 and 180 degrees.');
+  if (!(opts.opacity >= 0.05 && opts.opacity <= 1)) throw new PdfError(tr('err.pdf.opacity'));
+  if (!(opts.angle >= -180 && opts.angle <= 180)) throw new PdfError(tr('err.pdf.angle'));
   const doc = await loadPdf(bytes);
   const pages = pageSet(doc, opts.pages);
 
@@ -212,9 +210,9 @@ export async function addWatermark(bytes: Uint8Array, opts: WatermarkOptions): P
 
   if (opts.mark.kind === 'text') {
     const { text, size, bold, color } = opts.mark;
-    if (!text.trim()) throw new PdfError('Enter the watermark text.');
-    if (text.length > 100) throw new PdfError('Watermark text can be at most 100 characters.');
-    if (!(size >= 6 && size <= 300)) throw new PdfError('Font size must be between 6 and 300.');
+    if (!text.trim()) throw new PdfError(tr('err.pdf.watermarkText'));
+    if (text.length > 100) throw new PdfError(tr('err.pdf.watermarkLength'));
+    if (!(size >= 6 && size <= 300)) throw new PdfError(tr('err.pdf.fontSize300'));
     const font = await textFont(doc, text, bold);
     const fill = hexToRgb(color);
     markW = font.widthOfTextAtSize(text, size);
@@ -226,12 +224,12 @@ export async function addWatermark(bytes: Uint8Array, opts: WatermarkOptions): P
     };
   } else {
     const { bytes: img, type, scale } = opts.mark;
-    if (!(scale >= 0.05 && scale <= 1)) throw new PdfError('Image size must be between 5% and 100% of the page width.');
+    if (!(scale >= 0.05 && scale <= 1)) throw new PdfError(tr('err.pdf.imageScale'));
     let embedded;
     try {
       embedded = type === 'png' ? await doc.embedPng(img) : await doc.embedJpg(img);
     } catch {
-      throw new PdfError('The watermark image could not be read. Use a valid PNG or JPG file.');
+      throw new PdfError(tr('err.pdf.watermarkImage'));
     }
     // Page widths differ, so the mark is sized per page below.
     markW = embedded.width;
@@ -259,7 +257,7 @@ export async function addWatermark(bytes: Uint8Array, opts: WatermarkOptions): P
     const stepY = Math.max(h * 3, 60);
     const cols = Math.ceil(vb.visibleWidth / stepX) + 2;
     const rows = Math.ceil(vb.visibleHeight / stepY) + 2;
-    if (cols * rows > MAX_MARKS_PER_PAGE) throw new PdfError('The watermark is too small to tile. Use a larger size or the centred layout.');
+    if (cols * rows > MAX_MARKS_PER_PAGE) throw new PdfError(tr('err.pdf.watermarkTile'));
     for (let r = -1; r < rows; r++) {
       for (let c = -1; c < cols; c++) {
         const cx = c * stepX + (r % 2 === 0 ? 0 : stepX / 2) + stepX / 2;
@@ -285,7 +283,7 @@ export interface CropFractions {
 export async function cropPdf(bytes: Uint8Array, area: CropFractions, pages?: number[]): Promise<Uint8Array> {
   const { x, y, width, height } = area;
   if (![x, y, width, height].every(Number.isFinite) || x < 0 || y < 0 || width < 0.02 || height < 0.02 || x + width > 1.0001 || y + height > 1.0001) {
-    throw new PdfError('Choose a crop area inside the page.');
+    throw new PdfError(tr('err.pdf.cropOutside'));
   }
   const doc = await loadPdf(bytes);
   const targets = pageSet(doc, pages);
@@ -303,7 +301,7 @@ export async function cropPdf(bytes: Uint8Array, area: CropFractions, pages?: nu
     const by = Math.min(a.y, b.y);
     const bw = Math.abs(b.x - a.x);
     const bh = Math.abs(b.y - a.y);
-    if (bw < 10 || bh < 10) throw new PdfError('The crop area is too small on page ' + (i + 1) + '.');
+    if (bw < 10 || bh < 10) throw new PdfError(tr('err.pdf.cropSmall', { page: i + 1 }));
     page.setCropBox(bx, by, bw, bh);
   });
   return doc.save();
@@ -328,19 +326,19 @@ function randomPassword(): string {
 
 export async function protectPdf(bytes: Uint8Array, opts: ProtectOptions): Promise<Uint8Array> {
   const pw = opts.userPassword;
-  if (!pw) throw new PdfError('Enter a password.');
-  if (pw.length > 127) throw new PdfError('The password can be at most 127 characters.');
-  if (!PRINTABLE_ASCII.test(pw)) throw new PdfError('Use only standard letters, digits and symbols in the password so every PDF reader can open the file.');
+  if (!pw) throw new PdfError(tr('err.pdf.enterPassword'));
+  if (pw.length > 127) throw new PdfError(tr('err.pdf.passwordLength'));
+  if (!PRINTABLE_ASCII.test(pw)) throw new PdfError(tr('err.pdf.passwordChars'));
 
   let doc: PDFDocument;
   try {
     doc = await PDFDocument.load(bytes, { updateMetadata: false });
   } catch (err) {
-    if (err instanceof EncryptedPDFError) throw new PdfError('This PDF is already password-protected. Unlock it first with the Unlock PDF tool.');
-    throw new PdfError('This file could not be read as a PDF. It may be corrupted or not a PDF at all.');
+    if (err instanceof EncryptedPDFError) throw new PdfError(tr('err.pdf.alreadyPassword'));
+    throw new PdfError(tr('err.pdf.unreadable'));
   }
-  if (doc.isEncrypted) throw new PdfError('This PDF is already protected. Unlock it first with the Unlock PDF tool.');
-  if (doc.getPageCount() < 1) throw new PdfError('This file could not be read as a PDF. It may be corrupted or not a PDF at all.');
+  if (doc.isEncrypted) throw new PdfError(tr('err.pdf.alreadyProtected'));
+  if (doc.getPageCount() < 1) throw new PdfError(tr('err.pdf.unreadable'));
 
   doc.encrypt({
     userPassword: pw,
@@ -390,7 +388,7 @@ function scrubEncryption(doc: PDFDocument) {
 
 // A PDF that loads without a password is not protected.
 async function finishNotProtected(doc: PDFDocument): Promise<UnlockResult> {
-  if (doc.getPageCount() < 1) throw new PdfError('This file could not be read as a PDF. It may be corrupted or not a PDF at all.');
+  if (doc.getPageCount() < 1) throw new PdfError(tr('err.pdf.unreadable'));
   return { status: 'not-protected' };
 }
 
@@ -405,7 +403,7 @@ export type UnlockResult =
  */
 export async function unlockPdf(bytes: Uint8Array, password?: string): Promise<UnlockResult> {
   const head = new TextDecoder('latin1').decode(bytes.subarray(0, Math.min(bytes.length, 1024)));
-  if (!head.includes('%PDF-')) throw new PdfError('This file could not be read as a PDF. It may be corrupted or not a PDF at all.');
+  if (!head.includes('%PDF-')) throw new PdfError(tr('err.pdf.unreadable'));
 
   // After a successful password load the library clears its own encryption flags, so "was it protected?"
   // is decided here: a plain load either succeeds (not protected) or throws EncryptedPDFError.
@@ -415,7 +413,7 @@ export async function unlockPdf(bytes: Uint8Array, password?: string): Promise<U
   } catch (err) {
     if (!(err instanceof EncryptedPDFError)) {
       if (err instanceof PdfError) throw err;
-      throw new PdfError('This file could not be read as a PDF. It may be corrupted or not a PDF at all.');
+      throw new PdfError(tr('err.pdf.unreadable'));
     }
   }
   const tryLoad = async (pw: string) => {
@@ -423,7 +421,7 @@ export async function unlockPdf(bytes: Uint8Array, password?: string): Promise<U
       return await PDFDocument.load(bytes, { password: pw, updateMetadata: false });
     } catch (inner) {
       if (inner instanceof Error && /password/i.test(inner.message)) return null;
-      throw new PdfError('This PDF could not be unlocked. It may use an unsupported kind of protection.');
+      throw new PdfError(tr('err.pdf.unlockUnsupported'));
     }
   };
   // PDFs that only restrict printing or copying open with an empty password.
@@ -432,10 +430,10 @@ export async function unlockPdf(bytes: Uint8Array, password?: string): Promise<U
   else {
     if (!password) return { status: 'needs-password' };
     const withPassword = await tryLoad(password);
-    if (!withPassword) throw new PdfError('That password is not correct.');
+    if (!withPassword) throw new PdfError(tr('err.pdf.wrongPassword'));
     doc = withPassword;
   }
-  if (doc.getPageCount() < 1) throw new PdfError('This PDF could not be unlocked. It may be damaged.');
+  if (doc.getPageCount() < 1) throw new PdfError(tr('err.pdf.unlockDamaged'));
   scrubEncryption(doc);
   return { status: 'unlocked', bytes: await doc.save({ useObjectStreams: false }) };
 }

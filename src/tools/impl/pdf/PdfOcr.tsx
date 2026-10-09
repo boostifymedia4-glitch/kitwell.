@@ -11,6 +11,7 @@ import { OCR_LANGUAGES, createOcrEngine, type OcrEngine } from '@/lib/ocrEngine'
 import { PdfError, parsePageList } from '@/lib/pdfOps';
 import { destroyPdf, openPdf, renderPageToCanvas } from '@/lib/pdfjs';
 import { usePdfTool } from '@/lib/usePdfFile';
+import { useI18n } from '@/i18n';
 import type { ToolImplementation } from '../../types';
 
 interface Result {
@@ -23,9 +24,9 @@ interface Result {
 }
 
 const DPI_OPTIONS = [
-  { value: '150', label: 'Fast (150 DPI)' },
-  { value: '200', label: 'Recommended (200 DPI)' },
-  { value: '300', label: 'Best for small print (300 DPI)' },
+  { value: '150', label: 'pdfOcr.quality.fast' },
+  { value: '200', label: 'pdfOcr.quality.recommended' },
+  { value: '300', label: 'pdfOcr.quality.best' },
 ] as const;
 
 const MAX_PAGES = 100;
@@ -33,6 +34,7 @@ const MAX_PAGES = 100;
 const HAS_TEXT = 20;
 
 const PdfOcr: ToolImplementation = () => {
+  const { t } = useI18n();
   const { pdf, task, reset, running } = usePdfTool<Result>();
   const [dpi, setDpi] = useState<'150' | '200' | '300'>('200');
   const [pages, setPages] = useState('');
@@ -55,22 +57,22 @@ const PdfOcr: ToolImplementation = () => {
                 throw new PdfError(errorMessage(e));
               }
             }
-            if (list.length > MAX_PAGES) throw new PdfError(`OCR handles up to ${MAX_PAGES} pages at a time. Choose a page range or split the PDF first.`);
+            if (list.length > MAX_PAGES) throw new PdfError(t('pdfOcr.err.tooManyPages', { max: MAX_PAGES }));
 
             const doc = await openPdf(ready.bytes);
             let engine: OcrEngine | null = null;
             const canvas = document.createElement('canvas');
             try {
-              report(0, list.length, 'Starting the OCR engine…');
+              report(0, list.length, t('pdfOcr.progress.starting'));
               engine = await createOcrEngine((status, progress) => {
-                if (/loading|initializ/i.test(status)) report(0, list.length, `Preparing the OCR engine… ${Math.round(progress * 100)}%`);
+                if (/loading|initializ/i.test(status)) report(0, list.length, t('pdfOcr.progress.preparing', { percent: Math.round(progress * 100) }));
               });
               const results: OcrPageResult[] = [];
               let skipped = 0;
               for (let i = 0; i < list.length; i++) {
-                if (token.cancelled) throw new PdfError('OCR was cancelled.');
+                if (token.cancelled) throw new PdfError(t('pdfOcr.err.cancelled'));
                 const n = list[i];
-                report(i, list.length, `Recognising page ${n} (${i + 1} of ${list.length})`);
+                report(i, list.length, t('pdfOcr.progress.page', { page: n, index: i + 1, total: list.length }));
                 if (skipText) {
                   const page = await doc.getPage(n);
                   try {
@@ -88,10 +90,10 @@ const PdfOcr: ToolImplementation = () => {
                 const found = await engine.recognize(canvas);
                 results.push({ page: n, width: canvas.width, height: canvas.height, words: found.words, text: found.text, confidence: found.confidence });
               }
-              if (results.length === 0) throw new PdfError('Every selected page already has selectable text, so there was nothing to recognise. Turn off “Skip pages that already have selectable text” to run OCR anyway.');
-              report(list.length, list.length, 'Adding the text layer…');
+              if (results.length === 0) throw new PdfError(t('pdfOcr.err.nothingToDo'));
+              report(list.length, list.length, t('pdfOcr.progress.layer'));
               const layered = await addTextLayer(ready.bytes, results);
-              if (layered.words === 0) throw new PdfError('No text could be recognised. The scan may be too blurry, too small, or not in English.');
+              if (layered.words === 0) throw new PdfError(t('pdfOcr.err.noText'));
               return {
                 pdf: new Blob([layered.bytes as BlobPart], { type: 'application/pdf' }),
                 text: joinPageTexts(results),
@@ -112,21 +114,21 @@ const PdfOcr: ToolImplementation = () => {
         return (
           <>
             <Notice>
-              <strong>English only.</strong> Text in other languages and handwriting will not be recognised reliably. The OCR engine runs inside your browser; nothing is uploaded.
+              <strong>{t('pdfOcr.englishOnlyTitle')}</strong> {t('pdfOcr.englishOnly')}
             </Notice>
             <div className="options-grid">
-              <SelectField label="Language" value="eng" onChange={() => undefined} options={OCR_LANGUAGES.map((l) => ({ value: l.code, label: l.label }))} hint="More languages may be added later." />
-              <SelectField label="Quality" value={dpi} onChange={setDpi} options={[...DPI_OPTIONS]} hint="Higher DPI reads smaller print but is slower." />
-              <Field label="Pages (optional)" hint={`Empty means all ${ready.pageCount} pages. Or enter e.g. 1-3, 5.`}>
-                {(id) => <input id={id} className="input mono" value={pages} placeholder="All pages" disabled={running} onChange={(e) => setPages(e.target.value)} />}
+              <SelectField label={t('pdfOcr.language')} value="eng" onChange={() => undefined} options={OCR_LANGUAGES.map((l) => ({ value: l.code, label: t(`pdfOcr.lang.${l.code}`) }))} hint={t('pdfOcr.languageHint')} />
+              <SelectField label={t('pdfOcr.quality')} value={dpi} onChange={setDpi} options={DPI_OPTIONS.map((o) => ({ value: o.value, label: t(o.label) }))} hint={t('pdfOcr.qualityHint')} />
+              <Field label={t('pdfOcr.pages')} hint={t('pdfOcr.pagesHint', { count: ready.pageCount })}>
+                {(id) => <input id={id} className="input mono" value={pages} placeholder={t('pdfOcr.allPages')} disabled={running} onChange={(e) => setPages(e.target.value)} />}
               </Field>
             </div>
-            <CheckField label="Skip pages that already have selectable text" checked={skipText} onChange={setSkipText} disabled={running} />
-            <p className="hint">OCR takes several seconds per page. The first run loads the engine (about 3 MB from this site).</p>
+            <CheckField label={t('pdfOcr.skipText')} checked={skipText} onChange={setSkipText} disabled={running} />
+            <p className="hint">{t('pdfOcr.hint')}</p>
             <div className="toolbar">
               <button type="button" className="btn btn-primary btn-lg" onClick={run} disabled={running}>
                 <Icon name="scan-text" size={18} />
-                Recognise text
+                {t('pdfOcr.recognise')}
               </button>
               {running && (
                 <button
@@ -137,30 +139,30 @@ const PdfOcr: ToolImplementation = () => {
                     task.reset();
                   }}
                 >
-                  Cancel
+                  {t('pdfOcr.cancel')}
                 </button>
               )}
             </div>
-            {running && <ProcessingState label="Recognising text…" progress={task.progress} />}
+            {running && <ProcessingState label={t('pdfOcr.recognising')} progress={task.progress} />}
             {task.state.status === 'error' && <ErrorMessage>{task.state.error}</ErrorMessage>}
             {done && (
-              <ResultPanel title="Your searchable PDF is ready">
+              <ResultPanel title={t('pdfOcr.ready')}>
                 <Stats
                   items={[
-                    { label: 'Pages recognised', value: done.pages },
-                    { label: 'Pages skipped', value: done.skipped },
-                    { label: 'Words found', value: done.words },
-                    { label: 'Average confidence', value: `${done.confidence}%` },
+                    { label: t('pdfOcr.stat.recognised'), value: done.pages },
+                    { label: t('pdfOcr.stat.skipped'), value: done.skipped },
+                    { label: t('pdfOcr.stat.words'), value: done.words },
+                    { label: t('pdfOcr.stat.confidence'), value: `${done.confidence}%` },
                   ]}
                 />
                 <p className="muted">
-                  {formatBytes(done.pdf.size)} · The pages look exactly as before; an invisible text layer makes them searchable and copyable. Check important numbers against the original.
+                  {formatBytes(done.pdf.size)} · {t('pdfOcr.resultNote')}
                 </p>
                 <div className="toolbar">
-                  <DownloadButton blob={done.pdf} name={`${baseName(ready.file.name)}-ocr.pdf`} label="Download searchable PDF" />
+                  <DownloadButton blob={done.pdf} name={`${baseName(ready.file.name)}-ocr.pdf`} label={t('pdfOcr.download')} />
                   <ResetButton onClick={reset} />
                 </div>
-                <OutputBox label="Recognised text" value={done.text} rows={10} filename={`${baseName(ready.file.name)}-ocr.txt`} />
+                <OutputBox label={t('pdfOcr.output')} value={done.text} rows={10} filename={`${baseName(ready.file.name)}-ocr.txt`} />
               </ResultPanel>
             )}
           </>

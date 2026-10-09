@@ -1,9 +1,9 @@
 /**
  * Production server for the prerendered site.
  *
- * There are no upload or API endpoints: every tool runs in the browser. The server only
- * serves static files, applies security headers and compression, rate-limits requests, and
- * returns a real 404 status for unknown URLs.
+ * There are no upload endpoints: every tool runs in the browser. The server serves static files,
+ * applies security headers and compression, rate-limits requests, returns a real 404 status for
+ * unknown URLs, and hosts one small API for the contact form (POST /api/contact).
  */
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
@@ -12,10 +12,11 @@ import compression from 'compression';
 import express from 'express';
 import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
+import { contactRouter } from './contact.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
-export function createApp({ distDir = join(root, 'dist') } = {}) {
+export function createApp({ distDir = join(root, 'dist'), env = process.env, fetchImpl = fetch } = {}) {
   const routesFile = join(distDir, 'routes.json');
   if (!existsSync(routesFile)) throw new Error('dist/ not found. Run "npm run build" first.');
   const routes = new Set(JSON.parse(readFileSync(routesFile, 'utf8')));
@@ -64,6 +65,9 @@ export function createApp({ distDir = join(root, 'dist') } = {}) {
       message: 'Too many requests. Please slow down and try again shortly.',
     }),
   );
+
+  // The only endpoint: the contact form (see server/contact.mjs). Tools never call the server.
+  app.use('/api/contact', contactRouter({ env, fetchImpl }));
 
   app.use((req, res, next) => {
     if (req.method !== 'GET' && req.method !== 'HEAD') {

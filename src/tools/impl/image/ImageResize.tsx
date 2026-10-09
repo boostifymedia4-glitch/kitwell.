@@ -4,9 +4,11 @@ import { CheckField, NumberField, RangeField, Segmented } from '@/components/too
 import { outputName } from '@/lib/format';
 import { processImage, type ImagePlan } from '@/lib/image';
 import { FORMATS, sameFormatAs } from '@/lib/imageFormats';
+import { useI18n } from '@/i18n';
 import type { ToolImplementation } from '../../types';
 
 const ImageResize: ToolImplementation = () => {
+  const { t } = useI18n();
   const [mode, setMode] = useState<'pixels' | 'percent'>('pixels');
   const [width, setWidth] = useState<number | ''>(1280);
   const [height, setHeight] = useState<number | ''>('');
@@ -18,30 +20,30 @@ const ImageResize: ToolImplementation = () => {
 
   return (
     <BatchImageTool
-      actionLabel="Resize images"
+      actionLabel={t('imageResize.action')}
       zipName="resized-images.zip"
       disabled={invalid}
       options={
         <>
           <Segmented
-            label="Resize by"
+            label={t('imageResize.resizeBy')}
             value={mode}
             onChange={setMode}
             options={[
-              { value: 'pixels', label: 'Pixels' },
-              { value: 'percent', label: 'Percentage' },
+              { value: 'pixels', label: t('imageResize.pixels') },
+              { value: 'percent', label: t('imageResize.percentage') },
             ]}
           />
           {mode === 'pixels' ? (
             <>
-              <NumberField label="Width (px)" value={width} min={1} max={16000} onChange={setWidth} hint="Leave empty to calculate from height." />
-              <NumberField label="Height (px)" value={height} min={1} max={16000} onChange={setHeight} hint="Leave empty to calculate from width." />
-              <CheckField label="Keep aspect ratio" checked={lock} onChange={setLock} />
+              <NumberField label={t('imageResize.width')} value={width} min={1} max={16000} onChange={setWidth} hint={t('imageResize.widthHint')} />
+              <NumberField label={t('imageResize.height')} value={height} min={1} max={16000} onChange={setHeight} hint={t('imageResize.heightHint')} />
+              <CheckField label={t('imageResize.keepAspect')} checked={lock} onChange={setLock} />
             </>
           ) : (
-            <RangeField label="Scale" value={percent} min={5} max={300} onChange={setPercent} format={(v) => `${v}%`} />
+            <RangeField label={t('imageResize.scale')} value={percent} min={5} max={300} onChange={setPercent} format={(v) => `${v}%`} />
           )}
-          <RangeField label="Quality (JPG/WebP)" value={quality} min={10} max={100} onChange={setQuality} format={(v) => `${v}%`} />
+          <RangeField label={t('imageResize.quality')} value={quality} min={10} max={100} onChange={setQuality} format={(v) => `${v}%`} />
         </>
       }
       process={async (file) => {
@@ -57,7 +59,7 @@ const ImageResize: ToolImplementation = () => {
         return {
           name: outputName(file.name, fmt.ext, `-${result.width}x${result.height}`),
           blob: result.blob,
-          note: `${result.width} × ${result.height} px`,
+          note: t('imageResize.note', { width: result.width, height: result.height }),
         };
       }}
     />

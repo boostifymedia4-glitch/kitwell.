@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent, type ReactNode } from 'react';
+import { useI18n } from '@/i18n';
 import { MIN_CROP, moveRect, resizeRect, type Rect } from '@/lib/cropRect';
 
 interface Props {
@@ -25,6 +26,7 @@ interface Props {
  * (arrow keys move the box, Shift moves it faster). Shared by the image and PDF crop tools.
  */
 export function CropSelector({ width, height, rect, onChange, ratio, label, hidden, children, shade = true, boxContent }: Props) {
+  const { t } = useI18n();
   const stageRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
   const drag = useRef<{ mode: 'move' | 'resize'; px: number; py: number; start: Rect } | null>(null);
@@ -76,7 +78,7 @@ export function CropSelector({ width, height, rect, onChange, ratio, label, hidd
           className={shade ? 'crop-box' : 'crop-box crop-box-plain'}
           role="group"
           tabIndex={0}
-          aria-label={`${label}: ${Math.round(rect.w)} by ${Math.round(rect.h)} at ${Math.round(rect.x)}, ${Math.round(rect.y)}. Use arrow keys to move.`}
+          aria-label={t('ui.crop.label', { label, w: Math.round(rect.w), h: Math.round(rect.h), x: Math.round(rect.x), y: Math.round(rect.y) })}
           style={{ left: rect.x * scale, top: rect.y * scale, width: rect.w * scale, height: rect.h * scale }}
           onPointerDown={down('move')}
           onPointerMove={move}

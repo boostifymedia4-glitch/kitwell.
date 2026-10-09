@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
-import { getCategory, toolPath } from '@/tools/registry';
+import { useI18n } from '@/i18n';
+import { useLocalize } from '@/i18n/useLocalize';
+import { toolPath } from '@/tools/registry';
 import type { ToolDef } from '@/tools/types';
 import { ToolIcon } from './ToolIcon';
 
@@ -13,12 +15,14 @@ interface CardProps {
 }
 
 export function ToolCard({ tool, as: H = 'h3', showCategory = false }: CardProps) {
+  const { t } = useI18n();
+  const x = useLocalize().tool(tool);
   return (
     <Link to={toolPath(tool)} className="card tool-card">
       <ToolIcon tool={tool} />
-      <H className="tool-card-title">{tool.name}</H>
-      <p className="tool-card-desc">{tool.description}</p>
-      {showCategory && <span className="tool-card-meta">{getCategory(tool.category)?.name}</span>}
+      <H className="tool-card-title">{x.name}</H>
+      <p className="tool-card-desc">{x.description}</p>
+      {showCategory && <span className="tool-card-meta">{t(`cat.${tool.category}`)}</span>}
     </Link>
   );
 }
@@ -26,8 +30,8 @@ export function ToolCard({ tool, as: H = 'h3', showCategory = false }: CardProps
 export function ToolGrid({ tools, headingLevel = 'h3', showCategory }: { tools: ToolDef[]; headingLevel?: HeadingLevel; showCategory?: boolean }) {
   return (
     <div className="grid grid-tools">
-      {tools.map((t) => (
-        <ToolCard key={t.slug} tool={t} as={headingLevel} showCategory={showCategory} />
+      {tools.map((tool) => (
+        <ToolCard key={tool.slug} tool={tool} as={headingLevel} showCategory={showCategory} />
       ))}
     </div>
   );

@@ -6,18 +6,19 @@
 import {
   MAX_PIXELS, MAX_SIDE, canvasToBlob, decode, makeCanvas, type Canvas2D, type Ctx2D, type ImageResult, type OutputMime,
 } from './imageProcessor';
+import { tr } from '@/i18n/translate';
 
 export class ImageEditError extends Error {}
 
 function ctxOf(canvas: Canvas2D): Ctx2D {
   const ctx = canvas.getContext('2d') as Ctx2D | null;
-  if (!ctx) throw new ImageEditError('Could not create a drawing surface. The image may be too large for this device.');
+  if (!ctx) throw new ImageEditError(tr('err.image.noCanvas'));
   return ctx;
 }
 
 function assertSize(w: number, h: number) {
   if (w > MAX_SIDE || h > MAX_SIDE || w * h > MAX_PIXELS) {
-    throw new ImageEditError(`The result would be ${w} × ${h} px, which is larger than this browser tool can safely create (max ${MAX_SIDE.toLocaleString('en-US')} px per side).`);
+    throw new ImageEditError(tr('err.image.resultTooBig', { width: w, height: h, max: MAX_SIDE.toLocaleString('en-US') }));
   }
 }
 
@@ -83,7 +84,7 @@ export function drawWatermark(ctx: Ctx2D, w: number, h: number, spec: WatermarkS
     const stepY = markH * 3;
     const cols = Math.ceil(w / stepX) + 2;
     const rows = Math.ceil(h / stepY) + 2;
-    if (cols * rows > 600) throw new ImageEditError('The watermark is too small to tile. Use a larger size or a single mark.');
+    if (cols * rows > 600) throw new ImageEditError(tr('err.image.watermarkTooSmall'));
     for (let r = -1; r < rows; r++) {
       for (let c = -1; c < cols; c++) place(c * stepX + (r % 2 === 0 ? 0 : stepX / 2), r * stepY);
     }
@@ -127,7 +128,7 @@ export async function enlargeImage(file: Blob, spec: EnlargeSpec, out: { mime: O
   const bitmap = await decode(file);
   try {
     const { w, h } = enlargedSize(bitmap.width, bitmap.height, spec);
-    if (w <= bitmap.width && h <= bitmap.height) throw new ImageEditError('Choose a size larger than the original. Use the Image Resizer to make images smaller.');
+    if (w <= bitmap.width && h <= bitmap.height) throw new ImageEditError(tr('err.image.notLarger'));
     assertSize(w, h);
     const source = document.createElement('canvas');
     source.width = bitmap.width;
@@ -314,7 +315,7 @@ export type SvgSize = { mode: 'scale'; scale: number } | { mode: 'width'; width:
 /** Draws an SVG file to a bitmap. The SVG is shown through an <img>, so scripts inside it never run. */
 export async function rasterizeSvg(file: Blob, size: SvgSize, out: { mime: OutputMime; quality: number; background: string }): Promise<ImageResult> {
   let text = await file.text();
-  if (!/<svg\b/i.test(text)) throw new ImageEditError('This file does not look like an SVG image.');
+  if (!/<svg\b/i.test(text)) throw new ImageEditError(tr('err.image.notSvg'));
   if (!/<svg\b[^>]*\sxmlns\s*=/i.test(text)) text = text.replace(/<svg\b/i, '<svg xmlns="http://www.w3.org/2000/svg"');
   const base = svgIntrinsicSize(text) ?? { width: 300, height: 150 };
   const k = size.mode === 'scale' ? size.scale : size.width / base.width;
@@ -329,7 +330,7 @@ export async function rasterizeSvg(file: Blob, size: SvgSize, out: { mime: Outpu
     try {
       await img.decode();
     } catch {
-      throw new ImageEditError('This SVG could not be drawn. It may be invalid or use features browsers do not support.');
+      throw new ImageEditError(tr('err.image.svgFailed'));
     }
     const canvas = makeCanvas(w, h);
     const ctx = ctxOf(canvas);

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type MouseEvent } from 'react';
+import { tr, useI18n } from '@/i18n';
 import { IMAGE_EXTENSIONS, MAX_IMAGE_BYTES } from '@/components/tool/BatchImageTool';
 import { CopyButton, CopyRow } from '@/components/tool/CopyButton';
 import { ErrorMessage, RejectionList } from '@/components/tool/Feedback';
@@ -38,6 +39,7 @@ function extractPalette(data: Uint8ClampedArray, count = 8): Rgb[] {
 }
 
 const ImageColorPicker: ToolImplementation = () => {
+  const { t } = useI18n();
   const queue = useFileQueue({ extensions: IMAGE_EXTENSIONS, maxBytes: MAX_IMAGE_BYTES, maxFiles: 1 }, false);
   const file = queue.items[0]?.file ?? null;
   const url = useObjectUrl(file);
@@ -81,7 +83,7 @@ const ImageColorPicker: ToolImplementation = () => {
       setColor({ r, g, b });
       setPalette(extractPalette(ctx.getImageData(0, 0, w, h).data));
     };
-    img.onerror = () => !cancelled && setError('This file could not be read as an image. It may be corrupted or in an unsupported format.');
+    img.onerror = () => !cancelled && setError(tr('colorPicker.err.unreadable'));
     img.src = url;
     return () => {
       cancelled = true;
@@ -138,7 +140,7 @@ const ImageColorPicker: ToolImplementation = () => {
               ref={canvasRef}
               tabIndex={0}
               role="img"
-              aria-label="Image to sample. Click a point, or use the arrow keys to move the sampling point."
+              aria-label={t('colorPicker.canvasLabel')}
               style={{ cursor: 'crosshair', maxWidth: '100%', height: 'auto', touchAction: 'none' }}
               onClick={pick}
               onKeyDown={onKeyDown}
@@ -162,12 +164,12 @@ const ImageColorPicker: ToolImplementation = () => {
             )}
             </div>
           </div>
-          <p className="hint">Click the image or focus it and use the arrow keys (hold Shift for bigger steps).</p>
+          <p className="hint">{t('colorPicker.hint')}</p>
         </div>
         <div className="stack">
           {color && hsl && (
             <>
-              <div className="swatch" style={{ background: hex }} role="img" aria-label={`Selected colour ${hex}`} />
+              <div className="swatch" style={{ background: hex }} role="img" aria-label={t('colorPicker.selected', { hex })} />
               <CopyRow label="HEX" value={hex.toUpperCase()} />
               <CopyRow label="RGB" value={`rgb(${color.r}, ${color.g}, ${color.b})`} />
               <CopyRow label="HSL" value={`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`} />
@@ -176,31 +178,31 @@ const ImageColorPicker: ToolImplementation = () => {
           {EyeDropper && (
             <button type="button" className="btn btn-secondary" onClick={pickFromScreen}>
               <Icon name="pipette" size={16} />
-              Pick from anywhere on screen
+              {t('colorPicker.pickScreen')}
             </button>
           )}
         </div>
       </div>
       {palette.length > 0 && (
         <div className="stack-sm">
-          <span className="label">Dominant colours</span>
+          <span className="label">{t('colorPicker.dominant')}</span>
           <div className="palette">
             {palette.map((c) => {
               const h = rgbToHex(c);
               return (
-                <button key={h} type="button" style={{ background: h }} title={h.toUpperCase()} aria-label={`Use ${h.toUpperCase()}`} onClick={() => setColor(c)} />
+                <button key={h} type="button" style={{ background: h }} title={h.toUpperCase()} aria-label={t('colorPicker.use', { hex: h.toUpperCase() })} onClick={() => setColor(c)} />
               );
             })}
           </div>
           <div className="toolbar">
-            <CopyButton text={palette.map((c) => rgbToHex(c).toUpperCase()).join(', ')} label="Copy palette (HEX)" />
+            <CopyButton text={palette.map((c) => rgbToHex(c).toUpperCase()).join(', ')} label={t('colorPicker.copyPalette')} />
           </div>
         </div>
       )}
       {file && (
         <div className="toolbar">
           <button type="button" className="btn btn-ghost" onClick={queue.clear}>
-            Choose another image
+            {t('colorPicker.chooseAnother')}
           </button>
         </div>
       )}

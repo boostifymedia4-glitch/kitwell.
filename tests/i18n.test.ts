@@ -2,6 +2,18 @@ import { describe, expect, it } from 'vitest';
 import { en, type MessageKey } from '../src/i18n/en';
 import { DEFAULT_LANGUAGE, LANGUAGES } from '../src/i18n/languages';
 import { localeLoaders } from '../src/i18n/loaders';
+import { requiredKeys, sourceKeyOf } from '../src/i18n/plurals';
+
+/** Strings that are the same in every language: pure formats, units, technical names and words shared with English. */
+const SAME_EVERYWHERE = new Set([
+  'contact.form.counter', 'lang.optionLabel', 'ui.sliderLabel', 'err.pdf.mergeFile', 'imagesToPdf.fileError',
+  'imageResize.note', 'imageCrop.note', 'imageTransform.note', 'imageWatermark.note', 'imageEnlarge.note', 'imageConvert.note',
+  'photoEditor.resultInfo', 'photoEditor.fileInfo', 'imageCompress.maxSize.fullHd', 'imageCompress.noteSmaller',
+  'caseConverter.mode.constant', 'imageToBase64.style.css', 'characterCounter.bytes', 'pdfRedact.quality.standard',
+  'pdfPageNumbers.fmt.page-n', 'pdfPageNumbers.fmt.n-of-total', 'ui.pages.other', 'gifMaker.shape.portrait',
+  'imagesToPdf.summary.one', 'imagesToPdf.summary.other', 'pdfSplit.note.other', 'pdfMetadata.pageCount.other',
+  'pdfRedact.leftover', 'pdfRedact.page', 'pdfRedact.pageChip', 'qrGenerator.level.Q', 'category.count', 'colorConverter.contrast',
+]);
 
 const keys = Object.keys(en) as MessageKey[];
 const placeholders = (s: string) => [...s.matchAll(/\{(\w+)\}/g)].map((m) => m[1]).sort();
@@ -28,15 +40,19 @@ describe('translations', () => {
       it('only uses known keys and keeps every placeholder', async () => {
         const messages = (await localeLoaders[lang.code]()).default as Record<string, string>;
         for (const [key, value] of Object.entries(messages)) {
-          expect(keys, `${lang.code}: unknown key ${key}`).toContain(key);
+          const source = sourceKeyOf(key, en);
+          expect(source, `${lang.code}: unknown key ${key}`).not.toBeNull();
           expect(value.trim().length, `${lang.code}.${key} is empty`).toBeGreaterThan(0);
-          expect(placeholders(value), `${lang.code}.${key} placeholders`).toEqual(placeholders(en[key as MessageKey]));
+          const plural = /\.(zero|one|two|few|many|other)$/.test(key) && `${key.slice(0, key.lastIndexOf('.'))}.other` in en;
+          // Plural forms of a language may drop {count} where the word itself says the number ("one page").
+          if (plural) for (const p of placeholders(value)) expect(placeholders(en[source!]), `${lang.code}.${key} placeholder ${p}`).toContain(p);
+          else expect(placeholders(value), `${lang.code}.${key} placeholders`).toEqual(placeholders(en[source!]));
         }
       });
       it('really translates (is not a copy of the English text) and its coverage flag is honest', async () => {
         const messages = (await localeLoaders[lang.code]()).default as Record<string, string>;
-        const missing = keys.filter((k) => !(k in messages));
-        const copied = keys.filter((k) => messages[k] === en[k] && !/^(nav\.pdf|cat\.pdf)$/.test(k) && en[k].length > 12);
+        const missing = requiredKeys(en, lang.code).filter((k) => !(k in messages));
+        const copied = keys.filter((k) => messages[k] === en[k] && !SAME_EVERYWHERE.has(k) && en[k].length > 12);
         expect(copied, `${lang.code} has untranslated copies`).toEqual([]);
         expect(lang.coverage === 'full', `${lang.code} coverage flag must match ${missing.length} missing keys`).toBe(missing.length === 0);
       });

@@ -1,4 +1,5 @@
 import { useId, type ReactNode } from 'react';
+import { useI18n } from '@/i18n';
 
 interface FieldProps {
   label: string;
@@ -76,8 +77,9 @@ export function NumberField({ label, value, onChange, min, max, step = 1, hint, 
 }
 
 export function RangeField({ label, value, onChange, min, max, step = 1, format }: { label: string; value: number; onChange: (v: number) => void; min: number; max: number; step?: number; format?: (v: number) => string }) {
+  const { t } = useI18n();
   return (
-    <Field label={`${label}: ${format ? format(value) : value}`}>
+    <Field label={t('ui.sliderLabel', { label, value: format ? format(value) : value })}>
       {(id) => <input id={id} type="range" min={min} max={max} step={step} value={value} onChange={(e) => onChange(Number(e.target.value))} />}
     </Field>
   );

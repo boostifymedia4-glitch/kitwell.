@@ -3,6 +3,7 @@
  * Pure functions (the page rendering happens in the tool UI), so they can be tested in Node.
  */
 import { diffWords } from 'diff';
+import { tr } from '@/i18n/translate';
 
 export interface CompareOptions {
   ignoreCase: boolean;
@@ -152,7 +153,7 @@ export interface PixelDiff {
 
 /** Compares two same-size RGBA images. A pixel counts as changed when any colour channel differs by more than `threshold`. */
 export function pixelDiff(a: Uint8ClampedArray, b: Uint8ClampedArray, width: number, height: number, threshold = 48): PixelDiff {
-  if (a.length !== b.length || a.length !== width * height * 4) throw new Error('Both images must have the same size.');
+  if (a.length !== b.length || a.length !== width * height * 4) throw new Error(tr('err.pdf.compareSize'));
   const overlay = new Uint8ClampedArray(a.length);
   let changed = 0;
   for (let i = 0; i < a.length; i += 4) {

@@ -1,3 +1,4 @@
+import { tr } from '@/i18n/translate';
 /** Pure rectangle maths for crop tools. Units are whatever the caller uses (image pixels, preview pixels...). */
 export interface Rect {
   x: number;
@@ -93,11 +94,16 @@ export function marginsToArea(m: Margins): Rect | null {
 
 /** Shapes offered by the crop tools. The value is width / height as a number, or "free". */
 export const CROP_RATIOS = [
-  { value: 'free', label: 'Free' },
-  { value: '1', label: '1:1 (square)' },
+  { value: 'free', label: '' },
+  { value: '1', label: '' },
   { value: '1.3333', label: '4:3' },
   { value: '0.75', label: '3:4' },
   { value: '1.5', label: '3:2' },
   { value: '1.7778', label: '16:9' },
   { value: '0.5625', label: '9:16' },
 ];
+
+/** The ratios with their names in the current language ("Free" and "1:1 (square)" are words; the rest are numbers). */
+export function cropRatioOptions(): { value: string; label: string }[] {
+  return CROP_RATIOS.map((o) => ({ value: o.value, label: o.value === 'free' ? tr('ui.ratio.free') : o.value === '1' ? tr('ui.ratio.square') : o.label }));
+}

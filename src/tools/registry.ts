@@ -112,7 +112,7 @@ export function toolTitle(t: ToolDef) {
 }
 
 /** Ranked search across name, keywords, description, group and category. */
-export function searchTools(query: string, limit = 8): ToolDef[] {
+export function searchTools(query: string, limit = 8, extraText?: (tool: ToolDef) => string): ToolDef[] {
   const q = query.trim().toLowerCase();
   if (!q) return [];
   const words = q.split(/\s+/);
@@ -120,10 +120,11 @@ export function searchTools(query: string, limit = 8): ToolDef[] {
     .map((t) => {
       const name = t.name.toLowerCase();
       const cat = catById.get(t.category)?.name.toLowerCase() ?? '';
-      const hay = `${name} ${t.keywords.join(' ')} ${t.description.toLowerCase()} ${t.group.toLowerCase()} ${cat} ${t.category}`;
+      const extra = extraText ? extraText(t).toLowerCase() : '';
+      const hay = `${name} ${t.keywords.join(' ')} ${t.description.toLowerCase()} ${t.group.toLowerCase()} ${cat} ${t.category} ${extra}`;
       if (!words.every((w) => hay.includes(w))) return null;
       let score = 0;
-      if (name === q) score += 100;
+      if (name === q || (extra && extra.startsWith(q))) score += 100;
       if (name.startsWith(q)) score += 50;
       if (words.every((w) => name.includes(w))) score += 30;
       if (t.keywords.some((k) => k.includes(q))) score += 10;

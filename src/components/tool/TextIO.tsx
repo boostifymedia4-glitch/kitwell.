@@ -1,4 +1,5 @@
 import { useId, type ReactNode } from 'react';
+import { useI18n } from '@/i18n';
 import { downloadText } from '@/lib/download';
 import { CopyButton } from './CopyButton';
 
@@ -50,7 +51,8 @@ interface OutputProps {
 }
 
 /** Read-only result box with copy and optional download. */
-export function OutputBox({ label, value, rows = 10, prose, filename, mime, placeholder = 'The result will appear here.' }: OutputProps) {
+export function OutputBox({ label, value, rows = 10, prose, filename, mime, placeholder }: OutputProps) {
+  const { t } = useI18n();
   const id = useId();
   return (
     <div className="field output-box">
@@ -63,14 +65,14 @@ export function OutputBox({ label, value, rows = 10, prose, filename, mime, plac
         rows={rows}
         readOnly
         value={value}
-        placeholder={placeholder}
+        placeholder={placeholder ?? t('ui.resultPlaceholder')}
         spellCheck={false}
       />
       <div className="output-actions">
-        <CopyButton text={value} label="Copy result" />
+        <CopyButton text={value} label={t('ui.copyResult')} />
         {filename && (
           <button type="button" className="btn btn-secondary btn-sm" disabled={!value} onClick={() => downloadText(value, filename, mime)}>
-            Download
+            {t('ui.download')}
           </button>
         )}
       </div>
@@ -79,11 +81,12 @@ export function OutputBox({ label, value, rows = 10, prose, filename, mime, plac
 }
 
 export function Stats({ items }: { items: { label: string; value: string | number }[] }) {
+  const { t, lang } = useI18n();
   return (
-    <div className="stat-grid" role="group" aria-label="Statistics">
+    <div className="stat-grid" role="group" aria-label={t('ui.stats')}>
       {items.map((s) => (
         <div className="stat" key={s.label}>
-          <b>{typeof s.value === 'number' ? s.value.toLocaleString('en-US') : s.value}</b>
+          <b>{typeof s.value === 'number' ? s.value.toLocaleString(lang.code) : s.value}</b>
           <span>{s.label}</span>
         </div>
       ))}
@@ -92,9 +95,10 @@ export function Stats({ items }: { items: { label: string; value: string | numbe
 }
 
 export function ClearButton({ onClick, disabled }: { onClick: () => void; disabled?: boolean }) {
+  const { t } = useI18n();
   return (
     <button type="button" className="btn btn-ghost btn-sm" onClick={onClick} disabled={disabled}>
-      Clear
+      {t('ui.clear')}
     </button>
   );
 }

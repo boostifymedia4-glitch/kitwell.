@@ -1,15 +1,19 @@
 import { Link } from 'react-router-dom';
-import { LegalNotice, PageShell, Placeholder } from '@/components/ui/PageShell';
+import { LegalBody, LegalNotice, PageShell, Placeholder } from '@/components/ui/PageShell';
 import { site } from '@/config/site';
+import { useI18n } from '@/i18n';
 
 export default function Cookies() {
+  const { t } = useI18n();
   return (
-    <PageShell path="/cookies" title="Cookie & browser storage information" lead="What this site stores in your browser, and what would change if advertising is added.">
+    <PageShell path="/cookies" title={t('legal.cookies.title')} lead={t('legal.cookies.lead', { site: site.name })}>
       <LegalNotice />
+      <LegalBody>
       <h2>Current status</h2>
       <p>
-        {site.name} does not currently set cookies and does not store data in your browser’s local storage. The tools keep files and text in memory while
-        the page is open; they are gone when you close or reload the tab.
+        {site.name} does not currently set cookies. The only thing it stores in your browser is your language choice, in local storage under the name “kitwell-language”, so
+        the site opens in that language next time; choosing English removes it. The tools keep files and text in memory while the page is open; they are gone when you close or
+        reload the tab.
       </p>
       <p>
         Your hosting provider may set technical cookies or record server logs outside our control.{' '}
@@ -32,6 +36,7 @@ export default function Cookies() {
 
       <h2>Controlling cookies</h2>
       <p>You can block or delete cookies in your browser settings. Blocking cookies does not affect how the tools work.</p>
+      </LegalBody>
     </PageShell>
   );
 }
