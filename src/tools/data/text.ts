@@ -156,6 +156,6 @@ export const textTools: ToolDef[] = [
       },
     ],
     limits: ['Very large inputs (over about 200,000 characters) may be slow.'],
-    related: ['remove-duplicate-lines', 'json-formatter', 'text-cleaner', 'word-counter', 'text-sorter'],
+    related: ['remove-duplicate-lines', 'json-formatter', 'text-cleaner', 'word-counter', 'text-sorter', 'compare-pdf'],
   },
 ];

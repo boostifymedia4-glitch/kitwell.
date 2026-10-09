@@ -90,3 +90,14 @@ export function marginsToArea(m: Margins): Rect | null {
   const h = 1 - y - m.bottom / 100;
   return [x, y, w, h].every(Number.isFinite) && x >= 0 && y >= 0 && w >= 0.02 && h >= 0.02 ? { x, y, w, h } : null;
 }
+
+/** Shapes offered by the crop tools. The value is width / height as a number, or "free". */
+export const CROP_RATIOS = [
+  { value: 'free', label: 'Free' },
+  { value: '1', label: '1:1 (square)' },
+  { value: '1.3333', label: '4:3' },
+  { value: '0.75', label: '3:4' },
+  { value: '1.5', label: '3:2' },
+  { value: '1.7778', label: '16:9' },
+  { value: '0.5625', label: '9:16' },
+];

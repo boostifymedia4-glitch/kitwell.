@@ -31,7 +31,8 @@ export function createApp({ distDir = join(root, 'dist') } = {}) {
         useDefaults: false,
         directives: {
           'default-src': ["'self'"],
-          'script-src': ["'self'"],
+          // 'wasm-unsafe-eval' only allows compiling WebAssembly (needed by the OCR engine); it does not allow eval() or inline scripts.
+          'script-src': ["'self'", "'wasm-unsafe-eval'"],
           'style-src': ["'self'"],
           // React sets a few inline style attributes (positions, sizes); scripts remain fully locked down.
           'style-src-attr': ["'unsafe-inline'"],

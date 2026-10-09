@@ -215,7 +215,7 @@ export const imageTools: ToolDef[] = [
       metadataFaq,
     ],
     limits: [...convertLimits, 'Best results come from JPG or WebP output; PNG output is lossless and may not shrink.'],
-    related: ['image-resizer', 'jpg-to-webp', 'png-to-jpg', 'image-format-converter', 'image-cropper', 'enlarge-image'],
+    related: ['image-resizer', 'jpg-to-webp', 'png-to-jpg', 'image-format-converter', 'image-cropper', 'enlarge-image', 'gif-maker'],
   },
   {
     ...common,
@@ -245,7 +245,7 @@ export const imageTools: ToolDef[] = [
       metadataFaq,
     ],
     limits: [...convertLimits, 'Output is capped at 16,000 px per side.'],
-    related: ['image-compressor', 'image-cropper', 'image-rotator', 'jpg-to-png', 'image-format-converter', 'enlarge-image', 'image-watermark'],
+    related: ['image-compressor', 'image-cropper', 'image-rotator', 'jpg-to-png', 'image-format-converter', 'enlarge-image', 'image-watermark', 'gif-maker', 'photo-editor'],
   },
   {
     ...common,
@@ -271,7 +271,7 @@ export const imageTools: ToolDef[] = [
       privacyFaq,
     ],
     limits: ['One image at a time.', 'Maximum 25 MB per file.', 'Animated images use the first frame.'],
-    related: ['image-resizer', 'image-rotator', 'image-flipper', 'image-compressor', 'jpg-to-png', 'blur-image-area'],
+    related: ['image-resizer', 'image-rotator', 'image-flipper', 'image-compressor', 'jpg-to-png', 'blur-image-area', 'photo-editor'],
   },
   {
     ...common,
@@ -294,7 +294,7 @@ export const imageTools: ToolDef[] = [
       privacyFaq,
     ],
     limits: convertLimits,
-    related: ['image-flipper', 'image-cropper', 'image-resizer', 'rotate-pdf', 'image-compressor', 'blur-image-area'],
+    related: ['image-flipper', 'image-cropper', 'image-resizer', 'rotate-pdf', 'image-compressor', 'blur-image-area', 'photo-editor'],
   },
   {
     ...common,
@@ -447,7 +447,7 @@ export const imageTools: ToolDef[] = [
       metadataFaq,
     ],
     limits: [...convertLimits, 'Logo files: PNG, JPG or WebP, up to 25 MB.'],
-    related: ['watermark-pdf', 'image-resizer', 'image-compressor', 'image-cropper', 'blur-image-area'],
+    related: ['watermark-pdf', 'image-resizer', 'image-compressor', 'image-cropper', 'blur-image-area', 'photo-editor'],
   },
   {
     ...common,
@@ -527,7 +527,7 @@ export const imageTools: ToolDef[] = [
       metadataFaq,
     ],
     limits: ['One image at a time, up to 25 MB.', 'Areas are chosen by hand; there is no face detection.', 'Animated images use the first frame.'],
-    related: ['image-cropper', 'image-watermark', 'image-resizer', 'image-compressor', 'image-rotator'],
+    related: ['image-cropper', 'image-watermark', 'image-resizer', 'image-compressor', 'image-rotator', 'redact-pdf'],
   },
   {
     ...common,
@@ -562,5 +562,74 @@ export const imageTools: ToolDef[] = [
     ],
     limits: ['Up to 10 images, 25 MB each.', 'One code is read per image.', 'Standard QR codes only; other barcodes are not supported.'],
     related: ['qr-code-generator', 'image-color-picker', 'image-to-base64', 'image-cropper', 'url-encoder-decoder'],
+  },
+  {
+    ...common,
+    slug: 'gif-maker',
+    group: 'Create images',
+    name: 'GIF Maker',
+    icon: 'film',
+    impl: 'gif-maker',
+    description: 'Turn your pictures into an animated GIF with custom timing, size and looping.',
+    metaDescription:
+      'Make an animated GIF from images online for free. Reorder frames, set the delay per frame, choose size and looping, and download the GIF. Created in your browser.',
+    keywords: ['gif maker', 'images to gif', 'create animated gif', 'photos to gif', 'make gif from pictures'],
+    steps: [
+      'Add two or more pictures (or just one for a still GIF).',
+      'Drag them into order, set how long each frame shows, and choose the size, loop and colours.',
+      'Create the GIF, preview it and download.',
+    ],
+    faq: [
+      {
+        q: 'Why is my GIF so large?',
+        a: 'GIFs store every frame as a picture limited to 256 colours. Fewer frames, a smaller width and fewer colours all shrink the file. The tool shows the size as soon as the GIF is made.',
+      },
+      {
+        q: 'Can I keep transparent areas?',
+        a: 'Yes, turn on "Keep transparent areas" for PNG or WebP pictures with transparency. GIF transparency is on or off per pixel, so soft edges become hard.',
+      },
+      privacyFaq,
+    ],
+    limits: [
+      'Up to 100 frames; the larger the frames, the more memory your browser needs.',
+      'GIFs are limited to 256 colours per frame, so photos can look grainy.',
+      'Animated inputs (GIF, WebP) contribute only their first frame.',
+    ],
+    related: ['image-resizer', 'image-compressor', 'images-to-pdf', 'image-cropper', 'photo-editor'],
+  },
+  {
+    ...common,
+    slug: 'photo-editor',
+    group: 'Optimize and edit',
+    name: 'Photo Editor',
+    icon: 'sliders',
+    impl: 'photo-editor',
+    description: 'Adjust, filter, rotate, crop and add text to a photo, with a live preview.',
+    metaDescription:
+      'Free online photo editor. Adjust colour, apply filters, rotate, straighten, crop and add text, then download a PNG, JPG or WebP. Private, in your browser.',
+    keywords: ['photo editor', 'edit photo online', 'image editor', 'brightness contrast', 'photo filters', 'straighten photo'],
+    steps: [
+      'Add a photo.',
+      'Use the tabs to adjust colours, apply a filter, rotate or crop, and add text. The preview updates as you go.',
+      'Choose the format and download your edited photo.',
+    ],
+    faq: [
+      {
+        q: 'Is the original file changed?',
+        a: 'No. Your file is never modified; the edited picture is created as a new download.',
+      },
+      {
+        q: 'Does exporting lose quality?',
+        a: 'PNG keeps every pixel. JPG and WebP are lossy; use a quality of 90 or higher to keep photos looking the same. Edits are applied at the full size of your picture, not at the preview size.',
+      },
+      privacyFaq,
+    ],
+    limits: [
+      'One photo at a time, up to 25 MB and about 50 megapixels.',
+      'Edits are applied in a fixed order: rotate and crop, colour adjustments, blur and sharpen, vignette, then text.',
+      'EXIF details such as location are not copied to the edited picture.',
+      'No layers, brushes or AI features.',
+    ],
+    related: ['image-cropper', 'image-rotator', 'image-resizer', 'image-watermark', 'gif-maker'],
   },
 ];

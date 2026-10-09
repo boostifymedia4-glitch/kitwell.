@@ -14,13 +14,17 @@ interface Props {
   hidden?: boolean;
   /** The picture itself (an <img> or <canvas>). It must fill the stage's width. */
   children: ReactNode;
+  /** Darken everything outside the box (crop tools). Turn off when the box marks where something is placed. */
+  shade?: boolean;
+  /** Content drawn inside the box, for example the signature being placed. */
+  boxContent?: ReactNode;
 }
 
 /**
  * A draggable, resizable crop box over a picture. Works with mouse, touch and keyboard
  * (arrow keys move the box, Shift moves it faster). Shared by the image and PDF crop tools.
  */
-export function CropSelector({ width, height, rect, onChange, ratio, label, hidden, children }: Props) {
+export function CropSelector({ width, height, rect, onChange, ratio, label, hidden, children, shade = true, boxContent }: Props) {
   const stageRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
   const drag = useRef<{ mode: 'move' | 'resize'; px: number; py: number; start: Rect } | null>(null);
@@ -69,7 +73,7 @@ export function CropSelector({ width, height, rect, onChange, ratio, label, hidd
       {children}
       {!hidden && (
         <div
-          className="crop-box"
+          className={shade ? 'crop-box' : 'crop-box crop-box-plain'}
           role="group"
           tabIndex={0}
           aria-label={`${label}: ${Math.round(rect.w)} by ${Math.round(rect.h)} at ${Math.round(rect.x)}, ${Math.round(rect.y)}. Use arrow keys to move.`}
@@ -80,6 +84,7 @@ export function CropSelector({ width, height, rect, onChange, ratio, label, hidd
           onPointerCancel={end}
           onKeyDown={key}
         >
+          {boxContent}
           <span className="crop-handle" onPointerDown={down('resize')} onPointerMove={move} onPointerUp={end} onPointerCancel={end} aria-hidden="true" />
         </div>
       )}

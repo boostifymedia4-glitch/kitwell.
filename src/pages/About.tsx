@@ -19,8 +19,8 @@ export default function About() {
       <h2>What we don’t do</h2>
       <ul>
         <li>We do not require an account or add watermarks to your output.</li>
-        <li>We do not edit the existing text inside PDFs. The PDF tools here copy, reorder, rotate, split, merge and render pages.</li>
-        <li>We do not offer tools that need large AI models or paid services, such as background removal, until they can be done reliably and privately.</li>
+        <li>We do not rewrite the existing text inside PDFs. The PDF tools merge, split, compress, sign, fill, redact, compare and recognise text in documents, but they do not change the words that are already there.</li>
+        <li>We do not offer tools that need large AI models or paid services, such as background removal, until they can be done reliably and privately. The one engine we do ship, for OCR, is open source and runs inside your browser.</li>
       </ul>
       <h2>Who is behind {site.name}</h2>
       <p>

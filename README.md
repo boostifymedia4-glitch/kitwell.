@@ -1,6 +1,6 @@
 # Kitwell
 
-A fast, privacy-friendly website of 61 everyday tools (image, PDF, text, developer). Every tool runs **in the visitor's browser**; the server only serves static files.
+A fast, privacy-friendly website of 69 everyday tools (image, PDF, text, developer) in 17 interface languages. Every tool runs **in the visitor's browser**; the server only serves static files.
 
 **Stack:** Vite + React 19 + TypeScript, build-time prerendering (one static HTML file per URL, then hydrated), a small Express server for headers/compression/404s. Brand name is a placeholder: change it in `src/config/site.ts` and colours in `src/styles/tokens.css`.
 
@@ -9,11 +9,11 @@ A fast, privacy-friendly website of 61 everyday tools (image, PDF, text, develop
 | Command | What it does |
 | --- | --- |
 | `npm install` | Install dependencies (Node 20+) |
-| `npm run dev` | Dev server with hot reload (no prerender) |
+| `npm run dev` | Dev server with hot reload (no prerender). Copies the OCR files first. |
 | `npm run check` | Type check, lint, tests, then production build |
-| `npm run build` | Production build + prerender of all 72 routes into `dist/` |
+| `npm run build` | Copies the OCR files, builds, and prerenders all 81 routes into `dist/` |
 | `npm start` | Serve `dist/` on `PORT` (default 3000) |
-| `npm test` | Vitest (148 tests; server tests need a prior build) |
+| `npm test` | Vitest (284 tests; server tests need a prior build) |
 
 ## Deployment
 
@@ -29,18 +29,39 @@ A fast, privacy-friendly website of 61 everyday tools (image, PDF, text, develop
 - Replace placeholders in `Privacy`, `Terms`, `Cookies`, `About`, `Contact` (shown as highlighted `[brackets]`) and `contactEmail` in `src/config/site.ts`. Have the legal pages reviewed for Pakistan and your visitor countries.
 - Add `public/og-image.png` (1200×630) for social previews; the build picks it up automatically.
 - Choose the final brand name/domain.
+- Have the non-English interface strings reviewed by native speakers (see Languages).
 
 ## Adding a tool
 
-1. Add an entry to `src/tools/data/<category>.ts` (slug, name, description, steps, FAQ, limits, related tools, `impl` key).
+1. Add an entry to `src/tools/data/<category>.ts` (slug, name, description, steps, FAQ, limits, related tools, `impl` key). Put it in one of the groups listed in `src/tools/registry.ts`; the mega menu, footer, category pages and search are generated from that data.
 2. Add a component in `src/tools/impl/<category>/` and register it in `src/tools/impl/index.ts`.
 3. `npm run check`. The registry tests verify metadata, related links and that every tool has an implementation. The page, URL, sitemap entry, breadcrumbs and structured data are generated automatically.
 
+## Languages
+
+The site shell (header, menus, search, homepage, footer, language picker) can be shown in 17 languages: English, Urdu, Arabic, Spanish, French, German, Portuguese, Italian, Turkish, Chinese (Simplified), Japanese, Korean, Hindi, Indonesian, Bengali, Russian and Dutch. The choice is saved in the browser (`localStorage`, key `kitwell-language`) and sets `<html lang>` and `dir` (Urdu and Arabic are right-to-left).
+
+- **What is translated:** about 60 interface strings (`src/i18n/en.ts` is the source). **Not translated yet:** tool pages, tool names and descriptions, the Help/legal/About pages and the homepage FAQ. These are marked as English (`lang="en"`, left-to-right) so screen readers and RTL layouts handle them correctly, and the language picker says so.
+- **Fallback:** a missing key falls back to English. A language is only shown without a "partial" label when `coverage: 'full'` in `src/i18n/languages.ts`, and `tests/i18n.test.ts` fails if that flag does not match the real number of translated keys or if placeholders such as `{count}` differ from English.
+- **Adding a language:** add it to `LANGUAGES` (`src/i18n/languages.ts`), create `src/i18n/locales/<code>.ts` and register it in `src/i18n/loaders.ts`. Each language is its own lazy chunk.
+- The server and the first client render are always English, so hydration matches the prerendered HTML; a saved language is applied right after load.
+- The translations were written for this project and should be checked by native speakers before launch.
+
+## OCR (local, WebAssembly)
+
+OCR PDF uses [tesseract.js](https://github.com/naptha/tesseract.js) (Apache-2.0) with the English "best" LSTM model. Nothing is fetched from a CDN:
+
+- `scripts/copy-ocr-assets.mjs` (run by `predev` and `prebuild`) copies the worker, three WebAssembly engine variants and `eng.traineddata.gz` from `node_modules` to `public/ocr/` (about 12 MB, git-ignored, generated). A visitor downloads only the worker (~110 KB), one engine (~3.9 MB) and the language data (~3 MB), and only when they use OCR.
+- The Content-Security-Policy allows `'wasm-unsafe-eval'` in `script-src`. That permits compiling WebAssembly only; `eval()` and inline scripts remain blocked.
+- English only. More languages need their `.traineddata.gz` files in `public/ocr/lang/` and an entry in `src/lib/ocrEngine.ts`.
+
 ## Privacy and security notes
 
-- No uploads and no API endpoints: files never reach the server. Regex and image processing run in Web Workers; heavy libraries (@cantoo/pdf-lib, PDF.js, pica, jsQR, marked, diff) load only on pages that use them.
-- PDF editing uses [@cantoo/pdf-lib](https://github.com/cantoo-scribe/pdf-lib) (an MIT-licensed, maintained fork of pdf-lib) because it can encrypt and decrypt PDFs. Image enlarging uses pica without WebAssembly so the strict Content-Security-Policy (no `wasm-unsafe-eval`) stays in place.
+- No uploads and no API endpoints: files never reach the server. Regex and image processing run in Web Workers; heavy libraries (@cantoo/pdf-lib, PDF.js, pica, jsQR, tesseract.js, gifenc, marked, diff) load only on pages that use them.
+- PDF editing uses [@cantoo/pdf-lib](https://github.com/cantoo-scribe/pdf-lib) (an MIT-licensed, maintained fork of pdf-lib) because it can encrypt and decrypt PDFs. Image enlarging uses pica without WebAssembly.
+- Redact PDF rebuilds redacted pages as images, so the text underneath does not exist in the output. This is covered by a unit test that searches the decompressed file for the secret text and by a browser check that does the same on the real output.
 - Markdown preview is sanitised with DOMPurify; Base64-to-image rejects SVG.
+- Passwords are generated with `crypto.getRandomValues` (rejection sampling, no modulo bias) and are never stored or sent.
 - `npm audit`: 0 known vulnerabilities at time of writing.
 
 ## AdSense readiness
@@ -49,13 +70,21 @@ A fast, privacy-friendly website of 61 everyday tools (image, PDF, text, develop
 
 ## Known limitations
 
-- PDF tools merge, split, reorder, rotate, crop, watermark, number, protect, unlock, read text from and edit the metadata of PDFs. They do **not** edit existing PDF text, compress PDFs, OCR scans, or sign documents.
+- **Compress PDF** recompresses embedded JPEG images only and keeps text selectable; PDFs without large photos barely shrink and the tool says so. Its "Maximum" mode turns every page into a picture (no selectable text, links or form fields).
+- **OCR PDF** is English only, works best on clean 200-300 DPI scans, and does not read handwriting. It is slow on large documents (seconds per page).
+- **Sign PDF** places a *visual* signature. It is not a cryptographic digital signature, has no certificate or timestamp and cannot detect later changes.
+- **Fill PDF Forms** fills standard AcroForm fields with Latin text; XFA (dynamic) forms and signature fields are not supported.
+- **Redact PDF** turns redacted pages into images (no text, links or forms on those pages). Automatic search only finds matches inside a single line of selectable text; scans need boxes drawn by hand. Check the result before sharing.
+- **Compare PDF** matches pages by number and compares text of up to 100 pages per file; the visual comparison is at screen resolution.
+- **GIF Maker** is limited to 100 frames and 256 colours per frame; animated inputs contribute their first frame.
+- **Photo Editor** works on one photo up to about 50 megapixels with a fixed edit order; there are no layers or AI features.
+- **Password Generator:** name-based passwords are easier to remember but weaker than fully random ones (the tool shows an honest estimate). Generated passwords use only the symbols `@ # $ * + - !`.
 - Crop PDF hides the area outside the box (it sets the visible page area); it does not delete that content from the file.
-- Watermark PDF text is limited to Latin letters, digits and common symbols, because PDF built-in fonts have no other alphabets. Use an image watermark for other scripts.
+- Watermark PDF text and form text are limited to Latin letters, digits and common symbols, because PDF built-in fonts have no other alphabets.
 - Protect PDF uses AES-256 and accepts passwords of printable ASCII characters only. Unlock PDF needs the real password (it never guesses passwords).
-- Extract Text from PDF reads the text layer only; scanned PDFs need OCR, which is not included.
+- Extract Text from PDF reads the text layer only; scanned PDFs need OCR PDF first.
 - QR Code Scanner reads uploaded images only (no camera access). Enlarge Image is smooth high-quality resampling, not AI upscaling.
 - WebP output needs a browser that can encode WebP; HEIC/TIFF/RAW inputs are unsupported; animated images use the first frame.
-- PDF rendering (PDF to JPG/PNG, viewer, thumbnails) is slowed by browsers when the tab is in the background.
-- Not built (by design): background removal / object removal (need large ML models), YouTube tools (need API/terms review; no scraping), PDF compression (no reliable free browser method yet).
+- PDF rendering (PDF to JPG/PNG, viewer, previews) is slowed by browsers when the tab is in the background.
+- Not built (by design): background removal / object removal (need large ML models), YouTube tools (need API/terms review; no scraping).
 - Manual testing was done in Chromium only; Firefox and Safari are untested.

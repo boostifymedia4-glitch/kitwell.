@@ -217,22 +217,38 @@ export const developerTools: ToolDef[] = [
     name: 'Password Generator',
     icon: 'key',
     impl: 'password-generator',
-    description: 'Generate strong random passwords using your browser’s secure random generator.',
+    description: 'Create strong passwords: fully random, or memorable ones built on names and words.',
     metaDescription:
-      'Free secure password generator. Create random passwords up to 128 characters using cryptographic randomness in your browser.',
-    keywords: ['random password', 'strong password generator', 'passphrase generator'],
-    steps: ['Set the length and character types.', 'Generate as many passwords as you need.', 'Copy one and store it in a password manager.'],
+      'Free password generator: fully random passwords, or name-based ones like Nvidia132@Star with random numbers, capitals and symbols. Runs in your browser.',
+    keywords: ['random password', 'strong password generator', 'password with names', 'memorable password', 'passphrase generator'],
+    steps: [
+      'Choose a style: Name + word for something memorable, or Fully random for maximum security.',
+      'Set the length, how many passwords you need, and which character types to include.',
+      'Copy a password and keep it in a password manager.',
+    ],
     faq: [
       {
         q: 'Are generated passwords stored or sent anywhere?',
         a: 'No. Passwords are generated in your browser using crypto.getRandomValues and are never transmitted or saved.',
       },
       {
+        q: 'Is a password like Tesla2026#Tech safe?',
+        a: 'It is better than a plain word, but weaker than random text. Anyone guessing can start from lists of well-known names, so the real strength comes from the number of possibilities, shown as bits. Use name-based passwords for low-risk accounts and fully random ones for email, banking and password managers.',
+      },
+      {
+        q: 'Why only a few symbols?',
+        a: 'Generated passwords use only @ # $ * + - ! because they are accepted by almost every website and are easy to type on any keyboard.',
+      },
+      {
         q: 'How long should a password be?',
         a: 'At least 16 characters for important accounts. Length matters more than complexity.',
       },
     ],
-    limits: ['The strength estimate is based on entropy of the character set, not on breach databases.'],
+    limits: [
+      'Name-based passwords are easier to remember but weaker than fully random ones. The strength shown assumes an attacker who knows how they are built.',
+      'The word database is a curated list of names in Latin letters; it is not a list of the most-used passwords.',
+      'The strength estimate is based on possible combinations, not on breach databases.',
+    ],
     related: ['uuid-generator', 'base64-encoder-decoder', 'word-counter', 'url-encoder-decoder', 'timestamp-converter', 'qr-code-generator', 'protect-pdf'],
   },
   {

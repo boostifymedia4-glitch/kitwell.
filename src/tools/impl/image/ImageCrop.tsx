@@ -6,22 +6,13 @@ import { ErrorMessage, ProcessingState, RejectionList } from '@/components/tool/
 import { ResetButton, ResultFiles, ResultPanel } from '@/components/tool/Results';
 import { UploadDropzone } from '@/components/tool/UploadDropzone';
 import { Icon } from '@/components/Icon';
-import { MIN_CROP, applyRatio, initialRect, setRectField, type Rect } from '@/lib/cropRect';
+import { MIN_CROP, applyRatio, initialRect, setRectField, type Rect, CROP_RATIOS } from '@/lib/cropRect';
 import { outputName } from '@/lib/format';
 import { useFileQueue, useObjectUrl, useTask } from '@/lib/hooks';
 import { processImage } from '@/lib/image';
 import { FORMAT_OPTIONS, FORMATS, sameFormatAs, type FormatKey } from '@/lib/imageFormats';
 import type { ToolImplementation } from '../../types';
 
-export const CROP_RATIOS = [
-  { value: 'free', label: 'Free' },
-  { value: '1', label: '1:1 (square)' },
-  { value: '1.3333', label: '4:3' },
-  { value: '0.75', label: '3:4' },
-  { value: '1.5', label: '3:2' },
-  { value: '1.7778', label: '16:9' },
-  { value: '0.5625', label: '9:16' },
-];
 
 const ImageCrop: ToolImplementation = () => {
   const queue = useFileQueue({ extensions: IMAGE_EXTENSIONS, maxBytes: MAX_IMAGE_BYTES, maxFiles: 1 }, false);

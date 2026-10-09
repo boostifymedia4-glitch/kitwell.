@@ -7,6 +7,8 @@ import { ToolGrid } from '@/components/ui/ToolCard';
 import { ToolIcon } from '@/components/ui/ToolIcon';
 import { ToolSearch } from '@/components/ui/ToolSearch';
 import { site } from '@/config/site';
+import { English } from '@/i18n/English';
+import { useI18n, type MessageKey } from '@/i18n';
 import { getPageMeta } from '@/pageMeta';
 import { categories, categoryPath, getTool, showcaseTools, popularTools, toolPath, toolsInCategory, tools } from '@/tools/registry';
 
@@ -14,10 +16,10 @@ const SHORTCUTS = ['jpg-to-png', 'image-compressor', 'merge-pdf', 'pdf-to-jpg', 
   .map(getTool)
   .filter((t) => t !== undefined);
 
-const TRUST = [
-  { icon: 'shield', title: 'Processed in your browser', text: 'Files are opened, converted and saved by your own browser. Our tools do not upload them to a server.' },
-  { icon: 'lock', title: 'No account, no watermark', text: 'Use any tool immediately. There is nothing to sign up for and nothing is added to your output.' },
-  { icon: 'info', title: 'Honest about limits', text: 'Every tool page lists the formats and sizes it supports, and what it cannot do, before you start.' },
+const TRUST: { icon: string; title: MessageKey; text: MessageKey }[] = [
+  { icon: 'shield', title: 'home.trust1Title', text: 'home.trust1Text' },
+  { icon: 'lock', title: 'home.trust2Title', text: 'home.trust2Text' },
+  { icon: 'info', title: 'home.trust3Title', text: 'home.trust3Text' },
 ];
 
 const FAQ = [
@@ -29,17 +31,18 @@ const FAQ = [
 
 export default function Home() {
   const meta = getPageMeta('/');
+  const { t } = useI18n();
   return (
     <>
       {meta && <Seo {...meta} />}
       <section className="hero" aria-labelledby="hero-title">
         <div className="container">
-          <h1 id="hero-title">Everyday tools for files, PDFs, text and code</h1>
+          <h1 id="hero-title">{t('home.title')}</h1>
           <p className="lead">
-            Free browser-based tools for everyday file, PDF, text and developer tasks. {tools.length} tools, no sign-up, nothing to install.
+            {t('home.lead', { count: tools.length })}
           </p>
           <ToolSearch variant="hero" />
-          <ul className="shortcuts" aria-label="Popular tools">
+          <English><ul className="shortcuts" aria-label={t('home.popular')}>
             {SHORTCUTS.map((t) => (
               <li key={t.slug}>
                 <Link to={toolPath(t)} className="shortcut">
@@ -48,7 +51,7 @@ export default function Home() {
                 </Link>
               </li>
             ))}
-          </ul>
+          </ul></English>
         </div>
       </section>
 
@@ -56,14 +59,16 @@ export default function Home() {
         <section className="section" aria-labelledby="popular">
           <div className="section-head">
             <div>
-              <h2 id="popular">Popular tools</h2>
-              <p>The tools people reach for most.</p>
+              <h2 id="popular">{t('home.popular')}</h2>
+              <p>{t('home.popularSub')}</p>
             </div>
             <Link to="/tools" className="btn btn-secondary btn-sm">
-              All {tools.length} tools <Icon name="arrow-right" size={14} />
+              {t('home.allTools', { count: tools.length })} <Icon name="arrow-right" size={14} />
             </Link>
           </div>
-          <ToolGrid tools={popularTools()} showCategory />
+          <English>
+            <ToolGrid tools={popularTools()} showCategory />
+          </English>
         </section>
 
         {categories.map((c) => (
@@ -74,15 +79,17 @@ export default function Home() {
                   <Icon name={c.icon} size={22} />
                 </span>
                 <div>
-                  <h2 id={`home-${c.id}`}>{c.name}</h2>
-                  <p>{c.description}</p>
+                  <h2 id={`home-${c.id}`}>{t(`cat.${c.id}` as MessageKey)}</h2>
+                  <English as="p" style={{ display: 'block' }}>{c.description}</English>
                 </div>
               </div>
               <Link to={categoryPath(c.id)} className="btn btn-secondary btn-sm">
-                View all {toolsInCategory(c.id).length} <Icon name="arrow-right" size={14} />
+                {t('home.viewAll', { count: toolsInCategory(c.id).length })} <Icon name="arrow-right" size={14} />
               </Link>
             </div>
-            <ToolGrid tools={showcaseTools(c.id)} />
+            <English>
+              <ToolGrid tools={showcaseTools(c.id)} />
+            </English>
           </section>
         ))}
 
@@ -91,29 +98,31 @@ export default function Home() {
         <section className="section" aria-labelledby="privacy">
           <div className="section-head">
             <div>
-              <h2 id="privacy">Built around your privacy</h2>
-              <p>Most online converters upload your files. These don’t need to.</p>
+              <h2 id="privacy">{t('home.privacyTitle')}</h2>
+              <p>{t('home.privacySub')}</p>
             </div>
           </div>
           <div className="trust-grid">
-            {TRUST.map((t) => (
-              <div key={t.title} className="card trust-item">
+            {TRUST.map((item) => (
+              <div key={item.title} className="card trust-item">
                 <span className="tool-icon tool-icon-md chip-image" aria-hidden="true">
-                  <Icon name={t.icon} size={22} />
+                  <Icon name={item.icon} size={22} />
                 </span>
-                <h3>{t.title}</h3>
-                <p>{t.text}</p>
+                <h3>{t(item.title)}</h3>
+                <p>{t(item.text)}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="section" aria-labelledby="faq">
-          <div className="section-head">
-            <h2 id="faq">Questions, answered</h2>
-          </div>
-          <Faq items={FAQ} />
-        </section>
+        <English>
+          <section className="section" aria-labelledby="faq">
+            <div className="section-head">
+              <h2 id="faq">Questions, answered</h2>
+            </div>
+            <Faq items={FAQ} />
+          </section>
+        </English>
       </div>
     </>
   );

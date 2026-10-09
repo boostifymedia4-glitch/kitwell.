@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useId, useRef, useState, type KeyboardEvent } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { categories, categoryPath, getCategory, groupsInCategory, toolPath, toolsInCategory, toolsInGroup, tools } from '@/tools/registry';
+import { English } from '@/i18n/English';
+import { useI18n, type MessageKey } from '@/i18n';
 import type { CategoryId } from '@/tools/types';
 import { Icon } from '../Icon';
 import { ToolIcon } from '../ui/ToolIcon';
@@ -24,6 +26,7 @@ export function MegaMenu() {
   const openedByHover = useRef(false);
   const { pathname } = useLocation();
   const baseId = useId();
+  const { t } = useI18n();
 
   const close = useCallback(() => {
     window.clearTimeout(timer.current);
@@ -102,11 +105,11 @@ export function MegaMenu() {
       }}
     >
       <button ref={buttonRef} type="button" className="nav-link mega-trigger" aria-expanded={open} aria-controls="mega-panel" onClick={onTrigger}>
-        All tools
+        {t('nav.allTools')}
         <Icon name="chevron-down" size={15} className="mega-chevron" />
       </button>
       {open && (
-        <div className="mega-panel" id="mega-panel" role="region" aria-label="All tools">
+        <div className="mega-panel" id="mega-panel" role="region" aria-label={t('nav.allTools')}>
           <div className="container">
             <div className="mega-body">
               <div className="mega-rail" role="tablist" aria-label="Tool categories" aria-orientation="vertical" onKeyDown={onTabKeys}>
@@ -131,20 +134,23 @@ export function MegaMenu() {
                       <Icon name={c.icon} size={16} />
                     </span>
                     <span className="mega-tab-text">
-                      {c.name}
-                      <small>{toolsInCategory(c.id).length} tools</small>
+                      {t(`cat.${c.id}` as MessageKey)}
+                      <small>{toolsInCategory(c.id).length}</small>
                     </span>
                   </button>
                 ))}
               </div>
               <div className="mega-content" role="tabpanel" id={panelId} aria-labelledby={`${baseId}-tab-${active}`}>
                 <div className="mega-content-head">
-                  <p>{cat.description}</p>
+                  <English as="p" style={{ display: 'block' }}>
+                    {cat.description}
+                  </English>
                   <Link to={categoryPath(cat.id)} className="mega-viewall" onClick={close}>
-                    View all {toolsInCategory(cat.id).length} {cat.short.toLowerCase()} tools
+                    {t('mega.viewAll', { count: toolsInCategory(cat.id).length })}
                     <Icon name="arrow-right" size={14} />
                   </Link>
                 </div>
+                <English>
                 <div className="mega-groups">
                   {groupsInCategory(cat.id).map((g) => (
                     <section key={g.name} aria-label={g.name}>
@@ -162,12 +168,13 @@ export function MegaMenu() {
                     </section>
                   ))}
                 </div>
+                </English>
               </div>
             </div>
             <div className="mega-foot">
-              <span>{tools.length} free tools. Files stay in your browser.</span>
+              <span>{t('mega.foot', { count: tools.length })}</span>
               <Link to="/tools" onClick={close}>
-                Browse all tools <Icon name="arrow-right" size={14} />
+                {t('mega.browse')} <Icon name="arrow-right" size={14} />
               </Link>
             </div>
           </div>

@@ -1,5 +1,7 @@
 import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { English } from '@/i18n/English';
+import { useI18n } from '@/i18n';
 import { getCategory, searchTools, toolPath } from '@/tools/registry';
 import { Icon } from '../Icon';
 import { ToolIcon } from './ToolIcon';
@@ -12,6 +14,7 @@ interface Props {
 }
 
 export function ToolSearch({ variant = 'header', shortcut = false, onNavigate }: Props) {
+  const { t } = useI18n();
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
@@ -75,7 +78,7 @@ export function ToolSearch({ variant = 'header', shortcut = false, onNavigate }:
       <div className="search-field">
         <Icon name="search" size={18} />
         <label htmlFor={`${listId}-input`} className="visually-hidden">
-          Search tools
+          {t('search.label')}
         </label>
         <input
           id={`${listId}-input`}
@@ -89,7 +92,7 @@ export function ToolSearch({ variant = 'header', shortcut = false, onNavigate }:
           aria-activedescendant={showPanel && results[active] ? `${listId}-${active}` : undefined}
           autoComplete="off"
           spellCheck={false}
-          placeholder={variant === 'hero' ? 'Search tools, e.g. “compress image” or “merge pdf”' : 'Search tools'}
+          placeholder={variant === 'hero' ? t('search.hero') : t('search.placeholder')}
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);
@@ -102,30 +105,32 @@ export function ToolSearch({ variant = 'header', shortcut = false, onNavigate }:
         {shortcut && !query && <kbd aria-hidden="true">/</kbd>}
       </div>
       {showPanel && (
-        <ul className="search-results" id={listId} role="listbox" aria-label="Matching tools">
+        <ul className="search-results" id={listId} role="listbox" aria-label={t('search.label')}>
           {results.length === 0 ? (
             <li role="presentation" className="search-empty">
-              No tools match “{query}”. Try a format or task, like “png” or “json”.
+              {t('search.none', { query })}
             </li>
           ) : (
-            results.map((t, i) => (
-              <li key={t.slug} id={`${listId}-${i}`} role="option" aria-selected={i === active}>
+            results.map((tool, i) => (
+              <li key={tool.slug} id={`${listId}-${i}`} role="option" aria-selected={i === active}>
                 <a
-                  href={toolPath(t)}
+                  href={toolPath(tool)}
                   onClick={(e) => {
                     e.preventDefault();
                     go(i);
                   }}
                   tabIndex={-1}
                 >
-                  <ToolIcon tool={t} size="sm" />
+                  <ToolIcon tool={tool} size="sm" />
+                  <English as="span">
                   <span className="search-text">
                     <strong>
-                      {t.name}
-                      <span className="search-cat">{getCategory(t.category)?.name}</span>
+                      {tool.name}
+                      <span className="search-cat">{getCategory(tool.category)?.name}</span>
                     </strong>
-                    <small>{t.description}</small>
+                    <small>{tool.description}</small>
                   </span>
+                  </English>
                 </a>
               </li>
             ))
@@ -133,7 +138,7 @@ export function ToolSearch({ variant = 'header', shortcut = false, onNavigate }:
         </ul>
       )}
       <p className="visually-hidden" role="status" aria-live="polite">
-        {showPanel ? `${results.length} ${results.length === 1 ? 'tool' : 'tools'} found` : ''}
+        {showPanel ? t('search.found', { count: results.length }) : ''}
       </p>
     </div>
   );

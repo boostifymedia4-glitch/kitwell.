@@ -29,7 +29,7 @@
 .hero { padding: var(--space-7) 0 var(--space-6); text-align: center; background: var(--bg-sunken); border-bottom: 1px solid var(--border); }
 .hero h1 { max-width: 20ch; margin-inline: auto; font-size: var(--text-4xl); line-height: 1.12; letter-spacing: -0.03em; }
 .hero .lead { max-width: 56ch; margin: var(--space-3) auto var(--space-5); font-size: 1.0625rem; color: var(--text-muted); }
-.hero .search { max-width: 640px; margin-inline: auto; text-align: left; }
+.hero .search { max-width: 640px; margin-inline: auto; text-align: start; }
 .shortcuts { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-2); margin-top: var(--space-4); }
 .shortcut {
   display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 6px; border: 1px solid var(--border); border-radius: 10px;

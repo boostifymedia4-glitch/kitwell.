@@ -8,8 +8,8 @@ import { computeSize } from '../src/lib/imageProcessor';
 describe('tool registry', () => {
   it('has the expected tool counts', () => {
     const count = (c: string) => tools.filter((t) => t.category === c).length;
-    expect([count('image'), count('pdf'), count('text'), count('developer')]).toEqual([20, 20, 7, 14]);
-    expect(tools).toHaveLength(61);
+    expect([count('image'), count('pdf'), count('text'), count('developer')]).toEqual([22, 26, 7, 14]);
+    expect(tools).toHaveLength(69);
   });
 
   it('uses unique slugs and names', () => {
@@ -49,6 +49,9 @@ describe('tool registry', () => {
   it('search ranks name matches first', () => {
     expect(searchTools('merge pdf')[0].slug).toBe('merge-pdf');
     expect(searchTools('json')[0].category).toBe('developer');
+    // Words containing the letter "s" must still be split on whitespace, not on "s".
+    expect(searchTools('compress image')[0].slug).toBe('image-compressor');
+    expect(searchTools('json  formatter')[0].slug).toBe('json-formatter');
     expect(searchTools('   ')).toEqual([]);
     expect(searchTools('zzzzqq')).toEqual([]);
   });

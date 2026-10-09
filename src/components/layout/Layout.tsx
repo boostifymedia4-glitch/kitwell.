@@ -1,5 +1,6 @@
 import { useEffect, useRef, type ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useI18n } from '@/i18n';
 import { Footer } from './Footer';
 import { Header } from './Header';
 
@@ -7,6 +8,7 @@ export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const first = useRef(true);
   const mainRef = useRef<HTMLElement>(null);
+  const { t } = useI18n();
 
   // On client-side navigation: reset scroll and move focus to the new page for keyboard/screen-reader users.
   useEffect(() => {
@@ -21,7 +23,7 @@ export function Layout({ children }: { children: ReactNode }) {
   return (
     <>
       <a href="#main" className="skip-link">
-        Skip to content
+        {t('skip')}
       </a>
       <Header />
       <main id="main" ref={mainRef} tabIndex={-1} style={{ outline: 'none' }}>

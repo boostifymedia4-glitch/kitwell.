@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { site } from '@/config/site';
+import { English } from '@/i18n/English';
+import { useI18n, type MessageKey } from '@/i18n';
 import { categories, categoryPath, groupsInCategory, toolPath, toolsInCategory, toolsInGroup } from '@/tools/registry';
 import { Icon } from '../Icon';
 import { ToolIcon } from '../ui/ToolIcon';
@@ -20,13 +22,14 @@ export function BrandMark() {
 /** Mobile equivalent of the mega menu: one expandable section per category. */
 function MobileNav({ onNavigate }: { onNavigate: () => void }) {
   const [expanded, setExpanded] = useState<string | null>(null);
+  const { t } = useI18n();
   return (
     <div className="mobile-nav" id="mobile-nav">
       <div className="container">
         <div className="mobile-search">
           <ToolSearch onNavigate={onNavigate} />
         </div>
-        <nav aria-label="Mobile">
+        <nav aria-label={t('nav.mobile')}>
           {categories.map((c) => {
             const isOpen = expanded === c.id;
             return (
@@ -35,10 +38,11 @@ function MobileNav({ onNavigate }: { onNavigate: () => void }) {
                   <span className={`tool-icon tool-icon-sm chip-${c.id}`} aria-hidden="true">
                     <Icon name={c.icon} size={16} />
                   </span>
-                  {c.name}
+                  {t(`cat.${c.id}` as MessageKey)}
                   <Icon name="chevron-down" size={18} className={`acc-chevron ${isOpen ? 'is-open' : ''}`} />
                 </button>
                 {isOpen && (
+                  <English>
                   <ul className="acc-panel" id={`acc-${c.id}`}>
                     {groupsInCategory(c.id).map((g) => (
                       <li key={g.name} className="acc-group">
@@ -57,19 +61,20 @@ function MobileNav({ onNavigate }: { onNavigate: () => void }) {
                     ))}
                     <li>
                       <Link to={categoryPath(c.id)} className="acc-viewall" onClick={onNavigate}>
-                        View all {toolsInCategory(c.id).length} {c.short.toLowerCase()} tools <Icon name="arrow-right" size={14} />
+                        {t('mega.viewAll', { count: toolsInCategory(c.id).length })} <Icon name="arrow-right" size={14} />
                       </Link>
                     </li>
                   </ul>
+                  </English>
                 )}
               </div>
             );
           })}
           <Link to="/tools" className="acc-link" onClick={onNavigate}>
-            All tools
+            {t('nav.allTools')}
           </Link>
           <Link to="/about" className="acc-link" onClick={onNavigate}>
-            About
+            {t('nav.about')}
           </Link>
         </nav>
       </div>
@@ -79,6 +84,7 @@ function MobileNav({ onNavigate }: { onNavigate: () => void }) {
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const { t } = useI18n();
   const { pathname } = useLocation();
 
   useEffect(() => setOpen(false), [pathname]);
@@ -86,14 +92,14 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="container header-inner">
-        <Link to="/" className="brand" aria-label={`${site.name} home`}>
+        <Link to="/" className="brand" aria-label={t('brand.home', { site: site.name })}>
           <BrandMark />
           {site.name}
         </Link>
-        <nav className="nav" aria-label="Primary">
+        <nav className="nav" aria-label={t('nav.primary')}>
           {categories.map((c) => (
             <NavLink key={c.id} to={categoryPath(c.id)} className="nav-link">
-              {c.short}
+              {t(`nav.${c.id}` as MessageKey)}
             </NavLink>
           ))}
           <MegaMenu />
@@ -106,7 +112,7 @@ export function Header() {
           className="icon-btn menu-btn"
           aria-expanded={open}
           aria-controls="mobile-nav"
-          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-label={open ? t('nav.closeMenu') : t('nav.openMenu')}
           onClick={() => setOpen((v) => !v)}
         >
           <Icon name={open ? 'x' : 'menu'} size={22} />

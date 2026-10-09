@@ -128,7 +128,7 @@ export const pdfTools: ToolDef[] = [
       privacyFaq,
     ],
     limits: [...pdfLimits, 'Bookmarks/outlines and form fields of the source files are not merged.'],
-    related: ['split-pdf', 'rotate-pdf', 'extract-pdf-pages', 'reorder-pdf-pages', 'images-to-pdf', 'add-page-numbers', 'protect-pdf'],
+    related: ['split-pdf', 'rotate-pdf', 'extract-pdf-pages', 'reorder-pdf-pages', 'images-to-pdf', 'add-page-numbers', 'protect-pdf', 'compress-pdf'],
   },
   {
     ...common,
@@ -154,7 +154,7 @@ export const pdfTools: ToolDef[] = [
       encryptedFaq,
     ],
     limits: pdfLimits,
-    related: ['extract-pdf-pages', 'merge-pdf', 'rotate-pdf', 'reorder-pdf-pages', 'pdf-to-jpg', 'remove-pdf-pages'],
+    related: ['extract-pdf-pages', 'merge-pdf', 'rotate-pdf', 'reorder-pdf-pages', 'pdf-to-jpg', 'remove-pdf-pages', 'compress-pdf'],
   },
   {
     ...common,
@@ -267,7 +267,7 @@ export const pdfTools: ToolDef[] = [
       encryptedFaq,
     ],
     limits: [...pdfLimits, 'Each page is capped at about 50 megapixels.'],
-    related: ['pdf-to-png', 'jpg-to-pdf', 'split-pdf', 'pdf-viewer', 'image-compressor', 'extract-pdf-text'],
+    related: ['pdf-to-png', 'jpg-to-pdf', 'split-pdf', 'pdf-viewer', 'image-compressor', 'extract-pdf-text', 'ocr-pdf'],
   },
   {
     ...common,
@@ -313,7 +313,7 @@ export const pdfTools: ToolDef[] = [
       encryptedFaq,
     ],
     limits: [...pdfLimits, 'Read-only: no annotation, form filling or text search.'],
-    related: ['pdf-metadata-viewer', 'rotate-pdf', 'extract-pdf-pages', 'pdf-to-jpg', 'merge-pdf', 'extract-pdf-text'],
+    related: ['pdf-metadata-viewer', 'rotate-pdf', 'extract-pdf-pages', 'pdf-to-jpg', 'merge-pdf', 'extract-pdf-text', 'compare-pdf'],
   },
   {
     ...common,
@@ -339,7 +339,7 @@ export const pdfTools: ToolDef[] = [
       encryptedFaq,
     ],
     limits: [...pdfLimits, 'Read-only: metadata cannot be edited or removed here.'],
-    related: ['pdf-viewer', 'merge-pdf', 'split-pdf', 'extract-pdf-pages', 'rotate-pdf', 'edit-pdf-metadata'],
+    related: ['pdf-viewer', 'merge-pdf', 'split-pdf', 'extract-pdf-pages', 'rotate-pdf', 'edit-pdf-metadata', 'compare-pdf'],
   },
   {
     ...common,
@@ -486,7 +486,7 @@ export const pdfTools: ToolDef[] = [
       encryptedFaq,
     ],
     limits: [...pdfLimits, 'Only document-level properties are changed. Comments, form data and page content stay as they are.'],
-    related: ['pdf-metadata-viewer', 'protect-pdf', 'extract-pdf-text', 'merge-pdf', 'add-page-numbers'],
+    related: ['pdf-metadata-viewer', 'protect-pdf', 'extract-pdf-text', 'merge-pdf', 'add-page-numbers', 'fill-pdf-forms'],
   },
   {
     ...common,
@@ -525,7 +525,7 @@ export const pdfTools: ToolDef[] = [
       'A PDF that already has a password must be unlocked first.',
       'Very old PDF readers (from before about 2008) may not open AES-256 files.',
     ],
-    related: ['unlock-pdf', 'watermark-pdf', 'edit-pdf-metadata', 'merge-pdf', 'password-generator'],
+    related: ['unlock-pdf', 'watermark-pdf', 'edit-pdf-metadata', 'merge-pdf', 'password-generator', 'sign-pdf', 'redact-pdf'],
   },
   {
     ...common,
@@ -557,7 +557,7 @@ export const pdfTools: ToolDef[] = [
       'A digital signature becomes invalid once the file is re-saved.',
       'Certificate-based or DRM-protected files are not supported.',
     ],
-    related: ['protect-pdf', 'edit-pdf-metadata', 'merge-pdf', 'split-pdf', 'pdf-viewer'],
+    related: ['protect-pdf', 'edit-pdf-metadata', 'merge-pdf', 'split-pdf', 'pdf-viewer', 'sign-pdf'],
   },
   {
     ...common,
@@ -585,6 +585,220 @@ export const pdfTools: ToolDef[] = [
       encryptedFaq,
     ],
     limits: [...pdfLimits, 'Only real text is extracted; scanned pages need OCR.', 'Reading order follows the PDF and can differ from the visual order in complex layouts.'],
-    related: ['pdf-to-jpg', 'pdf-viewer', 'pdf-metadata-viewer', 'word-counter', 'text-cleaner'],
+    related: ['pdf-to-jpg', 'pdf-viewer', 'pdf-metadata-viewer', 'word-counter', 'text-cleaner', 'ocr-pdf'],
+  },
+  {
+    ...common,
+    slug: 'compress-pdf',
+    group: 'Optimize PDF',
+    name: 'Compress PDF',
+    icon: 'file-archive',
+    impl: 'pdf-compress',
+    description: 'Make a PDF smaller by recompressing its images while the text stays selectable.',
+    metaDescription:
+      'Compress PDF online for free. Recompress embedded images to cut file size while text stays selectable, or flatten pages for the smallest file. Runs in your browser.',
+    keywords: ['reduce pdf size', 'shrink pdf', 'pdf compressor', 'make pdf smaller', 'optimize pdf'],
+    steps: [
+      'Add your PDF.',
+      'Choose how to compress it and how strongly: the default keeps text selectable and only recompresses images.',
+      'Compress, check the size you saved and download the result.',
+    ],
+    faq: [
+      {
+        q: 'Why did my PDF barely get smaller?',
+        a: 'The standard mode recompresses JPEG images, so it helps most with PDFs full of photos or scans. A PDF that is mostly text, or whose images are already small, cannot shrink much. The tool tells you when it could not save anything instead of pretending.',
+      },
+      {
+        q: 'Will the quality get worse?',
+        a: 'Images lose some detail in exchange for size; Light keeps them almost unchanged and Strong makes them visibly softer. Text and vector graphics are not touched in the standard mode. The "Maximum" mode turns every page into a picture, so text can no longer be selected or searched.',
+      },
+      privacyFaq,
+    ],
+    limits: [
+      'Only embedded JPEG images are recompressed. PNG-style (Flate) images, fonts and other content are kept as they are.',
+      'Maximum mode converts every page to an image: text, links and form fields stop working and the file cannot be searched.',
+      'Colours of recompressed images can shift very slightly.',
+      'Maximum 100 MB per PDF. Password-protected PDFs must be unlocked first.',
+    ],
+    related: ['merge-pdf', 'split-pdf', 'pdf-to-jpg', 'image-compressor', 'protect-pdf'],
+  },
+  {
+    ...common,
+    slug: 'ocr-pdf',
+    group: 'Convert from PDF',
+    name: 'OCR PDF',
+    icon: 'scan-text',
+    impl: 'pdf-ocr',
+    description: 'Recognise the text in scanned PDFs (English) and get a searchable PDF.',
+    metaDescription:
+      'OCR PDF online for free. Recognise English text in scanned PDFs and download a searchable PDF or plain text. The OCR engine runs locally in your browser.',
+    keywords: ['ocr pdf', 'scanned pdf to text', 'make pdf searchable', 'image to text', 'recognize text'],
+    steps: [
+      'Add a scanned PDF.',
+      'Choose the pages and the quality. Pages that already contain selectable text can be skipped.',
+      'Run OCR, review the recognised text and download the searchable PDF or a text file.',
+    ],
+    faq: [
+      {
+        q: 'Which languages are supported?',
+        a: 'English only for now. Text in other languages will be misread. More languages can be added later without changing how the tool works.',
+      },
+      {
+        q: 'Is my document sent to an OCR service?',
+        a: 'No. The recognition engine (Tesseract, compiled to WebAssembly) and its English data are served from this website and run inside your browser. The document is not uploaded.',
+      },
+      {
+        q: 'How accurate is it?',
+        a: 'Clean, straight scans of printed text at 200 to 300 DPI work best. Handwriting, very small print, low-contrast or skewed pages produce more mistakes. Always check important numbers.',
+      },
+    ],
+    limits: [
+      'English only. Handwriting is not recognised reliably.',
+      'The original pages are kept exactly as they are; an invisible text layer is added so the text can be searched and copied.',
+      'OCR is slow on large documents (several seconds per page). The first run also loads the engine (about 3 MB).',
+      'Maximum 100 MB per PDF. Very large pages may be refused to protect your browser.',
+    ],
+    related: ['extract-pdf-text', 'pdf-to-jpg', 'compress-pdf', 'compare-pdf', 'merge-pdf'],
+  },
+  {
+    ...common,
+    slug: 'sign-pdf',
+    group: 'Edit PDF',
+    name: 'Sign PDF',
+    icon: 'signature',
+    impl: 'pdf-sign',
+    description: 'Draw, type or upload a signature and place it on your PDF pages.',
+    metaDescription:
+      'Sign a PDF online for free. Draw, type or upload your signature, place it on any pages and download the signed PDF. Visual signature, in your browser.',
+    keywords: ['sign pdf', 'add signature to pdf', 'e-sign', 'draw signature', 'electronic signature'],
+    steps: [
+      'Add the PDF you need to sign.',
+      'Create your signature by drawing it, typing your name or uploading a picture.',
+      'Drag the signature to the right place on the page, choose which pages get it, and download the signed PDF.',
+    ],
+    faq: [
+      {
+        q: 'Is this a legally binding digital signature?',
+        a: 'It is a visual signature: an image of your signature placed on the page. It is not a cryptographic digital signature, it carries no certificate, and it cannot prove who signed or detect later changes. Whether it is accepted depends on who asks for it. Some organisations require certified e-signature services.',
+      },
+      {
+        q: 'Is my signature stored anywhere?',
+        a: 'No. It is created in your browser, only used for this file, and forgotten when you leave or reload the page.',
+      },
+      privacyFaq,
+    ],
+    limits: [
+      'Visual signature only: no certificate, no timestamp, no tamper detection.',
+      'The signature is placed as a picture on top of the page; it does not fill a signature form field.',
+      'Maximum 100 MB per PDF. Password-protected PDFs must be unlocked first.',
+    ],
+    related: ['fill-pdf-forms', 'protect-pdf', 'watermark-pdf', 'unlock-pdf', 'add-page-numbers'],
+  },
+  {
+    ...common,
+    slug: 'fill-pdf-forms',
+    group: 'Edit PDF',
+    name: 'Fill PDF Forms',
+    icon: 'text-cursor',
+    impl: 'pdf-fill-form',
+    description: 'Fill in the text boxes, checkboxes and menus of a fillable PDF form.',
+    metaDescription:
+      'Fill PDF forms online for free. Type into fields, tick checkboxes and pick options in a fillable PDF, then download it editable or flattened. In your browser.',
+    keywords: ['fill pdf form', 'fillable pdf', 'edit pdf form fields', 'complete pdf form', 'acroform'],
+    steps: [
+      'Add a fillable PDF form.',
+      'Fill in the fields listed below the file name. Fields are grouped by page.',
+      'Choose whether to keep the form editable or flatten it, then download the filled PDF.',
+    ],
+    faq: [
+      {
+        q: 'My PDF shows no fields. Why?',
+        a: 'Only PDFs with real form fields can be filled here. A form that is just a picture or plain text has no fields; use Sign PDF to place a signature, or the Watermark tool to add text. Forms made with XFA (some government and bank forms) are not supported.',
+      },
+      {
+        q: 'What does flattening do?',
+        a: 'Flattening burns your answers into the page and removes the form fields, so the answers can no longer be edited. Use it for the copy you send; keep an editable copy for yourself.',
+      },
+      privacyFaq,
+    ],
+    limits: [
+      'Text can use Latin letters, digits and common symbols (the form font has no other alphabets).',
+      'Signature fields and buttons are shown but cannot be filled; use Sign PDF for signatures.',
+      'XFA (dynamic) forms are not supported.',
+      'Maximum 100 MB per PDF.',
+    ],
+    related: ['sign-pdf', 'edit-pdf-metadata', 'protect-pdf', 'pdf-viewer', 'watermark-pdf'],
+  },
+  {
+    ...common,
+    slug: 'redact-pdf',
+    group: 'Secure PDF',
+    name: 'Redact PDF',
+    icon: 'redact',
+    impl: 'pdf-redact',
+    description: 'Black out text and areas for good: redacted pages are rebuilt as images.',
+    metaDescription:
+      'Redact PDF online for free. Black out names, numbers and areas so the text underneath is truly removed, not just covered. Runs in your browser; nothing is uploaded.',
+    keywords: ['redact pdf', 'black out pdf', 'remove sensitive text pdf', 'censor pdf', 'hide text in pdf'],
+    steps: [
+      'Add your PDF and choose a page.',
+      'Draw boxes over what must disappear, or search for words, emails and numbers to mark them automatically.',
+      'Apply the redactions and download. Always check the result before sharing it.',
+    ],
+    faq: [
+      {
+        q: 'Is the hidden text really removed?',
+        a: 'Yes. Every page that has a redaction is rebuilt as a picture with the black boxes painted in, so the text and objects underneath do not exist in the new file. A black rectangle drawn on top of text, as many tools do, would leave the text selectable. Pages you did not redact are copied unchanged.',
+      },
+      {
+        q: 'Why can I not select text on redacted pages any more?',
+        a: 'Because those pages are pictures now. That is how the underlying content is destroyed. Run OCR PDF afterwards if you need searchable text; the redacted words stay black.',
+      },
+      {
+        q: 'Does it find every match automatically?',
+        a: 'Search marks matches that sit inside a single line of text. A phrase that a PDF splits into pieces, or text that is part of an image, may be missed. Review every page and draw boxes manually where needed.',
+      },
+    ],
+    limits: [
+      'Redacted pages become images: no selectable text, links or form fields on those pages.',
+      'Automatic search works on selectable text only and only within one text run; scanned pages need boxes drawn by hand.',
+      'Document properties (title, author…) are removed from the result unless you choose to keep them.',
+      'Maximum 100 MB per PDF.',
+    ],
+    related: ['protect-pdf', 'blur-image-area', 'edit-pdf-metadata', 'watermark-pdf', 'compress-pdf'],
+  },
+  {
+    ...common,
+    slug: 'compare-pdf',
+    group: 'View and inspect',
+    name: 'Compare PDF',
+    icon: 'git-compare',
+    impl: 'pdf-compare',
+    description: 'See what changed between two PDFs: text differences and highlighted pages.',
+    metaDescription:
+      'Compare two PDF files online for free. See added and removed words page by page and highlight visual differences between versions. Processed in your browser.',
+    keywords: ['compare pdf', 'pdf diff', 'difference between two pdfs', 'compare documents', 'pdf version comparison'],
+    steps: [
+      'Add the original PDF and the revised PDF.',
+      'Compare them: pages are listed with the number of words added and removed.',
+      'Open a page to read the text changes, or switch to the visual view to see changed areas in red.',
+    ],
+    faq: [
+      {
+        q: 'What does the text comparison show?',
+        a: 'For each page, the words that were added (green) and removed (red) between the original and the revised document, with the unchanged text collapsed. Pages are matched by number.',
+      },
+      {
+        q: 'What about scanned PDFs?',
+        a: 'Scans have no selectable text, so the text comparison finds nothing. Use the visual comparison, or run OCR PDF on both files first.',
+      },
+      privacyFaq,
+    ],
+    limits: [
+      'Pages are compared by number: if a page was inserted, later pages will show as changed.',
+      'The visual comparison renders each page at screen resolution; tiny differences below that may not show.',
+      'Up to 100 pages per file are compared. Password-protected PDFs must be unlocked first.',
+    ],
+    related: ['text-diff-checker', 'pdf-metadata-viewer', 'extract-pdf-text', 'pdf-viewer', 'ocr-pdf'],
   },
 ];

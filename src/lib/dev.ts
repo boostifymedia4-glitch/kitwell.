@@ -449,7 +449,7 @@ const SETS = {
   lower: 'abcdefghijklmnopqrstuvwxyz',
   upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
   digits: '0123456789',
-  symbols: '!@#$%^&*()-_=+[]{};:,.?/~',
+  symbols: '@#$*+-!',
 };
 const AMBIGUOUS = /[Il1O0o]/g;
 

@@ -1,5 +1,6 @@
 import { absoluteUrl, site } from '@/config/site';
 import type { PageMeta } from '@/components/Seo';
+import { allHelpItems } from '@/pages/helpData';
 import { categories, categoryPath, getCategory, getTool, toolPath, toolTitle, tools } from '@/tools/registry';
 
 export interface Crumb {
@@ -34,6 +35,11 @@ export const staticPages: Record<string, StaticPage> = {
     name: 'Contact',
     title: `Contact ${site.name} – Support and Feedback`,
     description: `Contact ${site.name}: report a bug, suggest a new tool or ask a question about how the tools work.`,
+  },
+  '/help': {
+    name: 'Help & FAQ',
+    title: `Help & FAQ – How ${site.name} Works | ${site.name}`,
+    description: 'Answers about using the tools, privacy and your files, PDF signing, redaction, OCR, compression, passwords and languages.',
   },
   '/privacy': {
     name: 'Privacy Policy',
@@ -85,6 +91,13 @@ export function getPageMeta(path: string): PageMeta | null {
   const sp = staticPages[path];
   if (sp) {
     const jsonLd: object[] = [breadcrumbLd(path)];
+    if (path === '/help') {
+      jsonLd.push({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: allHelpItems.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      });
+    }
     if (path === '/') {
       jsonLd.push({ '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, url: absoluteUrl('/'), description: site.tagline });
     }

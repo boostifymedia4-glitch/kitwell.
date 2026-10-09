@@ -7,6 +7,7 @@ const Category = lazyPage(() => import('./pages/Category'));
 const ToolRoute = lazyPage(() => import('./pages/ToolRoute'));
 const About = lazyPage(() => import('./pages/About'));
 const Contact = lazyPage(() => import('./pages/Contact'));
+const Help = lazyPage(() => import('./pages/Help'));
 const Privacy = lazyPage(() => import('./pages/Privacy'));
 const Terms = lazyPage(() => import('./pages/Terms'));
 const Cookies = lazyPage(() => import('./pages/Cookies'));
@@ -17,6 +18,7 @@ const fixed: Record<string, LazyPage> = {
   '/tools': Tools,
   '/about': About,
   '/contact': Contact,
+  '/help': Help,
   '/privacy': Privacy,
   '/terms': Terms,
   '/cookies': Cookies,
