@@ -3,6 +3,7 @@ import { Icon } from '@/components/Icon';
 import { Seo } from '@/components/Seo';
 import { useI18n } from '@/i18n';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { CategoryIcon } from '@/components/ui/CategoryIcon';
 import { GroupedTools } from '@/components/ui/GroupedTools';
 import { ToolSearch } from '@/components/ui/ToolSearch';
 import { usePageMeta } from '@/i18n/usePageMeta';
@@ -34,9 +35,7 @@ export default function Tools() {
           <section key={c.id} className="category-block" id={`cat-${c.id}`} aria-labelledby={`cat-${c.id}-title`}>
             <div className="category-head">
               <div className="row" style={{ flexWrap: 'nowrap', alignItems: 'flex-start' }}>
-                <span className={`tool-icon tool-icon-md chip-${c.id}`} aria-hidden="true">
-                  <Icon name={c.icon} size={22} />
-                </span>
+                <CategoryIcon id={c.id} />
                 <div>
                   <h2 id={`cat-${c.id}-title`}>{t(`cat.${c.id}`)}</h2>
                   <p>{t(`cat.${c.id}.description`)}</p>

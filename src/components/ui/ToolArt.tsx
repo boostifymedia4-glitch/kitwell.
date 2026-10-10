@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { TOOL_ART, type ArtBase, type ArtColor, type ArtGlyph, type TagFormat, type ToolArt as Art } from '@/tools/toolArt';
+import { CATEGORY_ART, TOOL_ART, type ArtBase, type ArtColor, type ArtGlyph, type TagFormat, type ToolArt as Art } from '@/tools/toolArt';
 
 /**
  * Colour-coded, layered tool illustrations drawn as inline SVG (no images, no dependencies, nothing to load).
@@ -69,6 +69,7 @@ const GLYPHS: Record<ArtGlyph, GlyphFn> = {
   sign: (p) => (<><path d="M15 3l6 6-8 8-6 1 1-6z" /><path d="M3 21c2 0 3-2 5-2s2 2 4 2" stroke={p} /></>),
   form: (p) => (<><rect x="3" y="4" width="7" height="7" rx="1.8" /><path d="M5 7.6l1.6 1.6L9 6" stroke={p} /><path d="M13 6h8M13 9.5h5M13 15h8M13 18.5h5" /><rect x="3" y="13" width="7" height="7" rx="1.8" /></>),
   redact: (p) => (<><rect x="3" y="5" width="18" height="4" rx="1.4" fill={W} stroke="none" /><rect x="3" y="11" width="11" height="4" rx="1.4" fill={p} stroke="none" /><path d="M3 19h15" /></>),
+  pdf: () => label('PDF', 9, 15),
   compare: (p) => (<><path d="M12 3v18" strokeOpacity={0.5} /><path d="M3 8h6M3 12h6M3 16h4" /><path d="M15 8h6M15 12h6M15 16h3" stroke={p} /></>),
   convert: (p) => (<><path d="M3 12h15" /><path d="M13 6l6 6-6 6" stroke={p} /></>),
   resize: (p) => (<><path d="M14 4h6v6M10 20H4v-6" /><path d="M20 4l-7 7M4 20l7-7" stroke={p} /></>),
@@ -165,15 +166,13 @@ function Tag({ format, base }: { format: TagFormat; base: ArtBase }) {
   );
 }
 
-/** The illustration for a tool slug. Unknown slugs render a neutral sheet so a new tool never shows a hole. */
-export function ToolArt({ slug, small = false }: { slug: string; small?: boolean }) {
-  const art: Art = TOOL_ART[slug] ?? { base: 'page', color: 'slate', glyph: 'lines' };
+function Scene({ art, small, mark }: { art: Art; small: boolean; mark: Record<string, string> }) {
   const fill = ART_COLORS[art.color];
   const slot = SLOT[art.base];
   const k = slot.size / 24;
   const showTag = art.tag && !small;
   return (
-    <svg viewBox="2 3 44 44" width="100%" height="100%" aria-hidden="true" focusable="false" data-art={slug}>
+    <svg viewBox="2 3 44 44" width="100%" height="100%" aria-hidden="true" focusable="false" {...mark}>
       <Base base={art.base} fill={fill} stack={Boolean(art.stack) && !small} />
       <g transform={`translate(${slot.x - 12 * k} ${slot.y - 12 * k}) scale(${k})`} fill="none" stroke={W} strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round">
         {GLYPHS[art.glyph](popFor(art.color))}
@@ -182,6 +181,18 @@ export function ToolArt({ slug, small = false }: { slug: string; small?: boolean
     </svg>
   );
 }
+
+/** The illustration for a tool slug. Unknown slugs render a neutral sheet so a new tool never shows a hole. */
+export function ToolArt({ slug, small = false }: { slug: string; small?: boolean }) {
+  return <Scene art={TOOL_ART[slug] ?? { base: 'page', color: 'slate', glyph: 'lines' }} small={small} mark={{ 'data-art': slug }} />;
+}
+
+/** The illustration of a category heading, drawn with the same scene code as the tools. */
+export function CategoryArt({ id, small = false }: { id: keyof typeof CATEGORY_ART; small?: boolean }) {
+  return <Scene art={CATEGORY_ART[id]} small={small} mark={{ 'data-category-art': id }} />;
+}
+
+export const categoryColorOf = (id: keyof typeof CATEGORY_ART): string => ART_COLORS[CATEGORY_ART[id].color];
 
 /** The tile colour behind an icon: the tool's colour, softened. */
 export const artColorOf = (slug: string): string => ART_COLORS[(TOOL_ART[slug]?.color ?? 'slate') as ArtColor];

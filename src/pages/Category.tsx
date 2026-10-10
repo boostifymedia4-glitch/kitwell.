@@ -4,6 +4,7 @@ import { Seo } from '@/components/Seo';
 import { useI18n } from '@/i18n';
 import { useLocalize } from '@/i18n/useLocalize';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { CategoryIcon } from '@/components/ui/CategoryIcon';
 import { GroupedTools } from '@/components/ui/GroupedTools';
 import { useNotFoundMeta, usePageMeta } from '@/i18n/usePageMeta';
 import { categories, categoryPath, getCategory, groupId, groupsInCategory, toolsInCategory } from '@/tools/registry';
@@ -27,9 +28,7 @@ export default function Category() {
         <header className="page-head">
           <Breadcrumbs path={path} />
           <div className="page-title-row">
-            <span className={`tool-icon tool-icon-lg chip-${cat.id}`} aria-hidden="true">
-              <Icon name={cat.icon} size={28} />
-            </span>
+            <CategoryIcon id={cat.id} size="lg" />
             <div>
               <h1>{cat.name}</h1>
               <p className="lead">

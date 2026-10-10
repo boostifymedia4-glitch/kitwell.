@@ -5,6 +5,7 @@ import { useLocalize } from '@/i18n/useLocalize';
 import { useI18n, type MessageKey } from '@/i18n';
 import { categories, categoryPath, groupsInCategory, toolPath, toolsInCategory, toolsInGroup } from '@/tools/registry';
 import { Icon } from '../Icon';
+import { CategoryIcon } from '../ui/CategoryIcon';
 import { ToolIcon } from '../ui/ToolIcon';
 import { ToolSearch } from '../ui/ToolSearch';
 import { MegaMenu } from './MegaMenu';
@@ -36,9 +37,7 @@ function MobileNav({ onNavigate }: { onNavigate: () => void }) {
             return (
               <div key={c.id} className="acc">
                 <button type="button" className="acc-btn" aria-expanded={isOpen} aria-controls={`acc-${c.id}`} onClick={() => setExpanded(isOpen ? null : c.id)}>
-                  <span className={`tool-icon tool-icon-sm chip-${c.id}`} aria-hidden="true">
-                    <Icon name={c.icon} size={16} />
-                  </span>
+                  <CategoryIcon id={c.id} size="sm" />
                   {t(`cat.${c.id}` as MessageKey)}
                   <Icon name="chevron-down" size={18} className={`acc-chevron ${isOpen ? 'is-open' : ''}`} />
                 </button>

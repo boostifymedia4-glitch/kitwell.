@@ -14,7 +14,7 @@ export type ArtGlyph =
   | 'merge' | 'split' | 'compress' | 'rotate' | 'extract' | 'reorder' | 'trash' | 'image' | 'images' | 'eye' | 'info' | 'hash' | 'drop'
   | 'crop' | 'pencil' | 'lock' | 'unlock' | 'lines' | 'scan' | 'sign' | 'form' | 'redact' | 'compare' | 'convert' | 'resize' | 'flip' | 'swap'
   | 'b64' | 'pipette' | 'bezier' | 'zoom' | 'blur' | 'qr' | 'play' | 'sliders' | 'count' | 'chars' | 'case' | 'dupes' | 'sort' | 'sparkle'
-  | 'diff' | 'braces' | 'check' | 'minify' | 'xml' | 'link' | 'html' | 'regex' | 'markdown' | 'key' | 'uuid' | 'clock' | 'palette';
+  | 'pdf' | 'diff' | 'braces' | 'check' | 'minify' | 'xml' | 'link' | 'html' | 'regex' | 'markdown' | 'key' | 'uuid' | 'clock' | 'palette';
 
 export interface ToolArt {
   base: ArtBase;
@@ -30,6 +30,17 @@ export interface ToolArt {
 export type TagFormat = 'PDF' | 'JPG' | 'PNG' | 'WEBP' | 'GIF' | 'SVG' | 'B64' | 'JSON' | 'XML' | 'HTML' | 'MD' | 'URL' | 'QR' | 'TXT';
 
 const a = (base: ArtBase, color: ArtColor, glyph: ArtGlyph, extra: Partial<ToolArt> = {}): ToolArt => ({ base, color, glyph, ...extra });
+
+/**
+ * The four category headings (Image, PDF, Text, Developer Tools) use the same illustration style as the tools, each in
+ * its own colour: blue photo, red PDF sheet, purple note, green code window.
+ */
+export const CATEGORY_ART: Record<'image' | 'pdf' | 'text' | 'developer', ToolArt> = {
+  image: a('photo', 'blue', 'image'),
+  pdf: a('page', 'red', 'pdf', { stack: true }),
+  text: a('note', 'purple', 'case'),
+  developer: a('window', 'green', 'xml'),
+};
 
 export const TOOL_ART: Record<string, ToolArt> = {
   // Image: converters take the colour of the source format and carry the target format as a tag.

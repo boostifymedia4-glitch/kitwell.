@@ -5,6 +5,7 @@ import { useLocalize } from '@/i18n/useLocalize';
 import { useI18n, type MessageKey } from '@/i18n';
 import type { CategoryId } from '@/tools/types';
 import { Icon } from '../Icon';
+import { CategoryIcon } from '../ui/CategoryIcon';
 import { ToolIcon } from '../ui/ToolIcon';
 
 const CLOSE_DELAY_MS = 180;
@@ -131,9 +132,7 @@ export function MegaMenu() {
                     onMouseEnter={() => hoverCapable() && setActive(c.id)}
                     onFocus={() => setActive(c.id)}
                   >
-                    <span className={`tool-icon tool-icon-sm chip-${c.id}`} aria-hidden="true">
-                      <Icon name={c.icon} size={16} />
-                    </span>
+                    <CategoryIcon id={c.id} size="sm" />
                     <span className="mega-tab-text">
                       {t(`cat.${c.id}` as MessageKey)}
                       <small>{toolsInCategory(c.id).length}</small>

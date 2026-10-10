@@ -4,6 +4,7 @@ import { Seo } from '@/components/Seo';
 import { AdSlot } from '@/components/ui/AdSlot';
 import { Faq } from '@/components/ui/Faq';
 import { ToolGrid } from '@/components/ui/ToolCard';
+import { CategoryIcon } from '@/components/ui/CategoryIcon';
 import { ToolIcon } from '@/components/ui/ToolIcon';
 import { TrustIcon, type TrustKind } from '@/components/ui/TrustArt';
 import { ToolSearch } from '@/components/ui/ToolSearch';
@@ -71,9 +72,7 @@ export default function Home() {
           <section key={c.id} className="section" aria-labelledby={`home-${c.id}`}>
             <div className="section-head">
               <div className="row" style={{ flexWrap: 'nowrap', alignItems: 'flex-start' }}>
-                <span className={`tool-icon tool-icon-md chip-${c.id}`} aria-hidden="true">
-                  <Icon name={c.icon} size={22} />
-                </span>
+                <CategoryIcon id={c.id} />
                 <div>
                   <h2 id={`home-${c.id}`}>{t(`cat.${c.id}` as MessageKey)}</h2>
                   <p>{t(`cat.${c.id}.description`)}</p>
