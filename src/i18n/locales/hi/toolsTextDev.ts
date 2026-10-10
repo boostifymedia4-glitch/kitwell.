@@ -163,7 +163,7 @@ export default {
   'passwordGenerator.basis.name': "रेटिंग लंबाई और अक्षरों के मेल पर आधारित है",
   'passwordGenerator.randomNotice': 'अधिकतम सुरक्षा: हर अक्षर स्वतंत्र रूप से रैंडम चुना जाता है। इसे पासवर्ड मैनेजर में रखें।',
   'passwordGenerator.length': 'लंबाई ({min}–{max})',
-  'passwordGenerator.howMany': 'कितने (1–20)',
+  'passwordGenerator.howMany': 'कितने (5–10)',
   'passwordGenerator.lengthSlider': 'लंबाई स्लाइडर',
   'passwordGenerator.categories': 'नाम और शब्द की श्रेणियाँ',
   'passwordGenerator.wordsSelected': '({count} शब्द चुने गए)',

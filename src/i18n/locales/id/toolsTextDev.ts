@@ -151,7 +151,7 @@ export default {
   'passwordGenerator.basis.name': "Penilaian berdasarkan panjang dan kombinasi karakter",
   'passwordGenerator.randomNotice': 'Keamanan maksimum: setiap karakter dipilih secara acak dan independen. Simpan di pengelola kata sandi.',
   'passwordGenerator.length': 'Panjang ({min}–{max})',
-  'passwordGenerator.howMany': 'Berapa banyak (1–20)',
+  'passwordGenerator.howMany': 'Berapa banyak (5–10)',
   'passwordGenerator.lengthSlider': 'Penggeser panjang',
   'passwordGenerator.categories': 'Kategori nama dan kata',
   'passwordGenerator.wordsSelected': '({count} kata dipilih)',

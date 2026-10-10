@@ -176,7 +176,7 @@ export default {
   'passwordGenerator.basis.name': "Uzunluğa ve karakter çeşitliliğine göre derecelendirilir",
   'passwordGenerator.randomNotice': 'En yüksek güvenlik: her karakter bağımsız ve rastgele seçilir. Bir parola yöneticisinde saklayın.',
   'passwordGenerator.length': 'Uzunluk ({min}–{max})',
-  'passwordGenerator.howMany': 'Kaç tane (1–20)',
+  'passwordGenerator.howMany': 'Kaç tane (5–10)',
   'passwordGenerator.lengthSlider': 'Uzunluk kaydırıcısı',
   'passwordGenerator.categories': 'Ad ve sözcük kategorileri',
   'passwordGenerator.wordsSelected': '({count} sözcük seçildi)',

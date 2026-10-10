@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { PASSWORD_COUNT, PASSWORD_LENGTH, generatePassword, hasWeakPattern } from '../src/lib/dev';
+import { PASSWORD_COUNT, PASSWORD_LENGTH, clampPasswordCount, generatePassword, hasWeakPattern } from '../src/lib/dev';
 import { MAX_NAME_SYMBOLS, PASSWORD_SYMBOLS, generateNamePassword, type NamePasswordOptions } from '../src/lib/passwords';
 import { estimatePassword, meetsNameCriteria, nameRating, strengthOf } from '../src/lib/passwordStrength';
 import { ALL_WORDS, SUFFIX_WORDS, WORD_CATEGORIES } from '../src/lib/wordlists';
@@ -256,7 +256,7 @@ describe('fully random passwords', () => {
     expect(PASSWORD_LENGTH).toEqual({ min: 8, max: 16 });
     for (let length = 8; length <= 16; length++) expect(generatePassword({ ...o, length })).toHaveLength(length);
     for (const length of [0, 4, 7, 17, 24, 128, 129]) expect(() => generatePassword({ ...o, length }), String(length)).toThrow(/length/);
-    expect(PASSWORD_COUNT).toEqual({ min: 1, max: 20 });
+    expect(PASSWORD_COUNT).toEqual({ min: 5, max: 10 });
   });
   it('require at least one character type', () => {
     expect(() => generatePassword({ ...o, lower: false, upper: false, digits: false, symbols: false })).toThrow();
@@ -268,5 +268,21 @@ describe('fully random passwords', () => {
     expect(hasWeakPattern('xAbCdq')).toBe(true);
     expect(hasWeakPattern('k3Q-z8L!')).toBe(false);
     expect(PASSWORD_SYMBOLS).toBe('@#$*');
+  });
+});
+
+describe('how many passwords: 5 to 10', () => {
+  it('accepts the minimum, the maximum and everything between', () => {
+    for (let n = 5; n <= 10; n++) expect(clampPasswordCount(n)).toBe(n);
+  });
+  it('never gives fewer than 5 or more than 10, whatever is typed', () => {
+    for (const n of [1, 2, 4, 0, -3, -100]) expect(clampPasswordCount(n), String(n)).toBe(5);
+    for (const n of [11, 12, 20, 21, 99, 1000]) expect(clampPasswordCount(n), String(n)).toBe(10);
+  });
+  it('turns empty and invalid input into the minimum, and rounds down fractions', () => {
+    expect(clampPasswordCount('')).toBe(5);
+    expect(clampPasswordCount(Number.NaN)).toBe(5);
+    expect(clampPasswordCount(Number.POSITIVE_INFINITY)).toBe(5);
+    expect(clampPasswordCount(7.9)).toBe(7);
   });
 });

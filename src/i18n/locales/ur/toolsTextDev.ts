@@ -175,7 +175,7 @@ export default {
   'passwordGenerator.basis.name': "درجہ بندی لمبائی اور حروف کے امتزاج پر مبنی ہے",
   'passwordGenerator.randomNotice': 'زیادہ سے زیادہ سیکیورٹی: ہر حرف آزادانہ طور پر بے ترتیب منتخب کیا جاتا ہے۔ اسے پاس ورڈ مینیجر میں محفوظ کریں۔',
   'passwordGenerator.length': 'لمبائی ({min}–{max})',
-  'passwordGenerator.howMany': 'کتنے (1–20)',
+  'passwordGenerator.howMany': 'کتنے (5–10)',
   'passwordGenerator.lengthSlider': 'لمبائی کا سلائیڈر',
   'passwordGenerator.categories': 'نام اور الفاظ کے زمرے',
   'passwordGenerator.wordsSelected': '({count} الفاظ منتخب)',

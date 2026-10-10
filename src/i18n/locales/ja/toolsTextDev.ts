@@ -174,7 +174,7 @@ export default {
   'passwordGenerator.basis.name': "長さと文字の組み合わせで評価",
   'passwordGenerator.randomNotice': '最高レベルの安全性：すべての文字が独立してランダムに選ばれます。パスワードマネージャーに保存してください。',
   'passwordGenerator.length': '長さ（{min}〜{max}）',
-  'passwordGenerator.howMany': '生成する数（1〜20）',
+  'passwordGenerator.howMany': '生成する数（5〜10）',
   'passwordGenerator.lengthSlider': '長さのスライダー',
   'passwordGenerator.categories': '名前と単語のカテゴリ',
   'passwordGenerator.wordsSelected': '（{count}語を選択中）',

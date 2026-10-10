@@ -162,7 +162,7 @@ export default {
   'passwordGenerator.basis.name': "길이와 문자 조합으로 평가",
   'passwordGenerator.randomNotice': '최고 수준의 보안: 모든 문자를 독립적으로 무작위 선택합니다. 비밀번호 관리자에 보관하세요.',
   'passwordGenerator.length': '길이 ({min}–{max})',
-  'passwordGenerator.howMany': '개수 (1–20)',
+  'passwordGenerator.howMany': '개수 (5–10)',
   'passwordGenerator.lengthSlider': '길이 슬라이더',
   'passwordGenerator.categories': '이름 및 단어 카테고리',
   'passwordGenerator.wordsSelected': '(단어 {count}개 선택됨)',

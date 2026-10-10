@@ -4,7 +4,7 @@ import { ErrorMessage, Notice } from '@/components/tool/Feedback';
 import { CheckField, NumberField, Segmented } from '@/components/tool/Fields';
 import { Icon } from '@/components/Icon';
 import { useI18n } from '@/i18n';
-import { PASSWORD_COUNT, PASSWORD_LENGTH, generatePassword, type PasswordOptions } from '@/lib/dev';
+import { PASSWORD_COUNT, PASSWORD_LENGTH, clampPasswordCount, generatePassword, type PasswordOptions } from '@/lib/dev';
 import { errorMessage } from '@/lib/format';
 import { generateNamePassword, PASSWORD_SYMBOLS, type NamePasswordOptions } from '@/lib/passwords';
 import { estimatePassword, nameRating, strengthOf, weakest, type Strength } from '@/lib/passwordStrength';
@@ -38,7 +38,7 @@ const PasswordGenerator: ToolImplementation = () => {
 
   const generate = useCallback(() => {
     try {
-      const n = clamp(count, PASSWORD_COUNT.min, PASSWORD_COUNT.max, 1);
+      const n = clampPasswordCount(count);
       const out: string[] = [];
       if (mode === 'name') {
         const o: NamePasswordOptions = { length: effectiveLength, categories, digits, symbols, upper, lower };
@@ -100,7 +100,7 @@ const PasswordGenerator: ToolImplementation = () => {
           min={PASSWORD_COUNT.min}
           max={PASSWORD_COUNT.max}
           onChange={(v) => setCount(v === '' ? '' : Math.min(PASSWORD_COUNT.max, v))}
-          onBlur={() => setCount(clamp(count, PASSWORD_COUNT.min, PASSWORD_COUNT.max, 1))}
+          onBlur={() => setCount(clampPasswordCount(count))}
         />
       </div>
       <div className="field">

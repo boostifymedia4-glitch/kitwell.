@@ -174,7 +174,7 @@ export default {
   'passwordGenerator.basis.name': "按长度和字符组合评级",
   'passwordGenerator.randomNotice': '最高安全性：每个字符都是独立随机选取的。请将其保存在密码管理器中。',
   'passwordGenerator.length': '长度（{min}–{max}）',
-  'passwordGenerator.howMany': '数量（1–20）',
+  'passwordGenerator.howMany': '数量（5–10）',
   'passwordGenerator.lengthSlider': '长度滑块',
   'passwordGenerator.categories': '姓名和单词类别',
   'passwordGenerator.wordsSelected': '（已选 {count} 个词）',

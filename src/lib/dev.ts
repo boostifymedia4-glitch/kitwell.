@@ -480,7 +480,10 @@ export function passwordPools(o: PasswordOptions): string[] {
 /** Lengths the password generator offers, in both styles. */
 export const PASSWORD_LENGTH = { min: 8, max: 16 } as const;
 /** How many passwords can be generated at once. */
-export const PASSWORD_COUNT = { min: 1, max: 20 } as const;
+export const PASSWORD_COUNT = { min: 5, max: 10 } as const;
+
+/** Brings a requested number of passwords into 5-10; an empty or invalid value becomes the minimum. */
+export const clampPasswordCount = (n: number | ''): number => (n === '' || !Number.isFinite(n) ? PASSWORD_COUNT.min : Math.min(PASSWORD_COUNT.max, Math.max(PASSWORD_COUNT.min, Math.floor(n))));
 
 export function generatePassword(o: PasswordOptions): string {
   const wanted = Math.floor(o.length);

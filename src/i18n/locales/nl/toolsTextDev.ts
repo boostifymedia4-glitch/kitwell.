@@ -163,7 +163,7 @@ export default {
   'passwordGenerator.basis.name': "Beoordeling op basis van lengte en tekenmix",
   'passwordGenerator.randomNotice': 'Maximale veiligheid: elk teken wordt onafhankelijk willekeurig gekozen. Bewaar het in een wachtwoordmanager.',
   'passwordGenerator.length': 'Lengte ({min}–{max})',
-  'passwordGenerator.howMany': 'Hoeveel (1–20)',
+  'passwordGenerator.howMany': 'Hoeveel (5–10)',
   'passwordGenerator.lengthSlider': 'Schuifregelaar voor lengte',
   'passwordGenerator.categories': 'Naam- en woordcategorieën',
   'passwordGenerator.wordsSelected': '({count} woorden geselecteerd)',

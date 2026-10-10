@@ -152,7 +152,7 @@ export default {
   'passwordGenerator.basis.name': "রেটিং দৈর্ঘ্য ও অক্ষরের মিশ্রণের ওপর ভিত্তি করে",
   'passwordGenerator.randomNotice': 'সর্বোচ্চ নিরাপত্তা: প্রতিটি অক্ষর আলাদাভাবে র‍্যান্ডম বেছে নেওয়া হয়। এটি একটি পাসওয়ার্ড ম্যানেজারে রাখুন।',
   'passwordGenerator.length': 'দৈর্ঘ্য ({min}–{max})',
-  'passwordGenerator.howMany': 'কতগুলো (1–20)',
+  'passwordGenerator.howMany': 'কতগুলো (5–10)',
   'passwordGenerator.lengthSlider': 'দৈর্ঘ্যের স্লাইডার',
   'passwordGenerator.categories': 'নাম ও শব্দের বিভাগ',
   'passwordGenerator.wordsSelected': '({count}টি শব্দ নির্বাচিত)',

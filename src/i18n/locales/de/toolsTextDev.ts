@@ -175,7 +175,7 @@ export default {
   'passwordGenerator.basis.name': "Bewertung nach Länge und Zeichenmix",
   'passwordGenerator.randomNotice': 'Höchste Sicherheit: Jedes Zeichen wird unabhängig zufällig gewählt. Speichern Sie es in einem Passwortmanager.',
   'passwordGenerator.length': 'Länge ({min}–{max})',
-  'passwordGenerator.howMany': 'Anzahl (1–20)',
+  'passwordGenerator.howMany': 'Anzahl (5–10)',
   'passwordGenerator.lengthSlider': 'Längenregler',
   'passwordGenerator.categories': 'Namens- und Wortkategorien',
   'passwordGenerator.wordsSelected': '({count} Wörter ausgewählt)',

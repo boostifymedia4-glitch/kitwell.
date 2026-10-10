@@ -178,7 +178,7 @@ export default {
   'passwordGenerator.basis.name': "Оценка по длине и набору символов",
   'passwordGenerator.randomNotice': 'Максимальная надёжность: каждый символ выбирается независимо и случайно. Храните пароль в менеджере паролей.',
   'passwordGenerator.length': 'Длина ({min}–{max})',
-  'passwordGenerator.howMany': 'Сколько (1–20)',
+  'passwordGenerator.howMany': 'Сколько (5–10)',
   'passwordGenerator.lengthSlider': 'Ползунок длины',
   'passwordGenerator.categories': 'Категории имён и слов',
   'passwordGenerator.wordsSelected': '(выбрано слов: {count})',

@@ -174,7 +174,7 @@ export const toolsTextDev = {
   'passwordGenerator.basis.name': 'Rated by length and character mix',
   'passwordGenerator.randomNotice': 'Maximum security: every character is chosen independently at random. Store it in a password manager.',
   'passwordGenerator.length': 'Length ({min}–{max})',
-  'passwordGenerator.howMany': 'How many (1–20)',
+  'passwordGenerator.howMany': 'How many (5–10)',
   'passwordGenerator.lengthSlider': 'Length slider',
   'passwordGenerator.categories': 'Name and word categories',
   'passwordGenerator.wordsSelected': '({count} words selected)',

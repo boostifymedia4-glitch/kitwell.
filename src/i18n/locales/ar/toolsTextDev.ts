@@ -179,7 +179,7 @@ export default {
   'passwordGenerator.basis.name': "التقييم يعتمد على الطول وتنوّع الأحرف",
   'passwordGenerator.randomNotice': 'أقصى درجات الأمان: يُختار كل حرف عشوائيًا ومستقلًا. احفظها في مدير كلمات المرور.',
   'passwordGenerator.length': 'الطول ({min}–{max})',
-  'passwordGenerator.howMany': 'العدد (1–20)',
+  'passwordGenerator.howMany': 'العدد (5–10)',
   'passwordGenerator.lengthSlider': 'شريط تمرير الطول',
   'passwordGenerator.categories': 'فئات الأسماء والكلمات',
   'passwordGenerator.wordsSelected': '(تم تحديد {count} كلمة)',

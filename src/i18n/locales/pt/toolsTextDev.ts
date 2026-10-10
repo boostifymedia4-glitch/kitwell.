@@ -177,7 +177,7 @@ export default {
   'passwordGenerator.basis.name': "Avaliação pelo comprimento e pela combinação de caracteres",
   'passwordGenerator.randomNotice': 'Segurança máxima: cada caractere é escolhido de forma independente e aleatória. Guarde-a em um gerenciador de senhas.',
   'passwordGenerator.length': 'Tamanho ({min}–{max})',
-  'passwordGenerator.howMany': 'Quantas (1–20)',
+  'passwordGenerator.howMany': 'Quantas (5–10)',
   'passwordGenerator.lengthSlider': 'Controle deslizante de tamanho',
   'passwordGenerator.categories': 'Categorias de nomes e palavras',
   'passwordGenerator.wordsSelected': '({count} palavras selecionadas)',
