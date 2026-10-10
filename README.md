@@ -31,6 +31,10 @@ A fast, privacy-friendly website of 69 everyday tools (image, PDF, text, develop
 - Choose the final brand name/domain.
 - Have the non-English interface strings reviewed by native speakers (see Languages).
 
+## Tool icons
+
+Every tool has a colour-coded illustration drawn as inline SVG (no image files, no icon library): `src/tools/toolArt.ts` is the single table that gives each of the 69 tools a base (sheet, photo, note or code window), a colour, a glyph and, for conversions, a format tag in the format's own colour (PDF red, JPG amber, PNG blue, WEBP purple ...). `src/components/ui/ToolArt.tsx` draws them and `ToolIcon` is the only component that shows them (cards, menus, search, related tools, page headers). `tests/toolArt.test.ts` checks that every tool is mapped, that no two tools look the same and that every colour keeps 3:1 contrast with the white glyph. The `icon` field in the tool data is kept for the line-icon fallback and tests.
+
 ## Adding a tool
 
 1. Add an entry to `src/tools/data/<category>.ts` (slug, name, description, steps, FAQ, limits, related tools, `impl` key). Put it in one of the groups listed in `src/tools/registry.ts`; the mega menu, footer, category pages and search are generated from that data.

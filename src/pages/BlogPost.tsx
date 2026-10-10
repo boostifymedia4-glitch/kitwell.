@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Icon } from '@/components/Icon';
 import { Seo } from '@/components/Seo';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { ToolIcon } from '@/components/ui/ToolIcon';
 import { Faq } from '@/components/ui/Faq';
 import { getPost, postPath, posts, type BlogPost as Post } from '@/blog/posts';
 import { site } from '@/config/site';
@@ -178,7 +179,7 @@ function ToolLink({ tool }: { tool: ToolDef }) {
   const x = loc.tool(tool);
   return (
     <Link to={toolPath(tool)} className="post-tool">
-      <Icon name={tool.icon} size={18} />
+      <ToolIcon tool={tool} size="sm" />
       <span>{x.name}</span>
       <Icon name="arrow-right" size={14} />
     </Link>

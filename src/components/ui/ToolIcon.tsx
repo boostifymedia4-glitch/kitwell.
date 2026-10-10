@@ -1,27 +1,18 @@
+import type { CSSProperties } from 'react';
 import type { ToolDef } from '@/tools/types';
-import { Icon } from '../Icon';
+import { ToolArt, artColorOf } from './ToolArt';
 
 type Size = 'sm' | 'md' | 'lg';
 
-const ICON_PX: Record<Size, number> = { sm: 16, md: 22, lg: 28 };
-
 /**
- * The one icon treatment used everywhere a tool appears: a tinted square holding a line icon.
- * Conversion tools show their formats inside the square (JPG over PNG) instead of an icon, except
- * in the compact size used by menus and search, where the line icon is used.
+ * The one icon treatment used everywhere a tool appears (cards, menus, search, related tools, page headers): the
+ * tool's colour-coded illustration from src/tools/toolArt.ts on a softly tinted tile. The compact size drops the
+ * format tag, which would be unreadable at that size.
  */
-export function ToolIcon({ tool, size = 'md' }: { tool: Pick<ToolDef, 'icon' | 'category' | 'convert'>; size?: Size }) {
+export function ToolIcon({ tool, size = 'md' }: { tool: Pick<ToolDef, 'slug'>; size?: Size }) {
   return (
-    <span className={`tool-icon tool-icon-${size} chip-${tool.category}`} aria-hidden="true">
-      {tool.convert && size !== 'sm' ? (
-        <span className="tool-icon-fmt">
-          <b>{tool.convert[0]}</b>
-          <Icon name="arrow-down" size={size === 'lg' ? 12 : 10} />
-          <b>{tool.convert[1]}</b>
-        </span>
-      ) : (
-        <Icon name={tool.icon} size={ICON_PX[size]} />
-      )}
+    <span className={`tool-icon tool-icon-${size}`} style={{ '--art': artColorOf(tool.slug) } as CSSProperties} aria-hidden="true">
+      <ToolArt slug={tool.slug} small={size === 'sm'} />
     </span>
   );
 }
