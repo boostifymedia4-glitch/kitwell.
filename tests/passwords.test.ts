@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { generatePassword, hasWeakPattern } from '../src/lib/dev';
+import { PASSWORD_COUNT, PASSWORD_LENGTH, generatePassword, hasWeakPattern } from '../src/lib/dev';
 import { MAX_NAME_SYMBOLS, PASSWORD_SYMBOLS, generateNamePassword, type NamePasswordOptions } from '../src/lib/passwords';
-import { estimatePassword, strengthOf } from '../src/lib/passwordStrength';
+import { estimatePassword, meetsNameCriteria, nameRating, strengthOf } from '../src/lib/passwordStrength';
 import { ALL_WORDS, SUFFIX_WORDS, WORD_CATEGORIES } from '../src/lib/wordlists';
 
-const base: NamePasswordOptions = { length: 20, categories: [], digits: true, symbols: true, upper: true, lower: true };
+const base: NamePasswordOptions = { length: 16, categories: [], digits: true, symbols: true, upper: true, lower: true };
 const symbolRe = /[@#$*]/g;
 const symbolsIn = (p: string) => p.match(symbolRe) ?? [];
 
@@ -28,7 +28,7 @@ describe('word database', () => {
 
 describe('name-based passwords', () => {
   it('hit the exact length for every length and option combination', () => {
-    for (let length = 8; length <= 64; length += length < 32 ? 1 : 8) {
+    for (let length = 8; length <= 16; length++) {
       for (const digits of [true, false]) {
         for (const symbols of [true, false]) {
           for (const [upper, lower] of [[true, true], [true, false], [false, true]]) {
@@ -60,7 +60,7 @@ describe('name-based passwords', () => {
   it('use one or two of the allowed symbols, never more, and never dots, commas or brackets', () => {
     const counts = new Set<number>();
     for (let i = 0; i < 400; i++) {
-      const p = generateNamePassword({ ...base, length: 18 + (i % 10) });
+      const p = generateNamePassword({ ...base, length: 8 + (i % 9) });
       const n = symbolsIn(p).length;
       counts.add(n);
       expect(n).toBeGreaterThanOrEqual(1);
@@ -91,62 +91,100 @@ describe('name-based passwords', () => {
     }
   });
 
-  it('are not predictable: varied names, numbers, capitalisation, symbols and layouts', () => {
+  it('are not predictable: varied names, numbers, symbols and layouts', () => {
     const results = Array.from({ length: 400 }, () => generateNamePassword({ ...base, length: 16 }));
     expect(new Set(results).size).toBeGreaterThan(390);
     // one or two of the four symbols: 4 single + 12 distinct pairs = 16 possible endings
     expect(new Set(results.map((p) => symbolsIn(p).join(''))).size).toBeGreaterThanOrEqual(14);
     const shapes = new Set(results.map((p) => p.replace(/[A-Z]/g, 'U').replace(/[a-z]/g, 'l').replace(/\d/g, '9').replace(/[@#$*]/g, 's').replace(/(.)\1+/g, '$1')));
-    expect(shapes.size).toBeGreaterThan(8);
-    const startsUpper = results.filter((p) => /^[A-Z]/.test(p)).length;
-    expect(startsUpper).toBeGreaterThan(40);
-    expect(startsUpper).toBeLessThan(395);
+    expect(shapes.size).toBeGreaterThanOrEqual(2);
     expect(new Set(results.map((p) => p.match(/\d/)![0])).size).toBeGreaterThanOrEqual(8);
   });
 
-  it('keep the order name or words, then numbers, then symbols, with nothing after the symbols', () => {
+  it('have a capital letter, a number and a symbol, with every other letter lowercase', () => {
     for (let i = 0; i < 500; i++) {
-      const p = generateNamePassword({ ...base, length: 12 + (i % 40) });
-      expect(p, p).toMatch(/^[A-Za-z]+\d{2,8}[@#$*]{1,2}$/);
+      const p = generateNamePassword({ ...base, length: 8 + (i % 9) });
+      expect(p, p).toMatch(/^[A-Z][a-z]*\d+[a-z]*[@#$*]{1,2}$/);
+      expect(meetsNameCriteria(p)).toBe(true);
     }
-    // without numbers the order is words, symbols; without symbols it ends in the numbers
+  });
+
+  it('keep the order name, numbers, optional extra word, symbols, with nothing after the symbols', () => {
+    for (let i = 0; i < 500; i++) {
+      const p = generateNamePassword({ ...base, length: 8 + (i % 9) });
+      expect(p, p).toMatch(/^[A-Za-z]+\d{2,8}[A-Za-z]*[@#$*]{1,2}$/);
+    }
+    // without numbers the order is name, extra words, symbols; without symbols it ends in a letter or digit
     for (let i = 0; i < 100; i++) {
       expect(generateNamePassword({ ...base, digits: false })).toMatch(/^[A-Za-z]+[@#$*]{1,2}$/);
-      expect(generateNamePassword({ ...base, symbols: false })).toMatch(/^[A-Za-z]+\d{2,8}$/);
+      expect(generateNamePassword({ ...base, symbols: false })).toMatch(/^[A-Za-z]+\d{2,8}[A-Za-z]*$/);
     }
   });
 
   it('never contain repeated characters or runs such as 1234', () => {
-    for (let i = 0; i < 500; i++) expect(hasWeakPattern(generateNamePassword({ ...base, length: 14 + (i % 30) }))).toBe(false);
+    for (let i = 0; i < 500; i++) expect(hasWeakPattern(generateNamePassword({ ...base, length: 8 + (i % 9) }))).toBe(false);
   });
 
   it('rejects impossible settings with a clear error', () => {
     expect(() => generateNamePassword({ ...base, upper: false, lower: false })).toThrow(/uppercase/);
     expect(() => generateNamePassword({ ...base, length: 4 })).toThrow(/length/);
+    expect(() => generateNamePassword({ ...base, length: 17 })).toThrow(/length/);
+    expect(() => generateNamePassword({ ...base, length: 7 })).toThrow(/length/);
     expect(() => generateNamePassword({ ...base, length: 200 })).toThrow(/length/);
     expect(() => generateNamePassword({ ...base, categories: ['not-a-category'] })).toThrow(/category/);
   });
 });
 
-describe('strength estimate: the cause of the old "Fair" rating and its fix', () => {
+describe('name-based strength rating: 8 Good, 9-10 Strong, 11-16 Very strong', () => {
+  const rule = (n: number) => (n === 8 ? 'good' : n <= 10 ? 'strong' : 'very-strong');
+
+  it('rates every generated password by its length, after checking that it meets the criteria', () => {
+    for (let length = 8; length <= 16; length++) {
+      for (let i = 0; i < 150; i++) {
+        const p = generateNamePassword({ ...base, length });
+        expect(p).toHaveLength(length);
+        expect(meetsNameCriteria(p), p).toBe(true);
+        expect(nameRating(p)?.id, p).toBe(rule(length));
+      }
+    }
+  });
+
+  it('an 8-character password that meets the criteria is Good, never Weak or Fair', () => {
+    expect(nameRating('Kai4821@')?.id).toBe('good');
+    expect(nameRating('Kaito42@#')?.id).toBe('strong');
+    expect(nameRating('Kaitoran42@')?.id).toBe('very-strong');
+    expect(nameRating('Kaitoranbo2026$*'.slice(0, 16))?.id).toBe('very-strong');
+  });
+
+  it('gives no rating when the criteria are not met, so nothing is rated by length alone', () => {
+    expect(nameRating('kai48215')).toBeNull(); // no capital, no symbol
+    expect(nameRating('Kaitoran@')).toBeNull(); // no number
+    expect(nameRating('Kaitoran42')).toBeNull(); // no symbol
+    expect(nameRating('KAITORAN@')).toBeNull(); // no number
+    expect(nameRating('kaitoran42@')).toBeNull(); // no capital
+    expect(nameRating('Kai48!21')).toBeNull(); // a symbol that is not allowed
+    expect(nameRating('Kai4@#$21')).toBeNull(); // more than two symbols
+    expect(nameRating('Kai4 21@')).toBeNull(); // a space
+    expect(nameRating('Kai42@')).toBeNull(); // shorter than 8
+  });
+
+  it('falls back to the estimate when options remove a required character type', () => {
+    for (let i = 0; i < 50; i++) {
+      const noDigits = generateNamePassword({ ...base, length: 10, digits: false });
+      expect(nameRating(noDigits)).toBeNull();
+    }
+  });
+});
+
+describe('strength estimate (used for Fully random and as the fallback)', () => {
   const bitsOf = (opts: Partial<NamePasswordOptions>, n = 60) => {
     const all = Array.from({ length: n }, () => estimatePassword(generateNamePassword({ ...base, ...opts })).bits);
     return { min: Math.min(...all), avg: all.reduce((a, b) => a + b, 0) / n };
   };
 
-  it('rises with length instead of stopping at about 46 bits', () => {
-    const at = (length: number) => bitsOf({ length }).avg;
-    expect(at(16)).toBeLessThan(at(24));
-    expect(at(24)).toBeLessThan(at(32));
-    expect(at(32)).toBeLessThan(at(48));
-    expect(at(24)).toBeGreaterThan(46);
-  });
-
-  it('reaches Strong for long name-based passwords and Very strong for the longest, but not for short ones', () => {
-    expect(strengthOf(bitsOf({ length: 12 }).avg).id).toBe('weak');
-    expect(strengthOf(bitsOf({ length: 16 }).avg).id).not.toBe('very-strong');
-    expect(['strong', 'very-strong']).toContain(strengthOf(bitsOf({ length: 32 }).avg).id);
-    expect(strengthOf(bitsOf({ length: 56 }).avg).id).toBe('very-strong');
+  it('rises with length', () => {
+    expect(bitsOf({ length: 8 }).avg).toBeLessThan(bitsOf({ length: 12 }).avg);
+    expect(bitsOf({ length: 12 }).avg).toBeLessThan(bitsOf({ length: 16 }).avg);
   });
 
   it('is honest about recognisable words: a name plus digits is weak', () => {
@@ -170,8 +208,8 @@ describe('strength estimate: the cause of the old "Fair" rating and its fix', ()
     expect(estimatePassword('').bits).toBe(0);
     expect(estimatePassword('x').bits).toBeLessThan(6);
     expect(estimatePassword('Qk7!').bits).toBeLessThan(25);
-    const long = generatePassword({ length: 24, lower: true, upper: true, digits: true, symbols: true, excludeAmbiguous: false });
-    expect(estimatePassword(long).bits).toBeGreaterThan(110);
+    const long = generatePassword({ length: 16, lower: true, upper: true, digits: true, symbols: true, excludeAmbiguous: false });
+    expect(estimatePassword(long).bits).toBeGreaterThan(80);
   });
 
   it('classifies the labels at sensible thresholds and never says Strong because options were ticked', () => {
@@ -181,17 +219,15 @@ describe('strength estimate: the cause of the old "Fair" rating and its fix', ()
     expect(strengthOf(59.9).id).toBe('fair');
     expect(strengthOf(60).id).toBe('strong');
     expect(strengthOf(80).id).toBe('very-strong');
-    // all options ticked, but short: still weak
-    expect(strengthOf(estimatePassword(generateNamePassword({ ...base, length: 10 })).bits).id).toBe('weak');
   });
 });
 
 describe('fully random passwords', () => {
-  const o = { length: 24, lower: true, upper: true, digits: true, symbols: true, excludeAmbiguous: false };
+  const o = { length: 16, lower: true, upper: true, digits: true, symbols: true, excludeAmbiguous: false };
   it('use only letters, numbers and the practical symbols, with every selected type present', () => {
     for (let i = 0; i < 200; i++) {
       const p = generatePassword(o);
-      expect(p).toMatch(/^[A-Za-z0-9@#$*]{24}$/);
+      expect(p).toMatch(/^[A-Za-z0-9@#$*]{16}$/);
       expect(p).toMatch(/[a-z]/);
       expect(p).toMatch(/[A-Z]/);
       expect(p).toMatch(/\d/);
@@ -215,6 +251,12 @@ describe('fully random passwords', () => {
     expect(strengthOf(estimatePassword(generatePassword({ ...o, length: 16 })).bits).id).toBe('very-strong');
     expect(strengthOf(estimatePassword(generatePassword({ ...o, length: 8, upper: false, symbols: false, digits: false })).bits).id).toBe('weak');
     expect(['strong', 'very-strong']).toContain(strengthOf(estimatePassword(generatePassword({ ...o, length: 12 })).bits).id);
+  });
+  it('only generate lengths from 8 to 16 and reject anything else', () => {
+    expect(PASSWORD_LENGTH).toEqual({ min: 8, max: 16 });
+    for (let length = 8; length <= 16; length++) expect(generatePassword({ ...o, length })).toHaveLength(length);
+    for (const length of [0, 4, 7, 17, 24, 128, 129]) expect(() => generatePassword({ ...o, length }), String(length)).toThrow(/length/);
+    expect(PASSWORD_COUNT).toEqual({ min: 1, max: 20 });
   });
   it('require at least one character type', () => {
     expect(() => generatePassword({ ...o, lower: false, upper: false, digits: false, symbols: false })).toThrow();

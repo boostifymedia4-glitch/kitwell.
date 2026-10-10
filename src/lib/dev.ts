@@ -477,7 +477,14 @@ export function passwordPools(o: PasswordOptions): string[] {
     .filter(Boolean);
 }
 
+/** Lengths the password generator offers, in both styles. */
+export const PASSWORD_LENGTH = { min: 8, max: 16 } as const;
+/** How many passwords can be generated at once. */
+export const PASSWORD_COUNT = { min: 1, max: 20 } as const;
+
 export function generatePassword(o: PasswordOptions): string {
+  const wanted = Math.floor(o.length);
+  if (!(wanted >= PASSWORD_LENGTH.min && wanted <= PASSWORD_LENGTH.max)) throw new Error(tr('err.passwords.length', { min: PASSWORD_LENGTH.min, max: PASSWORD_LENGTH.max }));
   // A random password that happens to contain 1111 or abcd is rare, but would be easy to guess, so try again.
   for (let i = 0; i < 50; i++) {
     const candidate = buildPassword(o);
@@ -489,7 +496,7 @@ export function generatePassword(o: PasswordOptions): string {
 function buildPassword(o: PasswordOptions): string {
   const pools = passwordPools(o);
   if (pools.length === 0) throw new Error(tr('err.dev.noCharType'));
-  const length = Math.min(128, Math.max(pools.length, Math.floor(o.length)));
+  const length = Math.min(PASSWORD_LENGTH.max, Math.max(pools.length, Math.floor(o.length)));
   const all = pools.join('');
   // Guarantee at least one character from every selected pool, then fill and shuffle.
   const chars = pools.map((p) => p[secureRandomInt(p.length)]);

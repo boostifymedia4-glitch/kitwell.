@@ -53,9 +53,11 @@ interface NumberProps {
   step?: number;
   hint?: string;
   disabled?: boolean;
+  /** Called when the field loses focus, e.g. to bring a half-typed value into range. */
+  onBlur?: () => void;
 }
 
-export function NumberField({ label, value, onChange, min, max, step = 1, hint, disabled }: NumberProps) {
+export function NumberField({ label, value, onChange, min, max, step = 1, hint, disabled, onBlur }: NumberProps) {
   return (
     <Field label={label} hint={hint}>
       {(id) => (
@@ -70,6 +72,7 @@ export function NumberField({ label, value, onChange, min, max, step = 1, hint, 
           step={step}
           disabled={disabled}
           onChange={(e) => onChange(e.target.value === '' ? '' : Number(e.target.value))}
+          onBlur={onBlur}
         />
       )}
     </Field>

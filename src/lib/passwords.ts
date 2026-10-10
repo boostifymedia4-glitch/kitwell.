@@ -1,4 +1,4 @@
-import { hasWeakPattern, secureRandomInt } from './dev';
+import { PASSWORD_LENGTH, hasWeakPattern, secureRandomInt } from './dev';
 import { ALL_WORDS, SUFFIX_WORDS } from './wordlists';
 import { tr } from '@/i18n/translate';
 
@@ -6,7 +6,7 @@ import { tr } from '@/i18n/translate';
 export const PASSWORD_SYMBOLS = '@#$*';
 
 export interface NamePasswordOptions {
-  /** Total length, 8-64. */
+  /** Total length, 8-16. */
   length: number;
   /** Category ids from the word database; empty means all of them. */
   categories: string[];
@@ -16,7 +16,7 @@ export interface NamePasswordOptions {
   lower: boolean;
 }
 
-export const NAME_LENGTH = { min: 8, max: 64 } as const;
+export const NAME_LENGTH = PASSWORD_LENGTH;
 /** A run of digits is between 2 and 8 long, so longer passwords get more words rather than endless digits. */
 const MIN_DIGITS = 2;
 const MAX_DIGITS = 8;
@@ -27,36 +27,24 @@ const pick = <T>(items: readonly T[]): T => items[secureRandomInt(items.length)]
 const chance = (p: number) => secureRandomInt(1000) < p * 1000;
 const cap = (w: string) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
 
-type Style = 'title' | 'upper' | 'flip' | 'inner';
-
-/** Applies a random capitalisation style to a word, limited to what the options allow. */
-function styleWord(word: string, upper: boolean, lower: boolean): string {
+/**
+ * Capitalisation: the name starts with one capital letter and everything else in the password is lowercase
+ * (extra words included), so a password has at least one uppercase letter, a number and a symbol and otherwise
+ * lowercase letters. If only one case is allowed, that case is used throughout.
+ */
+function styleWord(word: string, upper: boolean, lower: boolean, first: boolean): string {
   if (upper && !lower) return word.toUpperCase();
   if (lower && !upper) return word.toLowerCase();
-  const style = pick<Style>(['title', 'title', 'title', 'title', 'upper', 'flip', 'inner']);
-  switch (style) {
-    case 'upper':
-      return word.toUpperCase();
-    case 'flip':
-      return word.charAt(0).toLowerCase() + word.charAt(1).toUpperCase() + word.slice(2).toLowerCase();
-    case 'inner': {
-      const t = cap(word);
-      if (t.length < 3) return t;
-      const i = 1 + secureRandomInt(t.length - 1);
-      return t.slice(0, i) + t.charAt(i).toUpperCase() + t.slice(i + 1);
-    }
-    default:
-      return cap(word);
-  }
+  return first ? cap(word) : word.toLowerCase();
 }
 
 const digitsBlock = (n: number) => Array.from({ length: n }, () => String(secureRandomInt(10))).join('');
 
-// Pieces: W = the name, X = extra word(s) that make up the length, D = digits, S = a symbol. The order is always
-// name or words first, then numbers, then the symbol(s): nothing but symbols ever follows the numbers. The variety comes from the words, the numbers, the capitalisation
+// Pieces: W = the name, D = digits, X = extra word(s) that make up the length, S = a symbol. The order is always
+// name, then numbers, then any extra word, then the symbol(s). The variety comes from the words, the numbers
 // and from using one or two symbols, not from shuffling the order.
-const TEMPLATE_ONE_SYMBOL = 'WXDS';
-const TEMPLATE_TWO_SYMBOLS = 'WXDSS';
+const TEMPLATE_ONE_SYMBOL = 'WDXS';
+const TEMPLATE_TWO_SYMBOLS = 'WDXSS';
 
 interface Fit {
   words: string[];
@@ -104,9 +92,9 @@ function build(opts: NamePasswordOptions, pool: string[]): string | null {
   }
   const used = { S: 0 };
   const pieces: Record<string, () => string> = {
-    W: () => styleWord(name, opts.upper, opts.lower),
+    W: () => styleWord(name, opts.upper, opts.lower, true),
     D: () => (fit.digits ? digitsBlock(fit.digits) : ''),
-    X: () => fit.words.map((w) => styleWord(w, opts.upper, opts.lower)).join(''),
+    X: () => fit.words.map((w) => styleWord(w, opts.upper, opts.lower, false)).join(''),
     S: () => symbols[used.S++] ?? '',
   };
   const template = symbolCount === 2 ? TEMPLATE_TWO_SYMBOLS : TEMPLATE_ONE_SYMBOL;

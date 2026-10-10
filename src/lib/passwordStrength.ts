@@ -14,7 +14,7 @@ import { ALL_WORDS, SUFFIX_WORDS } from './wordlists';
 import { PASSWORD_SYMBOLS } from './passwords';
 
 export type StrengthTone = 'danger' | 'warning' | 'success';
-export type StrengthId = 'weak' | 'fair' | 'strong' | 'very-strong';
+export type StrengthId = 'weak' | 'fair' | 'good' | 'strong' | 'very-strong';
 
 export interface Strength {
   id: StrengthId;
@@ -170,4 +170,40 @@ export function strengthOf(bits: number): Strength {
   if (bits < 60) return { id: 'fair', tone: 'warning', pct: 50 };
   if (bits < 80) return { id: 'strong', tone: 'success', pct: 78 };
   return { id: 'very-strong', tone: 'success', pct: 100 };
+}
+
+/** Order of the ratings, weakest first. */
+export const STRENGTH_ORDER: readonly StrengthId[] = ['weak', 'fair', 'good', 'strong', 'very-strong'];
+const STRENGTHS: Record<StrengthId, Strength> = {
+  weak: { id: 'weak', tone: 'danger', pct: 25 },
+  fair: { id: 'fair', tone: 'warning', pct: 40 },
+  good: { id: 'good', tone: 'success', pct: 55 },
+  strong: { id: 'strong', tone: 'success', pct: 78 },
+  'very-strong': { id: 'very-strong', tone: 'success', pct: 100 },
+};
+export const strengthById = (id: StrengthId): Strength => STRENGTHS[id];
+
+/** The weakest of several ratings. */
+export const weakest = (items: Strength[]): Strength => items.reduce((a, b) => (STRENGTH_ORDER.indexOf(b.id) < STRENGTH_ORDER.indexOf(a.id) ? b : a));
+
+/**
+ * What a name-based password must contain to be rated by its length: at least one uppercase letter, one number and
+ * one of the allowed symbols (never more than two), and nothing but letters, numbers and those symbols.
+ */
+export function meetsNameCriteria(password: string): boolean {
+  if (!/^[A-Za-z0-9]*$/.test(password.split('').filter((c) => !PASSWORD_SYMBOLS.includes(c)).join(''))) return false;
+  const symbols = password.split('').filter((c) => PASSWORD_SYMBOLS.includes(c)).length;
+  return /[A-Z]/.test(password) && /[0-9]/.test(password) && symbols >= 1 && symbols <= 2;
+}
+
+/**
+ * Rating of a name-based password: 8 characters Good, 9 to 10 Strong, 11 to 16 Very strong. It is only given to a
+ * password that really meets the criteria above (checked here, not assumed); otherwise it returns null and the
+ * caller falls back to the estimate in bits.
+ */
+export function nameRating(password: string): Strength | null {
+  if (!meetsNameCriteria(password)) return null;
+  const n = password.length;
+  if (n < 8) return null;
+  return STRENGTHS[n === 8 ? 'good' : n <= 10 ? 'strong' : 'very-strong'];
 }

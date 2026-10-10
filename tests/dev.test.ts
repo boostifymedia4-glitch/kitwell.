@@ -101,11 +101,11 @@ describe('regex', () => {
 });
 
 describe('generators', () => {
-  const o = { length: 24, lower: true, upper: true, digits: true, symbols: true, excludeAmbiguous: false };
+  const o = { length: 16, lower: true, upper: true, digits: true, symbols: true, excludeAmbiguous: false };
   it('generates passwords with every selected class', () => {
     for (let i = 0; i < 50; i++) {
       const p = generatePassword(o);
-      expect(p).toHaveLength(24);
+      expect(p).toHaveLength(16);
       expect(p).toMatch(/[a-z]/);
       expect(p).toMatch(/[A-Z]/);
       expect(p).toMatch(/\d/);

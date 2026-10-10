@@ -1,13 +1,13 @@
-import { Fragment, useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { CopyButton } from '@/components/tool/CopyButton';
 import { ErrorMessage, Notice } from '@/components/tool/Feedback';
 import { CheckField, NumberField, Segmented } from '@/components/tool/Fields';
 import { Icon } from '@/components/Icon';
 import { useI18n } from '@/i18n';
-import { generatePassword, type PasswordOptions } from '@/lib/dev';
+import { PASSWORD_COUNT, PASSWORD_LENGTH, generatePassword, type PasswordOptions } from '@/lib/dev';
 import { errorMessage } from '@/lib/format';
-import { generateNamePassword, NAME_LENGTH, PASSWORD_SYMBOLS, type NamePasswordOptions } from '@/lib/passwords';
-import { estimatePassword, strengthOf } from '@/lib/passwordStrength';
+import { generateNamePassword, PASSWORD_SYMBOLS, type NamePasswordOptions } from '@/lib/passwords';
+import { estimatePassword, nameRating, strengthOf, weakest, type Strength } from '@/lib/passwordStrength';
 import { ALL_WORDS, WORD_CATEGORIES } from '@/lib/wordlists';
 import type { ToolImplementation } from '../../types';
 
@@ -15,15 +15,13 @@ type Mode = 'name' | 'random';
 
 const TONE = { danger: 'var(--danger)', warning: 'var(--warning)', success: 'var(--success)' } as const;
 
-/** Turns `<em>word</em>` markers in a translated sentence into emphasised text. */
-function withEmphasis(text: string): ReactNode {
-  return text.split(/<em>(.*?)<\/em>/).map((part, i) => (i % 2 === 1 ? <em key={i}>{part}</em> : <Fragment key={i}>{part}</Fragment>));
-}
+/** Brings a typed value into range; an empty field becomes the fallback. */
+const clamp = (n: number | '', lo: number, hi: number, fallback: number) => Math.min(hi, Math.max(lo, n === '' || Number.isNaN(n) ? fallback : Math.floor(n)));
 
 const PasswordGenerator: ToolImplementation = () => {
   const { t } = useI18n();
   const [mode, setMode] = useState<Mode>('name');
-  const [length, setLength] = useState(24);
+  const [length, setLength] = useState<number | ''>(12);
   const [count, setCount] = useState<number | ''>(5);
   const [upper, setUpper] = useState(true);
   const [lower, setLower] = useState(true);
@@ -35,13 +33,12 @@ const PasswordGenerator: ToolImplementation = () => {
   const [error, setError] = useState<string | null>(null);
   const [visible, setVisible] = useState(true);
 
-  const max = mode === 'name' ? NAME_LENGTH.max : 128;
-  const min = mode === 'name' ? NAME_LENGTH.min : 8;
-  const effectiveLength = Math.min(max, Math.max(min, length));
+  const { min, max } = PASSWORD_LENGTH;
+  const effectiveLength = clamp(length, min, max, 12);
 
   const generate = useCallback(() => {
     try {
-      const n = Math.min(20, Math.max(1, Number(count) || 1));
+      const n = clamp(count, PASSWORD_COUNT.min, PASSWORD_COUNT.max, 1);
       const out: string[] = [];
       if (mode === 'name') {
         const o: NamePasswordOptions = { length: effectiveLength, categories, digits, symbols, upper, lower };
@@ -61,9 +58,11 @@ const PasswordGenerator: ToolImplementation = () => {
   // Generate on load and whenever a setting changes.
   useEffect(() => generate(), [generate]);
 
-  // The estimate is made from each password itself (words, repeats, patterns), and the weakest one is shown.
+  // Name + word passwords are rated by length once they are checked to contain a capital, a number and a symbol;
+  // anything else (and Fully random) is rated from its estimated bits. The weakest password sets the overall rating.
+  const rate = (p: string): Strength => (mode === 'name' ? nameRating(p) : null) ?? strengthOf(estimatePassword(p).bits);
   const bits = list.length ? Math.min(...list.map((p) => estimatePassword(p).bits)) : 0;
-  const s = strengthOf(bits);
+  const s = list.length ? weakest(list.map(rate)) : strengthOf(0);
   const strengthLabel = t(`passwordGenerator.strength.${s.id}`);
   const wordCount = useMemo(() => ALL_WORDS(categories).length, [categories]);
   const toggleCategory = (id: string) => setCategories((c) => (c.includes(id) ? c.filter((x) => x !== id) : [...c, id]));
@@ -81,9 +80,7 @@ const PasswordGenerator: ToolImplementation = () => {
         ]}
       />
       {mode === 'name' ? (
-        <Notice tone="warn">
-          <strong>{t('passwordGenerator.nameWarningTitle')}</strong> {withEmphasis(t('passwordGenerator.nameWarningBody'))}
-        </Notice>
+        <Notice tone="info">{t('passwordGenerator.nameNotice')}</Notice>
       ) : (
         <Notice tone="success">{t('passwordGenerator.randomNotice')}</Notice>
       )}
@@ -94,9 +91,17 @@ const PasswordGenerator: ToolImplementation = () => {
           value={length}
           min={min}
           max={max}
-          onChange={(v) => setLength(v === '' ? min : Math.min(max, Math.max(min, v)))}
+          onChange={(v) => setLength(v === '' ? '' : Math.min(max, v))}
+          onBlur={() => setLength(effectiveLength)}
         />
-        <NumberField label={t('passwordGenerator.howMany')} value={count} min={1} max={20} onChange={setCount} />
+        <NumberField
+          label={t('passwordGenerator.howMany')}
+          value={count}
+          min={PASSWORD_COUNT.min}
+          max={PASSWORD_COUNT.max}
+          onChange={(v) => setCount(v === '' ? '' : Math.min(PASSWORD_COUNT.max, v))}
+          onBlur={() => setCount(clamp(count, PASSWORD_COUNT.min, PASSWORD_COUNT.max, 1))}
+        />
       </div>
       <div className="field">
         <label className="label" htmlFor="pw-length">
@@ -145,12 +150,11 @@ const PasswordGenerator: ToolImplementation = () => {
         <div className="stack-sm">
           <div className="row row-between">
             <span className="label">{t('passwordGenerator.strength', { label: strengthLabel })}</span>
-            <span className="hint">{mode === 'name' ? t('passwordGenerator.bits.name', { bits: Math.round(bits) }) : t('passwordGenerator.bits.random', { bits: Math.round(bits) })}</span>
+            <span className="hint">{mode === 'name' ? t('passwordGenerator.basis.name') : t('passwordGenerator.bits.random', { bits: Math.round(bits) })}</span>
           </div>
           <div className="strength" role="img" aria-label={t('passwordGenerator.strengthAria', { label: strengthLabel })}>
             <span style={{ width: `${s.pct}%`, background: TONE[s.tone] }} />
           </div>
-          {mode === 'name' && s.id !== 'strong' && s.id !== 'very-strong' && <p className="hint">{t('passwordGenerator.nameLengthHint')}</p>}
           <p className="hint">{t('passwordGenerator.estimateNote')}</p>
         </div>
       )}
@@ -160,7 +164,7 @@ const PasswordGenerator: ToolImplementation = () => {
             <code className="pw-text">
               {visible ? p : '•'.repeat(Math.min(p.length, 32))}
             </code>
-            <span className={`pw-chip pw-chip-${strengthOf(estimatePassword(p).bits).tone}`}>{t(`passwordGenerator.strength.${strengthOf(estimatePassword(p).bits).id}`)}</span>
+            <span className={`pw-chip pw-chip-${rate(p).tone}`}>{t(`passwordGenerator.strength.${rate(p).id}`)}</span>
             <CopyButton text={p} />
           </li>
         ))}
