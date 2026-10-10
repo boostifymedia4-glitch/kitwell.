@@ -7,6 +7,12 @@
 .tool-icon-md { width: 50px; height: 50px; border-radius: 12px; }
 .tool-icon-lg { width: 64px; height: 64px; padding: 4px; border-radius: 15px; }
 
+/* Category tiles (not tools) take their tint from the category colour. */
+.tool-icon.chip-image { --art: var(--cat-image); }
+.tool-icon.chip-pdf { --art: var(--cat-pdf); }
+.tool-icon.chip-text { --art: var(--cat-text); }
+.tool-icon.chip-developer { --art: var(--cat-developer); }
+
 /* ---------- Tool card ---------- */
 .grid { display: grid; gap: var(--space-4); }
 .grid-tools { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }

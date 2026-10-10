@@ -5,6 +5,7 @@ import { AdSlot } from '@/components/ui/AdSlot';
 import { Faq } from '@/components/ui/Faq';
 import { ToolGrid } from '@/components/ui/ToolCard';
 import { ToolIcon } from '@/components/ui/ToolIcon';
+import { TrustIcon, type TrustKind } from '@/components/ui/TrustArt';
 import { ToolSearch } from '@/components/ui/ToolSearch';
 import { site } from '@/config/site';
 import { useLocalize } from '@/i18n/useLocalize';
@@ -16,10 +17,10 @@ const SHORTCUTS = ['jpg-to-png', 'image-compressor', 'merge-pdf', 'pdf-to-jpg', 
   .map(getTool)
   .filter((t) => t !== undefined);
 
-const TRUST: { icon: string; title: MessageKey; text: MessageKey }[] = [
-  { icon: 'shield', title: 'home.trust1Title', text: 'home.trust1Text' },
-  { icon: 'lock', title: 'home.trust2Title', text: 'home.trust2Text' },
-  { icon: 'info', title: 'home.trust3Title', text: 'home.trust3Text' },
+const TRUST: { kind: TrustKind; title: MessageKey; text: MessageKey }[] = [
+  { kind: 'browser', title: 'home.trust1Title', text: 'home.trust1Text' },
+  { kind: 'account', title: 'home.trust2Title', text: 'home.trust2Text' },
+  { kind: 'limits', title: 'home.trust3Title', text: 'home.trust3Text' },
 ];
 
 const FAQ_COUNT = 4;
@@ -98,9 +99,7 @@ export default function Home() {
           <div className="trust-grid">
             {TRUST.map((item) => (
               <div key={item.title} className="card trust-item">
-                <span className="tool-icon tool-icon-md chip-image" aria-hidden="true">
-                  <Icon name={item.icon} size={22} />
-                </span>
+                <TrustIcon kind={item.kind} />
                 <h3>{t(item.title)}</h3>
                 <p>{t(item.text)}</p>
               </div>
