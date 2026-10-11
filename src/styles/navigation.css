@@ -177,3 +177,5 @@
 .header-inner > .lang-wrap { margin-inline-start: auto; }
 .header-inner > .menu-btn { margin-inline-start: 0; }
 @media (min-width: 900px) { .header-inner > .lang-wrap { margin-inline-start: 0; } }
+/* the header menu lists language names only; region labels belong to the footer menu */
+.site-header .lang-region { display: none !important; }

@@ -31,6 +31,7 @@ function headTags(r, found) {
     `<meta name="robots" content="${found && !meta.noindex ? 'index,follow' : 'noindex,follow'}" />`,
     found ? `<link rel="canonical" href="${esc(r.canonical)}" />` : '',
     ...(found ? r.alternates.map((a) => `<link rel="alternate" hreflang="${esc(a.hreflang)}" href="${esc(a.href)}" />`) : []),
+    `<meta name="kitwell-build" content="${esc(process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? 'local')}" />`,
     `<meta property="og:type" content="website" />`,
     `<meta property="og:site_name" content="${esc(siteName)}" />`,
     `<meta property="og:locale" content="${esc(r.ogLocale)}" />`,
