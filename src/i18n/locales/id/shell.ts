@@ -64,7 +64,6 @@ export default {
   'footer.seeAll': 'Semua {count} alat',
   'footer.language': 'Bahasa',
   'lang.title': 'Pilih bahasa Anda',
-  'lang.note': 'Menu, alat, bantuan, dan panduan sudah diterjemahkan. Teks hukum (Kebijakan Privasi, Syarat & Ketentuan, Informasi cookie) tetap dalam bahasa Inggris sebagai versi yang berlaku.',
   'lang.close': 'Tutup',
   'lang.change': 'Ganti bahasa. Bahasa saat ini: {name}',
 } as PartialMessages;

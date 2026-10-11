@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '@/i18n/Link';
 import { Icon } from '@/components/Icon';
 import { ErrorMessage, Notice } from '@/components/tool/Feedback';
 import { Field } from '@/components/tool/Fields';

@@ -74,7 +74,6 @@ export const shell = {
   'footer.language': 'Language',
 
   'lang.title': 'Choose your language',
-  'lang.note': 'Menus, tools, help and guides are translated. The legal texts (Privacy Policy, Terms, Cookie information) stay in English, as the version that applies.',
   'lang.close': 'Close',
   'lang.change': 'Change language. Current language: {name}',
 } as const;

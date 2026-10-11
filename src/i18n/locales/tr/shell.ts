@@ -71,7 +71,6 @@ export default {
   'footer.language': 'Dil',
 
   'lang.title': 'Dilinizi seçin',
-  'lang.note': 'Menüler, araçlar, yardım ve rehberler çevrildi. Hukuki metinler (Gizlilik Politikası, Şartlar, Çerez bilgileri) geçerli sürüm olarak İngilizce kalır.',
   'lang.close': 'Kapat',
   'lang.change': 'Dili değiştir. Geçerli dil: {name}',
 } as PartialMessages;

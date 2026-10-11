@@ -36,7 +36,6 @@ export default {
   'help.other.1.q': 'Verwendet „Bild vergrößern“ KI?',
   'help.other.1.a': 'Nein. Es nutzt hochwertiges Resampling, um ein Bild größer und glatter zu machen. Es kann keine Details erfinden, die nie im Bild enthalten waren.',
   'help.other.2.q': 'In welchen Sprachen ist die Website verfügbar?',
-  'help.other.2.a': 'Die Website kann in 17 Sprachen angezeigt werden: Englisch, Urdu, Arabisch, Spanisch, Französisch, Deutsch, Portugiesisch, Italienisch, Türkisch, Chinesisch, Japanisch, Koreanisch, Hindi, Indonesisch, Bengalisch, Russisch und Niederländisch. Menüs, Tool-Seiten, Tool-Oberflächen, Hilfe und Ratgeber sind übersetzt. Die langen Rechtstexte (Datenschutzerklärung, Nutzungsbedingungen, Cookie-Informationen) gibt es nur auf Englisch, da diese Fassung maßgeblich ist. Wählen Sie eine Sprache am Ende jeder Seite.',
   'help.contact.title': 'Immer noch nicht weitergekommen?',
   'help.contact.0.q': 'Wie melde ich einen Fehler oder schlage ein Tool vor?',
   'help.contact.0.a': 'Nutzen Sie die Kontaktseite. Bitte geben Sie den Namen des Tools, Ihren Browser und das erwartete Verhalten an. Senden Sie niemals Dateien mit privaten Informationen.',

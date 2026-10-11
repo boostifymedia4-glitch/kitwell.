@@ -24,4 +24,12 @@ export const localeLoaders: Record<string, () => Promise<LocaleModule>> = {
   bn: () => import('./locales/bn'),
   ru: () => import('./locales/ru'),
   nl: () => import('./locales/nl'),
+  vi: () => import('./locales/vi'),
+  pl: () => import('./locales/pl'),
+  fa: () => import('./locales/fa'),
+  th: () => import('./locales/th'),
+  uk: () => import('./locales/uk'),
+  ro: () => import('./locales/ro'),
+  el: () => import('./locales/el'),
+  cs: () => import('./locales/cs'),
 };

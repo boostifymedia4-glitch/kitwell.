@@ -52,7 +52,6 @@ export default {
   'legal.terms.lead': '{site}をご利用いただく際のルールです。',
   'legal.cookies.title': 'Cookieとブラウザのストレージについて',
   'legal.cookies.lead': '当サイトがブラウザに保存するもの、および広告が追加された場合に変わることについて。',
-  'legal.englishOnly': '以下の全文は英語のみで提供されています。こちらが有効な版です。',
 
   // Contact
   'contact.title': 'お問い合わせ',

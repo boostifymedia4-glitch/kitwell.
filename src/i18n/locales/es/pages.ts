@@ -47,7 +47,6 @@ export default {
   'legal.terms.lead': 'Las normas para usar {site}.',
   'legal.cookies.title': 'Información sobre cookies y almacenamiento del navegador',
   'legal.cookies.lead': 'Qué guarda este sitio en tu navegador y qué cambiaría si se añadiera publicidad.',
-  'legal.englishOnly': 'El texto completo que aparece a continuación solo está disponible en inglés. Es la versión que se aplica.',
 
   'contact.title': 'Contacta con nosotros',
   'contact.lead': 'Las preguntas, los informes de errores y las sugerencias de herramientas son bienvenidos.',

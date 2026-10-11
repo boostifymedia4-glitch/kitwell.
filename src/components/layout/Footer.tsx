@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from '@/i18n/Link';
 import { site } from '@/config/site';
 import { useI18n, type MessageKey } from '@/i18n';
 import { useLocalize } from '@/i18n/useLocalize';

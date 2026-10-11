@@ -64,7 +64,6 @@ export default {
   'footer.seeAll': 'Alle {count} tools',
   'footer.language': 'Taal',
   'lang.title': 'Kies je taal',
-  'lang.note': 'Menu’s, tools, help en handleidingen zijn vertaald. De juridische teksten (privacybeleid, voorwaarden, cookie-informatie) blijven in het Engels, als de versie die geldt.',
   'lang.close': 'Sluiten',
   'lang.change': 'Taal wijzigen. Huidige taal: {name}',
 } as PartialMessages;

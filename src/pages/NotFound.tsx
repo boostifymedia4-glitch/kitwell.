@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from '@/i18n/Link';
 import { useI18n } from '@/i18n';
 import { Seo } from '@/components/Seo';
 import { ToolSearch } from '@/components/ui/ToolSearch';

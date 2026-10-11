@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useId, useRef, useState, type KeyboardEvent } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from '@/i18n/Link';
+import { useLocation } from 'react-router-dom';
 import { categories, categoryPath, getCategory, groupsInCategory, toolPath, toolsInCategory, toolsInGroup, tools } from '@/tools/registry';
 import { useLocalize } from '@/i18n/useLocalize';
 import { useI18n, type MessageKey } from '@/i18n';

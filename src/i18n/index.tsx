@@ -1,7 +1,9 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import type { PartialMessages } from './en';
-import { DEFAULT_LANGUAGE, getLanguage, type Language } from './languages';
+import { DEFAULT_LANGUAGE, getLanguage, langTag, type Language } from './languages';
 import { localeLoaders } from './loaders';
+import { splitLang, withLang } from './routing';
 import type { ToolTextMap } from './toolText';
 import { setActiveLanguage, translateWith, type Vars } from './translate';
 
@@ -12,6 +14,7 @@ interface I18n {
   lang: Language;
   /** Translates a key, filling {placeholders}. Falls back to English when a translation is missing. */
   t: (key: MessageKey, vars?: Vars) => string;
+  /** Switches language by going to the same page under the other language's address. */
   setLanguage: (code: string) => Promise<void>;
   /** The language's translated text for the whole site, for components that localise structured content. */
   messages: PartialMessages;
@@ -19,6 +22,13 @@ interface I18n {
   toolText: ToolTextMap;
   /** True while a language file is loading. */
   loading: boolean;
+}
+
+/** A language's loaded text. Server rendering and hydration start from this so the first render is already localised. */
+export interface LocaleData {
+  code: string;
+  messages: PartialMessages;
+  toolText: ToolTextMap;
 }
 
 const STORAGE_KEY = 'kitwell-language';
@@ -36,20 +46,17 @@ const Context = createContext<I18n>({
 
 export const useI18n = () => useContext(Context);
 
-interface Loaded {
-  messages: PartialMessages;
-  toolText: ToolTextMap;
-}
-const cache = new Map<string, Loaded>();
+const cache = new Map<string, LocaleData>();
 
-async function loadMessages(code: string): Promise<Loaded> {
-  if (code === DEFAULT_LANGUAGE) return { messages: {}, toolText: {} };
+/** Loads one language (a lazy chunk per language, so visitors only download the language they use). */
+export async function loadLocale(code: string): Promise<LocaleData> {
+  if (code === DEFAULT_LANGUAGE) return { code, messages: {}, toolText: {} };
   const hit = cache.get(code);
   if (hit) return hit;
   const loader = localeLoaders[code];
   if (!loader) throw new Error(`No translations registered for "${code}".`);
   const mod = await loader();
-  const loaded = { messages: mod.default, toolText: mod.tools };
+  const loaded = { code, messages: mod.default, toolText: mod.tools };
   cache.set(code, loaded);
   return loaded;
 }
@@ -73,53 +80,81 @@ function store(code: string) {
 }
 
 /**
- * Holds the chosen language. The server and the first client render are always English so hydration
- * matches the prerendered HTML; a saved choice is applied right after mount.
+ * Holds the language of the page. The address decides it (/ur/... is Urdu), so a page always renders in the same
+ * language for everyone, including search engines. `initial` carries the already loaded text of the page's language
+ * (server rendering and hydration), so the first render matches the prerendered HTML.
  */
-export function I18nProvider({ children }: { children: ReactNode }) {
-  const [state, setState] = useState<{ lang: Language; messages: PartialMessages; toolText: ToolTextMap }>({ lang: english, messages: {}, toolText: {} });
+export function I18nProvider({ children, initial }: { children: ReactNode; initial?: LocaleData }) {
+  const { pathname, search, hash } = useLocation();
+  const navigate = useNavigate();
+  const urlCode = splitLang(pathname).code;
+  const [state, setState] = useState<LocaleData>(initial ?? { code: DEFAULT_LANGUAGE, messages: {}, toolText: {} });
   const [loading, setLoading] = useState(false);
   const request = useRef(0);
 
-  const setLanguage = useCallback(async (code: string) => {
-    const lang = getLanguage(code);
-    if (!lang) return;
+  // Follow the address: when it changes language (a link, the back button, a typed address) load that language.
+  useEffect(() => {
+    if (urlCode === state.code) return;
     const mine = ++request.current;
     setLoading(true);
-    try {
-      const { messages, toolText } = await loadMessages(lang.code);
-      if (mine !== request.current) return;
-      setActiveLanguage(lang.code, messages);
-      setState({ lang, messages, toolText });
-      store(lang.code);
-    } catch {
-      // The language file could not be loaded (for example offline): stay on the current language.
-    } finally {
-      if (mine === request.current) setLoading(false);
-    }
+    loadLocale(urlCode)
+      .then((data) => {
+        if (mine === request.current) setState(data);
+      })
+      .catch(() => {
+        /* the language file could not be loaded (for example offline): stay on the current language */
+      })
+      .finally(() => {
+        if (mine === request.current) setLoading(false);
+      });
+  }, [urlCode, state.code]);
+
+  // The text and the language used by plain library code (tr) follow the state.
+  setActiveLanguage(state.code, state.messages);
+
+  // A visitor who chose a language before is taken to it when they open an English address.
+  const redirected = useRef(false);
+  useEffect(() => {
+    if (redirected.current) return;
+    redirected.current = true;
+    const saved = readStored();
+    if (saved && saved !== DEFAULT_LANGUAGE && urlCode === DEFAULT_LANGUAGE) navigate(withLang(pathname, saved) + search + hash, { replace: true });
+    // only on the first render of the page
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    const saved = readStored();
-    if (saved && saved !== DEFAULT_LANGUAGE) void setLanguage(saved);
-  }, [setLanguage]);
+  const lang = getLanguage(state.code) ?? english;
+
+  const setLanguage = useCallback(
+    async (code: string) => {
+      if (!getLanguage(code)) return;
+      store(code);
+      try {
+        await loadLocale(code);
+      } catch {
+        return;
+      }
+      navigate(withLang(pathname, code) + search + hash);
+    },
+    [navigate, pathname, search, hash],
+  );
 
   // Keep <html lang> and <html dir> in step with the language so screen readers and RTL layouts work.
   useEffect(() => {
-    document.documentElement.lang = state.lang.code;
-    document.documentElement.dir = state.lang.dir;
-  }, [state.lang]);
+    document.documentElement.lang = langTag(lang);
+    document.documentElement.dir = lang.dir;
+  }, [lang]);
 
   const value = useMemo<I18n>(
     () => ({
-      lang: state.lang,
-      t: (key, vars) => translateWith(state.lang.code, state.messages, key, vars),
+      lang,
+      t: (key, vars) => translateWith(lang.code, state.messages, key, vars),
       setLanguage,
       messages: state.messages,
       toolText: state.toolText,
       loading,
     }),
-    [state, setLanguage, loading],
+    [lang, state, setLanguage, loading],
   );
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

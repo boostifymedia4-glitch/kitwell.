@@ -36,7 +36,6 @@ export default {
   'help.other.1.q': 'Agrandir une image utilise-t-il l’IA ?',
   'help.other.1.a': 'Non. L’outil utilise un rééchantillonnage de haute qualité pour agrandir l’image et la lisser. Il ne peut pas inventer des détails qui n’ont jamais figuré dans l’image.',
   'help.other.2.q': 'Dans quelles langues le site est-il disponible ?',
-  'help.other.2.a': 'Le site peut s’afficher en 17 langues : anglais, ourdou, arabe, espagnol, français, allemand, portugais, italien, turc, chinois, japonais, coréen, hindi, indonésien, bengali, russe et néerlandais. Les menus, les pages d’outils, les interfaces des outils, l’aide et les guides sont traduits. Les longs textes juridiques (politique de confidentialité, conditions générales, informations sur les cookies) ne sont disponibles qu’en anglais, car c’est la version qui fait foi. Choisissez une langue en bas de n’importe quelle page.',
   'help.contact.title': 'Toujours bloqué ?',
   'help.contact.0.q': 'Comment signaler un bug ou suggérer un outil ?',
   'help.contact.0.a': 'Utilisez la page Contact. Indiquez le nom de l’outil, votre navigateur et ce que vous vous attendiez à voir. N’envoyez jamais de fichiers contenant des informations privées.',

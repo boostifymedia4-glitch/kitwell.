@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 import { useI18n } from '@/i18n';
-import { English } from '@/i18n/English';
 import { usePageMeta } from '@/i18n/usePageMeta';
 import { Seo } from '../Seo';
 import { Breadcrumbs } from './Breadcrumbs';
@@ -29,17 +28,17 @@ export function Placeholder({ children }: { children: ReactNode }) {
   return <span className="placeholder">[{children}]</span>;
 }
 
-/** Legal text exists only in English. In other languages a note says so and the text is marked as English for screen readers. */
+/** The body of a legal page. Outside English a note says the text is a translation and the English version is authoritative. */
 export function LegalBody({ children }: { children: ReactNode }) {
   const { t, lang } = useI18n();
   return (
     <>
       {lang.code !== 'en' && (
         <p className="note" role="note">
-          {t('legal.englishOnly')}
+          {t('legal.translationNote')}
         </p>
       )}
-      <English>{children}</English>
+      {children}
     </>
   );
 }

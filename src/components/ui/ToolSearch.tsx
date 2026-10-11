@@ -1,5 +1,6 @@
 import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { withLang } from '@/i18n/routing';
 import { useI18n } from '@/i18n';
 import { useLocalize } from '@/i18n/useLocalize';
 import { searchTools, toolPath } from '@/tools/registry';
@@ -14,7 +15,7 @@ interface Props {
 }
 
 export function ToolSearch({ variant = 'header', shortcut = false, onNavigate }: Props) {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const loc = useLocalize();
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState(false);
@@ -54,7 +55,7 @@ export function ToolSearch({ variant = 'header', shortcut = false, onNavigate }:
     setOpen(false);
     setQuery('');
     onNavigate?.();
-    navigate(toolPath(tool));
+    navigate(withLang(toolPath(tool), lang.code));
   };
 
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {

@@ -57,7 +57,6 @@ export default {
   'footer.seeAll': 'すべての{count}個のツール',
   'footer.language': '言語',
   'lang.title': '言語を選択',
-  'lang.note': 'メニュー、ツール、ヘルプ、ガイドは翻訳済みです。法的文書（プライバシーポリシー、利用規約、Cookieについて）は、有効な版である英語のままです。',
   'lang.close': '閉じる',
   'lang.change': '言語を変更。現在の言語：{name}',
   'mega.categories': 'ツールのカテゴリ',

@@ -4,7 +4,7 @@ Read this completely before translating. It applies to every language.
 
 ## Goal
 
-Kitwell (a site of free browser-based tools for images, PDFs, text and developers) is shown in 17 languages. You translate
+Kitwell (a site of free browser-based tools for images, PDFs, text and developers) is shown in 25 languages. You translate
 the English source text into **one** language. The result is shown to real visitors, so it must read like text written by a
 native speaker of a good software product: natural, consistent and correct, not word-for-word.
 
@@ -36,6 +36,14 @@ native speaker of a good software product: natural, consistent and correct, not 
 | Bengali (bn) | Standard Bengali (বাংলা), "আপনি" form. |
 | Russian (ru) | "вы" form. |
 | Dutch (nl) | "je/jouw" form as modern Dutch apps do, consistently. |
+| Vietnamese (vi) | Standard Vietnamese, polite neutral address ("bạn"), with full diacritics. |
+| Polish (pl) | Polite impersonal/imperative forms common in apps; correct diacritics and cases. |
+| Persian (fa) | Standard Persian (Farsi), polite "شما" form, Persian letters (ی ک), use Western digits 0-9 inside numbers and placeholders, ZWNJ (half-space) where Persian orthography needs it. Right-to-left. |
+| Thai (th) | Standard Thai, polite register (ค่ะ/ครับ not needed in UI text; use neutral polite phrasing). No spaces between words; do not insert spaces inside Thai phrases except where Thai punctuation needs them. Use Western digits. |
+| Ukrainian (uk) | Standard Ukrainian (not Russian), "ви" form, correct apostrophe ʼ/' usage. |
+| Romanian (ro) | Standard Romanian with correct diacritics (ă â î ș ț, comma-below forms), polite form. |
+| Greek (el) | Standard Modern Greek (monotonic), polite plural form. |
+| Czech (cs) | Standard Czech, "vy" form, correct diacritics. |
 
 ## File format
 
@@ -79,6 +87,10 @@ Where the English file has `key.one` and `key.other`, give the plural forms **yo
 | es, fr, it, pt | `.one`, `.many`, `.other` (`.many` is only used for millions; give the same wording as `.other`) |
 | ru | `.one`, `.few`, `.many`, `.other` |
 | ar | `.zero`, `.one`, `.two`, `.few`, `.many`, `.other` |
+| vi, th | `.other` |
+| fa, el | `.one`, `.other` |
+| pl, uk, cs | `.one`, `.few`, `.many`, `.other` |
+| ro | `.one`, `.few`, `.other` |
 
 Do not guess. Run this in the project root to see exactly which keys your language needs:
 
@@ -131,3 +143,9 @@ Do **not** run the whole test-suite, do not edit anything outside the files you 
 
 Reply with: the files you wrote, the audit numbers for your language, and an honest list of anything you are not
 confident about (specific keys or terms) or left out.
+
+## Legal pages (legal.ts) and markers
+
+`src/i18n/en/legal.ts` holds the complete Privacy Policy, Terms & Conditions and Cookie information, plus three notes (`legal.translationNote`, `lang.note`, `help.other.2.a`). Translate **all** of it faithfully, sentence by sentence. This is legal text: keep the meaning exactly, do not add, soften or strengthen any promise, do not invent retention periods, services, company details or jurisdictions, and keep the numbering of the headings.
+
+Markers inside values (keep them exactly, translate only the words between them): `{site}` (site name), `{email}` (contact address), `<ph>…</ph>` (a highlighted blank the owner must fill in, e.g. `<ph>DATE</ph>`; translate the words inside), `<b>…</b>` (bold), and `<cookies>…</cookies>`, `<privacy>…</privacy>`, `<contact>…</contact>` (links). Use the word your language uses for "cookies" in legal text. "Kitwell-language" in the cookie text is a technical name of a storage entry: keep it as is.

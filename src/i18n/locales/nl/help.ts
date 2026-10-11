@@ -36,7 +36,6 @@ export default {
   'help.other.1.q': 'Gebruikt Afbeelding vergroten AI?',
   'help.other.1.a': 'Nee. De tool gebruikt hoogwaardige hersampling om een afbeelding groter en vloeiender te maken. Hij kan geen details verzinnen die nooit in de foto zaten.',
   'help.other.2.q': 'In welke talen is de site beschikbaar?',
-  'help.other.2.a': 'De site kan in 17 talen worden getoond: Engels, Urdu, Arabisch, Spaans, Frans, Duits, Portugees, Italiaans, Turks, Chinees, Japans, Koreaans, Hindi, Indonesisch, Bengaals, Russisch en Nederlands. Menu’s, toolpagina’s, toolinterfaces, help en handleidingen zijn vertaald. De lange juridische teksten (privacybeleid, algemene voorwaarden, cookie-informatie) zijn alleen in het Engels beschikbaar, omdat dat de versie is die geldt. Kies een taal onderaan elke pagina.',
   'help.contact.title': 'Nog steeds vast?',
   'help.contact.0.q': 'Hoe meld ik een bug of stel ik een tool voor?',
   'help.contact.0.a': 'Gebruik de pagina Contact. Vermeld de naam van de tool, je browser en wat je verwachtte dat er zou gebeuren. Stuur nooit bestanden met privégegevens.',

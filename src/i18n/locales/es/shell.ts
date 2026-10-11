@@ -57,7 +57,6 @@ export default {
   'footer.seeAll': 'Las {count} herramientas',
   'footer.language': 'Idioma',
   'lang.title': 'Elige tu idioma',
-  'lang.note': 'Los menús, las herramientas, la ayuda y las guías están traducidos. Los textos legales (Política de privacidad, Términos, Información sobre cookies) siguen en inglés, que es la versión aplicable.',
   'mega.categories': 'Categorías de herramientas',
   'lang.optionLabel': '{name} ({english})',
   'lang.partial': 'parcial',

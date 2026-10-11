@@ -64,7 +64,6 @@ export default {
   'footer.seeAll': '도구 {count}개 전체',
   'footer.language': '언어',
   'lang.title': '언어 선택',
-  'lang.note': '메뉴, 도구, 도움말, 가이드가 번역되어 있습니다. 법률 문서(개인정보 처리방침, 이용약관, 쿠키 안내)는 효력이 있는 버전인 영어로 유지됩니다.',
   'lang.close': '닫기',
   'lang.change': '언어 변경. 현재 언어: {name}',
 } as PartialMessages;

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from '@/i18n/Link';
 import { Icon } from '@/components/Icon';
 import { PageShell } from '@/components/ui/PageShell';
 import { posts, postPath } from '@/blog/posts';

@@ -36,7 +36,6 @@ export default {
   'help.other.1.q': '¿Ampliar imagen usa IA?',
   'help.other.1.a': 'No. Usa un remuestreo de alta calidad para agrandar y suavizar una imagen. No puede inventar detalles que nunca estuvieron en la imagen.',
   'help.other.2.q': '¿En qué idiomas está disponible el sitio?',
-  'help.other.2.a': 'El sitio puede mostrarse en 17 idiomas: inglés, urdu, árabe, español, francés, alemán, portugués, italiano, turco, chino, japonés, coreano, hindi, indonesio, bengalí, ruso y neerlandés. Los menús, las páginas y las interfaces de las herramientas, la ayuda y las guías están traducidos. Los textos legales largos (Política de privacidad, Términos y condiciones, Información sobre cookies) solo están disponibles en inglés, porque es la versión aplicable. Elige un idioma al final de cualquier página.',
   'help.contact.title': '¿Sigues atascado?',
   'help.contact.0.q': '¿Cómo informo de un error o sugiero una herramienta?',
   'help.contact.0.a': 'Usa la página de Contacto. Indica el nombre de la herramienta, tu navegador y lo que esperabas que ocurriera. No envíes nunca archivos que contengan información privada.',

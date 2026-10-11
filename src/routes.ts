@@ -1,5 +1,6 @@
 import { lazyPage, type LazyPage } from './lazyPage';
 import { getPageMeta, staticPages } from './pageMeta';
+import { splitLang } from './i18n/routing';
 
 const Home = lazyPage(() => import('./pages/Home'));
 const Tools = lazyPage(() => import('./pages/Tools'));
@@ -34,7 +35,7 @@ export function normalizePath(pathname: string): string {
 
 /** Resolves a URL path to its page component. Unknown paths resolve to NotFound. */
 export function matchPage(pathname: string): LazyPage {
-  const path = normalizePath(pathname);
+  const path = normalizePath(splitLang(pathname).path);
   if (path in fixed && path in staticPages) return fixed[path];
   if (!getPageMeta(path)) return NotFound;
   if (path.startsWith('/blog/')) return BlogPost;

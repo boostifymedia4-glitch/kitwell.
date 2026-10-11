@@ -47,7 +47,6 @@ export default {
   'legal.terms.lead': 'De regels voor het gebruik van {site}.',
   'legal.cookies.title': 'Informatie over cookies en browseropslag',
   'legal.cookies.lead': 'Wat deze site in je browser opslaat en wat er zou veranderen als er advertenties worden toegevoegd.',
-  'legal.englishOnly': 'De volledige tekst hieronder is alleen in het Engels beschikbaar. Dat is de versie die geldt.',
 
   'contact.title': 'Neem contact met ons op',
   'contact.lead': 'Vragen, bugmeldingen en suggesties voor tools zijn welkom.',

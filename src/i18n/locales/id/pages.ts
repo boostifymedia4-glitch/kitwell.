@@ -43,7 +43,6 @@ export default {
   'legal.terms.lead': 'Aturan penggunaan {site}.',
   'legal.cookies.title': 'Informasi cookie & penyimpanan browser',
   'legal.cookies.lead': 'Apa yang disimpan situs ini di browser Anda, dan apa yang akan berubah jika iklan ditambahkan.',
-  'legal.englishOnly': 'Teks lengkap di bawah ini hanya tersedia dalam bahasa Inggris. Itulah versi yang berlaku.',
   'contact.title': 'Hubungi kami',
   'contact.lead': 'Pertanyaan, laporan bug, dan usulan alat sangat kami sambut.',
   'contact.form.h': 'Kirim pesan',

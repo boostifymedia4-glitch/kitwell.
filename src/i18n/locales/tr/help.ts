@@ -36,7 +36,6 @@ export default {
   'help.other.1.q': 'Görseli Büyüt yapay zekâ kullanıyor mu?',
   'help.other.1.a': 'Hayır. Bir görseli büyütmek ve yumuşatmak için yüksek kaliteli yeniden örnekleme kullanır. Resimde hiç bulunmayan ayrıntıyı uyduramaz.',
   'help.other.2.q': 'Site hangi dillerde kullanılabilir?',
-  'help.other.2.a': 'Site 17 dilde gösterilebilir: İngilizce, Urduca, Arapça, İspanyolca, Fransızca, Almanca, Portekizce, İtalyanca, Türkçe, Çince, Japonca, Korece, Hintçe, Endonezce, Bengalce, Rusça ve Felemenkçe. Menüler, araç sayfaları, araç arayüzleri, yardım ve rehberler çevrilmiştir. Uzun hukuki metinler (Gizlilik Politikası, Şartlar ve Koşullar, Çerez bilgileri) geçerli sürüm olduğu için yalnızca İngilizce sunulur. Dili herhangi bir sayfanın altından seçebilirsiniz.',
   'help.contact.title': 'Hâlâ takıldınız mı?',
   'help.contact.0.q': 'Bir hatayı nasıl bildirir veya bir araç önerebilirim?',
   'help.contact.0.a': 'İletişim sayfasını kullanın. Lütfen araç adını, tarayıcınızı ve ne olmasını beklediğinizi belirtin. Özel bilgi içeren dosyaları asla göndermeyin.',

@@ -47,7 +47,6 @@ export default {
   'legal.terms.lead': '{site} kullanımına ilişkin kurallar.',
   'legal.cookies.title': 'Çerez ve tarayıcı depolaması bilgileri',
   'legal.cookies.lead': 'Bu sitenin tarayıcınızda neleri depoladığı ve reklam eklenirse nelerin değişeceği.',
-  'legal.englishOnly': 'Aşağıdaki tam metin yalnızca İngilizce sunulur. Geçerli olan sürüm odur.',
 
   'contact.title': 'Bize ulaşın',
   'contact.lead': 'Sorularınız, hata bildirimleriniz ve araç önerileriniz bizim için değerli.',

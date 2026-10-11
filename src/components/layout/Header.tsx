@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { Link, NavLink } from '@/i18n/Link';
 import { site } from '@/config/site';
 import { useLocalize } from '@/i18n/useLocalize';
 import { useI18n, type MessageKey } from '@/i18n';

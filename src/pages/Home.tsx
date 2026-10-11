@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from '@/i18n/Link';
 import { Icon } from '@/components/Icon';
 import { Seo } from '@/components/Seo';
 import { AdSlot } from '@/components/ui/AdSlot';

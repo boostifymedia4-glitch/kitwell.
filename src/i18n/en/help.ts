@@ -35,7 +35,6 @@ export const help = {
   'help.other.1.q': "Does Enlarge Image use AI?",
   'help.other.1.a': "No. It uses high-quality resampling to make an image bigger and smooth. It cannot invent detail that was never in the picture.",
   'help.other.2.q': "Which languages is the site available in?",
-  'help.other.2.a': "The site can be shown in 17 languages: English, Urdu, Arabic, Spanish, French, German, Portuguese, Italian, Turkish, Chinese, Japanese, Korean, Hindi, Indonesian, Bengali, Russian and Dutch. Menus, tool pages, tool interfaces, help and guides are translated. The long legal texts (Privacy Policy, Terms & Conditions, Cookie information) are available in English only, because that is the version that applies. Choose a language at the bottom of any page.",
   'help.contact.title': "Still stuck?",
   'help.contact.0.q': "How do I report a bug or suggest a tool?",
   'help.contact.0.a': "Use the Contact page. Please include the tool name, your browser and what you expected to happen. Never send files that contain private information.",

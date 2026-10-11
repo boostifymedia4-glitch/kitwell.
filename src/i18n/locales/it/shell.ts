@@ -71,7 +71,6 @@ export default {
   'footer.language': 'Lingua',
 
   'lang.title': 'Scegli la tua lingua',
-  'lang.note': 'Menu, strumenti, aiuto e guide sono tradotti. I testi legali (Informativa sulla privacy, Termini, Informazioni sui cookie) restano in inglese, come versione di riferimento.',
   'lang.close': 'Chiudi',
   'lang.change': 'Cambia lingua. Lingua attuale: {name}',
 } as PartialMessages;

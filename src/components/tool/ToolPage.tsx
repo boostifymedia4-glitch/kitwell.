@@ -1,5 +1,5 @@
 import { Component, Suspense, lazy, useEffect, useMemo, useState, type ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '@/i18n/Link';
 import { useI18n } from '@/i18n';
 import { useLocalize } from '@/i18n/useLocalize';
 import { categoryPath, getCategory, relatedTools, toolPath } from '@/tools/registry';

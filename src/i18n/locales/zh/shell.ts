@@ -64,7 +64,6 @@ export default {
   'footer.seeAll': '全部 {count} 个工具',
   'footer.language': '语言',
   'lang.title': '选择语言',
-  'lang.note': '菜单、工具、帮助和指南均已翻译。法律文本（隐私政策、条款、Cookie 说明）保留英文，以英文版本为准。',
   'lang.close': '关闭',
   'lang.change': '更改语言。当前语言：{name}',
 } as PartialMessages;

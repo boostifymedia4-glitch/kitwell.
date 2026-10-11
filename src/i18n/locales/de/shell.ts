@@ -64,7 +64,6 @@ export default {
   'footer.seeAll': 'Alle {count} Tools',
   'footer.language': 'Sprache',
   'lang.title': 'Sprache wählen',
-  'lang.note': 'Menüs, Tools, Hilfe und Ratgeber sind übersetzt. Die Rechtstexte (Datenschutzerklärung, Nutzungsbedingungen, Cookie-Informationen) bleiben auf Englisch, da diese Fassung maßgeblich ist.',
   'lang.close': 'Schließen',
   'lang.change': 'Sprache ändern. Aktuelle Sprache: {name}',
 } as PartialMessages;

@@ -52,7 +52,6 @@ export default {
   'legal.terms.lead': '使用 {site} 的规则。',
   'legal.cookies.title': 'Cookie 与浏览器存储说明',
   'legal.cookies.lead': '本站在您的浏览器中存储什么，以及添加广告后会有什么变化。',
-  'legal.englishOnly': '以下全文仅提供英文版本，以英文版本为准。',
 
   // Contact
   'contact.title': '联系我们',

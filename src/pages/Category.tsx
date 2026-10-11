@@ -1,4 +1,5 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from '@/i18n/Link';
+import { usePath } from '@/i18n/routing';
 import { Icon } from '@/components/Icon';
 import { Seo } from '@/components/Seo';
 import { useI18n } from '@/i18n';
@@ -13,7 +14,7 @@ import { normalizePath } from '@/routes';
 export default function Category() {
   const { t } = useI18n();
   const loc = useLocalize();
-  const path = normalizePath(useLocation().pathname);
+  const path = normalizePath(usePath());
   const source = getCategory(path.split('/')[2] ?? '');
   const cat = source && loc.category(source);
   const meta = usePageMeta(path);

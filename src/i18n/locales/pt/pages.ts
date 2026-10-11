@@ -43,7 +43,6 @@ export default {
   'legal.terms.lead': 'As regras para usar o {site}.',
   'legal.cookies.title': 'Informações sobre cookies e armazenamento do navegador',
   'legal.cookies.lead': 'O que este site armazena no seu navegador e o que mudaria se a publicidade fosse adicionada.',
-  'legal.englishOnly': 'O texto completo abaixo está disponível apenas em inglês. Essa é a versão que vale.',
   'contact.title': 'Fale conosco',
   'contact.lead': 'Dúvidas, relatos de erros e sugestões de ferramentas são bem-vindos.',
   'contact.form.h': 'Enviar uma mensagem',

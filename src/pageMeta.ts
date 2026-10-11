@@ -1,4 +1,5 @@
-import { absoluteUrl, site } from '@/config/site';
+import { site } from '@/config/site';
+import { canonicalFor } from '@/seo';
 import type { PageMeta } from '@/components/Seo';
 import { allHelpItems } from '@/pages/helpData';
 import { categories, categoryPath, getCategory, getTool, toolPath, toolTitle, tools } from '@/tools/registry';
@@ -125,7 +126,7 @@ const breadcrumbLd = (path: string, l: Localizer) => ({
     '@type': 'ListItem',
     position: i + 1,
     name: c.name,
-    item: absoluteUrl(c.path),
+    item: canonicalFor(c.path, l.lang),
   })),
 });
 
@@ -143,7 +144,7 @@ export function getPageMeta(path: string, l: Localizer = englishLocalizer): Page
       });
     }
     if (path === '/') {
-      jsonLd.push({ '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, url: absoluteUrl('/'), description: site.tagline });
+      jsonLd.push({ '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, url: canonicalFor('/', l.lang), description: site.tagline });
     }
     return { title: sp.title, description: sp.description, path, jsonLd };
   }
@@ -175,7 +176,7 @@ export function getPageMeta(path: string, l: Localizer = englishLocalizer): Page
         '@context': 'https://schema.org',
         '@type': 'WebApplication',
         name: tool.name,
-        url: absoluteUrl(path),
+        url: canonicalFor(path, l.lang),
         description: tool.description,
         applicationCategory: 'UtilitiesApplication',
         operatingSystem: 'Any (modern web browser)',
@@ -194,7 +195,7 @@ export function getPageMeta(path: string, l: Localizer = englishLocalizer): Page
 function postMeta(path: string, slug: string, l: Localizer): PageMeta | null {
   const post = getPost(slug);
   if (!post) return null;
-  const url = absoluteUrl(path);
+  const url = canonicalFor(path, l.lang);
   const title = l.post(slug, 'title');
   const description = l.post(slug, 'description');
   const faqBlock = post.blocks.find((b) => b.type === 'faq');
@@ -210,8 +211,8 @@ function postMeta(path: string, slug: string, l: Localizer): PageMeta | null {
       datePublished: post.published,
       dateModified: post.updated,
       inLanguage: l.lang,
-      author: { '@type': 'Organization', name: site.name, url: absoluteUrl('/') },
-      publisher: { '@type': 'Organization', name: site.name, url: absoluteUrl('/') },
+      author: { '@type': 'Organization', name: site.name, url: canonicalFor('/', l.lang) },
+      publisher: { '@type': 'Organization', name: site.name, url: canonicalFor('/', l.lang) },
     },
   ];
   if (faqBlock && faqBlock.type === 'faq') {

@@ -36,7 +36,6 @@ export default {
   'help.other.1.q': 'Apakah Perbesar Gambar menggunakan AI?',
   'help.other.1.a': 'Tidak. Alat ini menggunakan resampling berkualitas tinggi untuk memperbesar dan menghaluskan gambar. Alat ini tidak dapat menciptakan detail yang tidak pernah ada di gambar.',
   'help.other.2.q': 'Situs ini tersedia dalam bahasa apa saja?',
-  'help.other.2.a': 'Situs dapat ditampilkan dalam 17 bahasa: Inggris, Urdu, Arab, Spanyol, Prancis, Jerman, Portugis, Italia, Turki, Mandarin, Jepang, Korea, Hindi, Indonesia, Bengali, Rusia, dan Belanda. Menu, halaman alat, antarmuka alat, bantuan, dan panduan sudah diterjemahkan. Teks hukum yang panjang (Kebijakan Privasi, Syarat & Ketentuan, Informasi cookie) hanya tersedia dalam bahasa Inggris, karena itulah versi yang berlaku. Pilih bahasa di bagian bawah halaman mana pun.',
   'help.contact.title': 'Masih kesulitan?',
   'help.contact.0.q': 'Bagaimana cara melaporkan bug atau mengusulkan alat?',
   'help.contact.0.a': 'Gunakan halaman Kontak. Mohon sertakan nama alat, browser Anda, dan apa yang Anda harapkan terjadi. Jangan pernah mengirim file yang berisi informasi pribadi.',

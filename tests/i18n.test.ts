@@ -12,6 +12,7 @@ const SAME_EVERYWHERE = new Set([
   'caseConverter.mode.constant', 'imageToBase64.style.css', 'characterCounter.bytes', 'pdfRedact.quality.standard',
   'pdfPageNumbers.fmt.page-n', 'pdfPageNumbers.fmt.n-of-total', 'ui.pages.other', 'gifMaker.shape.portrait',
   'imagesToPdf.summary.one', 'imagesToPdf.summary.other', 'pdfSplit.note.other', 'pdfMetadata.pageCount.other',
+  'removeDuplicates.placeholder', 'textSorter.placeholder', 'jsonTool.placeholder', 'xmlFormatter.placeholder', 'pdfRedact.termsPlaceholder', 'caseConverter.mode.sentence', 'timestampConverter.unixTimestamp',
   'pdfRedact.leftover', 'pdfRedact.page', 'pdfRedact.pageChip', 'qrGenerator.level.Q', 'category.count', 'colorConverter.contrast',
 ]);
 
@@ -19,15 +20,17 @@ const keys = Object.keys(en) as MessageKey[];
 const placeholders = (s: string) => [...s.matchAll(/\{(\w+)\}/g)].map((m) => m[1]).sort();
 
 describe('languages', () => {
-  it('offers the 17 requested languages', () => {
+  it('offers exactly the 25 requested languages', () => {
     expect(LANGUAGES.map((l) => l.english)).toEqual([
       'English', 'Urdu', 'Arabic', 'Spanish', 'French', 'German', 'Portuguese', 'Italian', 'Turkish',
       'Chinese', 'Japanese', 'Korean', 'Hindi', 'Indonesian', 'Bengali', 'Russian', 'Dutch',
+      'Vietnamese', 'Polish', 'Persian', 'Thai', 'Ukrainian', 'Romanian', 'Greek', 'Czech',
     ]);
+    expect(LANGUAGES).toHaveLength(25);
     expect(new Set(LANGUAGES.map((l) => l.code)).size).toBe(LANGUAGES.length);
   });
-  it('marks only Urdu and Arabic as right-to-left', () => {
-    expect(LANGUAGES.filter((l) => l.dir === 'rtl').map((l) => l.code)).toEqual(['ur', 'ar']);
+  it('marks only Urdu, Arabic and Persian as right-to-left', () => {
+    expect(LANGUAGES.filter((l) => l.dir === 'rtl').map((l) => l.code)).toEqual(['ur', 'ar', 'fa']);
   });
   it('has a loader for every language except the default', () => {
     expect(Object.keys(localeLoaders).sort()).toEqual(LANGUAGES.map((l) => l.code).filter((c) => c !== DEFAULT_LANGUAGE).sort());

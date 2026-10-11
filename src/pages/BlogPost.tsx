@@ -1,5 +1,6 @@
 import { Fragment, type ReactNode } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from '@/i18n/Link';
+import { usePath } from '@/i18n/routing';
 import { Icon } from '@/components/Icon';
 import { Seo } from '@/components/Seo';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
@@ -38,7 +39,7 @@ function linkResolver() {
 }
 
 export default function BlogPostPage() {
-  const path = normalizePath(useLocation().pathname);
+  const path = normalizePath(usePath());
   const post = getPost(path.split('/')[2] ?? '');
   const notFound = useNotFoundMeta();
   const meta = usePageMeta(path);

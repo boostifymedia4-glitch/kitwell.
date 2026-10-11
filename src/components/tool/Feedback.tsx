@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '@/i18n/Link';
 import { useI18n } from '@/i18n';
 import type { Progress } from '@/lib/hooks';
 import { Icon } from '../Icon';

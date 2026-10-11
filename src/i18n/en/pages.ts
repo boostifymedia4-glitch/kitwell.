@@ -55,7 +55,6 @@ export const pages = {
   'legal.terms.lead': 'The rules for using {site}.',
   'legal.cookies.title': 'Cookie & browser storage information',
   'legal.cookies.lead': 'What this site stores in your browser, and what would change if advertising is added.',
-  'legal.englishOnly': 'The full text below is available in English only. It is the version that applies.',
 
   // Contact
   'contact.title': 'Contact us',

@@ -43,7 +43,6 @@ export default {
   'legal.terms.lead': '{site} 이용 규칙입니다.',
   'legal.cookies.title': '쿠키 및 브라우저 저장소 안내',
   'legal.cookies.lead': '이 사이트가 브라우저에 저장하는 내용과 광고가 추가되면 달라지는 점을 안내합니다.',
-  'legal.englishOnly': '아래 전체 본문은 영어로만 제공되며, 효력이 있는 버전입니다.',
   'contact.title': '문의하기',
   'contact.lead': '질문, 버그 신고, 도구 제안을 환영합니다.',
   'contact.form.h': '메시지 보내기',

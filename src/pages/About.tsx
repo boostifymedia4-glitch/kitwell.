@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from '@/i18n/Link';
 import { PageShell, Placeholder } from '@/components/ui/PageShell';
 import { site } from '@/config/site';
 import { useI18n } from '@/i18n';
