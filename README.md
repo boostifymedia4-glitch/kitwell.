@@ -18,7 +18,7 @@ A fast, privacy-friendly website of 69 everyday tools (image, PDF, text, develop
 ## Deployment
 
 1. Set the real domain **before building** (used for canonical URLs, sitemap, Open Graph):
-   `SITE_URL=https://your-domain.com npm run build`
+   `SITE_URL=https://your-domain.com npm run build` (on Vercel, `SITE_URL` falls back to the project's production domain)
 2. Run `npm start` on any Node 20+ host (Hostinger Node.js hosting, a VPS, Render, Fly, etc.). Env vars: `PORT`, `TRUST_PROXY=1` when behind a reverse proxy/CDN (so rate limiting sees real IPs), `UPGRADE_INSECURE_REQUESTS=true` once HTTPS is in place, and `CONTACT_WEBHOOK_URL` for the contact form (see Contact form).
 3. Serve over HTTPS. The server sends CSP, HSTS, nosniff, frame-ancestors none, and Permissions-Policy headers, and returns real 404 status codes.
 4. Static-only hosting also works (upload `dist/`), but you then lose the security headers and true 404 status, so the Node server is recommended.
