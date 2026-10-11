@@ -9,7 +9,6 @@ import { Icon } from '../Icon';
 import { CategoryIcon } from '../ui/CategoryIcon';
 import { ToolIcon } from '../ui/ToolIcon';
 import { ToolSearch } from '../ui/ToolSearch';
-import { LanguageSelector } from './LanguageSelector';
 import { MegaMenu } from './MegaMenu';
 
 export function BrandMark() {
@@ -116,7 +115,6 @@ export function Header() {
         <div className="header-search">
           <ToolSearch shortcut />
         </div>
-        <LanguageSelector />
         <button
           type="button"
           className="icon-btn menu-btn"

@@ -174,8 +174,3 @@
   .lang-plain .lang-option { min-height: 30px; }
 }
 @media (min-width: 900px) { .lang-btn-name { max-width: 7.5em; overflow: hidden; text-overflow: ellipsis; } }
-.header-inner > .lang-wrap { margin-inline-start: auto; }
-.header-inner > .menu-btn { margin-inline-start: 0; }
-@media (min-width: 900px) { .header-inner > .lang-wrap { margin-inline-start: 0; } }
-/* the header menu lists language names only; region labels belong to the footer menu */
-.site-header .lang-region { display: none !important; }
