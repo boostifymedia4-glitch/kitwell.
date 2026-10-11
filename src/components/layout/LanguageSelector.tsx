@@ -150,7 +150,12 @@ export function LanguageSelector({ placement = 'down' }: { placement?: 'down' | 
                     disabled={pending !== null}
                     onClick={() => void choose(l.code)}
                   >
-                    <span className="lang-name">{l.name}</span>
+                    <span className="lang-text">
+                      <span className="lang-name">{l.name}</span>
+                      <span className="lang-region" lang="en" dir="ltr">
+                        {l.region}
+                      </span>
+                    </span>
                     {pending === l.code ? <span className="spinner" aria-hidden="true" /> : current ? <Icon name="check" size={14} className="lang-check" /> : null}
                   </button>
                 </li>

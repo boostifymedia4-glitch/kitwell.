@@ -77,3 +77,11 @@ describe('language selector', () => {
     expect(new Set(LANGUAGES.map((l) => l.name)).size).toBe(25);
   });
 });
+
+describe('language selector regions', () => {
+  it('has a country or region label for every language', () => {
+    for (const l of LANGUAGES) expect(l.region, l.code).toBeTruthy();
+    expect(LANGUAGES.find((l) => l.code === 'de')!.region).toBe('Germany');
+    expect(LANGUAGES.find((l) => l.code === 'zh')!.region).toBe('China');
+  });
+});
