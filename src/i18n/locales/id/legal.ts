@@ -2,7 +2,6 @@ import type { PartialMessages } from '../../en';
 
 export default {
   'legal.translationNote': 'Halaman ini adalah terjemahan yang disediakan demi kemudahan. Versi bahasa Inggris adalah teks yang berlaku; jika keduanya berbeda, versi bahasa Inggris yang berlaku.',
-  'lang.note': 'Menu, alat, bantuan, panduan, dan halaman hukum telah diterjemahkan. Untuk halaman hukum, teks bahasa Inggris adalah versi yang berlaku.',
   'help.other.2.a': 'Situs ini dapat ditampilkan dalam 25 bahasa: Inggris, Urdu, Arab, Persia, Spanyol, Prancis, Jerman, Portugis, Italia, Turki, Tionghoa, Jepang, Korea, Hindi, Indonesia, Bengali, Rusia, Belanda, Vietnam, Polandia, Thai, Ukraina, Rumania, Yunani, dan Ceko. Menu, halaman alat, antarmuka alat, bantuan, panduan, dan halaman hukum telah diterjemahkan. Halaman hukum adalah terjemahan yang disediakan demi kemudahan: versi bahasa Inggris adalah teks yang berlaku. Pilih bahasa di bagian bawah halaman mana pun.',
 
   // Privacy Policy

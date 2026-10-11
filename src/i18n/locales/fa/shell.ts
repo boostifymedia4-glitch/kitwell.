@@ -71,6 +71,5 @@ export default {
   'footer.language': 'زبان',
 
   'lang.title': 'زبان خود را انتخاب کنید',
-  'lang.close': 'بستن',
   'lang.change': 'تغییر زبان. زبان فعلی: {name}',
 } as PartialMessages;

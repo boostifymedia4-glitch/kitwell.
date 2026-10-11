@@ -64,6 +64,5 @@ export default {
   'nav.blog': 'Blog',
   'nav.contact': 'Contacto',
   'footer.blog': 'Blog',
-  'lang.close': 'Cerrar',
   'lang.change': 'Cambiar idioma. Idioma actual: {name}',
 } as PartialMessages;

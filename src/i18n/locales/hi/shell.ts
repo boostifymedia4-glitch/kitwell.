@@ -64,6 +64,5 @@ export default {
   'footer.seeAll': 'सभी {count} टूल',
   'footer.language': 'भाषा',
   'lang.title': 'अपनी भाषा चुनें',
-  'lang.close': 'बंद करें',
   'lang.change': 'भाषा बदलें। मौजूदा भाषा: {name}',
 } as PartialMessages;

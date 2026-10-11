@@ -71,6 +71,5 @@ export default {
   'footer.language': 'Γλώσσα',
 
   'lang.title': 'Επιλέξτε γλώσσα',
-  'lang.close': 'Κλείσιμο',
   'lang.change': 'Αλλαγή γλώσσας. Τρέχουσα γλώσσα: {name}',
 } as PartialMessages;

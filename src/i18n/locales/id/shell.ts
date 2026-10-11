@@ -64,6 +64,5 @@ export default {
   'footer.seeAll': 'Semua {count} alat',
   'footer.language': 'Bahasa',
   'lang.title': 'Pilih bahasa Anda',
-  'lang.close': 'Tutup',
   'lang.change': 'Ganti bahasa. Bahasa saat ini: {name}',
 } as PartialMessages;

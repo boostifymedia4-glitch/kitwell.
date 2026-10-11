@@ -64,6 +64,5 @@ export default {
   'footer.seeAll': 'Alle {count} tools',
   'footer.language': 'Taal',
   'lang.title': 'Kies je taal',
-  'lang.close': 'Sluiten',
   'lang.change': 'Taal wijzigen. Huidige taal: {name}',
 } as PartialMessages;

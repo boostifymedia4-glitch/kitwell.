@@ -71,6 +71,5 @@ export default {
   'footer.language': 'Lingua',
 
   'lang.title': 'Scegli la tua lingua',
-  'lang.close': 'Chiudi',
   'lang.change': 'Cambia lingua. Lingua attuale: {name}',
 } as PartialMessages;

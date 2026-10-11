@@ -2,7 +2,6 @@ import type { PartialMessages } from '../../en';
 
 export default {
   'legal.translationNote': 'Această pagină este o traducere oferită pentru comoditate. Versiunea în limba engleză este textul autentic; dacă cele două diferă, se aplică versiunea în limba engleză.',
-  'lang.note': 'Meniurile, instrumentele, ajutorul, ghidurile și paginile juridice sunt traduse. În cazul paginilor juridice, textul în limba engleză este versiunea autentică.',
   'help.other.2.a': 'Site-ul poate fi afișat în 25 de limbi: engleză, urdu, arabă, persană, spaniolă, franceză, germană, portugheză, italiană, turcă, chineză, japoneză, coreeană, hindi, indoneziană, bengaleză, rusă, olandeză, vietnameză, poloneză, thailandeză, ucraineană, română, greacă și cehă. Meniurile, paginile instrumentelor, interfețele instrumentelor, ajutorul, ghidurile și paginile juridice sunt traduse. Paginile juridice sunt traduceri oferite pentru comoditate: versiunea în limba engleză este textul autentic. Alegeți o limbă în partea de jos a oricărei pagini.',
 
   // Privacy Policy

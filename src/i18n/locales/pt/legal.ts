@@ -2,7 +2,6 @@ import type { PartialMessages } from '../../en';
 
 export default {
   'legal.translationNote': 'Esta página é uma tradução fornecida por conveniência. A versão em inglês é o texto oficial; se as duas versões divergirem, prevalece a versão em inglês.',
-  'lang.note': 'Menus, ferramentas, ajuda, guias e páginas legais estão traduzidos. Nas páginas legais, o texto em inglês é a versão oficial.',
   'help.other.2.a': 'O site pode ser exibido em 25 idiomas: inglês, urdu, árabe, persa, espanhol, francês, alemão, português, italiano, turco, chinês, japonês, coreano, hindi, indonésio, bengali, russo, holandês, vietnamita, polonês, tailandês, ucraniano, romeno, grego e tcheco. Menus, páginas de ferramentas, interfaces das ferramentas, ajuda, guias e páginas legais estão traduzidos. As páginas legais são traduções fornecidas por conveniência: a versão em inglês é o texto oficial. Escolha um idioma no final de qualquer página.',
 
   // Privacy Policy

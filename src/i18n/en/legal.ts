@@ -6,7 +6,6 @@
  */
 export const legal = {
   'legal.translationNote': 'This page is a translation provided for convenience. The English version is the authoritative text; if the two differ, the English version applies.',
-  'lang.note': 'Menus, tools, help, guides and legal pages are translated. For the legal pages, the English text is the authoritative version.',
   'help.other.2.a': 'The site can be shown in 25 languages: English, Urdu, Arabic, Persian, Spanish, French, German, Portuguese, Italian, Turkish, Chinese, Japanese, Korean, Hindi, Indonesian, Bengali, Russian, Dutch, Vietnamese, Polish, Thai, Ukrainian, Romanian, Greek and Czech. Menus, tool pages, tool interfaces, help, guides and the legal pages are translated. The legal pages are translations provided for convenience: the English version is the authoritative text. Choose a language at the bottom of any page.',
 
   // Privacy Policy

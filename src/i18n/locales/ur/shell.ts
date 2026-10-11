@@ -71,6 +71,5 @@ export default {
   'footer.language': 'زبان',
 
   'lang.title': 'اپنی زبان منتخب کریں',
-  'lang.close': 'بند کریں',
   'lang.change': 'زبان تبدیل کریں۔ موجودہ زبان: {name}',
 } as PartialMessages;

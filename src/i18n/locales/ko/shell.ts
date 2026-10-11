@@ -64,6 +64,5 @@ export default {
   'footer.seeAll': '도구 {count}개 전체',
   'footer.language': '언어',
   'lang.title': '언어 선택',
-  'lang.close': '닫기',
   'lang.change': '언어 변경. 현재 언어: {name}',
 } as PartialMessages;

@@ -2,7 +2,6 @@ import type { PartialMessages } from '../../en';
 
 export default {
   'legal.translationNote': 'Deze pagina is een vertaling die voor het gemak wordt aangeboden. De Engelse versie is de leidende tekst; als beide versies verschillen, geldt de Engelse versie.',
-  'lang.note': 'Menu’s, tools, help, gidsen en juridische pagina’s zijn vertaald. Voor de juridische pagina’s is de Engelse tekst de leidende versie.',
   'help.other.2.a': 'De site kan in 25 talen worden weergegeven: Engels, Urdu, Arabisch, Perzisch, Spaans, Frans, Duits, Portugees, Italiaans, Turks, Chinees, Japans, Koreaans, Hindi, Indonesisch, Bengaals, Russisch, Nederlands, Vietnamees, Pools, Thai, Oekraïens, Roemeens, Grieks en Tsjechisch. Menu’s, toolpagina’s, tool-interfaces, help, gidsen en de juridische pagina’s zijn vertaald. De juridische pagina’s zijn vertalingen die voor het gemak worden aangeboden: de Engelse versie is de leidende tekst. Kies een taal onderaan elke pagina.',
 
   // Privacybeleid

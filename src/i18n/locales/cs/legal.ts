@@ -2,7 +2,6 @@ import type { PartialMessages } from '../../en';
 
 export default {
   'legal.translationNote': 'Tato stránka je překlad poskytnutý pro pohodlí. Závazným zněním je anglická verze; pokud se obě verze liší, platí anglická verze.',
-  'lang.note': 'Nabídky, nástroje, nápověda, návody i právní stránky jsou přeloženy. U právních stránek je závazným zněním anglický text.',
   'help.other.2.a': 'Web lze zobrazit v 25 jazycích: angličtině, urdštině, arabštině, perštině, španělštině, francouzštině, němčině, portugalštině, italštině, turečtině, čínštině, japonštině, korejštině, hindštině, indonéštině, bengálštině, ruštině, nizozemštině, vietnamštině, polštině, thajštině, ukrajinštině, rumunštině, řečtině a češtině. Přeloženy jsou nabídky, stránky nástrojů, rozhraní nástrojů, nápověda, návody i právní stránky. Právní stránky jsou překlady poskytnuté pro pohodlí: závazným zněním je anglická verze. Jazyk vyberete v dolní části kterékoli stránky.',
 
   // Privacy Policy

@@ -71,6 +71,5 @@ export default {
   'footer.language': 'Ngôn ngữ',
 
   'lang.title': 'Chọn ngôn ngữ của bạn',
-  'lang.close': 'Đóng',
   'lang.change': 'Đổi ngôn ngữ. Ngôn ngữ hiện tại: {name}',
 } as PartialMessages;

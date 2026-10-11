@@ -71,6 +71,5 @@ export default {
   'footer.language': 'Limba',
 
   'lang.title': 'Alegeți limba',
-  'lang.close': 'Închide',
   'lang.change': 'Schimbă limba. Limba curentă: {name}',
 } as PartialMessages;

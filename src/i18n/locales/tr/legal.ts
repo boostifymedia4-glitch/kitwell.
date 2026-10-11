@@ -2,7 +2,6 @@ import type { PartialMessages } from '../../en';
 
 export default {
   'legal.translationNote': 'Bu sayfa, kolaylık sağlamak amacıyla sunulan bir çeviridir. Geçerli metin İngilizce sürümdür; ikisi arasında fark olursa İngilizce sürüm geçerlidir.',
-  'lang.note': 'Menüler, araçlar, yardım, rehberler ve yasal sayfalar çevrilmiştir. Yasal sayfalarda geçerli sürüm İngilizce metindir.',
   'help.other.2.a': 'Site 25 dilde gösterilebilir: İngilizce, Urduca, Arapça, Farsça, İspanyolca, Fransızca, Almanca, Portekizce, İtalyanca, Türkçe, Çince, Japonca, Korece, Hintçe, Endonezce, Bengalce, Rusça, Felemenkçe, Vietnamca, Lehçe, Tayca, Ukraynaca, Romence, Yunanca ve Çekçe. Menüler, araç sayfaları, araç arayüzleri, yardım, rehberler ve yasal sayfalar çevrilmiştir. Yasal sayfalar kolaylık sağlamak amacıyla sunulan çevirilerdir: geçerli metin İngilizce sürümdür. Dili, herhangi bir sayfanın altından seçebilirsiniz.',
 
   // Gizlilik Politikası

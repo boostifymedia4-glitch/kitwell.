@@ -2,7 +2,6 @@ import type { PartialMessages } from '../../en';
 
 export default {
   'legal.translationNote': 'Trang này là bản dịch được cung cấp để tiện theo dõi. Bản tiếng Anh là văn bản có giá trị chính thức; nếu hai bản khác nhau, bản tiếng Anh sẽ được áp dụng.',
-  'lang.note': 'Menu, công cụ, trợ giúp, hướng dẫn và các trang pháp lý đã được dịch. Đối với các trang pháp lý, văn bản tiếng Anh là bản có giá trị chính thức.',
   'help.other.2.a': 'Trang web có thể hiển thị bằng 25 ngôn ngữ: tiếng Anh, tiếng Urdu, tiếng Ả Rập, tiếng Ba Tư, tiếng Tây Ban Nha, tiếng Pháp, tiếng Đức, tiếng Bồ Đào Nha, tiếng Ý, tiếng Thổ Nhĩ Kỳ, tiếng Trung, tiếng Nhật, tiếng Hàn, tiếng Hindi, tiếng Indonesia, tiếng Bengal, tiếng Nga, tiếng Hà Lan, tiếng Việt, tiếng Ba Lan, tiếng Thái, tiếng Ukraina, tiếng Rumani, tiếng Hy Lạp và tiếng Séc. Menu, trang công cụ, giao diện công cụ, trợ giúp, hướng dẫn và các trang pháp lý đều được dịch. Các trang pháp lý là bản dịch được cung cấp để tiện theo dõi: bản tiếng Anh là văn bản có giá trị chính thức. Hãy chọn ngôn ngữ ở cuối bất kỳ trang nào.',
 
   // Privacy Policy

@@ -64,6 +64,5 @@ export default {
   'footer.seeAll': 'As {count} ferramentas',
   'footer.language': 'Idioma',
   'lang.title': 'Escolha o seu idioma',
-  'lang.close': 'Fechar',
   'lang.change': 'Mudar de idioma. Idioma atual: {name}',
 } as PartialMessages;

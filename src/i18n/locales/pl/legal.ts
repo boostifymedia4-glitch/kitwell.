@@ -2,7 +2,6 @@ import type { PartialMessages } from '../../en';
 
 export default {
   'legal.translationNote': 'Ta strona jest tłumaczeniem udostępnionym dla wygody. Wersja angielska jest tekstem wiążącym; w razie rozbieżności obowiązuje wersja angielska.',
-  'lang.note': 'Menu, narzędzia, pomoc, poradniki i strony prawne są przetłumaczone. W przypadku stron prawnych wersja angielska jest tekstem wiążącym.',
   'help.other.2.a': 'Witryna może być wyświetlana w 25 językach: angielskim, urdu, arabskim, perskim, hiszpańskim, francuskim, niemieckim, portugalskim, włoskim, tureckim, chińskim, japońskim, koreańskim, hindi, indonezyjskim, bengalskim, rosyjskim, niderlandzkim, wietnamskim, polskim, tajskim, ukraińskim, rumuńskim, greckim i czeskim. Menu, strony narzędzi, interfejsy narzędzi, pomoc, poradniki i strony prawne są przetłumaczone. Strony prawne są tłumaczeniami udostępnionymi dla wygody: wersja angielska jest tekstem wiążącym. Język wybierzesz na dole każdej strony.',
 
   // Privacy Policy

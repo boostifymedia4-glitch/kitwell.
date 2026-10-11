@@ -19,7 +19,7 @@
 .input:focus-visible, .select:focus-visible, .textarea:focus-visible { outline: none; }
 
 /* ---------- Colour, border and shadow changes ease instead of snapping ---------- */
-a, .icon-btn, .nav-link, .segmented button, .filter-tile, .page-card, .file-item, .result-item, .compare-page, .lang-option, .lang-btn, .jump-link, .shortcut, .acc-btn, .acc-link {
+a, .icon-btn, .nav-link, .segmented button, .filter-tile, .page-card, .file-item, .result-item, .compare-page, .jump-link, .shortcut, .acc-btn, .acc-link {
   transition-property: color, background-color, border-color, box-shadow, transform, opacity;
   transition-duration: var(--dur);
   transition-timing-function: var(--ease);
@@ -65,7 +65,6 @@ a, .icon-btn, .nav-link, .segmented button, .filter-tile, .page-card, .file-item
 .faq summary::after { transition: transform var(--dur-slow) var(--ease-out); }
 
 /* ---------- Language dialog ---------- */
-.lang-dialog::backdrop { background: rgb(8 16 15 / 0.55); transition: opacity var(--dur-slow) var(--ease); }
 
 /* ---------- Skeleton and loading ---------- */
 .skeleton, .tool-skeleton { background: linear-gradient(90deg, var(--bg-sunken) 25%, var(--border) 50%, var(--bg-sunken) 75%); background-size: 200% 100%; border-radius: var(--radius); }
@@ -152,8 +151,6 @@ a, .icon-btn, .nav-link, .segmented button, .filter-tile, .page-card, .file-item
   /* Menus, dialogs and panels */
   .mobile-nav { animation: drop 200ms var(--ease-out) both; }
   .acc-panel { animation: drop 180ms var(--ease-out) both; }
-  .lang-dialog[open] { animation: pop 200ms var(--ease-out) both; }
-  .lang-dialog[open]::backdrop { animation: fade 200ms var(--ease) both; }
   .search-results { animation: drop 140ms var(--ease-out) both; }
 
   /* Status: loading, success and error */

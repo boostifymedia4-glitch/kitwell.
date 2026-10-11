@@ -2,7 +2,6 @@ import type { PartialMessages } from '../../en';
 
 export default {
   'legal.translationNote': 'Diese Seite ist eine Übersetzung, die zur Information bereitgestellt wird. Maßgeblich ist die englische Fassung; weichen beide voneinander ab, gilt die englische Fassung.',
-  'lang.note': 'Menüs, Tools, Hilfe, Anleitungen und Rechtsseiten sind übersetzt. Bei den Rechtsseiten ist der englische Text die maßgebliche Fassung.',
   'help.other.2.a': 'Die Website kann in 25 Sprachen angezeigt werden: Englisch, Urdu, Arabisch, Persisch, Spanisch, Französisch, Deutsch, Portugiesisch, Italienisch, Türkisch, Chinesisch, Japanisch, Koreanisch, Hindi, Indonesisch, Bengalisch, Russisch, Niederländisch, Vietnamesisch, Polnisch, Thailändisch, Ukrainisch, Rumänisch, Griechisch und Tschechisch. Menüs, Tool-Seiten, Tool-Oberflächen, Hilfe, Anleitungen und die Rechtsseiten sind übersetzt. Die Rechtsseiten sind Übersetzungen, die zur Information bereitgestellt werden: Maßgeblich ist die englische Fassung. Wählen Sie unten auf jeder Seite eine Sprache aus.',
 
   // Datenschutzerklärung

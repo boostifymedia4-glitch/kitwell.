@@ -110,7 +110,7 @@ export function Footer() {
 
         <div className="footer-bottom">
           <span>{t('footer.rights', { year: new Date().getFullYear(), site: site.name })}</span>
-          <LanguageSelector />
+          <LanguageSelector placement="up" />
         </div>
       </div>
     </footer>

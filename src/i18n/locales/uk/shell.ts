@@ -71,6 +71,5 @@ export default {
   'footer.language': 'Мова',
 
   'lang.title': 'Виберіть мову',
-  'lang.close': 'Закрити',
   'lang.change': 'Змінити мову. Поточна мова: {name}',
 } as PartialMessages;

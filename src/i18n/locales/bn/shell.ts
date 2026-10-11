@@ -64,6 +64,5 @@ export default {
   'footer.seeAll': 'সব {count}টি টুল',
   'footer.language': 'ভাষা',
   'lang.title': 'আপনার ভাষা বেছে নিন',
-  'lang.close': 'বন্ধ করুন',
   'lang.change': 'ভাষা পরিবর্তন করুন। বর্তমান ভাষা: {name}',
 } as PartialMessages;

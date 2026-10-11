@@ -71,6 +71,5 @@ export default {
   'footer.language': 'Dil',
 
   'lang.title': 'Dilinizi seçin',
-  'lang.close': 'Kapat',
   'lang.change': 'Dili değiştir. Geçerli dil: {name}',
 } as PartialMessages;

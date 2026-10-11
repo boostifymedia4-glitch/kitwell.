@@ -74,6 +74,5 @@ export const shell = {
   'footer.language': 'Language',
 
   'lang.title': 'Choose your language',
-  'lang.close': 'Close',
   'lang.change': 'Change language. Current language: {name}',
 } as const;

@@ -64,6 +64,5 @@ export default {
   'footer.seeAll': 'Все инструменты ({count})',
   'footer.language': 'Язык',
   'lang.title': 'Выберите язык',
-  'lang.close': 'Закрыть',
   'lang.change': 'Сменить язык. Текущий язык: {name}',
 } as PartialMessages;

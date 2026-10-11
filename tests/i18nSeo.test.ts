@@ -63,3 +63,17 @@ describe('international SEO', () => {
     });
   }
 });
+
+describe('language selector', () => {
+  it('no longer carries the "English is authoritative" notice in any language', async () => {
+    expect(en['lang.note' as keyof typeof en]).toBeUndefined();
+    for (const code of codes.filter((c) => c !== DEFAULT_LANGUAGE)) {
+      const { messages } = await loadLocale(code);
+      expect(messages['lang.note'], code).toBeUndefined();
+    }
+  });
+  it('still lists all 25 languages exactly once', () => {
+    expect(LANGUAGES).toHaveLength(25);
+    expect(new Set(LANGUAGES.map((l) => l.name)).size).toBe(25);
+  });
+});
