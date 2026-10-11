@@ -12,7 +12,7 @@ const CLOSE_DELAY = 160;
  * button or the menu); everywhere it also opens on click or tap. The menu is a disclosure, so Escape closes it,
  * Tab moves on normally, and the arrow keys, Home and End move between languages.
  */
-export function LanguageSelector({ placement = 'down' }: { placement?: 'down' | 'up' }) {
+export function LanguageSelector({ placement = 'down', showRegion = false }: { placement?: 'down' | 'up'; showRegion?: boolean }) {
   const { lang, t, setLanguage } = useI18n();
   const [open, setOpen] = useState(false);
   const [pending, setPending] = useState<string | null>(null);
@@ -103,7 +103,7 @@ export function LanguageSelector({ placement = 'down' }: { placement?: 'down' | 
   return (
     <div
       ref={root}
-      className={`lang-wrap lang-${placement}`}
+      className={`lang-wrap lang-${placement}${showRegion ? '' : ' lang-plain'}`}
       onPointerEnter={(e) => {
         if (!hoverable(e)) return;
         cancelClose();
@@ -152,9 +152,11 @@ export function LanguageSelector({ placement = 'down' }: { placement?: 'down' | 
                   >
                     <span className="lang-text">
                       <span className="lang-name">{l.name}</span>
-                      <span className="lang-region" lang="en" dir="ltr">
-                        {l.region}
-                      </span>
+                      {showRegion && (
+                        <span className="lang-region" lang="en" dir="ltr">
+                          {l.region}
+                        </span>
+                      )}
                     </span>
                     {pending === l.code ? <span className="spinner" aria-hidden="true" /> : current ? <Icon name="check" size={14} className="lang-check" /> : null}
                   </button>
