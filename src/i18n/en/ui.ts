@@ -47,7 +47,6 @@ export const ui = {
   'ui.crop.label': '{label}: {w} by {h} at {x}, {y}. Use arrow keys to move.',
   'ui.advertisement': 'Advertisement',
   'ui.breadcrumb': 'Breadcrumb',
-  'ui.legalNotice': 'Starter document. This text is a template written for a browser-based tools website. It must be reviewed and completed by a qualified legal professional for Pakistan and for the countries where you have visitors (for example the EU/UK GDPR and California CCPA) before the site goes live. Items in [brackets] need your information.',
   'tool.loading': 'Loading tool…',
   'tool.loadFailed': 'This tool could not be loaded. Check your connection and try again.',
   'tool.reload': 'reload the page',

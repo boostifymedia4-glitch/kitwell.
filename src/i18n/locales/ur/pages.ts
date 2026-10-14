@@ -20,7 +20,6 @@ export default {
   'category.sections': '{name} کے حصے',
   'category.more': 'ٹولز کے مزید زمرے',
   'tools.title': 'تمام ٹولز',
-  'tools.lead': 'تصاویر، PDF، متن اور ڈویلپمنٹ کے لیے {count} مفت ٹولز۔ تلاش کریں، یا زمرے کے لحاظ سے دیکھیں۔',
   'tools.jump': 'کسی زمرے پر جائیں',
 
   // About
@@ -41,17 +40,11 @@ export default {
 
   // Help chrome
   'help.title': 'مدد اور اکثر پوچھے گئے سوالات',
-  'help.lead': 'ٹولز کے کام کرنے، آپ کی فائلوں اور پرائیویسی، اور ہر ٹول کی حدود کے بارے میں جوابات۔',
-  'help.topics': 'مدد کے موضوعات',
-  'help.more': 'اپنا جواب نہیں ملا؟ <contact>ہم سے رابطہ کریں</contact>، <tools>تمام ٹولز</tools> دیکھیں، یا <privacy>پرائیویسی پالیسی</privacy> پڑھیں۔',
 
   // Legal pages
   'legal.privacy.title': 'پرائیویسی پالیسی',
-  'legal.privacy.lead': '{site} آپ کی فائلوں اور ڈیٹا کو کیسے سنبھالتا ہے۔',
   'legal.terms.title': 'شرائط و ضوابط',
-  'legal.terms.lead': '{site} کے استعمال کے قواعد۔',
   'legal.cookies.title': 'کوکیز اور براؤزر اسٹوریج کی معلومات',
-  'legal.cookies.lead': 'یہ سائٹ آپ کے براؤزر میں کیا محفوظ کرتی ہے، اور اشتہارات شامل ہونے پر کیا بدلے گا۔',
 
   // Contact
   'contact.title': 'ہم سے رابطہ کریں',
@@ -60,12 +53,6 @@ export default {
   'contact.form.name': 'آپ کا نام',
   'contact.form.email': 'آپ کا ای میل ایڈریس',
   'contact.form.emailHint': 'صرف آپ کو جواب دینے کے لیے استعمال ہوتا ہے۔',
-  'contact.form.topic': 'یہ کس بارے میں ہے؟',
-  'contact.form.topicOption.bug': 'کوئی خرابی یا مسئلہ',
-  'contact.form.topicOption.suggestion': 'کسی ٹول یا خصوصیت کی تجویز',
-  'contact.form.topicOption.question': 'ایک سوال',
-  'contact.form.topicOption.misc': 'کچھ اور',
-  'contact.form.choose': 'موضوع منتخب کریں',
   'contact.form.page': 'ٹول یا صفحہ (اختیاری)',
   'contact.form.pagePlaceholder': 'مثلاً: PDF جوڑیں',
   'contact.form.message': 'پیغام',
@@ -76,7 +63,6 @@ export default {
   'contact.form.honeypot': 'اس خانے کو خالی چھوڑ دیں',
   'contact.err.name': 'اپنا نام درج کریں۔',
   'contact.err.email': 'درست ای میل ایڈریس درج کریں۔',
-  'contact.err.topic': 'منتخب کریں کہ پیغام کس بارے میں ہے۔',
   'contact.err.message': 'کم از کم {min} حروف کا پیغام لکھیں (زیادہ سے زیادہ {max})۔',
   'contact.err.summary': 'براہِ کرم نمایاں کیے گئے خانے درست کریں۔',
   'contact.sent.h': 'پیغام بھیج دیا گیا',
@@ -88,9 +74,6 @@ export default {
   'contact.fail.network': 'کنکشن ناکام ہونے کی وجہ سے پیغام نہیں بھیجا جا سکا۔ اپنا انٹرنیٹ کنکشن چیک کریں اور دوبارہ کوشش کریں۔',
   'contact.unavailable.h': 'رابطہ فارم ابھی دستیاب نہیں ہے',
   'contact.unavailable.p': 'اس سائٹ کو کسی میل باکس سے منسلک نہیں کیا گیا، اس لیے اس صفحے سے پیغامات نہیں بھیجے جا سکتے۔',
-  'contact.email.h': 'ای میل',
-  'contact.email.p': 'آپ ہمیں ای میل بھی کر سکتے ہیں:',
-  'contact.email.placeholder': 'رابطے کا ای میل ایڈریس (آغاز سے پہلے شامل کیا جائے گا)',
   'contact.report.h': 'مسئلے کی اطلاع دینا',
   'contact.report.intro': 'مسئلہ دوبارہ پیدا کرنے میں ہماری مدد کے لیے براہِ کرم یہ شامل کریں:',
   'contact.report.1': 'ٹول کا نام اور صفحے کا ایڈریس۔',

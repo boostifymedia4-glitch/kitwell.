@@ -1331,5 +1331,156 @@ const tools: ToolTextMap = {
       'I colori scuri su sfondo chiaro con forte contrasto si scansionano meglio.',
     ],
   },
+  "scan-to-pdf": {
+    name: "Da scansione a PDF",
+    description: "Trasforma foto o scansioni di pagine cartacee in un unico PDF, con una pulizia facoltativa per migliorare la leggibilità.",
+    metaDescription: "Da scansione a PDF online: combina foto o scansioni di pagine cartacee in un unico PDF, imposta l’ordine delle pagine e attenua le ombre con la modalità documento in bianco e nero.",
+    steps: [
+      "Aggiungi foto o scansioni delle tue pagine, oppure scatta una foto se il tuo smartphone o tablet lo permette.",
+      "Metti le pagine in ordine e scegli il formato pagina e uno stile di pulizia.",
+      "Crea il PDF e scaricalo.",
+    ],
+    faq: [
+      { q: "Riconosce il testo sulla pagina?", a: "No. Da scansione a PDF trasforma le immagini in pagine PDF e può ripulirle, ma il testo resta parte dell’immagine. Per renderlo ricercabile, passa il risultato in OCR PDF." },
+      { q: "Posso usare la fotocamera dello smartphone?", a: "Su smartphone e tablet il cui browser lo supporta, il pulsante «Scatta una foto» apre la fotocamera. In caso contrario scegli foto già salvate sul tuo dispositivo." },
+      { q: "Cosa fanno gli stili di pulizia?", a: "«Originale» mantiene i colori. «Scala di grigi» elimina il colore. «Documento in bianco e nero» trasforma la pagina in testo nero puro su carta bianca e attenua ombre e illuminazione irregolare: è adatto a pagine stampate e appunti, non alle fotografie." },
+      { q: "Il mio file viene caricato da qualche parte?", a: "No. Il file viene letto e convertito dal tuo browser. Questo strumento non lo invia a un server." },
+    ],
+    limits: [
+      "Massimo 25 MB per immagine e 100 immagini per PDF.",
+      "Le foto grandi vengono ridotte a circa il formato A4 a 300 dpi per mantenere il PDF leggero.",
+      "Alcuni formati degli smartphone, come HEIC, non possono essere letti dai browser; salvali prima come JPG.",
+    ],
+  },
+  "html-to-pdf": {
+    name: "Da HTML a PDF",
+    description: "Converti un file HTML o dell’HTML incollato in un PDF con testo selezionabile.",
+    metaDescription: "Da HTML a PDF online: converti un file HTML o del codice HTML incollato in un PDF con testo reale e selezionabile, titoli, elenchi, tabelle e immagini incorporate.",
+    steps: [
+      "Scegli un file HTML o incolla il tuo HTML.",
+      "Scegli il formato pagina.",
+      "Converti e scarica il PDF.",
+    ],
+    faq: [
+      { q: "Posso inserire l’indirizzo di una pagina web?", a: "No. Recuperare altri siti web richiederebbe di inviare l’indirizzo a un server, e una pagina si converte raramente bene senza i suoi stili. Salva la pagina come file HTML nel browser e usa quel file, oppure incolla il suo HTML." },
+      { q: "Il PDF sarà identico alla pagina web?", a: "No, non esattamente. Lo strumento legge la struttura del documento (titoli, paragrafi, elenchi, tabelle, link, testo in grassetto e corsivo e immagini incorporate) e la imposta come un documento semplice. Stili CSS, script, caratteri web, colonne ed elementi posizionati non vengono applicati." },
+      { q: "È sicuro convertire HTML di cui non mi fido?", a: "L’HTML viene letto come testo inerte: gli script non vengono eseguiti e non viene caricato nulla da Internet. Vengono usate solo le immagini incorporate nell’HTML stesso." },
+      { q: "Quali lingue e caratteri sono supportati nel PDF?", a: "Il PDF viene scritto con Noto Sans, che copre testo latino (comprese le lettere polacche, ceche, rumene e turche), cirillico, greco, vietnamita e devanagari. Il testo arabo, ebraico, thailandese, cinese, giapponese e coreano non è ancora supportato: quei caratteri compaiono come punti interrogativi e lo strumento ti dice quanti sono stati interessati. I caratteri originali del documento non vengono mantenuti." },
+      { q: "Il mio file viene caricato da qualche parte?", a: "No. Il file viene letto e convertito dal tuo browser. Questo strumento non lo invia a un server." },
+    ],
+    limits: [
+      "Massimo 10 MB di HTML.",
+      "Sono incluse solo le immagini incorporate nell’HTML (indirizzi data:); le immagini e gli stili caricati da altri siti web vengono saltati, non scaricati.",
+      "Script, moduli, frame, canvas, video e grafica SVG non vengono convertiti.",
+    ],
+  },
+  "word-to-pdf": {
+    name: "Da Word a PDF",
+    description: "Converti un documento Word (DOCX) in PDF mantenendo titoli, elenchi, tabelle e immagini.",
+    metaDescription: "Da Word a PDF online: converti un documento DOCX in un PDF con testo selezionabile, titoli, elenchi, tabelle, link e immagini. Il file viene convertito nel tuo browser.",
+    steps: [
+      "Scegli un file DOCX.",
+      "Scegli il formato pagina oppure mantieni quello del documento.",
+      "Converti e scarica il PDF.",
+    ],
+    faq: [
+      { q: "Il PDF sarà identico al documento in Word?", a: "No. Kitwell non usa Microsoft Word né LibreOffice. Legge il contenuto e la struttura del documento e li impagina da sé, quindi caratteri, spaziature e interruzioni di pagina differiscono da Word. Controlla il risultato prima di inviarlo." },
+      { q: "Cosa viene convertito e cosa no?", a: "Viene convertito: testo con grassetto, corsivo, sottolineato e link, titoli, elenchi puntati e numerati, tabelle, immagini JPEG e PNG, interruzioni di riga e di pagina, allineamento e orientamento della pagina. Non vengono convertiti: intestazioni e piè di pagina, note a piè di pagina, caselle di testo, equazioni, grafici, forme e altri formati di immagine." },
+      { q: "Posso convertire un vecchio file .doc?", a: "No. Aprilo in Word e salvalo prima come file DOCX." },
+      { q: "Quali lingue e caratteri sono supportati nel PDF?", a: "Il PDF viene scritto con Noto Sans, che copre testo latino (comprese le lettere polacche, ceche, rumene e turche), cirillico, greco, vietnamita e devanagari. Il testo arabo, ebraico, thailandese, cinese, giapponese e coreano non è ancora supportato: quei caratteri compaiono come punti interrogativi e lo strumento ti dice quanti sono stati interessati. I caratteri originali del documento non vengono mantenuti." },
+      { q: "Il mio file viene caricato da qualche parte?", a: "No. Il file viene letto e convertito dal tuo browser. Questo strumento non lo invia a un server." },
+    ],
+    limits: [
+      "Solo file DOCX, massimo 50 MB. I vecchi file .doc e i documenti protetti da password non sono supportati.",
+      "L’impaginazione è approssimativa: colonne, disposizione del testo attorno alle immagini, intestazioni, piè di pagina e note a piè di pagina non vengono riprodotti.",
+      "I caratteri dell’originale vengono sostituiti da Noto Sans.",
+    ],
+  },
+  "powerpoint-to-pdf": {
+    name: "Da PowerPoint a PDF",
+    description: "Converti una presentazione PowerPoint (PPTX) in PDF con una pagina per diapositiva.",
+    metaDescription: "Da PowerPoint a PDF online: converti una presentazione PPTX in un PDF con una pagina per diapositiva, mantenendo dimensioni, testo, immagini e forme semplici. Direttamente nel tuo browser.",
+    steps: [
+      "Scegli un file PPTX.",
+      "Convertilo.",
+      "Controlla le pagine e scarica il PDF.",
+    ],
+    faq: [
+      { q: "Le diapositive saranno identiche a quelle di PowerPoint?", a: "Non esattamente. Kitwell disegna ogni diapositiva a partire dalle sue caselle di testo, immagini, forme semplici e tabelle. Caratteri, sfumature, ombre, effetti e adattamento esatto del testo differiscono. Controlla sempre il PDF prima di usarlo." },
+      { q: "Cosa non viene convertito?", a: "Grafici, SmartArt, video e audio, animazioni e transizioni, note del relatore, sfumature, linee e connettori, e immagini in formati diversi da JPEG e PNG. Lo strumento ti dice quanti elementi sono stati omessi." },
+      { q: "Posso convertire un vecchio file .ppt?", a: "No. Aprilo in PowerPoint e salvalo prima come file PPTX." },
+      { q: "Quali lingue e caratteri sono supportati nel PDF?", a: "Il PDF viene scritto con Noto Sans, che copre testo latino (comprese le lettere polacche, ceche, rumene e turche), cirillico, greco, vietnamita e devanagari. Il testo arabo, ebraico, thailandese, cinese, giapponese e coreano non è ancora supportato: quei caratteri compaiono come punti interrogativi e lo strumento ti dice quanti sono stati interessati. I caratteri originali del documento non vengono mantenuti." },
+      { q: "Il mio file viene caricato da qualche parte?", a: "No. Il file viene letto e convertito dal tuo browser. Questo strumento non lo invia a un server." },
+    ],
+    limits: [
+      "Solo file PPTX, massimo 100 MB e 300 diapositive. I vecchi file .ppt e le presentazioni protette da password non sono supportati.",
+      "Ogni diapositiva diventa una pagina con le dimensioni e l’orientamento propri della diapositiva.",
+      "Il testo che non entra nella propria casella viene ridotto, fino alla metà delle sue dimensioni.",
+    ],
+  },
+  "excel-to-pdf": {
+    name: "Da Excel a PDF",
+    description: "Converti una cartella di lavoro Excel (XLSX) in PDF, con ogni foglio visibile come tabella.",
+    metaDescription: "Da Excel a PDF online: converti una cartella di lavoro XLSX in un PDF in cui ogni foglio visibile diventa una tabella dei valori, numeri e date salvati. Direttamente nel tuo browser.",
+    steps: [
+      "Scegli un file XLSX.",
+      "Convertilo.",
+      "Controlla le tabelle e scarica il PDF.",
+    ],
+    faq: [
+      { q: "Le formule vengono calcolate?", a: "No. Il PDF mostra i valori che Excel ha salvato nel file. Se una cella con formula non ha un valore salvato, resta vuota e lo strumento te lo segnala; apri il file in Excel, lascialo calcolare, salvalo e convertilo di nuovo." },
+      { q: "Avrà l’aspetto del layout di stampa di Excel?", a: "No. Ogni foglio visibile diventa una semplice tabella adattata alla larghezza della pagina. Colori delle celle, celle unite, larghezze delle colonne, grafici, immagini, aree di stampa e interruzioni di pagina non vengono mantenuti." },
+      { q: "Posso convertire un vecchio file .xls?", a: "No. Aprilo in Excel e salvalo prima come file XLSX." },
+      { q: "Quali lingue e caratteri sono supportati nel PDF?", a: "Il PDF viene scritto con Noto Sans, che copre testo latino (comprese le lettere polacche, ceche, rumene e turche), cirillico, greco, vietnamita e devanagari. Il testo arabo, ebraico, thailandese, cinese, giapponese e coreano non è ancora supportato: quei caratteri compaiono come punti interrogativi e lo strumento ti dice quanti sono stati interessati. I caratteri originali del documento non vengono mantenuti." },
+      { q: "Il mio file viene caricato da qualche parte?", a: "No. Il file viene letto e convertito dal tuo browser. Questo strumento non lo invia a un server." },
+    ],
+    limits: [
+      "Solo file XLSX, massimo 50 MB. I vecchi file .xls e le cartelle di lavoro protette da password non sono supportati.",
+      "Fino a 5.000 righe e 60 colonne per foglio; il resto viene omesso e lo strumento lo segnala.",
+      "I fogli nascosti vengono saltati.",
+    ],
+  },
+  "pdf-to-markdown": {
+    name: "Da PDF a Markdown",
+    description: "Trasforma il testo di un PDF in un file Markdown con titoli, paragrafi ed elenchi.",
+    metaDescription: "Da PDF a Markdown online: estrai il testo di un PDF e scaricalo come file Markdown (.md) con titoli, paragrafi ed elenchi. Funziona nel tuo browser.",
+    steps: [
+      "Scegli un PDF.",
+      "Scegli se rimuovere intestazioni, piè di pagina e numeri di pagina ripetuti.",
+      "Converti, controlla il risultato e scarica il file .md.",
+    ],
+    faq: [
+      { q: "Come vengono individuati titoli ed elenchi?", a: "I titoli sono righe con un carattere più grande del testo normale, gli elenchi sono righe che iniziano con un punto elenco o un numero e i paragrafi sono separati dalla spaziatura tra le righe. È una buona stima, non una garanzia: controlla quindi il risultato." },
+      { q: "Perché il risultato è vuoto per il mio PDF scansionato?", a: "Una scansione è un’immagine di una pagina e non contiene testo da estrarre. Esegui prima OCR PDF per aggiungere uno strato di testo, poi converti il risultato." },
+      { q: "E le tabelle, le colonne e le immagini?", a: "Tabelle e colonne non vengono ricostruite: il loro testo compare come righe normali, nell’ordine di lettura quando possibile. Immagini, link, testo in grassetto e corsivo, note a piè di pagina ed equazioni non vengono riportati." },
+      { q: "Il mio file viene caricato da qualche parte?", a: "No. Il file viene letto e convertito dal tuo browser. Questo strumento non lo invia a un server." },
+    ],
+    limits: [
+      "Massimo 100 MB per PDF. I PDF protetti da password devono prima essere sbloccati.",
+      "Viene convertito solo il testo che nel PDF è testo reale; le pagine scansionate richiedono prima OCR PDF.",
+      "La struttura è stimata in base alle dimensioni dei caratteri e alla spaziatura e può essere sbagliata per layout complessi.",
+    ],
+  },
+  "repair-pdf": {
+    name: "Ripara PDF",
+    description: "Prova a riparare un PDF che non si apre ricostruendone la struttura interna.",
+    metaDescription: "Ripara PDF online: ricostruisci la struttura di un PDF danneggiato che non si apre, per esempio con una tabella dei riferimenti incrociati rotta o una fine troncata. Funziona nel tuo browser.",
+    steps: [
+      "Scegli il PDF danneggiato.",
+      "Avvia la riparazione.",
+      "Se lo strumento ha prodotto un file, controllalo e scaricalo.",
+    ],
+    faq: [
+      { q: "Quali tipi di danno si possono riparare?", a: "Danni alla struttura del file: un indice degli oggetti (tabella dei riferimenti incrociati) mancante o errato, un trailer mancante, dati estranei all’inizio o un elenco di pagine rotto. Se il file è stato troncato, si possono recuperare le pagine salvate prima del taglio." },
+      { q: "Cosa non si può recuperare?", a: "Il contenuto che non è più nel file. Pagine, immagini o caratteri mancanti o danneggiati non si possono ripristinare e alcuni file sono irrecuperabili. Lo strumento ti dice quante pagine ha conservato e lo segnala quando non riesce a produrre un file utilizzabile; non offre mai un download che non ha creato." },
+      { q: "E se il mio PDF si apre normalmente?", a: "Allora non c’è nulla da riparare. Lo strumento te lo dice e offre una copia ripulita del file." },
+      { q: "Il mio file viene caricato da qualche parte?", a: "No. Il file viene letto e convertito dal tuo browser. Questo strumento non lo invia a un server." },
+    ],
+    limits: [
+      "Massimo 100 MB per PDF. I PDF protetti da password devono prima essere sbloccati.",
+      "I danni all’interno di flussi di oggetti compressi non possono essere ricostruiti da questo strumento.",
+      "Un file riparato può avere meno pagine dell’originale e l’ordine delle pagine può cambiare dopo una riparazione importante.",
+    ],
+  },
 };
 export default tools;

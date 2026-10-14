@@ -224,7 +224,7 @@ async function localeCoverage(english, toolSlugs) {
 
 async function toolSlugList() {
   const slugs = new Set();
-  for (const f of ['image', 'pdf', 'text', 'developer']) {
+  for (const f of ['image', 'pdf', 'pdfConvert', 'text', 'developer']) {
     const text = await readFile(join(src, 'tools', 'data', `${f}.ts`), 'utf8');
     for (const m of text.matchAll(/slug:\s*'([^']+)'/g)) slugs.add(m[1]);
   }

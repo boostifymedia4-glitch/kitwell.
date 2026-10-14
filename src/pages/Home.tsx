@@ -9,6 +9,7 @@ import { ToolIcon } from '@/components/ui/ToolIcon';
 import { TrustIcon, type TrustKind } from '@/components/ui/TrustArt';
 import { ToolSearch } from '@/components/ui/ToolSearch';
 import { site } from '@/config/site';
+import { useReveal } from '@/lib/hooks';
 import { useLocalize } from '@/i18n/useLocalize';
 import { useI18n, type MessageKey } from '@/i18n';
 import { usePageMeta } from '@/i18n/usePageMeta';
@@ -19,14 +20,15 @@ const SHORTCUTS = ['jpg-to-png', 'image-compressor', 'merge-pdf', 'pdf-to-jpg', 
   .filter((t) => t !== undefined);
 
 const TRUST: { kind: TrustKind; title: MessageKey; text: MessageKey }[] = [
-  { kind: 'browser', title: 'home.trust1Title', text: 'home.trust1Text' },
-  { kind: 'account', title: 'home.trust2Title', text: 'home.trust2Text' },
-  { kind: 'limits', title: 'home.trust3Title', text: 'home.trust3Text' },
+  { kind: 'browser', title: 'home.card1.title', text: 'home.card1.text' },
+  { kind: 'account', title: 'home.card2.title', text: 'home.card2.text' },
+  { kind: 'limits', title: 'home.card3.title', text: 'home.card3.text' },
 ];
 
 const FAQ_COUNT = 4;
 
 export default function Home() {
+  const trustRef = useReveal<HTMLDivElement>();
   const meta = usePageMeta('/');
   const { t } = useI18n();
   const loc = useLocalize();
@@ -90,12 +92,9 @@ export default function Home() {
 
         <section className="section" aria-labelledby="privacy">
           <div className="section-head">
-            <div>
-              <h2 id="privacy">{t('home.privacyTitle')}</h2>
-              <p>{t('home.privacySub')}</p>
-            </div>
+            <h2 id="privacy">{t('home.privacyHeading')}</h2>
           </div>
-          <div className="trust-grid">
+          <div className="trust-grid" ref={trustRef}>
             {TRUST.map((item) => (
               <div key={item.title} className="card trust-item">
                 <TrustIcon kind={item.kind} />

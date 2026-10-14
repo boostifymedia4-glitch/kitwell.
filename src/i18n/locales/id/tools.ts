@@ -1331,5 +1331,156 @@ const tools: ToolTextMap = {
       'Warna gelap di atas terang dengan kontras kuat paling mudah dipindai.',
     ],
   },
+  "scan-to-pdf": {
+    name: "Pindai ke PDF",
+    description: "Ubah foto atau pindaian halaman kertas menjadi satu PDF, dengan pembersihan opsional agar lebih mudah dibaca.",
+    metaDescription: "Pindai ke PDF daring: gabungkan foto atau pindaian halaman kertas menjadi satu PDF, atur urutan halaman, dan ratakan bayangan dengan mode dokumen hitam putih.",
+    steps: [
+      "Tambahkan foto atau pindaian halaman Anda, atau ambil foto jika ponsel atau tablet Anda mendukungnya.",
+      "Susun halaman sesuai urutan, lalu pilih ukuran halaman dan gaya pembersihan.",
+      "Buat PDF dan unduh.",
+    ],
+    faq: [
+      { q: "Apakah alat ini mengenali teks pada halaman?", a: "Tidak. Pindai ke PDF mengubah gambar menjadi halaman PDF dan dapat membersihkannya, tetapi teks tetap menjadi bagian dari gambar. Agar dapat dicari, jalankan hasilnya melalui OCR PDF." },
+      { q: "Bisakah saya menggunakan kamera ponsel?", a: "Pada ponsel dan tablet yang peramban-nya mendukung, tombol “Ambil foto” membuka kamera. Jika tidak, pilih foto yang sudah tersimpan di perangkat Anda." },
+      { q: "Apa yang dilakukan gaya pembersihan?", a: "“Asli” mempertahankan warna. “Skala abu-abu” menghilangkan warna. “Dokumen hitam putih” mengubah halaman menjadi teks hitam murni di atas kertas putih dan meratakan bayangan serta pencahayaan yang tidak merata, cocok untuk halaman cetak dan catatan tetapi tidak untuk foto." },
+      { q: "Apakah berkas saya diunggah ke suatu tempat?", a: "Tidak. Berkas dibaca dan dikonversi oleh peramban Anda. Alat ini tidak mengirimkannya ke server." },
+    ],
+    limits: [
+      "Maksimum 25 MB per gambar dan 100 gambar per PDF.",
+      "Foto besar diperkecil hingga sekitar ukuran A4 pada 300 dpi agar PDF tetap kecil.",
+      "Beberapa format ponsel seperti HEIC tidak dapat dibaca oleh peramban; simpan dulu sebagai JPG.",
+    ],
+  },
+  "html-to-pdf": {
+    name: "HTML ke PDF",
+    description: "Konversi berkas HTML atau HTML yang ditempel menjadi PDF dengan teks yang dapat dipilih.",
+    metaDescription: "HTML ke PDF daring: konversi berkas HTML atau kode HTML yang ditempel menjadi PDF dengan teks asli yang dapat dipilih, judul, daftar, tabel, dan gambar tertanam.",
+    steps: [
+      "Pilih berkas HTML atau tempel HTML Anda.",
+      "Pilih ukuran halaman.",
+      "Konversi dan unduh PDF.",
+    ],
+    faq: [
+      { q: "Bisakah saya memasukkan alamat halaman web?", a: "Tidak. Mengambil situs web lain akan mengharuskan pengiriman alamat ke server, dan sebuah halaman jarang terkonversi dengan baik tanpa gayanya. Simpan halaman sebagai berkas HTML di peramban Anda dan gunakan berkas itu, atau tempel HTML-nya." },
+      { q: "Apakah PDF akan terlihat seperti halaman webnya?", a: "Tidak, tidak persis. Alat membaca struktur dokumen (judul, paragraf, daftar, tabel, tautan, teks tebal dan miring, serta gambar tertanam) dan menatanya sebagai dokumen sederhana. Gaya CSS, skrip, font web, kolom, dan elemen berposisi tidak diterapkan." },
+      { q: "Apakah aman mengonversi HTML yang tidak saya percayai?", a: "HTML dibaca sebagai teks pasif: skrip tidak dijalankan dan tidak ada yang dimuat dari internet. Hanya gambar yang tertanam di HTML itu sendiri yang digunakan." },
+      { q: "Bahasa dan font apa yang didukung dalam PDF?", a: "PDF ditulis dengan Noto Sans, yang mencakup teks Latin (termasuk huruf Polandia, Ceko, Rumania, dan Turki), Sirilik, Yunani, Vietnam, dan Devanagari. Teks Arab, Ibrani, Thai, Tionghoa, Jepang, dan Korea belum didukung: karakter tersebut muncul sebagai tanda tanya dan alat memberi tahu Anda berapa banyak yang terpengaruh. Font asli dokumen tidak dipertahankan." },
+      { q: "Apakah berkas saya diunggah ke suatu tempat?", a: "Tidak. Berkas dibaca dan dikonversi oleh peramban Anda. Alat ini tidak mengirimkannya ke server." },
+    ],
+    limits: [
+      "Maksimum 10 MB HTML.",
+      "Hanya gambar yang tertanam di HTML (alamat data:) yang disertakan; gambar dan gaya yang dimuat dari situs web lain dilewati, tidak diambil.",
+      "Skrip, formulir, bingkai, canvas, video, dan grafik SVG tidak dikonversi.",
+    ],
+  },
+  "word-to-pdf": {
+    name: "Word ke PDF",
+    description: "Konversi dokumen Word (DOCX) ke PDF dengan mempertahankan judul, daftar, tabel, dan gambar.",
+    metaDescription: "Word ke PDF daring: konversi dokumen DOCX menjadi PDF dengan teks yang dapat dipilih, judul, daftar, tabel, tautan, dan gambar. Berkas dikonversi di peramban Anda.",
+    steps: [
+      "Pilih berkas DOCX.",
+      "Pilih ukuran halaman, atau pertahankan ukuran dari dokumen.",
+      "Konversi dan unduh PDF.",
+    ],
+    faq: [
+      { q: "Apakah PDF akan terlihat persis seperti dokumen di Word?", a: "Tidak. Kitwell tidak menggunakan Microsoft Word atau LibreOffice. Alat ini membaca isi dan struktur dokumen lalu menatanya sendiri, sehingga font, jarak, dan pemisah halaman berbeda dari Word. Periksa hasilnya sebelum Anda mengirimkannya." },
+      { q: "Apa yang dikonversi, dan apa yang tidak?", a: "Dikonversi: teks dengan huruf tebal, miring, garis bawah, dan tautan, judul, daftar berpoin dan bernomor, tabel, gambar JPEG dan PNG, pemisah baris dan halaman, perataan, serta orientasi halaman. Tidak dikonversi: header dan footer, catatan kaki, kotak teks, persamaan, bagan, bentuk, dan format gambar lain." },
+      { q: "Bisakah saya mengonversi berkas .doc lama?", a: "Tidak. Buka di Word dan simpan terlebih dahulu sebagai berkas DOCX." },
+      { q: "Bahasa dan font apa yang didukung dalam PDF?", a: "PDF ditulis dengan Noto Sans, yang mencakup teks Latin (termasuk huruf Polandia, Ceko, Rumania, dan Turki), Sirilik, Yunani, Vietnam, dan Devanagari. Teks Arab, Ibrani, Thai, Tionghoa, Jepang, dan Korea belum didukung: karakter tersebut muncul sebagai tanda tanya dan alat memberi tahu Anda berapa banyak yang terpengaruh. Font asli dokumen tidak dipertahankan." },
+      { q: "Apakah berkas saya diunggah ke suatu tempat?", a: "Tidak. Berkas dibaca dan dikonversi oleh peramban Anda. Alat ini tidak mengirimkannya ke server." },
+    ],
+    limits: [
+      "Hanya berkas DOCX, maksimum 50 MB. Berkas .doc lama dan dokumen yang dilindungi kata sandi tidak didukung.",
+      "Tata letak bersifat perkiraan: kolom, teks yang membungkus gambar, header, footer, dan catatan kaki tidak direproduksi.",
+      "Font asli diganti dengan Noto Sans.",
+    ],
+  },
+  "powerpoint-to-pdf": {
+    name: "PowerPoint ke PDF",
+    description: "Konversi presentasi PowerPoint (PPTX) ke PDF dengan satu halaman per slide.",
+    metaDescription: "PowerPoint ke PDF daring: konversi presentasi PPTX menjadi PDF dengan satu halaman per slide, mempertahankan ukuran slide, teks, gambar, dan bentuk sederhana. Langsung di peramban Anda.",
+    steps: [
+      "Pilih berkas PPTX.",
+      "Konversi.",
+      "Periksa halaman dan unduh PDF.",
+    ],
+    faq: [
+      { q: "Apakah slide akan terlihat persis seperti di PowerPoint?", a: "Tidak persis. Kitwell menggambar setiap slide dari kotak teks, gambar, bentuk sederhana, dan tabelnya. Font, gradasi, bayangan, efek, dan penyesuaian teks yang tepat berbeda. Selalu periksa PDF sebelum Anda menggunakannya." },
+      { q: "Apa yang tidak dikonversi?", a: "Bagan, SmartArt, video dan audio, animasi dan transisi, catatan pembicara, gradasi, garis dan konektor, serta gambar dalam format selain JPEG dan PNG. Alat memberi tahu Anda berapa banyak item yang dilewati." },
+      { q: "Bisakah saya mengonversi berkas .ppt lama?", a: "Tidak. Buka di PowerPoint dan simpan terlebih dahulu sebagai berkas PPTX." },
+      { q: "Bahasa dan font apa yang didukung dalam PDF?", a: "PDF ditulis dengan Noto Sans, yang mencakup teks Latin (termasuk huruf Polandia, Ceko, Rumania, dan Turki), Sirilik, Yunani, Vietnam, dan Devanagari. Teks Arab, Ibrani, Thai, Tionghoa, Jepang, dan Korea belum didukung: karakter tersebut muncul sebagai tanda tanya dan alat memberi tahu Anda berapa banyak yang terpengaruh. Font asli dokumen tidak dipertahankan." },
+      { q: "Apakah berkas saya diunggah ke suatu tempat?", a: "Tidak. Berkas dibaca dan dikonversi oleh peramban Anda. Alat ini tidak mengirimkannya ke server." },
+    ],
+    limits: [
+      "Hanya berkas PPTX, maksimum 100 MB dan 300 slide. Berkas .ppt lama dan presentasi yang dilindungi kata sandi tidak didukung.",
+      "Setiap slide menjadi satu halaman dengan ukuran dan orientasi slide itu sendiri.",
+      "Teks yang tidak muat di kotaknya diperkecil, hingga setengah ukurannya.",
+    ],
+  },
+  "excel-to-pdf": {
+    name: "Excel ke PDF",
+    description: "Konversi buku kerja Excel (XLSX) ke PDF, dengan setiap lembar yang terlihat menjadi tabel.",
+    metaDescription: "Excel ke PDF daring: konversi buku kerja XLSX menjadi PDF dengan setiap lembar yang terlihat berupa tabel nilai, angka, dan tanggal yang tersimpan. Langsung di peramban Anda.",
+    steps: [
+      "Pilih berkas XLSX.",
+      "Konversi.",
+      "Periksa tabel dan unduh PDF.",
+    ],
+    faq: [
+      { q: "Apakah rumus dihitung?", a: "Tidak. PDF menampilkan nilai yang disimpan Excel di dalam berkas. Jika sel rumus tidak memiliki nilai tersimpan, sel itu dibiarkan kosong dan alat memberi tahu Anda; buka berkas di Excel, biarkan menghitung, simpan, lalu konversi lagi." },
+      { q: "Apakah hasilnya seperti tata letak cetak di Excel?", a: "Tidak. Setiap lembar yang terlihat menjadi tabel sederhana yang disesuaikan dengan lebar halaman. Warna sel, sel gabungan, lebar kolom, bagan, gambar, area cetak, dan pemisah halaman tidak dipertahankan." },
+      { q: "Bisakah saya mengonversi berkas .xls lama?", a: "Tidak. Buka di Excel dan simpan terlebih dahulu sebagai berkas XLSX." },
+      { q: "Bahasa dan font apa yang didukung dalam PDF?", a: "PDF ditulis dengan Noto Sans, yang mencakup teks Latin (termasuk huruf Polandia, Ceko, Rumania, dan Turki), Sirilik, Yunani, Vietnam, dan Devanagari. Teks Arab, Ibrani, Thai, Tionghoa, Jepang, dan Korea belum didukung: karakter tersebut muncul sebagai tanda tanya dan alat memberi tahu Anda berapa banyak yang terpengaruh. Font asli dokumen tidak dipertahankan." },
+      { q: "Apakah berkas saya diunggah ke suatu tempat?", a: "Tidak. Berkas dibaca dan dikonversi oleh peramban Anda. Alat ini tidak mengirimkannya ke server." },
+    ],
+    limits: [
+      "Hanya berkas XLSX, maksimum 50 MB. Berkas .xls lama dan buku kerja yang dilindungi kata sandi tidak didukung.",
+      "Hingga 5.000 baris dan 60 kolom per lembar; selebihnya dilewati dan alat memberi tahu Anda.",
+      "Lembar tersembunyi dilewati.",
+    ],
+  },
+  "pdf-to-markdown": {
+    name: "PDF ke Markdown",
+    description: "Ubah teks PDF menjadi berkas Markdown dengan judul, paragraf, dan daftar.",
+    metaDescription: "PDF ke Markdown daring: ekstrak teks PDF dan unduh sebagai berkas Markdown (.md) dengan judul, paragraf, dan daftar. Berjalan di peramban Anda.",
+    steps: [
+      "Pilih PDF.",
+      "Pilih apakah header, footer, dan nomor halaman yang berulang akan dihapus.",
+      "Konversi, periksa hasilnya, dan unduh berkas .md.",
+    ],
+    faq: [
+      { q: "Bagaimana judul dan daftar ditemukan?", a: "Judul adalah baris dengan font lebih besar daripada teks isi, daftar adalah baris yang diawali poin atau angka, dan paragraf dipisahkan oleh jarak antarbaris. Ini perkiraan yang baik, bukan jaminan, jadi periksa hasilnya." },
+      { q: "Mengapa hasilnya kosong untuk PDF pindaian saya?", a: "Pindaian adalah gambar halaman dan tidak memiliki teks untuk diekstrak. Jalankan OCR PDF terlebih dahulu untuk menambahkan lapisan teks, lalu konversi hasilnya." },
+      { q: "Bagaimana dengan tabel, kolom, dan gambar?", a: "Tabel dan kolom tidak dibangun ulang: teksnya muncul sebagai baris biasa, dalam urutan baca jika memungkinkan. Gambar, tautan, teks tebal dan miring, catatan kaki, dan persamaan tidak ikut terbawa." },
+      { q: "Apakah berkas saya diunggah ke suatu tempat?", a: "Tidak. Berkas dibaca dan dikonversi oleh peramban Anda. Alat ini tidak mengirimkannya ke server." },
+    ],
+    limits: [
+      "Maksimum 100 MB per PDF. PDF yang dilindungi kata sandi harus dibuka kuncinya terlebih dahulu.",
+      "Hanya teks yang berupa teks asli di PDF yang dikonversi; halaman pindaian memerlukan OCR PDF terlebih dahulu.",
+      "Struktur diperkirakan dari ukuran font dan jarak, dan bisa salah pada tata letak yang kompleks.",
+    ],
+  },
+  "repair-pdf": {
+    name: "Perbaiki PDF",
+    description: "Coba perbaiki PDF yang tidak dapat dibuka dengan membangun ulang struktur internalnya.",
+    metaDescription: "Perbaiki PDF daring: bangun ulang struktur PDF rusak yang tidak dapat dibuka, misalnya dengan tabel referensi silang yang rusak atau akhir yang terpotong. Berjalan di peramban Anda.",
+    steps: [
+      "Pilih PDF yang rusak.",
+      "Mulai perbaikan.",
+      "Jika alat menghasilkan berkas, periksa dan unduh.",
+    ],
+    faq: [
+      { q: "Jenis kerusakan apa yang dapat diperbaiki?", a: "Kerusakan pada struktur berkas: indeks objek (tabel referensi silang) yang hilang atau salah, trailer yang hilang, sampah sebelum awal, atau daftar halaman yang rusak. Jika berkas terpotong, halaman yang tersimpan sebelum pemotongan dapat dipulihkan." },
+      { q: "Apa yang tidak dapat dipulihkan?", a: "Konten yang tidak ada lagi dalam berkas. Halaman, gambar, atau font yang hilang atau rusak tidak dapat dikembalikan, dan beberapa berkas tidak dapat diselamatkan. Alat memberi tahu Anda berapa halaman yang dipertahankan dan menyatakannya ketika tidak dapat menghasilkan berkas yang dapat digunakan; alat tidak pernah menawarkan unduhan yang tidak dibuatnya." },
+      { q: "Bagaimana jika PDF saya terbuka dengan baik?", a: "Maka tidak ada yang perlu diperbaiki. Alat menyampaikannya dan menawarkan salinan berkas yang sudah dibersihkan." },
+      { q: "Apakah berkas saya diunggah ke suatu tempat?", a: "Tidak. Berkas dibaca dan dikonversi oleh peramban Anda. Alat ini tidak mengirimkannya ke server." },
+    ],
+    limits: [
+      "Maksimum 100 MB per PDF. PDF yang dilindungi kata sandi harus dibuka kuncinya terlebih dahulu.",
+      "Kerusakan di dalam aliran objek terkompresi tidak dapat dibangun ulang oleh alat ini.",
+      "Berkas yang diperbaiki mungkin memiliki lebih sedikit halaman daripada aslinya, dan urutan halaman dapat berubah setelah perbaikan besar.",
+    ],
+  },
 };
 export default tools;

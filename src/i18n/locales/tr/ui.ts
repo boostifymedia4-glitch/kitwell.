@@ -48,7 +48,6 @@ export default {
   'ui.crop.label': '{label}: {w} x {h}, konum {x}, {y}. Taşımak için ok tuşlarını kullanın.',
   'ui.advertisement': 'Reklam',
   'ui.breadcrumb': 'Gezinti yolu',
-  'ui.legalNotice': 'Başlangıç belgesi. Bu metin, tarayıcı tabanlı araçlar sunan bir web sitesi için hazırlanmış bir şablondur. Site yayına girmeden önce Pakistan için ve ziyaretçilerinizin bulunduğu ülkeler için (örneğin AB/Birleşik Krallık GDPR’si ve Kaliforniya CCPA’sı) nitelikli bir hukuk uzmanı tarafından incelenmeli ve tamamlanmalıdır. [Köşeli parantez] içindeki öğeler için sizin bilgileriniz gerekir.',
   'tool.loading': 'Araç yükleniyor…',
   'tool.loadFailed': 'Bu araç yüklenemedi. Bağlantınızı kontrol edip yeniden deneyin.',
   'tool.reload': 'sayfayı yenileyin',

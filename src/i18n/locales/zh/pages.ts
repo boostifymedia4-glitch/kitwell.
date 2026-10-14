@@ -20,7 +20,6 @@ export default {
   'category.sections': '{name}中的分区',
   'category.more': '更多工具分类',
   'tools.title': '全部工具',
-  'tools.lead': '{count} 个免费工具，涵盖图片、PDF、文本和开发。可以搜索，也可以按分类浏览。',
   'tools.jump': '跳转到分类',
 
   // About
@@ -41,17 +40,11 @@ export default {
 
   // Help chrome
   'help.title': '帮助与常见问题',
-  'help.lead': '关于工具如何运作、您的文件与隐私，以及各工具限制的解答。',
-  'help.topics': '帮助主题',
-  'help.more': '没有找到答案？请<contact>联系我们</contact>，浏览<tools>全部工具</tools>，或阅读<privacy>隐私政策</privacy>。',
 
   // Legal pages
   'legal.privacy.title': '隐私政策',
-  'legal.privacy.lead': '{site} 如何处理您的文件和数据。',
   'legal.terms.title': '条款与条件',
-  'legal.terms.lead': '使用 {site} 的规则。',
   'legal.cookies.title': 'Cookie 与浏览器存储说明',
-  'legal.cookies.lead': '本站在您的浏览器中存储什么，以及添加广告后会有什么变化。',
 
   // Contact
   'contact.title': '联系我们',
@@ -60,12 +53,6 @@ export default {
   'contact.form.name': '您的姓名',
   'contact.form.email': '您的电子邮件地址',
   'contact.form.emailHint': '仅用于回复您。',
-  'contact.form.topic': '消息的主题是什么？',
-  'contact.form.topicOption.bug': '错误或问题',
-  'contact.form.topicOption.suggestion': '工具或功能建议',
-  'contact.form.topicOption.question': '提问',
-  'contact.form.topicOption.misc': '其他',
-  'contact.form.choose': '选择主题',
   'contact.form.page': '工具或页面（可选）',
   'contact.form.pagePlaceholder': '例如：合并 PDF',
   'contact.form.message': '消息',
@@ -76,7 +63,6 @@ export default {
   'contact.form.honeypot': '请将此字段留空',
   'contact.err.name': '请输入您的姓名。',
   'contact.err.email': '请输入有效的电子邮件地址。',
-  'contact.err.topic': '请选择消息的主题。',
   'contact.err.message': '请填写至少 {min} 个字符的消息（最多 {max} 个）。',
   'contact.err.summary': '请修正标出的字段。',
   'contact.sent.h': '消息已发送',
@@ -88,9 +74,6 @@ export default {
   'contact.fail.network': '由于连接失败，消息无法发送。请检查您的网络连接后重试。',
   'contact.unavailable.h': '联系表单暂不可用',
   'contact.unavailable.p': '本站尚未连接到邮箱，因此无法通过此页面发送消息。',
-  'contact.email.h': '电子邮件',
-  'contact.email.p': '您也可以通过电子邮件联系我们：',
-  'contact.email.placeholder': '联系邮箱地址（上线前添加）',
   'contact.report.h': '报告问题',
   'contact.report.intro': '为了帮助我们重现问题，请附上：',
   'contact.report.1': '工具名称和页面地址。',

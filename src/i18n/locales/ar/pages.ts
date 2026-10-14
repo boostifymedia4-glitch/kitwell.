@@ -20,7 +20,6 @@ export default {
   'category.sections': 'أقسام {name}',
   'category.more': 'فئات أدوات أخرى',
   'tools.title': 'كل الأدوات',
-  'tools.lead': '{count} أداة مجانية للصور وPDF والنصوص والتطوير. ابحث أو تصفّح حسب الفئة.',
   'tools.jump': 'انتقل إلى فئة',
 
   // About
@@ -41,17 +40,11 @@ export default {
 
   // Help chrome
   'help.title': 'المساعدة والأسئلة الشائعة',
-  'help.lead': 'إجابات حول طريقة عمل الأدوات وملفاتك وخصوصيتك وحدود كل أداة.',
-  'help.topics': 'موضوعات المساعدة',
-  'help.more': 'لم تجد إجابتك؟ <contact>اتصل بنا</contact>، أو تصفّح <tools>كل الأدوات</tools>، أو اقرأ <privacy>سياسة الخصوصية</privacy>.',
 
   // Legal pages
   'legal.privacy.title': 'سياسة الخصوصية',
-  'legal.privacy.lead': 'كيف يتعامل {site} مع ملفاتك وبياناتك.',
   'legal.terms.title': 'الشروط والأحكام',
-  'legal.terms.lead': 'قواعد استخدام {site}.',
   'legal.cookies.title': 'معلومات ملفات تعريف الارتباط وتخزين المتصفح',
-  'legal.cookies.lead': 'ما الذي يخزّنه هذا الموقع في متصفحك، وما الذي سيتغير إذا أُضيفت الإعلانات.',
 
   // Contact
   'contact.title': 'اتصل بنا',
@@ -60,12 +53,6 @@ export default {
   'contact.form.name': 'اسمك',
   'contact.form.email': 'عنوان بريدك الإلكتروني',
   'contact.form.emailHint': 'يُستخدم فقط للرد عليك.',
-  'contact.form.topic': 'ما موضوع الرسالة؟',
-  'contact.form.topicOption.bug': 'خلل أو مشكلة',
-  'contact.form.topicOption.suggestion': 'اقتراح أداة أو ميزة',
-  'contact.form.topicOption.question': 'سؤال',
-  'contact.form.topicOption.misc': 'شيء آخر',
-  'contact.form.choose': 'اختر موضوعًا',
   'contact.form.page': 'الأداة أو الصفحة (اختياري)',
   'contact.form.pagePlaceholder': 'مثال: دمج PDF',
   'contact.form.message': 'الرسالة',
@@ -76,7 +63,6 @@ export default {
   'contact.form.honeypot': 'اترك هذا الحقل فارغًا',
   'contact.err.name': 'أدخل اسمك.',
   'contact.err.email': 'أدخل عنوان بريد إلكتروني صالحًا.',
-  'contact.err.topic': 'اختر موضوع الرسالة.',
   'contact.err.message': 'اكتب رسالة لا تقل عن {min} أحرف (وبحد أقصى {max}).',
   'contact.err.summary': 'يُرجى تصحيح الحقول المميّزة.',
   'contact.sent.h': 'تم إرسال الرسالة',
@@ -88,9 +74,6 @@ export default {
   'contact.fail.network': 'تعذّر إرسال الرسالة بسبب فشل الاتصال. تحقق من اتصالك بالإنترنت وحاول مرة أخرى.',
   'contact.unavailable.h': 'نموذج الاتصال غير متاح بعد',
   'contact.unavailable.p': 'لم يُربط هذا الموقع بصندوق بريد، لذا لا يمكن إرسال الرسائل من هذه الصفحة.',
-  'contact.email.h': 'البريد الإلكتروني',
-  'contact.email.p': 'يمكنك أيضًا مراسلتنا عبر البريد الإلكتروني:',
-  'contact.email.placeholder': 'عنوان البريد الإلكتروني للتواصل (سيُضاف قبل الإطلاق)',
   'contact.report.h': 'الإبلاغ عن مشكلة',
   'contact.report.intro': 'لمساعدتنا على إعادة إنتاج المشكلة، يُرجى ذكر ما يلي:',
   'contact.report.1': 'اسم الأداة وعنوان الصفحة.',

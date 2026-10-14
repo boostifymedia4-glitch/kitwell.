@@ -20,7 +20,6 @@ export default {
   'category.sections': 'بخش‌های {name}',
   'category.more': 'دسته‌بندی‌های دیگر ابزارها',
   'tools.title': 'همه ابزارها',
-  'tools.lead': '{count} ابزار رایگان برای تصویر، PDF، متن و توسعه. جستجو کنید یا بر اساس دسته‌بندی مرور کنید.',
   'tools.jump': 'رفتن به یک دسته‌بندی',
 
   // About
@@ -41,17 +40,11 @@ export default {
 
   // Help chrome
   'help.title': 'راهنما و پرسش‌های متداول',
-  'help.lead': 'پاسخ پرسش‌ها درباره نحوه کار ابزارها، فایل‌ها و حریم خصوصی شما و محدودیت‌های هر ابزار.',
-  'help.topics': 'موضوعات راهنما',
-  'help.more': 'پاسخ خود را پیدا نکردید؟ <contact>با ما تماس بگیرید</contact>، <tools>همه ابزارها</tools> را مرور کنید یا <privacy>سیاست حفظ حریم خصوصی</privacy> را بخوانید.',
 
   // Legal pages
   'legal.privacy.title': 'سیاست حفظ حریم خصوصی',
-  'legal.privacy.lead': '{site} چگونه با فایل‌ها و داده‌های شما رفتار می‌کند.',
   'legal.terms.title': 'شرایط و ضوابط',
-  'legal.terms.lead': 'قوانین استفاده از {site}.',
   'legal.cookies.title': 'اطلاعات کوکی‌ها و فضای ذخیره‌سازی مرورگر',
-  'legal.cookies.lead': 'این سایت چه چیزی را در مرورگر شما ذخیره می‌کند و در صورت افزودن تبلیغات چه چیزی تغییر می‌کند.',
 
   // Contact
   'contact.title': 'تماس با ما',
@@ -60,12 +53,6 @@ export default {
   'contact.form.name': 'نام شما',
   'contact.form.email': 'نشانی ایمیل شما',
   'contact.form.emailHint': 'فقط برای پاسخ دادن به شما استفاده می‌شود.',
-  'contact.form.topic': 'موضوع پیام چیست؟',
-  'contact.form.topicOption.bug': 'یک اشکال یا مشکل',
-  'contact.form.topicOption.suggestion': 'پیشنهاد ابزار یا امکان',
-  'contact.form.topicOption.question': 'یک پرسش',
-  'contact.form.topicOption.misc': 'چیز دیگر',
-  'contact.form.choose': 'یک موضوع انتخاب کنید',
   'contact.form.page': 'ابزار یا صفحه (اختیاری)',
   'contact.form.pagePlaceholder': 'مثلاً: ادغام PDF',
   'contact.form.message': 'پیام',
@@ -76,7 +63,6 @@ export default {
   'contact.form.honeypot': 'این فیلد را خالی بگذارید',
   'contact.err.name': 'نام خود را وارد کنید.',
   'contact.err.email': 'یک نشانی ایمیل معتبر وارد کنید.',
-  'contact.err.topic': 'موضوع پیام را انتخاب کنید.',
   'contact.err.message': 'پیامی دست‌کم با {min} نویسه (و حداکثر {max}) بنویسید.',
   'contact.err.summary': 'لطفاً فیلدهای مشخص‌شده را اصلاح کنید.',
   'contact.sent.h': 'پیام ارسال شد',
@@ -88,9 +74,6 @@ export default {
   'contact.fail.network': 'به دلیل قطع اتصال، پیام ارسال نشد. اتصال اینترنت خود را بررسی کنید و دوباره تلاش کنید.',
   'contact.unavailable.h': 'فرم تماس هنوز در دسترس نیست',
   'contact.unavailable.p': 'این سایت هنوز به صندوق ایمیلی متصل نشده است، بنابراین نمی‌توان از این صفحه پیام ارسال کرد.',
-  'contact.email.h': 'ایمیل',
-  'contact.email.p': 'می‌توانید با ایمیل هم برای ما بنویسید:',
-  'contact.email.placeholder': 'نشانی ایمیل تماس (پیش از راه‌اندازی اضافه می‌شود)',
   'contact.report.h': 'گزارش یک مشکل',
   'contact.report.intro': 'برای کمک به بازتولید مشکل، لطفاً این موارد را بنویسید:',
   'contact.report.1': 'نام ابزار و نشانی صفحه.',

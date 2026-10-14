@@ -50,7 +50,6 @@ export default {
   'ui.crop.label': '{label}: {w} pe {h} la {x}, {y}. Folosiți tastele săgeți pentru a muta.',
   'ui.advertisement': 'Publicitate',
   'ui.breadcrumb': 'Cale de navigare',
-  'ui.legalNotice': 'Document de pornire. Acest text este un model redactat pentru un site cu instrumente în browser. Trebuie revizuit și completat de un jurist calificat pentru Pakistan și pentru țările în care aveți vizitatori (de exemplu GDPR din UE/Regatul Unit și CCPA din California) înainte ca site-ul să fie lansat. Elementele din [paranteze drepte] necesită informațiile dvs.',
   'tool.loading': 'Se încarcă instrumentul…',
   'tool.loadFailed': 'Acest instrument nu a putut fi încărcat. Verificați conexiunea și încercați din nou.',
   'tool.reload': 'reîncărcați pagina',

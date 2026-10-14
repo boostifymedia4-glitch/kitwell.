@@ -2,6 +2,7 @@ import { site } from '@/config/site';
 import { developerTools } from './data/developer';
 import { imageTools } from './data/image';
 import { pdfTools } from './data/pdf';
+import { pdfConvertTools } from './data/pdfConvert';
 import { textTools } from './data/text';
 import type { Category, CategoryId, ToolDef, ToolGroup } from './types';
 
@@ -12,9 +13,9 @@ export const categories: Category[] = [
     short: 'Image',
     icon: 'image',
     description: 'Convert, compress, resize, crop and inspect images.',
-    metaTitle: `Free Online Image Tools – Convert, Compress, Resize | ${site.name}`,
+    metaTitle: `Online Image Tools – Convert, Compress, Resize | ${site.name}`,
     metaDescription:
-      'Free online image tools: convert JPG, PNG and WebP, compress, resize, crop, rotate, flip, encode Base64 and pick colours. Processed in your browser.',
+      'Online image tools: convert JPG, PNG and WebP, compress, resize, crop, rotate, flip, encode Base64 and pick colours.',
     intro:
       'Everyday image jobs, done in your browser. Convert between formats, shrink files for the web, resize and crop photos, or grab exact colours.',
   },
@@ -24,11 +25,11 @@ export const categories: Category[] = [
     short: 'PDF',
     icon: 'file-text',
     description: 'Merge, split, rotate, reorder and convert PDF files.',
-    metaTitle: `Free Online PDF Tools – Merge, Split, Convert | ${site.name}`,
+    metaTitle: `Online PDF Tools – Merge, Split, Convert | ${site.name}`,
     metaDescription:
-      'Free online PDF tools: merge, split, rotate, extract and reorder pages, convert images to PDF and PDF to JPG or PNG, and view metadata. Runs in your browser.',
+      'Online PDF tools: merge, split, compress, sign and repair PDFs, convert images, HTML, Word, PowerPoint and Excel to PDF, and PDF to JPG, PNG or Markdown.',
     intro:
-      'Work with PDFs without installing software. Combine and split documents, rearrange pages, and convert between PDF and images.',
+      'Work with PDFs without installing software. Combine and split documents, rearrange pages, repair damaged files, and convert between PDF and images, Office documents and Markdown.',
   },
   {
     id: 'text',
@@ -36,9 +37,9 @@ export const categories: Category[] = [
     short: 'Text',
     icon: 'text',
     description: 'Count, clean, sort, convert and compare text.',
-    metaTitle: `Free Online Text Tools – Word Counter, Case Converter | ${site.name}`,
+    metaTitle: `Online Text Tools – Word Counter, Case Converter | ${site.name}`,
     metaDescription:
-      'Free online text tools: word and character counter, case converter, duplicate line remover, text sorter, cleaner and diff checker.',
+      'Online text tools: word and character counter, case converter, duplicate line remover, text sorter, cleaner and diff checker.',
     intro: 'Quick utilities for writers, students, editors and analysts: count, clean, sort, convert and compare text.',
   },
   {
@@ -47,9 +48,9 @@ export const categories: Category[] = [
     short: 'Developer',
     icon: 'terminal',
     description: 'Format JSON and XML, encode and decode, test regex, generate IDs.',
-    metaTitle: `Free Online Developer Tools – JSON, XML, Regex | ${site.name}`,
+    metaTitle: `Online Developer Tools – JSON, XML, Regex | ${site.name}`,
     metaDescription:
-      'Free online developer tools: JSON and XML formatters, URL, HTML and Base64 encoders, regex tester, Markdown previewer, and password, UUID and timestamp utilities.',
+      'Online developer tools: JSON and XML formatters, URL, HTML and Base64 encoders, regex tester, Markdown previewer, and password, UUID and timestamp utilities.',
     intro: 'Small, dependable utilities for everyday development work. Nothing to install, and your data stays in the browser.',
   },
 ];
@@ -61,11 +62,11 @@ export const groups: ToolGroup[] = [
   { category: 'image', name: 'Create images', description: 'Make animated GIFs from your pictures.' },
   { category: 'image', name: 'Encode and inspect', description: 'Turn images into Base64, decode them back, pick exact colours or read QR codes.' },
   { category: 'pdf', name: 'Organize PDF', description: 'Combine, split, remove, rearrange and rotate pages.' },
-  { category: 'pdf', name: 'Optimize PDF', description: 'Make a PDF smaller for email and uploads.' },
+  { category: 'pdf', name: 'Optimize PDF', description: 'Make a PDF smaller for email and uploads, or repair a damaged one.' },
   { category: 'pdf', name: 'Edit PDF', description: 'Fill forms, add signatures, page numbers and watermarks, crop pages and edit document properties.' },
   { category: 'pdf', name: 'Secure PDF', description: 'Lock a PDF with a password, remove a password you know, or black out sensitive content.' },
-  { category: 'pdf', name: 'Convert to PDF', description: 'Turn photos and screenshots into PDF documents.' },
-  { category: 'pdf', name: 'Convert from PDF', description: 'Render PDF pages as images, copy out their text, or recognise text in scans.' },
+  { category: 'pdf', name: 'Convert to PDF', description: 'Turn photos, scans, HTML and Office documents into PDF files.' },
+  { category: 'pdf', name: 'Convert from PDF', description: 'Render PDF pages as images, copy out their text, export Markdown, or recognise text in scans.' },
   { category: 'pdf', name: 'View and inspect', description: 'Read a PDF privately, check its properties and compare two versions.' },
   { category: 'text', name: 'Analyze and compare', description: 'Count words and characters, or compare two versions of a text.' },
   { category: 'text', name: 'Clean up and format', description: 'Remove clutter and duplicate lines, change letter case and sort lines.' },
@@ -74,7 +75,7 @@ export const groups: ToolGroup[] = [
   { category: 'developer', name: 'Test and generate', description: 'Try regular expressions, preview Markdown, and create passwords, UUIDs, timestamps and QR codes.' },
 ];
 
-export const tools: ToolDef[] = [...imageTools, ...pdfTools, ...textTools, ...developerTools];
+export const tools: ToolDef[] = [...imageTools, ...pdfTools, ...pdfConvertTools, ...textTools, ...developerTools];
 
 /** Curated, ordered tools shown per category in the All tools menu and on the homepage. */
 const featuredSlugs: Record<CategoryId, string[]> = {
@@ -108,7 +109,7 @@ export const toolPath = (t: Pick<ToolDef, 'category' | 'slug'>) => `/tools/${t.c
 export const categoryPath = (id: CategoryId) => `/tools/${id}`;
 
 export function toolTitle(t: ToolDef) {
-  return t.title ?? `${t.name} – Free Online Tool | ${site.name}`;
+  return t.title ?? `${t.name} – Online Tool | ${site.name}`;
 }
 
 /** Ranked search across name, keywords, description, group and category. */

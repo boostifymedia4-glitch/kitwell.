@@ -20,7 +20,6 @@ export default {
   'category.sections': 'Secțiuni din {name}',
   'category.more': 'Alte categorii de instrumente',
   'tools.title': 'Toate instrumentele',
-  'tools.lead': '{count} instrumente gratuite pentru imagini, PDF-uri, text și dezvoltare. Căutați sau răsfoiți pe categorii.',
   'tools.jump': 'Salt la o categorie',
 
   // About
@@ -41,17 +40,11 @@ export default {
 
   // Help chrome
   'help.title': 'Ajutor și întrebări frecvente',
-  'help.lead': 'Răspunsuri despre modul în care funcționează instrumentele, fișierele și confidențialitatea dvs. și limitele fiecărui instrument.',
-  'help.topics': 'Subiecte de ajutor',
-  'help.more': 'Nu găsiți răspunsul? <contact>Contactați-ne</contact>, răsfoiți <tools>toate instrumentele</tools> sau citiți <privacy>Politica de confidențialitate</privacy>.',
 
   // Legal pages
   'legal.privacy.title': 'Politica de confidențialitate',
-  'legal.privacy.lead': 'Cum tratează {site} fișierele și datele dvs.',
   'legal.terms.title': 'Termeni și condiții',
-  'legal.terms.lead': 'Regulile de utilizare a {site}.',
   'legal.cookies.title': 'Informații despre cookie-uri și stocarea din browser',
-  'legal.cookies.lead': 'Ce stochează acest site în browserul dvs. și ce s-ar schimba dacă se adaugă publicitate.',
 
   // Contact
   'contact.title': 'Contactați-ne',
@@ -60,12 +53,6 @@ export default {
   'contact.form.name': 'Numele dvs.',
   'contact.form.email': 'Adresa dvs. de e-mail',
   'contact.form.emailHint': 'Folosită doar pentru a vă răspunde.',
-  'contact.form.topic': 'Despre ce este vorba?',
-  'contact.form.topicOption.bug': 'O eroare sau o problemă',
-  'contact.form.topicOption.suggestion': 'O sugestie de instrument sau funcție',
-  'contact.form.topicOption.question': 'O întrebare',
-  'contact.form.topicOption.misc': 'Altceva',
-  'contact.form.choose': 'Alegeți un subiect',
   'contact.form.page': 'Instrument sau pagină (opțional)',
   'contact.form.pagePlaceholder': 'De exemplu: Îmbinare PDF',
   'contact.form.message': 'Mesaj',
@@ -76,7 +63,6 @@ export default {
   'contact.form.honeypot': 'Lăsați acest câmp gol',
   'contact.err.name': 'Introduceți numele dvs.',
   'contact.err.email': 'Introduceți o adresă de e-mail validă.',
-  'contact.err.topic': 'Alegeți subiectul mesajului.',
   'contact.err.message': 'Scrieți un mesaj de cel puțin {min} caractere (cel mult {max}).',
   'contact.err.summary': 'Vă rugăm să corectați câmpurile evidențiate.',
   'contact.sent.h': 'Mesaj trimis',
@@ -88,9 +74,6 @@ export default {
   'contact.fail.network': 'Mesajul nu a putut fi trimis deoarece conexiunea a eșuat. Verificați conexiunea la internet și încercați din nou.',
   'contact.unavailable.h': 'Formularul de contact nu este încă disponibil',
   'contact.unavailable.p': 'Acest site nu a fost conectat la o căsuță de e-mail, așa că de pe această pagină nu se pot trimite mesaje.',
-  'contact.email.h': 'E-mail',
-  'contact.email.p': 'Ne puteți scrie și prin e-mail:',
-  'contact.email.placeholder': 'Adresa de e-mail de contact (de adăugat înainte de lansare)',
   'contact.report.h': 'Raportarea unei probleme',
   'contact.report.intro': 'Pentru a ne ajuta să reproducem o problemă, vă rugăm să includeți:',
   'contact.report.1': 'Numele instrumentului și adresa paginii.',

@@ -1,5 +1,5 @@
 import { site } from '@/config/site';
-import { buildHelpSections } from '@/pages/helpData';
+import { buildFaq } from '@/pages/helpData';
 import type { Localizer } from '@/pageMeta';
 import type { PartialMessages } from './en';
 import type { ToolTextMap } from './toolText';
@@ -29,7 +29,7 @@ export function makeLocalizer(code: string, messages: PartialMessages, toolText:
     crumbs: { home: t('crumb.home'), tools: t('crumb.tools') },
     lang: code,
     post: (slug, key) => t(`blog.${slug}.${key}`),
-    help: buildHelpSections(t).flatMap((s) => s.items),
+    help: buildFaq(t),
     notFound: { title: t('meta.notFound.title', v), description: t('meta.notFound.description') },
   };
 }

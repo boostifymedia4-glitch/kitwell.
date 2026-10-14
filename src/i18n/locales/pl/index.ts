@@ -10,11 +10,12 @@ import toolsImageA from './toolsImageA';
 import toolsImageB from './toolsImageB';
 import toolsPdfA from './toolsPdfA';
 import toolsPdfB from './toolsPdfB';
+import toolsPdfC from './toolsPdfC';
 import toolsTextDev from './toolsTextDev';
 import blog from './blog';
 
 export { default as tools } from './tools';
 
 /** Everything translated for this language, merged. */
-const messages: PartialMessages = { ...shell, ...ui, ...registry, ...pages, ...help, ...legal, ...errors, ...toolsImageA, ...toolsImageB, ...toolsPdfA, ...toolsPdfB, ...toolsTextDev, ...blog };
+const messages: PartialMessages = { ...shell, ...ui, ...registry, ...pages, ...help, ...legal, ...errors, ...toolsImageA, ...toolsImageB, ...toolsPdfA, ...toolsPdfB, ...toolsPdfC, ...toolsTextDev, ...blog };
 export default messages;

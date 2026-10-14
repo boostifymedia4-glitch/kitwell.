@@ -46,7 +46,6 @@ export default {
   'ui.crop.label': '{label}: {w} × {h}, 위치 {x}, {y}. 방향키로 이동하세요.',
   'ui.advertisement': '광고',
   'ui.breadcrumb': '이동 경로',
-  'ui.legalNotice': '초안 문서입니다. 이 텍스트는 브라우저 기반 도구 웹사이트를 위해 작성된 템플릿입니다. 사이트를 공개하기 전에 파키스탄과 방문자가 있는 국가(예: EU/영국 GDPR, 캘리포니아 CCPA)에 맞게 법률 전문가가 검토하고 완성해야 합니다. [대괄호] 안의 항목에는 사용자 정보를 입력해야 합니다.',
   'tool.loading': '도구 불러오는 중…',
   'tool.loadFailed': '이 도구를 불러오지 못했습니다. 연결을 확인하고 다시 시도하세요.',
   'tool.reload': '페이지 새로고침',

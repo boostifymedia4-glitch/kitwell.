@@ -46,7 +46,6 @@ export default {
   'ui.crop.label': '{label}：{w} × {h}，位置 {x}, {y}。使用方向键移动。',
   'ui.advertisement': '广告',
   'ui.breadcrumb': '面包屑导航',
-  'ui.legalNotice': '初始文档。本文是为基于浏览器的工具网站撰写的模板。网站上线前，必须由合格的法律专业人士根据巴基斯坦以及您的访客所在国家或地区的法律（例如欧盟/英国 GDPR 和加州 CCPA）进行审查和补充。[方括号]中的内容需要填写您的信息。',
   'tool.loading': '正在加载工具…',
   'tool.loadFailed': '无法加载此工具。请检查网络连接后重试。',
   'tool.reload': '重新加载页面',

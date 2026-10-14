@@ -20,7 +20,6 @@ export default {
   'category.sections': 'Ενότητες στην κατηγορία {name}',
   'category.more': 'Περισσότερες κατηγορίες εργαλείων',
   'tools.title': 'Όλα τα εργαλεία',
-  'tools.lead': '{count} δωρεάν εργαλεία για εικόνες, PDF, κείμενο και ανάπτυξη λογισμικού. Κάντε αναζήτηση ή περιηγηθείτε ανά κατηγορία.',
   'tools.jump': 'Μετάβαση σε κατηγορία',
 
   // About
@@ -41,17 +40,11 @@ export default {
 
   // Help chrome
   'help.title': 'Βοήθεια και συχνές ερωτήσεις',
-  'help.lead': 'Απαντήσεις για τη λειτουργία των εργαλείων, τα αρχεία και το απόρρητό σας και τα όρια κάθε εργαλείου.',
-  'help.topics': 'Θέματα βοήθειας',
-  'help.more': 'Δεν βρίσκετε την απάντησή σας; <contact>Επικοινωνήστε μαζί μας</contact>, περιηγηθείτε σε <tools>όλα τα εργαλεία</tools> ή διαβάστε την <privacy>Πολιτική απορρήτου</privacy>.',
 
   // Legal pages
   'legal.privacy.title': 'Πολιτική απορρήτου',
-  'legal.privacy.lead': 'Πώς το {site} χειρίζεται τα αρχεία και τα δεδομένα σας.',
   'legal.terms.title': 'Όροι και προϋποθέσεις',
-  'legal.terms.lead': 'Οι κανόνες για τη χρήση του {site}.',
   'legal.cookies.title': 'Πληροφορίες για τα cookies και την αποθήκευση του προγράμματος περιήγησης',
-  'legal.cookies.lead': 'Τι αποθηκεύει αυτός ο ιστότοπος στο πρόγραμμα περιήγησής σας και τι θα άλλαζε αν προστεθούν διαφημίσεις.',
 
   // Contact
   'contact.title': 'Επικοινωνία',
@@ -60,12 +53,6 @@ export default {
   'contact.form.name': 'Το όνομά σας',
   'contact.form.email': 'Η διεύθυνση email σας',
   'contact.form.emailHint': 'Χρησιμοποιείται μόνο για να σας απαντήσουμε.',
-  'contact.form.topic': 'Σχετικά με τι αφορά;',
-  'contact.form.topicOption.bug': 'Σφάλμα ή πρόβλημα',
-  'contact.form.topicOption.suggestion': 'Πρόταση εργαλείου ή λειτουργίας',
-  'contact.form.topicOption.question': 'Ερώτηση',
-  'contact.form.topicOption.misc': 'Κάτι άλλο',
-  'contact.form.choose': 'Επιλέξτε θέμα',
   'contact.form.page': 'Εργαλείο ή σελίδα (προαιρετικό)',
   'contact.form.pagePlaceholder': 'Για παράδειγμα: Συγχώνευση PDF',
   'contact.form.message': 'Μήνυμα',
@@ -76,7 +63,6 @@ export default {
   'contact.form.honeypot': 'Αφήστε αυτό το πεδίο κενό',
   'contact.err.name': 'Εισαγάγετε το όνομά σας.',
   'contact.err.email': 'Εισαγάγετε μια έγκυρη διεύθυνση email.',
-  'contact.err.topic': 'Επιλέξτε το θέμα του μηνύματος.',
   'contact.err.message': 'Γράψτε ένα μήνυμα τουλάχιστον {min} χαρακτήρων (το πολύ {max}).',
   'contact.err.summary': 'Διορθώστε τα επισημασμένα πεδία.',
   'contact.sent.h': 'Το μήνυμα στάλθηκε',
@@ -88,9 +74,6 @@ export default {
   'contact.fail.network': 'Το μήνυμα δεν μπόρεσε να σταλεί επειδή η σύνδεση απέτυχε. Ελέγξτε τη σύνδεσή σας στο διαδίκτυο και δοκιμάστε ξανά.',
   'contact.unavailable.h': 'Η φόρμα επικοινωνίας δεν είναι ακόμη διαθέσιμη',
   'contact.unavailable.p': 'Αυτός ο ιστότοπος δεν έχει συνδεθεί με γραμματοκιβώτιο, επομένως δεν μπορούν να σταλούν μηνύματα από αυτή τη σελίδα.',
-  'contact.email.h': 'Email',
-  'contact.email.p': 'Μπορείτε επίσης να μας γράψετε με email:',
-  'contact.email.placeholder': 'Διεύθυνση email επικοινωνίας (να προστεθεί πριν από την έναρξη λειτουργίας)',
   'contact.report.h': 'Αναφορά προβλήματος',
   'contact.report.intro': 'Για να μας βοηθήσετε να αναπαραγάγουμε ένα πρόβλημα, συμπεριλάβετε:',
   'contact.report.1': 'Το όνομα του εργαλείου και τη διεύθυνση της σελίδας.',

@@ -4,7 +4,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 // @ts-expect-error plain JS modules without types
 import { contactApp, contactConfigured, validateContact } from '../server/contact.mjs';
 
-const good = { name: 'Sam', email: 'sam@example.com', topic: 'bug', message: 'The merge tool stops at page 3.', page: '/tools/pdf/merge-pdf' };
+const good = { name: 'Sam', email: 'sam@example.com', topic: 'technical', message: 'The merge tool stops at page 3.', page: '/tools/pdf/merge-pdf' };
 
 let server: Server | undefined;
 afterEach(() => new Promise<void>((resolve) => (server ? server.close(() => resolve()) : resolve())));
@@ -95,5 +95,71 @@ describe('contact endpoint', () => {
     expect((await post(url, good)).status).toBe(200);
     expect((await post(url, good)).status).toBe(200);
     expect((await post(url, good)).status).toBe(429);
+  });
+});
+
+describe('Vercel function /api/contact', () => {
+  const fakeRes = () => {
+    const r = {
+      code: 0,
+      body: undefined as unknown,
+      headers: {} as Record<string, string>,
+      status(c: number) {
+        r.code = c;
+        return r;
+      },
+      setHeader(k: string, v: string) {
+        r.headers[k] = v;
+      },
+      json(b: unknown) {
+        r.body = b;
+        return r;
+      },
+    };
+    return r;
+  };
+  const call = async (body: unknown, method = 'POST') => {
+    // @ts-expect-error plain JS module without types
+    const { default: handler } = await import('../api/contact.js');
+    const res = fakeRes();
+    await handler({ method, body, headers: { 'x-forwarded-for': `10.0.0.${Math.floor(Math.random() * 250)}` } }, res);
+    return res;
+  };
+
+  it('answers 503 and never reports success without a webhook', async () => {
+    delete process.env.CONTACT_WEBHOOK_URL;
+    const res = await call(good);
+    expect(res.code).toBe(503);
+    expect(res.body).toEqual({ error: 'not_configured' });
+  });
+  it('rejects other methods and invalid input', async () => {
+    expect((await call(good, 'GET')).code).toBe(405);
+    const bad = await call({ ...good, email: 'x', topic: 'nope' });
+    expect(bad.code).toBe(400);
+    expect((bad.body as { fields: string[] }).fields).toEqual(['email', 'topic']);
+  });
+  it('forwards to the webhook and reports success only when it accepts', async () => {
+    process.env.CONTACT_WEBHOOK_URL = 'https://hooks.example.com/x';
+    const original = globalThis.fetch;
+    const calls: Record<string, string>[] = [];
+    globalThis.fetch = (async (_u: string, init: RequestInit) => {
+      calls.push(JSON.parse(String(init.body)));
+      return new Response('ok');
+    }) as typeof fetch;
+    try {
+      const res = await call({ ...good, topic: 'tool-error' });
+      expect(res.code).toBe(200);
+      expect(calls[0].subject).toBe('Tool Error');
+      expect(calls[0].email).toBe('sam@example.com');
+      globalThis.fetch = (async () => new Response('no', { status: 500 })) as typeof fetch;
+      expect((await call(good)).code).toBe(502);
+    } finally {
+      globalThis.fetch = original;
+      delete process.env.CONTACT_WEBHOOK_URL;
+    }
+  });
+  it('accepts exactly the six subjects', () => {
+    expect(validateContact({ ...good, topic: 'privacy' }).ok).toBe(true);
+    expect(validateContact({ ...good, topic: 'bug' }).ok).toBe(false);
   });
 });

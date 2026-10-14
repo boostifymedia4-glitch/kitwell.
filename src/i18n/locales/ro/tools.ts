@@ -1330,5 +1330,156 @@ const tools: ToolTextMap = {
       'Culorile închise pe fundal deschis, cu contrast puternic, se scanează cel mai bine.',
     ],
   },
+  "scan-to-pdf": {
+    name: "Scanare în PDF",
+    description: "Transformați fotografii sau scanări ale unor pagini de hârtie într-un singur PDF, cu curățare opțională pentru o lizibilitate mai bună.",
+    metaDescription: "Scanare în PDF online: combinați fotografii sau scanări ale unor pagini de hârtie într-un singur PDF, stabiliți ordinea paginilor și uniformizați umbrele cu modul document alb-negru.",
+    steps: [
+      "Adăugați fotografii sau scanări ale paginilor ori faceți o fotografie, dacă telefonul sau tableta dumneavoastră permite acest lucru.",
+      "Puneți paginile în ordine și alegeți dimensiunea paginii și un stil de curățare.",
+      "Creați PDF-ul și descărcați-l.",
+    ],
+    faq: [
+      { q: "Recunoaște instrumentul textul de pe pagină?", a: "Nu. Scanare în PDF transformă imaginile în pagini PDF și le poate curăța, dar textul rămâne parte din imagine. Pentru a-l face căutabil, treceți rezultatul prin OCR PDF." },
+      { q: "Pot folosi camera telefonului?", a: "Pe telefoanele și tabletele al căror browser permite acest lucru, butonul „Fă o fotografie” deschide camera. În caz contrar, alegeți fotografii deja salvate pe dispozitiv." },
+      { q: "Ce fac stilurile de curățare?", a: "„Original” păstrează culorile. „Tonuri de gri” elimină culoarea. „Document alb-negru” transformă pagina în text negru pur pe hârtie albă și uniformizează umbrele și iluminarea neuniformă, ceea ce se potrivește paginilor tipărite și notițelor, dar nu fotografiilor." },
+      { q: "Este fișierul meu încărcat undeva?", a: "Nu. Fișierul este citit și convertit de browserul dumneavoastră. Acest instrument nu îl trimite către un server." },
+    ],
+    limits: [
+      "Maximum 25 MB pe imagine și 100 de imagini pe PDF.",
+      "Fotografiile mari sunt reduse la aproximativ dimensiunea A4 la 300 dpi, pentru ca PDF-ul să rămână mic.",
+      "Unele formate ale telefoanelor, precum HEIC, nu pot fi citite de browsere; salvați-le mai întâi ca JPG.",
+    ],
+  },
+  "html-to-pdf": {
+    name: "HTML în PDF",
+    description: "Convertiți un fișier HTML sau HTML lipit într-un PDF cu text selectabil.",
+    metaDescription: "HTML în PDF online: convertiți un fișier HTML sau cod HTML lipit într-un PDF cu text real, selectabil, titluri, liste, tabele și imagini încorporate.",
+    steps: [
+      "Alegeți un fișier HTML sau lipiți HTML-ul dumneavoastră.",
+      "Alegeți dimensiunea paginii.",
+      "Convertiți și descărcați PDF-ul.",
+    ],
+    faq: [
+      { q: "Pot introduce adresa unei pagini web?", a: "Nu. Preluarea altor site-uri ar necesita trimiterea adresei către un server, iar o pagină se convertește rareori bine fără stilurile ei. Salvați pagina ca fișier HTML în browser și folosiți acel fișier sau lipiți HTML-ul ei." },
+      { q: "Va arăta PDF-ul ca pagina web?", a: "Nu, nu exact. Instrumentul citește structura documentului (titluri, paragrafe, liste, tabele, linkuri, text aldin și cursiv și imagini încorporate) și o aranjează ca un document simplu. Stilurile CSS, scripturile, fonturile web, coloanele și elementele poziționate nu sunt aplicate." },
+      { q: "Este sigur să convertesc HTML în care nu am încredere?", a: "HTML-ul este citit ca text inert: scripturile nu rulează și nimic nu este încărcat de pe internet. Sunt folosite doar imaginile încorporate chiar în HTML." },
+      { q: "Ce limbi și fonturi sunt acceptate în PDF?", a: "PDF-ul este scris cu Noto Sans, care acoperă textul latin (inclusiv literele poloneze, cehe, românești și turcești), chirilic, grecesc, vietnamez și devanagari. Textul arab, ebraic, thailandez, chinez, japonez și coreean nu este încă acceptat: acele caractere apar ca semne de întrebare, iar instrumentul vă spune câte au fost afectate. Fonturile originale ale documentului nu sunt păstrate." },
+      { q: "Este fișierul meu încărcat undeva?", a: "Nu. Fișierul este citit și convertit de browserul dumneavoastră. Acest instrument nu îl trimite către un server." },
+    ],
+    limits: [
+      "Maximum 10 MB de HTML.",
+      "Sunt incluse doar imaginile încorporate în HTML (adrese data:); imaginile și stilurile încărcate de pe alte site-uri sunt omise, nu preluate.",
+      "Scripturile, formularele, cadrele, canvas, videoul și graficele SVG nu sunt convertite.",
+    ],
+  },
+  "word-to-pdf": {
+    name: "Word în PDF",
+    description: "Convertiți un document Word (DOCX) în PDF, păstrând titlurile, listele, tabelele și imaginile.",
+    metaDescription: "Word în PDF online: convertiți un document DOCX într-un PDF cu text selectabil, titluri, liste, tabele, linkuri și imagini. Fișierul este convertit în browserul dumneavoastră.",
+    steps: [
+      "Alegeți un fișier DOCX.",
+      "Alegeți dimensiunea paginii sau păstrați-o pe cea din document.",
+      "Convertiți și descărcați PDF-ul.",
+    ],
+    faq: [
+      { q: "Va arăta PDF-ul exact ca documentul din Word?", a: "Nu. Kitwell nu folosește Microsoft Word sau LibreOffice. Citește conținutul și structura documentului și le aranjează singur, așa că fonturile, spațierea și sfârșiturile de pagină diferă de cele din Word. Verificați rezultatul înainte de a-l trimite." },
+      { q: "Ce se convertește și ce nu?", a: "Se convertesc: textul cu aldin, cursiv, subliniat și linkuri, titluri, liste cu buline și numerotate, tabele, imagini JPEG și PNG, întreruperi de rând și de pagină, aliniere și orientarea paginii. Nu se convertesc: anteturile și subsolurile, notele de subsol, casetele de text, ecuațiile, diagramele, formele și imaginile în alte formate." },
+      { q: "Pot converti un fișier .doc vechi?", a: "Nu. Deschideți-l în Word și salvați-l mai întâi ca fișier DOCX." },
+      { q: "Ce limbi și fonturi sunt acceptate în PDF?", a: "PDF-ul este scris cu Noto Sans, care acoperă textul latin (inclusiv literele poloneze, cehe, românești și turcești), chirilic, grecesc, vietnamez și devanagari. Textul arab, ebraic, thailandez, chinez, japonez și coreean nu este încă acceptat: acele caractere apar ca semne de întrebare, iar instrumentul vă spune câte au fost afectate. Fonturile originale ale documentului nu sunt păstrate." },
+      { q: "Este fișierul meu încărcat undeva?", a: "Nu. Fișierul este citit și convertit de browserul dumneavoastră. Acest instrument nu îl trimite către un server." },
+    ],
+    limits: [
+      "Doar fișiere DOCX, maximum 50 MB. Fișierele .doc vechi și documentele protejate cu parolă nu sunt acceptate.",
+      "Aspectul este aproximativ: coloanele, înconjurarea imaginilor cu text, anteturile, subsolurile și notele de subsol nu sunt reproduse.",
+      "Fonturile originalului sunt înlocuite cu Noto Sans.",
+    ],
+  },
+  "powerpoint-to-pdf": {
+    name: "PowerPoint în PDF",
+    description: "Convertiți o prezentare PowerPoint (PPTX) în PDF, cu o pagină pe diapozitiv.",
+    metaDescription: "PowerPoint în PDF online: convertiți o prezentare PPTX într-un PDF cu o pagină pe diapozitiv, păstrând dimensiunea diapozitivului, textul, imaginile și formele simple. Direct în browserul dumneavoastră.",
+    steps: [
+      "Alegeți un fișier PPTX.",
+      "Convertiți-l.",
+      "Verificați paginile și descărcați PDF-ul.",
+    ],
+    faq: [
+      { q: "Vor arăta diapozitivele exact ca în PowerPoint?", a: "Nu exact. Kitwell desenează fiecare diapozitiv din casetele sale de text, imagini, forme simple și tabele. Fonturile, gradientele, umbrele, efectele și potrivirea exactă a textului diferă. Parcurgeți întotdeauna PDF-ul înainte să-l folosiți." },
+      { q: "Ce nu se convertește?", a: "Diagramele, SmartArt, videoul și audio, animațiile și tranzițiile, notele vorbitorului, gradientele, liniile și conectorii, precum și imaginile în alte formate decât JPEG și PNG. Instrumentul vă spune câte elemente au fost omise." },
+      { q: "Pot converti un fișier .ppt vechi?", a: "Nu. Deschideți-l în PowerPoint și salvați-l mai întâi ca fișier PPTX." },
+      { q: "Ce limbi și fonturi sunt acceptate în PDF?", a: "PDF-ul este scris cu Noto Sans, care acoperă textul latin (inclusiv literele poloneze, cehe, românești și turcești), chirilic, grecesc, vietnamez și devanagari. Textul arab, ebraic, thailandez, chinez, japonez și coreean nu este încă acceptat: acele caractere apar ca semne de întrebare, iar instrumentul vă spune câte au fost afectate. Fonturile originale ale documentului nu sunt păstrate." },
+      { q: "Este fișierul meu încărcat undeva?", a: "Nu. Fișierul este citit și convertit de browserul dumneavoastră. Acest instrument nu îl trimite către un server." },
+    ],
+    limits: [
+      "Doar fișiere PPTX, maximum 100 MB și 300 de diapozitive. Fișierele .ppt vechi și prezentările protejate cu parolă nu sunt acceptate.",
+      "Fiecare diapozitiv devine o pagină cu dimensiunea și orientarea proprii ale diapozitivului.",
+      "Textul care nu încape în caseta sa este micșorat, până la jumătate din dimensiune.",
+    ],
+  },
+  "excel-to-pdf": {
+    name: "Excel în PDF",
+    description: "Convertiți un registru Excel (XLSX) în PDF, cu fiecare foaie vizibilă sub formă de tabel.",
+    metaDescription: "Excel în PDF online: convertiți un registru XLSX într-un PDF în care fiecare foaie vizibilă este un tabel cu valorile, numerele și datele salvate. Direct în browserul dumneavoastră.",
+    steps: [
+      "Alegeți un fișier XLSX.",
+      "Convertiți-l.",
+      "Verificați tabelele și descărcați PDF-ul.",
+    ],
+    faq: [
+      { q: "Se calculează formulele?", a: "Nu. PDF-ul arată valorile pe care Excel le-a salvat în fișier. Dacă o celulă cu formulă nu are o valoare salvată, rămâne goală, iar instrumentul vă anunță; deschideți fișierul în Excel, lăsați-l să calculeze, salvați-l și convertiți-l din nou." },
+      { q: "Va arăta ca aspectul de tipărire din Excel?", a: "Nu. Fiecare foaie vizibilă devine un tabel simplu, potrivit la lățimea paginii. Culorile celulelor, celulele îmbinate, lățimile coloanelor, diagramele, imaginile, zonele de tipărire și sfârșiturile de pagină nu sunt păstrate." },
+      { q: "Pot converti un fișier .xls vechi?", a: "Nu. Deschideți-l în Excel și salvați-l mai întâi ca fișier XLSX." },
+      { q: "Ce limbi și fonturi sunt acceptate în PDF?", a: "PDF-ul este scris cu Noto Sans, care acoperă textul latin (inclusiv literele poloneze, cehe, românești și turcești), chirilic, grecesc, vietnamez și devanagari. Textul arab, ebraic, thailandez, chinez, japonez și coreean nu este încă acceptat: acele caractere apar ca semne de întrebare, iar instrumentul vă spune câte au fost afectate. Fonturile originale ale documentului nu sunt păstrate." },
+      { q: "Este fișierul meu încărcat undeva?", a: "Nu. Fișierul este citit și convertit de browserul dumneavoastră. Acest instrument nu îl trimite către un server." },
+    ],
+    limits: [
+      "Doar fișiere XLSX, maximum 50 MB. Fișierele .xls vechi și registrele protejate cu parolă nu sunt acceptate.",
+      "Până la 5.000 de rânduri și 60 de coloane pe foaie; ce depășește este omis, iar instrumentul vă anunță.",
+      "Foile ascunse sunt omise.",
+    ],
+  },
+  "pdf-to-markdown": {
+    name: "PDF în Markdown",
+    description: "Transformați textul unui PDF într-un fișier Markdown cu titluri, paragrafe și liste.",
+    metaDescription: "PDF în Markdown online: extrageți textul unui PDF și descărcați-l ca fișier Markdown (.md) cu titluri, paragrafe și liste. Funcționează în browserul dumneavoastră.",
+    steps: [
+      "Alegeți un PDF.",
+      "Alegeți dacă se elimină anteturile, subsolurile și numerele de pagină care se repetă.",
+      "Convertiți, verificați rezultatul și descărcați fișierul .md.",
+    ],
+    faq: [
+      { q: "Cum sunt găsite titlurile și listele?", a: "Titlurile sunt rânduri scrise cu un font mai mare decât textul de bază, listele sunt rânduri care încep cu o bulină sau un număr, iar paragrafele sunt separate de spațiul dintre rânduri. Este o estimare bună, nu o garanție, așa că verificați rezultatul." },
+      { q: "De ce este gol rezultatul pentru PDF-ul meu scanat?", a: "O scanare este o imagine a unei pagini și nu are text de extras. Rulați mai întâi OCR PDF pentru a adăuga un strat de text, apoi convertiți rezultatul." },
+      { q: "Ce se întâmplă cu tabelele, coloanele și imaginile?", a: "Tabelele și coloanele nu sunt reconstruite: textul lor apare ca rânduri obișnuite, în ordinea de citire, atunci când este posibil. Imaginile, linkurile, textul aldin și cursiv, notele de subsol și ecuațiile nu sunt preluate." },
+      { q: "Este fișierul meu încărcat undeva?", a: "Nu. Fișierul este citit și convertit de browserul dumneavoastră. Acest instrument nu îl trimite către un server." },
+    ],
+    limits: [
+      "Maximum 100 MB pe PDF. PDF-urile protejate cu parolă trebuie deblocate mai întâi.",
+      "Se convertește doar textul care este text real în PDF; paginile scanate au nevoie mai întâi de OCR PDF.",
+      "Structura este estimată din dimensiunile fonturilor și spațiere și poate fi greșită la aspecte complexe.",
+    ],
+  },
+  "repair-pdf": {
+    name: "Reparare PDF",
+    description: "Încercați să reparați un PDF care nu se deschide, reconstruindu-i structura internă.",
+    metaDescription: "Reparare PDF online: reconstruiți structura unui PDF deteriorat care nu se deschide, de exemplu cu un tabel de referințe încrucișate stricat sau un sfârșit tăiat. Funcționează în browserul dumneavoastră.",
+    steps: [
+      "Alegeți PDF-ul deteriorat.",
+      "Porniți repararea.",
+      "Dacă instrumentul a produs un fișier, verificați-l și descărcați-l.",
+    ],
+    faq: [
+      { q: "Ce tipuri de deteriorări pot fi reparate?", a: "Deteriorările structurii fișierului: un index de obiecte (tabel de referințe încrucișate) lipsă sau greșit, un trailer lipsă, date inutile înainte de început sau o listă de pagini stricată. Dacă fișierul a fost tăiat, paginile salvate înainte de tăiere pot fi recuperate." },
+      { q: "Ce nu se poate recupera?", a: "Conținutul care nu mai este în fișier. Paginile, imaginile sau fonturile lipsă ori deteriorate nu pot fi readuse, iar unele fișiere nu mai pot fi salvate. Instrumentul vă spune câte pagini a păstrat și anunță când nu poate produce un fișier utilizabil; nu oferă niciodată o descărcare pe care nu a creat-o." },
+      { q: "Ce se întâmplă dacă PDF-ul meu se deschide normal?", a: "Atunci nu e nimic de reparat. Instrumentul vă spune acest lucru și oferă o copie curățată a fișierului." },
+      { q: "Este fișierul meu încărcat undeva?", a: "Nu. Fișierul este citit și convertit de browserul dumneavoastră. Acest instrument nu îl trimite către un server." },
+    ],
+    limits: [
+      "Maximum 100 MB pe PDF. PDF-urile protejate cu parolă trebuie deblocate mai întâi.",
+      "Deteriorările din interiorul fluxurilor de obiecte comprimate nu pot fi reconstruite de acest instrument.",
+      "Un fișier reparat poate avea mai puține pagini decât originalul, iar ordinea paginilor se poate schimba după o reparare amplă.",
+    ],
+  },
 };
 export default tools;

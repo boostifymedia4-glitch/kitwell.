@@ -94,6 +94,13 @@ export const TOOL_ART: Record<string, ToolArt> = {
   'fill-pdf-forms': a('page', 'purple', 'form'),
   'redact-pdf': a('page', 'blue', 'redact'),
   'compare-pdf': a('page', 'slate', 'compare', { stack: true }),
+  'scan-to-pdf': a('page', 'green', 'scan', { tag: 'PDF' }),
+  'html-to-pdf': a('page', 'orange', 'html', { tag: 'PDF' }),
+  'word-to-pdf': a('page', 'blue', 'lines', { tag: 'PDF' }),
+  'powerpoint-to-pdf': a('page', 'coral', 'play', { tag: 'PDF' }),
+  'excel-to-pdf': a('page', 'green', 'count', { tag: 'PDF' }),
+  'pdf-to-markdown': a('page', 'indigo', 'markdown', { tag: 'MD' }),
+  'repair-pdf': a('page', 'teal', 'check'),
 
   // Text: warm note sheets.
   'word-counter': a('note', 'orange', 'count'),

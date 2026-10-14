@@ -121,3 +121,29 @@ export function useTask<T>() {
 
   return { state, run, reset, progress: state.status === 'running' ? state.progress : null };
 }
+
+/**
+ * Scroll reveal: adds `reveal-armed` (items start hidden) and then `reveal-in` once the element is visible, so CSS can
+ * animate its children in. Does nothing, and leaves everything visible, when the visitor prefers reduced motion or the
+ * browser has no IntersectionObserver.
+ */
+export function useReveal<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || typeof IntersectionObserver === 'undefined' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    el.classList.add('reveal-armed');
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          el.classList.add('reveal-in');
+          io.disconnect();
+        }
+      },
+      { threshold: 0.2 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return ref;
+}

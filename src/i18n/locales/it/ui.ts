@@ -50,7 +50,6 @@ export default {
   'ui.crop.label': '{label}: {w} per {h} a {x}, {y}. Usa i tasti freccia per spostare.',
   'ui.advertisement': 'Pubblicità',
   'ui.breadcrumb': 'Percorso di navigazione',
-  'ui.legalNotice': 'Documento di partenza. Questo testo è un modello scritto per un sito di strumenti nel browser. Prima della pubblicazione del sito deve essere rivisto e completato da un professionista legale qualificato per il Pakistan e per i paesi in cui hai visitatori (ad esempio il GDPR UE/Regno Unito e il CCPA della California). Le voci tra [parentesi quadre] richiedono le tue informazioni.',
   'tool.loading': 'Caricamento dello strumento…',
   'tool.loadFailed': 'Impossibile caricare questo strumento. Controlla la connessione e riprova.',
   'tool.reload': 'ricarica la pagina',

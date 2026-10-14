@@ -20,7 +20,6 @@ export default {
   'category.sections': 'Các mục trong {name}',
   'category.more': 'Các danh mục công cụ khác',
   'tools.title': 'Tất cả công cụ',
-  'tools.lead': '{count} công cụ miễn phí cho hình ảnh, PDF, văn bản và lập trình. Hãy tìm kiếm, hoặc duyệt theo danh mục.',
   'tools.jump': 'Chuyển đến một danh mục',
 
   // About
@@ -41,17 +40,11 @@ export default {
 
   // Help chrome
   'help.title': 'Trợ giúp & câu hỏi thường gặp',
-  'help.lead': 'Giải đáp về cách các công cụ hoạt động, tệp và quyền riêng tư của bạn, cũng như giới hạn của từng công cụ.',
-  'help.topics': 'Chủ đề trợ giúp',
-  'help.more': 'Không tìm thấy câu trả lời? <contact>Liên hệ với chúng tôi</contact>, duyệt <tools>tất cả công cụ</tools>, hoặc đọc <privacy>Chính sách quyền riêng tư</privacy>.',
 
   // Legal pages
   'legal.privacy.title': 'Chính sách quyền riêng tư',
-  'legal.privacy.lead': '{site} xử lý tệp và dữ liệu của bạn như thế nào.',
   'legal.terms.title': 'Điều khoản & điều kiện',
-  'legal.terms.lead': 'Các quy tắc khi sử dụng {site}.',
   'legal.cookies.title': 'Thông tin về cookie và bộ nhớ trình duyệt',
-  'legal.cookies.lead': 'Trang web này lưu gì trong trình duyệt của bạn, và điều gì sẽ thay đổi nếu thêm quảng cáo.',
 
   // Contact
   'contact.title': 'Liên hệ với chúng tôi',
@@ -60,12 +53,6 @@ export default {
   'contact.form.name': 'Tên của bạn',
   'contact.form.email': 'Địa chỉ email của bạn',
   'contact.form.emailHint': 'Chỉ dùng để trả lời bạn.',
-  'contact.form.topic': 'Nội dung liên quan đến điều gì?',
-  'contact.form.topicOption.bug': 'Lỗi hoặc sự cố',
-  'contact.form.topicOption.suggestion': 'Đề xuất công cụ hoặc tính năng',
-  'contact.form.topicOption.question': 'Một câu hỏi',
-  'contact.form.topicOption.misc': 'Việc khác',
-  'contact.form.choose': 'Chọn một chủ đề',
   'contact.form.page': 'Công cụ hoặc trang (không bắt buộc)',
   'contact.form.pagePlaceholder': 'Ví dụ: Gộp PDF',
   'contact.form.message': 'Tin nhắn',
@@ -76,7 +63,6 @@ export default {
   'contact.form.honeypot': 'Để trống trường này',
   'contact.err.name': 'Hãy nhập tên của bạn.',
   'contact.err.email': 'Hãy nhập địa chỉ email hợp lệ.',
-  'contact.err.topic': 'Hãy chọn nội dung tin nhắn liên quan đến điều gì.',
   'contact.err.message': 'Hãy viết tin nhắn có ít nhất {min} ký tự (tối đa {max}).',
   'contact.err.summary': 'Vui lòng sửa các trường được đánh dấu.',
   'contact.sent.h': 'Đã gửi tin nhắn',
@@ -88,9 +74,6 @@ export default {
   'contact.fail.network': 'Không thể gửi tin nhắn vì kết nối bị lỗi. Hãy kiểm tra kết nối internet và thử lại.',
   'contact.unavailable.h': 'Biểu mẫu liên hệ chưa khả dụng',
   'contact.unavailable.p': 'Trang web này chưa được kết nối với hộp thư, nên không thể gửi tin nhắn từ trang này.',
-  'contact.email.h': 'Email',
-  'contact.email.p': 'Bạn cũng có thể viết email cho chúng tôi:',
-  'contact.email.placeholder': 'Địa chỉ email liên hệ (sẽ được thêm trước khi ra mắt)',
   'contact.report.h': 'Báo cáo sự cố',
   'contact.report.intro': 'Để giúp chúng tôi tái hiện sự cố, vui lòng cung cấp:',
   'contact.report.1': 'Tên công cụ và địa chỉ trang.',

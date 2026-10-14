@@ -52,7 +52,6 @@ export default {
   'ui.crop.label': '{label}: {w} × {h} na pozici {x}, {y}. Přesouvejte šipkami.',
   'ui.advertisement': 'Reklama',
   'ui.breadcrumb': 'Drobečková navigace',
-  'ui.legalNotice': 'Úvodní dokument. Tento text je šablona napsaná pro web s nástroji běžícími v prohlížeči. Než bude web spuštěn, musí ji zkontrolovat a doplnit kvalifikovaný právník pro Pákistán a pro země, odkud máte návštěvníky (například GDPR v EU/Spojeném království a CCPA v Kalifornii). Položky v [hranatých závorkách] vyžadují vaše údaje.',
   'tool.loading': 'Načítám nástroj…',
   'tool.loadFailed': 'Tento nástroj se nepodařilo načíst. Zkontrolujte připojení a zkuste to znovu.',
   'tool.reload': 'načtěte stránku znovu',

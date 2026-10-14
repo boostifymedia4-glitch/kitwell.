@@ -48,7 +48,6 @@ export default {
   'ui.crop.label': '{label}: {w} bij {h} op {x}, {y}. Gebruik de pijltjestoetsen om te verplaatsen.',
   'ui.advertisement': 'Advertentie',
   'ui.breadcrumb': 'Kruimelpad',
-  'ui.legalNotice': 'Startdocument. Deze tekst is een sjabloon voor een website met browsergebaseerde tools. Laat hem door een gekwalificeerde juridisch adviseur controleren en aanvullen voor Pakistan en voor de landen waar je bezoekers hebt (bijvoorbeeld de AVG in de EU/VK en de CCPA in Californië) voordat de site live gaat. Onderdelen tussen [haakjes] vragen om jouw gegevens.',
   'tool.loading': 'Tool laden…',
   'tool.loadFailed': 'Deze tool kon niet worden geladen. Controleer je verbinding en probeer het opnieuw.',
   'tool.reload': 'laad de pagina opnieuw',

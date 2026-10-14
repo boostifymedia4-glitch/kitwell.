@@ -47,7 +47,6 @@ export default {
   'ui.crop.label': '{label}: {w} × {h} pada {x}, {y}. Gunakan tombol panah untuk memindahkan.',
   'ui.advertisement': 'Iklan',
   'ui.breadcrumb': 'Navigasi lokasi',
-  'ui.legalNotice': 'Dokumen awal. Teks ini adalah templat yang ditulis untuk situs alat berbasis browser. Teks ini harus ditinjau dan dilengkapi oleh profesional hukum yang berkualifikasi untuk Pakistan dan negara tempat Anda memiliki pengunjung (misalnya GDPR UE/Inggris dan CCPA California) sebelum situs diluncurkan. Bagian dalam [tanda kurung siku] memerlukan informasi Anda.',
   'tool.loading': 'Memuat alat…',
   'tool.loadFailed': 'Alat ini tidak dapat dimuat. Periksa koneksi Anda lalu coba lagi.',
   'tool.reload': 'muat ulang halaman',

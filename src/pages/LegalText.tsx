@@ -7,8 +7,6 @@ import { Rich } from '@/i18n/Rich';
 /** One block of a legal page: heading, paragraph, muted paragraph or list. Values are catalog keys. */
 export type LegalBlock = ['h', string] | ['p', string] | ['muted', string] | ['ul', string[]];
 
-const EMAIL = site.contactEmail.replace(/^\[|\]$/g, '');
-
 /** Renders a legal page from its catalog keys, so every language shows the full text and not just the headings. */
 export function LegalText({ blocks }: { blocks: LegalBlock[] }) {
   const { t } = useI18n();
@@ -19,7 +17,7 @@ export function LegalText({ blocks }: { blocks: LegalBlock[] }) {
     privacy: (c: React.ReactNode) => <Link to="/privacy">{c}</Link>,
     contact: (c: React.ReactNode) => <Link to="/contact">{c}</Link>,
   };
-  const text = (key: string) => <Rich text={t(key, { site: site.name, email: EMAIL })} tags={tags} />;
+  const text = (key: string) => <Rich text={t(key, { site: site.name })} tags={tags} />;
   return (
     <>
       {blocks.map((b, i) => {

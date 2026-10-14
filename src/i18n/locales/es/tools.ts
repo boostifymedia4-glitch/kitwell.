@@ -1331,5 +1331,156 @@ const tools: ToolTextMap = {
       'Los colores oscuros sobre fondo claro y con mucho contraste se escanean mejor.',
     ],
   },
+  "scan-to-pdf": {
+    name: "Escanear a PDF",
+    description: "Convierte fotos o escaneos de páginas de papel en un solo PDF, con una limpieza opcional para mejorar la legibilidad.",
+    metaDescription: "Escanear a PDF en línea: combina fotos o escaneos de páginas de papel en un solo PDF, define el orden de las páginas y suaviza las sombras con el modo de documento en blanco y negro.",
+    steps: [
+      "Añade fotos o escaneos de tus páginas, o haz una foto si tu móvil o tableta lo admite.",
+      "Ordena las páginas y elige el tamaño de página y un estilo de limpieza.",
+      "Crea el PDF y descárgalo.",
+    ],
+    faq: [
+      { q: "¿Reconoce el texto de la página?", a: "No. Escanear a PDF convierte las imágenes en páginas PDF y puede limpiarlas, pero el texto sigue formando parte de la imagen. Para que sea buscable, pasa el resultado por OCR de PDF." },
+      { q: "¿Puedo usar la cámara del móvil?", a: "En móviles y tabletas cuyo navegador lo admite, el botón «Hacer una foto» abre la cámara. Si no, elige fotos que ya estén guardadas en tu dispositivo." },
+      { q: "¿Qué hacen los estilos de limpieza?", a: "«Original» mantiene los colores. «Escala de grises» elimina el color. «Documento en blanco y negro» convierte la página en texto negro puro sobre papel blanco y suaviza las sombras y la iluminación desigual, algo adecuado para páginas impresas y notas, pero no para fotografías." },
+      { q: "¿Se sube mi archivo a algún sitio?", a: "No. Tu navegador lee y convierte el archivo. Esta herramienta no lo envía a ningún servidor." },
+    ],
+    limits: [
+      "Máximo 25 MB por imagen y 100 imágenes por PDF.",
+      "Las fotos grandes se reducen a aproximadamente el tamaño A4 a 300 ppp para que el PDF no pese demasiado.",
+      "Algunos formatos de móvil como HEIC no los pueden leer los navegadores; guárdalos primero como JPG.",
+    ],
+  },
+  "html-to-pdf": {
+    name: "HTML a PDF",
+    description: "Convierte un archivo HTML o HTML pegado en un PDF con texto seleccionable.",
+    metaDescription: "HTML a PDF en línea: convierte un archivo HTML o código HTML pegado en un PDF con texto real y seleccionable, títulos, listas, tablas e imágenes incrustadas.",
+    steps: [
+      "Elige un archivo HTML o pega tu HTML.",
+      "Elige el tamaño de página.",
+      "Conviértelo y descarga el PDF.",
+    ],
+    faq: [
+      { q: "¿Puedo introducir la dirección de una página web?", a: "No. Obtener otros sitios web exigiría enviar la dirección a un servidor, y una página rara vez se convierte bien sin sus estilos. Guarda la página como archivo HTML en tu navegador y usa ese archivo, o pega su HTML." },
+      { q: "¿El PDF se verá como la página web?", a: "No, no exactamente. La herramienta lee la estructura del documento (títulos, párrafos, listas, tablas, enlaces, texto en negrita y cursiva e imágenes incrustadas) y la maqueta como un documento sencillo. No se aplican estilos CSS, scripts, fuentes web, columnas ni elementos posicionados." },
+      { q: "¿Es seguro convertir HTML en el que no confío?", a: "El HTML se lee como texto inerte: los scripts no se ejecutan y no se carga nada de internet. Solo se usan las imágenes incrustadas en el propio HTML." },
+      { q: "¿Qué idiomas y fuentes se admiten en el PDF?", a: "El PDF se escribe con Noto Sans, que cubre texto latino (incluidas las letras polacas, checas, rumanas y turcas), cirílico, griego, vietnamita y devanagari. El texto árabe, hebreo, tailandés, chino, japonés y coreano aún no se admite: esos caracteres aparecen como signos de interrogación y la herramienta te indica cuántos se vieron afectados. No se conservan las fuentes originales del documento." },
+      { q: "¿Se sube mi archivo a algún sitio?", a: "No. Tu navegador lee y convierte el archivo. Esta herramienta no lo envía a ningún servidor." },
+    ],
+    limits: [
+      "Máximo 10 MB de HTML.",
+      "Solo se incluyen las imágenes incrustadas en el HTML (direcciones data:); las imágenes y estilos que se cargarían desde otros sitios web se omiten, no se descargan.",
+      "No se convierten scripts, formularios, marcos, canvas, vídeo ni gráficos SVG.",
+    ],
+  },
+  "word-to-pdf": {
+    name: "Word a PDF",
+    description: "Convierte un documento de Word (DOCX) a PDF conservando títulos, listas, tablas e imágenes.",
+    metaDescription: "Word a PDF en línea: convierte un documento DOCX en un PDF con texto seleccionable, títulos, listas, tablas, enlaces e imágenes. El archivo se convierte en tu navegador.",
+    steps: [
+      "Elige un archivo DOCX.",
+      "Elige el tamaño de página o conserva el del documento.",
+      "Conviértelo y descarga el PDF.",
+    ],
+    faq: [
+      { q: "¿El PDF se verá exactamente igual que el documento en Word?", a: "No. Kitwell no usa Microsoft Word ni LibreOffice. Lee el contenido y la estructura del documento y lo maqueta por su cuenta, así que las fuentes, los espacios y los saltos de página difieren de Word. Revisa el resultado antes de enviarlo." },
+      { q: "¿Qué se convierte y qué no?", a: "Se convierte: texto con negrita, cursiva, subrayado y enlaces, títulos, listas con viñetas y numeradas, tablas, imágenes JPEG y PNG, saltos de línea y de página, alineación y orientación de página. No se convierte: encabezados y pies de página, notas al pie, cuadros de texto, ecuaciones, gráficos, formas y otros formatos de imagen." },
+      { q: "¿Puedo convertir un archivo .doc antiguo?", a: "No. Ábrelo en Word y guárdalo primero como archivo DOCX." },
+      { q: "¿Qué idiomas y fuentes se admiten en el PDF?", a: "El PDF se escribe con Noto Sans, que cubre texto latino (incluidas las letras polacas, checas, rumanas y turcas), cirílico, griego, vietnamita y devanagari. El texto árabe, hebreo, tailandés, chino, japonés y coreano aún no se admite: esos caracteres aparecen como signos de interrogación y la herramienta te indica cuántos se vieron afectados. No se conservan las fuentes originales del documento." },
+      { q: "¿Se sube mi archivo a algún sitio?", a: "No. Tu navegador lee y convierte el archivo. Esta herramienta no lo envía a ningún servidor." },
+    ],
+    limits: [
+      "Solo archivos DOCX, máximo 50 MB. No se admiten archivos .doc antiguos ni documentos protegidos con contraseña.",
+      "El diseño es aproximado: no se reproducen las columnas, el ajuste del texto alrededor de las imágenes, los encabezados, los pies de página ni las notas al pie.",
+      "Las fuentes del original se sustituyen por Noto Sans.",
+    ],
+  },
+  "powerpoint-to-pdf": {
+    name: "PowerPoint a PDF",
+    description: "Convierte una presentación de PowerPoint (PPTX) a PDF con una página por diapositiva.",
+    metaDescription: "PowerPoint a PDF en línea: convierte una presentación PPTX en un PDF con una página por diapositiva, conservando el tamaño, el texto, las imágenes y las formas simples. Todo en tu navegador.",
+    steps: [
+      "Elige un archivo PPTX.",
+      "Conviértelo.",
+      "Revisa las páginas y descarga el PDF.",
+    ],
+    faq: [
+      { q: "¿Las diapositivas se verán exactamente igual que en PowerPoint?", a: "No exactamente. Kitwell dibuja cada diapositiva a partir de sus cuadros de texto, imágenes, formas simples y tablas. Las fuentes, los degradados, las sombras, los efectos y el ajuste exacto del texto difieren. Revisa siempre el PDF antes de usarlo." },
+      { q: "¿Qué no se convierte?", a: "Gráficos, SmartArt, vídeo y audio, animaciones y transiciones, notas del orador, degradados, líneas y conectores, e imágenes en formatos distintos de JPEG y PNG. La herramienta te indica cuántos elementos se omitieron." },
+      { q: "¿Puedo convertir un archivo .ppt antiguo?", a: "No. Ábrelo en PowerPoint y guárdalo primero como archivo PPTX." },
+      { q: "¿Qué idiomas y fuentes se admiten en el PDF?", a: "El PDF se escribe con Noto Sans, que cubre texto latino (incluidas las letras polacas, checas, rumanas y turcas), cirílico, griego, vietnamita y devanagari. El texto árabe, hebreo, tailandés, chino, japonés y coreano aún no se admite: esos caracteres aparecen como signos de interrogación y la herramienta te indica cuántos se vieron afectados. No se conservan las fuentes originales del documento." },
+      { q: "¿Se sube mi archivo a algún sitio?", a: "No. Tu navegador lee y convierte el archivo. Esta herramienta no lo envía a ningún servidor." },
+    ],
+    limits: [
+      "Solo archivos PPTX, máximo 100 MB y 300 diapositivas. No se admiten archivos .ppt antiguos ni presentaciones protegidas con contraseña.",
+      "Cada diapositiva se convierte en una página con el tamaño y la orientación propios de la diapositiva.",
+      "El texto que no cabe en su cuadro se reduce, hasta la mitad de su tamaño.",
+    ],
+  },
+  "excel-to-pdf": {
+    name: "Excel a PDF",
+    description: "Convierte un libro de Excel (XLSX) a PDF, con cada hoja visible como una tabla.",
+    metaDescription: "Excel a PDF en línea: convierte un libro XLSX en un PDF donde cada hoja visible es una tabla con sus valores, números y fechas guardados. Todo en tu navegador.",
+    steps: [
+      "Elige un archivo XLSX.",
+      "Conviértelo.",
+      "Revisa las tablas y descarga el PDF.",
+    ],
+    faq: [
+      { q: "¿Se calculan las fórmulas?", a: "No. El PDF muestra los valores que Excel guardó en el archivo. Si una celda con fórmula no tiene valor guardado, se deja vacía y la herramienta te lo indica; abre el archivo en Excel, deja que calcule, guárdalo y vuelve a convertirlo." },
+      { q: "¿Se verá como el diseño de impresión de Excel?", a: "No. Cada hoja visible se convierte en una tabla sencilla ajustada al ancho de la página. No se conservan los colores de celda, las celdas combinadas, los anchos de columna, los gráficos, las imágenes, las áreas de impresión ni los saltos de página." },
+      { q: "¿Puedo convertir un archivo .xls antiguo?", a: "No. Ábrelo en Excel y guárdalo primero como archivo XLSX." },
+      { q: "¿Qué idiomas y fuentes se admiten en el PDF?", a: "El PDF se escribe con Noto Sans, que cubre texto latino (incluidas las letras polacas, checas, rumanas y turcas), cirílico, griego, vietnamita y devanagari. El texto árabe, hebreo, tailandés, chino, japonés y coreano aún no se admite: esos caracteres aparecen como signos de interrogación y la herramienta te indica cuántos se vieron afectados. No se conservan las fuentes originales del documento." },
+      { q: "¿Se sube mi archivo a algún sitio?", a: "No. Tu navegador lee y convierte el archivo. Esta herramienta no lo envía a ningún servidor." },
+    ],
+    limits: [
+      "Solo archivos XLSX, máximo 50 MB. No se admiten archivos .xls antiguos ni libros protegidos con contraseña.",
+      "Hasta 5000 filas y 60 columnas por hoja; lo que exceda se omite y la herramienta te lo indica.",
+      "Las hojas ocultas se omiten.",
+    ],
+  },
+  "pdf-to-markdown": {
+    name: "PDF a Markdown",
+    description: "Convierte el texto de un PDF en un archivo Markdown con títulos, párrafos y listas.",
+    metaDescription: "PDF a Markdown en línea: extrae el texto de un PDF y descárgalo como archivo Markdown (.md) con títulos, párrafos y listas. Funciona en tu navegador.",
+    steps: [
+      "Elige un PDF.",
+      "Elige si quieres quitar los encabezados, pies de página y números de página repetidos.",
+      "Conviértelo, revisa el resultado y descarga el archivo .md.",
+    ],
+    faq: [
+      { q: "¿Cómo se detectan los títulos y las listas?", a: "Los títulos son líneas con una fuente más grande que el texto normal, las listas son líneas que empiezan con una viñeta o un número, y los párrafos se separan por el espacio entre líneas. Es una buena estimación, no una garantía, así que revisa el resultado." },
+      { q: "¿Por qué el resultado está vacío con mi PDF escaneado?", a: "Un escaneo es una imagen de una página y no tiene texto que extraer. Ejecuta primero OCR de PDF para añadir una capa de texto y luego convierte el resultado." },
+      { q: "¿Y las tablas, las columnas y las imágenes?", a: "Las tablas y las columnas no se reconstruyen: su texto aparece como líneas normales, en orden de lectura cuando es posible. No se incluyen las imágenes, los enlaces, el texto en negrita y cursiva, las notas al pie ni las ecuaciones." },
+      { q: "¿Se sube mi archivo a algún sitio?", a: "No. Tu navegador lee y convierte el archivo. Esta herramienta no lo envía a ningún servidor." },
+    ],
+    limits: [
+      "Máximo 100 MB por PDF. Los PDF protegidos con contraseña deben desbloquearse primero.",
+      "Solo se convierte el texto que es texto real en el PDF; las páginas escaneadas necesitan antes OCR de PDF.",
+      "La estructura se estima a partir del tamaño de fuente y el espaciado y puede ser incorrecta en diseños complejos.",
+    ],
+  },
+  "repair-pdf": {
+    name: "Reparar PDF",
+    description: "Intenta reparar un PDF que no se abre reconstruyendo su estructura interna.",
+    metaDescription: "Reparar PDF en línea: reconstruye la estructura de un PDF dañado que no se abre, por ejemplo con una tabla de referencias cruzadas rota o un final cortado. Funciona en tu navegador.",
+    steps: [
+      "Elige el PDF dañado.",
+      "Inicia la reparación.",
+      "Si la herramienta ha generado un archivo, revísalo y descárgalo.",
+    ],
+    faq: [
+      { q: "¿Qué tipos de daño se pueden reparar?", a: "Daños en la estructura del archivo: un índice de objetos (tabla de referencias cruzadas) ausente o incorrecto, un trailer ausente, datos basura antes del inicio o una lista de páginas rota. Si el archivo se cortó, se pueden recuperar las páginas guardadas antes del corte." },
+      { q: "¿Qué no se puede recuperar?", a: "El contenido que ya no está en el archivo. Las páginas, imágenes o fuentes ausentes o dañadas no se pueden recuperar, y algunos archivos no tienen arreglo. La herramienta te indica cuántas páginas conservó y lo dice cuando no puede generar un archivo utilizable; nunca ofrece una descarga que no haya creado." },
+      { q: "¿Y si mi PDF se abre bien?", a: "Entonces no hay nada que reparar. La herramienta te lo indica y ofrece una copia limpia del archivo." },
+      { q: "¿Se sube mi archivo a algún sitio?", a: "No. Tu navegador lee y convierte el archivo. Esta herramienta no lo envía a ningún servidor." },
+    ],
+    limits: [
+      "Máximo 100 MB por PDF. Los PDF protegidos con contraseña deben desbloquearse primero.",
+      "Esta herramienta no puede reconstruir daños dentro de flujos de objetos comprimidos.",
+      "Un archivo reparado puede tener menos páginas que el original, y el orden de las páginas puede cambiar tras una reparación profunda.",
+    ],
+  },
 };
 export default tools;

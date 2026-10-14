@@ -6,6 +6,7 @@ import { requiredKeys, sourceKeyOf } from '../src/i18n/plurals';
 
 /** Strings that are the same in every language: pure formats, units, technical names and words shared with English. */
 const SAME_EVERYWHERE = new Set([
+  'convert.summary',
   'contact.form.counter', 'lang.optionLabel', 'ui.sliderLabel', 'err.pdf.mergeFile', 'imagesToPdf.fileError',
   'imageResize.note', 'imageCrop.note', 'imageTransform.note', 'imageWatermark.note', 'imageEnlarge.note', 'imageConvert.note',
   'photoEditor.resultInfo', 'photoEditor.fileInfo', 'imageCompress.maxSize.fullHd', 'imageCompress.noteSmaller',

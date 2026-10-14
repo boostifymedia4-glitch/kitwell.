@@ -1330,5 +1330,156 @@ const tools: ToolTextMap = {
       'Màu tối trên nền sáng với độ tương phản mạnh sẽ quét tốt nhất.',
     ],
   },
+  "scan-to-pdf": {
+    name: "Quét sang PDF",
+    description: "Biến ảnh chụp hoặc bản quét các trang giấy thành một PDF, kèm tùy chọn làm sạch để dễ đọc hơn.",
+    metaDescription: "Quét sang PDF trực tuyến: gộp ảnh chụp hoặc bản quét các trang giấy thành một PDF, đặt thứ tự trang và làm đều bóng đổ bằng chế độ tài liệu đen trắng.",
+    steps: [
+      "Thêm ảnh chụp hoặc bản quét các trang của bạn, hoặc chụp ảnh nếu điện thoại hay máy tính bảng của bạn hỗ trợ.",
+      "Sắp xếp các trang theo thứ tự rồi chọn khổ trang và kiểu làm sạch.",
+      "Tạo PDF và tải xuống.",
+    ],
+    faq: [
+      { q: "Công cụ có nhận dạng văn bản trên trang không?", a: "Không. Quét sang PDF biến hình ảnh thành các trang PDF và có thể làm sạch chúng, nhưng văn bản vẫn là một phần của hình ảnh. Để có thể tìm kiếm, hãy cho kết quả chạy qua OCR PDF." },
+      { q: "Tôi có thể dùng camera điện thoại không?", a: "Trên điện thoại và máy tính bảng có trình duyệt hỗ trợ, nút “Chụp ảnh” sẽ mở camera. Nếu không, hãy chọn các ảnh đã lưu sẵn trên thiết bị của bạn." },
+      { q: "Các kiểu làm sạch làm gì?", a: "“Gốc” giữ nguyên màu. “Thang xám” bỏ màu. “Tài liệu đen trắng” biến trang thành chữ đen thuần trên giấy trắng và làm đều bóng đổ cùng ánh sáng không đều, phù hợp với trang in và ghi chú nhưng không phù hợp với ảnh chụp." },
+      { q: "Tệp của tôi có bị tải lên đâu đó không?", a: "Không. Tệp được trình duyệt của bạn đọc và chuyển đổi. Công cụ này không gửi nó đến máy chủ." },
+    ],
+    limits: [
+      "Tối đa 25 MB mỗi ảnh và 100 ảnh mỗi PDF.",
+      "Ảnh lớn được thu nhỏ xuống khoảng cỡ A4 ở 300 dpi để PDF nhẹ.",
+      "Một số định dạng của điện thoại như HEIC trình duyệt không đọc được; hãy lưu chúng sang JPG trước.",
+    ],
+  },
+  "html-to-pdf": {
+    name: "HTML sang PDF",
+    description: "Chuyển một tệp HTML hoặc HTML đã dán thành PDF có văn bản chọn được.",
+    metaDescription: "HTML sang PDF trực tuyến: chuyển một tệp HTML hoặc mã HTML đã dán thành PDF có văn bản thật, chọn được, kèm tiêu đề, danh sách, bảng và ảnh nhúng.",
+    steps: [
+      "Chọn một tệp HTML hoặc dán HTML của bạn.",
+      "Chọn khổ trang.",
+      "Chuyển đổi và tải PDF xuống.",
+    ],
+    faq: [
+      { q: "Tôi có thể nhập địa chỉ một trang web không?", a: "Không. Việc lấy các trang web khác sẽ đòi hỏi gửi địa chỉ đến máy chủ, và một trang hiếm khi chuyển đổi tốt nếu thiếu các kiểu của nó. Hãy lưu trang thành tệp HTML trong trình duyệt rồi dùng tệp đó, hoặc dán HTML của trang." },
+      { q: "PDF có giống trang web không?", a: "Không, không hoàn toàn. Công cụ đọc cấu trúc tài liệu (tiêu đề, đoạn văn, danh sách, bảng, liên kết, chữ đậm và nghiêng cùng ảnh nhúng) và dàn thành một tài liệu đơn giản. Kiểu CSS, script, phông web, cột và các thành phần định vị không được áp dụng." },
+      { q: "Chuyển đổi HTML mà tôi không tin tưởng có an toàn không?", a: "HTML được đọc như văn bản vô hại: script không chạy và không có gì được tải từ internet. Chỉ các ảnh nhúng ngay trong HTML mới được dùng." },
+      { q: "PDF hỗ trợ những ngôn ngữ và phông chữ nào?", a: "PDF được tạo bằng phông Noto Sans, bao phủ văn bản Latin (gồm cả các chữ cái Ba Lan, Séc, Rumani và Thổ Nhĩ Kỳ), Kirin, Hy Lạp, tiếng Việt và Devanagari. Văn bản tiếng Ả Rập, Do Thái, Thái, Trung, Nhật và Hàn chưa được hỗ trợ: các ký tự đó xuất hiện dưới dạng dấu hỏi và công cụ sẽ cho bạn biết có bao nhiêu ký tự bị ảnh hưởng. Phông chữ gốc của tài liệu không được giữ lại." },
+      { q: "Tệp của tôi có bị tải lên đâu đó không?", a: "Không. Tệp được trình duyệt của bạn đọc và chuyển đổi. Công cụ này không gửi nó đến máy chủ." },
+    ],
+    limits: [
+      "Tối đa 10 MB HTML.",
+      "Chỉ các ảnh nhúng trong HTML (địa chỉ data:) được đưa vào; ảnh và kiểu tải từ trang web khác bị bỏ qua, không được lấy về.",
+      "Script, biểu mẫu, khung, canvas, video và đồ họa SVG không được chuyển đổi.",
+    ],
+  },
+  "word-to-pdf": {
+    name: "Word sang PDF",
+    description: "Chuyển tài liệu Word (DOCX) sang PDF, giữ tiêu đề, danh sách, bảng và hình ảnh.",
+    metaDescription: "Word sang PDF trực tuyến: chuyển tài liệu DOCX thành PDF có văn bản chọn được, tiêu đề, danh sách, bảng, liên kết và hình ảnh. Tệp được chuyển đổi trong trình duyệt của bạn.",
+    steps: [
+      "Chọn một tệp DOCX.",
+      "Chọn khổ trang hoặc giữ khổ của tài liệu.",
+      "Chuyển đổi và tải PDF xuống.",
+    ],
+    faq: [
+      { q: "PDF có giống hệt tài liệu trong Word không?", a: "Không. Kitwell không dùng Microsoft Word hay LibreOffice. Nó đọc nội dung và cấu trúc của tài liệu rồi tự dàn trang, nên phông chữ, khoảng cách và ngắt trang khác với Word. Hãy kiểm tra kết quả trước khi gửi đi." },
+      { q: "Những gì được chuyển đổi và những gì không?", a: "Được chuyển đổi: văn bản có chữ đậm, nghiêng, gạch chân và liên kết, tiêu đề, danh sách đầu dòng và đánh số, bảng, ảnh JPEG và PNG, ngắt dòng và ngắt trang, căn lề và hướng trang. Không được chuyển đổi: đầu trang và chân trang, chú thích cuối trang, hộp văn bản, phương trình, biểu đồ, hình khối và các định dạng ảnh khác." },
+      { q: "Tôi có thể chuyển đổi tệp .doc cũ không?", a: "Không. Hãy mở nó trong Word và lưu thành tệp DOCX trước." },
+      { q: "PDF hỗ trợ những ngôn ngữ và phông chữ nào?", a: "PDF được tạo bằng phông Noto Sans, bao phủ văn bản Latin (gồm cả các chữ cái Ba Lan, Séc, Rumani và Thổ Nhĩ Kỳ), Kirin, Hy Lạp, tiếng Việt và Devanagari. Văn bản tiếng Ả Rập, Do Thái, Thái, Trung, Nhật và Hàn chưa được hỗ trợ: các ký tự đó xuất hiện dưới dạng dấu hỏi và công cụ sẽ cho bạn biết có bao nhiêu ký tự bị ảnh hưởng. Phông chữ gốc của tài liệu không được giữ lại." },
+      { q: "Tệp của tôi có bị tải lên đâu đó không?", a: "Không. Tệp được trình duyệt của bạn đọc và chuyển đổi. Công cụ này không gửi nó đến máy chủ." },
+    ],
+    limits: [
+      "Chỉ tệp DOCX, tối đa 50 MB. Tệp .doc cũ và tài liệu được bảo vệ bằng mật khẩu không được hỗ trợ.",
+      "Bố cục chỉ gần đúng: cột, chữ bao quanh ảnh, đầu trang, chân trang và chú thích cuối trang không được tái tạo.",
+      "Phông chữ gốc được thay bằng Noto Sans.",
+    ],
+  },
+  "powerpoint-to-pdf": {
+    name: "PowerPoint sang PDF",
+    description: "Chuyển bản trình bày PowerPoint (PPTX) sang PDF, mỗi trang chiếu một trang.",
+    metaDescription: "PowerPoint sang PDF trực tuyến: chuyển bản trình bày PPTX thành PDF với mỗi trang chiếu một trang, giữ kích thước trang chiếu, văn bản, hình ảnh và các hình khối đơn giản. Ngay trong trình duyệt của bạn.",
+    steps: [
+      "Chọn một tệp PPTX.",
+      "Chuyển đổi nó.",
+      "Kiểm tra các trang rồi tải PDF xuống.",
+    ],
+    faq: [
+      { q: "Các trang chiếu có giống hệt trong PowerPoint không?", a: "Không hoàn toàn. Kitwell vẽ từng trang chiếu từ các hộp văn bản, hình ảnh, hình khối đơn giản và bảng của nó. Phông chữ, màu chuyển sắc, bóng đổ, hiệu ứng và cách vừa khít văn bản chính xác sẽ khác. Hãy luôn xem lại PDF trước khi sử dụng." },
+      { q: "Những gì không được chuyển đổi?", a: "Biểu đồ, SmartArt, video và âm thanh, hoạt ảnh và hiệu ứng chuyển trang, ghi chú của người trình bày, màu chuyển sắc, đường kẻ và đầu nối, cùng hình ảnh ở định dạng khác JPEG và PNG. Công cụ sẽ cho bạn biết có bao nhiêu mục bị bỏ qua." },
+      { q: "Tôi có thể chuyển đổi tệp .ppt cũ không?", a: "Không. Hãy mở nó trong PowerPoint và lưu thành tệp PPTX trước." },
+      { q: "PDF hỗ trợ những ngôn ngữ và phông chữ nào?", a: "PDF được tạo bằng phông Noto Sans, bao phủ văn bản Latin (gồm cả các chữ cái Ba Lan, Séc, Rumani và Thổ Nhĩ Kỳ), Kirin, Hy Lạp, tiếng Việt và Devanagari. Văn bản tiếng Ả Rập, Do Thái, Thái, Trung, Nhật và Hàn chưa được hỗ trợ: các ký tự đó xuất hiện dưới dạng dấu hỏi và công cụ sẽ cho bạn biết có bao nhiêu ký tự bị ảnh hưởng. Phông chữ gốc của tài liệu không được giữ lại." },
+      { q: "Tệp của tôi có bị tải lên đâu đó không?", a: "Không. Tệp được trình duyệt của bạn đọc và chuyển đổi. Công cụ này không gửi nó đến máy chủ." },
+    ],
+    limits: [
+      "Chỉ tệp PPTX, tối đa 100 MB và 300 trang chiếu. Tệp .ppt cũ và bản trình bày được bảo vệ bằng mật khẩu không được hỗ trợ.",
+      "Mỗi trang chiếu trở thành một trang có kích thước và hướng riêng của trang chiếu.",
+      "Văn bản không vừa khung sẽ được thu nhỏ, tối đa còn một nửa cỡ chữ.",
+    ],
+  },
+  "excel-to-pdf": {
+    name: "Excel sang PDF",
+    description: "Chuyển sổ làm việc Excel (XLSX) sang PDF, mỗi trang tính hiển thị là một bảng.",
+    metaDescription: "Excel sang PDF trực tuyến: chuyển sổ làm việc XLSX thành PDF trong đó mỗi trang tính hiển thị là một bảng giá trị, số và ngày đã lưu. Ngay trong trình duyệt của bạn.",
+    steps: [
+      "Chọn một tệp XLSX.",
+      "Chuyển đổi nó.",
+      "Kiểm tra các bảng rồi tải PDF xuống.",
+    ],
+    faq: [
+      { q: "Công thức có được tính không?", a: "Không. PDF hiển thị các giá trị mà Excel đã lưu trong tệp. Nếu một ô công thức không có giá trị đã lưu, ô đó để trống và công cụ sẽ báo cho bạn; hãy mở tệp trong Excel, để nó tính toán, lưu lại rồi chuyển đổi lần nữa." },
+      { q: "Kết quả có giống bố cục in trong Excel không?", a: "Không. Mỗi trang tính hiển thị trở thành một bảng đơn giản được vừa với chiều rộng trang. Màu ô, ô gộp, độ rộng cột, biểu đồ, hình ảnh, vùng in và ngắt trang không được giữ lại." },
+      { q: "Tôi có thể chuyển đổi tệp .xls cũ không?", a: "Không. Hãy mở nó trong Excel và lưu thành tệp XLSX trước." },
+      { q: "PDF hỗ trợ những ngôn ngữ và phông chữ nào?", a: "PDF được tạo bằng phông Noto Sans, bao phủ văn bản Latin (gồm cả các chữ cái Ba Lan, Séc, Rumani và Thổ Nhĩ Kỳ), Kirin, Hy Lạp, tiếng Việt và Devanagari. Văn bản tiếng Ả Rập, Do Thái, Thái, Trung, Nhật và Hàn chưa được hỗ trợ: các ký tự đó xuất hiện dưới dạng dấu hỏi và công cụ sẽ cho bạn biết có bao nhiêu ký tự bị ảnh hưởng. Phông chữ gốc của tài liệu không được giữ lại." },
+      { q: "Tệp của tôi có bị tải lên đâu đó không?", a: "Không. Tệp được trình duyệt của bạn đọc và chuyển đổi. Công cụ này không gửi nó đến máy chủ." },
+    ],
+    limits: [
+      "Chỉ tệp XLSX, tối đa 50 MB. Tệp .xls cũ và sổ làm việc được bảo vệ bằng mật khẩu không được hỗ trợ.",
+      "Tối đa 5.000 hàng và 60 cột mỗi trang tính; phần vượt quá bị bỏ qua và công cụ sẽ báo.",
+      "Các trang tính ẩn bị bỏ qua.",
+    ],
+  },
+  "pdf-to-markdown": {
+    name: "PDF sang Markdown",
+    description: "Biến văn bản của PDF thành tệp Markdown có tiêu đề, đoạn văn và danh sách.",
+    metaDescription: "PDF sang Markdown trực tuyến: trích xuất văn bản của PDF và tải xuống thành tệp Markdown (.md) có tiêu đề, đoạn văn và danh sách. Chạy ngay trong trình duyệt của bạn.",
+    steps: [
+      "Chọn một PDF.",
+      "Chọn có xóa đầu trang, chân trang và số trang lặp lại hay không.",
+      "Chuyển đổi, kiểm tra kết quả và tải tệp .md xuống.",
+    ],
+    faq: [
+      { q: "Tiêu đề và danh sách được nhận ra như thế nào?", a: "Tiêu đề là các dòng có cỡ chữ lớn hơn văn bản chính, danh sách là các dòng bắt đầu bằng dấu đầu dòng hoặc số, còn các đoạn văn được tách bởi khoảng cách giữa các dòng. Đây là ước đoán tốt chứ không phải bảo đảm, vì vậy hãy kiểm tra kết quả." },
+      { q: "Vì sao kết quả trống với PDF quét của tôi?", a: "Bản quét là hình ảnh của trang và không có văn bản để trích xuất. Hãy chạy OCR PDF trước để thêm lớp văn bản, rồi chuyển đổi kết quả." },
+      { q: "Còn bảng, cột và hình ảnh thì sao?", a: "Bảng và cột không được dựng lại: văn bản của chúng xuất hiện như các dòng thông thường, theo thứ tự đọc khi có thể. Hình ảnh, liên kết, chữ đậm và nghiêng, chú thích cuối trang và phương trình không được mang theo." },
+      { q: "Tệp của tôi có bị tải lên đâu đó không?", a: "Không. Tệp được trình duyệt của bạn đọc và chuyển đổi. Công cụ này không gửi nó đến máy chủ." },
+    ],
+    limits: [
+      "Tối đa 100 MB mỗi PDF. PDF được bảo vệ bằng mật khẩu cần được mở khóa trước.",
+      "Chỉ văn bản thực sự là văn bản trong PDF mới được chuyển đổi; các trang quét cần OCR PDF trước.",
+      "Cấu trúc được ước tính từ cỡ chữ và khoảng cách, có thể sai với bố cục phức tạp.",
+    ],
+  },
+  "repair-pdf": {
+    name: "Sửa PDF",
+    description: "Thử sửa một PDF không mở được bằng cách dựng lại cấu trúc bên trong của nó.",
+    metaDescription: "Sửa PDF trực tuyến: dựng lại cấu trúc của một PDF bị hỏng không mở được, ví dụ khi bảng tham chiếu chéo hỏng hoặc phần cuối bị cắt cụt. Chạy ngay trong trình duyệt của bạn.",
+    steps: [
+      "Chọn PDF bị hỏng.",
+      "Bắt đầu sửa.",
+      "Nếu công cụ tạo ra tệp, hãy kiểm tra và tải xuống.",
+    ],
+    faq: [
+      { q: "Có thể sửa những loại hỏng hóc nào?", a: "Hỏng cấu trúc của tệp: chỉ mục đối tượng (bảng tham chiếu chéo) bị thiếu hoặc sai, thiếu trailer, rác ở phía trước hoặc danh sách trang bị hỏng. Nếu tệp bị cắt cụt, các trang đã lưu trước chỗ cắt có thể được khôi phục." },
+      { q: "Điều gì không thể khôi phục?", a: "Nội dung không còn trong tệp. Các trang, hình ảnh hay phông chữ bị thiếu hoặc hỏng không thể lấy lại, và một số tệp không thể cứu được. Công cụ cho bạn biết đã giữ lại bao nhiêu trang và nói rõ khi không tạo được tệp dùng được; nó không bao giờ đưa ra bản tải xuống mà nó chưa tạo." },
+      { q: "Nếu PDF của tôi mở bình thường thì sao?", a: "Khi đó không có gì để sửa. Công cụ sẽ cho bạn biết và cung cấp một bản sao đã làm sạch của tệp." },
+      { q: "Tệp của tôi có bị tải lên đâu đó không?", a: "Không. Tệp được trình duyệt của bạn đọc và chuyển đổi. Công cụ này không gửi nó đến máy chủ." },
+    ],
+    limits: [
+      "Tối đa 100 MB mỗi PDF. PDF được bảo vệ bằng mật khẩu cần được mở khóa trước.",
+      "Công cụ này không thể dựng lại hỏng hóc bên trong các luồng đối tượng đã nén.",
+      "Tệp đã sửa có thể có ít trang hơn bản gốc, và thứ tự trang có thể thay đổi sau một lần sửa nặng.",
+    ],
+  },
 };
 export default tools;

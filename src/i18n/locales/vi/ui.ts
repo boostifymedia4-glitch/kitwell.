@@ -46,7 +46,6 @@ export default {
   'ui.crop.label': '{label}: {w} × {h} tại {x}, {y}. Dùng phím mũi tên để di chuyển.',
   'ui.advertisement': 'Quảng cáo',
   'ui.breadcrumb': 'Đường dẫn điều hướng',
-  'ui.legalNotice': 'Tài liệu khởi đầu. Văn bản này là bản mẫu được viết cho một trang web công cụ chạy trên trình duyệt. Trước khi trang web đi vào hoạt động, văn bản cần được một chuyên gia pháp lý có trình độ rà soát và hoàn thiện cho Pakistan và các quốc gia có khách truy cập của bạn (ví dụ GDPR của EU/Vương quốc Anh và CCPA của California). Các mục trong [dấu ngoặc vuông] cần bạn điền thông tin.',
   'tool.loading': 'Đang tải công cụ…',
   'tool.loadFailed': 'Không thể tải công cụ này. Hãy kiểm tra kết nối và thử lại.',
   'tool.reload': 'tải lại trang',

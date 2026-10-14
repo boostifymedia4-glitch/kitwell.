@@ -1,5 +1,5 @@
 /** Rules for the contact form. They mirror server/contact.mjs, which re-checks everything on the server. */
-export const CONTACT_TOPICS = ['bug', 'suggestion', 'question', 'other'] as const;
+export const CONTACT_TOPICS = ['general', 'technical', 'tool-error', 'suggestion', 'privacy', 'other'] as const;
 export type ContactTopic = (typeof CONTACT_TOPICS)[number];
 export const CONTACT_LIMITS = { name: 80, email: 120, message: 4000, minMessage: 10, page: 200 } as const;
 
@@ -25,9 +25,6 @@ export function invalidContactFields(form: ContactForm): ContactField[] {
   if (len < CONTACT_LIMITS.minMessage || len > CONTACT_LIMITS.message) out.push('message');
   return out;
 }
-
-/** True when the configured address is a real one and not the "[add before launch]" placeholder. */
-export const isRealEmail = (value: string) => /^[^\s@[\]]+@[^\s@[\]]+\.[A-Za-z]{2,}$/.test(value);
 
 export type ContactResult = 'sent' | 'not_configured' | 'rate_limited' | 'delivery_failed' | 'invalid' | 'network';
 

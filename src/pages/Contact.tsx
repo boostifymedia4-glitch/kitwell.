@@ -3,8 +3,7 @@ import { Link } from '@/i18n/Link';
 import { Icon } from '@/components/Icon';
 import { ErrorMessage, Notice } from '@/components/tool/Feedback';
 import { Field } from '@/components/tool/Fields';
-import { PageShell, Placeholder } from '@/components/ui/PageShell';
-import { site } from '@/config/site';
+import { PageShell } from '@/components/ui/PageShell';
 import { useI18n } from '@/i18n';
 import { Rich } from '@/i18n/Rich';
 import {
@@ -12,7 +11,6 @@ import {
   CONTACT_TOPICS,
   contactConfigured,
   invalidContactFields,
-  isRealEmail,
   sendContact,
   type ContactField,
   type ContactForm,
@@ -71,7 +69,7 @@ export default function Contact() {
   const errorText: Record<ContactField, string> = {
     name: t('contact.err.name'),
     email: t('contact.err.email'),
-    topic: t('contact.err.topic'),
+    topic: t('contact.err.subject'),
     message: t('contact.err.message', { min: CONTACT_LIMITS.minMessage, max: CONTACT_LIMITS.message }),
   };
   const failureText = (r: ContactResult) =>
@@ -127,7 +125,7 @@ export default function Contact() {
               <div className="options-grid">
                 <Field label={t('contact.form.name')}>
                   {(id) => (
-                    <input id={id} className="input" value={form.name} maxLength={CONTACT_LIMITS.name} autoComplete="name" aria-invalid={bad('name')} onChange={(e) => set('name', e.target.value)} />
+                    <input id={id} className="input" value={form.name} maxLength={CONTACT_LIMITS.name} autoComplete="name" placeholder={t('contact.form.namePlaceholder')} aria-invalid={bad('name')} onChange={(e) => set('name', e.target.value)} />
                   )}
                 </Field>
                 <Field label={t('contact.form.email')} hint={t('contact.form.emailHint')}>
@@ -147,13 +145,13 @@ export default function Contact() {
                 </Field>
               </div>
               <div className="options-grid">
-                <Field label={t('contact.form.topic')}>
+                <Field label={t('contact.form.subject')}>
                   {(id) => (
                     <select id={id} className="select" value={form.topic} aria-invalid={bad('topic')} onChange={(e) => set('topic', e.target.value as ContactForm['topic'])}>
-                      <option value="">{t('contact.form.choose')}</option>
+                      <option value="">{t('contact.form.chooseSubject')}</option>
                       {CONTACT_TOPICS.map((k) => (
                         <option key={k} value={k}>
-                          {t(`contact.form.topicOption.${k === 'other' ? 'misc' : k}`)}
+                          {t(`contact.form.topicOption.${k === 'tool-error' ? 'toolError' : k === 'suggestion' ? 'feature' : k === 'other' ? 'misc' : k}`)}
                         </option>
                       ))}
                     </select>
@@ -175,6 +173,7 @@ export default function Contact() {
                       value={form.message}
                       maxLength={CONTACT_LIMITS.message}
                       aria-invalid={bad('message')}
+                      placeholder={t('contact.form.messagePlaceholder')}
                       onChange={(e) => set('message', e.target.value)}
                     />
                     <span className="hint contact-counter" aria-hidden="true">
@@ -206,19 +205,6 @@ export default function Contact() {
         </section>
 
         <aside className="contact-side">
-          <section className="card contact-card" aria-labelledby="contact-email">
-            <h2 id="contact-email">{t('contact.email.h')}</h2>
-            <p>
-              {t('contact.email.p')}{' '}
-              {isRealEmail(site.contactEmail) ? (
-                <a href={`mailto:${site.contactEmail}`} dir="ltr">
-                  {site.contactEmail}
-                </a>
-              ) : (
-                <Placeholder>{t('contact.email.placeholder')}</Placeholder>
-              )}
-            </p>
-          </section>
           <section className="card contact-card" aria-labelledby="contact-report">
             <h2 id="contact-report">{t('contact.report.h')}</h2>
             <p>{t('contact.report.intro')}</p>

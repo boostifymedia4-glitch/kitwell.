@@ -1832,5 +1832,156 @@ const tools: ToolTextMap = {
       'Dunkle Farben auf hellem Grund mit starkem Kontrast lassen sich am besten scannen.',
     ],
   },
+  "scan-to-pdf": {
+    name: "Scan in PDF",
+    description: "Wandeln Sie Fotos oder Scans von Papierseiten in eine PDF um, optional mit Bereinigung für bessere Lesbarkeit.",
+    metaDescription: "Scan in PDF online: Fotos oder Scans von Papierseiten zu einer PDF zusammenfügen, die Seitenreihenfolge festlegen und Schatten mit dem Schwarz-Weiß-Dokumentmodus bereinigen.",
+    steps: [
+      "Fügen Sie Fotos oder Scans Ihrer Seiten hinzu oder machen Sie ein Foto, falls Ihr Smartphone oder Tablet das unterstützt.",
+      "Bringen Sie die Seiten in die richtige Reihenfolge und wählen Sie Seitengröße und Bereinigungsstil.",
+      "Erstellen Sie die PDF und laden Sie sie herunter.",
+    ],
+    faq: [
+      { q: "Erkennt das Tool den Text auf der Seite?", a: "Nein. Scan in PDF wandelt die Bilder in PDF-Seiten um und kann sie bereinigen, der Text bleibt aber Teil des Bildes. Um ihn durchsuchbar zu machen, lassen Sie das Ergebnis durch OCR für PDF laufen." },
+      { q: "Kann ich die Kamera meines Smartphones verwenden?", a: "Auf Smartphones und Tablets, deren Browser dies unterstützt, öffnet die Schaltfläche „Foto aufnehmen“ die Kamera. Andernfalls wählen Sie Fotos, die bereits auf Ihrem Gerät gespeichert sind." },
+      { q: "Was bewirken die Bereinigungsstile?", a: "„Original“ behält die Farben bei. „Graustufen“ entfernt die Farbe. „Schwarz-Weiß-Dokument“ macht aus der Seite reinen schwarzen Text auf weißem Papier und gleicht Schatten und ungleichmäßige Beleuchtung aus; das eignet sich für gedruckte Seiten und Notizen, nicht für Fotos." },
+      { q: "Wird meine Datei irgendwohin hochgeladen?", a: "Nein. Die Datei wird von Ihrem Browser gelesen und konvertiert. Dieses Tool sendet sie nicht an einen Server." },
+    ],
+    limits: [
+      "Höchstens 25 MB pro Bild und 100 Bilder pro PDF.",
+      "Große Fotos werden auf etwa A4-Größe bei 300 dpi verkleinert, damit die PDF klein bleibt.",
+      "Manche Smartphone-Formate wie HEIC können Browser nicht lesen; speichern Sie sie zuerst als JPG.",
+    ],
+  },
+  "html-to-pdf": {
+    name: "HTML in PDF",
+    description: "Wandeln Sie eine HTML-Datei oder eingefügtes HTML in eine PDF mit auswählbarem Text um.",
+    metaDescription: "HTML in PDF online: Eine HTML-Datei oder eingefügten HTML-Code in eine PDF mit echtem, auswählbarem Text, Überschriften, Listen, Tabellen und eingebetteten Bildern umwandeln.",
+    steps: [
+      "Wählen Sie eine HTML-Datei oder fügen Sie Ihr HTML ein.",
+      "Wählen Sie die Seitengröße.",
+      "Wandeln Sie um und laden Sie die PDF herunter.",
+    ],
+    faq: [
+      { q: "Kann ich eine Webadresse eingeben?", a: "Nein. Um andere Websites abzurufen, müsste die Adresse an einen Server gesendet werden, und eine Seite lässt sich ohne ihre Stile selten gut umwandeln. Speichern Sie die Seite in Ihrem Browser als HTML-Datei und verwenden Sie diese Datei oder fügen Sie ihr HTML ein." },
+      { q: "Sieht die PDF wie die Webseite aus?", a: "Nein, nicht genau. Das Tool liest die Struktur des Dokuments (Überschriften, Absätze, Listen, Tabellen, Links, fetten und kursiven Text sowie eingebettete Bilder) und ordnet sie als einfaches Dokument an. CSS-Stile, Skripte, Webschriften, Spalten und positionierte Elemente werden nicht angewendet." },
+      { q: "Ist es sicher, HTML umzuwandeln, dem ich nicht vertraue?", a: "Das HTML wird als inerter Text gelesen: Skripte werden nicht ausgeführt und aus dem Internet wird nichts geladen. Es werden nur Bilder verwendet, die im HTML selbst eingebettet sind." },
+      { q: "Welche Sprachen und Schriften werden in der PDF unterstützt?", a: "Die PDF wird mit Noto Sans erstellt. Die Schrift deckt lateinische (auch polnische, tschechische, rumänische und türkische Buchstaben), kyrillische, griechische, vietnamesische und Devanagari-Texte ab. Arabischer, hebräischer, thailändischer, chinesischer, japanischer und koreanischer Text wird noch nicht unterstützt: Diese Zeichen erscheinen als Fragezeichen, und das Tool teilt Ihnen mit, wie viele betroffen waren. Die Originalschriften des Dokuments werden nicht übernommen." },
+      { q: "Wird meine Datei irgendwohin hochgeladen?", a: "Nein. Die Datei wird von Ihrem Browser gelesen und konvertiert. Dieses Tool sendet sie nicht an einen Server." },
+    ],
+    limits: [
+      "Höchstens 10 MB HTML.",
+      "Nur im HTML eingebettete Bilder (data:-Adressen) werden übernommen; Bilder und Stile, die von anderen Websites geladen würden, werden übersprungen, nicht abgerufen.",
+      "Skripte, Formulare, Frames, Canvas, Videos und SVG-Grafiken werden nicht umgewandelt.",
+    ],
+  },
+  "word-to-pdf": {
+    name: "Word in PDF",
+    description: "Wandeln Sie ein Word-Dokument (DOCX) in PDF um und behalten Sie Überschriften, Listen, Tabellen und Bilder bei.",
+    metaDescription: "Word in PDF online: Ein DOCX-Dokument in eine PDF mit auswählbarem Text, Überschriften, Listen, Tabellen, Links und Bildern umwandeln. Die Datei wird in Ihrem Browser konvertiert.",
+    steps: [
+      "Wählen Sie eine DOCX-Datei.",
+      "Wählen Sie die Seitengröße oder behalten Sie die des Dokuments bei.",
+      "Wandeln Sie um und laden Sie die PDF herunter.",
+    ],
+    faq: [
+      { q: "Sieht die PDF genau wie das Dokument in Word aus?", a: "Nein. Kitwell verwendet weder Microsoft Word noch LibreOffice. Es liest Inhalt und Struktur des Dokuments und ordnet sie selbst an, daher weichen Schriften, Abstände und Seitenumbrüche von Word ab. Prüfen Sie das Ergebnis, bevor Sie es weitergeben." },
+      { q: "Was wird umgewandelt und was nicht?", a: "Umgewandelt werden: Text mit fett, kursiv, unterstrichen und Links, Überschriften, Aufzählungen und nummerierte Listen, Tabellen, JPEG- und PNG-Bilder, Zeilen- und Seitenumbrüche, Ausrichtung und Seitenorientierung. Nicht umgewandelt werden: Kopf- und Fußzeilen, Fußnoten, Textfelder, Formeln, Diagramme, Formen und andere Bildformate." },
+      { q: "Kann ich eine alte .doc-Datei umwandeln?", a: "Nein. Öffnen Sie sie in Word und speichern Sie sie zuerst als DOCX-Datei." },
+      { q: "Welche Sprachen und Schriften werden in der PDF unterstützt?", a: "Die PDF wird mit Noto Sans erstellt. Die Schrift deckt lateinische (auch polnische, tschechische, rumänische und türkische Buchstaben), kyrillische, griechische, vietnamesische und Devanagari-Texte ab. Arabischer, hebräischer, thailändischer, chinesischer, japanischer und koreanischer Text wird noch nicht unterstützt: Diese Zeichen erscheinen als Fragezeichen, und das Tool teilt Ihnen mit, wie viele betroffen waren. Die Originalschriften des Dokuments werden nicht übernommen." },
+      { q: "Wird meine Datei irgendwohin hochgeladen?", a: "Nein. Die Datei wird von Ihrem Browser gelesen und konvertiert. Dieses Tool sendet sie nicht an einen Server." },
+    ],
+    limits: [
+      "Nur DOCX-Dateien, höchstens 50 MB. Alte .doc-Dateien und passwortgeschützte Dokumente werden nicht unterstützt.",
+      "Das Layout ist näherungsweise: Spalten, Textumfluss um Bilder, Kopfzeilen, Fußzeilen und Fußnoten werden nicht nachgebildet.",
+      "Die Schriften des Originals werden durch Noto Sans ersetzt.",
+    ],
+  },
+  "powerpoint-to-pdf": {
+    name: "PowerPoint in PDF",
+    description: "Wandeln Sie eine PowerPoint-Präsentation (PPTX) in eine PDF mit einer Seite pro Folie um.",
+    metaDescription: "PowerPoint in PDF online: Eine PPTX-Präsentation in eine PDF mit einer Seite pro Folie umwandeln, mit Folienformat, Text, Bildern und einfachen Formen. Direkt in Ihrem Browser.",
+    steps: [
+      "Wählen Sie eine PPTX-Datei.",
+      "Wandeln Sie sie um.",
+      "Prüfen Sie die Seiten und laden Sie die PDF herunter.",
+    ],
+    faq: [
+      { q: "Sehen die Folien genau wie in PowerPoint aus?", a: "Nicht genau. Kitwell zeichnet jede Folie aus ihren Textfeldern, Bildern, einfachen Formen und Tabellen. Schriften, Farbverläufe, Schatten, Effekte und die genaue Textanpassung weichen ab. Sehen Sie die PDF immer durch, bevor Sie sie verwenden." },
+      { q: "Was wird nicht umgewandelt?", a: "Diagramme, SmartArt, Video und Audio, Animationen und Übergänge, Referentennotizen, Farbverläufe, Linien und Verbinder sowie Bilder in anderen Formaten als JPEG und PNG. Das Tool teilt Ihnen mit, wie viele Elemente ausgelassen wurden." },
+      { q: "Kann ich eine alte .ppt-Datei umwandeln?", a: "Nein. Öffnen Sie sie in PowerPoint und speichern Sie sie zuerst als PPTX-Datei." },
+      { q: "Welche Sprachen und Schriften werden in der PDF unterstützt?", a: "Die PDF wird mit Noto Sans erstellt. Die Schrift deckt lateinische (auch polnische, tschechische, rumänische und türkische Buchstaben), kyrillische, griechische, vietnamesische und Devanagari-Texte ab. Arabischer, hebräischer, thailändischer, chinesischer, japanischer und koreanischer Text wird noch nicht unterstützt: Diese Zeichen erscheinen als Fragezeichen, und das Tool teilt Ihnen mit, wie viele betroffen waren. Die Originalschriften des Dokuments werden nicht übernommen." },
+      { q: "Wird meine Datei irgendwohin hochgeladen?", a: "Nein. Die Datei wird von Ihrem Browser gelesen und konvertiert. Dieses Tool sendet sie nicht an einen Server." },
+    ],
+    limits: [
+      "Nur PPTX-Dateien, höchstens 100 MB und 300 Folien. Alte .ppt-Dateien und passwortgeschützte Präsentationen werden nicht unterstützt.",
+      "Jede Folie wird zu einer Seite mit der eigenen Größe und Ausrichtung der Folie.",
+      "Text, der nicht in sein Feld passt, wird verkleinert, höchstens auf die Hälfte seiner Größe.",
+    ],
+  },
+  "excel-to-pdf": {
+    name: "Excel in PDF",
+    description: "Wandeln Sie eine Excel-Arbeitsmappe (XLSX) in PDF um, wobei jedes sichtbare Blatt zu einer Tabelle wird.",
+    metaDescription: "Excel in PDF online: Eine XLSX-Arbeitsmappe in eine PDF umwandeln, in der jedes sichtbare Blatt als Tabelle seiner gespeicherten Werte, Zahlen und Datumsangaben erscheint. Direkt in Ihrem Browser.",
+    steps: [
+      "Wählen Sie eine XLSX-Datei.",
+      "Wandeln Sie sie um.",
+      "Prüfen Sie die Tabellen und laden Sie die PDF herunter.",
+    ],
+    faq: [
+      { q: "Werden Formeln berechnet?", a: "Nein. Die PDF zeigt die Werte, die Excel in der Datei gespeichert hat. Hat eine Formelzelle keinen gespeicherten Wert, bleibt sie leer und das Tool weist darauf hin; öffnen Sie die Datei in Excel, lassen Sie berechnen, speichern Sie sie und wandeln Sie erneut um." },
+      { q: "Sieht es wie das Drucklayout in Excel aus?", a: "Nein. Jedes sichtbare Blatt wird zu einer einfachen Tabelle, die an die Seitenbreite angepasst wird. Zellfarben, verbundene Zellen, Spaltenbreiten, Diagramme, Bilder, Druckbereiche und Seitenumbrüche werden nicht übernommen." },
+      { q: "Kann ich eine alte .xls-Datei umwandeln?", a: "Nein. Öffnen Sie sie in Excel und speichern Sie sie zuerst als XLSX-Datei." },
+      { q: "Welche Sprachen und Schriften werden in der PDF unterstützt?", a: "Die PDF wird mit Noto Sans erstellt. Die Schrift deckt lateinische (auch polnische, tschechische, rumänische und türkische Buchstaben), kyrillische, griechische, vietnamesische und Devanagari-Texte ab. Arabischer, hebräischer, thailändischer, chinesischer, japanischer und koreanischer Text wird noch nicht unterstützt: Diese Zeichen erscheinen als Fragezeichen, und das Tool teilt Ihnen mit, wie viele betroffen waren. Die Originalschriften des Dokuments werden nicht übernommen." },
+      { q: "Wird meine Datei irgendwohin hochgeladen?", a: "Nein. Die Datei wird von Ihrem Browser gelesen und konvertiert. Dieses Tool sendet sie nicht an einen Server." },
+    ],
+    limits: [
+      "Nur XLSX-Dateien, höchstens 50 MB. Alte .xls-Dateien und passwortgeschützte Arbeitsmappen werden nicht unterstützt.",
+      "Bis zu 5.000 Zeilen und 60 Spalten pro Blatt; alles darüber wird ausgelassen und das Tool weist darauf hin.",
+      "Ausgeblendete Blätter werden übersprungen.",
+    ],
+  },
+  "pdf-to-markdown": {
+    name: "PDF in Markdown",
+    description: "Wandeln Sie den Text einer PDF in eine Markdown-Datei mit Überschriften, Absätzen und Listen um.",
+    metaDescription: "PDF in Markdown online: Den Text einer PDF extrahieren und als Markdown-Datei (.md) mit Überschriften, Absätzen und Listen herunterladen. Direkt in Ihrem Browser.",
+    steps: [
+      "Wählen Sie eine PDF.",
+      "Legen Sie fest, ob wiederkehrende Kopf- und Fußzeilen sowie Seitenzahlen entfernt werden sollen.",
+      "Wandeln Sie um, prüfen Sie das Ergebnis und laden Sie die .md-Datei herunter.",
+    ],
+    faq: [
+      { q: "Wie werden Überschriften und Listen erkannt?", a: "Überschriften sind Zeilen in größerer Schrift als der Fließtext, Listen sind Zeilen, die mit einem Aufzählungszeichen oder einer Zahl beginnen, und Absätze werden anhand des Zeilenabstands getrennt. Das ist eine gute Schätzung, aber keine Garantie; prüfen Sie daher das Ergebnis." },
+      { q: "Warum ist das Ergebnis für meine gescannte PDF leer?", a: "Ein Scan ist ein Bild einer Seite und enthält keinen Text, der sich extrahieren ließe. Führen Sie zuerst OCR für PDF aus, um eine Textebene hinzuzufügen, und wandeln Sie dann das Ergebnis um." },
+      { q: "Was ist mit Tabellen, Spalten und Bildern?", a: "Tabellen und Spalten werden nicht nachgebaut: Ihr Text erscheint als normale Zeilen, möglichst in Lesereihenfolge. Bilder, Links, fetter und kursiver Text, Fußnoten und Formeln werden nicht übernommen." },
+      { q: "Wird meine Datei irgendwohin hochgeladen?", a: "Nein. Die Datei wird von Ihrem Browser gelesen und konvertiert. Dieses Tool sendet sie nicht an einen Server." },
+    ],
+    limits: [
+      "Höchstens 100 MB pro PDF. Passwortgeschützte PDFs müssen zuerst entsperrt werden.",
+      "Nur Text, der in der PDF echter Text ist, wird umgewandelt; gescannte Seiten benötigen zuerst OCR für PDF.",
+      "Die Struktur wird anhand von Schriftgrößen und Abständen geschätzt und kann bei komplexen Layouts falsch sein.",
+    ],
+  },
+  "repair-pdf": {
+    name: "PDF reparieren",
+    description: "Versuchen Sie, eine PDF, die sich nicht öffnen lässt, durch Neuaufbau ihrer internen Struktur zu reparieren.",
+    metaDescription: "PDF reparieren online: Die Struktur einer beschädigten PDF, die sich nicht öffnen lässt, neu aufbauen, zum Beispiel bei defekter Querverweistabelle oder abgeschnittenem Ende. Direkt in Ihrem Browser.",
+    steps: [
+      "Wählen Sie die beschädigte PDF.",
+      "Starten Sie die Reparatur.",
+      "Wenn das Tool eine Datei erzeugt hat, prüfen Sie sie und laden Sie sie herunter.",
+    ],
+    faq: [
+      { q: "Welche Arten von Schäden lassen sich reparieren?", a: "Schäden an der Struktur der Datei: ein fehlendes oder falsches Objektverzeichnis (Querverweistabelle), ein fehlender Trailer, Fremddaten vor dem Dateianfang oder eine defekte Seitenliste. Wurde die Datei abgeschnitten, können die vor dem Abbruch gespeicherten Seiten wiederhergestellt werden." },
+      { q: "Was lässt sich nicht wiederherstellen?", a: "Inhalte, die nicht mehr in der Datei vorhanden sind. Fehlende oder beschädigte Seiten, Bilder oder Schriften lassen sich nicht zurückholen, und manche Dateien sind nicht mehr zu retten. Das Tool teilt Ihnen mit, wie viele Seiten es behalten hat, und sagt es, wenn es keine brauchbare Datei erzeugen kann; es bietet nie einen Download an, den es nicht erstellt hat." },
+      { q: "Was ist, wenn sich meine PDF problemlos öffnen lässt?", a: "Dann gibt es nichts zu reparieren. Das Tool sagt es Ihnen und bietet eine bereinigte Kopie der Datei an." },
+      { q: "Wird meine Datei irgendwohin hochgeladen?", a: "Nein. Die Datei wird von Ihrem Browser gelesen und konvertiert. Dieses Tool sendet sie nicht an einen Server." },
+    ],
+    limits: [
+      "Höchstens 100 MB pro PDF. Passwortgeschützte PDFs müssen zuerst entsperrt werden.",
+      "Schäden in komprimierten Objektströmen kann dieses Tool nicht beheben.",
+      "Eine reparierte Datei kann weniger Seiten als das Original haben, und die Seitenreihenfolge kann sich nach einer umfangreichen Reparatur ändern.",
+    ],
+  },
 };
 export default tools;

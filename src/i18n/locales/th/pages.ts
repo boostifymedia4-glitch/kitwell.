@@ -20,7 +20,6 @@ export default {
   'category.sections': 'ส่วนต่าง ๆ ใน {name}',
   'category.more': 'หมวดหมู่เครื่องมืออื่น ๆ',
   'tools.title': 'เครื่องมือทั้งหมด',
-  'tools.lead': 'เครื่องมือฟรี {count} รายการสำหรับรูปภาพ PDF ข้อความ และการพัฒนา ค้นหา หรือเรียกดูตามหมวดหมู่',
   'tools.jump': 'ข้ามไปยังหมวดหมู่',
 
   // About
@@ -41,17 +40,11 @@ export default {
 
   // Help chrome
   'help.title': 'ความช่วยเหลือและคำถามที่พบบ่อย',
-  'help.lead': 'คำตอบเกี่ยวกับวิธีการทำงานของเครื่องมือ ไฟล์และความเป็นส่วนตัวของคุณ และข้อจำกัดของเครื่องมือแต่ละตัว',
-  'help.topics': 'หัวข้อความช่วยเหลือ',
-  'help.more': 'ไม่พบคำตอบของคุณใช่ไหม <contact>ติดต่อเรา</contact> เรียกดู<tools>เครื่องมือทั้งหมด</tools> หรืออ่าน<privacy>นโยบายความเป็นส่วนตัว</privacy>',
 
   // Legal pages
   'legal.privacy.title': 'นโยบายความเป็นส่วนตัว',
-  'legal.privacy.lead': '{site} จัดการไฟล์และข้อมูลของคุณอย่างไร',
   'legal.terms.title': 'ข้อกำหนดและเงื่อนไข',
-  'legal.terms.lead': 'กฎสำหรับการใช้ {site}',
   'legal.cookies.title': 'ข้อมูลเกี่ยวกับคุกกี้และที่เก็บข้อมูลของเบราว์เซอร์',
-  'legal.cookies.lead': 'สิ่งที่เว็บไซต์นี้จัดเก็บในเบราว์เซอร์ของคุณ และสิ่งที่จะเปลี่ยนไปหากมีการเพิ่มโฆษณา',
 
   // Contact
   'contact.title': 'ติดต่อเรา',
@@ -60,12 +53,6 @@ export default {
   'contact.form.name': 'ชื่อของคุณ',
   'contact.form.email': 'ที่อยู่อีเมลของคุณ',
   'contact.form.emailHint': 'ใช้เพื่อตอบกลับคุณเท่านั้น',
-  'contact.form.topic': 'เกี่ยวกับเรื่องอะไร',
-  'contact.form.topicOption.bug': 'ข้อบกพร่องหรือปัญหา',
-  'contact.form.topicOption.suggestion': 'ข้อเสนอแนะเครื่องมือหรือฟีเจอร์',
-  'contact.form.topicOption.question': 'คำถาม',
-  'contact.form.topicOption.misc': 'เรื่องอื่น ๆ',
-  'contact.form.choose': 'เลือกหัวข้อ',
   'contact.form.page': 'เครื่องมือหรือหน้า (ไม่บังคับ)',
   'contact.form.pagePlaceholder': 'ตัวอย่าง: รวม PDF',
   'contact.form.message': 'ข้อความ',
@@ -76,7 +63,6 @@ export default {
   'contact.form.honeypot': 'เว้นช่องนี้ไว้ให้ว่าง',
   'contact.err.name': 'กรอกชื่อของคุณ',
   'contact.err.email': 'กรอกที่อยู่อีเมลที่ถูกต้อง',
-  'contact.err.topic': 'เลือกว่าข้อความเกี่ยวกับเรื่องอะไร',
   'contact.err.message': 'เขียนข้อความอย่างน้อย {min} ตัวอักษร (ไม่เกิน {max})',
   'contact.err.summary': 'โปรดแก้ไขช่องที่ไฮไลต์',
   'contact.sent.h': 'ส่งข้อความแล้ว',
@@ -88,9 +74,6 @@ export default {
   'contact.fail.network': 'ไม่สามารถส่งข้อความได้เนื่องจากการเชื่อมต่อล้มเหลว ตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของคุณแล้วลองอีกครั้ง',
   'contact.unavailable.h': 'แบบฟอร์มติดต่อยังไม่พร้อมใช้งาน',
   'contact.unavailable.p': 'เว็บไซต์นี้ยังไม่ได้เชื่อมต่อกับกล่องจดหมาย จึงไม่สามารถส่งข้อความจากหน้านี้ได้',
-  'contact.email.h': 'อีเมล',
-  'contact.email.p': 'คุณยังสามารถเขียนถึงเราทางอีเมลได้:',
-  'contact.email.placeholder': 'ที่อยู่อีเมลสำหรับติดต่อ (จะเพิ่มก่อนเปิดตัว)',
   'contact.report.h': 'การรายงานปัญหา',
   'contact.report.intro': 'เพื่อช่วยให้เราจำลองปัญหาได้ โปรดระบุ:',
   'contact.report.1': 'ชื่อของเครื่องมือและที่อยู่ของหน้า',

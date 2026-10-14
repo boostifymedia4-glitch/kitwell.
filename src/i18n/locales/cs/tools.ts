@@ -1831,5 +1831,156 @@ const tools: ToolTextMap = {
       'Nejlépe se skenují tmavé barvy na světlém podkladu se silným kontrastem.',
     ],
   },
+  "scan-to-pdf": {
+    name: "Sken do PDF",
+    description: "Přeměňte fotky nebo skeny papírových stránek na jedno PDF s volitelným čištěním pro lepší čitelnost.",
+    metaDescription: "Sken do PDF online: spojte fotky nebo skeny papírových stránek do jednoho PDF, nastavte pořadí stránek a vyrovnejte stíny v režimu černobílého dokumentu.",
+    steps: [
+      "Přidejte fotky nebo skeny stránek, případně pořiďte fotku, pokud to váš telefon nebo tablet podporuje.",
+      "Seřaďte stránky a vyberte velikost stránky a styl čištění.",
+      "Vytvořte PDF a stáhněte je.",
+    ],
+    faq: [
+      { q: "Rozpozná nástroj text na stránce?", a: "Ne. Sken do PDF mění obrázky na stránky PDF a může je vyčistit, ale text zůstává součástí obrázku. Aby se v něm dalo vyhledávat, pusťte výsledek přes OCR PDF." },
+      { q: "Mohu použít fotoaparát telefonu?", a: "Na telefonech a tabletech, jejichž prohlížeč to podporuje, tlačítko „Vyfotit“ otevře fotoaparát. Jinak vyberte fotky, které už máte uložené v zařízení." },
+      { q: "Co dělají styly čištění?", a: "„Originál“ zachová barvy. „Odstíny šedi“ odstraní barvu. „Černobílý dokument“ změní stránku na čistě černý text na bílém papíře a vyrovná stíny a nerovnoměrné osvětlení, což se hodí pro tištěné stránky a poznámky, ne pro fotografie." },
+      { q: "Nahrává se můj soubor někam?", a: "Ne. Soubor čte a převádí váš prohlížeč. Tento nástroj jej neodesílá na server." },
+    ],
+    limits: [
+      "Nejvýše 25 MB na obrázek a 100 obrázků na PDF.",
+      "Velké fotky se zmenší přibližně na velikost A4 při 300 dpi, aby PDF zůstalo malé.",
+      "Některé formáty telefonů, například HEIC, prohlížeče přečíst neumějí; uložte je nejprve jako JPG.",
+    ],
+  },
+  "html-to-pdf": {
+    name: "HTML do PDF",
+    description: "Převeďte soubor HTML nebo vložený HTML na PDF s textem, který lze vybírat.",
+    metaDescription: "HTML do PDF online: převeďte soubor HTML nebo vložený kód HTML na PDF se skutečným, vybratelným textem, nadpisy, seznamy, tabulkami a vloženými obrázky.",
+    steps: [
+      "Vyberte soubor HTML nebo vložte své HTML.",
+      "Vyberte velikost stránky.",
+      "Převeďte a stáhněte PDF.",
+    ],
+    faq: [
+      { q: "Mohu zadat adresu webové stránky?", a: "Ne. Načítání jiných webů by vyžadovalo odeslání adresy na server a stránka se bez svých stylů málokdy převede dobře. Uložte stránku v prohlížeči jako soubor HTML a použijte tento soubor, nebo vložte její HTML." },
+      { q: "Bude PDF vypadat jako webová stránka?", a: "Ne, ne přesně. Nástroj čte strukturu dokumentu (nadpisy, odstavce, seznamy, tabulky, odkazy, tučný a kurzivní text a vložené obrázky) a sestaví z ní jednoduchý dokument. Styly CSS, skripty, webová písma, sloupce a umístěné prvky se neuplatní." },
+      { q: "Je bezpečné převádět HTML, kterému nedůvěřuji?", a: "HTML se čte jako neaktivní text: skripty se nespouštějí a z internetu se nic nenačítá. Používají se jen obrázky vložené přímo v HTML." },
+      { q: "Jaké jazyky a písma jsou v PDF podporovány?", a: "PDF se vytváří písmem Noto Sans, které pokrývá latinku (včetně polských, českých, rumunských a tureckých písmen), cyrilici, řečtinu, vietnamštinu a dévanágarí. Arabský, hebrejský, thajský, čínský, japonský a korejský text zatím podporován není: tyto znaky se zobrazí jako otazníky a nástroj vám sdělí, kolika se to týkalo. Původní písma dokumentu se nezachovají." },
+      { q: "Nahrává se můj soubor někam?", a: "Ne. Soubor čte a převádí váš prohlížeč. Tento nástroj jej neodesílá na server." },
+    ],
+    limits: [
+      "Nejvýše 10 MB HTML.",
+      "Zahrnuty jsou jen obrázky vložené v HTML (adresy data:); obrázky a styly načítané z jiných webů se přeskočí, nestahují se.",
+      "Skripty, formuláře, rámce, canvas, video a grafika SVG se nepřevádějí.",
+    ],
+  },
+  "word-to-pdf": {
+    name: "Word do PDF",
+    description: "Převeďte dokument Wordu (DOCX) do PDF se zachováním nadpisů, seznamů, tabulek a obrázků.",
+    metaDescription: "Word do PDF online: převeďte dokument DOCX na PDF s vybratelným textem, nadpisy, seznamy, tabulkami, odkazy a obrázky. Soubor se převádí ve vašem prohlížeči.",
+    steps: [
+      "Vyberte soubor DOCX.",
+      "Vyberte velikost stránky nebo ponechte tu z dokumentu.",
+      "Převeďte a stáhněte PDF.",
+    ],
+    faq: [
+      { q: "Bude PDF vypadat přesně jako dokument ve Wordu?", a: "Ne. Kitwell nepoužívá Microsoft Word ani LibreOffice. Čte obsah a strukturu dokumentu a sám je sestaví, takže se písma, mezery a zalomení stránek od Wordu liší. Výsledek před odesláním zkontrolujte." },
+      { q: "Co se převádí a co ne?", a: "Převádí se: text s tučným písmem, kurzívou, podtržením a odkazy, nadpisy, odrážkové a číslované seznamy, tabulky, obrázky JPEG a PNG, zalomení řádků a stránek, zarovnání a orientace stránky. Nepřevádí se: záhlaví a zápatí, poznámky pod čarou, textová pole, rovnice, grafy, tvary a obrázky v jiných formátech." },
+      { q: "Mohu převést starý soubor .doc?", a: "Ne. Otevřete jej ve Wordu a nejprve uložte jako soubor DOCX." },
+      { q: "Jaké jazyky a písma jsou v PDF podporovány?", a: "PDF se vytváří písmem Noto Sans, které pokrývá latinku (včetně polských, českých, rumunských a tureckých písmen), cyrilici, řečtinu, vietnamštinu a dévanágarí. Arabský, hebrejský, thajský, čínský, japonský a korejský text zatím podporován není: tyto znaky se zobrazí jako otazníky a nástroj vám sdělí, kolika se to týkalo. Původní písma dokumentu se nezachovají." },
+      { q: "Nahrává se můj soubor někam?", a: "Ne. Soubor čte a převádí váš prohlížeč. Tento nástroj jej neodesílá na server." },
+    ],
+    limits: [
+      "Pouze soubory DOCX, nejvýše 50 MB. Staré soubory .doc a dokumenty chráněné heslem nejsou podporovány.",
+      "Rozvržení je přibližné: sloupce, obtékání textu kolem obrázků, záhlaví, zápatí a poznámky pod čarou se nereprodukují.",
+      "Písma originálu jsou nahrazena písmem Noto Sans.",
+    ],
+  },
+  "powerpoint-to-pdf": {
+    name: "PowerPoint do PDF",
+    description: "Převeďte prezentaci PowerPointu (PPTX) do PDF s jednou stránkou na snímek.",
+    metaDescription: "PowerPoint do PDF online: převeďte prezentaci PPTX na PDF s jednou stránkou na snímek se zachováním velikosti snímku, textu, obrázků a jednoduchých tvarů. Přímo ve vašem prohlížeči.",
+    steps: [
+      "Vyberte soubor PPTX.",
+      "Převeďte jej.",
+      "Zkontrolujte stránky a stáhněte PDF.",
+    ],
+    faq: [
+      { q: "Budou snímky vypadat přesně jako v PowerPointu?", a: "Ne přesně. Kitwell vykresluje každý snímek z jeho textových polí, obrázků, jednoduchých tvarů a tabulek. Písma, přechody, stíny, efekty a přesné přizpůsobení textu se liší. PDF si vždy před použitím projděte." },
+      { q: "Co se nepřevádí?", a: "Grafy, SmartArt, video a zvuk, animace a přechody, poznámky řečníka, přechody barev, čáry a spojnice a obrázky v jiných formátech než JPEG a PNG. Nástroj vám sdělí, kolik prvků bylo vynecháno." },
+      { q: "Mohu převést starý soubor .ppt?", a: "Ne. Otevřete jej v PowerPointu a nejprve uložte jako soubor PPTX." },
+      { q: "Jaké jazyky a písma jsou v PDF podporovány?", a: "PDF se vytváří písmem Noto Sans, které pokrývá latinku (včetně polských, českých, rumunských a tureckých písmen), cyrilici, řečtinu, vietnamštinu a dévanágarí. Arabský, hebrejský, thajský, čínský, japonský a korejský text zatím podporován není: tyto znaky se zobrazí jako otazníky a nástroj vám sdělí, kolika se to týkalo. Původní písma dokumentu se nezachovají." },
+      { q: "Nahrává se můj soubor někam?", a: "Ne. Soubor čte a převádí váš prohlížeč. Tento nástroj jej neodesílá na server." },
+    ],
+    limits: [
+      "Pouze soubory PPTX, nejvýše 100 MB a 300 snímků. Staré soubory .ppt a prezentace chráněné heslem nejsou podporovány.",
+      "Každý snímek se stane stránkou s vlastní velikostí a orientací snímku.",
+      "Text, který se nevejde do pole, se zmenší, nejvýše na polovinu velikosti.",
+    ],
+  },
+  "excel-to-pdf": {
+    name: "Excel do PDF",
+    description: "Převeďte sešit Excelu (XLSX) do PDF, kde se každý viditelný list stane tabulkou.",
+    metaDescription: "Excel do PDF online: převeďte sešit XLSX na PDF, v němž je každý viditelný list tabulkou uložených hodnot, čísel a dat. Přímo ve vašem prohlížeči.",
+    steps: [
+      "Vyberte soubor XLSX.",
+      "Převeďte jej.",
+      "Zkontrolujte tabulky a stáhněte PDF.",
+    ],
+    faq: [
+      { q: "Počítají se vzorce?", a: "Ne. PDF zobrazuje hodnoty, které Excel uložil do souboru. Pokud buňka se vzorcem nemá uloženou hodnotu, zůstane prázdná a nástroj vás na to upozorní; otevřete soubor v Excelu, nechte jej přepočítat, uložte jej a převeďte znovu." },
+      { q: "Bude to vypadat jako rozvržení tisku v Excelu?", a: "Ne. Každý viditelný list se stane jednoduchou tabulkou přizpůsobenou šířce stránky. Barvy buněk, sloučené buňky, šířky sloupců, grafy, obrázky, oblasti tisku a zalomení stránek se nezachovají." },
+      { q: "Mohu převést starý soubor .xls?", a: "Ne. Otevřete jej v Excelu a nejprve uložte jako soubor XLSX." },
+      { q: "Jaké jazyky a písma jsou v PDF podporovány?", a: "PDF se vytváří písmem Noto Sans, které pokrývá latinku (včetně polských, českých, rumunských a tureckých písmen), cyrilici, řečtinu, vietnamštinu a dévanágarí. Arabský, hebrejský, thajský, čínský, japonský a korejský text zatím podporován není: tyto znaky se zobrazí jako otazníky a nástroj vám sdělí, kolika se to týkalo. Původní písma dokumentu se nezachovají." },
+      { q: "Nahrává se můj soubor někam?", a: "Ne. Soubor čte a převádí váš prohlížeč. Tento nástroj jej neodesílá na server." },
+    ],
+    limits: [
+      "Pouze soubory XLSX, nejvýše 50 MB. Staré soubory .xls a sešity chráněné heslem nejsou podporovány.",
+      "Nejvýše 5 000 řádků a 60 sloupců na list; co přesahuje, se vynechá a nástroj to oznámí.",
+      "Skryté listy se přeskakují.",
+    ],
+  },
+  "pdf-to-markdown": {
+    name: "PDF do Markdownu",
+    description: "Přeměňte text PDF na soubor Markdown s nadpisy, odstavci a seznamy.",
+    metaDescription: "PDF do Markdownu online: extrahujte text z PDF a stáhněte jej jako soubor Markdown (.md) s nadpisy, odstavci a seznamy. Funguje ve vašem prohlížeči.",
+    steps: [
+      "Vyberte PDF.",
+      "Zvolte, zda se mají odstranit opakující se záhlaví, zápatí a čísla stránek.",
+      "Převeďte, zkontrolujte výsledek a stáhněte soubor .md.",
+    ],
+    faq: [
+      { q: "Jak se poznají nadpisy a seznamy?", a: "Nadpisy jsou řádky většího písma než běžný text, seznamy jsou řádky začínající odrážkou nebo číslem a odstavce se oddělují podle mezer mezi řádky. Je to dobrý odhad, ne záruka, proto výsledek zkontrolujte." },
+      { q: "Proč je výsledek u mého skenovaného PDF prázdný?", a: "Sken je obrázek stránky a neobsahuje žádný text k extrakci. Nejprve spusťte OCR PDF, aby se přidala textová vrstva, a poté převeďte výsledek." },
+      { q: "Co tabulky, sloupce a obrázky?", a: "Tabulky a sloupce se nerekonstruují: jejich text se objeví jako běžné řádky, pokud možno v pořadí čtení. Obrázky, odkazy, tučný a kurzivní text, poznámky pod čarou a rovnice se nepřenášejí." },
+      { q: "Nahrává se můj soubor někam?", a: "Ne. Soubor čte a převádí váš prohlížeč. Tento nástroj jej neodesílá na server." },
+    ],
+    limits: [
+      "Nejvýše 100 MB na PDF. PDF chráněná heslem je třeba nejprve odemknout.",
+      "Převádí se jen text, který je v PDF skutečným textem; skenované stránky nejprve potřebují OCR PDF.",
+      "Struktura se odhaduje z velikosti písma a mezer a u složitých rozvržení může být chybná.",
+    ],
+  },
+  "repair-pdf": {
+    name: "Oprava PDF",
+    description: "Zkuste opravit PDF, které se neotevře, znovu sestavením jeho vnitřní struktury.",
+    metaDescription: "Oprava PDF online: znovu sestavte strukturu poškozeného PDF, které se neotevře, například s porušenou tabulkou křížových odkazů nebo useknutým koncem. Funguje ve vašem prohlížeči.",
+    steps: [
+      "Vyberte poškozené PDF.",
+      "Spusťte opravu.",
+      "Pokud nástroj vytvořil soubor, zkontrolujte jej a stáhněte.",
+    ],
+    faq: [
+      { q: "Jaké druhy poškození lze opravit?", a: "Poškození struktury souboru: chybějící nebo chybný rejstřík objektů (tabulka křížových odkazů), chybějící trailer, nesmysly před začátkem nebo porušený seznam stránek. Pokud byl soubor useknut, lze obnovit stránky uložené před useknutím." },
+      { q: "Co nelze obnovit?", a: "Obsah, který už v souboru není. Chybějící nebo poškozené stránky, obrázky či písma nelze vrátit a některé soubory jsou nezachranitelné. Nástroj vám sdělí, kolik stránek zachoval, a řekne to, když nedokáže vytvořit použitelný soubor; nikdy nenabízí stažení souboru, který nevytvořil." },
+      { q: "A když se moje PDF otevře normálně?", a: "Pak není co opravovat. Nástroj vám to sdělí a nabídne vyčištěnou kopii souboru." },
+      { q: "Nahrává se můj soubor někam?", a: "Ne. Soubor čte a převádí váš prohlížeč. Tento nástroj jej neodesílá na server." },
+    ],
+    limits: [
+      "Nejvýše 100 MB na PDF. PDF chráněná heslem je třeba nejprve odemknout.",
+      "Poškození uvnitř komprimovaných proudů objektů tento nástroj obnovit neumí.",
+      "Opravený soubor může mít méně stránek než originál a po rozsáhlé opravě se může změnit pořadí stránek.",
+    ],
+  },
 };
 export default tools;
