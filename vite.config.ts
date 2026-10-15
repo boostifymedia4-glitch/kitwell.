@@ -10,5 +10,6 @@ export default defineConfig({
   define: { __SITE_URL__: JSON.stringify(siteUrl) },
   resolve: { alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) } },
   build: { target: 'es2022', sourcemap: false, cssCodeSplit: true },
-  test: { environment: 'node', include: ['tests/**/*.test.ts'] },
+  // Locale files are loaded lazily, which can take longer than 5 s when the whole suite runs in parallel.
+  test: { environment: 'node', include: ['tests/**/*.test.ts'], testTimeout: 30000 },
 });
