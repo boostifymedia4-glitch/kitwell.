@@ -272,6 +272,49 @@ export const pdfConvertTools: ToolDef[] = [
       'Damage inside compressed object streams cannot be rebuilt by this tool.',
       'A repaired file may have fewer pages than the original, and the page order can change after a heavy repair.',
     ],
-    related: ['compress-pdf', 'pdf-viewer', 'unlock-pdf', 'extract-pdf-pages', 'pdf-metadata-viewer'],
+    related: ['compress-pdf', 'pdf-viewer', 'unlock-pdf', 'pdf-to-pdfa', 'pdf-metadata-viewer'],
+  },
+  {
+    ...common,
+    slug: 'pdf-to-pdfa',
+    group: 'Optimize PDF',
+    name: 'PDF to PDF/A',
+    icon: 'badge-check',
+    impl: 'pdf-to-pdfa',
+    description: 'Prepare a PDF as PDF/A-2b for archiving, keeping the text or using page pictures.',
+    metaDescription:
+      'PDF to PDF/A online: prepare a PDF as PDF/A-2b for archiving with PDF/A identification, metadata and a colour profile. Keeps text when possible. Runs in your browser.',
+    keywords: ['pdf to pdf/a', 'pdfa', 'pdf/a-2b', 'archive pdf', 'convert pdf to pdfa', 'long term archiving'],
+    steps: [
+      'Choose a PDF. A password-protected file must be unlocked first.',
+      'Choose how to convert: keep the text and fonts, or turn the pages into pictures.',
+      'Convert it, read what was done and download the PDF/A file.',
+    ],
+    faq: [
+      {
+        q: 'Is the result a certified PDF/A file?',
+        a: 'No. Kitwell prepares your PDF as PDF/A-2b, the basic archival level, and checks its own work against the rules it applies. It does not include a full PDF/A validator. If you must prove compliance, check the file with a validator such as veraPDF.',
+      },
+      {
+        q: 'What is the difference between the two ways to convert?',
+        a: 'Keep text and fonts changes only the structure and metadata of the file, so the text stays selectable. It works only when every font is embedded and the file uses no CMYK colour. Turn pages into pictures renders each page as an image and builds a new PDF/A from them. That always works, but the text can no longer be selected and the file is larger.',
+      },
+      {
+        q: 'Why was my PDF refused when I chose to keep the text?',
+        a: 'PDF/A needs every font to be embedded in the file, and it does not allow CMYK colour without a CMYK profile, LZW compression or annotations without an appearance. These cannot be fixed without changing the pages, so the tool lists what it found instead of faking a result. You can still use the picture mode.',
+      },
+      {
+        q: 'What does the tool change in the file?',
+        a: 'It adds the PDF/A identification and XMP metadata, an sRGB colour profile as the output intent and a file identifier. It removes JavaScript, forbidden actions, attachments, extra document information and annotation settings that PDF/A does not allow.',
+      },
+      privacyFaq,
+    ],
+    limits: [
+      'Maximum 100 MB per PDF. Password-protected PDFs must be unlocked first, because a PDF/A file cannot be encrypted.',
+      'Keep text and fonts works only when every font is embedded and the file has no CMYK colour or LZW compression.',
+      'Turning pages into pictures is limited to 200 pages. The text is no longer selectable and the file gets larger.',
+      'The result is PDF/A-2b prepared by Kitwell and checked against the rules it applies; it is not validated by a full PDF/A validator.',
+    ],
+    related: ['compress-pdf', 'repair-pdf', 'ocr-pdf', 'pdf-metadata-viewer', 'unlock-pdf'],
   },
 ];

@@ -1481,5 +1481,28 @@ const tools: ToolTextMap = {
       "Naprawiony plik może mieć mniej stron niż oryginał, a po gruntownej naprawie kolejność stron może się zmienić.",
     ],
   },
+  "pdf-to-pdfa": {
+    name: "PDF na PDF/A",
+    description: "Przygotuj plik PDF jako PDF/A-2b do długoterminowego archiwizowania, zachowując tekst lub zamieniając strony na obrazy.",
+    metaDescription: "PDF na PDF/A online: przygotuj plik PDF jako PDF/A-2b do archiwizacji z identyfikacją PDF/A, metadanymi i profilem kolorów. W miarę możliwości zachowuje tekst. Działa w przeglądarce.",
+    steps: [
+      "Wybierz plik PDF. Plik chroniony hasłem trzeba najpierw odblokować.",
+      "Wybierz sposób konwersji: zachowaj tekst i czcionki lub zamień strony na obrazy.",
+      "Przekonwertuj plik, przeczytaj, co zostało zrobione, i pobierz plik PDF/A.",
+    ],
+    faq: [
+      { q: "Czy wynik jest certyfikowanym plikiem PDF/A?", a: "Nie. Kitwell przygotowuje Twój PDF jako PDF/A-2b, czyli podstawowy poziom archiwalny, i sprawdza własną pracę według stosowanych reguł. Nie zawiera pełnego walidatora PDF/A. Jeśli musisz udowodnić zgodność, sprawdź plik walidatorem, takim jak veraPDF." },
+      { q: "Czym różnią się oba sposoby konwersji?", a: "„Zachowaj tekst i czcionki” zmienia tylko strukturę i metadane pliku, więc tekst pozostaje zaznaczalny. Działa to tylko wtedy, gdy wszystkie czcionki są osadzone, a plik nie używa kolorów CMYK. „Zamień strony na obrazy” renderuje każdą stronę jako obraz i buduje z nich nowy PDF/A. Działa to zawsze, ale tekst nie jest już zaznaczalny, a plik jest większy." },
+      { q: "Dlaczego mój PDF został odrzucony, gdy wybrałem zachowanie tekstu?", a: "PDF/A wymaga, by każda czcionka była osadzona w pliku, i nie dopuszcza kolorów CMYK bez profilu CMYK, kompresji LZW ani adnotacji bez wyglądu. Nie da się tego naprawić bez zmiany stron, więc narzędzie wypisuje to, co znalazło, zamiast udawać wynik. Nadal możesz użyć trybu obrazów." },
+      { q: "Co narzędzie zmienia w pliku?", a: "Dodaje identyfikację PDF/A i metadane XMP, profil kolorów sRGB jako warunek wyjściowy oraz identyfikator pliku. Usuwa JavaScript, zabronione akcje, załączniki, zbędne informacje o dokumencie i ustawienia adnotacji, których PDF/A nie dopuszcza." },
+      { q: "Czy mój plik jest dokądś wysyłany?", a: "Nie. Plik jest odczytywany i konwertowany przez Twoją przeglądarkę. To narzędzie nie wysyła go na żaden serwer." },
+    ],
+    limits: [
+      "Maksymalnie 100 MB na plik PDF. Pliki PDF chronione hasłem trzeba najpierw odblokować, ponieważ plik PDF/A nie może być zaszyfrowany.",
+      "„Zachowaj tekst i czcionki” działa tylko wtedy, gdy wszystkie czcionki są osadzone, a plik nie ma kolorów CMYK ani kompresji LZW.",
+      "Zamiana stron na obrazy jest ograniczona do 200 stron. Tekst nie jest już zaznaczalny, a plik jest większy.",
+      "Wynik to PDF/A-2b przygotowany przez Kitwell i sprawdzony według stosowanych reguł; nie został zwalidowany pełnym walidatorem PDF/A.",
+    ],
+  },
 };
 export default tools;

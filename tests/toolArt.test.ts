@@ -7,7 +7,7 @@ import { tools } from '../src/tools/registry';
 
 describe('tool icons', () => {
   it('map every tool, and only real tools, in one central table', () => {
-    expect(tools).toHaveLength(76);
+    expect(tools).toHaveLength(77);
     expect(Object.keys(TOOL_ART).sort()).toEqual(tools.map((t) => t.slug).sort());
   });
 

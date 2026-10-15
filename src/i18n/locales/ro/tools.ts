@@ -1481,5 +1481,28 @@ const tools: ToolTextMap = {
       "Un fișier reparat poate avea mai puține pagini decât originalul, iar ordinea paginilor se poate schimba după o reparare amplă.",
     ],
   },
+  "pdf-to-pdfa": {
+    name: "PDF în PDF/A",
+    description: "Pregătiți un PDF ca PDF/A-2b pentru arhivare pe termen lung, păstrând textul sau transformând paginile în imagini.",
+    metaDescription: "PDF în PDF/A online: pregătiți un PDF ca PDF/A-2b pentru arhivare, cu identificare PDF/A, metadate și profil de culoare. Păstrează textul când este posibil. Funcționează în browserul dvs.",
+    steps: [
+      "Alegeți un PDF. Un fișier protejat cu parolă trebuie mai întâi deblocat.",
+      "Alegeți cum să convertiți: păstrați textul și fonturile sau transformați paginile în imagini.",
+      "Convertiți-l, citiți ce s-a făcut și descărcați fișierul PDF/A.",
+    ],
+    faq: [
+      { q: "Rezultatul este un fișier PDF/A certificat?", a: "Nu. Kitwell pregătește PDF-ul dvs. ca PDF/A-2b, nivelul de bază pentru arhivare, și își verifică munca după regulile pe care le aplică. Nu include un validator PDF/A complet. Dacă trebuie să dovediți conformitatea, verificați fișierul cu un validator precum veraPDF." },
+      { q: "Care este diferența dintre cele două moduri de conversie?", a: "„Păstrează textul și fonturile” modifică doar structura și metadatele fișierului, deci textul rămâne selectabil. Funcționează numai dacă toate fonturile sunt încorporate și fișierul nu folosește culori CMYK. „Transformă paginile în imagini” randează fiecare pagină ca imagine și construiește din ele un nou PDF/A. Funcționează întotdeauna, dar textul nu mai poate fi selectat, iar fișierul este mai mare." },
+      { q: "De ce a fost refuzat PDF-ul meu când am ales să păstrez textul?", a: "PDF/A cere ca toate fonturile să fie încorporate în fișier și nu permite culori CMYK fără profil CMYK, comprimarea LZW sau adnotări fără aspect. Acestea nu pot fi corectate fără a modifica paginile, așa că instrumentul listează ce a găsit în loc să simuleze un rezultat. Puteți folosi în continuare modul cu imagini." },
+      { q: "Ce modifică instrumentul în fișier?", a: "Adaugă identificarea PDF/A și metadatele XMP, un profil de culoare sRGB ca condiție de ieșire și un identificator de fișier. Elimină JavaScript, acțiunile interzise, atașamentele, informațiile suplimentare ale documentului și setările de adnotări pe care PDF/A nu le permite." },
+      { q: "Fișierul meu este încărcat undeva?", a: "Nu. Fișierul este citit și convertit de browserul dvs. Acest instrument nu îl trimite către niciun server." },
+    ],
+    limits: [
+      "Maximum 100 MB per PDF. PDF-urile protejate cu parolă trebuie mai întâi deblocate, deoarece un fișier PDF/A nu poate fi criptat.",
+      "„Păstrează textul și fonturile” funcționează numai dacă toate fonturile sunt încorporate și fișierul nu are culori CMYK sau comprimare LZW.",
+      "Transformarea paginilor în imagini este limitată la 200 de pagini. Textul nu mai poate fi selectat, iar fișierul devine mai mare.",
+      "Rezultatul este PDF/A-2b pregătit de Kitwell și verificat după regulile pe care le aplică; nu este validat de un validator PDF/A complet.",
+    ],
+  },
 };
 export default tools;

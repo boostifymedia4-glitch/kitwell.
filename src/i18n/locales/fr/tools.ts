@@ -1482,5 +1482,28 @@ const tools: ToolTextMap = {
       "Un fichier réparé peut compter moins de pages que l’original, et l’ordre des pages peut changer après une réparation importante.",
     ],
   },
+  "pdf-to-pdfa": {
+    name: "PDF en PDF/A",
+    description: "Préparez un PDF au format PDF/A-2b pour l’archivage à long terme, en conservant le texte ou en transformant les pages en images.",
+    metaDescription: "PDF en PDF/A en ligne : préparez un PDF en PDF/A-2b pour l’archivage avec identification PDF/A, métadonnées et profil colorimétrique. Conserve votre texte si possible. Fonctionne dans votre navigateur.",
+    steps: [
+      "Choisissez un PDF. Un fichier protégé par mot de passe doit d’abord être déverrouillé.",
+      "Choisissez le mode : conserver le texte et les polices, ou transformer les pages en images.",
+      "Convertissez-le, lisez ce qui a été fait et téléchargez le fichier PDF/A.",
+    ],
+    faq: [
+      { q: "Le résultat est-il un fichier PDF/A certifié ?", a: "Non. Kitwell prépare votre PDF en PDF/A-2b, le niveau d’archivage de base, et vérifie son travail d’après les règles qu’il applique. Il n’inclut pas de validateur PDF/A complet. Si vous devez prouver la conformité, vérifiez le fichier avec un validateur comme veraPDF." },
+      { q: "Quelle est la différence entre les deux modes de conversion ?", a: "« Conserver le texte et les polices » ne modifie que la structure et les métadonnées du fichier, le texte reste donc sélectionnable. Cela ne marche que si toutes les polices sont intégrées et si le fichier n’utilise pas de couleurs CMJN. « Transformer les pages en images » rend chaque page en image et construit un nouveau PDF/A avec elles. Cela marche toujours, mais le texte n’est plus sélectionnable et le fichier est plus gros." },
+      { q: "Pourquoi mon PDF a-t-il été refusé quand j’ai choisi de conserver le texte ?", a: "PDF/A exige que chaque police soit intégrée au fichier, et il n’autorise ni les couleurs CMJN sans profil CMJN, ni la compression LZW, ni les annotations sans apparence. Cela ne peut pas être corrigé sans modifier les pages ; l’outil liste donc ce qu’il a trouvé au lieu de simuler un résultat. Vous pouvez toujours utiliser le mode images." },
+      { q: "Que modifie l’outil dans le fichier ?", a: "Il ajoute l’identification PDF/A et les métadonnées XMP, un profil colorimétrique sRVB comme condition de sortie et un identifiant de fichier. Il supprime JavaScript, les actions interdites, les pièces jointes, les informations de document superflues et les paramètres d’annotation que PDF/A n’autorise pas." },
+      { q: "Mon fichier est-il envoyé quelque part ?", a: "Non. Le fichier est lu et converti par votre navigateur. Cet outil ne l’envoie à aucun serveur." },
+    ],
+    limits: [
+      "100 Mo maximum par PDF. Les PDF protégés par mot de passe doivent d’abord être déverrouillés, car un fichier PDF/A ne peut pas être chiffré.",
+      "« Conserver le texte et les polices » ne marche que si toutes les polices sont intégrées et si le fichier n’a ni couleurs CMJN ni compression LZW.",
+      "La transformation des pages en images est limitée à 200 pages. Le texte n’est plus sélectionnable et le fichier devient plus volumineux.",
+      "Le résultat est un PDF/A-2b préparé par Kitwell et vérifié selon les règles qu’il applique ; il n’est pas validé par un validateur PDF/A complet.",
+    ],
+  },
 };
 export default tools;

@@ -1983,5 +1983,28 @@ const tools: ToolTextMap = {
       "Eine reparierte Datei kann weniger Seiten als das Original haben, und die Seitenreihenfolge kann sich nach einer umfangreichen Reparatur ändern.",
     ],
   },
+  "pdf-to-pdfa": {
+    name: "PDF in PDF/A",
+    description: "Bereiten Sie eine PDF als PDF/A-2b für die Langzeitarchivierung vor, entweder mit erhaltenem Text oder mit Seiten als Bildern.",
+    metaDescription: "PDF in PDF/A online: Bereiten Sie eine PDF als PDF/A-2b für die Archivierung vor, mit PDF/A-Kennzeichnung, Metadaten und Farbprofil. Behält Ihren Text, wenn möglich. Läuft in Ihrem Browser.",
+    steps: [
+      "Wählen Sie eine PDF. Eine passwortgeschützte Datei muss zuerst entsperrt werden.",
+      "Wählen Sie die Art der Umwandlung: Text und Schriften behalten oder Seiten in Bilder umwandeln.",
+      "Wandeln Sie sie um, lesen Sie, was gemacht wurde, und laden Sie die PDF/A-Datei herunter.",
+    ],
+    faq: [
+      { q: "Ist das Ergebnis eine zertifizierte PDF/A-Datei?", a: "Nein. Kitwell bereitet Ihre PDF als PDF/A-2b vor, die Grundstufe für die Archivierung, und prüft seine Arbeit anhand der Regeln, die es anwendet. Es enthält keinen vollständigen PDF/A-Validator. Wenn Sie die Konformität nachweisen müssen, prüfen Sie die Datei mit einem Validator wie veraPDF." },
+      { q: "Was ist der Unterschied zwischen den beiden Arten der Umwandlung?", a: "„Text und Schriften behalten“ ändert nur Struktur und Metadaten der Datei, sodass der Text auswählbar bleibt. Das funktioniert nur, wenn alle Schriften eingebettet sind und die Datei keine CMYK-Farben verwendet. „Seiten in Bilder umwandeln“ rendert jede Seite als Bild und baut daraus eine neue PDF/A. Das funktioniert immer, aber der Text ist danach nicht mehr auswählbar und die Datei ist größer." },
+      { q: "Warum wurde meine PDF abgelehnt, als ich den Text behalten wollte?", a: "PDF/A verlangt, dass jede Schrift in der Datei eingebettet ist, und erlaubt weder CMYK-Farben ohne CMYK-Profil noch LZW-Komprimierung noch Anmerkungen ohne Erscheinungsbild. Das lässt sich nicht beheben, ohne die Seiten zu verändern, daher listet das Tool auf, was es gefunden hat, statt ein Ergebnis vorzutäuschen. Sie können weiterhin den Bildmodus verwenden." },
+      { q: "Was ändert das Tool an der Datei?", a: "Es fügt die PDF/A-Kennzeichnung und XMP-Metadaten, ein sRGB-Farbprofil als Ausgabebedingung und eine Datei-Kennung hinzu. Es entfernt JavaScript, unzulässige Aktionen, Anhänge, zusätzliche Dokumentinformationen und Anmerkungseinstellungen, die PDF/A nicht erlaubt." },
+      { q: "Wird meine Datei irgendwohin hochgeladen?", a: "Nein. Die Datei wird von Ihrem Browser gelesen und umgewandelt. Dieses Tool sendet sie nicht an einen Server." },
+    ],
+    limits: [
+      "Höchstens 100 MB pro PDF. Passwortgeschützte PDFs müssen zuerst entsperrt werden, weil eine PDF/A-Datei nicht verschlüsselt sein darf.",
+      "„Text und Schriften behalten“ funktioniert nur, wenn alle Schriften eingebettet sind und die Datei keine CMYK-Farben oder LZW-Komprimierung hat.",
+      "Das Umwandeln der Seiten in Bilder ist auf 200 Seiten begrenzt. Der Text ist danach nicht mehr auswählbar und die Datei wird größer.",
+      "Das Ergebnis ist von Kitwell vorbereitetes PDF/A-2b, geprüft anhand der angewendeten Regeln; es wurde nicht mit einem vollständigen PDF/A-Validator validiert.",
+    ],
+  },
 };
 export default tools;

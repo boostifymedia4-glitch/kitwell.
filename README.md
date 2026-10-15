@@ -1,6 +1,6 @@
 # Kitwell
 
-A fast, privacy-friendly website of 76 everyday tools (image, PDF, text, developer) in 25 interface languages. Every tool runs **in the visitor's browser**; the server only serves static files.
+A fast, privacy-friendly website of 77 everyday tools (image, PDF, text, developer) in 25 interface languages. Every tool runs **in the visitor's browser**; the server only serves static files.
 
 **Stack:** Vite + React 19 + TypeScript, build-time prerendering (one static HTML file per URL, then hydrated), a small Express server for headers/compression/404s. Brand name is a placeholder: change it in `src/config/site.ts` and colours in `src/styles/tokens.css`.
 
@@ -34,7 +34,7 @@ A fast, privacy-friendly website of 76 everyday tools (image, PDF, text, develop
 
 ## Tool icons
 
-Every tool has a colour-coded illustration drawn as inline SVG (no image files, no icon library): `src/tools/toolArt.ts` is the single table that gives each of the 76 tools a base (sheet, photo, note or code window), a colour, a glyph and, for conversions, a format tag in the format's own colour (PDF red, JPG amber, PNG blue, WEBP purple ...). `src/components/ui/ToolArt.tsx` draws them and `ToolIcon` is the only component that shows them (cards, menus, search, related tools, page headers). `tests/toolArt.test.ts` checks that every tool is mapped, that no two tools look the same and that every colour keeps 3:1 contrast with the white glyph. The `icon` field in the tool data is kept for the line-icon fallback and tests.
+Every tool has a colour-coded illustration drawn as inline SVG (no image files, no icon library): `src/tools/toolArt.ts` is the single table that gives each of the 77 tools a base (sheet, photo, note or code window), a colour, a glyph and, for conversions, a format tag in the format's own colour (PDF red, JPG amber, PNG blue, WEBP purple ...). `src/components/ui/ToolArt.tsx` draws them and `ToolIcon` is the only component that shows them (cards, menus, search, related tools, page headers). `tests/toolArt.test.ts` checks that every tool is mapped, that no two tools look the same and that every colour keeps 3:1 contrast with the white glyph. The `icon` field in the tool data is kept for the line-icon fallback and tests.
 
 ## Adding a tool
 
@@ -46,7 +46,7 @@ Every tool has a colour-coded illustration drawn as inline SVG (no image files, 
 
 The whole site can be shown in 25 languages: English, Urdu, Arabic, Persian, Spanish, French, German, Portuguese, Italian, Turkish, Chinese (Simplified), Japanese, Korean, Hindi, Indonesian, Bengali, Russian, Dutch, Vietnamese, Polish, Thai, Ukrainian, Romanian, Greek and Czech. English lives at the plain address and every other language under its code (`/ur/tools`, `/zh/privacy`), so a page always renders in one language for everyone. The address decides the language; the switcher goes to the same page in the other language and remembers the choice in `localStorage` (key `kitwell-language`). `<html lang>` and `dir` follow the page (Urdu, Arabic and Persian are right-to-left; Chinese is `zh-CN`). Every page is prerendered in every language (`npm run build` writes about 2,100 pages) with a self-referencing canonical, reciprocal `hreflang` links for all 25 languages plus `x-default`, localised title, description, Open Graph and structured data, and `sitemap.xml` entries with `xhtml:link` alternates. The Privacy Policy, Terms and Cookie information are translated in every language; each translated page states that the English text is authoritative. The coverage checks live in `scripts/i18n-audit.mjs` and `tests/i18n.test.ts` / `tests/i18nSeo.test.ts`. The site has no cookie banner (it sets no cookies), so there is no consent interface to translate.
 
-- **What is translated:** menus, search, footer, pages, help and FAQ, the contact form, blog guides, all 76 tool pages (names, descriptions, steps, FAQ, limits), every tool interface, and error messages thrown by the tools. **English only, on purpose:** text stamped into generated PDFs ("Page 1 of 10", "CONFIDENTIAL"), and errors raised inside web workers.
+- **What is translated:** menus, search, footer, pages, help and FAQ, the contact form, blog guides, all 77 tool pages (names, descriptions, steps, FAQ, limits), every tool interface, and error messages thrown by the tools. **English only, on purpose:** text stamped into generated PDFs ("Page 1 of 10", "CONFIDENTIAL"), and errors raised inside web workers.
 - **Source and layout:** `src/i18n/en/*.ts` is the English catalog (one object per area; keys are `area.name`, plurals are `key.one` / `key.other`). Tool content is translated by tool slug in `src/i18n/locales/<code>/tools.ts`; the other files mirror the English ones. See `docs/i18n-conventions.md` (rules for developers) and `docs/translation-brief.md` (rules for translators).
 - **Checks:** `node scripts/i18n-audit.mjs --report [--list <code>]` finds hardcoded text and unknown keys, lists missing keys per language and writes `docs/translation-coverage.md`. `tests/i18n.test.ts` fails when a locale has unknown keys, mismatched `{placeholders}`, untranslated copies, or a `coverage` flag in `src/i18n/languages.ts` that does not match reality. Plural forms follow each language's own CLDR categories.
 - **Fallback:** a missing key falls back to English, never to a blank or a raw key.
@@ -64,7 +64,7 @@ Without `CONTACT_WEBHOOK_URL` the page says the form is not connected and the en
 
 ## Convert-to-PDF and repair tools
 
-Seven tools were added to the PDF category (data in `src/tools/data/pdfConvert.ts`, interfaces in `src/tools/impl/pdf/`, engines in `src/lib/`). All run in the browser; nothing is uploaded and there is no server component.
+Eight tools were added to the PDF category (data in `src/tools/data/pdfConvert.ts`, interfaces in `src/tools/impl/pdf/`, engines in `src/lib/`). All run in the browser; nothing is uploaded and there is no server component.
 
 | Tool | Engine |
 | --- | --- |
@@ -75,8 +75,9 @@ Seven tools were added to the PDF category (data in `src/tools/data/pdfConvert.t
 | Excel to PDF | XLSX reader (`xlsx.ts`), saved values only |
 | PDF to Markdown | pdf.js text positions with heading, list and paragraph heuristics (`pdfMarkdown.ts`) |
 | Repair PDF | xref reconstruction and page-tree rebuild (`pdfRepair.ts`) |
+| PDF to PDF/A | PDF/A-2b preparation (`pdfA.ts`, sRGB profile built in `iccProfile.ts`) |
 
-PDFs are laid out by Kitwell's own layout engine (`docPdf.ts`) with Noto Sans (`@fontsource/noto-sans`, subset-embedded via `@pdf-lib/fontkit`): Latin, Latin Extended, Cyrillic, Greek, Vietnamese and Devanagari. Arabic, Hebrew, Thai and CJK text is **not** supported and shows as "?" with a count in the result notes. Output is **not** a pixel copy of the source: fonts, spacing, columns, headers/footers, charts and effects differ, and each tool says what was skipped. Legacy `.doc`/`.ppt`/`.xls` and password-protected files are rejected with a clear message. **PDF to PDF/A is not offered:** valid archival PDF/A needs ICC colour profiles and XMP metadata that could not be produced and verified here, and a tool that only claimed PDF/A would be misleading.
+PDFs are laid out by Kitwell's own layout engine (`docPdf.ts`) with Noto Sans (`@fontsource/noto-sans`, subset-embedded via `@pdf-lib/fontkit`): Latin, Latin Extended, Cyrillic, Greek, Vietnamese and Devanagari. Arabic, Hebrew, Thai and CJK text is **not** supported and shows as "?" with a count in the result notes. Output is **not** a pixel copy of the source: fonts, spacing, columns, headers/footers, charts and effects differ, and each tool says what was skipped. Legacy `.doc`/`.ppt`/`.xls` and password-protected files are rejected with a clear message. **PDF to PDF/A** prepares PDF/A-2b in two modes. *Keep text and fonts* adds the PDF/A identification, XMP metadata, an sRGB output intent and a file ID, and removes JavaScript, forbidden actions, attachments and annotation flags; it refuses (and lists why) when fonts are not embedded or the file uses CMYK or LZW. *Turn pages into pictures* renders each page (up to 200) and builds an image-only PDF/A. Kitwell has **no full PDF/A validator** (veraPDF needs Java, which is not available here), so results are checked only against the rules the tool applies (`checkPdfA`) and the page says it is not a certification.
 
 ## Blog
 

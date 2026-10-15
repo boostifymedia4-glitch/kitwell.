@@ -101,6 +101,7 @@ export const TOOL_ART: Record<string, ToolArt> = {
   'excel-to-pdf': a('page', 'green', 'count', { tag: 'PDF' }),
   'pdf-to-markdown': a('page', 'indigo', 'markdown', { tag: 'MD' }),
   'repair-pdf': a('page', 'teal', 'check'),
+  'pdf-to-pdfa': a('page', 'slate', 'check', { tag: 'PDF' }),
 
   // Text: warm note sheets.
   'word-counter': a('note', 'orange', 'count'),

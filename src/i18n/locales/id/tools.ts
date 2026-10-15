@@ -1482,5 +1482,28 @@ const tools: ToolTextMap = {
       "Berkas yang diperbaiki mungkin memiliki lebih sedikit halaman daripada aslinya, dan urutan halaman dapat berubah setelah perbaikan besar.",
     ],
   },
+  "pdf-to-pdfa": {
+    name: "PDF ke PDF/A",
+    description: "Siapkan PDF sebagai PDF/A-2b untuk pengarsipan jangka panjang, dengan mempertahankan teks atau mengubah halaman menjadi gambar.",
+    metaDescription: "PDF ke PDF/A online: siapkan PDF sebagai PDF/A-2b untuk pengarsipan, lengkap dengan identifikasi PDF/A, metadata, dan profil warna. Mempertahankan teks bila memungkinkan. Berjalan di browser Anda.",
+    steps: [
+      "Pilih PDF. File yang dilindungi kata sandi harus dibuka kuncinya terlebih dahulu.",
+      "Pilih cara mengonversi: pertahankan teks dan font, atau ubah halaman menjadi gambar.",
+      "Konversi, baca yang telah dilakukan, lalu unduh file PDF/A.",
+    ],
+    faq: [
+      { q: "Apakah hasilnya file PDF/A bersertifikat?", a: "Tidak. Kitwell menyiapkan PDF Anda sebagai PDF/A-2b, tingkat dasar untuk pengarsipan, dan memeriksa pekerjaannya sendiri berdasarkan aturan yang diterapkannya. Alat ini tidak menyertakan validator PDF/A lengkap. Jika Anda harus membuktikan kepatuhan, periksa file dengan validator seperti veraPDF." },
+      { q: "Apa perbedaan kedua cara mengonversi?", a: "“Pertahankan teks dan font” hanya mengubah struktur dan metadata file, sehingga teks tetap bisa dipilih. Ini hanya berfungsi jika semua font tertanam dan file tidak memakai warna CMYK. “Ubah halaman menjadi gambar” merender setiap halaman sebagai gambar dan membangun PDF/A baru dari gambar-gambar itu. Ini selalu berfungsi, tetapi teks tidak bisa dipilih lagi dan file menjadi lebih besar." },
+      { q: "Mengapa PDF saya ditolak ketika saya memilih mempertahankan teks?", a: "PDF/A mengharuskan setiap font tertanam di dalam file, dan tidak mengizinkan warna CMYK tanpa profil CMYK, kompresi LZW, atau anotasi tanpa tampilan. Hal ini tidak bisa diperbaiki tanpa mengubah halaman, sehingga alat ini mendaftar temuannya alih-alih berpura-pura menghasilkan sesuatu. Anda tetap bisa memakai mode gambar." },
+      { q: "Apa yang diubah alat ini pada file?", a: "Alat ini menambahkan identifikasi PDF/A dan metadata XMP, profil warna sRGB sebagai kondisi keluaran, dan pengenal file. Alat ini menghapus JavaScript, aksi terlarang, lampiran, informasi dokumen tambahan, dan pengaturan anotasi yang tidak diizinkan PDF/A." },
+      { q: "Apakah file saya diunggah ke mana pun?", a: "Tidak. File dibaca dan dikonversi oleh browser Anda. Alat ini tidak mengirimkannya ke server mana pun." },
+    ],
+    limits: [
+      "Maksimum 100 MB per PDF. PDF yang dilindungi kata sandi harus dibuka kuncinya terlebih dahulu, karena file PDF/A tidak boleh dienkripsi.",
+      "“Pertahankan teks dan font” hanya berfungsi jika semua font tertanam dan file tidak memiliki warna CMYK atau kompresi LZW.",
+      "Mengubah halaman menjadi gambar dibatasi hingga 200 halaman. Teks tidak bisa dipilih lagi dan file menjadi lebih besar.",
+      "Hasilnya adalah PDF/A-2b yang disiapkan Kitwell dan diperiksa berdasarkan aturan yang diterapkannya; belum divalidasi oleh validator PDF/A lengkap.",
+    ],
+  },
 };
 export default tools;

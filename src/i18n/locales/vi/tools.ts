@@ -1481,5 +1481,28 @@ const tools: ToolTextMap = {
       "Tệp đã sửa có thể có ít trang hơn bản gốc, và thứ tự trang có thể thay đổi sau một lần sửa nặng.",
     ],
   },
+  "pdf-to-pdfa": {
+    name: "PDF sang PDF/A",
+    description: "Chuẩn bị PDF thành PDF/A-2b để lưu trữ lâu dài, giữ văn bản hoặc chuyển các trang thành hình ảnh.",
+    metaDescription: "PDF sang PDF/A trực tuyến: chuẩn bị PDF thành PDF/A-2b để lưu trữ, với nhận dạng PDF/A, siêu dữ liệu và hồ sơ màu. Giữ văn bản khi có thể. Chạy ngay trong trình duyệt của bạn.",
+    steps: [
+      "Chọn một PDF. Tệp được bảo vệ bằng mật khẩu phải được mở khóa trước.",
+      "Chọn cách chuyển đổi: giữ văn bản và phông chữ, hoặc chuyển các trang thành hình ảnh.",
+      "Chuyển đổi, đọc những gì đã làm và tải tệp PDF/A.",
+    ],
+    faq: [
+      { q: "Kết quả có phải là tệp PDF/A được chứng nhận không?", a: "Không. Kitwell chuẩn bị PDF của bạn thành PDF/A-2b, mức lưu trữ cơ bản, và kiểm tra công việc của mình theo các quy tắc mà nó áp dụng. Nó không có bộ xác thực PDF/A đầy đủ. Nếu bạn cần chứng minh sự tuân thủ, hãy kiểm tra tệp bằng một bộ xác thực như veraPDF." },
+      { q: "Hai cách chuyển đổi khác nhau thế nào?", a: "“Giữ văn bản và phông chữ” chỉ thay đổi cấu trúc và siêu dữ liệu của tệp nên văn bản vẫn chọn được. Cách này chỉ hoạt động khi mọi phông chữ đều được nhúng và tệp không dùng màu CMYK. “Chuyển các trang thành hình ảnh” dựng mỗi trang thành một hình ảnh rồi tạo PDF/A mới từ các hình đó. Cách này luôn hoạt động, nhưng văn bản không thể chọn được nữa và tệp lớn hơn." },
+      { q: "Vì sao PDF của tôi bị từ chối khi tôi chọn giữ văn bản?", a: "PDF/A yêu cầu mọi phông chữ phải được nhúng trong tệp, và không cho phép màu CMYK không có hồ sơ CMYK, nén LZW hay chú thích không có hình thức hiển thị. Những điều này không thể sửa mà không thay đổi các trang, nên công cụ liệt kê những gì nó tìm thấy thay vì giả vờ có kết quả. Bạn vẫn có thể dùng chế độ hình ảnh." },
+      { q: "Công cụ thay đổi gì trong tệp?", a: "Nó thêm nhận dạng PDF/A và siêu dữ liệu XMP, hồ sơ màu sRGB làm điều kiện đầu ra và mã định danh tệp. Nó xóa JavaScript, các hành động bị cấm, tệp đính kèm, thông tin tài liệu thừa và các thiết lập chú thích mà PDF/A không cho phép." },
+      { q: "Tệp của tôi có được tải lên đâu không?", a: "Không. Tệp được trình duyệt của bạn đọc và chuyển đổi. Công cụ này không gửi nó đến bất kỳ máy chủ nào." },
+    ],
+    limits: [
+      "Tối đa 100 MB mỗi PDF. PDF được bảo vệ bằng mật khẩu phải được mở khóa trước, vì tệp PDF/A không được mã hóa.",
+      "“Giữ văn bản và phông chữ” chỉ hoạt động khi mọi phông chữ đều được nhúng và tệp không có màu CMYK hay nén LZW.",
+      "Việc chuyển các trang thành hình ảnh giới hạn ở 200 trang. Văn bản không thể chọn được nữa và tệp lớn hơn.",
+      "Kết quả là PDF/A-2b do Kitwell chuẩn bị và kiểm tra theo các quy tắc nó áp dụng; nó chưa được xác thực bằng bộ xác thực PDF/A đầy đủ.",
+    ],
+  },
 };
 export default tools;
