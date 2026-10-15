@@ -52,7 +52,7 @@ File names rarely sort the way you want, especially when photos come from a phon
 
 ## Keeping the file size reasonable
 
-A modern phone photo is often 3 to 8 MB, so twenty of them make a PDF too big for most email limits. Because JPEG data is embedded without re-compression, the PDF is about as large as the pictures combined. Two fixes work well: reduce the pictures before converting with <tool_image_compressor>Image Compressor</tool_image_compressor> or <tool_image_resizer>Image Resizer</tool_image_resizer>, or compress the finished PDF with <tool_compress_pdf>Compress PDF</tool_compress_pdf>. We compare both in <post_compress-pdf-without-losing-quality>how to compress a PDF without losing quality</post_compress-pdf-without-losing-quality>.
+A modern phone photo is often 3 to 8 MB, so twenty of them make a PDF too big for most email limits. Because JPEG data is embedded without re-compression, the PDF is about as large as the pictures combined. Two fixes work well: reduce the pictures before converting with <tool_image_compressor>Compress Image</tool_image_compressor> or <tool_image_resizer>Resize Image</tool_image_resizer>, or compress the finished PDF with <tool_compress_pdf>Compress PDF</tool_compress_pdf>. We compare both in <post_compress-pdf-without-losing-quality>how to compress a PDF without losing quality</post_compress-pdf-without-losing-quality>.
 
 ## After the PDF exists
 

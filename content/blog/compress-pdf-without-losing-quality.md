@@ -64,7 +64,7 @@ If you flatten a scan and later need searchable text again, run <tool_ocr_pdf>OC
 ## Other ways to make a PDF smaller
 
 - Split it. If the recipient only needs some pages, <tool_split_pdf>Split PDF</tool_split_pdf> extracts just those.
-- Shrink the pictures before they go into the PDF. Compress or resize photos with <tool_image_compressor>Image Compressor</tool_image_compressor>, then build the file with <tool_images_to_pdf>Images to PDF</tool_images_to_pdf>. Our guide to <post_convert-images-to-pdf>converting images to PDF</post_convert-images-to-pdf> covers the details.
+- Shrink the pictures before they go into the PDF. Compress or resize photos with <tool_image_compressor>Compress Image</tool_image_compressor>, then build the file with <tool_images_to_pdf>Images to PDF</tool_images_to_pdf>. Our guide to <post_convert-images-to-pdf>converting images to PDF</post_convert-images-to-pdf> covers the details.
 - Prefer JPG over PNG for photographs. PNG is lossless and much larger for photos, and the standard compression mode only recompresses JPEG images.
 - Compress once, at the end. When you combine files with <tool_merge_pdf>Merge PDF</tool_merge_pdf>, compress the merged file a single time, because every round of recompression costs a little more image quality.
 

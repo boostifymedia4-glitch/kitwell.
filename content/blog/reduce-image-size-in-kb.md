@@ -7,7 +7,7 @@ published: 2026-10-15
 tool: image-compressor
 tools: image-compressor, image-resizer, png-to-jpg, jpg-to-webp, webp-to-jpg, images-to-pdf, compress-pdf
 ctaHeading: Compress an image now
-cta: Open <tool_image_compressor>Image Compressor</tool_image_compressor>, or browse all of the <all_image>image tools</all_image>.
+cta: Open <tool_image_compressor>Compress Image</tool_image_compressor>, or browse all of the <all_image>image tools</all_image>.
 ---
 
 An application form that accepts photos “up to 200 KB”. A shop that rejects product images over 1 MB. A website that slows down because every picture is 4 MB. Phone cameras produce files far larger than most websites and forms want, and “make it smaller” is one of the most common image jobs there is.
@@ -41,7 +41,7 @@ Each step costs less quality than the next, so you only use the later ones if th
 
 ## How to do it in your browser
 
-<tool_image_compressor>Image Compressor</tool_image_compressor> works inside your browser, so your pictures are not uploaded. You can add up to 20 images at a time, each up to 25 MB.
+<tool_image_compressor>Compress Image</tool_image_compressor> works inside your browser, so your pictures are not uploaded. You can add up to 20 images at a time, each up to 25 MB.
 
 1. Add your images.
 2. Choose the output format and the quality. For photos, JPG or WebP at a medium-high quality is a good start.
@@ -60,7 +60,7 @@ Pick the size from where the image will be shown, not from what the camera produ
 - An image that will be printed needs more pixels than one that will only be seen on a screen.
 - Many forms and portals state exact pixel sizes next to the file size limit. Follow them.
 
-To set an exact width and height, or a percentage, use <tool_image_resizer>Image Resizer</tool_image_resizer>. Keep the aspect-ratio lock on so the picture is not stretched. Resizing and compressing together gives the best result for the least quality loss.
+To set an exact width and height, or a percentage, use <tool_image_resizer>Resize Image</tool_image_resizer>. Keep the aspect-ratio lock on so the picture is not stretched. Resizing and compressing together gives the best result for the least quality loss.
 
 ## Choosing the format
 

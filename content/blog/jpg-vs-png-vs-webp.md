@@ -73,7 +73,7 @@ The converters read the pixels and write a new file. The camera information stor
 
 ## Make files smaller after converting
 
-A new file in the right format can still be larger than you need. Run it through <tool_image_compressor>Image Compressor</tool_image_compressor> or lower the dimensions. Our guide to <post_reduce-image-size-in-kb>reducing image size in KB</post_reduce-image-size-in-kb> explains the order that gives the least visible damage. If the images are going into a document, <post_convert-images-to-pdf>turn them into a PDF</post_convert-images-to-pdf> afterwards.
+A new file in the right format can still be larger than you need. Run it through <tool_image_compressor>Compress Image</tool_image_compressor> or lower the dimensions. Our guide to <post_reduce-image-size-in-kb>reducing image size in KB</post_reduce-image-size-in-kb> explains the order that gives the least visible damage. If the images are going into a document, <post_convert-images-to-pdf>turn them into a PDF</post_convert-images-to-pdf> afterwards.
 
 ## Common mistakes
 
