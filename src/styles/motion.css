@@ -197,7 +197,8 @@ a, .icon-btn, .nav-link, .segmented button, .filter-tile, .page-card, .file-item
 /* ================= Extra polish: hero entrance, blog images, smooth scrolling, touch feedback ================= */
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
-  .hero h1, .hero .lead, .hero .search, .hero .shortcuts { animation: rise 520ms var(--ease-out) both; }
+  /* The heading is the largest paint of the page, so it is never delayed by an animation. */
+  .hero .lead, .hero .search, .hero .shortcuts { animation: rise 520ms var(--ease-out) both; }
   .hero .lead { animation-delay: 70ms; }
   .hero .search { animation-delay: 140ms; }
   .hero .shortcuts { animation-delay: 210ms; }
