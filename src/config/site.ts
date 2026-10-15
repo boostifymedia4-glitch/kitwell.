@@ -7,6 +7,8 @@ export const site = {
   tagline: 'Everyday file, PDF, text and developer tools that run in your browser',
   url: __SITE_URL__,
   ogImage: '/og-image.png',
+  /** Person named as the author of the blog articles and the founder on the About page. */
+  author: { name: 'Ubaid Ullah', jobTitle: 'Founder & CEO', profile: 'https://www.linkedin.com/in/ubaid-ullah3' },
   locale: 'en_US',
   /** Flip to true once an ad network is approved and configured (see README, 'AdSense'). */
   ads: { enabled: false },

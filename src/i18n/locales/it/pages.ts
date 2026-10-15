@@ -2,15 +2,6 @@ import type { PartialMessages } from '../../en';
 
 export default {
   // Home
-  'home.faqTitle': 'Domande e risposte',
-  'home.faq1.q': 'Gli strumenti sono davvero gratuiti?',
-  'home.faq1.a': 'Sì. Non c’è registrazione né costo per l’uso. In futuro {site} potrebbe essere sostenuto dalla pubblicità; gli annunci saranno sempre contrassegnati e tenuti lontani dai controlli degli strumenti e dai pulsanti di download.',
-  'home.faq2.q': 'I miei file vengono caricati?',
-  'home.faq2.a': 'No. Gli strumenti per immagini, PDF, testo e sviluppo funzionano nel tuo browser tramite JavaScript. I file vengono letti localmente e i risultati vengono creati localmente. Per i dettagli consulta l’Informativa sulla privacy.',
-  'home.faq3.q': 'Quali browser funzionano meglio?',
-  'home.faq3.a': 'Le versioni attuali di Chrome, Edge, Firefox e Safari. Alcune funzioni, come il salvataggio delle immagini WebP, dipendono da ciò che supporta il tuo browser; lo strumento ti avvisa se qualcosa non è disponibile.',
-  'home.faq4.q': 'C’è un limite alle dimensioni dei file?',
-  'home.faq4.a': 'Poiché il lavoro avviene sul tuo dispositivo, i limiti dipendono dalla tua memoria. Ogni strumento imposta un tetto ragionevole (ad esempio 25 MB per immagine e 100 MB per PDF) e lo mostra prima del caricamento.',
 
   // 404, category, all tools
   'notFound.text': 'Non abbiamo trovato quella pagina. Potrebbe essere stata spostata oppure l’indirizzo potrebbe contenere un errore.',
@@ -23,20 +14,6 @@ export default {
   'tools.jump': 'Vai a una categoria',
 
   // About
-  'about.title': 'Chi siamo – {site}',
-  'about.lead': 'Strumenti semplici e affidabili per le attività quotidiane con file, PDF, testo e sviluppo.',
-  'about.what.h': 'Cosa facciamo',
-  'about.what.p': '{site} è una raccolta di piccole utilità: convertire e comprimere immagini, unire e dividere PDF, pulire il testo, formattare o codificare dati. Ogni strumento ha la sua pagina, svolge un solo compito e dice chiaramente cosa supporta e cosa no.',
-  'about.how.h': 'Come funzionano gli strumenti',
-  'about.how.p': 'Gli strumenti funzionano all’interno del tuo browser. Quando aggiungi un’immagine o un PDF, il browser lo legge dal tuo dispositivo, esegue il lavoro in locale e ti consegna il risultato da scaricare. I nostri strumenti non inviano i tuoi file o il testo incollato ai nostri server. Poiché il lavoro avviene sul tuo dispositivo, velocità e dimensione massima dei file dipendono dal tuo computer o telefono.',
-  'about.not.h': 'Cosa non facciamo',
-  'about.not.1': 'Non richiediamo un account e non aggiungiamo filigrane al risultato.',
-  'about.not.2': 'Non riscriviamo il testo esistente all’interno dei PDF. Gli strumenti PDF uniscono, dividono, comprimono, firmano, compilano, oscurano, confrontano e riconoscono il testo nei documenti, ma non modificano le parole già presenti.',
-  'about.not.3': 'Non offriamo strumenti che richiedono grandi modelli di IA o servizi a pagamento, come la rimozione dello sfondo, finché non sarà possibile farlo in modo affidabile e riservato. L’unico motore che includiamo, per l’OCR, è open source e funziona all’interno del tuo browser.',
-  'about.who.h': 'Chi c’è dietro {site}',
-  'about.who.placeholder': 'Aggiungi una breve descrizione veritiera della persona o dell’azienda che gestisce questo sito: nome, paese e cosa ha motivato il progetto.',
-  'about.touch.h': 'Contattaci',
-  'about.touch.p': 'Hai trovato un errore o vuoi che aggiungiamo uno strumento? Vai alla <contact>pagina dei contatti</contact>. Per sapere come trattiamo i dati, leggi l’<privacy>Informativa sulla privacy</privacy>.',
 
   // Help chrome
   'help.title': 'Aiuto e FAQ',

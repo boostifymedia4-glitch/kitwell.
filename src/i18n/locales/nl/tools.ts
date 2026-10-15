@@ -1482,5 +1482,28 @@ const tools: ToolTextMap = {
       "Een gerepareerd bestand kan minder pagina’s hebben dan het origineel en de paginavolgorde kan na een grondige reparatie veranderen.",
     ],
   },
+  "pdf-to-pdfa": {
+    name: "PDF naar PDF/A",
+    description: "Bereid een pdf voor als PDF/A-2b voor langetermijnarchivering, met behoud van de tekst of met pagina’s als afbeeldingen.",
+    metaDescription: "PDF naar PDF/A online: bereid een pdf voor als PDF/A-2b voor archivering, met PDF/A-identificatie, metadata en kleurprofiel. Behoudt je tekst waar mogelijk. Werkt in je browser.",
+    steps: [
+      "Kies een pdf. Een met wachtwoord beveiligd bestand moet eerst worden ontgrendeld.",
+      "Kies hoe je wilt converteren: tekst en lettertypen behouden of pagina’s omzetten in afbeeldingen.",
+      "Converteer het, lees wat er is gedaan en download het PDF/A-bestand.",
+    ],
+    faq: [
+      { q: "Is het resultaat een gecertificeerd PDF/A-bestand?", a: "Nee. Kitwell bereidt je pdf voor als PDF/A-2b, het basisniveau voor archivering, en controleert zijn werk aan de hand van de regels die het toepast. Het bevat geen volledige PDF/A-validator. Als je naleving moet aantonen, controleer het bestand dan met een validator zoals veraPDF." },
+      { q: "Wat is het verschil tussen de twee manieren om te converteren?", a: "‘Tekst en lettertypen behouden’ wijzigt alleen de structuur en metadata van het bestand, zodat de tekst selecteerbaar blijft. Dat werkt alleen als alle lettertypen zijn ingesloten en het bestand geen CMYK-kleuren gebruikt. ‘Pagina’s omzetten in afbeeldingen’ rendert elke pagina als afbeelding en bouwt daarvan een nieuwe PDF/A. Dat werkt altijd, maar de tekst is daarna niet meer te selecteren en het bestand is groter." },
+      { q: "Waarom werd mijn pdf geweigerd toen ik de tekst wilde behouden?", a: "PDF/A vereist dat elk lettertype in het bestand is ingesloten en staat geen CMYK-kleuren zonder CMYK-profiel, LZW-compressie of annotaties zonder uiterlijk toe. Dat is niet te herstellen zonder de pagina’s te wijzigen, dus de tool toont wat hij heeft gevonden in plaats van een resultaat voor te wenden. Je kunt nog steeds de afbeeldingsmodus gebruiken." },
+      { q: "Wat verandert de tool in het bestand?", a: "Het voegt de PDF/A-identificatie en XMP-metadata toe, een sRGB-kleurprofiel als uitvoercondities en een bestandsidentificatie. Het verwijdert JavaScript, verboden acties, bijlagen, overbodige documentinformatie en annotatie-instellingen die PDF/A niet toestaat." },
+      { q: "Wordt mijn bestand ergens geüpload?", a: "Nee. Het bestand wordt door je browser gelezen en geconverteerd. Deze tool stuurt het niet naar een server." },
+    ],
+    limits: [
+      "Maximaal 100 MB per pdf. Met wachtwoord beveiligde pdf’s moeten eerst worden ontgrendeld, omdat een PDF/A-bestand niet versleuteld mag zijn.",
+      "‘Tekst en lettertypen behouden’ werkt alleen als alle lettertypen zijn ingesloten en het bestand geen CMYK-kleuren of LZW-compressie heeft.",
+      "Pagina’s omzetten in afbeeldingen is beperkt tot 200 pagina’s. De tekst is daarna niet meer te selecteren en het bestand wordt groter.",
+      "Het resultaat is door Kitwell voorbereide PDF/A-2b, gecontroleerd aan de hand van de regels die het toepast; het is niet gevalideerd door een volledige PDF/A-validator.",
+    ],
+  },
 };
 export default tools;

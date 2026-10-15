@@ -1,15 +1,6 @@
 import type { PartialMessages } from '../../en';
 
 export default {
-  'home.faqTitle': 'Vragen en antwoorden',
-  'home.faq1.q': 'Zijn de tools echt gratis?',
-  'home.faq1.a': 'Ja. Je hoeft geen account aan te maken en er zijn geen kosten per gebruik. {site} wordt in de toekomst misschien met advertenties ondersteund; advertenties worden altijd als zodanig gemarkeerd en komen niet in de buurt van de bedieningselementen en downloadknoppen van de tools.',
-  'home.faq2.q': 'Worden mijn bestanden geüpload?',
-  'home.faq2.a': 'Nee. Afbeeldings-, PDF-, tekst- en ontwikkelaarstools draaien in je browser met JavaScript. Bestanden worden lokaal gelezen en resultaten worden lokaal gemaakt. Zie het privacybeleid voor details.',
-  'home.faq3.q': 'Welke browsers werken het best?',
-  'home.faq3.a': 'Actuele versies van Chrome, Edge, Firefox en Safari. Een paar functies, zoals het opslaan van WebP-afbeeldingen, hangen af van wat je browser ondersteunt; de tool laat het weten als iets niet beschikbaar is.',
-  'home.faq4.q': 'Is er een limiet voor de bestandsgrootte?',
-  'home.faq4.a': 'Omdat het werk op je eigen apparaat gebeurt, hangen de limieten af van je geheugen. Elke tool hanteert een redelijke grens (bijvoorbeeld 25 MB per afbeelding en 100 MB per PDF) en toont die voordat je een bestand toevoegt.',
 
   'notFound.text': 'We konden die pagina niet vinden. Misschien is hij verplaatst of is het adres verkeerd getypt.',
   'notFound.home': 'Terug naar home',
@@ -20,20 +11,6 @@ export default {
   'tools.title': 'Alle tools',
   'tools.jump': 'Ga naar een categorie',
 
-  'about.title': 'Over {site}',
-  'about.lead': 'Eenvoudige, betrouwbare tools voor alledaagse taken met bestanden, PDF’s, tekst en ontwikkeling.',
-  'about.what.h': 'Wat we doen',
-  'about.what.p': '{site} is een verzameling kleine hulpmiddelen: afbeeldingen converteren en comprimeren, PDF’s samenvoegen en splitsen, tekst opschonen, en gegevens formatteren of coderen. Elke tool heeft een eigen pagina, doet één taak en vertelt duidelijk wat hij wel en niet ondersteunt.',
-  'about.how.h': 'Hoe de tools werken',
-  'about.how.p': 'De tools draaien in je webbrowser. Als je een afbeelding of PDF toevoegt, leest je browser die van je apparaat, doet het werk lokaal en geeft je het resultaat om te downloaden. Onze tools sturen je bestanden of geplakte tekst niet naar onze servers. Omdat het werk op je apparaat gebeurt, hangen snelheid en maximale bestandsgrootte af van je computer of telefoon.',
-  'about.not.h': 'Wat we niet doen',
-  'about.not.1': 'We vragen geen account en voegen geen watermerken toe aan je resultaat.',
-  'about.not.2': 'We herschrijven de bestaande tekst in PDF’s niet. De PDF-tools voegen samen, splitsen, comprimeren, ondertekenen, vullen in, censureren, vergelijken en herkennen tekst in documenten, maar ze wijzigen de woorden die er al staan niet.',
-  'about.not.3': 'We bieden geen tools aan die grote AI-modellen of betaalde diensten nodig hebben, zoals achtergrondverwijdering, totdat dat betrouwbaar en privé kan. De ene engine die we wel meeleveren, voor OCR, is open source en draait in je browser.',
-  'about.who.h': 'Wie zit achter {site}',
-  'about.who.placeholder': 'Voeg een korte, waarheidsgetrouwe beschrijving toe van de persoon of het bedrijf achter deze site: naam, land en wat het project motiveerde.',
-  'about.touch.h': 'Neem contact op',
-  'about.touch.p': 'Een bug gevonden of wil je dat er een tool wordt toegevoegd? Zie de <contact>contactpagina</contact>. Lees het <privacy>privacybeleid</privacy> om te zien hoe we met gegevens omgaan.',
 
   'help.title': 'Help en veelgestelde vragen',
 

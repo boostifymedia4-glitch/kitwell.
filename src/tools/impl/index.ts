@@ -43,6 +43,7 @@ export const implLoaders: Record<string, Loader> = {
   'excel-to-pdf': () => import('./pdf/ExcelToPdf'),
   'pdf-to-markdown': () => import('./pdf/PdfToMarkdown'),
   'repair-pdf': () => import('./pdf/RepairPdf'),
+  'pdf-to-pdfa': () => import('./pdf/PdfToPdfA'),
   'pdf-sign': () => import('./pdf/PdfSign'),
   'pdf-fill-form': () => import('./pdf/PdfFillForm'),
   'pdf-redact': () => import('./pdf/PdfRedact'),

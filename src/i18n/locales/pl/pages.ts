@@ -2,15 +2,6 @@ import type { PartialMessages } from '../../en';
 
 export default {
   // Home
-  'home.faqTitle': 'Pytania i odpowiedzi',
-  'home.faq1.q': 'Czy narzędzia naprawdę są bezpłatne?',
-  'home.faq1.a': 'Tak. Nie ma rejestracji ani opłat za użycie. {site} może w przyszłości być wspierany reklamami; reklamy zawsze będą oznaczone i umieszczone z dala od elementów sterujących narzędzi i przycisków pobierania.',
-  'home.faq2.q': 'Czy moje pliki są wysyłane na serwer?',
-  'home.faq2.a': 'Nie. Narzędzia do obrazów, PDF-ów, tekstu i dla programistów działają w przeglądarce przy użyciu JavaScriptu. Pliki są odczytywane lokalnie, a wyniki powstają lokalnie. Szczegóły znajdziesz w Polityce prywatności.',
-  'home.faq3.q': 'Które przeglądarki działają najlepiej?',
-  'home.faq3.a': 'Aktualne wersje Chrome, Edge, Firefox i Safari. Niektóre funkcje, takie jak zapisywanie obrazów WebP, zależą od możliwości przeglądarki; narzędzie poinformuje Cię, jeśli coś jest niedostępne.',
-  'home.faq4.q': 'Czy obowiązuje limit rozmiaru pliku?',
-  'home.faq4.a': 'Ponieważ praca odbywa się na Twoim urządzeniu, limity zależą od pamięci. Każde narzędzie ustala rozsądny limit (na przykład 25 MB na obraz i 100 MB na PDF) i pokazuje go przed dodaniem pliku.',
 
   // 404, category, all tools
   'notFound.text': 'Nie mogliśmy znaleźć tej strony. Mogła zostać przeniesiona albo adres zawiera literówkę.',
@@ -23,20 +14,6 @@ export default {
   'tools.jump': 'Przejdź do kategorii',
 
   // About
-  'about.title': 'O {site}',
-  'about.lead': 'Proste, niezawodne narzędzia do codziennych zadań z plikami, PDF-ami, tekstem i programowaniem.',
-  'about.what.h': 'Czym się zajmujemy',
-  'about.what.p': '{site} to zbiór małych narzędzi: konwersja i kompresja obrazów, scalanie i dzielenie PDF-ów, czyszczenie tekstu oraz formatowanie i kodowanie danych. Każde narzędzie ma własną stronę, wykonuje jedno zadanie i otwarcie mówi, co obsługuje, a czego nie.',
-  'about.how.h': 'Jak działają narzędzia',
-  'about.how.p': 'Narzędzia działają wewnątrz Twojej przeglądarki. Gdy dodajesz obraz lub PDF, przeglądarka odczytuje go z Twojego urządzenia, wykonuje pracę lokalnie i udostępnia wynik do pobrania. Nasze narzędzia nie wysyłają Twoich plików ani wklejonego tekstu na nasze serwery. Ponieważ praca odbywa się na Twoim urządzeniu, szybkość i maksymalny rozmiar pliku zależą od Twojego komputera lub telefonu.',
-  'about.not.h': 'Czego nie robimy',
-  'about.not.1': 'Nie wymagamy konta i nie dodajemy znaków wodnych do Twoich wyników.',
-  'about.not.2': 'Nie przepisujemy istniejącego tekstu w plikach PDF. Narzędzia PDF scalają, dzielą, kompresują, podpisują, wypełniają, zaczerniają, porównują dokumenty i rozpoznają w nich tekst, ale nie zmieniają słów, które już tam są.',
-  'about.not.3': 'Nie oferujemy narzędzi wymagających dużych modeli AI lub płatnych usług, takich jak usuwanie tła, dopóki nie da się ich zapewnić w sposób niezawodny i prywatny. Jedyny silnik, który dołączamy, do OCR, jest open source i działa w Twojej przeglądarce.',
-  'about.who.h': 'Kto stoi za {site}',
-  'about.who.placeholder': 'Dodaj krótki, zgodny z prawdą opis osoby lub firmy prowadzącej tę witrynę: imię i nazwisko lub nazwa, kraj oraz motywacja stojąca za projektem.',
-  'about.touch.h': 'Kontakt',
-  'about.touch.p': 'Znalazłeś błąd lub chcesz dodania narzędzia? Zajrzyj na <contact>stronę kontaktową</contact>. Aby dowiedzieć się, jak postępujemy z danymi, przeczytaj <privacy>Politykę prywatności</privacy>.',
 
   // Help chrome
   'help.title': 'Pomoc i FAQ',

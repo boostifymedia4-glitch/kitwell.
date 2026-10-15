@@ -1982,5 +1982,28 @@ const tools: ToolTextMap = {
       "Opravený soubor může mít méně stránek než originál a po rozsáhlé opravě se může změnit pořadí stránek.",
     ],
   },
+  "pdf-to-pdfa": {
+    name: "PDF na PDF/A",
+    description: "Připravte PDF jako PDF/A-2b pro dlouhodobou archivaci se zachováním textu nebo se stránkami změněnými na obrázky.",
+    metaDescription: "PDF na PDF/A online: připravte PDF jako PDF/A-2b pro archivaci s identifikací PDF/A, metadaty a barevným profilem. Pokud je to možné, zachová text. Funguje ve vašem prohlížeči.",
+    steps: [
+      "Vyberte PDF. Soubor chráněný heslem je nutné nejprve odemknout.",
+      "Vyberte způsob převodu: zachovat text a písma, nebo změnit stránky na obrázky.",
+      "Převeďte ho, přečtěte si, co bylo provedeno, a stáhněte soubor PDF/A.",
+    ],
+    faq: [
+      { q: "Je výsledek certifikovaný soubor PDF/A?", a: "Ne. Kitwell připraví váš PDF jako PDF/A-2b, základní archivní úroveň, a svou práci zkontroluje podle pravidel, která používá. Neobsahuje úplný validátor PDF/A. Pokud musíte prokázat shodu, zkontrolujte soubor validátorem, například veraPDF." },
+      { q: "Jaký je rozdíl mezi dvěma způsoby převodu?", a: "„Zachovat text a písma“ mění jen strukturu a metadata souboru, takže text zůstane označitelný. Funguje to pouze tehdy, když jsou všechna písma vložená a soubor nepoužívá barvy CMYK. „Změnit stránky na obrázky“ vykreslí každou stránku jako obrázek a sestaví z nich nový PDF/A. Funguje to vždy, ale text už nelze označit a soubor je větší." },
+      { q: "Proč byl můj PDF odmítnut, když jsem zvolil zachování textu?", a: "PDF/A vyžaduje, aby všechna písma byla vložená do souboru, a nepovoluje barvy CMYK bez profilu CMYK, kompresi LZW ani poznámky bez vzhledu. Bez změny stránek to opravit nelze, proto nástroj vypíše, co našel, místo aby předstíral výsledek. Režim obrázků můžete stále použít." },
+      { q: "Co nástroj v souboru mění?", a: "Přidá identifikaci PDF/A a metadata XMP, barevný profil sRGB jako výstupní podmínku a identifikátor souboru. Odstraní JavaScript, zakázané akce, přílohy, nadbytečné informace o dokumentu a nastavení poznámek, která PDF/A nepovoluje." },
+      { q: "Nahrává se můj soubor někam?", a: "Ne. Soubor čte a převádí váš prohlížeč. Tento nástroj ho neodesílá na žádný server." },
+    ],
+    limits: [
+      "Nejvýše 100 MB na PDF. PDF chráněné heslem je nutné nejprve odemknout, protože soubor PDF/A nesmí být šifrovaný.",
+      "„Zachovat text a písma“ funguje pouze tehdy, když jsou všechna písma vložená a soubor nemá barvy CMYK ani kompresi LZW.",
+      "Změna stránek na obrázky je omezena na 200 stránek. Text už nelze označit a soubor je větší.",
+      "Výsledkem je PDF/A-2b připravený Kitwellem a zkontrolovaný podle pravidel, která používá; nebyl ověřen úplným validátorem PDF/A.",
+    ],
+  },
 };
 export default tools;

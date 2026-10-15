@@ -2,13 +2,11 @@ import { Link } from '@/i18n/Link';
 import { Icon } from '@/components/Icon';
 import { Seo } from '@/components/Seo';
 import { AdSlot } from '@/components/ui/AdSlot';
-import { Faq } from '@/components/ui/Faq';
 import { ToolGrid } from '@/components/ui/ToolCard';
 import { CategoryIcon } from '@/components/ui/CategoryIcon';
 import { ToolIcon } from '@/components/ui/ToolIcon';
 import { TrustIcon, type TrustKind } from '@/components/ui/TrustArt';
 import { ToolSearch } from '@/components/ui/ToolSearch';
-import { site } from '@/config/site';
 import { useReveal } from '@/lib/hooks';
 import { useLocalize } from '@/i18n/useLocalize';
 import { useI18n, type MessageKey } from '@/i18n';
@@ -25,14 +23,12 @@ const TRUST: { kind: TrustKind; title: MessageKey; text: MessageKey }[] = [
   { kind: 'limits', title: 'home.card3.title', text: 'home.card3.text' },
 ];
 
-const FAQ_COUNT = 4;
 
 export default function Home() {
   const trustRef = useReveal<HTMLDivElement>();
   const meta = usePageMeta('/');
   const { t } = useI18n();
   const loc = useLocalize();
-  const faq = Array.from({ length: FAQ_COUNT }, (_, i) => ({ q: t(`home.faq${i + 1}.q`), a: t(`home.faq${i + 1}.a`, { site: site.name }) }));
   return (
     <>
       {meta && <Seo {...meta} />}
@@ -103,13 +99,6 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </section>
-
-        <section className="section" aria-labelledby="faq">
-          <div className="section-head">
-            <h2 id="faq">{t('home.faqTitle')}</h2>
-          </div>
-          <Faq items={faq} />
         </section>
       </div>
     </>

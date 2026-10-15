@@ -1,10 +1,11 @@
-import { site } from '@/config/site';
+import { absoluteUrl, site } from '@/config/site';
 import { canonicalFor } from '@/seo';
 import type { PageMeta } from '@/components/Seo';
 import { allHelpItems } from '@/pages/helpData';
 import { categories, categoryPath, getCategory, getTool, toolPath, toolTitle, tools } from '@/tools/registry';
 import type { Category, FaqItem, ToolDef } from '@/tools/types';
-import { getPost, postPath, posts } from '@/blog/posts';
+import { getPost, postImage, postPath, posts } from '@/blog/posts';
+import { LANGUAGES } from '@/i18n/languages';
 import { en } from '@/i18n/en';
 
 export interface Crumb {
@@ -130,6 +131,40 @@ const breadcrumbLd = (path: string, l: Localizer) => ({
   })),
 });
 
+/**
+ * The About page is written in English only: other languages show the English text, are not indexed and point their
+ * canonical address at the English page. The tool and language counts come from the real data, never from typed numbers.
+ */
+function aboutMeta(l: Localizer): PageMeta {
+  const url = canonicalFor('/about', 'en');
+  const image = '/images/founder/ubaid-ullah-og.jpg';
+  const title = `About ${site.name} - Built by One Founder | Free Online Tools`;
+  const description = `Meet ${site.author.name}, the 20-year-old student from Karachi who built ${site.name} alone: ${tools.length} free online tools in ${LANGUAGES.length} languages.`;
+  const person = {
+    '@type': 'Person',
+    '@id': `${url}#person`,
+    name: site.author.name,
+    jobTitle: site.author.jobTitle,
+    url,
+    image: absoluteUrl('/images/founder/ubaid-ullah.jpg'),
+    sameAs: [site.author.profile],
+    worksFor: { '@type': 'Organization', name: site.name, url: canonicalFor('/', 'en') },
+  };
+  return {
+    title,
+    description,
+    path: '/about',
+    image,
+    englishOnly: true,
+    noindex: l.lang !== 'en',
+    jsonLd: [
+      breadcrumbLd('/about', englishLocalizer),
+      { '@context': 'https://schema.org', '@type': 'AboutPage', name: title, description, url, inLanguage: 'en', mainEntity: { '@id': `${url}#person` }, primaryImageOfPage: absoluteUrl(image) },
+      { '@context': 'https://schema.org', ...person },
+    ],
+  };
+}
+
 /** Returns null for unknown paths (rendered as the 404 page). */
 export function getPageMeta(path: string, l: Localizer = englishLocalizer): PageMeta | null {
   const base = staticPages[path];
@@ -146,6 +181,7 @@ export function getPageMeta(path: string, l: Localizer = englishLocalizer): Page
     if (path === '/') {
       jsonLd.push({ '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, url: canonicalFor('/', l.lang), description: site.tagline });
     }
+    if (path === '/about') return aboutMeta(l);
     return { title: sp.title, description: sp.description, path, jsonLd };
   }
 
@@ -191,14 +227,20 @@ export function getPageMeta(path: string, l: Localizer = englishLocalizer): Page
   };
 }
 
-/** Metadata and structured data of a blog article: BlogPosting, its FAQ and breadcrumbs. */
+/**
+ * Metadata and structured data of a blog article: BlogPosting (with image, author and dates), its FAQ and breadcrumbs.
+ * Articles are English only, so other languages show the English text, are not indexed and point their canonical
+ * address at the English article (see PageMeta.englishOnly).
+ */
 function postMeta(path: string, slug: string, l: Localizer): PageMeta | null {
   const post = getPost(slug);
   if (!post) return null;
-  const url = canonicalFor(path, l.lang);
+  const url = canonicalFor(path, 'en');
   const title = l.post(slug, 'title');
   const description = l.post(slug, 'description');
+  const image = postImage(slug);
   const faqBlock = post.blocks.find((b) => b.type === 'faq');
+  const category = getCategory(getTool(post.tool)?.category ?? '');
   const jsonLd: object[] = [
     breadcrumbLd(path, l),
     {
@@ -207,12 +249,14 @@ function postMeta(path: string, slug: string, l: Localizer): PageMeta | null {
       headline: title,
       description,
       url,
-      mainEntityOfPage: url,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+      image: [absoluteUrl(image)],
       datePublished: post.published,
       dateModified: post.updated,
-      inLanguage: l.lang,
-      author: { '@type': 'Organization', name: site.name, url: canonicalFor('/', l.lang) },
-      publisher: { '@type': 'Organization', name: site.name, url: canonicalFor('/', l.lang) },
+      inLanguage: 'en',
+      ...(category ? { articleSection: category.name } : {}),
+      author: { '@type': 'Person', name: site.author.name, jobTitle: site.author.jobTitle, url: canonicalFor('/about', 'en'), sameAs: [site.author.profile] },
+      publisher: { '@type': 'Organization', name: site.name, url: canonicalFor('/', 'en') },
     },
   ];
   if (faqBlock && faqBlock.type === 'faq') {
@@ -226,7 +270,7 @@ function postMeta(path: string, slug: string, l: Localizer): PageMeta | null {
       })),
     });
   }
-  return { title: `${title} | ${site.name}`, description, path, jsonLd };
+  return { title: `${title} | ${site.name}`, description, path, jsonLd, image, ogType: 'article', englishOnly: true, noindex: l.lang !== 'en' };
 }
 
 export const NOT_FOUND_META: PageMeta = {

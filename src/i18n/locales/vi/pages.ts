@@ -2,15 +2,6 @@ import type { PartialMessages } from '../../en';
 
 export default {
   // Home
-  'home.faqTitle': 'Giải đáp thắc mắc',
-  'home.faq1.q': 'Các công cụ có thực sự miễn phí không?',
-  'home.faq1.a': 'Có. Không cần đăng ký và không tính phí theo lượt dùng. {site} có thể được hỗ trợ bằng quảng cáo trong tương lai; quảng cáo sẽ luôn được gắn nhãn và đặt cách xa các nút điều khiển của công cụ và nút tải xuống.',
-  'home.faq2.q': 'Tệp của tôi có bị tải lên không?',
-  'home.faq2.a': 'Không. Các công cụ hình ảnh, PDF, văn bản và lập trình chạy trong trình duyệt của bạn bằng JavaScript. Tệp được đọc cục bộ và kết quả cũng được tạo cục bộ. Xem Chính sách quyền riêng tư để biết chi tiết.',
-  'home.faq3.q': 'Trình duyệt nào hoạt động tốt nhất?',
-  'home.faq3.a': 'Các phiên bản hiện tại của Chrome, Edge, Firefox và Safari. Một vài tính năng, như lưu ảnh WebP, phụ thuộc vào những gì trình duyệt của bạn hỗ trợ; công cụ sẽ cho bạn biết nếu có điều gì không khả dụng.',
-  'home.faq4.q': 'Có giới hạn dung lượng tệp không?',
-  'home.faq4.a': 'Vì công việc diễn ra trên thiết bị của bạn, giới hạn phụ thuộc vào bộ nhớ của bạn. Mỗi công cụ đặt một mức trần hợp lý (ví dụ 25 MB cho mỗi ảnh và 100 MB cho mỗi PDF) và hiển thị mức đó trước khi bạn thêm tệp.',
 
   // 404, category, all tools
   'notFound.text': 'Chúng tôi không tìm thấy trang đó. Có thể trang đã được chuyển đi, hoặc địa chỉ bị gõ sai.',
@@ -23,20 +14,6 @@ export default {
   'tools.jump': 'Chuyển đến một danh mục',
 
   // About
-  'about.title': 'Giới thiệu {site}',
-  'about.lead': 'Những công cụ đơn giản, đáng tin cậy cho các tác vụ hằng ngày với tệp, PDF, văn bản và lập trình.',
-  'about.what.h': 'Chúng tôi làm gì',
-  'about.what.p': '{site} là một bộ sưu tập các tiện ích nhỏ: chuyển đổi và nén hình ảnh, gộp và tách PDF, làm sạch văn bản, và định dạng hoặc mã hóa dữ liệu. Mỗi công cụ có một trang riêng, chỉ làm một việc, và nói rõ ràng những gì nó hỗ trợ và không hỗ trợ.',
-  'about.how.h': 'Các công cụ hoạt động như thế nào',
-  'about.how.p': 'Các công cụ chạy bên trong trình duyệt web của bạn. Khi bạn thêm một ảnh hoặc PDF, trình duyệt sẽ đọc nó từ thiết bị của bạn, xử lý cục bộ, rồi đưa kết quả để bạn tải xuống. Các công cụ của chúng tôi không gửi tệp hay văn bản bạn dán đến máy chủ của chúng tôi. Vì công việc diễn ra trên thiết bị của bạn, tốc độ và dung lượng tệp tối đa phụ thuộc vào máy tính hoặc điện thoại của bạn.',
-  'about.not.h': 'Những gì chúng tôi không làm',
-  'about.not.1': 'Chúng tôi không yêu cầu tài khoản hay thêm hình mờ vào kết quả của bạn.',
-  'about.not.2': 'Chúng tôi không viết lại văn bản có sẵn bên trong PDF. Các công cụ PDF gộp, tách, nén, ký, điền, che, so sánh và nhận dạng chữ trong tài liệu, nhưng không thay đổi những từ đã có sẵn.',
-  'about.not.3': 'Chúng tôi không cung cấp các công cụ cần mô hình AI lớn hoặc dịch vụ trả phí, chẳng hạn xóa nền, cho đến khi chúng có thể được thực hiện một cách đáng tin cậy và riêng tư. Công cụ duy nhất chúng tôi đi kèm, dành cho OCR, là mã nguồn mở và chạy bên trong trình duyệt của bạn.',
-  'about.who.h': 'Ai đứng sau {site}',
-  'about.who.placeholder': 'Hãy thêm một mô tả ngắn, trung thực về người hoặc công ty vận hành trang web này: tên, quốc gia và động lực của dự án.',
-  'about.touch.h': 'Liên hệ với chúng tôi',
-  'about.touch.p': 'Bạn thấy lỗi hoặc muốn thêm một công cụ? Xem <contact>trang liên hệ</contact>. Để biết cách chúng tôi xử lý dữ liệu, hãy đọc <privacy>Chính sách quyền riêng tư</privacy>.',
 
   // Help chrome
   'help.title': 'Trợ giúp & câu hỏi thường gặp',

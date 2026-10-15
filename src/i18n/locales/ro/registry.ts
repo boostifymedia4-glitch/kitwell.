@@ -49,8 +49,6 @@ export default {
   'page.blog.name': 'Blog',
   'meta.home.title': '{site} – instrumente online gratuite pentru imagini, PDF, text și dezvoltatori',
   'meta.tools.title': 'Toate instrumentele online – imagini, PDF, text și dezvoltatori | {site}',
-  'meta.about.title': 'Despre {site} – instrumente de zi cu zi în browser',
-  'meta.about.description': 'De ce există {site}, cum funcționează instrumentele în browserul dvs. și ce facem și ce nu facem cu fișierele dvs.',
   'meta.contact.title': 'Contact {site} – asistență și opinii',
   'meta.contact.description': 'Contactați {site}: raportați o eroare, sugerați un instrument nou sau puneți o întrebare despre modul în care funcționează instrumentele.',
   'meta.help.title': 'Ajutor și întrebări frecvente – cum funcționează {site} | {site}',

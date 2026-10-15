@@ -49,8 +49,6 @@ export default {
   'page.blog.name': 'Blog',
   'meta.home.title': '{site} – Ücretsiz Çevrimiçi Görsel, PDF, Metin ve Geliştirici Araçları',
   'meta.tools.title': 'Tüm Çevrimiçi Araçlar – Görsel, PDF, Metin ve Geliştirici | {site}',
-  'meta.about.title': '{site} Hakkında – Tarayıcı Tabanlı Günlük Araçlar',
-  'meta.about.description': '{site} neden var, araçlar tarayıcınızda nasıl çalışır ve dosyalarınızla neler yapıp neler yapmayız.',
   'meta.contact.title': '{site} ile İletişim – Destek ve Geri Bildirim',
   'meta.contact.description': '{site} ile iletişime geçin: hata bildirin, yeni bir araç önerin veya araçların nasıl çalıştığı hakkında soru sorun.',
   'meta.help.title': 'Yardım ve SSS – {site} Nasıl Çalışır | {site}',

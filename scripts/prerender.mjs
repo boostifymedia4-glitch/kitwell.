@@ -13,7 +13,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = join(root, 'dist');
 const ssrEntry = pathToFileURL(join(root, 'dist-ssr', 'entry-server.js')).href;
 
-const { render, allPaths, siteUrl, siteName, languageCodes } = await import(ssrEntry);
+const { render, allPaths, siteUrl, siteName, languageCodes, englishOnlyPaths, lastModified } = await import(ssrEntry);
 const template = await readFile(join(dist, 'index.html'), 'utf8');
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -25,6 +25,7 @@ const prefix = (code, path) => (code === 'en' ? path : path === '/' ? `/${code}`
 
 function headTags(r, found) {
   const { meta } = r;
+  const ogImage = meta.image ? `${siteUrl}${meta.image}` : hasOgImage ? `${siteUrl}/og-image.png` : '';
   const tags = [
     `<title>${esc(meta.title)}</title>`,
     `<meta name="description" content="${esc(meta.description)}" />`,
@@ -32,14 +33,16 @@ function headTags(r, found) {
     found ? `<link rel="canonical" href="${esc(r.canonical)}" />` : '',
     ...(found ? r.alternates.map((a) => `<link rel="alternate" hreflang="${esc(a.hreflang)}" href="${esc(a.href)}" />`) : []),
     `<meta name="kitwell-build" content="${esc(process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? 'local')}" />`,
-    `<meta property="og:type" content="website" />`,
+    `<meta property="og:type" content="${meta.ogType ?? 'website'}" />`,
     `<meta property="og:site_name" content="${esc(siteName)}" />`,
     `<meta property="og:locale" content="${esc(r.ogLocale)}" />`,
     `<meta property="og:title" content="${esc(meta.title)}" />`,
     `<meta property="og:description" content="${esc(meta.description)}" />`,
     found ? `<meta property="og:url" content="${esc(r.canonical)}" />` : '',
-    hasOgImage ? `<meta property="og:image" content="${esc(siteUrl)}/og-image.png" />` : '',
-    `<meta name="twitter:card" content="${hasOgImage ? 'summary_large_image' : 'summary'}" />`,
+    ogImage ? `<meta property="og:image" content="${esc(ogImage)}" />` : '',
+    meta.image ? `<meta property="og:image:width" content="1200" />\n    <meta property="og:image:height" content="630" />` : '',
+    `<meta name="twitter:card" content="${ogImage ? 'summary_large_image' : 'summary'}" />`,
+    ogImage ? `<meta name="twitter:image" content="${esc(ogImage)}" />` : '',
     `<meta name="twitter:title" content="${esc(meta.title)}" />`,
     `<meta name="twitter:description" content="${esc(meta.description)}" />`,
     ...(meta.jsonLd ?? []).map((b) => `<script type="application/ld+json" data-seo>${jsonLd(b)}</script>`),
@@ -78,9 +81,11 @@ const abs = (url) => `${siteUrl}${url === '/' ? '' : url}`;
 const entries = [];
 for (const code of languageCodes) {
   for (const path of paths) {
+    const englishOnly = englishOnlyPaths.has(path);
+    if (englishOnly && code !== 'en') continue; // English-only articles are listed once, without language alternates
     const url = prefix(code, path);
-    const links = languageCodes.map((c) => ({ c, href: abs(prefix(c, path)) }));
-    entries.push({ url, path, links });
+    const links = englishOnly ? [] : languageCodes.map((c) => ({ c, href: abs(prefix(c, path)) }));
+    entries.push({ url, path, links, englishOnly });
   }
 }
 const tagOf = (c) => (c === 'zh' ? 'zh-CN' : c);
@@ -89,9 +94,10 @@ const sitemap =
   entries
     .map(
       (e) =>
-        `  <url><loc>${esc(abs(e.url))}</loc><lastmod>${today}</lastmod><priority>${priority(e.path)}</priority>\n` +
-        e.links.map((l) => `    <xhtml:link rel="alternate" hreflang="${tagOf(l.c)}" href="${esc(l.href)}" />`).join('\n') +
-        `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${esc(abs(prefix('en', e.path)))}" />\n  </url>`,
+        `  <url><loc>${esc(abs(e.url))}</loc><lastmod>${lastModified(e.path) ?? today}</lastmod><priority>${priority(e.path)}</priority>` +
+        (e.englishOnly
+          ? '\n  </url>'
+          : '\n' + e.links.map((l) => `    <xhtml:link rel="alternate" hreflang="${tagOf(l.c)}" href="${esc(l.href)}" />`).join('\n') + `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${esc(abs(prefix('en', e.path)))}" />\n  </url>`),
     )
     .join('\n') +
   `\n</urlset>\n`;

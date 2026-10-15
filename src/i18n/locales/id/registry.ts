@@ -49,8 +49,6 @@ export default {
   'page.blog.name': 'Blog',
   'meta.home.title': '{site} – Alat Gambar, PDF, Teks & Pengembang Online Gratis',
   'meta.tools.title': 'Semua Alat Online – Gambar, PDF, Teks & Pengembang | {site}',
-  'meta.about.title': 'Tentang {site} – Alat Sehari-hari Berbasis Browser',
-  'meta.about.description': 'Mengapa {site} ada, bagaimana alat bekerja di browser Anda, dan apa yang kami lakukan serta tidak lakukan dengan file Anda.',
   'meta.contact.title': 'Hubungi {site} – Dukungan dan Masukan',
   'meta.contact.description': 'Hubungi {site}: laporkan bug, usulkan alat baru, atau ajukan pertanyaan tentang cara kerja alat.',
   'meta.help.title': 'Bantuan & FAQ – Cara Kerja {site} | {site}',

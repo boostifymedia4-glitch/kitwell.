@@ -11,6 +11,7 @@ import { help } from './help';
 import { legal } from './legal';
 import { registry } from './registry';
 import { blog } from './blog';
+import { blogArticles } from './blogArticles';
 import { errors } from './errors';
 import { toolsImageA } from './toolsImageA';
 import { toolsImageB } from './toolsImageB';
@@ -21,7 +22,7 @@ import { toolsTextDev } from './toolsTextDev';
 
 export const catalogFiles = { shell, ui, pages, help, legal, registry, blog, errors, toolsImageA, toolsImageB, toolsPdfA, toolsPdfB, toolsPdfC, toolsTextDev } as const;
 
-export const en: Record<string, string> = { ...shell, ...ui, ...pages, ...help, ...legal, ...registry, ...blog, ...errors, ...toolsImageA, ...toolsImageB, ...toolsPdfA, ...toolsPdfB, ...toolsPdfC, ...toolsTextDev };
+export const en: Record<string, string> = { ...shell, ...ui, ...pages, ...help, ...legal, ...registry, ...blog, ...blogArticles, ...errors, ...toolsImageA, ...toolsImageB, ...toolsPdfA, ...toolsPdfB, ...toolsPdfC, ...toolsTextDev };
 
 export type MessageKey = string;
 export type Messages = Record<string, string>;

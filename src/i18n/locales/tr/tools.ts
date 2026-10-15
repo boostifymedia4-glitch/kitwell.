@@ -1983,5 +1983,28 @@ const tools: ToolTextMap = {
       "Onarılan dosyanın sayfa sayısı orijinalinden az olabilir ve kapsamlı bir onarımdan sonra sayfa sırası değişebilir.",
     ],
   },
+  "pdf-to-pdfa": {
+    name: "PDF’den PDF/A’ya",
+    description: "Bir PDF’yi uzun süreli arşivleme için PDF/A-2b olarak hazırlayın; metni koruyun veya sayfaları resme dönüştürün.",
+    metaDescription: "Çevrimiçi PDF’den PDF/A’ya: bir PDF’yi PDF/A tanımı, meta veriler ve renk profiliyle arşivleme için PDF/A-2b olarak hazırlayın. Mümkünse metninizi korur. Tarayıcınızda çalışır.",
+    steps: [
+      "Bir PDF seçin. Parola korumalı dosyanın önce kilidi açılmalıdır.",
+      "Dönüştürme biçimini seçin: metni ve yazı tiplerini koruyun veya sayfaları resme dönüştürün.",
+      "Dönüştürün, yapılanları okuyun ve PDF/A dosyasını indirin.",
+    ],
+    faq: [
+      { q: "Sonuç sertifikalı bir PDF/A dosyası mı?", a: "Hayır. Kitwell, PDF’nizi temel arşiv düzeyi olan PDF/A-2b olarak hazırlar ve uyguladığı kurallara göre kendi işini denetler. Tam bir PDF/A doğrulayıcısı içermez. Uygunluğu kanıtlamanız gerekiyorsa dosyayı veraPDF gibi bir doğrulayıcıyla denetleyin." },
+      { q: "İki dönüştürme biçimi arasındaki fark nedir?", a: "“Metni ve yazı tiplerini koru” yalnızca dosyanın yapısını ve meta verilerini değiştirir, böylece metin seçilebilir kalır. Sadece tüm yazı tipleri gömülüyse ve dosya CMYK renk kullanmıyorsa çalışır. “Sayfaları resme dönüştür” her sayfayı resim olarak işler ve bunlardan yeni bir PDF/A oluşturur. Her zaman çalışır, ancak metin artık seçilemez ve dosya daha büyüktür." },
+      { q: "Metni korumayı seçtiğimde PDF’m neden reddedildi?", a: "PDF/A, her yazı tipinin dosyaya gömülü olmasını ister; CMYK profili olmayan CMYK rengine, LZW sıkıştırmasına ve görünümü olmayan açıklamalara izin vermez. Bunlar sayfaları değiştirmeden düzeltilemez, bu yüzden araç sahte bir sonuç üretmek yerine bulduklarını listeler. Resim modunu yine de kullanabilirsiniz." },
+      { q: "Araç dosyada neyi değiştirir?", a: "PDF/A tanımını ve XMP meta verilerini, çıktı koşulu olarak sRGB renk profilini ve bir dosya kimliğini ekler. JavaScript’i, yasak eylemleri, ekleri, fazla belge bilgilerini ve PDF/A’nın izin vermediği açıklama ayarlarını kaldırır." },
+      { q: "Dosyam bir yere yükleniyor mu?", a: "Hayır. Dosya tarayıcınız tarafından okunur ve dönüştürülür. Bu araç dosyayı hiçbir sunucuya göndermez." },
+    ],
+    limits: [
+      "PDF başına en fazla 100 MB. Parola korumalı PDF’lerin önce kilidi açılmalıdır, çünkü PDF/A dosyası şifrelenemez.",
+      "“Metni ve yazı tiplerini koru” yalnızca tüm yazı tipleri gömülüyse ve dosyada CMYK renk veya LZW sıkıştırması yoksa çalışır.",
+      "Sayfaları resme dönüştürme 200 sayfayla sınırlıdır. Metin artık seçilemez ve dosya büyür.",
+      "Sonuç, Kitwell tarafından hazırlanan ve uyguladığı kurallara göre denetlenen PDF/A-2b’dir; tam bir PDF/A doğrulayıcısıyla doğrulanmamıştır.",
+    ],
+  },
 };
 export default tools;

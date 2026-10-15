@@ -1482,5 +1482,28 @@ const tools: ToolTextMap = {
       "Un file riparato può avere meno pagine dell’originale e l’ordine delle pagine può cambiare dopo una riparazione importante.",
     ],
   },
+  "pdf-to-pdfa": {
+    name: "PDF in PDF/A",
+    description: "Prepara un PDF come PDF/A-2b per l’archiviazione a lungo termine, mantenendo il testo o trasformando le pagine in immagini.",
+    metaDescription: "PDF in PDF/A online: prepara un PDF come PDF/A-2b per l’archiviazione con identificazione PDF/A, metadati e profilo colore. Mantiene il testo quando possibile. Funziona nel browser.",
+    steps: [
+      "Scegli un PDF. Un file protetto da password deve prima essere sbloccato.",
+      "Scegli come convertire: mantenere testo e font oppure trasformare le pagine in immagini.",
+      "Convertilo, leggi cosa è stato fatto e scarica il file PDF/A.",
+    ],
+    faq: [
+      { q: "Il risultato è un file PDF/A certificato?", a: "No. Kitwell prepara il tuo PDF come PDF/A-2b, il livello base di archiviazione, e controlla il proprio lavoro in base alle regole che applica. Non include un validatore PDF/A completo. Se devi dimostrare la conformità, controlla il file con un validatore come veraPDF." },
+      { q: "Qual è la differenza tra i due modi di convertire?", a: "«Mantieni testo e font» cambia solo la struttura e i metadati del file, quindi il testo resta selezionabile. Funziona solo se tutti i font sono incorporati e il file non usa colori CMYK. «Trasforma le pagine in immagini» renderizza ogni pagina come immagine e costruisce con esse un nuovo PDF/A. Funziona sempre, ma il testo non è più selezionabile e il file è più grande." },
+      { q: "Perché il mio PDF è stato rifiutato quando ho scelto di mantenere il testo?", a: "PDF/A richiede che ogni font sia incorporato nel file e non consente colori CMYK senza profilo CMYK, compressione LZW o annotazioni senza aspetto visivo. Non si può correggere senza modificare le pagine, quindi lo strumento elenca ciò che ha trovato invece di simulare un risultato. Puoi comunque usare la modalità immagini." },
+      { q: "Cosa cambia lo strumento nel file?", a: "Aggiunge l’identificazione PDF/A e i metadati XMP, un profilo colore sRGB come condizione di uscita e un identificatore del file. Rimuove JavaScript, azioni vietate, allegati, informazioni del documento in eccesso e impostazioni delle annotazioni che PDF/A non consente." },
+      { q: "Il mio file viene caricato da qualche parte?", a: "No. Il file viene letto e convertito dal tuo browser. Questo strumento non lo invia a nessun server." },
+    ],
+    limits: [
+      "Massimo 100 MB per PDF. I PDF protetti da password devono prima essere sbloccati, perché un file PDF/A non può essere cifrato.",
+      "«Mantieni testo e font» funziona solo se tutti i font sono incorporati e il file non ha colori CMYK né compressione LZW.",
+      "La trasformazione delle pagine in immagini è limitata a 200 pagine. Il testo non è più selezionabile e il file diventa più grande.",
+      "Il risultato è PDF/A-2b preparato da Kitwell e controllato in base alle regole che applica; non è validato da un validatore PDF/A completo.",
+    ],
+  },
 };
 export default tools;

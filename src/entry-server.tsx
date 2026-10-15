@@ -9,6 +9,7 @@ import { splitLang } from './i18n/routing';
 import { allPaths, getPageMeta, NOT_FOUND_META, type Localizer } from './pageMeta';
 import { matchPage, normalizePath } from './routes';
 import { alternatesFor, canonicalFor, ogLocaleFor } from './seo';
+import { postPath, posts } from './blog/posts';
 
 /** Renders one address (with or without a language prefix) to HTML and its localised page metadata. */
 export async function render(url: string) {
@@ -25,10 +26,14 @@ export async function render(url: string) {
   const found = getPageMeta(path) !== null;
   const meta = getPageMeta(path, localizer) ?? (localizer ? { ...NOT_FOUND_META, ...localizer.notFound } : NOT_FOUND_META);
   const lang = getLanguage(code)!;
-  return { html, meta, found, code, path, htmlLang: langTag(lang), dir: lang.dir, ogLocale: ogLocaleFor(code), canonical: canonicalFor(path, code), alternates: alternatesFor(path) };
+  return { html, meta, found, code, path, htmlLang: langTag(lang), dir: lang.dir, ogLocale: ogLocaleFor(code), canonical: canonicalFor(path, meta.englishOnly ? DEFAULT_LANGUAGE : code), alternates: alternatesFor(path, meta.englishOnly) };
 }
 
 export { allPaths };
+
+/** Paths that exist only in English (blog articles) and the date each was last changed, for the sitemap. */
+export const englishOnlyPaths = new Set([...posts.map((p) => postPath(p.slug)), '/about']);
+export const lastModified = (path: string): string | undefined => posts.find((p) => postPath(p.slug) === path)?.updated;
 export const languageCodes = LANGUAGES.map((l) => l.code);
 export const siteUrl = site.url;
 export const siteName = site.name;

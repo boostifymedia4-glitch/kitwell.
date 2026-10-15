@@ -68,7 +68,7 @@ export const errors = {
   'err.image.noCanvas': 'Could not create a drawing surface. The image may be too large for this device.',
   'err.image.resultTooBig': 'The result would be {width} × {height} px, which is larger than this browser tool can safely create (max {max} px per side).',
   'err.image.watermarkTooSmall': 'The watermark is too small to tile. Use a larger size or a single mark.',
-  'err.image.notLarger': 'Choose a size larger than the original. Use the Image Resizer to make images smaller.',
+  'err.image.notLarger': 'Choose a size larger than the original. Use the Resize Image to make images smaller.',
   'err.image.notSvg': 'This file does not look like an SVG image.',
   'err.image.svgFailed': 'This SVG could not be drawn. It may be invalid or use features browsers do not support.',
   'err.image.encodeFailed': 'The browser could not encode this image.',

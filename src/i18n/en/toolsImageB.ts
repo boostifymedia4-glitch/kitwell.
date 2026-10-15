@@ -168,7 +168,7 @@ export const toolsImageB = {
   'photoEditor.place.bottomCenter': 'Bottom centre',
   'photoEditor.place.bottomRight': 'Bottom right',
   'photoEditor.err.noCanvas': 'Your browser could not create a drawing surface.',
-  'photoEditor.err.tooLarge': 'This picture is too large for the editor (over 50 megapixels). Make it smaller with the Image Resizer first.',
+  'photoEditor.err.tooLarge': 'This picture is too large for the editor (over 50 megapixels). Make it smaller with the Resize Image first.',
   'photoEditor.err.unreadable': 'This file could not be read as an image. It may be corrupted or in an unsupported format.',
   'photoEditor.err.noPhoto': 'Add a photo first.',
   'photoEditor.filters': 'Filters',

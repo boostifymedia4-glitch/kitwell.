@@ -49,8 +49,6 @@ export default {
   'page.blog.name': 'Blog',
   'meta.home.title': '{site} – Ferramentas on-line grátis de imagem, PDF, texto e desenvolvimento',
   'meta.tools.title': 'Todas as ferramentas on-line – imagem, PDF, texto e desenvolvimento | {site}',
-  'meta.about.title': 'Sobre o {site} – ferramentas do dia a dia no navegador',
-  'meta.about.description': 'Por que o {site} existe, como as ferramentas funcionam no seu navegador e o que fazemos e não fazemos com os seus arquivos.',
   'meta.contact.title': 'Fale com o {site} – suporte e feedback',
   'meta.contact.description': 'Entre em contato com o {site}: relate um erro, sugira uma nova ferramenta ou tire dúvidas sobre o funcionamento das ferramentas.',
   'meta.help.title': 'Ajuda e perguntas frequentes – como o {site} funciona | {site}',
