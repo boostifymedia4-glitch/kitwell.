@@ -184,3 +184,25 @@
   .accordion .accordion-trigger { padding: 13px var(--space-1); font-size: 0.96875rem; }
   .accordion .accordion-panel p { padding-inline: var(--space-1); font-size: 0.9375rem; }
 }
+
+/* ---------- Phones and touch screens: comfortable tap targets and a calmer hero ---------- */
+@media (pointer: coarse), (max-width: 720px) {
+  .icon-btn { min-width: 44px; min-height: 44px; }
+  .brand { min-height: 44px; }
+  .btn { min-height: 44px; }
+  .btn-sm { min-height: 40px; }
+  .breadcrumbs a { display: inline-flex; align-items: center; min-height: 32px; }
+  .footer-cols ul { gap: 0; }
+  .footer-cols li a { padding-block: 9px; }
+  .footer-cols a.footer-all { min-height: 40px; }
+  .post-toc a { display: inline-block; padding-block: 6px; }
+  .privacy-note a { display: inline-block; padding-block: 8px; }
+  .mobile-nav a, .mobile-nav button { min-height: 44px; }
+}
+@media (max-width: 480px) {
+  .hero { padding: var(--space-6) 0 var(--space-5); }
+  .hero h1 { font-size: clamp(1.75rem, 8.2vw, 2.25rem); line-height: 1.15; }
+  .hero .lead { font-size: 1rem; margin-bottom: var(--space-4); }
+  .page-head h1 { font-size: clamp(1.5rem, 7vw, 2rem); line-height: 1.2; overflow-wrap: anywhere; }
+}
+html { -webkit-tap-highlight-color: transparent; }

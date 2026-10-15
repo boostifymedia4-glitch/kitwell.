@@ -193,3 +193,22 @@ a, .icon-btn, .nav-link, .segmented button, .filter-tile, .page-card, .file-item
   .tool-card:hover, .btn-primary:hover:not(:disabled), .filter-tile:hover, .page-card:hover { transform: none; }
   .spinner { animation: none; border-top-color: var(--accent); border-right-color: var(--accent); }
 }
+
+/* ================= Extra polish: hero entrance, blog images, smooth scrolling, touch feedback ================= */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+  .hero h1, .hero .lead, .hero .search, .hero .shortcuts { animation: rise 520ms var(--ease-out) both; }
+  .hero .lead { animation-delay: 70ms; }
+  .hero .search { animation-delay: 140ms; }
+  .hero .shortcuts { animation-delay: 210ms; }
+  .post-card-media { transition: transform 420ms var(--ease-out); }
+  .post-card:hover .post-card-media { transform: scale(1.035); }
+  .post-hero img { animation: fade 600ms var(--ease) both; }
+  .post-takeaways, .post-author { animation: rise 420ms var(--ease-out) both; }
+  .site-footer { animation: fade 500ms var(--ease) both; }
+  .tool-card:active, .post-card:active, .trust-item:active { transform: scale(0.99); }
+}
+@media (hover: none) {
+  .tool-card:hover, .post-card:hover, .trust-item:hover, .filter-tile:hover, .page-card:hover { transform: none; }
+  .post-card:hover .post-card-media { transform: none; }
+}
