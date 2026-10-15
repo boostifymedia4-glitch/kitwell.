@@ -1,10 +1,10 @@
-import { site } from '@/config/site';
+import { absoluteUrl, site } from '@/config/site';
 import { canonicalFor } from '@/seo';
 import type { PageMeta } from '@/components/Seo';
 import { allHelpItems } from '@/pages/helpData';
 import { categories, categoryPath, getCategory, getTool, toolPath, toolTitle, tools } from '@/tools/registry';
 import type { Category, FaqItem, ToolDef } from '@/tools/types';
-import { getPost, postPath, posts } from '@/blog/posts';
+import { getPost, postImage, postPath, posts } from '@/blog/posts';
 import { en } from '@/i18n/en';
 
 export interface Crumb {
@@ -191,14 +191,20 @@ export function getPageMeta(path: string, l: Localizer = englishLocalizer): Page
   };
 }
 
-/** Metadata and structured data of a blog article: BlogPosting, its FAQ and breadcrumbs. */
+/**
+ * Metadata and structured data of a blog article: BlogPosting (with image, author and dates), its FAQ and breadcrumbs.
+ * Articles are English only, so other languages show the English text, are not indexed and point their canonical
+ * address at the English article (see PageMeta.englishOnly).
+ */
 function postMeta(path: string, slug: string, l: Localizer): PageMeta | null {
   const post = getPost(slug);
   if (!post) return null;
-  const url = canonicalFor(path, l.lang);
+  const url = canonicalFor(path, 'en');
   const title = l.post(slug, 'title');
   const description = l.post(slug, 'description');
+  const image = postImage(slug);
   const faqBlock = post.blocks.find((b) => b.type === 'faq');
+  const category = getCategory(getTool(post.tool)?.category ?? '');
   const jsonLd: object[] = [
     breadcrumbLd(path, l),
     {
@@ -207,12 +213,14 @@ function postMeta(path: string, slug: string, l: Localizer): PageMeta | null {
       headline: title,
       description,
       url,
-      mainEntityOfPage: url,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+      image: [absoluteUrl(image)],
       datePublished: post.published,
       dateModified: post.updated,
-      inLanguage: l.lang,
-      author: { '@type': 'Organization', name: site.name, url: canonicalFor('/', l.lang) },
-      publisher: { '@type': 'Organization', name: site.name, url: canonicalFor('/', l.lang) },
+      inLanguage: 'en',
+      ...(category ? { articleSection: category.name } : {}),
+      author: { '@type': 'Person', name: site.author.name, jobTitle: site.author.jobTitle, url: canonicalFor('/about', 'en'), sameAs: [site.author.profile] },
+      publisher: { '@type': 'Organization', name: site.name, url: canonicalFor('/', 'en') },
     },
   ];
   if (faqBlock && faqBlock.type === 'faq') {
@@ -226,7 +234,7 @@ function postMeta(path: string, slug: string, l: Localizer): PageMeta | null {
       })),
     });
   }
-  return { title: `${title} | ${site.name}`, description, path, jsonLd };
+  return { title: `${title} | ${site.name}`, description, path, jsonLd, image, ogType: 'article', englishOnly: true, noindex: l.lang !== 'en' };
 }
 
 export const NOT_FOUND_META: PageMeta = {

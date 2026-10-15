@@ -15,10 +15,14 @@ export function sourceKeyOf(key: string, english: Record<string, string>): strin
 }
 
 /** The keys a language must provide: every English key, with plural groups replaced by that language's own forms. */
+/** Blog article text (`blog.<slug>.<id>`) is English only on purpose; the shared blog chrome (`blog.title`) is translated. */
+export const isEnglishOnlyKey = (key: string) => /^blog\.[^.]+\..+/.test(key);
+
 export function requiredKeys(english: Record<string, string>, code: string): string[] {
   const forms = new Intl.PluralRules(code).resolvedOptions().pluralCategories;
   const out = new Set<string>();
   for (const key of Object.keys(english)) {
+    if (isEnglishOnlyKey(key)) continue;
     const p = split(key);
     if (p && `${p.base}.other` in english) for (const f of forms) out.add(`${p.base}.${f}`);
     else out.add(key);

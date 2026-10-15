@@ -6,7 +6,8 @@ import { Seo } from '@/components/Seo';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { ToolIcon } from '@/components/ui/ToolIcon';
 import { Faq } from '@/components/ui/Faq';
-import { getPost, postPath, posts, type BlogPost as Post } from '@/blog/posts';
+import { PostCard } from '@/components/ui/PostCard';
+import { POST_IMAGE_SIZE, getPost, postImage, postPath, relatedPosts, type BlogPost as Post } from '@/blog/posts';
 import { site } from '@/config/site';
 import { useI18n } from '@/i18n';
 import { Rich } from '@/i18n/Rich';
@@ -52,11 +53,25 @@ function Article({ post, meta, path }: { post: Post; meta: NonNullable<ReturnTyp
   const links = linkResolver();
   const key = (k: string) => `blog.${post.slug}.${k}`;
   const rich = (k: string) => <Rich text={t(key(k))} resolve={links} />;
-  const translated = lang.code === 'en' || Boolean(messages[key('title')]);
-  const headings = post.blocks.filter((b) => b.type === 'h2' && b.id !== 'cta.h');
+  // Articles are written in English only; other languages see the English text inside an English-language block.
+  const englishArticle = lang.code !== 'en' && !messages[key('title')];
+  const tocItems = post.blocks.filter((b) => (b.type === 'h2' && b.id !== 'cta.h') || b.type === 'faq');
   const tools = post.tools.map(getTool).filter((x): x is ToolDef => Boolean(x));
-  const others = posts.filter((p) => p.slug !== post.slug);
+  const related = relatedPosts(post, 3);
   const anchor = (id: string) => `sec-${id.replace('.', '-')}`;
+  const firstH2 = post.blocks.findIndex((b) => b.type === 'h2');
+  const toc = tocItems.length > 2 && (
+    <nav className="post-toc" aria-labelledby="toc-title">
+      <h2 id="toc-title">{t('blog.contents')}</h2>
+      <ol>
+        {tocItems.map((h) => (
+          <li key={h.id}>
+            <a href={`#${anchor(h.id)}`}>{t(key(h.type === 'faq' ? `${h.id}.h` : h.id))}</a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
 
   return (
     <>
@@ -66,41 +81,45 @@ function Article({ post, meta, path }: { post: Post; meta: NonNullable<ReturnTyp
           <Breadcrumbs path={path} />
           <h1>{t(key('title'))}</h1>
           <p className="post-meta">
-            <span>{t('blog.by', { site: site.name })}</span>
+            <span>
+              {t('blog.byAuthor', { author: site.author.name })}
+            </span>
             <span aria-hidden="true">·</span>
             <time dateTime={post.published}>{t('blog.published', { date: formatDate(post.published, lang.code) })}</time>
+            {post.updated !== post.published && (
+              <>
+                <span aria-hidden="true">·</span>
+                <time dateTime={post.updated}>{t('blog.updated', { date: formatDate(post.updated, lang.code) })}</time>
+              </>
+            )}
             <span aria-hidden="true">·</span>
             <span>{t('blog.minutes', { count: post.minutes })}</span>
           </p>
-          {!translated && (
+          {englishArticle && (
             <p className="note" role="note">
               {t('blog.englishOnly')}
             </p>
           )}
         </header>
 
+        <figure className="post-hero">
+          <img src={postImage(post.slug)} width={POST_IMAGE_SIZE.width} height={POST_IMAGE_SIZE.height} alt={t(key('imageAlt'))} fetchPriority="high" decoding="async" />
+        </figure>
+
         <div className="post-layout">
-          <article className="prose post-body" lang={translated ? undefined : 'en'} dir={translated ? undefined : 'ltr'}>
-            {headings.length > 2 && (
-              <nav className="post-toc" aria-labelledby="toc-title">
-                <h2 id="toc-title">{t('blog.contents')}</h2>
-                <ol>
-                  {headings.map((h) => (
-                    <li key={h.id}>
-                      <a href={`#${anchor(h.id)}`}>{t(key(h.id))}</a>
-                    </li>
-                  ))}
-                </ol>
-              </nav>
-            )}
-            {post.blocks.map((b) => {
+          <article className="prose post-body" lang={englishArticle ? 'en' : undefined} dir={englishArticle ? 'ltr' : undefined}>
+            {post.blocks.map((b, index) => {
+              const tocHere = index === firstH2 ? toc : null;
               switch (b.type) {
                 case 'h2':
                   return (
-                    <h2 key={b.id} id={anchor(b.id)}>
-                      {t(key(b.id))}
-                    </h2>
+                    <Fragment key={b.id}>
+                      {tocHere}
+                      <h2 id={anchor(b.id)}>{t(key(b.id))}</h2>
+                    </Fragment>
                   );
+                case 'h3':
+                  return <h3 key={b.id}>{t(key(b.id))}</h3>;
                 case 'p':
                   return <p key={b.id}>{rich(b.id)}</p>;
                 case 'note':
@@ -108,6 +127,17 @@ function Article({ post, meta, path }: { post: Post; meta: NonNullable<ReturnTyp
                     <p key={b.id} className="note" role="note">
                       {rich(b.id)}
                     </p>
+                  );
+                case 'takeaways':
+                  return (
+                    <aside key={b.id} className="post-takeaways" aria-labelledby="takeaways-title">
+                      <h2 id="takeaways-title">{t('blog.takeaways')}</h2>
+                      <ul>
+                        {Array.from({ length: b.items }, (_, i) => (
+                          <li key={i}>{rich(`${b.id}.${i + 1}`)}</li>
+                        ))}
+                      </ul>
+                    </aside>
                   );
                 case 'ul':
                 case 'ol': {
@@ -143,28 +173,29 @@ function Article({ post, meta, path }: { post: Post; meta: NonNullable<ReturnTyp
           </aside>
         </div>
 
-        {others.length > 0 && (
+        <aside className="post-author" aria-label={t('blog.aboutAuthor')}>
+          <p className="post-author-name">
+            <strong>{site.author.name}</strong>
+            <span>{site.author.jobTitle}</span>
+          </p>
+          <p>{t('blog.authorBio', { author: site.author.name, site: site.name })}</p>
+          <Link to="/about" className="post-more">
+            {t('blog.aboutAuthor')} <Icon name="arrow-right" size={14} />
+          </Link>
+        </aside>
+
+        {related.length > 0 && (
           <section className="section" aria-labelledby="more-guides">
             <div className="section-head">
-              <h2 id="more-guides">{t('blog.moreGuides')}</h2>
+              <h2 id="more-guides">{t('blog.relatedGuides')}</h2>
               <Link to="/blog" className="btn btn-ghost btn-sm">
                 {t('blog.backToBlog')} <Icon name="arrow-right" size={14} />
               </Link>
             </div>
             <ul className="post-list">
-              {others.map((p) => (
+              {related.map((p) => (
                 <li key={p.slug}>
-                  <article className="card post-card">
-                    <p className="post-meta">
-                      <span>{t('blog.minutes', { count: p.minutes })}</span>
-                    </p>
-                    <h3>
-                      <Link to={postPath(p.slug)} className="post-link">
-                        {t(`blog.${p.slug}.title`)}
-                      </Link>
-                    </h3>
-                    <p>{t(`blog.${p.slug}.excerpt`)}</p>
-                  </article>
+                  <PostCard post={p} />
                 </li>
               ))}
             </ul>

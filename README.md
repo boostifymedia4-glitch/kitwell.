@@ -80,7 +80,11 @@ PDFs are laid out by Kitwell's own layout engine (`docPdf.ts`) with Noto Sans (`
 
 ## Blog
 
-`/blog` and three guides (`src/blog/posts.ts` defines the structure; the text is in `src/i18n/en/blog.ts` and translated like everything else). Each article has metadata, `BlogPosting` and `FAQPage` structured data, a table of contents and internal links to tools and other guides (`<tool_merge_pdf>…</tool_merge_pdf>` markers). `tests/blog.test.ts` checks length, links, tag balance and metadata.
+`/blog` has 13 guides written around the tools. **Articles are English only on purpose:** other languages show the English text, are marked `noindex`, point their canonical address at the English article, have no hreflang links and are left out of the sitemap (the blog index and its shared labels are translated).
+
+- **Writing:** one Markdown file per article in `content/blog/<slug>.md` (format described at the top of `scripts/build-blog.mjs`). Run `node scripts/build-blog.mjs` and commit the generated `src/blog/articles.ts` and `src/i18n/en/blogArticles.ts`. Inside text, `<tool_merge_pdf>…</tool_merge_pdf>`, `<post_slug>…</post_slug>` and `<all_pdf>…</all_pdf>` become internal links.
+- **Images:** every article needs `public/images/blog/<slug>.jpg` (1200x630, used on the page, Open Graph and structured data) and `<slug>-640.webp` (cards). The current ones are drawn as SVG and rendered in a browser; `tests/blog.test.ts` fails when a file is missing.
+- **SEO checks (tests/blog.test.ts):** title up to 60 characters, description 120 to 165, one H1, question-style FAQ, more than 1,000 words, at least five tool links and two guide links per article, no orphan articles, BlogPosting schema with image, author (Person), dates and FAQ, plus breadcrumbs. Google stopped showing FAQ rich results in 2026, so the FAQ markup is kept only as harmless structured data.
 
 ## OCR (local, WebAssembly)
 

@@ -18,7 +18,8 @@ export interface Alternate {
 export const canonicalFor = (path: string, code: string) => absoluteUrl(withLang(path, code));
 
 /** Every language version of a page plus x-default (the English version), for reciprocal hreflang links. */
-export function alternatesFor(path: string): Alternate[] {
+export function alternatesFor(path: string, englishOnly = false): Alternate[] {
+  if (englishOnly) return [];
   return [
     ...LANGUAGES.map((l) => ({ hreflang: langTag(l), href: canonicalFor(path, l.code) })),
     { hreflang: 'x-default', href: canonicalFor(path, DEFAULT_LANGUAGE) },

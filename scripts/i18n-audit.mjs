@@ -175,6 +175,7 @@ const requiredKeysFor = (english, code) => {
   const forms = new Intl.PluralRules(code).resolvedOptions().pluralCategories;
   const out = new Set();
   for (const key of english.keys()) {
+    if (/^blog\.[^.]+\..+/.test(key)) continue; // article text is English only
     const p = splitForm(key);
     if (p && english.has(`${p.base}.other`)) for (const f of forms) out.add(`${p.base}.${f}`);
     else out.add(key);
