@@ -20,7 +20,6 @@ export default {
   'category.sections': 'Sections de {name}',
   'category.more': 'Autres catégories d’outils',
   'tools.title': 'Tous les outils',
-  'tools.lead': '{count} outils gratuits pour les images, les PDF, le texte et le développement. Faites une recherche ou parcourez par catégorie.',
   'tools.jump': 'Aller à une catégorie',
 
   // About
@@ -41,17 +40,11 @@ export default {
 
   // Help chrome
   'help.title': 'Aide et FAQ',
-  'help.lead': 'Réponses sur le fonctionnement des outils, vos fichiers et votre vie privée, et les limites de chaque outil.',
-  'help.topics': 'Thèmes d’aide',
-  'help.more': 'Vous ne trouvez pas votre réponse ? <contact>Contactez-nous</contact>, parcourez <tools>tous les outils</tools> ou lisez la <privacy>politique de confidentialité</privacy>.',
 
   // Legal pages
   'legal.privacy.title': 'Politique de confidentialité',
-  'legal.privacy.lead': 'Comment {site} gère vos fichiers et vos données.',
   'legal.terms.title': 'Conditions générales',
-  'legal.terms.lead': 'Les règles d’utilisation de {site}.',
   'legal.cookies.title': 'Informations sur les cookies et le stockage du navigateur',
-  'legal.cookies.lead': 'Ce que ce site enregistre dans votre navigateur, et ce qui changerait si de la publicité était ajoutée.',
 
   // Contact
   'contact.title': 'Nous contacter',
@@ -60,12 +53,6 @@ export default {
   'contact.form.name': 'Votre nom',
   'contact.form.email': 'Votre adresse e-mail',
   'contact.form.emailHint': 'Utilisée uniquement pour vous répondre.',
-  'contact.form.topic': 'De quoi s’agit-il ?',
-  'contact.form.topicOption.bug': 'Un bug ou un problème',
-  'contact.form.topicOption.suggestion': 'Une suggestion d’outil ou de fonction',
-  'contact.form.topicOption.question': 'Une question',
-  'contact.form.topicOption.misc': 'Autre chose',
-  'contact.form.choose': 'Choisissez un sujet',
   'contact.form.page': 'Outil ou page (facultatif)',
   'contact.form.pagePlaceholder': 'Par exemple : Fusionner des PDF',
   'contact.form.message': 'Message',
@@ -76,7 +63,6 @@ export default {
   'contact.form.honeypot': 'Laissez ce champ vide',
   'contact.err.name': 'Saisissez votre nom.',
   'contact.err.email': 'Saisissez une adresse e-mail valide.',
-  'contact.err.topic': 'Choisissez l’objet du message.',
   'contact.err.message': 'Rédigez un message d’au moins {min} caractères (au plus {max}).',
   'contact.err.summary': 'Veuillez corriger les champs signalés.',
   'contact.sent.h': 'Message envoyé',
@@ -88,9 +74,6 @@ export default {
   'contact.fail.network': 'Le message n’a pas pu être envoyé car la connexion a échoué. Vérifiez votre connexion internet et réessayez.',
   'contact.unavailable.h': 'Le formulaire de contact n’est pas encore disponible',
   'contact.unavailable.p': 'Ce site n’est pas encore relié à une boîte e-mail, les messages ne peuvent donc pas être envoyés depuis cette page.',
-  'contact.email.h': 'E-mail',
-  'contact.email.p': 'Vous pouvez aussi nous écrire par e-mail :',
-  'contact.email.placeholder': 'Adresse e-mail de contact (à ajouter avant le lancement)',
   'contact.report.h': 'Signaler un problème',
   'contact.report.intro': 'Pour nous aider à reproduire un problème, merci d’indiquer :',
   'contact.report.1': 'Le nom de l’outil et l’adresse de la page.',

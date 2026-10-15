@@ -1330,5 +1330,156 @@ const tools: ToolTextMap = {
       'Najlepiej skanują się ciemne kolory na jasnym tle o silnym kontraście.',
     ],
   },
+  "scan-to-pdf": {
+    name: "Skan do PDF",
+    description: "Zamień zdjęcia lub skany papierowych stron w jeden plik PDF, z opcjonalnym czyszczeniem poprawiającym czytelność.",
+    metaDescription: "Skan do PDF online: połącz zdjęcia lub skany papierowych stron w jeden plik PDF, ustaw kolejność stron i wyrównaj cienie w trybie czarno-białego dokumentu.",
+    steps: [
+      "Dodaj zdjęcia lub skany swoich stron albo zrób zdjęcie, jeśli Twój telefon lub tablet to obsługuje.",
+      "Ułóż strony w odpowiedniej kolejności i wybierz rozmiar strony oraz styl czyszczenia.",
+      "Utwórz plik PDF i pobierz go.",
+    ],
+    faq: [
+      { q: "Czy narzędzie rozpoznaje tekst na stronie?", a: "Nie. Skan do PDF zamienia obrazy w strony PDF i może je czyścić, ale tekst pozostaje częścią obrazu. Aby można go było przeszukiwać, przepuść wynik przez OCR PDF." },
+      { q: "Czy mogę użyć aparatu w telefonie?", a: "Na telefonach i tabletach, których przeglądarka to obsługuje, przycisk „Zrób zdjęcie” otwiera aparat. W przeciwnym razie wybierz zdjęcia już zapisane na urządzeniu." },
+      { q: "Co robią style czyszczenia?", a: "„Oryginał” zachowuje kolory. „Skala szarości” usuwa kolor. „Dokument czarno-biały” zamienia stronę w czysto czarny tekst na białym papierze i wyrównuje cienie oraz nierówne oświetlenie, co nadaje się do wydrukowanych stron i notatek, ale nie do fotografii." },
+      { q: "Czy mój plik jest dokądś przesyłany?", a: "Nie. Plik jest odczytywany i konwertowany przez Twoją przeglądarkę. To narzędzie nie wysyła go na serwer." },
+    ],
+    limits: [
+      "Maksymalnie 25 MB na obraz i 100 obrazów na plik PDF.",
+      "Duże zdjęcia są zmniejszane do około rozmiaru A4 przy 300 dpi, aby plik PDF pozostał mały.",
+      "Niektórych formatów telefonów, takich jak HEIC, przeglądarki nie potrafią odczytać; najpierw zapisz je jako JPG.",
+    ],
+  },
+  "html-to-pdf": {
+    name: "HTML do PDF",
+    description: "Zamień plik HTML lub wklejony kod HTML w plik PDF z zaznaczalnym tekstem.",
+    metaDescription: "HTML do PDF online: zamień plik HTML lub wklejony kod HTML w plik PDF z prawdziwym, zaznaczalnym tekstem, nagłówkami, listami, tabelami i osadzonymi obrazami.",
+    steps: [
+      "Wybierz plik HTML lub wklej swój kod HTML.",
+      "Wybierz rozmiar strony.",
+      "Skonwertuj i pobierz plik PDF.",
+    ],
+    faq: [
+      { q: "Czy mogę wpisać adres strony internetowej?", a: "Nie. Pobieranie innych witryn wymagałoby wysłania adresu na serwer, a strona rzadko konwertuje się dobrze bez swoich stylów. Zapisz stronę jako plik HTML w przeglądarce i użyj tego pliku albo wklej jej kod HTML." },
+      { q: "Czy plik PDF będzie wyglądał jak strona internetowa?", a: "Nie, nie dokładnie. Narzędzie odczytuje strukturę dokumentu (nagłówki, akapity, listy, tabele, łącza, tekst pogrubiony i pochylony oraz osadzone obrazy) i składa ją jako prosty dokument. Style CSS, skrypty, czcionki internetowe, kolumny i elementy pozycjonowane nie są stosowane." },
+      { q: "Czy konwertowanie HTML, któremu nie ufam, jest bezpieczne?", a: "HTML jest odczytywany jako nieaktywny tekst: skrypty się nie uruchamiają, a z internetu nic nie jest wczytywane. Używane są tylko obrazy osadzone w samym HTML." },
+      { q: "Jakie języki i czcionki są obsługiwane w pliku PDF?", a: "Plik PDF jest tworzony z czcionką Noto Sans, która obejmuje tekst łaciński (w tym polskie, czeskie, rumuńskie i tureckie litery), cyrylicę, grekę, wietnamski i dewanagari. Tekst arabski, hebrajski, tajski, chiński, japoński i koreański nie jest jeszcze obsługiwany: takie znaki pojawiają się jako znaki zapytania, a narzędzie informuje, ile ich dotyczyło. Oryginalne czcionki dokumentu nie są zachowywane." },
+      { q: "Czy mój plik jest dokądś przesyłany?", a: "Nie. Plik jest odczytywany i konwertowany przez Twoją przeglądarkę. To narzędzie nie wysyła go na serwer." },
+    ],
+    limits: [
+      "Maksymalnie 10 MB HTML.",
+      "Uwzględniane są tylko obrazy osadzone w HTML (adresy data:); obrazy i style ładowane z innych witryn są pomijane, a nie pobierane.",
+      "Skrypty, formularze, ramki, canvas, wideo i grafika SVG nie są konwertowane.",
+    ],
+  },
+  "word-to-pdf": {
+    name: "Word do PDF",
+    description: "Skonwertuj dokument Word (DOCX) do PDF, zachowując nagłówki, listy, tabele i obrazy.",
+    metaDescription: "Word do PDF online: skonwertuj dokument DOCX do pliku PDF z zaznaczalnym tekstem, nagłówkami, listami, tabelami, łączami i obrazami. Plik jest konwertowany w Twojej przeglądarce.",
+    steps: [
+      "Wybierz plik DOCX.",
+      "Wybierz rozmiar strony lub zachowaj rozmiar z dokumentu.",
+      "Skonwertuj i pobierz plik PDF.",
+    ],
+    faq: [
+      { q: "Czy plik PDF będzie wyglądał dokładnie tak jak dokument w Wordzie?", a: "Nie. Kitwell nie korzysta z Microsoft Word ani LibreOffice. Odczytuje treść i strukturę dokumentu i sam ją składa, więc czcionki, odstępy i podziały stron różnią się od tych w Wordzie. Sprawdź wynik, zanim go wyślesz." },
+      { q: "Co jest konwertowane, a co nie?", a: "Konwertowane: tekst z pogrubieniem, pochyleniem, podkreśleniem i łączami, nagłówki, listy punktowane i numerowane, tabele, obrazy JPEG i PNG, podziały wierszy i stron, wyrównanie oraz orientacja strony. Niekonwertowane: nagłówki i stopki, przypisy, pola tekstowe, równania, wykresy, kształty i obrazy w innych formatach." },
+      { q: "Czy mogę skonwertować stary plik .doc?", a: "Nie. Otwórz go w Wordzie i najpierw zapisz jako plik DOCX." },
+      { q: "Jakie języki i czcionki są obsługiwane w pliku PDF?", a: "Plik PDF jest tworzony z czcionką Noto Sans, która obejmuje tekst łaciński (w tym polskie, czeskie, rumuńskie i tureckie litery), cyrylicę, grekę, wietnamski i dewanagari. Tekst arabski, hebrajski, tajski, chiński, japoński i koreański nie jest jeszcze obsługiwany: takie znaki pojawiają się jako znaki zapytania, a narzędzie informuje, ile ich dotyczyło. Oryginalne czcionki dokumentu nie są zachowywane." },
+      { q: "Czy mój plik jest dokądś przesyłany?", a: "Nie. Plik jest odczytywany i konwertowany przez Twoją przeglądarkę. To narzędzie nie wysyła go na serwer." },
+    ],
+    limits: [
+      "Tylko pliki DOCX, maksymalnie 50 MB. Stare pliki .doc i dokumenty zabezpieczone hasłem nie są obsługiwane.",
+      "Układ jest przybliżony: kolumny, opływanie obrazów tekstem, nagłówki, stopki i przypisy nie są odtwarzane.",
+      "Czcionki oryginału są zastępowane czcionką Noto Sans.",
+    ],
+  },
+  "powerpoint-to-pdf": {
+    name: "PowerPoint do PDF",
+    description: "Skonwertuj prezentację PowerPoint (PPTX) do PDF z jedną stroną na slajd.",
+    metaDescription: "PowerPoint do PDF online: skonwertuj prezentację PPTX do pliku PDF z jedną stroną na slajd, zachowując rozmiar slajdu, tekst, obrazy i proste kształty. Bezpośrednio w Twojej przeglądarce.",
+    steps: [
+      "Wybierz plik PPTX.",
+      "Skonwertuj go.",
+      "Sprawdź strony i pobierz plik PDF.",
+    ],
+    faq: [
+      { q: "Czy slajdy będą wyglądały dokładnie tak jak w PowerPoincie?", a: "Nie dokładnie. Kitwell rysuje każdy slajd na podstawie jego pól tekstowych, obrazów, prostych kształtów i tabel. Czcionki, gradienty, cienie, efekty i dokładne dopasowanie tekstu się różnią. Zawsze przejrzyj plik PDF, zanim go użyjesz." },
+      { q: "Co nie jest konwertowane?", a: "Wykresy, SmartArt, wideo i dźwięk, animacje i przejścia, notatki prelegenta, gradienty, linie i łączniki oraz obrazy w formatach innych niż JPEG i PNG. Narzędzie informuje, ile elementów pominięto." },
+      { q: "Czy mogę skonwertować stary plik .ppt?", a: "Nie. Otwórz go w PowerPoincie i najpierw zapisz jako plik PPTX." },
+      { q: "Jakie języki i czcionki są obsługiwane w pliku PDF?", a: "Plik PDF jest tworzony z czcionką Noto Sans, która obejmuje tekst łaciński (w tym polskie, czeskie, rumuńskie i tureckie litery), cyrylicę, grekę, wietnamski i dewanagari. Tekst arabski, hebrajski, tajski, chiński, japoński i koreański nie jest jeszcze obsługiwany: takie znaki pojawiają się jako znaki zapytania, a narzędzie informuje, ile ich dotyczyło. Oryginalne czcionki dokumentu nie są zachowywane." },
+      { q: "Czy mój plik jest dokądś przesyłany?", a: "Nie. Plik jest odczytywany i konwertowany przez Twoją przeglądarkę. To narzędzie nie wysyła go na serwer." },
+    ],
+    limits: [
+      "Tylko pliki PPTX, maksymalnie 100 MB i 300 slajdów. Stare pliki .ppt i prezentacje zabezpieczone hasłem nie są obsługiwane.",
+      "Każdy slajd staje się stroną o własnym rozmiarze i orientacji slajdu.",
+      "Tekst, który nie mieści się w polu, jest zmniejszany – najwyżej do połowy rozmiaru.",
+    ],
+  },
+  "excel-to-pdf": {
+    name: "Excel do PDF",
+    description: "Skonwertuj skoroszyt Excel (XLSX) do PDF, w którym każdy widoczny arkusz staje się tabelą.",
+    metaDescription: "Excel do PDF online: skonwertuj skoroszyt XLSX do pliku PDF, w którym każdy widoczny arkusz jest tabelą zapisanych wartości, liczb i dat. Bezpośrednio w Twojej przeglądarce.",
+    steps: [
+      "Wybierz plik XLSX.",
+      "Skonwertuj go.",
+      "Sprawdź tabele i pobierz plik PDF.",
+    ],
+    faq: [
+      { q: "Czy formuły są obliczane?", a: "Nie. Plik PDF pokazuje wartości, które Excel zapisał w pliku. Jeśli komórka z formułą nie ma zapisanej wartości, pozostaje pusta, a narzędzie o tym informuje; otwórz plik w Excelu, pozwól mu obliczyć, zapisz go i skonwertuj ponownie." },
+      { q: "Czy będzie wyglądał jak układ wydruku w Excelu?", a: "Nie. Każdy widoczny arkusz staje się prostą tabelą dopasowaną do szerokości strony. Kolory komórek, scalone komórki, szerokości kolumn, wykresy, obrazy, obszary wydruku i podziały stron nie są zachowywane." },
+      { q: "Czy mogę skonwertować stary plik .xls?", a: "Nie. Otwórz go w Excelu i najpierw zapisz jako plik XLSX." },
+      { q: "Jakie języki i czcionki są obsługiwane w pliku PDF?", a: "Plik PDF jest tworzony z czcionką Noto Sans, która obejmuje tekst łaciński (w tym polskie, czeskie, rumuńskie i tureckie litery), cyrylicę, grekę, wietnamski i dewanagari. Tekst arabski, hebrajski, tajski, chiński, japoński i koreański nie jest jeszcze obsługiwany: takie znaki pojawiają się jako znaki zapytania, a narzędzie informuje, ile ich dotyczyło. Oryginalne czcionki dokumentu nie są zachowywane." },
+      { q: "Czy mój plik jest dokądś przesyłany?", a: "Nie. Plik jest odczytywany i konwertowany przez Twoją przeglądarkę. To narzędzie nie wysyła go na serwer." },
+    ],
+    limits: [
+      "Tylko pliki XLSX, maksymalnie 50 MB. Stare pliki .xls i skoroszyty zabezpieczone hasłem nie są obsługiwane.",
+      "Do 5000 wierszy i 60 kolumn na arkusz; wszystko ponad to jest pomijane, a narzędzie o tym informuje.",
+      "Ukryte arkusze są pomijane.",
+    ],
+  },
+  "pdf-to-markdown": {
+    name: "PDF do Markdown",
+    description: "Zamień tekst z pliku PDF w plik Markdown z nagłówkami, akapitami i listami.",
+    metaDescription: "PDF do Markdown online: wyodrębnij tekst z pliku PDF i pobierz go jako plik Markdown (.md) z nagłówkami, akapitami i listami. Działa w Twojej przeglądarce.",
+    steps: [
+      "Wybierz plik PDF.",
+      "Wybierz, czy usuwać powtarzające się nagłówki, stopki i numery stron.",
+      "Skonwertuj, sprawdź wynik i pobierz plik .md.",
+    ],
+    faq: [
+      { q: "Jak rozpoznawane są nagłówki i listy?", a: "Nagłówki to wiersze zapisane większą czcionką niż tekst zasadniczy, listy to wiersze zaczynające się od punktora lub liczby, a akapity są rozdzielane odstępami między wierszami. To dobre oszacowanie, ale nie gwarancja, dlatego sprawdź wynik." },
+      { q: "Dlaczego wynik jest pusty dla mojego zeskanowanego pliku PDF?", a: "Skan to obraz strony i nie zawiera tekstu do wyodrębnienia. Najpierw uruchom OCR PDF, aby dodać warstwę tekstową, a następnie skonwertuj wynik." },
+      { q: "Co z tabelami, kolumnami i obrazami?", a: "Tabele i kolumny nie są odtwarzane: ich tekst pojawia się jako zwykłe wiersze, w miarę możliwości w kolejności czytania. Obrazy, łącza, tekst pogrubiony i pochylony, przypisy i równania nie są przenoszone." },
+      { q: "Czy mój plik jest dokądś przesyłany?", a: "Nie. Plik jest odczytywany i konwertowany przez Twoją przeglądarkę. To narzędzie nie wysyła go na serwer." },
+    ],
+    limits: [
+      "Maksymalnie 100 MB na plik PDF. Pliki PDF zabezpieczone hasłem trzeba najpierw odblokować.",
+      "Konwertowany jest tylko tekst, który w pliku PDF jest prawdziwym tekstem; zeskanowane strony wymagają wcześniej OCR PDF.",
+      "Struktura jest szacowana na podstawie rozmiarów czcionek i odstępów i może być błędna przy złożonych układach.",
+    ],
+  },
+  "repair-pdf": {
+    name: "Naprawa PDF",
+    description: "Spróbuj naprawić plik PDF, który się nie otwiera, odbudowując jego wewnętrzną strukturę.",
+    metaDescription: "Naprawa PDF online: odbuduj strukturę uszkodzonego pliku PDF, który się nie otwiera, na przykład z uszkodzoną tabelą odsyłaczy lub uciętym końcem. Działa w Twojej przeglądarce.",
+    steps: [
+      "Wybierz uszkodzony plik PDF.",
+      "Rozpocznij naprawę.",
+      "Jeśli narzędzie utworzyło plik, sprawdź go i pobierz.",
+    ],
+    faq: [
+      { q: "Jakie rodzaje uszkodzeń można naprawić?", a: "Uszkodzenia struktury pliku: brakujący lub błędny indeks obiektów (tabela odsyłaczy), brakujący trailer, śmieci przed początkiem lub zepsuta lista stron. Jeśli plik został ucięty, strony zapisane przed ucięciem można odzyskać." },
+      { q: "Czego nie da się odzyskać?", a: "Treści, której nie ma już w pliku. Brakujących lub uszkodzonych stron, obrazów i czcionek nie da się przywrócić, a niektórych plików nie można uratować. Narzędzie informuje, ile stron zachowało, i mówi o tym, gdy nie potrafi utworzyć użytecznego pliku; nigdy nie oferuje pobrania pliku, którego nie utworzyło." },
+      { q: "A jeśli mój plik PDF otwiera się normalnie?", a: "Wtedy nie ma czego naprawiać. Narzędzie poinformuje o tym i zaoferuje oczyszczoną kopię pliku." },
+      { q: "Czy mój plik jest dokądś przesyłany?", a: "Nie. Plik jest odczytywany i konwertowany przez Twoją przeglądarkę. To narzędzie nie wysyła go na serwer." },
+    ],
+    limits: [
+      "Maksymalnie 100 MB na plik PDF. Pliki PDF zabezpieczone hasłem trzeba najpierw odblokować.",
+      "Uszkodzeń wewnątrz skompresowanych strumieni obiektów to narzędzie nie potrafi odbudować.",
+      "Naprawiony plik może mieć mniej stron niż oryginał, a po gruntownej naprawie kolejność stron może się zmienić.",
+    ],
+  },
 };
 export default tools;

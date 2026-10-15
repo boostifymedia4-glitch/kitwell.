@@ -20,7 +20,6 @@ export default {
   'category.sections': '{name}のセクション',
   'category.more': 'その他のツールカテゴリ',
   'tools.title': 'すべてのツール',
-  'tools.lead': '画像、PDF、テキスト、開発向けの無料ツール{count}個。検索するか、カテゴリから探せます。',
   'tools.jump': 'カテゴリへ移動',
 
   // About
@@ -41,17 +40,11 @@ export default {
 
   // Help chrome
   'help.title': 'ヘルプとよくある質問',
-  'help.lead': 'ツールのしくみ、ファイルとプライバシー、各ツールの制限についての回答です。',
-  'help.topics': 'ヘルプのトピック',
-  'help.more': '答えが見つかりませんか？ <contact>お問い合わせ</contact>、<tools>すべてのツール</tools>の閲覧、または<privacy>プライバシーポリシー</privacy>をご利用ください。',
 
   // Legal pages
   'legal.privacy.title': 'プライバシーポリシー',
-  'legal.privacy.lead': '{site}がファイルとデータをどのように扱うかについて。',
   'legal.terms.title': '利用規約',
-  'legal.terms.lead': '{site}をご利用いただく際のルールです。',
   'legal.cookies.title': 'Cookieとブラウザのストレージについて',
-  'legal.cookies.lead': '当サイトがブラウザに保存するもの、および広告が追加された場合に変わることについて。',
 
   // Contact
   'contact.title': 'お問い合わせ',
@@ -60,12 +53,6 @@ export default {
   'contact.form.name': 'お名前',
   'contact.form.email': 'メールアドレス',
   'contact.form.emailHint': '返信にのみ使用します。',
-  'contact.form.topic': 'ご用件',
-  'contact.form.topicOption.bug': '不具合や問題',
-  'contact.form.topicOption.suggestion': 'ツールや機能のご提案',
-  'contact.form.topicOption.question': 'ご質問',
-  'contact.form.topicOption.misc': 'その他',
-  'contact.form.choose': 'ご用件を選択',
   'contact.form.page': 'ツールまたはページ（任意）',
   'contact.form.pagePlaceholder': '例：PDFを結合',
   'contact.form.message': 'メッセージ',
@@ -76,7 +63,6 @@ export default {
   'contact.form.honeypot': 'この欄は空のままにしてください',
   'contact.err.name': 'お名前を入力してください。',
   'contact.err.email': '有効なメールアドレスを入力してください。',
-  'contact.err.topic': 'ご用件を選択してください。',
   'contact.err.message': '{min}文字以上、{max}文字以内でメッセージを入力してください。',
   'contact.err.summary': '強調表示された項目を修正してください。',
   'contact.sent.h': 'メッセージを送信しました',
@@ -88,9 +74,6 @@ export default {
   'contact.fail.network': '接続に失敗したため、メッセージを送信できませんでした。インターネット接続を確認して、もう一度お試しください。',
   'contact.unavailable.h': 'お問い合わせフォームはまだ利用できません',
   'contact.unavailable.p': 'このサイトはまだメールボックスに接続されていないため、このページからメッセージを送信できません。',
-  'contact.email.h': 'メール',
-  'contact.email.p': 'メールでもご連絡いただけます：',
-  'contact.email.placeholder': 'お問い合わせ用メールアドレス（公開前に追加予定）',
   'contact.report.h': '問題を報告するには',
   'contact.report.intro': '問題を再現するために、次の情報を含めてください：',
   'contact.report.1': 'ツールの名前とページのアドレス。',

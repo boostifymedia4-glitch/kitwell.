@@ -23,17 +23,17 @@ export const staticPages: Record<string, StaticPage> = {
     name: 'Home',
     title: `${site.name} – Free Online Image, PDF, Text & Developer Tools`,
     description:
-      'Convert and compress images, merge and split PDFs, format JSON and clean text. Fast, free tools that run in your browser, with no sign-up.',
+      'Convert and compress images, merge and split PDFs, format JSON and clean text. Practical tools with no sign-up required.',
   },
   '/tools': {
     name: 'All tools',
     title: `All Online Tools – Image, PDF, Text & Developer | ${site.name}`,
-    description: 'Browse every tool: image converters and editors, PDF utilities, text tools and developer utilities. All free and browser-based.',
+    description: 'Browse every tool: image converters and editors, PDF utilities, text tools and developer utilities.',
   },
   '/blog': {
     name: 'Blog',
     title: `Blog – Guides for PDFs and Images | ${site.name}`,
-    description: `Practical guides to compressing PDFs, converting images to PDF and making scanned documents searchable, written around the free tools on ${site.name}.`,
+    description: `Practical guides to compressing PDFs, converting images to PDF and making scanned documents searchable, written around the tools on ${site.name}.`,
   },
   '/about': {
     name: 'About',
@@ -48,12 +48,12 @@ export const staticPages: Record<string, StaticPage> = {
   '/help': {
     name: 'Help & FAQ',
     title: `Help & FAQ – How ${site.name} Works | ${site.name}`,
-    description: 'Answers about using the tools, privacy and your files, PDF signing, redaction, OCR, compression, passwords and languages.',
+    description: 'Answers to common questions about using Kitwell: tools, supported formats, troubleshooting, mobile use and languages.',
   },
   '/privacy': {
     name: 'Privacy Policy',
     title: `Privacy Policy | ${site.name}`,
-    description: `How ${site.name} handles your files, data and cookies. Most tools process files locally in your browser.`,
+    description: `How ${site.name} handles information, including the Contact form, browser storage and technical data from hosting.`,
   },
   '/terms': {
     name: 'Terms & Conditions',
@@ -63,7 +63,7 @@ export const staticPages: Record<string, StaticPage> = {
   '/cookies': {
     name: 'Cookie Information',
     title: `Cookie & Local Storage Information | ${site.name}`,
-    description: `What cookies and browser storage ${site.name} uses, and how that changes if advertising is enabled.`,
+    description: `Which cookies and browser storage ${site.name} uses, what is saved in your browser and how to manage it.`,
   },
 };
 

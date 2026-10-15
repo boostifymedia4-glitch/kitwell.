@@ -52,7 +52,6 @@ export default {
   'ui.crop.label': '{label}: {w} na {h}, pozycja {x}, {y}. Użyj klawiszy strzałek, aby przesunąć.',
   'ui.advertisement': 'Reklama',
   'ui.breadcrumb': 'Ścieżka nawigacji',
-  'ui.legalNotice': 'Dokument startowy. Ten tekst jest szablonem napisanym dla witryny z narzędziami działającymi w przeglądarce. Przed uruchomieniem witryny musi zostać sprawdzony i uzupełniony przez wykwalifikowanego prawnika w odniesieniu do Pakistanu oraz krajów, z których pochodzą odwiedzający (na przykład RODO w UE i Wielkiej Brytanii oraz CCPA w Kalifornii). Elementy w [nawiasach kwadratowych] wymagają uzupełnienia Twoimi danymi.',
   'tool.loading': 'Wczytywanie narzędzia…',
   'tool.loadFailed': 'Nie udało się wczytać tego narzędzia. Sprawdź połączenie i spróbuj ponownie.',
   'tool.reload': 'odśwież stronę',

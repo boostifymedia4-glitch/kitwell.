@@ -51,7 +51,6 @@ export default {
   'ui.crop.label': '{label} : {w} par {h} à {x}, {y}. Utilisez les touches fléchées pour déplacer.',
   'ui.advertisement': 'Publicité',
   'ui.breadcrumb': 'Fil d’Ariane',
-  'ui.legalNotice': 'Document de départ. Ce texte est un modèle rédigé pour un site d’outils fonctionnant dans le navigateur. Il doit être relu et complété par un juriste qualifié pour le Pakistan et pour les pays où vous avez des visiteurs (par exemple le RGPD de l’UE/du Royaume-Uni et le CCPA de Californie) avant la mise en ligne du site. Les éléments entre [crochets] nécessitent vos informations.',
   'tool.loading': 'Chargement de l’outil…',
   'tool.loadFailed': 'Impossible de charger cet outil. Vérifiez votre connexion et réessayez.',
   'tool.reload': 'recharger la page',

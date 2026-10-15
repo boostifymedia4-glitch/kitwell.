@@ -20,7 +20,6 @@ export default {
   'category.sections': 'Розділи в категорії «{name}»',
   'category.more': 'Інші категорії інструментів',
   'tools.title': 'Усі інструменти',
-  'tools.lead': 'Безкоштовних інструментів для зображень, PDF, тексту й розробки: {count}. Скористайтеся пошуком або перегляньте за категоріями.',
   'tools.jump': 'Перейти до категорії',
 
   // About
@@ -41,17 +40,11 @@ export default {
 
   // Help chrome
   'help.title': 'Довідка й поширені запитання',
-  'help.lead': 'Відповіді про те, як працюють інструменти, про ваші файли та приватність і про обмеження кожного інструмента.',
-  'help.topics': 'Теми довідки',
-  'help.more': 'Не знайшли відповіді? <contact>Напишіть нам</contact>, перегляньте <tools>усі інструменти</tools> або прочитайте <privacy>Політику конфіденційності</privacy>.',
 
   // Legal pages
   'legal.privacy.title': 'Політика конфіденційності',
-  'legal.privacy.lead': 'Як {site} поводиться з вашими файлами та даними.',
   'legal.terms.title': 'Умови використання',
-  'legal.terms.lead': 'Правила користування {site}.',
   'legal.cookies.title': 'Інформація про cookie та сховище браузера',
-  'legal.cookies.lead': 'Що цей сайт зберігає у вашому браузері і що зміниться, якщо буде додано рекламу.',
 
   // Contact
   'contact.title': 'Напишіть нам',
@@ -60,12 +53,6 @@ export default {
   'contact.form.name': 'Ваше ім’я',
   'contact.form.email': 'Ваша електронна адреса',
   'contact.form.emailHint': 'Використовується лише для відповіді вам.',
-  'contact.form.topic': 'Якої теми це стосується?',
-  'contact.form.topicOption.bug': 'Помилка або проблема',
-  'contact.form.topicOption.suggestion': 'Пропозиція інструмента чи функції',
-  'contact.form.topicOption.question': 'Запитання',
-  'contact.form.topicOption.misc': 'Інше',
-  'contact.form.choose': 'Виберіть тему',
   'contact.form.page': 'Інструмент або сторінка (необов’язково)',
   'contact.form.pagePlaceholder': 'Наприклад: Об’єднати PDF',
   'contact.form.message': 'Повідомлення',
@@ -76,7 +63,6 @@ export default {
   'contact.form.honeypot': 'Залиште це поле порожнім',
   'contact.err.name': 'Введіть своє ім’я.',
   'contact.err.email': 'Введіть дійсну електронну адресу.',
-  'contact.err.topic': 'Виберіть, чого стосується повідомлення.',
   'contact.err.message': 'Напишіть повідомлення завдовжки від {min} до {max} символів.',
   'contact.err.summary': 'Виправте позначені поля.',
   'contact.sent.h': 'Повідомлення надіслано',
@@ -88,9 +74,6 @@ export default {
   'contact.fail.network': 'Не вдалося надіслати повідомлення через збій з’єднання. Перевірте підключення до інтернету та спробуйте ще раз.',
   'contact.unavailable.h': 'Форма контактів ще недоступна',
   'contact.unavailable.p': 'Цей сайт не підключено до поштової скриньки, тому з цієї сторінки не можна надсилати повідомлення.',
-  'contact.email.h': 'Електронна пошта',
-  'contact.email.p': 'Ви також можете написати нам електронною поштою:',
-  'contact.email.placeholder': 'Контактна електронна адреса (буде додано до запуску)',
   'contact.report.h': 'Повідомлення про проблему',
   'contact.report.intro': 'Щоб нам було легше відтворити проблему, вкажіть:',
   'contact.report.1': 'Назву інструмента та адресу сторінки.',

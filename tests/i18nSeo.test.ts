@@ -54,7 +54,7 @@ describe('international SEO', () => {
     it(`has the legal pages and the English-authoritative note in ${code}`, async () => {
       const { messages } = await loadLocale(code);
       const legalKeys = Object.keys(en).filter((k) => k.startsWith('legal.'));
-      expect(legalKeys.length).toBeGreaterThan(40);
+      expect(legalKeys.length).toBeGreaterThan(30);
       for (const k of legalKeys) expect(messages[k], `${code} ${k}`).toBeTruthy();
     });
     it(`translates every tool in ${code}`, async () => {

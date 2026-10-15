@@ -21,6 +21,8 @@
   "dependencies": {
     "@cantoo/pdf-lib": "^2.11.1",
     "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource/noto-sans": "^5.3.0",
+    "@pdf-lib/fontkit": "^1.1.1",
     "@tesseract.js-data/eng": "^1.0.0",
     "compression": "^1.8.2",
     "diff": "^9.0.0",
@@ -52,6 +54,7 @@
     "eslint": "^10.11.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "globals": "^17.12.0",
+    "linkedom": "^0.18.13",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.70.0",
     "vite": "^8.3.0",

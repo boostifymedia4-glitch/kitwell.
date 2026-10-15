@@ -50,7 +50,6 @@ export default {
   'ui.crop.label': '{label}: {w} por {h} en {x}, {y}. Usa las teclas de flecha para mover.',
   'ui.advertisement': 'Publicidad',
   'ui.breadcrumb': 'Ruta de navegación',
-  'ui.legalNotice': 'Documento de partida. Este texto es una plantilla escrita para un sitio web de herramientas en el navegador. Un profesional jurídico cualificado debe revisarlo y completarlo para Pakistán y para los países donde tengas visitantes (por ejemplo, el RGPD de la UE y el Reino Unido y la CCPA de California) antes de publicar el sitio. Los elementos entre [corchetes] necesitan tu información.',
   'tool.loading': 'Cargando herramienta…',
   'tool.loadFailed': 'No se pudo cargar esta herramienta. Comprueba tu conexión e inténtalo de nuevo.',
   'tool.reload': 'recarga la página',

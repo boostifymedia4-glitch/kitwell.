@@ -300,3 +300,4 @@ input[type='color'] { width: 44px; height: 42px; padding: 2px; border-radius: va
 .pw-chip-danger { background: var(--danger-soft, #fde8e8); color: var(--danger); }
 .pw-chip-warning { background: var(--warning-soft); color: var(--warning); }
 .pw-chip-success { background: var(--success-soft); color: var(--success); }
+.contact-card .options-grid { align-items: start; }

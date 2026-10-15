@@ -1832,5 +1832,156 @@ const tools: ToolTextMap = {
       'Güçlü kontrastlı koyu-açık renkler en iyi taranır.',
     ],
   },
+  "scan-to-pdf": {
+    name: "Taramadan PDF’ye",
+    description: "Kâğıt sayfaların fotoğraflarını veya taramalarını, okunabilirlik için isteğe bağlı temizlemeyle tek bir PDF’ye dönüştürün.",
+    metaDescription: "Çevrimiçi taramadan PDF’ye: kâğıt sayfaların fotoğraflarını veya taramalarını tek bir PDF’de birleştirin, sayfa sırasını belirleyin ve siyah beyaz belge moduyla gölgeleri dengeleyin.",
+    steps: [
+      "Sayfalarınızın fotoğraflarını veya taramalarını ekleyin ya da telefonunuz veya tabletiniz destekliyorsa bir fotoğraf çekin.",
+      "Sayfaları sıraya koyun ve sayfa boyutunu ile bir temizleme stilini seçin.",
+      "PDF’yi oluşturun ve indirin.",
+    ],
+    faq: [
+      { q: "Sayfadaki metni tanıyor mu?", a: "Hayır. Taramadan PDF’ye, görselleri PDF sayfalarına dönüştürür ve temizleyebilir, ancak metin görselin bir parçası olarak kalır. Aranabilir hale getirmek için sonucu OCR PDF’den geçirin." },
+      { q: "Telefonumun kamerasını kullanabilir miyim?", a: "Tarayıcısı destekleyen telefon ve tabletlerde “Fotoğraf çek” düğmesi kamerayı açar. Aksi halde cihazınıza zaten kaydedilmiş fotoğrafları seçin." },
+      { q: "Temizleme stilleri ne yapar?", a: "“Orijinal” renkleri korur. “Gri tonlamalı” rengi kaldırır. “Siyah beyaz belge” sayfayı beyaz kâğıt üzerinde saf siyah metne çevirir ve gölgeleri ile düzensiz aydınlatmayı dengeler; basılı sayfalara ve notlara uygundur, fotoğraflara uygun değildir." },
+      { q: "Dosyam bir yere yükleniyor mu?", a: "Hayır. Dosya tarayıcınız tarafından okunur ve dönüştürülür. Bu araç dosyayı bir sunucuya göndermez." },
+    ],
+    limits: [
+      "Görsel başına en fazla 25 MB ve PDF başına 100 görsel.",
+      "PDF’yi küçük tutmak için büyük fotoğraflar 300 dpi’de yaklaşık A4 boyutuna küçültülür.",
+      "HEIC gibi bazı telefon biçimleri tarayıcılar tarafından okunamaz; önce bunları JPG olarak kaydedin.",
+    ],
+  },
+  "html-to-pdf": {
+    name: "HTML’den PDF’ye",
+    description: "Bir HTML dosyasını veya yapıştırılan HTML’yi seçilebilir metinli bir PDF’ye dönüştürün.",
+    metaDescription: "Çevrimiçi HTML’den PDF’ye: bir HTML dosyasını veya yapıştırılan HTML kodunu gerçek, seçilebilir metin, başlıklar, listeler, tablolar ve gömülü görsellerle PDF’ye dönüştürün.",
+    steps: [
+      "Bir HTML dosyası seçin veya HTML’nizi yapıştırın.",
+      "Sayfa boyutunu seçin.",
+      "Dönüştürün ve PDF’yi indirin.",
+    ],
+    faq: [
+      { q: "Bir web sayfası adresi girebilir miyim?", a: "Hayır. Başka web sitelerini getirmek adresin bir sunucuya gönderilmesini gerektirir ve bir sayfa stilleri olmadan nadiren iyi dönüşür. Sayfayı tarayıcınızda HTML dosyası olarak kaydedip o dosyayı kullanın veya HTML’sini yapıştırın." },
+      { q: "PDF web sayfasına benzer mi?", a: "Hayır, birebir değil. Araç belgenin yapısını (başlıklar, paragraflar, listeler, tablolar, bağlantılar, kalın ve italik metin ile gömülü görseller) okur ve basit bir belge olarak düzenler. CSS stilleri, betikler, web yazı tipleri, sütunlar ve konumlandırılmış öğeler uygulanmaz." },
+      { q: "Güvenmediğim bir HTML’yi dönüştürmek güvenli mi?", a: "HTML etkisiz metin olarak okunur: betikler çalışmaz ve internetten hiçbir şey yüklenmez. Yalnızca HTML’in kendisine gömülü görseller kullanılır." },
+      { q: "PDF’de hangi diller ve yazı tipleri destekleniyor?", a: "PDF, Latin (Lehçe, Çekçe, Rumence ve Türkçe harfler dahil), Kiril, Yunan, Vietnam ve Devanagari metinlerini kapsayan Noto Sans ile yazılır. Arapça, İbranice, Tayca, Çince, Japonca ve Korece metin henüz desteklenmiyor: bu karakterler soru işareti olarak görünür ve araç kaç tanesinin etkilendiğini size bildirir. Belgenin özgün yazı tipleri korunmaz." },
+      { q: "Dosyam bir yere yükleniyor mu?", a: "Hayır. Dosya tarayıcınız tarafından okunur ve dönüştürülür. Bu araç dosyayı bir sunucuya göndermez." },
+    ],
+    limits: [
+      "En fazla 10 MB HTML.",
+      "Yalnızca HTML’e gömülü görseller (data: adresleri) dahil edilir; başka sitelerden yüklenecek görseller ve stiller getirilmeden atlanır.",
+      "Betikler, formlar, çerçeveler, canvas, video ve SVG grafikleri dönüştürülmez.",
+    ],
+  },
+  "word-to-pdf": {
+    name: "Word’den PDF’ye",
+    description: "Bir Word (DOCX) belgesini başlıklar, listeler, tablolar ve görselleri koruyarak PDF’ye dönüştürün.",
+    metaDescription: "Çevrimiçi Word’den PDF’ye: bir DOCX belgesini seçilebilir metin, başlıklar, listeler, tablolar, bağlantılar ve görsellerle PDF’ye dönüştürün. Dosya tarayıcınızda dönüştürülür.",
+    steps: [
+      "Bir DOCX dosyası seçin.",
+      "Sayfa boyutunu seçin veya belgedekini koruyun.",
+      "Dönüştürün ve PDF’yi indirin.",
+    ],
+    faq: [
+      { q: "PDF, belgenin Word’deki haliyle birebir aynı görünür mü?", a: "Hayır. Kitwell, Microsoft Word veya LibreOffice kullanmaz. Belgenin içeriğini ve yapısını okur ve düzeni kendisi oluşturur; bu yüzden yazı tipleri, boşluklar ve sayfa sonları Word’dekinden farklıdır. Göndermeden önce sonucu kontrol edin." },
+      { q: "Neler dönüştürülür, neler dönüştürülmez?", a: "Dönüştürülenler: kalın, italik, altı çizili metin ve bağlantılar, başlıklar, madde işaretli ve numaralı listeler, tablolar, JPEG ve PNG görseller, satır ve sayfa sonları, hizalama ve sayfa yönü. Dönüştürülmeyenler: üst bilgi ve alt bilgiler, dipnotlar, metin kutuları, denklemler, grafikler, şekiller ve diğer görsel biçimleri." },
+      { q: "Eski bir .doc dosyasını dönüştürebilir miyim?", a: "Hayır. Dosyayı Word’de açın ve önce DOCX dosyası olarak kaydedin." },
+      { q: "PDF’de hangi diller ve yazı tipleri destekleniyor?", a: "PDF, Latin (Lehçe, Çekçe, Rumence ve Türkçe harfler dahil), Kiril, Yunan, Vietnam ve Devanagari metinlerini kapsayan Noto Sans ile yazılır. Arapça, İbranice, Tayca, Çince, Japonca ve Korece metin henüz desteklenmiyor: bu karakterler soru işareti olarak görünür ve araç kaç tanesinin etkilendiğini size bildirir. Belgenin özgün yazı tipleri korunmaz." },
+      { q: "Dosyam bir yere yükleniyor mu?", a: "Hayır. Dosya tarayıcınız tarafından okunur ve dönüştürülür. Bu araç dosyayı bir sunucuya göndermez." },
+    ],
+    limits: [
+      "Yalnızca DOCX dosyaları, en fazla 50 MB. Eski .doc dosyaları ve parola korumalı belgeler desteklenmez.",
+      "Düzen yaklaşıktır: sütunlar, görsellerin etrafında metin kaydırma, üst bilgiler, alt bilgiler ve dipnotlar yeniden oluşturulmaz.",
+      "Özgün yazı tipleri Noto Sans ile değiştirilir.",
+    ],
+  },
+  "powerpoint-to-pdf": {
+    name: "PowerPoint’ten PDF’ye",
+    description: "Bir PowerPoint (PPTX) sunusunu slayt başına bir sayfa olacak şekilde PDF’ye dönüştürün.",
+    metaDescription: "Çevrimiçi PowerPoint’ten PDF’ye: bir PPTX sunusunu slayt boyutunu, metni, görselleri ve basit şekilleri koruyarak slayt başına bir sayfalık PDF’ye dönüştürün. Doğrudan tarayıcınızda.",
+    steps: [
+      "Bir PPTX dosyası seçin.",
+      "Dönüştürün.",
+      "Sayfaları kontrol edin ve PDF’yi indirin.",
+    ],
+    faq: [
+      { q: "Slaytlar PowerPoint’tekiyle birebir aynı görünür mü?", a: "Birebir değil. Kitwell her slaytı metin kutularından, görsellerden, basit şekillerden ve tablolardan çizer. Yazı tipleri, gradyanlar, gölgeler, efektler ve metnin tam sığdırılması farklıdır. PDF’yi kullanmadan önce her zaman gözden geçirin." },
+      { q: "Nelerin dönüştürülmediği?", a: "Grafikler, SmartArt, video ve ses, animasyonlar ve geçişler, konuşmacı notları, gradyanlar, çizgiler ve bağlayıcılar ile JPEG ve PNG dışındaki biçimlerdeki görseller. Araç kaç öğenin dışarıda bırakıldığını size bildirir." },
+      { q: "Eski bir .ppt dosyasını dönüştürebilir miyim?", a: "Hayır. Dosyayı PowerPoint’te açın ve önce PPTX dosyası olarak kaydedin." },
+      { q: "PDF’de hangi diller ve yazı tipleri destekleniyor?", a: "PDF, Latin (Lehçe, Çekçe, Rumence ve Türkçe harfler dahil), Kiril, Yunan, Vietnam ve Devanagari metinlerini kapsayan Noto Sans ile yazılır. Arapça, İbranice, Tayca, Çince, Japonca ve Korece metin henüz desteklenmiyor: bu karakterler soru işareti olarak görünür ve araç kaç tanesinin etkilendiğini size bildirir. Belgenin özgün yazı tipleri korunmaz." },
+      { q: "Dosyam bir yere yükleniyor mu?", a: "Hayır. Dosya tarayıcınız tarafından okunur ve dönüştürülür. Bu araç dosyayı bir sunucuya göndermez." },
+    ],
+    limits: [
+      "Yalnızca PPTX dosyaları, en fazla 100 MB ve 300 slayt. Eski .ppt dosyaları ve parola korumalı sunular desteklenmez.",
+      "Her slayt, kendi boyutunda ve yönünde bir sayfa olur.",
+      "Kutusuna sığmayan metin, boyutunun yarısına kadar küçültülür.",
+    ],
+  },
+  "excel-to-pdf": {
+    name: "Excel’den PDF’ye",
+    description: "Bir Excel (XLSX) çalışma kitabını, görünür her sayfa bir tablo olacak şekilde PDF’ye dönüştürün.",
+    metaDescription: "Çevrimiçi Excel’den PDF’ye: bir XLSX çalışma kitabını, görünür her sayfanın kayıtlı değerlerin, sayıların ve tarihlerin tablosu olduğu bir PDF’ye dönüştürün. Doğrudan tarayıcınızda.",
+    steps: [
+      "Bir XLSX dosyası seçin.",
+      "Dönüştürün.",
+      "Tabloları kontrol edin ve PDF’yi indirin.",
+    ],
+    faq: [
+      { q: "Formüller hesaplanıyor mu?", a: "Hayır. PDF, Excel’in dosyayla birlikte kaydettiği değerleri gösterir. Bir formül hücresinin kayıtlı değeri yoksa boş bırakılır ve araç sizi bilgilendirir; dosyayı Excel’de açın, hesaplamasını bekleyin, kaydedin ve yeniden dönüştürün." },
+      { q: "Excel’deki yazdırma düzenine benzer mi?", a: "Hayır. Görünür her sayfa, sayfa genişliğine sığdırılan basit bir tablo olur. Hücre renkleri, birleştirilmiş hücreler, sütun genişlikleri, grafikler, resimler, yazdırma alanları ve sayfa sonları korunmaz." },
+      { q: "Eski bir .xls dosyasını dönüştürebilir miyim?", a: "Hayır. Dosyayı Excel’de açın ve önce XLSX dosyası olarak kaydedin." },
+      { q: "PDF’de hangi diller ve yazı tipleri destekleniyor?", a: "PDF, Latin (Lehçe, Çekçe, Rumence ve Türkçe harfler dahil), Kiril, Yunan, Vietnam ve Devanagari metinlerini kapsayan Noto Sans ile yazılır. Arapça, İbranice, Tayca, Çince, Japonca ve Korece metin henüz desteklenmiyor: bu karakterler soru işareti olarak görünür ve araç kaç tanesinin etkilendiğini size bildirir. Belgenin özgün yazı tipleri korunmaz." },
+      { q: "Dosyam bir yere yükleniyor mu?", a: "Hayır. Dosya tarayıcınız tarafından okunur ve dönüştürülür. Bu araç dosyayı bir sunucuya göndermez." },
+    ],
+    limits: [
+      "Yalnızca XLSX dosyaları, en fazla 50 MB. Eski .xls dosyaları ve parola korumalı çalışma kitapları desteklenmez.",
+      "Sayfa başına en fazla 5.000 satır ve 60 sütun; fazlası dışarıda bırakılır ve araç bunu bildirir.",
+      "Gizli sayfalar atlanır.",
+    ],
+  },
+  "pdf-to-markdown": {
+    name: "PDF’den Markdown’a",
+    description: "Bir PDF’nin metnini başlıklar, paragraflar ve listeler içeren bir Markdown dosyasına dönüştürün.",
+    metaDescription: "Çevrimiçi PDF’den Markdown’a: bir PDF’nin metnini çıkarın ve başlıklar, paragraflar ve listeler içeren bir Markdown (.md) dosyası olarak indirin. Tarayıcınızda çalışır.",
+    steps: [
+      "Bir PDF seçin.",
+      "Tekrarlayan sayfa üst bilgilerinin, alt bilgilerinin ve sayfa numaralarının kaldırılıp kaldırılmayacağını seçin.",
+      "Dönüştürün, sonucu kontrol edin ve .md dosyasını indirin.",
+    ],
+    faq: [
+      { q: "Başlıklar ve listeler nasıl bulunuyor?", a: "Başlıklar gövde metninden daha büyük yazı tipindeki satırlardır, listeler madde işareti veya numarayla başlayan satırlardır ve paragraflar satırlar arasındaki boşlukla ayrılır. Bu iyi bir tahmindir, garanti değildir; bu yüzden sonucu kontrol edin." },
+      { q: "Taranmış PDF’m için sonuç neden boş?", a: "Tarama bir sayfanın görselidir ve çıkarılacak metni yoktur. Önce metin katmanı eklemek için OCR PDF’yi çalıştırın, ardından sonucu dönüştürün." },
+      { q: "Tablolar, sütunlar ve görseller ne olur?", a: "Tablolar ve sütunlar yeniden oluşturulmaz: metinleri, mümkün olduğunda okuma sırasıyla sıradan satırlar olarak görünür. Görseller, bağlantılar, kalın ve italik metin, dipnotlar ve denklemler aktarılmaz." },
+      { q: "Dosyam bir yere yükleniyor mu?", a: "Hayır. Dosya tarayıcınız tarafından okunur ve dönüştürülür. Bu araç dosyayı bir sunucuya göndermez." },
+    ],
+    limits: [
+      "PDF başına en fazla 100 MB. Parola korumalı PDF’lerin önce kilidi açılmalıdır.",
+      "Yalnızca PDF’de gerçek metin olan metin dönüştürülür; taranmış sayfalar için önce OCR PDF gerekir.",
+      "Yapı, yazı tipi boyutlarından ve boşluklardan tahmin edilir ve karmaşık düzenlerde yanlış olabilir.",
+    ],
+  },
+  "repair-pdf": {
+    name: "PDF onarma",
+    description: "Açılmayan bir PDF’yi iç yapısını yeniden oluşturarak onarmayı deneyin.",
+    metaDescription: "Çevrimiçi PDF onarma: açılmayan hasarlı bir PDF’nin yapısını, örneğin bozuk bir çapraz başvuru tablosu veya kesik bir sonu olanları, yeniden oluşturun. Tarayıcınızda çalışır.",
+    steps: [
+      "Hasarlı PDF’yi seçin.",
+      "Onarımı başlatın.",
+      "Araç bir dosya ürettiyse kontrol edin ve indirin.",
+    ],
+    faq: [
+      { q: "Ne tür hasarlar onarılabilir?", a: "Dosyanın yapısındaki hasarlar: eksik veya yanlış bir nesne dizini (çapraz başvuru tablosu), eksik bir trailer, başlangıçtan önceki çöp veriler veya bozuk bir sayfa listesi. Dosya kesilmişse, kesilmeden önce kaydedilen sayfalar kurtarılabilir." },
+      { q: "Neler kurtarılamaz?", a: "Artık dosyada bulunmayan içerik. Eksik veya hasarlı sayfalar, görseller ya da yazı tipleri geri getirilemez ve bazı dosyalar onarılamayacak durumdadır. Araç kaç sayfayı koruduğunu bildirir ve kullanılabilir bir dosya üretemediğinde bunu söyler; oluşturmadığı bir indirmeyi asla sunmaz." },
+      { q: "PDF’m sorunsuz açılıyorsa ne olur?", a: "O zaman onarılacak bir şey yoktur. Araç bunu söyler ve dosyanın temizlenmiş bir kopyasını sunar." },
+      { q: "Dosyam bir yere yükleniyor mu?", a: "Hayır. Dosya tarayıcınız tarafından okunur ve dönüştürülür. Bu araç dosyayı bir sunucuya göndermez." },
+    ],
+    limits: [
+      "PDF başına en fazla 100 MB. Parola korumalı PDF’lerin önce kilidi açılmalıdır.",
+      "Sıkıştırılmış nesne akışlarının içindeki hasar bu araçla yeniden oluşturulamaz.",
+      "Onarılan dosyanın sayfa sayısı orijinalinden az olabilir ve kapsamlı bir onarımdan sonra sayfa sırası değişebilir.",
+    ],
+  },
 };
 export default tools;

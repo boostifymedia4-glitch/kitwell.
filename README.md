@@ -1,6 +1,6 @@
 # Kitwell
 
-A fast, privacy-friendly website of 69 everyday tools (image, PDF, text, developer) in 25 interface languages. Every tool runs **in the visitor's browser**; the server only serves static files.
+A fast, privacy-friendly website of 76 everyday tools (image, PDF, text, developer) in 25 interface languages. Every tool runs **in the visitor's browser**; the server only serves static files.
 
 **Stack:** Vite + React 19 + TypeScript, build-time prerendering (one static HTML file per URL, then hydrated), a small Express server for headers/compression/404s. Brand name is a placeholder: change it in `src/config/site.ts` and colours in `src/styles/tokens.css`.
 
@@ -11,9 +11,9 @@ A fast, privacy-friendly website of 69 everyday tools (image, PDF, text, develop
 | `npm install` | Install dependencies (Node 20+) |
 | `npm run dev` | Dev server with hot reload (no prerender). Copies the OCR files first. |
 | `npm run check` | Type check, lint, tests, then production build |
-| `npm run build` | Copies the OCR files, builds, and prerenders all 85 routes into `dist/` |
+| `npm run build` | Copies the OCR files, builds, and prerenders every route (about 2,300 pages including the language versions) into `dist/` |
 | `npm start` | Serve `dist/` on `PORT` (default 3000) |
-| `npm test` | Vitest (323 tests; server tests need a prior build) |
+| `npm test` | Vitest (482 tests; server tests need a prior build) |
 
 ## Deployment
 
@@ -26,14 +26,15 @@ A fast, privacy-friendly website of 69 everyday tools (image, PDF, text, develop
 
 ## Before launch (needs your input)
 
-- Replace placeholders in `Privacy`, `Terms`, `Cookies`, `About`, `Contact` (shown as highlighted `[brackets]`) and `contactEmail` in `src/config/site.ts`. Have the legal pages reviewed for Pakistan and your visitor countries.
+- Set `CONTACT_WEBHOOK_URL` (see Contact form); until then the contact form says it is not connected.
+- Have a lawyer review the Privacy Policy, Terms and Cookie information for Pakistan and your visitor countries. They are short plain-language texts that describe only what the site does today; they are not legal advice.
 - Add `public/og-image.png` (1200×630) for social previews; the build picks it up automatically.
 - Choose the final brand name/domain.
 - Have the non-English interface strings reviewed by native speakers (see Languages).
 
 ## Tool icons
 
-Every tool has a colour-coded illustration drawn as inline SVG (no image files, no icon library): `src/tools/toolArt.ts` is the single table that gives each of the 69 tools a base (sheet, photo, note or code window), a colour, a glyph and, for conversions, a format tag in the format's own colour (PDF red, JPG amber, PNG blue, WEBP purple ...). `src/components/ui/ToolArt.tsx` draws them and `ToolIcon` is the only component that shows them (cards, menus, search, related tools, page headers). `tests/toolArt.test.ts` checks that every tool is mapped, that no two tools look the same and that every colour keeps 3:1 contrast with the white glyph. The `icon` field in the tool data is kept for the line-icon fallback and tests.
+Every tool has a colour-coded illustration drawn as inline SVG (no image files, no icon library): `src/tools/toolArt.ts` is the single table that gives each of the 76 tools a base (sheet, photo, note or code window), a colour, a glyph and, for conversions, a format tag in the format's own colour (PDF red, JPG amber, PNG blue, WEBP purple ...). `src/components/ui/ToolArt.tsx` draws them and `ToolIcon` is the only component that shows them (cards, menus, search, related tools, page headers). `tests/toolArt.test.ts` checks that every tool is mapped, that no two tools look the same and that every colour keeps 3:1 contrast with the white glyph. The `icon` field in the tool data is kept for the line-icon fallback and tests.
 
 ## Adding a tool
 
@@ -43,9 +44,9 @@ Every tool has a colour-coded illustration drawn as inline SVG (no image files, 
 
 ## Languages
 
-The whole site can be shown in 25 languages: English, Urdu, Arabic, Persian, Spanish, French, German, Portuguese, Italian, Turkish, Chinese (Simplified), Japanese, Korean, Hindi, Indonesian, Bengali, Russian, Dutch, Vietnamese, Polish, Thai, Ukrainian, Romanian, Greek and Czech. English lives at the plain address and every other language under its code (`/ur/tools`, `/zh/privacy`), so a page always renders in one language for everyone. The address decides the language; the switcher goes to the same page in the other language and remembers the choice in `localStorage` (key `kitwell-language`). `<html lang>` and `dir` follow the page (Urdu, Arabic and Persian are right-to-left; Chinese is `zh-CN`). Every page is prerendered in every language (`npm run build` writes about 2,100 pages) with a self-referencing canonical, reciprocal `hreflang` links for all 25 languages plus `x-default`, localised title, description, Open Graph and structured data, and `sitemap.xml` entries with `xhtml:link` alternates. The Privacy Policy, Terms and Cookie information are translated in every language; each translated page states that the English text is authoritative, and the texts still need legal review. The coverage checks live in `scripts/i18n-audit.mjs` and `tests/i18n.test.ts` / `tests/i18nSeo.test.ts`. The site has no cookie banner (it sets no cookies), so there is no consent interface to translate.
+The whole site can be shown in 25 languages: English, Urdu, Arabic, Persian, Spanish, French, German, Portuguese, Italian, Turkish, Chinese (Simplified), Japanese, Korean, Hindi, Indonesian, Bengali, Russian, Dutch, Vietnamese, Polish, Thai, Ukrainian, Romanian, Greek and Czech. English lives at the plain address and every other language under its code (`/ur/tools`, `/zh/privacy`), so a page always renders in one language for everyone. The address decides the language; the switcher goes to the same page in the other language and remembers the choice in `localStorage` (key `kitwell-language`). `<html lang>` and `dir` follow the page (Urdu, Arabic and Persian are right-to-left; Chinese is `zh-CN`). Every page is prerendered in every language (`npm run build` writes about 2,100 pages) with a self-referencing canonical, reciprocal `hreflang` links for all 25 languages plus `x-default`, localised title, description, Open Graph and structured data, and `sitemap.xml` entries with `xhtml:link` alternates. The Privacy Policy, Terms and Cookie information are translated in every language; each translated page states that the English text is authoritative. The coverage checks live in `scripts/i18n-audit.mjs` and `tests/i18n.test.ts` / `tests/i18nSeo.test.ts`. The site has no cookie banner (it sets no cookies), so there is no consent interface to translate.
 
-- **What is translated:** menus, search, footer, pages, help and FAQ, the contact form, blog guides, all 69 tool pages (names, descriptions, steps, FAQ, limits), every tool interface, and error messages thrown by the tools. **English only, on purpose:** the legal texts (Privacy Policy, Terms, Cookie information; a note says so in other languages), text stamped into generated PDFs ("Page 1 of 10", "CONFIDENTIAL"), and errors raised inside web workers.
+- **What is translated:** menus, search, footer, pages, help and FAQ, the contact form, blog guides, all 76 tool pages (names, descriptions, steps, FAQ, limits), every tool interface, and error messages thrown by the tools. **English only, on purpose:** text stamped into generated PDFs ("Page 1 of 10", "CONFIDENTIAL"), and errors raised inside web workers.
 - **Source and layout:** `src/i18n/en/*.ts` is the English catalog (one object per area; keys are `area.name`, plurals are `key.one` / `key.other`). Tool content is translated by tool slug in `src/i18n/locales/<code>/tools.ts`; the other files mirror the English ones. See `docs/i18n-conventions.md` (rules for developers) and `docs/translation-brief.md` (rules for translators).
 - **Checks:** `node scripts/i18n-audit.mjs --report [--list <code>]` finds hardcoded text and unknown keys, lists missing keys per language and writes `docs/translation-coverage.md`. `tests/i18n.test.ts` fails when a locale has unknown keys, mismatched `{placeholders}`, untranslated copies, or a `coverage` flag in `src/i18n/languages.ts` that does not match reality. Plural forms follow each language's own CLDR categories.
 - **Fallback:** a missing key falls back to English, never to a blank or a raw key.
@@ -55,9 +56,27 @@ The whole site can be shown in 25 languages: English, Urdu, Arabic, Persian, Spa
 
 ## Contact form
 
-`/contact` has a working form. It posts to `POST /api/contact` (`server/contact.mjs`), which validates the message, rate-limits (5 per 15 minutes per IP; `CONTACT_RATE_LIMIT`), drops honeypot submissions and forwards the message as JSON to the URL in `CONTACT_WEBHOOK_URL` (a Slack/Discord incoming webhook, Make/Zapier hook, Formspree-style endpoint or your own receiver). The JSON has `name`, `email`, `topic`, `message`, `page`, `receivedAt`, plus `text` and `content` (Slack and Discord formats). Nothing is stored on the server.
+`/contact` has a working form (name, email, subject, optional tool/page, message). It posts to `POST /api/contact`, which validates the message, rate-limits (5 per 15 minutes per IP; `CONTACT_RATE_LIMIT`), drops honeypot submissions and forwards the message as JSON to the URL in `CONTACT_WEBHOOK_URL` (a Slack/Discord incoming webhook, Make/Zapier hook, Formspree-style endpoint or your own receiver). The JSON has `name`, `email`, `topic`, `message`, `page`, `receivedAt`, plus `text` and `content` (Slack and Discord formats). Nothing is stored on the server. The owner's email address is never shown on the site.
 
-Without `CONTACT_WEBHOOK_URL` the page says the form is not connected and the endpoint answers 503; it never reports success for a message it did not deliver. Set `contactEmail` in `src/config/site.ts` to also show a mailto address.
+Two entry points share the same rules (`server/contactCore.mjs`): the Express server (`server/contact.mjs`) and Vercel serverless functions (`api/contact.js`, `api/contact/status.js`) for the static Vercel deployment, which has no Node server. On Vercel set `CONTACT_WEBHOOK_URL` (and optionally `CONTACT_RATE_LIMIT`) in the project's environment variables. The Vercel rate limiter is in memory per function instance, so it is best-effort there.
+
+Without `CONTACT_WEBHOOK_URL` the page says the form is not connected and the endpoint answers 503; it never reports success for a message it did not deliver.
+
+## Convert-to-PDF and repair tools
+
+Seven tools were added to the PDF category (data in `src/tools/data/pdfConvert.ts`, interfaces in `src/tools/impl/pdf/`, engines in `src/lib/`). All run in the browser; nothing is uploaded and there is no server component.
+
+| Tool | Engine |
+| --- | --- |
+| Scan to PDF | images to pages (`scanFilter.ts`: grayscale or adaptive black-and-white clean-up) |
+| HTML to PDF | inert `DOMParser` reader (`htmlDoc.ts`); never fetches URLs, runs scripts or loads external resources |
+| Word to PDF | DOCX reader (`docx.ts`, `officeZip.ts`) |
+| PowerPoint to PDF | PPTX reader (`pptxPdf.ts`) |
+| Excel to PDF | XLSX reader (`xlsx.ts`), saved values only |
+| PDF to Markdown | pdf.js text positions with heading, list and paragraph heuristics (`pdfMarkdown.ts`) |
+| Repair PDF | xref reconstruction and page-tree rebuild (`pdfRepair.ts`) |
+
+PDFs are laid out by Kitwell's own layout engine (`docPdf.ts`) with Noto Sans (`@fontsource/noto-sans`, subset-embedded via `@pdf-lib/fontkit`): Latin, Latin Extended, Cyrillic, Greek, Vietnamese and Devanagari. Arabic, Hebrew, Thai and CJK text is **not** supported and shows as "?" with a count in the result notes. Output is **not** a pixel copy of the source: fonts, spacing, columns, headers/footers, charts and effects differ, and each tool says what was skipped. Legacy `.doc`/`.ppt`/`.xls` and password-protected files are rejected with a clear message. **PDF to PDF/A is not offered:** valid archival PDF/A needs ICC colour profiles and XMP metadata that could not be produced and verified here, and a tool that only claimed PDF/A would be misleading.
 
 ## Blog
 
@@ -73,7 +92,7 @@ OCR PDF uses [tesseract.js](https://github.com/naptha/tesseract.js) (Apache-2.0)
 
 ## Privacy and security notes
 
-- No uploads: files never reach the server. The only API endpoint is the contact form. Regex and image processing run in Web Workers; heavy libraries (@cantoo/pdf-lib, PDF.js, pica, jsQR, tesseract.js, gifenc, marked, diff) load only on pages that use them.
+- No uploads: files never reach the server. The only API endpoints are for the contact form. Regex and image processing run in Web Workers; heavy libraries (@cantoo/pdf-lib, PDF.js, pica, jsQR, tesseract.js, gifenc, marked, diff) load only on pages that use them.
 - PDF editing uses [@cantoo/pdf-lib](https://github.com/cantoo-scribe/pdf-lib) (an MIT-licensed, maintained fork of pdf-lib) because it can encrypt and decrypt PDFs. Image enlarging uses pica without WebAssembly.
 - Redact PDF rebuilds redacted pages as images, so the text underneath does not exist in the output. This is covered by a unit test that searches the decompressed file for the secret text and by a browser check that does the same on the real output.
 - Markdown preview is sanitised with DOMPurify; Base64-to-image rejects SVG.
@@ -103,4 +122,5 @@ OCR PDF uses [tesseract.js](https://github.com/naptha/tesseract.js) (Apache-2.0)
 - WebP output needs a browser that can encode WebP; HEIC/TIFF/RAW inputs are unsupported; animated images use the first frame.
 - PDF rendering (PDF to JPG/PNG, viewer, previews) is slowed by browsers when the tab is in the background.
 - Not built (by design): background removal / object removal (need large ML models), YouTube tools (need API/terms review; no scraping).
+- The convert-to-PDF tools approximate the source layout (see Convert-to-PDF and repair tools). Scan to PDF's camera button has not been tested on real phone hardware.
 - Manual testing was done in Chromium only; Firefox and Safari are untested.

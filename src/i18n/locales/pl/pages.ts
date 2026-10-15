@@ -20,7 +20,6 @@ export default {
   'category.sections': 'Sekcje w kategorii {name}',
   'category.more': 'Więcej kategorii narzędzi',
   'tools.title': 'Wszystkie narzędzia',
-  'tools.lead': 'Bezpłatne narzędzia do obrazów, PDF-ów, tekstu i programowania: {count}. Wyszukuj lub przeglądaj według kategorii.',
   'tools.jump': 'Przejdź do kategorii',
 
   // About
@@ -41,17 +40,11 @@ export default {
 
   // Help chrome
   'help.title': 'Pomoc i FAQ',
-  'help.lead': 'Odpowiedzi dotyczące działania narzędzi, Twoich plików i prywatności oraz ograniczeń każdego narzędzia.',
-  'help.topics': 'Tematy pomocy',
-  'help.more': 'Nie możesz znaleźć odpowiedzi? <contact>Napisz do nas</contact>, przeglądaj <tools>wszystkie narzędzia</tools> lub przeczytaj <privacy>Politykę prywatności</privacy>.',
 
   // Legal pages
   'legal.privacy.title': 'Polityka prywatności',
-  'legal.privacy.lead': 'Jak {site} postępuje z Twoimi plikami i danymi.',
   'legal.terms.title': 'Regulamin',
-  'legal.terms.lead': 'Zasady korzystania z {site}.',
   'legal.cookies.title': 'Informacje o plikach cookie i pamięci przeglądarki',
-  'legal.cookies.lead': 'Co ta witryna zapisuje w Twojej przeglądarce i co zmieni się po dodaniu reklam.',
 
   // Contact
   'contact.title': 'Skontaktuj się z nami',
@@ -60,12 +53,6 @@ export default {
   'contact.form.name': 'Twoje imię',
   'contact.form.email': 'Twój adres e-mail',
   'contact.form.emailHint': 'Używany wyłącznie do odpowiedzi.',
-  'contact.form.topic': 'Czego dotyczy wiadomość?',
-  'contact.form.topicOption.bug': 'Błąd lub problem',
-  'contact.form.topicOption.suggestion': 'Propozycja narzędzia lub funkcji',
-  'contact.form.topicOption.question': 'Pytanie',
-  'contact.form.topicOption.misc': 'Coś innego',
-  'contact.form.choose': 'Wybierz temat',
   'contact.form.page': 'Narzędzie lub strona (opcjonalnie)',
   'contact.form.pagePlaceholder': 'Na przykład: Scal PDF',
   'contact.form.message': 'Wiadomość',
@@ -76,7 +63,6 @@ export default {
   'contact.form.honeypot': 'Pozostaw to pole puste',
   'contact.err.name': 'Wpisz swoje imię.',
   'contact.err.email': 'Wpisz prawidłowy adres e-mail.',
-  'contact.err.topic': 'Wybierz, czego dotyczy wiadomość.',
   'contact.err.message': 'Napisz wiadomość o długości co najmniej {min} znaków (najwyżej {max}).',
   'contact.err.summary': 'Popraw zaznaczone pola.',
   'contact.sent.h': 'Wiadomość wysłana',
@@ -88,9 +74,6 @@ export default {
   'contact.fail.network': 'Nie udało się wysłać wiadomości, ponieważ połączenie zostało przerwane. Sprawdź połączenie z internetem i spróbuj ponownie.',
   'contact.unavailable.h': 'Formularz kontaktowy jest jeszcze niedostępny',
   'contact.unavailable.p': 'Ta witryna nie została połączona ze skrzynką pocztową, więc z tej strony nie można wysyłać wiadomości.',
-  'contact.email.h': 'E-mail',
-  'contact.email.p': 'Możesz też napisać do nas e-mailem:',
-  'contact.email.placeholder': 'Kontaktowy adres e-mail (zostanie dodany przed uruchomieniem)',
   'contact.report.h': 'Zgłaszanie problemu',
   'contact.report.intro': 'Aby ułatwić nam odtworzenie problemu, podaj:',
   'contact.report.1': 'Nazwę narzędzia i adres strony.',

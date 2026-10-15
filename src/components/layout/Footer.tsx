@@ -26,17 +26,7 @@ export function Footer() {
               <BrandMark />
               {site.name}
             </Link>
-            <p>{t('footer.tagline')}</p>
-            <ul className="footer-badges">
-              <li>
-                <Icon name="shield" size={16} />
-                {t('footer.local')}
-              </li>
-              <li>
-                <Icon name="check-circle" size={16} />
-                {t('footer.noSignup')}
-              </li>
-            </ul>
+            <p>{t('footer.description')}</p>
           </div>
 
           <div className="footer-cols">

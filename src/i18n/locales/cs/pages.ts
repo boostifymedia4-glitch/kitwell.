@@ -20,7 +20,6 @@ export default {
   'category.sections': 'Sekce v kategorii {name}',
   'category.more': 'Další kategorie nástrojů',
   'tools.title': 'Všechny nástroje',
-  'tools.lead': '{count} bezplatných nástrojů pro obrázky, PDF, text a vývoj. Vyhledávejte nebo procházejte podle kategorií.',
   'tools.jump': 'Přejít na kategorii',
 
   // About
@@ -41,17 +40,11 @@ export default {
 
   // Help chrome
   'help.title': 'Nápověda a FAQ',
-  'help.lead': 'Odpovědi o tom, jak nástroje fungují, o vašich souborech a soukromí a o omezeních jednotlivých nástrojů.',
-  'help.topics': 'Témata nápovědy',
-  'help.more': 'Nenašli jste odpověď? <contact>Napište nám</contact>, projděte <tools>všechny nástroje</tools> nebo si přečtěte <privacy>Zásady ochrany osobních údajů</privacy>.',
 
   // Legal pages
   'legal.privacy.title': 'Zásady ochrany osobních údajů',
-  'legal.privacy.lead': 'Jak {site} nakládá s vašimi soubory a údaji.',
   'legal.terms.title': 'Obchodní podmínky',
-  'legal.terms.lead': 'Pravidla používání webu {site}.',
   'legal.cookies.title': 'Informace o cookies a úložišti prohlížeče',
-  'legal.cookies.lead': 'Co tento web ukládá ve vašem prohlížeči a co by se změnilo, pokud bude přidána reklama.',
 
   // Contact
   'contact.title': 'Kontaktujte nás',
@@ -60,12 +53,6 @@ export default {
   'contact.form.name': 'Vaše jméno',
   'contact.form.email': 'Vaše e-mailová adresa',
   'contact.form.emailHint': 'Použije se pouze k odpovědi vám.',
-  'contact.form.topic': 'Čeho se zpráva týká?',
-  'contact.form.topicOption.bug': 'Chyba nebo problém',
-  'contact.form.topicOption.suggestion': 'Návrh nástroje nebo funkce',
-  'contact.form.topicOption.question': 'Dotaz',
-  'contact.form.topicOption.misc': 'Něco jiného',
-  'contact.form.choose': 'Vyberte téma',
   'contact.form.page': 'Nástroj nebo stránka (volitelné)',
   'contact.form.pagePlaceholder': 'Například: Sloučit PDF',
   'contact.form.message': 'Zpráva',
@@ -76,7 +63,6 @@ export default {
   'contact.form.honeypot': 'Toto pole nechte prázdné',
   'contact.err.name': 'Zadejte své jméno.',
   'contact.err.email': 'Zadejte platnou e-mailovou adresu.',
-  'contact.err.topic': 'Vyberte, čeho se zpráva týká.',
   'contact.err.message': 'Napište zprávu o délce alespoň {min} znaků (nejvýše {max}).',
   'contact.err.summary': 'Opravte prosím zvýrazněná pole.',
   'contact.sent.h': 'Zpráva odeslána',
@@ -88,9 +74,6 @@ export default {
   'contact.fail.network': 'Zprávu se nepodařilo odeslat, protože selhalo připojení. Zkontrolujte připojení k internetu a zkuste to znovu.',
   'contact.unavailable.h': 'Kontaktní formulář zatím není k dispozici',
   'contact.unavailable.p': 'Tento web zatím není propojen s e-mailovou schránkou, proto z této stránky nelze zprávy odesílat.',
-  'contact.email.h': 'E-mail',
-  'contact.email.p': 'Můžete nám také napsat e-mailem:',
-  'contact.email.placeholder': 'Kontaktní e-mailová adresa (bude doplněna před spuštěním)',
   'contact.report.h': 'Nahlášení problému',
   'contact.report.intro': 'Abychom mohli problém zopakovat, uveďte prosím:',
   'contact.report.1': 'Název nástroje a adresu stránky.',

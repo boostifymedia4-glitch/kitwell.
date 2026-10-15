@@ -48,7 +48,6 @@ export default {
   'ui.crop.label': '{label}: {w} mal {h} bei {x}, {y}. Mit den Pfeiltasten verschieben.',
   'ui.advertisement': 'Werbung',
   'ui.breadcrumb': 'Brotkrumennavigation',
-  'ui.legalNotice': 'Mustervorlage. Dieser Text ist eine Vorlage für eine Website mit browserbasierten Tools. Er muss vor der Veröffentlichung der Website von einer qualifizierten Rechtsfachperson für Pakistan und für die Länder, in denen Sie Besucher haben (zum Beispiel DSGVO der EU/UK und CCPA in Kalifornien), geprüft und ergänzt werden. Angaben in [eckigen Klammern] müssen mit Ihren Informationen ergänzt werden.',
   'tool.loading': 'Tool wird geladen…',
   'tool.loadFailed': 'Dieses Tool konnte nicht geladen werden. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut.',
   'tool.reload': 'Seite neu laden',

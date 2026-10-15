@@ -43,11 +43,3 @@ export function LegalBody({ children }: { children: ReactNode }) {
   );
 }
 
-export function LegalNotice() {
-  const { t } = useI18n();
-  return (
-    <p className="note" role="note">
-      {t('ui.legalNotice')}
-    </p>
-  );
-}

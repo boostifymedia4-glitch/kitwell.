@@ -50,7 +50,6 @@ export default {
   'ui.crop.label': '{label}: {w} por {h} em {x}, {y}. Use as setas do teclado para mover.',
   'ui.advertisement': 'Publicidade',
   'ui.breadcrumb': 'Trilha de navegação',
-  'ui.legalNotice': 'Documento inicial. Este texto é um modelo escrito para um site de ferramentas no navegador. Ele deve ser revisado e completado por um profissional jurídico qualificado para o Paquistão e para os países onde você tem visitantes (por exemplo, o GDPR da UE/Reino Unido e o CCPA da Califórnia) antes de o site entrar no ar. Os itens entre [colchetes] precisam das suas informações.',
   'tool.loading': 'Carregando ferramenta…',
   'tool.loadFailed': 'Não foi possível carregar esta ferramenta. Verifique sua conexão e tente novamente.',
   'tool.reload': 'recarregue a página',

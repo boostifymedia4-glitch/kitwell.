@@ -1331,5 +1331,156 @@ const tools: ToolTextMap = {
       'Donkere kleuren op licht met sterk contrast scannen het best.',
     ],
   },
+  "scan-to-pdf": {
+    name: "Scan naar PDF",
+    description: "Zet foto’s of scans van papieren pagina’s om in één pdf, met optionele opschoning voor betere leesbaarheid.",
+    metaDescription: "Scan naar PDF online: voeg foto’s of scans van papieren pagina’s samen tot één pdf, bepaal de paginavolgorde en egaliseer schaduwen met de zwart-witdocumentmodus.",
+    steps: [
+      "Voeg foto’s of scans van je pagina’s toe, of maak een foto als je telefoon of tablet dat ondersteunt.",
+      "Zet de pagina’s in de juiste volgorde en kies het paginaformaat en een opschoonstijl.",
+      "Maak de pdf en download hem.",
+    ],
+    faq: [
+      { q: "Herkent dit de tekst op de pagina?", a: "Nee. Scan naar PDF zet de afbeeldingen om in pdf-pagina’s en kan ze opschonen, maar de tekst blijft deel van de afbeelding. Laat het resultaat door OCR PDF lopen om het doorzoekbaar te maken." },
+      { q: "Kan ik de camera van mijn telefoon gebruiken?", a: "Op telefoons en tablets waarvan de browser dit ondersteunt, opent de knop ‘Foto maken’ de camera. Kies anders foto’s die al op je apparaat staan." },
+      { q: "Wat doen de opschoonstijlen?", a: "‘Origineel’ behoudt de kleuren. ‘Grijstinten’ haalt de kleur weg. ‘Zwart-wit document’ maakt van de pagina zuiver zwarte tekst op wit papier en egaliseert schaduwen en ongelijkmatige belichting, wat past bij gedrukte pagina’s en aantekeningen maar niet bij foto’s." },
+      { q: "Wordt mijn bestand ergens geüpload?", a: "Nee. Het bestand wordt door je browser gelezen en omgezet. Deze tool stuurt het niet naar een server." },
+    ],
+    limits: [
+      "Maximaal 25 MB per afbeelding en 100 afbeeldingen per pdf.",
+      "Grote foto’s worden verkleind tot ongeveer A4-formaat bij 300 dpi om de pdf klein te houden.",
+      "Sommige telefoonformaten, zoals HEIC, kunnen door browsers niet worden gelezen; sla ze eerst op als JPG.",
+    ],
+  },
+  "html-to-pdf": {
+    name: "HTML naar PDF",
+    description: "Zet een HTML-bestand of geplakte HTML om in een pdf met selecteerbare tekst.",
+    metaDescription: "HTML naar PDF online: zet een HTML-bestand of geplakte HTML-code om in een pdf met echte, selecteerbare tekst, koppen, lijsten, tabellen en ingesloten afbeeldingen.",
+    steps: [
+      "Kies een HTML-bestand of plak je HTML.",
+      "Kies het paginaformaat.",
+      "Zet om en download de pdf.",
+    ],
+    faq: [
+      { q: "Kan ik een webadres invoeren?", a: "Nee. Voor het ophalen van andere websites zou het adres naar een server moeten worden gestuurd, en een pagina wordt zonder stijlen zelden goed omgezet. Sla de pagina in je browser op als HTML-bestand en gebruik dat bestand, of plak de HTML ervan." },
+      { q: "Ziet de pdf eruit als de webpagina?", a: "Nee, niet precies. De tool leest de structuur van het document (koppen, alinea’s, lijsten, tabellen, links, vetgedrukte en cursieve tekst en ingesloten afbeeldingen) en maakt er een eenvoudig document van. CSS-stijlen, scripts, weblettertypen, kolommen en gepositioneerde elementen worden niet toegepast." },
+      { q: "Is het veilig om HTML om te zetten die ik niet vertrouw?", a: "De HTML wordt als inerte tekst gelezen: scripts worden niet uitgevoerd en er wordt niets van internet geladen. Alleen afbeeldingen die in de HTML zelf zijn ingesloten, worden gebruikt." },
+      { q: "Welke talen en lettertypen worden in de pdf ondersteund?", a: "De pdf wordt geschreven met Noto Sans, dat Latijnse tekst (inclusief Poolse, Tsjechische, Roemeense en Turkse letters), Cyrillisch, Grieks, Vietnamees en Devanagari dekt. Arabische, Hebreeuwse, Thaise, Chinese, Japanse en Koreaanse tekst wordt nog niet ondersteund: die tekens verschijnen als vraagtekens en de tool laat weten hoeveel er getroffen waren. De oorspronkelijke lettertypen van het document blijven niet behouden." },
+      { q: "Wordt mijn bestand ergens geüpload?", a: "Nee. Het bestand wordt door je browser gelezen en omgezet. Deze tool stuurt het niet naar een server." },
+    ],
+    limits: [
+      "Maximaal 10 MB HTML.",
+      "Alleen in de HTML ingesloten afbeeldingen (data:-adressen) worden opgenomen; afbeeldingen en stijlen die van andere websites zouden worden geladen, worden overgeslagen, niet opgehaald.",
+      "Scripts, formulieren, frames, canvas, video en SVG-graphics worden niet omgezet.",
+    ],
+  },
+  "word-to-pdf": {
+    name: "Word naar PDF",
+    description: "Zet een Word-document (DOCX) om in pdf, met behoud van koppen, lijsten, tabellen en afbeeldingen.",
+    metaDescription: "Word naar PDF online: zet een DOCX-document om in een pdf met selecteerbare tekst, koppen, lijsten, tabellen, links en afbeeldingen. Het bestand wordt in je browser omgezet.",
+    steps: [
+      "Kies een DOCX-bestand.",
+      "Kies het paginaformaat of behoud dat van het document.",
+      "Zet om en download de pdf.",
+    ],
+    faq: [
+      { q: "Ziet de pdf er precies uit als het document in Word?", a: "Nee. Kitwell gebruikt geen Microsoft Word of LibreOffice. Het leest de inhoud en structuur van het document en maakt zelf de opmaak, waardoor lettertypen, spaties en pagina-einden van Word afwijken. Controleer het resultaat voordat je het verstuurt." },
+      { q: "Wat wordt wel en niet omgezet?", a: "Omgezet: tekst met vet, cursief, onderstreept en links, koppen, opsommingen en genummerde lijsten, tabellen, JPEG- en PNG-afbeeldingen, regel- en pagina-einden, uitlijning en paginarichting. Niet omgezet: kop- en voetteksten, voetnoten, tekstvakken, vergelijkingen, grafieken, vormen en andere afbeeldingsformaten." },
+      { q: "Kan ik een oud .doc-bestand omzetten?", a: "Nee. Open het in Word en sla het eerst op als DOCX-bestand." },
+      { q: "Welke talen en lettertypen worden in de pdf ondersteund?", a: "De pdf wordt geschreven met Noto Sans, dat Latijnse tekst (inclusief Poolse, Tsjechische, Roemeense en Turkse letters), Cyrillisch, Grieks, Vietnamees en Devanagari dekt. Arabische, Hebreeuwse, Thaise, Chinese, Japanse en Koreaanse tekst wordt nog niet ondersteund: die tekens verschijnen als vraagtekens en de tool laat weten hoeveel er getroffen waren. De oorspronkelijke lettertypen van het document blijven niet behouden." },
+      { q: "Wordt mijn bestand ergens geüpload?", a: "Nee. Het bestand wordt door je browser gelezen en omgezet. Deze tool stuurt het niet naar een server." },
+    ],
+    limits: [
+      "Alleen DOCX-bestanden, maximaal 50 MB. Oude .doc-bestanden en met een wachtwoord beveiligde documenten worden niet ondersteund.",
+      "De opmaak is bij benadering: kolommen, tekstomloop rond afbeeldingen, koptekst, voettekst en voetnoten worden niet nagebootst.",
+      "De lettertypen van het origineel worden vervangen door Noto Sans.",
+    ],
+  },
+  "powerpoint-to-pdf": {
+    name: "PowerPoint naar PDF",
+    description: "Zet een PowerPoint-presentatie (PPTX) om in een pdf met één pagina per dia.",
+    metaDescription: "PowerPoint naar PDF online: zet een PPTX-presentatie om in een pdf met één pagina per dia, met behoud van diaformaat, tekst, afbeeldingen en eenvoudige vormen. Direct in je browser.",
+    steps: [
+      "Kies een PPTX-bestand.",
+      "Zet het om.",
+      "Controleer de pagina’s en download de pdf.",
+    ],
+    faq: [
+      { q: "Zien de dia’s er precies uit als in PowerPoint?", a: "Niet precies. Kitwell tekent elke dia op basis van de tekstvakken, afbeeldingen, eenvoudige vormen en tabellen. Lettertypen, kleurverlopen, schaduwen, effecten en de exacte tekstpassing wijken af. Bekijk de pdf altijd goed voordat je hem gebruikt." },
+      { q: "Wat wordt niet omgezet?", a: "Grafieken, SmartArt, video en audio, animaties en overgangen, sprekersnotities, kleurverlopen, lijnen en verbindingen, en afbeeldingen in andere formaten dan JPEG en PNG. De tool laat weten hoeveel items zijn weggelaten." },
+      { q: "Kan ik een oud .ppt-bestand omzetten?", a: "Nee. Open het in PowerPoint en sla het eerst op als PPTX-bestand." },
+      { q: "Welke talen en lettertypen worden in de pdf ondersteund?", a: "De pdf wordt geschreven met Noto Sans, dat Latijnse tekst (inclusief Poolse, Tsjechische, Roemeense en Turkse letters), Cyrillisch, Grieks, Vietnamees en Devanagari dekt. Arabische, Hebreeuwse, Thaise, Chinese, Japanse en Koreaanse tekst wordt nog niet ondersteund: die tekens verschijnen als vraagtekens en de tool laat weten hoeveel er getroffen waren. De oorspronkelijke lettertypen van het document blijven niet behouden." },
+      { q: "Wordt mijn bestand ergens geüpload?", a: "Nee. Het bestand wordt door je browser gelezen en omgezet. Deze tool stuurt het niet naar een server." },
+    ],
+    limits: [
+      "Alleen PPTX-bestanden, maximaal 100 MB en 300 dia’s. Oude .ppt-bestanden en met een wachtwoord beveiligde presentaties worden niet ondersteund.",
+      "Elke dia wordt één pagina met het eigen formaat en de eigen richting van de dia.",
+      "Tekst die niet in zijn vak past, wordt verkleind, tot de helft van de grootte.",
+    ],
+  },
+  "excel-to-pdf": {
+    name: "Excel naar PDF",
+    description: "Zet een Excel-werkmap (XLSX) om in pdf, waarbij elk zichtbaar werkblad een tabel wordt.",
+    metaDescription: "Excel naar PDF online: zet een XLSX-werkmap om in een pdf waarin elk zichtbaar werkblad een tabel met de opgeslagen waarden, getallen en datums wordt. Direct in je browser.",
+    steps: [
+      "Kies een XLSX-bestand.",
+      "Zet het om.",
+      "Controleer de tabellen en download de pdf.",
+    ],
+    faq: [
+      { q: "Worden formules berekend?", a: "Nee. De pdf toont de waarden die Excel in het bestand heeft opgeslagen. Heeft een formulecel geen opgeslagen waarde, dan blijft die leeg en laat de tool het weten; open het bestand in Excel, laat het berekenen, sla het op en zet het opnieuw om." },
+      { q: "Ziet het eruit als de afdrukopmaak in Excel?", a: "Nee. Elk zichtbaar werkblad wordt een eenvoudige tabel die op de paginabreedte wordt afgestemd. Celkleuren, samengevoegde cellen, kolombreedtes, grafieken, afbeeldingen, afdrukbereiken en pagina-einden blijven niet behouden." },
+      { q: "Kan ik een oud .xls-bestand omzetten?", a: "Nee. Open het in Excel en sla het eerst op als XLSX-bestand." },
+      { q: "Welke talen en lettertypen worden in de pdf ondersteund?", a: "De pdf wordt geschreven met Noto Sans, dat Latijnse tekst (inclusief Poolse, Tsjechische, Roemeense en Turkse letters), Cyrillisch, Grieks, Vietnamees en Devanagari dekt. Arabische, Hebreeuwse, Thaise, Chinese, Japanse en Koreaanse tekst wordt nog niet ondersteund: die tekens verschijnen als vraagtekens en de tool laat weten hoeveel er getroffen waren. De oorspronkelijke lettertypen van het document blijven niet behouden." },
+      { q: "Wordt mijn bestand ergens geüpload?", a: "Nee. Het bestand wordt door je browser gelezen en omgezet. Deze tool stuurt het niet naar een server." },
+    ],
+    limits: [
+      "Alleen XLSX-bestanden, maximaal 50 MB. Oude .xls-bestanden en met een wachtwoord beveiligde werkmappen worden niet ondersteund.",
+      "Maximaal 5.000 rijen en 60 kolommen per werkblad; wat daarboven komt, wordt weggelaten en de tool meldt dat.",
+      "Verborgen werkbladen worden overgeslagen.",
+    ],
+  },
+  "pdf-to-markdown": {
+    name: "PDF naar Markdown",
+    description: "Zet de tekst van een pdf om in een Markdown-bestand met koppen, alinea’s en lijsten.",
+    metaDescription: "PDF naar Markdown online: haal de tekst uit een pdf en download hem als Markdown-bestand (.md) met koppen, alinea’s en lijsten. Werkt in je browser.",
+    steps: [
+      "Kies een pdf.",
+      "Kies of terugkerende kop- en voetteksten en paginanummers moeten worden verwijderd.",
+      "Zet om, controleer het resultaat en download het .md-bestand.",
+    ],
+    faq: [
+      { q: "Hoe worden koppen en lijsten herkend?", a: "Koppen zijn regels in een groter lettertype dan de lopende tekst, lijsten zijn regels die met een opsommingsteken of een getal beginnen en alinea’s worden gescheiden door de ruimte tussen regels. Dit is een goede gok, geen garantie. Controleer het resultaat dus." },
+      { q: "Waarom is het resultaat leeg voor mijn gescande pdf?", a: "Een scan is een afbeelding van een pagina en bevat geen tekst om te extraheren. Voer eerst OCR PDF uit om een tekstlaag toe te voegen en zet het resultaat daarna om." },
+      { q: "Wat gebeurt er met tabellen, kolommen en afbeeldingen?", a: "Tabellen en kolommen worden niet nagebouwd: hun tekst verschijnt als gewone regels, waar mogelijk in leesvolgorde. Afbeeldingen, links, vette en cursieve tekst, voetnoten en vergelijkingen worden niet overgenomen." },
+      { q: "Wordt mijn bestand ergens geüpload?", a: "Nee. Het bestand wordt door je browser gelezen en omgezet. Deze tool stuurt het niet naar een server." },
+    ],
+    limits: [
+      "Maximaal 100 MB per pdf. Met een wachtwoord beveiligde pdf’s moeten eerst worden ontgrendeld.",
+      "Alleen tekst die in de pdf echte tekst is, wordt omgezet; gescande pagina’s hebben eerst OCR PDF nodig.",
+      "De structuur wordt geschat op basis van lettergroottes en regelafstand en kan bij complexe opmaak onjuist zijn.",
+    ],
+  },
+  "repair-pdf": {
+    name: "PDF repareren",
+    description: "Probeer een pdf die niet opent te repareren door de interne structuur opnieuw op te bouwen.",
+    metaDescription: "PDF repareren online: bouw de structuur van een beschadigde pdf die niet opent opnieuw op, bijvoorbeeld bij een kapotte kruisverwijzingstabel of een afgekapt einde. Werkt in je browser.",
+    steps: [
+      "Kies de beschadigde pdf.",
+      "Start de reparatie.",
+      "Als de tool een bestand heeft gemaakt, controleer het dan en download het.",
+    ],
+    faq: [
+      { q: "Welke soorten schade kunnen worden gerepareerd?", a: "Schade aan de structuur van het bestand: een ontbrekende of onjuiste objectindex (kruisverwijzingstabel), een ontbrekende trailer, rommel voor het begin of een kapotte paginalijst. Als het bestand is afgekapt, kunnen de pagina’s die vóór de afbreuk zijn opgeslagen worden hersteld." },
+      { q: "Wat kan niet worden hersteld?", a: "Inhoud die niet meer in het bestand staat. Ontbrekende of beschadigde pagina’s, afbeeldingen of lettertypen kunnen niet worden teruggehaald en sommige bestanden zijn niet meer te redden. De tool meldt hoeveel pagina’s hij heeft behouden en zegt het wanneer hij geen bruikbaar bestand kan maken; hij biedt nooit een download aan die hij niet heeft gemaakt." },
+      { q: "En als mijn pdf gewoon opent?", a: "Dan valt er niets te repareren. De tool zegt dat en biedt een opgeschoonde kopie van het bestand aan." },
+      { q: "Wordt mijn bestand ergens geüpload?", a: "Nee. Het bestand wordt door je browser gelezen en omgezet. Deze tool stuurt het niet naar een server." },
+    ],
+    limits: [
+      "Maximaal 100 MB per pdf. Met een wachtwoord beveiligde pdf’s moeten eerst worden ontgrendeld.",
+      "Schade binnen gecomprimeerde objectstromen kan deze tool niet herstellen.",
+      "Een gerepareerd bestand kan minder pagina’s hebben dan het origineel en de paginavolgorde kan na een grondige reparatie veranderen.",
+    ],
+  },
 };
 export default tools;

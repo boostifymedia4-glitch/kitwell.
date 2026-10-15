@@ -20,7 +20,6 @@ export default {
   'category.sections': 'Разделы: {name}',
   'category.more': 'Другие категории инструментов',
   'tools.title': 'Все инструменты',
-  'tools.lead': 'Бесплатных инструментов для изображений, PDF, текста и разработки: {count}. Воспользуйтесь поиском или просмотрите по категориям.',
   'tools.jump': 'Перейти к категории',
 
   // About
@@ -41,17 +40,11 @@ export default {
 
   // Help chrome
   'help.title': 'Помощь и вопросы',
-  'help.lead': 'Ответы о том, как работают инструменты, о ваших файлах и конфиденциальности, а также об ограничениях каждого инструмента.',
-  'help.topics': 'Разделы справки',
-  'help.more': 'Не нашли ответ? <contact>Свяжитесь с нами</contact>, просмотрите <tools>все инструменты</tools> или прочитайте <privacy>Политику конфиденциальности</privacy>.',
 
   // Legal pages
   'legal.privacy.title': 'Политика конфиденциальности',
-  'legal.privacy.lead': 'Как {site} обращается с вашими файлами и данными.',
   'legal.terms.title': 'Условия использования',
-  'legal.terms.lead': 'Правила использования {site}.',
   'legal.cookies.title': 'Информация о файлах cookie и хранилище браузера',
-  'legal.cookies.lead': 'Что этот сайт сохраняет в вашем браузере и что изменится, если будет добавлена реклама.',
 
   // Contact
   'contact.title': 'Связаться с нами',
@@ -60,12 +53,6 @@ export default {
   'contact.form.name': 'Ваше имя',
   'contact.form.email': 'Ваш адрес электронной почты',
   'contact.form.emailHint': 'Используется только для ответа вам.',
-  'contact.form.topic': 'О чём ваше сообщение?',
-  'contact.form.topicOption.bug': 'Ошибка или проблема',
-  'contact.form.topicOption.suggestion': 'Предложение инструмента или функции',
-  'contact.form.topicOption.question': 'Вопрос',
-  'contact.form.topicOption.misc': 'Другое',
-  'contact.form.choose': 'Выберите тему',
   'contact.form.page': 'Инструмент или страница (необязательно)',
   'contact.form.pagePlaceholder': 'Например: Объединить PDF',
   'contact.form.message': 'Сообщение',
@@ -76,7 +63,6 @@ export default {
   'contact.form.honeypot': 'Оставьте это поле пустым',
   'contact.err.name': 'Введите ваше имя.',
   'contact.err.email': 'Введите корректный адрес электронной почты.',
-  'contact.err.topic': 'Выберите, о чём ваше сообщение.',
   'contact.err.message': 'Напишите сообщение длиной не менее {min} символов (не более {max}).',
   'contact.err.summary': 'Исправьте выделенные поля.',
   'contact.sent.h': 'Сообщение отправлено',
@@ -88,9 +74,6 @@ export default {
   'contact.fail.network': 'Не удалось отправить сообщение из-за сбоя соединения. Проверьте подключение к интернету и повторите попытку.',
   'contact.unavailable.h': 'Форма обратной связи пока недоступна',
   'contact.unavailable.p': 'Этот сайт ещё не подключён к почтовому ящику, поэтому с этой страницы нельзя отправлять сообщения.',
-  'contact.email.h': 'Электронная почта',
-  'contact.email.p': 'Вы также можете написать нам по электронной почте:',
-  'contact.email.placeholder': 'Контактный адрес электронной почты (будет добавлен до запуска)',
   'contact.report.h': 'Сообщение о проблеме',
   'contact.report.intro': 'Чтобы нам было проще воспроизвести проблему, укажите, пожалуйста:',
   'contact.report.1': 'Название инструмента и адрес страницы.',

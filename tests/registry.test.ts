@@ -8,8 +8,8 @@ import { computeSize } from '../src/lib/imageProcessor';
 describe('tool registry', () => {
   it('has the expected tool counts', () => {
     const count = (c: string) => tools.filter((t) => t.category === c).length;
-    expect([count('image'), count('pdf'), count('text'), count('developer')]).toEqual([22, 26, 7, 14]);
-    expect(tools).toHaveLength(69);
+    expect([count('image'), count('pdf'), count('text'), count('developer')]).toEqual([22, 33, 7, 14]);
+    expect(tools).toHaveLength(76);
   });
 
   it('uses unique slugs and names', () => {
