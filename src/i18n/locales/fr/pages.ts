@@ -2,15 +2,6 @@ import type { PartialMessages } from '../../en';
 
 export default {
   // Home
-  'home.faqTitle': 'Vos questions, nos réponses',
-  'home.faq1.q': 'Les outils sont-ils vraiment gratuits ?',
-  'home.faq1.a': 'Oui. Il n’y a ni inscription ni frais par utilisation. {site} pourra à l’avenir être financé par de la publicité ; les annonces seront toujours signalées et tenues à l’écart des commandes des outils et des boutons de téléchargement.',
-  'home.faq2.q': 'Mes fichiers sont-ils envoyés sur un serveur ?',
-  'home.faq2.a': 'Non. Les outils d’image, de PDF, de texte et pour développeurs fonctionnent dans votre navigateur grâce à JavaScript. Les fichiers sont lus localement et les résultats sont créés localement. Consultez la politique de confidentialité pour plus de détails.',
-  'home.faq3.q': 'Quels navigateurs fonctionnent le mieux ?',
-  'home.faq3.a': 'Les versions récentes de Chrome, Edge, Firefox et Safari. Quelques fonctions, comme l’enregistrement d’images WebP, dépendent de ce que prend en charge votre navigateur ; l’outil vous avertit si quelque chose n’est pas disponible.',
-  'home.faq4.q': 'Y a-t-il une limite de taille de fichier ?',
-  'home.faq4.a': 'Comme le travail se fait sur votre appareil, les limites dépendent de votre mémoire. Chaque outil fixe un plafond raisonnable (par exemple 25 Mo par image et 100 Mo par PDF) et l’indique avant que vous ajoutiez vos fichiers.',
 
   // 404, category, all tools
   'notFound.text': 'Nous n’avons pas trouvé cette page. Elle a peut-être été déplacée, ou l’adresse comporte une faute de frappe.',

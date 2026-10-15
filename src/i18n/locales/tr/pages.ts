@@ -1,15 +1,6 @@
 import type { PartialMessages } from '../../en';
 
 export default {
-  'home.faqTitle': 'Sorular ve yanıtlar',
-  'home.faq1.q': 'Araçlar gerçekten ücretsiz mi?',
-  'home.faq1.a': 'Evet. Kayıt yok, kullanım başına ücret yok. {site} ileride reklamlarla desteklenebilir; reklamlar her zaman etiketlenir ve araç denetimlerinden ile indirme düğmelerinden uzak tutulur.',
-  'home.faq2.q': 'Dosyalarım yükleniyor mu?',
-  'home.faq2.a': 'Hayır. Görsel, PDF, metin ve geliştirici araçları tarayıcınızda JavaScript ile çalışır. Dosyalar yerel olarak okunur ve sonuçlar yerel olarak oluşturulur. Ayrıntılar için Gizlilik Politikası’na bakın.',
-  'home.faq3.q': 'Hangi tarayıcılar en iyi çalışır?',
-  'home.faq3.a': 'Chrome, Edge, Firefox ve Safari’nin güncel sürümleri. WebP görsellerini kaydetmek gibi birkaç özellik tarayıcınızın desteğine bağlıdır; bir şey kullanılamıyorsa araç size bildirir.',
-  'home.faq4.q': 'Dosya boyutu sınırı var mı?',
-  'home.faq4.a': 'İşlem cihazınızda yapıldığı için sınırlar belleğinize bağlıdır. Her araç makul bir üst sınır belirler (örneğin görsel başına 25 MB ve PDF başına 100 MB) ve bunu siz yüklemeden önce gösterir.',
 
   'notFound.text': 'Bu sayfayı bulamadık. Taşınmış olabilir veya adres yanlış yazılmış olabilir.',
   'notFound.home': 'Ana sayfaya dön',

@@ -2,15 +2,6 @@ import type { PartialMessages } from '../../en';
 
 export default {
   // Home
-  'home.faqTitle': 'Domande e risposte',
-  'home.faq1.q': 'Gli strumenti sono davvero gratuiti?',
-  'home.faq1.a': 'Sì. Non c’è registrazione né costo per l’uso. In futuro {site} potrebbe essere sostenuto dalla pubblicità; gli annunci saranno sempre contrassegnati e tenuti lontani dai controlli degli strumenti e dai pulsanti di download.',
-  'home.faq2.q': 'I miei file vengono caricati?',
-  'home.faq2.a': 'No. Gli strumenti per immagini, PDF, testo e sviluppo funzionano nel tuo browser tramite JavaScript. I file vengono letti localmente e i risultati vengono creati localmente. Per i dettagli consulta l’Informativa sulla privacy.',
-  'home.faq3.q': 'Quali browser funzionano meglio?',
-  'home.faq3.a': 'Le versioni attuali di Chrome, Edge, Firefox e Safari. Alcune funzioni, come il salvataggio delle immagini WebP, dipendono da ciò che supporta il tuo browser; lo strumento ti avvisa se qualcosa non è disponibile.',
-  'home.faq4.q': 'C’è un limite alle dimensioni dei file?',
-  'home.faq4.a': 'Poiché il lavoro avviene sul tuo dispositivo, i limiti dipendono dalla tua memoria. Ogni strumento imposta un tetto ragionevole (ad esempio 25 MB per immagine e 100 MB per PDF) e lo mostra prima del caricamento.',
 
   // 404, category, all tools
   'notFound.text': 'Non abbiamo trovato quella pagina. Potrebbe essere stata spostata oppure l’indirizzo potrebbe contenere un errore.',

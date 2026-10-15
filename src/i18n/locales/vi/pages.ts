@@ -2,15 +2,6 @@ import type { PartialMessages } from '../../en';
 
 export default {
   // Home
-  'home.faqTitle': 'Giải đáp thắc mắc',
-  'home.faq1.q': 'Các công cụ có thực sự miễn phí không?',
-  'home.faq1.a': 'Có. Không cần đăng ký và không tính phí theo lượt dùng. {site} có thể được hỗ trợ bằng quảng cáo trong tương lai; quảng cáo sẽ luôn được gắn nhãn và đặt cách xa các nút điều khiển của công cụ và nút tải xuống.',
-  'home.faq2.q': 'Tệp của tôi có bị tải lên không?',
-  'home.faq2.a': 'Không. Các công cụ hình ảnh, PDF, văn bản và lập trình chạy trong trình duyệt của bạn bằng JavaScript. Tệp được đọc cục bộ và kết quả cũng được tạo cục bộ. Xem Chính sách quyền riêng tư để biết chi tiết.',
-  'home.faq3.q': 'Trình duyệt nào hoạt động tốt nhất?',
-  'home.faq3.a': 'Các phiên bản hiện tại của Chrome, Edge, Firefox và Safari. Một vài tính năng, như lưu ảnh WebP, phụ thuộc vào những gì trình duyệt của bạn hỗ trợ; công cụ sẽ cho bạn biết nếu có điều gì không khả dụng.',
-  'home.faq4.q': 'Có giới hạn dung lượng tệp không?',
-  'home.faq4.a': 'Vì công việc diễn ra trên thiết bị của bạn, giới hạn phụ thuộc vào bộ nhớ của bạn. Mỗi công cụ đặt một mức trần hợp lý (ví dụ 25 MB cho mỗi ảnh và 100 MB cho mỗi PDF) và hiển thị mức đó trước khi bạn thêm tệp.',
 
   // 404, category, all tools
   'notFound.text': 'Chúng tôi không tìm thấy trang đó. Có thể trang đã được chuyển đi, hoặc địa chỉ bị gõ sai.',

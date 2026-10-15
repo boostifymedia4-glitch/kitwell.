@@ -1,15 +1,6 @@
 import type { PartialMessages } from '../../en';
 
 export default {
-  'home.faqTitle': 'Vragen en antwoorden',
-  'home.faq1.q': 'Zijn de tools echt gratis?',
-  'home.faq1.a': 'Ja. Je hoeft geen account aan te maken en er zijn geen kosten per gebruik. {site} wordt in de toekomst misschien met advertenties ondersteund; advertenties worden altijd als zodanig gemarkeerd en komen niet in de buurt van de bedieningselementen en downloadknoppen van de tools.',
-  'home.faq2.q': 'Worden mijn bestanden geüpload?',
-  'home.faq2.a': 'Nee. Afbeeldings-, PDF-, tekst- en ontwikkelaarstools draaien in je browser met JavaScript. Bestanden worden lokaal gelezen en resultaten worden lokaal gemaakt. Zie het privacybeleid voor details.',
-  'home.faq3.q': 'Welke browsers werken het best?',
-  'home.faq3.a': 'Actuele versies van Chrome, Edge, Firefox en Safari. Een paar functies, zoals het opslaan van WebP-afbeeldingen, hangen af van wat je browser ondersteunt; de tool laat het weten als iets niet beschikbaar is.',
-  'home.faq4.q': 'Is er een limiet voor de bestandsgrootte?',
-  'home.faq4.a': 'Omdat het werk op je eigen apparaat gebeurt, hangen de limieten af van je geheugen. Elke tool hanteert een redelijke grens (bijvoorbeeld 25 MB per afbeelding en 100 MB per PDF) en toont die voordat je een bestand toevoegt.',
 
   'notFound.text': 'We konden die pagina niet vinden. Misschien is hij verplaatst of is het adres verkeerd getypt.',
   'notFound.home': 'Terug naar home',

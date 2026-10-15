@@ -1,15 +1,6 @@
 import type { PartialMessages } from '../../en';
 
 export default {
-  'home.faqTitle': 'Pertanyaan dan jawabannya',
-  'home.faq1.q': 'Apakah alatnya benar-benar gratis?',
-  'home.faq1.a': 'Ya. Tidak ada pendaftaran dan tidak ada biaya per penggunaan. {site} mungkin didukung oleh iklan di masa depan; iklan akan selalu diberi label dan dijauhkan dari kontrol alat dan tombol unduh.',
-  'home.faq2.q': 'Apakah file saya diunggah?',
-  'home.faq2.a': 'Tidak. Alat gambar, PDF, teks, dan pengembang berjalan di browser Anda menggunakan JavaScript. File dibaca secara lokal dan hasilnya dibuat secara lokal. Lihat Kebijakan Privasi untuk detailnya.',
-  'home.faq3.q': 'Browser apa yang paling cocok?',
-  'home.faq3.a': 'Versi terbaru Chrome, Edge, Firefox, dan Safari. Beberapa fitur, seperti menyimpan gambar WebP, bergantung pada dukungan browser Anda; alat akan memberi tahu jika ada yang tidak tersedia.',
-  'home.faq4.q': 'Apakah ada batas ukuran file?',
-  'home.faq4.a': 'Karena pekerjaan dilakukan di perangkat Anda, batasnya bergantung pada memori Anda. Setiap alat menetapkan batas yang wajar (misalnya 25 MB per gambar dan 100 MB per PDF) dan menampilkannya sebelum Anda mengunggah.',
   'notFound.text': 'Kami tidak dapat menemukan halaman itu. Mungkin halaman telah dipindahkan, atau alamatnya salah ketik.',
   'notFound.home': 'Kembali ke beranda',
   'notFound.popular': 'Alat populer',

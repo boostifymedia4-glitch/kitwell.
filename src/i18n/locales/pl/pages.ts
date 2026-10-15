@@ -2,15 +2,6 @@ import type { PartialMessages } from '../../en';
 
 export default {
   // Home
-  'home.faqTitle': 'Pytania i odpowiedzi',
-  'home.faq1.q': 'Czy narzędzia naprawdę są bezpłatne?',
-  'home.faq1.a': 'Tak. Nie ma rejestracji ani opłat za użycie. {site} może w przyszłości być wspierany reklamami; reklamy zawsze będą oznaczone i umieszczone z dala od elementów sterujących narzędzi i przycisków pobierania.',
-  'home.faq2.q': 'Czy moje pliki są wysyłane na serwer?',
-  'home.faq2.a': 'Nie. Narzędzia do obrazów, PDF-ów, tekstu i dla programistów działają w przeglądarce przy użyciu JavaScriptu. Pliki są odczytywane lokalnie, a wyniki powstają lokalnie. Szczegóły znajdziesz w Polityce prywatności.',
-  'home.faq3.q': 'Które przeglądarki działają najlepiej?',
-  'home.faq3.a': 'Aktualne wersje Chrome, Edge, Firefox i Safari. Niektóre funkcje, takie jak zapisywanie obrazów WebP, zależą od możliwości przeglądarki; narzędzie poinformuje Cię, jeśli coś jest niedostępne.',
-  'home.faq4.q': 'Czy obowiązuje limit rozmiaru pliku?',
-  'home.faq4.a': 'Ponieważ praca odbywa się na Twoim urządzeniu, limity zależą od pamięci. Każde narzędzie ustala rozsądny limit (na przykład 25 MB na obraz i 100 MB na PDF) i pokazuje go przed dodaniem pliku.',
 
   // 404, category, all tools
   'notFound.text': 'Nie mogliśmy znaleźć tej strony. Mogła zostać przeniesiona albo adres zawiera literówkę.',

@@ -1,15 +1,6 @@
 import type { PartialMessages } from '../../en';
 
 export default {
-  'home.faqTitle': 'Preguntas con respuesta',
-  'home.faq1.q': '¿Las herramientas son realmente gratuitas?',
-  'home.faq1.a': 'Sí. No hay registro ni tarifa por uso. Es posible que {site} se financie con publicidad en el futuro; los anuncios siempre estarán identificados y alejados de los controles de las herramientas y de los botones de descarga.',
-  'home.faq2.q': '¿Se suben mis archivos?',
-  'home.faq2.a': 'No. Las herramientas de imagen, PDF, texto y desarrollo se ejecutan en tu navegador mediante JavaScript. Los archivos se leen de forma local y los resultados se crean de forma local. Consulta la Política de privacidad para más detalles.',
-  'home.faq3.q': '¿Con qué navegadores funcionan mejor?',
-  'home.faq3.a': 'Con las versiones actuales de Chrome, Edge, Firefox y Safari. Algunas funciones, como guardar imágenes WebP, dependen de lo que admita tu navegador; la herramienta te avisará si algo no está disponible.',
-  'home.faq4.q': '¿Hay un límite de tamaño de archivo?',
-  'home.faq4.a': 'Como el trabajo se hace en tu dispositivo, los límites dependen de tu memoria. Cada herramienta fija un máximo razonable (por ejemplo, 25 MB por imagen y 100 MB por PDF) y lo muestra antes de que subas el archivo.',
 
   'notFound.text': 'No hemos podido encontrar esa página. Puede que se haya movido o que la dirección tenga un error.',
   'notFound.home': 'Volver al inicio',

@@ -2,15 +2,6 @@ import type { PartialMessages } from '../../en';
 
 export default {
   // Home
-  'home.faqTitle': '常见问题解答',
-  'home.faq1.q': '这些工具真的免费吗？',
-  'home.faq1.a': '是的。无需注册，也不按次收费。{site} 将来可能会通过广告获得支持；广告一定会标明，并且不会出现在工具控件和下载按钮附近。',
-  'home.faq2.q': '我的文件会被上传吗？',
-  'home.faq2.a': '不会。图片、PDF、文本和开发者工具都通过 JavaScript 在您的浏览器中运行。文件在本地读取，结果也在本地生成。详情请参阅隐私政策。',
-  'home.faq3.q': '哪些浏览器效果最好？',
-  'home.faq3.a': '最新版本的 Chrome、Edge、Firefox 和 Safari。少数功能（例如保存 WebP 图片）取决于您的浏览器是否支持；如果某项功能不可用，工具会告知您。',
-  'home.faq4.q': '有文件大小限制吗？',
-  'home.faq4.a': '由于处理在您的设备上进行，限制取决于您的内存。每个工具都设置了合理的上限（例如每张图片 25 MB、每个 PDF 100 MB），并会在您添加文件前显示。',
 
   // 404, category, all tools
   'notFound.text': '我们找不到该页面。它可能已被移动，或者网址输入有误。',

@@ -2,15 +2,6 @@ import type { PartialMessages } from '../../en';
 
 export default {
   // Home
-  'home.faqTitle': 'Întrebări și răspunsuri',
-  'home.faq1.q': 'Sunt instrumentele cu adevărat gratuite?',
-  'home.faq1.a': 'Da. Nu există înregistrare și nici taxă per utilizare. {site} ar putea fi susținut în viitor prin publicitate; reclamele vor fi întotdeauna marcate și ținute departe de controalele instrumentelor și de butoanele de descărcare.',
-  'home.faq2.q': 'Îmi sunt încărcate fișierele?',
-  'home.faq2.a': 'Nu. Instrumentele pentru imagini, PDF, text și dezvoltatori rulează în browser folosind JavaScript. Fișierele sunt citite local, iar rezultatele sunt create local. Consultați Politica de confidențialitate pentru detalii.',
-  'home.faq3.q': 'Ce browsere funcționează cel mai bine?',
-  'home.faq3.a': 'Versiunile actuale de Chrome, Edge, Firefox și Safari. Unele funcții, cum ar fi salvarea imaginilor WebP, depind de ce acceptă browserul dvs.; instrumentul vă va spune dacă ceva nu este disponibil.',
-  'home.faq4.q': 'Există o limită de dimensiune a fișierelor?',
-  'home.faq4.a': 'Deoarece lucrul se face pe dispozitivul dvs., limitele depind de memorie. Fiecare instrument stabilește o limită rezonabilă (de exemplu 25 MB pe imagine și 100 MB pe PDF) și o afișează înainte de încărcare.',
 
   // 404, category, all tools
   'notFound.text': 'Nu am găsit pagina respectivă. Este posibil să fi fost mutată sau adresa să fie scrisă greșit.',

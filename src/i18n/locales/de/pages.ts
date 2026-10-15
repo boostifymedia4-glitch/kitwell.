@@ -2,15 +2,6 @@ import type { PartialMessages } from '../../en';
 
 export default {
   // Home
-  'home.faqTitle': 'Fragen und Antworten',
-  'home.faq1.q': 'Sind die Tools wirklich kostenlos?',
-  'home.faq1.a': 'Ja. Es gibt keine Anmeldung und keine Gebühr pro Nutzung. {site} wird künftig möglicherweise durch Werbung finanziert; Anzeigen werden stets gekennzeichnet und von Bedienelementen und Download-Schaltflächen ferngehalten.',
-  'home.faq2.q': 'Werden meine Dateien hochgeladen?',
-  'home.faq2.a': 'Nein. Bild-, PDF-, Text- und Entwickler-Tools laufen mit JavaScript in Ihrem Browser. Dateien werden lokal gelesen und Ergebnisse lokal erzeugt. Details finden Sie in der Datenschutzerklärung.',
-  'home.faq3.q': 'Welche Browser funktionieren am besten?',
-  'home.faq3.a': 'Aktuelle Versionen von Chrome, Edge, Firefox und Safari. Einige Funktionen, etwa das Speichern von WebP-Bildern, hängen davon ab, was Ihr Browser unterstützt; das Tool weist Sie darauf hin, wenn etwas nicht verfügbar ist.',
-  'home.faq4.q': 'Gibt es eine Begrenzung der Dateigröße?',
-  'home.faq4.a': 'Da die Arbeit auf Ihrem Gerät stattfindet, hängen die Grenzen von Ihrem Arbeitsspeicher ab. Jedes Tool legt eine sinnvolle Obergrenze fest (zum Beispiel 25 MB pro Bild und 100 MB pro PDF) und zeigt sie an, bevor Sie eine Datei hinzufügen.',
 
   // 404, category, all tools
   'notFound.text': 'Wir konnten diese Seite nicht finden. Sie wurde möglicherweise verschoben, oder die Adresse enthält einen Tippfehler.',

@@ -5,15 +5,6 @@
  */
 export const pages = {
   // Home
-  'home.faqTitle': 'Questions, answered',
-  'home.faq1.q': 'Are the tools really free?',
-  'home.faq1.a': 'Yes. There is no sign-up and no per-use fee. {site} may be supported by advertising in future; ads will always be labelled and kept away from tool controls and download buttons.',
-  'home.faq2.q': 'Are my files uploaded?',
-  'home.faq2.a': 'No. Image, PDF, text and developer tools run in your browser using JavaScript. Files are read locally and results are created locally. See the Privacy Policy for details.',
-  'home.faq3.q': 'Which browsers work best?',
-  'home.faq3.a': 'Current versions of Chrome, Edge, Firefox and Safari. A few features, such as saving WebP images, depend on what your browser supports; the tool will tell you if something is unavailable.',
-  'home.faq4.q': 'Is there a file size limit?',
-  'home.faq4.a': 'Because work happens on your device, limits depend on your memory. Each tool sets a sensible cap (for example 25 MB per image and 100 MB per PDF) and shows it before you upload.',
 
   // 404, category, all tools
   'notFound.text': 'We couldn’t find that page. It may have moved, or the address may be mistyped.',
