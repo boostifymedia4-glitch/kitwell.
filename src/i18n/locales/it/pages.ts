@@ -14,20 +14,6 @@ export default {
   'tools.jump': 'Vai a una categoria',
 
   // About
-  'about.title': 'Chi siamo – {site}',
-  'about.lead': 'Strumenti semplici e affidabili per le attività quotidiane con file, PDF, testo e sviluppo.',
-  'about.what.h': 'Cosa facciamo',
-  'about.what.p': '{site} è una raccolta di piccole utilità: convertire e comprimere immagini, unire e dividere PDF, pulire il testo, formattare o codificare dati. Ogni strumento ha la sua pagina, svolge un solo compito e dice chiaramente cosa supporta e cosa no.',
-  'about.how.h': 'Come funzionano gli strumenti',
-  'about.how.p': 'Gli strumenti funzionano all’interno del tuo browser. Quando aggiungi un’immagine o un PDF, il browser lo legge dal tuo dispositivo, esegue il lavoro in locale e ti consegna il risultato da scaricare. I nostri strumenti non inviano i tuoi file o il testo incollato ai nostri server. Poiché il lavoro avviene sul tuo dispositivo, velocità e dimensione massima dei file dipendono dal tuo computer o telefono.',
-  'about.not.h': 'Cosa non facciamo',
-  'about.not.1': 'Non richiediamo un account e non aggiungiamo filigrane al risultato.',
-  'about.not.2': 'Non riscriviamo il testo esistente all’interno dei PDF. Gli strumenti PDF uniscono, dividono, comprimono, firmano, compilano, oscurano, confrontano e riconoscono il testo nei documenti, ma non modificano le parole già presenti.',
-  'about.not.3': 'Non offriamo strumenti che richiedono grandi modelli di IA o servizi a pagamento, come la rimozione dello sfondo, finché non sarà possibile farlo in modo affidabile e riservato. L’unico motore che includiamo, per l’OCR, è open source e funziona all’interno del tuo browser.',
-  'about.who.h': 'Chi c’è dietro {site}',
-  'about.who.placeholder': 'Aggiungi una breve descrizione veritiera della persona o dell’azienda che gestisce questo sito: nome, paese e cosa ha motivato il progetto.',
-  'about.touch.h': 'Contattaci',
-  'about.touch.p': 'Hai trovato un errore o vuoi che aggiungiamo uno strumento? Vai alla <contact>pagina dei contatti</contact>. Per sapere come trattiamo i dati, leggi l’<privacy>Informativa sulla privacy</privacy>.',
 
   // Help chrome
   'help.title': 'Aiuto e FAQ',

@@ -63,8 +63,6 @@ export const registry = {
   'meta.home.description': "Convert and compress images, merge and split PDFs, format JSON and clean text. Practical tools with no sign-up required.",
   'meta.tools.title': 'All Online Tools – Image, PDF, Text & Developer | {site}',
   'meta.tools.description': "Browse every tool: image converters and editors, PDF utilities, text tools and developer utilities.",
-  'meta.about.title': 'About {site} – Browser-Based Everyday Tools',
-  'meta.about.description': 'Why {site} exists, how the tools work in your browser, and what we do and do not do with your files.',
   'meta.contact.title': 'Contact {site} – Support and Feedback',
   'meta.contact.description': 'Contact {site}: report a bug, suggest a new tool or ask a question about how the tools work.',
   'meta.help.title': 'Help & FAQ – How {site} Works | {site}',

@@ -49,8 +49,6 @@ export default {
   'page.blog.name': 'Blog',
   'meta.home.title': '{site} – bezplatné online nástroje pro obrázky, PDF, text a vývojáře',
   'meta.tools.title': 'Všechny online nástroje – obrázky, PDF, text a vývojáři | {site}',
-  'meta.about.title': 'O webu {site} – každodenní nástroje v prohlížeči',
-  'meta.about.description': 'Proč web {site} vznikl, jak nástroje fungují ve vašem prohlížeči a co s vašimi soubory děláme a neděláme.',
   'meta.contact.title': 'Kontakt – {site}: podpora a zpětná vazba',
   'meta.contact.description': 'Kontaktujte {site}: nahlaste chybu, navrhněte nový nástroj nebo se zeptejte, jak nástroje fungují.',
   'meta.help.title': 'Nápověda a FAQ – jak funguje {site} | {site}',

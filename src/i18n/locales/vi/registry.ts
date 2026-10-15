@@ -49,8 +49,6 @@ export default {
   'page.blog.name': 'Blog',
   'meta.home.title': '{site} – Công cụ trực tuyến miễn phí về hình ảnh, PDF, văn bản và lập trình',
   'meta.tools.title': 'Tất cả công cụ trực tuyến – Hình ảnh, PDF, văn bản và lập trình | {site}',
-  'meta.about.title': 'Giới thiệu {site} – Công cụ hằng ngày chạy trên trình duyệt',
-  'meta.about.description': 'Vì sao {site} ra đời, các công cụ hoạt động trong trình duyệt của bạn như thế nào, và những gì chúng tôi làm và không làm với tệp của bạn.',
   'meta.contact.title': 'Liên hệ {site} – Hỗ trợ và phản hồi',
   'meta.contact.description': 'Liên hệ {site}: báo lỗi, đề xuất công cụ mới hoặc đặt câu hỏi về cách các công cụ hoạt động.',
   'meta.help.title': 'Trợ giúp & câu hỏi thường gặp – Cách {site} hoạt động | {site}',

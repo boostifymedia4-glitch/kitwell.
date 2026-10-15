@@ -14,20 +14,6 @@ export default {
   'tools.jump': 'Přejít na kategorii',
 
   // About
-  'about.title': 'O webu {site}',
-  'about.lead': 'Jednoduché a spolehlivé nástroje pro každodenní práci se soubory, PDF, textem a vývoj.',
-  'about.what.h': 'Co děláme',
-  'about.what.p': '{site} je sbírka malých pomůcek: převod a komprese obrázků, slučování a dělení PDF, čištění textu a formátování či kódování dat. Každý nástroj má vlastní stránku, dělá jednu věc a jasně říká, co podporuje a co ne.',
-  'about.how.h': 'Jak nástroje fungují',
-  'about.how.p': 'Nástroje běží uvnitř vašeho webového prohlížeče. Když přidáte obrázek nebo PDF, váš prohlížeč si ho přečte z vašeho zařízení, provede práci místně a předá vám výsledek ke stažení. Naše nástroje neodesílají vaše soubory ani vložený text na naše servery. Protože se práce odehrává ve vašem zařízení, rychlost a maximální velikost souboru závisejí na vašem počítači nebo telefonu.',
-  'about.not.h': 'Co neděláme',
-  'about.not.1': 'Nevyžadujeme účet a do výsledků nepřidáváme vodoznaky.',
-  'about.not.2': 'Nepřepisujeme stávající text uvnitř PDF. Nástroje pro PDF dokumenty slučují, dělí, komprimují, podepisují, vyplňují, začerňují, porovnávají a rozpoznávají v nich text, ale slova, která v nich již jsou, nemění.',
-  'about.not.3': 'Nenabízíme nástroje, které vyžadují velké modely umělé inteligence nebo placené služby, například odstranění pozadí, dokud je nelze provést spolehlivě a soukromě. Jediný engine, který dodáváme, pro OCR, je open source a běží uvnitř vašeho prohlížeče.',
-  'about.who.h': 'Kdo stojí za webem {site}',
-  'about.who.placeholder': 'Doplňte krátký pravdivý popis osoby nebo společnosti, která tento web provozuje: jméno, zemi a to, co projekt motivovalo.',
-  'about.touch.h': 'Ozvěte se nám',
-  'about.touch.p': 'Našli jste chybu nebo chcete přidat nástroj? Podívejte se na <contact>stránku Kontakt</contact>. Jak nakládáme s daty, zjistíte v <privacy>Zásadách ochrany osobních údajů</privacy>.',
 
   // Help chrome
   'help.title': 'Nápověda a FAQ',

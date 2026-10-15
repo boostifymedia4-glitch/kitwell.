@@ -11,20 +11,6 @@ export default {
   'tools.title': 'Tüm araçlar',
   'tools.jump': 'Bir kategoriye git',
 
-  'about.title': '{site} Hakkında',
-  'about.lead': 'Günlük dosya, PDF, metin ve geliştirme işleri için basit ve güvenilir araçlar.',
-  'about.what.h': 'Ne yapıyoruz',
-  'about.what.p': '{site}, küçük yardımcı araçlardan oluşan bir koleksiyondur: görselleri dönüştürme ve sıkıştırma, PDF’leri birleştirme ve bölme, metni temizleme, veriyi biçimlendirme veya kodlama. Her aracın kendi sayfası vardır, tek bir işi yapar ve neyi desteklediğini, neyi desteklemediğini açıkça belirtir.',
-  'about.how.h': 'Araçlar nasıl çalışır',
-  'about.how.p': 'Araçlar web tarayıcınızın içinde çalışır. Bir görsel veya PDF eklediğinizde tarayıcınız onu cihazınızdan okur, işi yerel olarak yapar ve sonucu indirmeniz için size verir. Araçlarımız dosyalarınızı veya yapıştırdığınız metni sunucularımıza göndermez. İş cihazınızda yapıldığı için hız ve en büyük dosya boyutu bilgisayarınıza veya telefonunuza bağlıdır.',
-  'about.not.h': 'Neleri yapmıyoruz',
-  'about.not.1': 'Hesap istemeyiz ve çıktınıza filigran eklemeyiz.',
-  'about.not.2': 'PDF’lerin içindeki mevcut metni yeniden yazmayız. PDF araçları belgeleri birleştirir, böler, sıkıştırır, imzalar, doldurur, karartır, karşılaştırır ve içindeki metni tanır, ancak mevcut sözcükleri değiştirmez.',
-  'about.not.3': 'Arka plan kaldırma gibi büyük yapay zekâ modelleri veya ücretli hizmetler gerektiren araçlar, güvenilir ve gizli biçimde yapılabilene kadar sunmuyoruz. Sunduğumuz tek motor olan OCR motoru açık kaynaklıdır ve tarayıcınızın içinde çalışır.',
-  'about.who.h': '{site}’in arkasında kim var',
-  'about.who.placeholder': 'Bu siteyi işleten kişi veya şirketin kısa ve dürüst bir tanımını ekleyin: ad, ülke ve projeye yön veren motivasyon.',
-  'about.touch.h': 'Bize ulaşın',
-  'about.touch.p': 'Bir hata mı buldunuz veya bir araç eklenmesini mi istiyorsunuz? <contact>İletişim sayfasına</contact> bakın. Verileri nasıl ele aldığımızı öğrenmek için <privacy>Gizlilik Politikası</privacy>’nı okuyun.',
 
   'help.title': 'Yardım ve SSS',
 

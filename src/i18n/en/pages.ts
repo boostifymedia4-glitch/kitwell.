@@ -18,20 +18,6 @@ export const pages = {
   'tools.jump': 'Jump to a category',
 
   // About
-  'about.title': 'About {site}',
-  'about.lead': 'Simple, dependable tools for everyday file, PDF, text and development tasks.',
-  'about.what.h': 'What we do',
-  'about.what.p': '{site} is a collection of small utilities: converting and compressing images, merging and splitting PDFs, cleaning up text, and formatting or encoding data. Each tool has its own page, does one job, and says plainly what it supports and what it does not.',
-  'about.how.h': 'How the tools work',
-  'about.how.p': 'The tools run inside your web browser. When you add an image or PDF, your browser reads it from your device, does the work locally, and hands you the result to download. Our tools do not send your files or pasted text to our servers. Because the work happens on your device, speed and maximum file size depend on your computer or phone.',
-  'about.not.h': 'What we don’t do',
-  'about.not.1': 'We do not require an account or add watermarks to your output.',
-  'about.not.2': 'We do not rewrite the existing text inside PDFs. The PDF tools merge, split, compress, sign, fill, redact, compare and recognise text in documents, but they do not change the words that are already there.',
-  'about.not.3': 'We do not offer tools that need large AI models or paid services, such as background removal, until they can be done reliably and privately. The one engine we do ship, for OCR, is open source and runs inside your browser.',
-  'about.who.h': 'Who is behind {site}',
-  'about.who.placeholder': 'Add a short, truthful description of the person or company that operates this site: name, country and what motivated the project.',
-  'about.touch.h': 'Get in touch',
-  'about.touch.p': 'Found a bug or want a tool added? See the <contact>contact page</contact>. To learn how we handle data, read the <privacy>Privacy Policy</privacy>.',
 
   // Help chrome
 

@@ -14,20 +14,6 @@ export default {
   'tools.jump': 'Salt la o categorie',
 
   // About
-  'about.title': 'Despre {site}',
-  'about.lead': 'Instrumente simple și de încredere pentru sarcini zilnice cu fișiere, PDF-uri, text și dezvoltare.',
-  'about.what.h': 'Ce facem',
-  'about.what.p': '{site} este o colecție de utilitare mici: conversia și comprimarea imaginilor, îmbinarea și împărțirea PDF-urilor, curățarea textului și formatarea sau codarea datelor. Fiecare instrument are propria pagină, face o singură treabă și spune clar ce acceptă și ce nu.',
-  'about.how.h': 'Cum funcționează instrumentele',
-  'about.how.p': 'Instrumentele rulează în browserul dvs. Când adăugați o imagine sau un PDF, browserul îl citește de pe dispozitiv, face lucrul local și vă oferă rezultatul spre descărcare. Instrumentele noastre nu trimit fișierele sau textul lipit către serverele noastre. Deoarece lucrul se face pe dispozitivul dvs., viteza și dimensiunea maximă a fișierului depind de computerul sau telefonul dvs.',
-  'about.not.h': 'Ce nu facem',
-  'about.not.1': 'Nu cerem cont și nu adăugăm filigrane rezultatelor dvs.',
-  'about.not.2': 'Nu rescriem textul existent din PDF-uri. Instrumentele PDF îmbină, împart, comprimă, semnează, completează, cenzurează, compară și recunosc text în documente, dar nu schimbă cuvintele deja existente.',
-  'about.not.3': 'Nu oferim instrumente care necesită modele AI mari sau servicii cu plată, precum eliminarea fundalului, până când acestea pot fi realizate în mod fiabil și privat. Singurul motor pe care îl includem, pentru OCR, este open source și rulează în browserul dvs.',
-  'about.who.h': 'Cine se află în spatele {site}',
-  'about.who.placeholder': 'Adăugați o descriere scurtă și sinceră a persoanei sau companiei care operează acest site: nume, țară și ce a motivat proiectul.',
-  'about.touch.h': 'Contactați-ne',
-  'about.touch.p': 'Ați găsit o eroare sau doriți să adăugăm un instrument? Consultați <contact>pagina de contact</contact>. Pentru a afla cum tratăm datele, citiți <privacy>Politica de confidențialitate</privacy>.',
 
   // Help chrome
   'help.title': 'Ajutor și întrebări frecvente',

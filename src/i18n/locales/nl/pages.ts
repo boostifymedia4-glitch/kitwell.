@@ -11,20 +11,6 @@ export default {
   'tools.title': 'Alle tools',
   'tools.jump': 'Ga naar een categorie',
 
-  'about.title': 'Over {site}',
-  'about.lead': 'Eenvoudige, betrouwbare tools voor alledaagse taken met bestanden, PDF’s, tekst en ontwikkeling.',
-  'about.what.h': 'Wat we doen',
-  'about.what.p': '{site} is een verzameling kleine hulpmiddelen: afbeeldingen converteren en comprimeren, PDF’s samenvoegen en splitsen, tekst opschonen, en gegevens formatteren of coderen. Elke tool heeft een eigen pagina, doet één taak en vertelt duidelijk wat hij wel en niet ondersteunt.',
-  'about.how.h': 'Hoe de tools werken',
-  'about.how.p': 'De tools draaien in je webbrowser. Als je een afbeelding of PDF toevoegt, leest je browser die van je apparaat, doet het werk lokaal en geeft je het resultaat om te downloaden. Onze tools sturen je bestanden of geplakte tekst niet naar onze servers. Omdat het werk op je apparaat gebeurt, hangen snelheid en maximale bestandsgrootte af van je computer of telefoon.',
-  'about.not.h': 'Wat we niet doen',
-  'about.not.1': 'We vragen geen account en voegen geen watermerken toe aan je resultaat.',
-  'about.not.2': 'We herschrijven de bestaande tekst in PDF’s niet. De PDF-tools voegen samen, splitsen, comprimeren, ondertekenen, vullen in, censureren, vergelijken en herkennen tekst in documenten, maar ze wijzigen de woorden die er al staan niet.',
-  'about.not.3': 'We bieden geen tools aan die grote AI-modellen of betaalde diensten nodig hebben, zoals achtergrondverwijdering, totdat dat betrouwbaar en privé kan. De ene engine die we wel meeleveren, voor OCR, is open source en draait in je browser.',
-  'about.who.h': 'Wie zit achter {site}',
-  'about.who.placeholder': 'Voeg een korte, waarheidsgetrouwe beschrijving toe van de persoon of het bedrijf achter deze site: naam, land en wat het project motiveerde.',
-  'about.touch.h': 'Neem contact op',
-  'about.touch.p': 'Een bug gevonden of wil je dat er een tool wordt toegevoegd? Zie de <contact>contactpagina</contact>. Lees het <privacy>privacybeleid</privacy> om te zien hoe we met gegevens omgaan.',
 
   'help.title': 'Help en veelgestelde vragen',
 

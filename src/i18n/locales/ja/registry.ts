@@ -49,8 +49,6 @@ export default {
   'page.blog.name': 'ブログ',
   'meta.home.title': '{site} – 無料の画像・PDF・テキスト・開発者向けオンラインツール',
   'meta.tools.title': 'すべてのオンラインツール – 画像・PDF・テキスト・開発者向け | {site}',
-  'meta.about.title': '{site}について – ブラウザで使える日常のツール',
-  'meta.about.description': '{site}が生まれた理由、ツールがブラウザ内でどう動くか、そしてお客様のファイルを扱う上で私たちが行うこと・行わないことをご紹介します。',
   'meta.contact.title': '{site}へのお問い合わせ – サポートとご意見',
   'meta.contact.description': '{site}へのお問い合わせ。不具合の報告、新しいツールのご提案、ツールの仕組みに関するご質問をお受けします。',
   'meta.help.title': 'ヘルプとよくある質問 – {site}のしくみ | {site}',

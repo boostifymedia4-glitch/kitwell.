@@ -11,20 +11,6 @@ export default {
   'tools.title': 'Todas las herramientas',
   'tools.jump': 'Ir a una categoría',
 
-  'about.title': 'Acerca de {site}',
-  'about.lead': 'Herramientas sencillas y fiables para las tareas diarias con archivos, PDF, texto y desarrollo.',
-  'about.what.h': 'Qué hacemos',
-  'about.what.p': '{site} es una colección de pequeñas utilidades: convertir y comprimir imágenes, unir y dividir PDF, limpiar texto, y dar formato o codificar datos. Cada herramienta tiene su propia página, hace una sola tarea e indica con claridad qué admite y qué no.',
-  'about.how.h': 'Cómo funcionan las herramientas',
-  'about.how.p': 'Las herramientas se ejecutan dentro de tu navegador web. Cuando añades una imagen o un PDF, tu navegador lo lee desde tu dispositivo, hace el trabajo de forma local y te entrega el resultado para que lo descargues. Nuestras herramientas no envían tus archivos ni el texto que pegas a nuestros servidores. Como el trabajo se hace en tu dispositivo, la velocidad y el tamaño máximo de archivo dependen de tu ordenador o de tu teléfono.',
-  'about.not.h': 'Lo que no hacemos',
-  'about.not.1': 'No exigimos una cuenta ni añadimos marcas de agua al resultado.',
-  'about.not.2': 'No reescribimos el texto que ya existe dentro de los PDF. Las herramientas PDF unen, dividen, comprimen, firman, rellenan, tachan, comparan y reconocen texto en documentos, pero no cambian las palabras que ya contienen.',
-  'about.not.3': 'No ofrecemos herramientas que necesiten grandes modelos de IA o servicios de pago, como la eliminación de fondos, hasta que se puedan hacer de forma fiable y privada. El único motor que incluimos, el de OCR, es de código abierto y se ejecuta dentro de tu navegador.',
-  'about.who.h': 'Quién está detrás de {site}',
-  'about.who.placeholder': 'Añade una descripción breve y veraz de la persona o la empresa que gestiona este sitio: nombre, país y lo que motivó el proyecto.',
-  'about.touch.h': 'Ponte en contacto',
-  'about.touch.p': '¿Has encontrado un error o quieres que añadamos una herramienta? Visita la <contact>página de contacto</contact>. Para saber cómo tratamos los datos, lee la <privacy>Política de privacidad</privacy>.',
 
   'help.title': 'Ayuda y preguntas frecuentes',
 

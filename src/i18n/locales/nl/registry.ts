@@ -49,8 +49,6 @@ export default {
   'page.blog.name': 'Blog',
   'meta.home.title': '{site} – gratis online tools voor afbeeldingen, PDF, tekst en ontwikkelaars',
   'meta.tools.title': 'Alle online tools – afbeeldingen, PDF, tekst en ontwikkelaars | {site}',
-  'meta.about.title': 'Over {site} – alledaagse tools in de browser',
-  'meta.about.description': 'Waarom {site} bestaat, hoe de tools in je browser werken en wat we wel en niet met je bestanden doen.',
   'meta.contact.title': 'Contact met {site} – ondersteuning en feedback',
   'meta.contact.description': 'Neem contact op met {site}: meld een bug, stel een nieuwe tool voor of stel een vraag over hoe de tools werken.',
   'meta.help.title': 'Help en veelgestelde vragen – zo werkt {site} | {site}',

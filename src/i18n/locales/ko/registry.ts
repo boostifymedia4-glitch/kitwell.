@@ -49,8 +49,6 @@ export default {
   'page.blog.name': '블로그',
   'meta.home.title': '{site} – 무료 온라인 이미지, PDF, 텍스트, 개발자 도구',
   'meta.tools.title': '모든 온라인 도구 – 이미지, PDF, 텍스트, 개발자 | {site}',
-  'meta.about.title': '{site} 소개 – 브라우저 기반 일상 도구',
-  'meta.about.description': '{site}가 만들어진 이유, 도구가 브라우저에서 동작하는 방식, 파일로 하는 일과 하지 않는 일을 소개합니다.',
   'meta.contact.title': '{site} 문의 – 지원 및 의견',
   'meta.contact.description': '{site}에 문의하세요. 버그 신고, 새 도구 제안, 도구 사용 방법에 대한 질문을 받습니다.',
   'meta.help.title': '도움말 및 FAQ – {site} 작동 방식 | {site}',

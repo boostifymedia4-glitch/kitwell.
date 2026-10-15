@@ -235,7 +235,7 @@ async function toolSlugList() {
 // ---------- main ----------
 
 const { all: english, byFile, dupes } = await loadEnglish();
-const files = (await walk(src)).filter((f) => /\.(ts|tsx)$/.test(f) && !f.includes(`${join('src', 'i18n')}`) && !f.includes(join('src', 'tools', 'data')) && !f.endsWith('.d.ts') && !f.includes('wordlists') && !f.includes('helpData') && !f.includes('blog') && !EXEMPT.some((x) => f.split(String.fromCharCode(92)).join('/').endsWith(x)));
+const files = (await walk(src)).filter((f) => /\.(ts|tsx)$/.test(f) && !f.includes(`${join('src', 'i18n')}`) && !f.includes(join('src', 'tools', 'data')) && !f.endsWith('.d.ts') && !f.includes('wordlists') && !f.includes('helpData') && !f.includes('blog') && !f.includes('aboutContent') && !f.includes(join('components', 'about')) && !EXEMPT.some((x) => f.split(String.fromCharCode(92)).join('/').endsWith(x)));
 let missingTotal = 0;
 let hardcodedTotal = 0;
 const perFile = [];

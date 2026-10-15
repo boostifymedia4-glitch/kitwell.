@@ -49,8 +49,6 @@ export default {
   'page.blog.name': 'Blog',
   'meta.home.title': '{site} – Kostenlose Online-Tools für Bilder, PDF, Text & Entwicklung',
   'meta.tools.title': 'Alle Online-Tools – Bild, PDF, Text & Entwicklung | {site}',
-  'meta.about.title': 'Über {site} – Alltags-Tools im Browser',
-  'meta.about.description': 'Warum es {site} gibt, wie die Tools in Ihrem Browser funktionieren und was wir mit Ihren Dateien tun und nicht tun.',
   'meta.contact.title': '{site} kontaktieren – Support und Feedback',
   'meta.contact.description': 'Kontakt zu {site}: einen Fehler melden, ein neues Tool vorschlagen oder eine Frage zur Funktionsweise der Tools stellen.',
   'meta.help.title': 'Hilfe & FAQ – So funktioniert {site} | {site}',

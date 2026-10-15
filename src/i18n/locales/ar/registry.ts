@@ -49,8 +49,6 @@ export default {
   'page.blog.name': 'المدونة',
   'meta.home.title': '{site} – أدوات مجانية عبر الإنترنت للصور وPDF والنصوص والمطورين',
   'meta.tools.title': 'كل الأدوات عبر الإنترنت – الصور وPDF والنصوص والمطورون | {site}',
-  'meta.about.title': 'حول {site} – أدوات يومية تعمل في المتصفح',
-  'meta.about.description': 'لماذا وُجد {site}، وكيف تعمل الأدوات في متصفحك، وما الذي نفعله وما لا نفعله بملفاتك.',
   'meta.contact.title': 'اتصل بـ {site} – الدعم والملاحظات',
   'meta.contact.description': 'اتصل بـ {site}: أبلغ عن خلل، أو اقترح أداة جديدة، أو اسأل عن طريقة عمل الأدوات.',
   'meta.help.title': 'المساعدة والأسئلة الشائعة – كيف يعمل {site} | {site}',

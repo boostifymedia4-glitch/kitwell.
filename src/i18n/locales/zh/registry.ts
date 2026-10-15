@@ -49,8 +49,6 @@ export default {
   'page.blog.name': '博客',
   'meta.home.title': '{site}：免费在线图片、PDF、文本和开发者工具',
   'meta.tools.title': '全部在线工具：图片、PDF、文本和开发者 | {site}',
-  'meta.about.title': '关于 {site}：基于浏览器的日常工具',
-  'meta.about.description': '{site} 为何而生，这些工具如何在您的浏览器中运行，以及我们会对您的文件做什么、不做什么。',
   'meta.contact.title': '联系 {site}：支持与反馈',
   'meta.contact.description': '联系 {site}：报告错误，建议新工具，或询问工具的使用方式。',
   'meta.help.title': '帮助与常见问题：{site} 如何运作 | {site}',

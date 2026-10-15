@@ -42,8 +42,8 @@ describe('international SEO', () => {
     it(`localises titles, descriptions and URLs of every page in ${code}`, async () => {
       const data = await loadLocale(code);
       const l = makeLocalizer(code, data.messages, data.toolText);
-      // Blog articles are English only on purpose (noindex in other languages; see tests/blog.test.ts).
-      for (const path of allPaths().filter((p) => !p.startsWith('/blog/'))) {
+      // Blog articles and the About page are English only on purpose (noindex in other languages; see tests/blog.test.ts).
+      for (const path of allPaths().filter((p) => !p.startsWith('/blog/') && p !== '/about')) {
         const meta = getPageMeta(path, l)!;
         const english = getPageMeta(path)!;
         expect(meta.title.length, path).toBeGreaterThan(3);
