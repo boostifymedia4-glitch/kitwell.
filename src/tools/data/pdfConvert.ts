@@ -269,19 +269,23 @@ export const pdfConvertTools: ToolDef[] = [
     name: 'PDF to PDF/A',
     icon: 'badge-check',
     impl: 'pdf-to-pdfa',
-    description: 'Prepare a PDF as PDF/A-2b for archiving, keeping the text or using page pictures.',
+    description: 'Prepare a PDF as PDF/A (1b, 2b, 2u, 3b, 3u or 4) for archiving, keeping the text or using page pictures.',
     metaDescription:
-      'PDF to PDF/A online: prepare a PDF as PDF/A-2b for archiving with PDF/A identification, metadata and a colour profile. Keeps text when possible. Runs in your browser.',
-    keywords: ['pdf to pdf/a', 'pdfa', 'pdf/a-2b', 'archive pdf', 'convert pdf to pdfa', 'long term archiving'],
+      'PDF to PDF/A online: prepare a PDF as PDF/A-1b, 2b, 2u, 3b, 3u or 4 for archiving, with PDF/A identification, metadata and a colour profile. Keeps text when possible. Runs in your browser.',
+    keywords: ['pdf to pdf/a', 'pdfa', 'pdf/a-1b', 'pdf/a-2b', 'pdf/a-3b', 'pdf/a-4', 'archive pdf', 'convert pdf to pdfa', 'long term archiving'],
     steps: [
       'Choose a PDF. A password-protected file must be unlocked first.',
-      'Choose how to convert: keep the text and fonts, or turn the pages into pictures.',
+      'Choose the PDF/A version, then how to convert: keep the text and fonts, or turn the pages into pictures.',
       'Convert it, read what was done and download the PDF/A file.',
     ],
     faq: [
       {
         q: 'Is the result a certified PDF/A file?',
-        a: 'No. Kitwell prepares your PDF as PDF/A-2b, the basic archival level, and checks its own work against the rules it applies. It does not include a full PDF/A validator. If you must prove compliance, check the file with a validator such as veraPDF.',
+        a: 'No. Kitwell prepares your PDF in the PDF/A version you choose and checks its own work against the rules it applies. Test files converted this way passed the veraPDF validator, but the browser tool itself does not include a full PDF/A validator. If you must prove compliance, check your file with a validator such as veraPDF.',
+      },
+      {
+        q: 'Which PDF/A version should I choose?',
+        a: 'PDF/A-2b is the most widely accepted and the default. PDF/A-1b is the oldest and strictest: it does not allow transparency or layers. The "u" versions (2u, 3u) also guarantee that text can be copied reliably, so they need every font to carry a text mapping. PDF/A-3b has the same rules as 2b, and PDF/A-4 is the newest, based on PDF 2.0. The "a" levels (1a, 2a, 3a) need a tagged document structure that cannot be created automatically, and 4e and 4f are for 3D and attached files, so they are not offered.',
       },
       {
         q: 'What is the difference between the two ways to convert?',
@@ -289,7 +293,7 @@ export const pdfConvertTools: ToolDef[] = [
       },
       {
         q: 'Why was my PDF refused when I chose to keep the text?',
-        a: 'PDF/A needs every font to be embedded in the file, and it does not allow CMYK colour without a CMYK profile, LZW compression or annotations without an appearance. These cannot be fixed without changing the pages, so the tool lists what it found instead of faking a result. You can still use the picture mode.',
+        a: 'PDF/A needs every font to be embedded in the file, and it does not allow CMYK colour without a CMYK profile, LZW compression or annotations without an appearance. PDF/A-1b also refuses transparency, layers and JPEG 2000 images, and the "u" versions and PDF/A-4 need a text mapping for every font. These cannot be fixed without changing the pages, so the tool lists what it found instead of faking a result. You can still use the picture mode.',
       },
       {
         q: 'What does the tool change in the file?',
@@ -300,7 +304,8 @@ export const pdfConvertTools: ToolDef[] = [
       'Maximum 100 MB per PDF. Password-protected PDFs must be unlocked first, because a PDF/A file cannot be encrypted.',
       'Keep text and fonts works only when every font is embedded and the file has no CMYK colour or LZW compression.',
       'Turning pages into pictures is limited to 200 pages. The text is no longer selectable and the file gets larger.',
-      'The result is PDF/A-2b prepared by Kitwell and checked against the rules it applies; it is not validated by a full PDF/A validator.',
+      'The result is prepared by Kitwell and checked against the rules it applies; it is not validated by a full PDF/A validator in your browser.',
+      'Available versions: PDF/A-1b, 2b, 2u, 3b, 3u and 4. The "a" levels (tagged PDF) and 4e/4f are not offered.',
     ],
     related: ['compress-pdf', 'repair-pdf', 'ocr-pdf', 'pdf-metadata-viewer', 'unlock-pdf'],
   },

@@ -1,5 +1,5 @@
 /**
- * PDF to PDF/A-2b preparation, entirely in the browser.
+ * PDF to PDF/A preparation (profiles 1b, 2b, 2u, 3b, 3u), entirely in the browser.
  *
  * Two modes:
  *  - "keep": fixes what can be fixed without touching page content (adds the PDF/A identification and XMP metadata, the
@@ -31,8 +31,24 @@ import { PdfError } from './pdfOps';
 import { site } from '@/config/site';
 import { tr } from '@/i18n/translate';
 
-export const PDFA_LABEL = 'PDF/A-2b';
 export const MAX_FLATTEN_PAGES = 200;
+
+/**
+ * The profiles this tool produces. Each one was validated with veraPDF (see tests/pdfA.test.ts and the QA notes); A-level
+ * profiles (1a, 2a, 3a) need tagged structure and PDF/A-4e/4f need 3D or attachments, so they are not offered.
+ */
+export type PdfAProfile = '1b' | '2b' | '2u' | '3b' | '3u' | '4';
+export const PDFA_PROFILES: PdfAProfile[] = ['1b', '2b', '2u', '3b', '3u', '4'];
+export const DEFAULT_PROFILE: PdfAProfile = '2b';
+const PROFILE_INFO: Record<PdfAProfile, { part: number; conformance: 'B' | 'U' | null }> = {
+  '1b': { part: 1, conformance: 'B' },
+  '2b': { part: 2, conformance: 'B' },
+  '2u': { part: 2, conformance: 'U' },
+  '3b': { part: 3, conformance: 'B' },
+  '3u': { part: 3, conformance: 'U' },
+  '4': { part: 4, conformance: null },
+};
+export const pdfaLabel = (profile: PdfAProfile) => `PDF/A-${profile}`;
 
 export interface PdfAIssue {
   /** Translation key under `pdfa.fix.*` or `pdfa.block.*`. */
@@ -117,9 +133,16 @@ function usesCmykOperator(doc: PDFDocument): boolean {
   return false;
 }
 
+/** Dictionary entries that mean transparency: constant alpha below 1, a blend mode, a transparency group or a soft mask. */
+const TRANSPARENCY = [/\/(?:CA|ca)\s+(?!1(?:\.0*)?(?![\d.]))[\d.]+/, /\/BM\s*\/(?!Normal\b|Compatible\b)/, /\/S\s*\/Transparency/, /\/SMask\s*(?:\d+\s+\d+\s+R|<<)/];
+
 /** Finds the problems that make a PDF/A conversion that keeps the page content impossible. */
-export function analyzeForPdfA(doc: PDFDocument): PdfAAnalysis {
+export function analyzeForPdfA(doc: PDFDocument, profile: PdfAProfile = DEFAULT_PROFILE): PdfAAnalysis {
+  const { part, conformance } = PROFILE_INFO[profile];
   const fonts = new Set<string>();
+  const noUnicode = new Set<string>();
+  let transparency = false;
+  let jpx = false;
   let cmyk = false;
   let lzw = false;
   let noAppearance = 0;
@@ -129,6 +152,14 @@ export function analyzeForPdfA(doc: PDFDocument): PdfAAnalysis {
     if (nameValue(d.get(name('Type'))) === 'Font') {
       const bad = unembeddedFontName(doc, d);
       if (bad) fonts.add(bad.replace(/^[A-Z]{6}\+/, ''));
+      const fontKind = nameValue(d.get(name('Subtype')));
+      if ((conformance === 'U' || part === 4) && fontKind !== 'CIDFontType0' && fontKind !== 'CIDFontType2' && !d.has(name('ToUnicode'))) noUnicode.add((nameValue(d.get(name('BaseFont'))) ?? 'unknown').replace(/^[A-Z]{6}\+/, ''));
+    }
+    if (part === 1) {
+      // Direct (inline) dictionaries are part of their parent's text, so the check reads the dictionary as text.
+      const text = d.toString();
+      if (TRANSPARENCY.some((re) => re.test(text))) transparency = true;
+      if (obj instanceof PDFStream && filtersOf(doc, d).includes('JPXDecode')) jpx = true;
     }
     if (obj instanceof PDFStream && filtersOf(doc, d).some((f) => f === 'LZWDecode' || f === 'Crypt')) lzw = true;
     if (!cmyk && d.toString().includes('/DeviceCMYK')) cmyk = true;
@@ -141,6 +172,10 @@ export function analyzeForPdfA(doc: PDFDocument): PdfAAnalysis {
   if (cmyk) blockers.push({ key: 'pdfa.block.cmyk' });
   if (lzw) blockers.push({ key: 'pdfa.block.lzw' });
   if (noAppearance) blockers.push({ key: 'pdfa.block.noAppearance', params: { number: noAppearance } });
+  if (noUnicode.size) blockers.push({ key: 'pdfa.block.noUnicode', params: { names: [...noUnicode].slice(0, 6).join(', ') + (noUnicode.size > 6 ? '…' : '') } });
+  if (transparency) blockers.push({ key: 'pdfa.block.transparency' });
+  if (jpx) blockers.push({ key: 'pdfa.block.jpx' });
+  if (part === 1 && doc.catalog.has(name('OCProperties'))) blockers.push({ key: 'pdfa.block.layers' });
   return { pages: doc.getPageCount(), blockers };
 }
 
@@ -160,10 +195,11 @@ export interface DocInfo {
   modified: Date;
 }
 
-export function buildXmp(info: DocInfo): string {
+export function buildXmp(info: DocInfo, profile: PdfAProfile = DEFAULT_PROFILE): string {
+  const { part, conformance } = PROFILE_INFO[profile];
   const lines: string[] = [];
   const desc = (ns: string, uri: string, body: string) => lines.push(`  <rdf:Description rdf:about="" xmlns:${ns}="${uri}">${body}</rdf:Description>`);
-  desc('pdfaid', 'http://www.aiim.org/pdfa/ns/id/', '<pdfaid:part>2</pdfaid:part><pdfaid:conformance>B</pdfaid:conformance>');
+  desc('pdfaid', 'http://www.aiim.org/pdfa/ns/id/', conformance ? `<pdfaid:part>${part}</pdfaid:part><pdfaid:conformance>${conformance}</pdfaid:conformance>` : `<pdfaid:part>${part}</pdfaid:part><pdfaid:rev>2020</pdfaid:rev>`);
   let dc = '';
   if (info.title) dc += `<dc:title><rdf:Alt><rdf:li xml:lang="x-default">${esc(info.title)}</rdf:li></rdf:Alt></dc:title>`;
   if (info.author) dc += `<dc:creator><rdf:Seq><rdf:li>${esc(info.author)}</rdf:li></rdf:Seq></dc:creator>`;
@@ -196,7 +232,7 @@ function readInfo(doc: PDFDocument, fallbackTitle?: string): DocInfo {
 }
 
 /** Writes the Info dictionary, the XMP packet, the output intent and the file ID that PDF/A requires. */
-export function applyPdfAStructure(doc: PDFDocument, fallbackTitle?: string): string[] {
+export function applyPdfAStructure(doc: PDFDocument, fallbackTitle?: string, profile: PdfAProfile = DEFAULT_PROFILE): string[] {
   const actions: string[] = [];
   const info = readInfo(doc, fallbackTitle);
   const infoDict = doc.context.lookup(doc.context.trailerInfo.Info);
@@ -209,7 +245,7 @@ export function applyPdfAStructure(doc: PDFDocument, fallbackTitle?: string): st
   doc.setCreationDate(info.created);
   doc.setModificationDate(info.modified);
 
-  const xmp = new TextEncoder().encode(buildXmp(info));
+  const xmp = new TextEncoder().encode(buildXmp(info, profile));
   const metadata = doc.context.stream(xmp, { Type: 'Metadata', Subtype: 'XML' });
   doc.catalog.set(name('Metadata'), doc.context.register(metadata));
   actions.push(tr('pdfa.fix.metadata'));
@@ -228,6 +264,12 @@ export function applyPdfAStructure(doc: PDFDocument, fallbackTitle?: string): st
   const id = Array.from(crypto.getRandomValues(new Uint8Array(16)), (b) => b.toString(16).padStart(2, '0')).join('');
   doc.context.trailerInfo.ID = doc.context.obj([PDFHexString.of(id), PDFHexString.of(id)]);
   actions.push(tr('pdfa.fix.id'));
+  // PDF/A-4 keeps the descriptive data and the dates in XMP only: the document information dictionary must not be present.
+  if (PROFILE_INFO[profile].part === 4) {
+    const infoRef = doc.context.trailerInfo.Info;
+    if (infoRef instanceof PDFRef) doc.context.delete(infoRef);
+    doc.context.trailerInfo.Info = undefined;
+  }
   return actions;
 }
 
@@ -347,13 +389,29 @@ function fixAnnotations(doc: PDFDocument): string[] {
   return out;
 }
 
-export async function convertKeepingContent(input: Uint8Array, fallbackTitle?: string): Promise<{ result: PdfAResult; analysis: PdfAAnalysis }> {
+/** PDF/A-1 files may not be newer than PDF 1.4 (the content written here needs nothing newer); PDF/A-4 is based on PDF 2.0. */
+function finalizeHeader(bytes: Uint8Array, profile: PdfAProfile): Uint8Array {
+  const part = PROFILE_INFO[profile].part;
+  if (part === 4) return setHeader(bytes, '%PDF-2.0');
+  if (part !== 1) return bytes;
+  const header = new TextDecoder('latin1').decode(bytes.subarray(0, 8));
+  if (header !== '%PDF-1.7' && !/^%PDF-1\.[5-7]$/.test(header)) return bytes;
+  return setHeader(bytes, '%PDF-1.4');
+}
+
+function setHeader(bytes: Uint8Array, header: string): Uint8Array {
+  const out = bytes.slice();
+  out.set(new TextEncoder().encode(header), 0);
+  return out;
+}
+
+export async function convertKeepingContent(input: Uint8Array, fallbackTitle?: string, profile: PdfAProfile = DEFAULT_PROFILE): Promise<{ result: PdfAResult; analysis: PdfAAnalysis }> {
   const doc = await loadForPdfA(input);
-  const analysis = analyzeForPdfA(doc);
+  const analysis = analyzeForPdfA(doc, profile);
   if (analysis.blockers.length) throw new PdfABlocked(analysis);
-  const actions = [...removeForbiddenFeatures(doc), ...fixAnnotations(doc), ...applyPdfAStructure(doc, fallbackTitle)];
-  const bytes = await doc.save({ useObjectStreams: false, updateFieldAppearances: false });
-  const problems = await checkPdfA(bytes);
+  const actions = [...removeForbiddenFeatures(doc), ...fixAnnotations(doc), ...applyPdfAStructure(doc, fallbackTitle, profile)];
+  const bytes = finalizeHeader(await doc.save({ useObjectStreams: false, updateFieldAppearances: false }), profile);
+  const problems = await checkPdfA(bytes, profile);
   if (problems.length) throw new PdfError(tr('err.pdfa.selfCheck', { problems: problems.join('; ') }));
   return { result: { bytes, pages: analysis.pages, actions, mode: 'keep' }, analysis };
 }
@@ -382,6 +440,7 @@ async function loadForPdfA(input: Uint8Array): Promise<PDFDocument> {
 export async function buildFlattenedPdfA(
   pages: { jpeg: Uint8Array; widthPt: number; heightPt: number }[],
   info: Partial<DocInfo> & { fallbackTitle?: string },
+  profile: PdfAProfile = DEFAULT_PROFILE,
 ): Promise<PdfAResult> {
   const out = await PDFDocument.create({ updateMetadata: false });
   for (const p of pages) {
@@ -396,9 +455,9 @@ export async function buildFlattenedPdfA(
   if (info.subject) out.setSubject(info.subject);
   if (info.keywords) out.setKeywords(info.keywords.split(/[,;]\s*/));
   out.setCreationDate(info.created ?? now);
-  const actions = applyPdfAStructure(out, info.fallbackTitle);
-  const bytes = await out.save({ useObjectStreams: false });
-  const problems = await checkPdfA(bytes);
+  const actions = applyPdfAStructure(out, info.fallbackTitle, profile);
+  const bytes = finalizeHeader(await out.save({ useObjectStreams: false }), profile);
+  const problems = await checkPdfA(bytes, profile);
   if (problems.length) throw new PdfError(tr('err.pdfa.selfCheck', { problems: problems.join('; ') }));
   return { bytes, pages: pages.length, actions, mode: 'flatten' };
 }
@@ -419,7 +478,8 @@ export async function readOriginalInfo(input: Uint8Array): Promise<Partial<DocIn
  * Re-reads a finished file and checks exactly the rules this tool applies. Returns the problems found (empty when all
  * of them hold). This is not a full PDF/A validation.
  */
-export async function checkPdfA(bytes: Uint8Array): Promise<string[]> {
+export async function checkPdfA(bytes: Uint8Array, target: PdfAProfile = DEFAULT_PROFILE): Promise<string[]> {
+  const { part, conformance } = PROFILE_INFO[target];
   const problems: string[] = [];
   let doc: PDFDocument;
   try {
@@ -434,7 +494,9 @@ export async function checkPdfA(bytes: Uint8Array): Promise<string[]> {
   else {
     if (metadata.has(name('Filter'))) problems.push('XMP metadata is compressed');
     const xmp = new TextDecoder().decode(decodePDFRawStream(metaStream).decode());
-    if (!/<pdfaid:part>2<\/pdfaid:part>/.test(xmp) || !/<pdfaid:conformance>B<\/pdfaid:conformance>/.test(xmp)) problems.push('the PDF/A identification is missing');
+    if (!xmp.includes(`<pdfaid:part>${part}</pdfaid:part>`) || !xmp.includes(conformance ? `<pdfaid:conformance>${conformance}</pdfaid:conformance>` : '<pdfaid:rev>2020</pdfaid:rev>')) problems.push('the PDF/A identification is missing');
+    if (part === 4 && new TextDecoder('latin1').decode(bytes.subarray(0, 8)) !== '%PDF-2.0') problems.push('the PDF version is not 2.0');
+    if (part === 1 && new TextDecoder('latin1').decode(bytes.subarray(0, 8)) !== '%PDF-1.4') problems.push('the PDF version is newer than 1.4');
     const created = doc.getCreationDate();
     if (created && !xmp.includes(`<xmp:CreateDate>${iso(created)}</xmp:CreateDate>`)) problems.push('the creation date differs between Info and XMP');
     const modified = doc.getModificationDate();
