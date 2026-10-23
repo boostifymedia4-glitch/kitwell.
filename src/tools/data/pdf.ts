@@ -679,19 +679,19 @@ export const pdfTools: ToolDef[] = [
     name: 'Fill PDF Forms',
     icon: 'text-cursor',
     impl: 'pdf-fill-form',
-    description: 'Fill in the text boxes, checkboxes and menus of a fillable PDF form.',
+    description: 'Fill in the text boxes, checkboxes and menus of a PDF form, or type onto any PDF.',
     metaDescription:
       'Fill PDF forms online for free. Type into fields, tick checkboxes and pick options in a fillable PDF, then download it editable or flattened. In your browser.',
     keywords: ['fill pdf form', 'fillable pdf', 'edit pdf form fields', 'complete pdf form', 'acroform'],
     steps: [
-      'Add a fillable PDF form.',
+      'Add a PDF form. A PDF without fields can be typed onto by clicking the page.',
       'Fill in the fields listed below the file name. Fields are grouped by page.',
       'Choose whether to keep the form editable or flatten it, then download the filled PDF.',
     ],
     faq: [
       {
         q: 'My PDF shows no fields. Why?',
-        a: 'Only PDFs with real form fields can be filled here. A form that is just a picture or plain text has no fields; use Sign PDF to place a signature, or the Watermark tool to add text. Forms made with XFA (some government and bank forms) are not supported.',
+        a: 'The PDF has no real form fields, for example a scan or a form that is only a picture. You can still click the page where text should go, type it and save a copy with the text written on. Forms made with XFA (some government and bank forms) cannot have their fields filled.',
       },
       {
         q: 'What does flattening do?',
@@ -701,7 +701,8 @@ export const pdfTools: ToolDef[] = [
     limits: [
       'Text can use Latin letters, digits and common symbols (the form font has no other alphabets).',
       'Signature fields and buttons are shown but cannot be filled; use Sign PDF for signatures.',
-      'XFA (dynamic) forms are not supported.',
+      'XFA (dynamic) forms: fields cannot be filled, but you can type onto the pages.',
+      'Text typed onto a PDF without fields is written into the page and cannot be edited afterwards.',
       'Maximum 100 MB per PDF.',
     ],
     related: ['sign-pdf', 'edit-pdf-metadata', 'protect-pdf', 'pdf-viewer', 'watermark-pdf'],

@@ -46,6 +46,8 @@ input[type='color'] { width: 44px; height: 42px; padding: 2px; border-radius: va
 .segmented button:hover { color: var(--text); }
 .segmented button[aria-pressed='true'] { background: var(--bg-elevated); color: var(--text); box-shadow: var(--shadow-sm); }
 .options-grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); align-items: end; }
+/* Labelled fields line up at the top, so a field with a hint never pushes its neighbour out of line (Protect PDF password pair, Resizer, ...). */
+.options-grid > .field { align-self: start; }
 
 /* ---------- Cards / badges ---------- */
 .card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-xs); }
