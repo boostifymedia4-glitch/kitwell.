@@ -1,4 +1,34 @@
 import type { PartialMessages } from '../../en';
 
-const share: PartialMessages = {};
+const share: PartialMessages = {
+  "page.share.name": "Fichier partagé",
+  "meta.share.title": "Fichier partagé | {site}",
+  "meta.share.description": "Téléchargez un fichier partagé avec vous via un lien temporaire {site}.",
+  "share.create": "Obtenir un lien de partage",
+  "share.creating": "Envoi en cours…",
+  "share.hint": "Crée un lien de téléchargement temporaire et un code QR. Le fichier est envoyé sur notre serveur pendant {hours} heures, puis supprimé. Toute personne disposant du lien peut le télécharger.",
+  "share.ready": "Votre lien est prêt. Il fonctionne jusqu’au {time}, puis le fichier est supprimé.",
+  "share.link": "Lien de partage",
+  "share.qrAlt": "Code QR du lien de partage",
+  "share.err.tooLarge": "Ce fichier est trop volumineux pour être partagé (limite : {max}).",
+  "share.err.rateLimit": "Trop de liens de partage ont été créés. Réessayez dans quelques minutes.",
+  "share.err.failed": "Le lien de partage n’a pas pu être créé. Veuillez réessayer.",
+  "share.page.title": "Télécharger un fichier partagé",
+  "share.page.loading": "Recherche du fichier…",
+  "share.page.notFound": "Ce lien a expiré ou n’existe pas. Les fichiers partagés sont supprimés automatiquement après un délai limité.",
+  "share.page.error": "Le fichier n’a pas pu être recherché. Veuillez réessayer plus tard.",
+  "share.page.noId": "Ce lien est incomplet. Demandez à l’expéditeur de le partager à nouveau.",
+  "share.page.info": "{size} · disponible jusqu’au {time}",
+  "share.page.download": "Télécharger {name}",
+  "share.page.note": "Ne téléchargez que des fichiers provenant de personnes de confiance. Le fichier n’a pas été vérifié.",
+  "cloud.or": "Ou choisir un fichier depuis",
+  "cloud.google": "Google Drive",
+  "cloud.dropbox": "Dropbox",
+  "cloud.pickFailed": "Le fichier n’a pas pu être chargé depuis {service}. Vérifiez que les fenêtres pop-up sont autorisées et réessayez.",
+  "cloud.saveGoogle": "Enregistrer dans Google Drive",
+  "cloud.saveDropbox": "Enregistrer dans Dropbox",
+  "cloud.saving": "Enregistrement dans {service}…",
+  "cloud.saved": "Enregistré dans {service}.",
+  "cloud.saveFailed": "Le fichier n’a pas pu être enregistré dans {service}. Vérifiez que les fenêtres pop-up sont autorisées et réessayez.",
+};
 export default share;

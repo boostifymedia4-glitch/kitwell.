@@ -54,4 +54,12 @@ export default {
   'tool.faq': 'پرسش‌های متداول',
   'tool.related': 'ابزارهای مرتبط',
   'tool.allInCategory': 'همه ابزارهای {category}',
+  "ui.fileName": "نام فایل",
+  "ui.showPreview": "پیش‌نمایش",
+  "ui.hidePreview": "پنهان کردن پیش‌نمایش",
+  "ui.previewAlt": "پیش‌نمایش صفحه {page}",
+  "ui.previewPage": "صفحه {page} از {total}",
+  "ui.previewPrev": "صفحه قبلی",
+  "ui.previewNext": "صفحه بعدی",
+  "ui.previewFailed": "پیش‌نمایش نمایش داده نشد. هنوز می‌توانید فایل را دانلود کنید.",
 } as PartialMessages;

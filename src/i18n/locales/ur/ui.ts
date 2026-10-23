@@ -54,4 +54,12 @@ export default {
   'tool.faq': 'اکثر پوچھے گئے سوالات',
   'tool.related': 'متعلقہ ٹولز',
   'tool.allInCategory': 'تمام {category} ٹولز',
+  "ui.fileName": "فائل کا نام",
+  "ui.showPreview": "پیش منظر",
+  "ui.hidePreview": "پیش منظر چھپائیں",
+  "ui.previewAlt": "صفحہ {page} کا پیش منظر",
+  "ui.previewPage": "صفحہ {page} از {total}",
+  "ui.previewPrev": "پچھلا صفحہ",
+  "ui.previewNext": "اگلا صفحہ",
+  "ui.previewFailed": "پیش منظر نہیں دکھایا جا سکا۔ آپ پھر بھی فائل ڈاؤن لوڈ کر سکتے ہیں۔",
 } as PartialMessages;

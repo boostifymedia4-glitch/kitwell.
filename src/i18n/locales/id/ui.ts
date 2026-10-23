@@ -53,4 +53,12 @@ export default {
   'tool.faq': 'Pertanyaan yang sering diajukan',
   'tool.related': 'Alat terkait',
   'tool.allInCategory': 'Semua alat {category}',
+  "ui.fileName": "Nama file",
+  "ui.showPreview": "Pratinjau",
+  "ui.hidePreview": "Sembunyikan pratinjau",
+  "ui.previewAlt": "Pratinjau halaman {page}",
+  "ui.previewPage": "Halaman {page} dari {total}",
+  "ui.previewPrev": "Halaman sebelumnya",
+  "ui.previewNext": "Halaman berikutnya",
+  "ui.previewFailed": "Pratinjau tidak dapat ditampilkan. Anda tetap bisa mengunduh file-nya.",
 } as PartialMessages;

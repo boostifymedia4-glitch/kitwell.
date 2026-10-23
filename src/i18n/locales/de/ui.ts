@@ -54,4 +54,12 @@ export default {
   'tool.faq': 'Häufig gestellte Fragen',
   'tool.related': 'Ähnliche Tools',
   'tool.allInCategory': 'Alle {category}-Tools',
+  "ui.fileName": "Dateiname",
+  "ui.showPreview": "Vorschau",
+  "ui.hidePreview": "Vorschau ausblenden",
+  "ui.previewAlt": "Vorschau von Seite {page}",
+  "ui.previewPage": "Seite {page} von {total}",
+  "ui.previewPrev": "Vorherige Seite",
+  "ui.previewNext": "Nächste Seite",
+  "ui.previewFailed": "Die Vorschau konnte nicht angezeigt werden. Sie können die Datei trotzdem herunterladen.",
 } as PartialMessages;

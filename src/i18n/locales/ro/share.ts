@@ -1,4 +1,34 @@
 import type { PartialMessages } from '../../en';
 
-const share: PartialMessages = {};
+const share: PartialMessages = {
+  "page.share.name": "Fișier partajat",
+  "meta.share.title": "Fișier partajat | {site}",
+  "meta.share.description": "Descarcă un fișier partajat cu tine printr-un link temporar {site}.",
+  "share.create": "Obține un link de partajare",
+  "share.creating": "Se încarcă…",
+  "share.hint": "Creează un link de descărcare temporar și un cod QR. Fișierul este încărcat pe serverul nostru pentru {hours} ore, apoi șters. Oricine are linkul îl poate descărca.",
+  "share.ready": "Linkul tău este gata. Funcționează până la {time}, apoi fișierul este șters.",
+  "share.link": "Link de partajare",
+  "share.qrAlt": "Cod QR pentru linkul de partajare",
+  "share.err.tooLarge": "Acest fișier este prea mare pentru a fi partajat (limită: {max}).",
+  "share.err.rateLimit": "Au fost create prea multe linkuri de partajare. Încearcă din nou peste câteva minute.",
+  "share.err.failed": "Linkul de partajare nu a putut fi creat. Încearcă din nou.",
+  "share.page.title": "Descarcă un fișier partajat",
+  "share.page.loading": "Se caută fișierul…",
+  "share.page.notFound": "Acest link a expirat sau nu există. Fișierele partajate sunt șterse automat după un timp limitat.",
+  "share.page.error": "Fișierul nu a putut fi căutat. Încearcă din nou mai târziu.",
+  "share.page.noId": "Acest link este incomplet. Roagă expeditorul să-l partajeze din nou.",
+  "share.page.info": "{size} · disponibil până la {time}",
+  "share.page.download": "Descarcă {name}",
+  "share.page.note": "Descarcă doar fișiere de la persoane în care ai încredere. Fișierul nu a fost verificat.",
+  "cloud.or": "Sau alege un fișier din",
+  "cloud.google": "Google Drive",
+  "cloud.dropbox": "Dropbox",
+  "cloud.pickFailed": "Fișierul nu a putut fi încărcat din {service}. Verifică dacă ferestrele pop-up sunt permise și încearcă din nou.",
+  "cloud.saveGoogle": "Salvează în Google Drive",
+  "cloud.saveDropbox": "Salvează în Dropbox",
+  "cloud.saving": "Se salvează în {service}…",
+  "cloud.saved": "Salvat în {service}.",
+  "cloud.saveFailed": "Fișierul nu a putut fi salvat în {service}. Verifică dacă ferestrele pop-up sunt permise și încearcă din nou.",
+};
 export default share;

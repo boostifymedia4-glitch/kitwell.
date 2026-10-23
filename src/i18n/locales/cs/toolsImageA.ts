@@ -34,7 +34,7 @@ export default {
   'imageCompress.maxSize.800': '800 px',
   'imageCompress.background': 'Pozadí pro průhlednost',
   'imageCompress.noteSmaller': '{before} → {after} (-{saved} %)',
-  'imageCompress.noteLarger': '{before} → {after} (větší; ponechte originál nebo snižte kvalitu)',
+  "imageCompress.noteLarger": "{before} → {after} (není menší, proto byl zachován původní soubor)",
 
   'imageResize.action': 'Změnit velikost obrázků',
   'imageResize.resizeBy': 'Změnit podle',

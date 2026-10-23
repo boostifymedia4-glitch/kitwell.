@@ -52,4 +52,12 @@ export default {
   'tool.faq': 'Câu hỏi thường gặp',
   'tool.related': 'Công cụ liên quan',
   'tool.allInCategory': 'Tất cả công cụ {category}',
+  "ui.fileName": "Tên tệp",
+  "ui.showPreview": "Xem trước",
+  "ui.hidePreview": "Ẩn bản xem trước",
+  "ui.previewAlt": "Bản xem trước của trang {page}",
+  "ui.previewPage": "Trang {page} / {total}",
+  "ui.previewPrev": "Trang trước",
+  "ui.previewNext": "Trang sau",
+  "ui.previewFailed": "Không thể hiển thị bản xem trước. Bạn vẫn có thể tải tệp xuống.",
 } as PartialMessages;

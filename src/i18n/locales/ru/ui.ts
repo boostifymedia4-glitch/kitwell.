@@ -58,4 +58,12 @@ export default {
   'tool.faq': 'Часто задаваемые вопросы',
   'tool.related': 'Похожие инструменты',
   'tool.allInCategory': 'Все инструменты: {category}',
+  "ui.fileName": "Имя файла",
+  "ui.showPreview": "Предпросмотр",
+  "ui.hidePreview": "Скрыть предпросмотр",
+  "ui.previewAlt": "Предпросмотр страницы {page}",
+  "ui.previewPage": "Страница {page} из {total}",
+  "ui.previewPrev": "Предыдущая страница",
+  "ui.previewNext": "Следующая страница",
+  "ui.previewFailed": "Не удалось показать предпросмотр. Файл всё равно можно скачать.",
 } as PartialMessages;

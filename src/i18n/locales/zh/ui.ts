@@ -52,4 +52,12 @@ export default {
   'tool.faq': '常见问题',
   'tool.related': '相关工具',
   'tool.allInCategory': '全部{category}工具',
+  "ui.fileName": "文件名",
+  "ui.showPreview": "预览",
+  "ui.hidePreview": "隐藏预览",
+  "ui.previewAlt": "第 {page} 页预览",
+  "ui.previewPage": "第 {page} 页，共 {total} 页",
+  "ui.previewPrev": "上一页",
+  "ui.previewNext": "下一页",
+  "ui.previewFailed": "无法显示预览。您仍然可以下载文件。",
 } as PartialMessages;

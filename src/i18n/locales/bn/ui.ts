@@ -54,4 +54,12 @@ export default {
   'tool.faq': 'সাধারণ প্রশ্ন',
   'tool.related': 'সম্পর্কিত টুল',
   'tool.allInCategory': 'সব {category}',
+  "ui.fileName": "ফাইলের নাম",
+  "ui.showPreview": "প্রিভিউ",
+  "ui.hidePreview": "প্রিভিউ লুকান",
+  "ui.previewAlt": "পৃষ্ঠা {page}-এর প্রিভিউ",
+  "ui.previewPage": "{total}টির মধ্যে পৃষ্ঠা {page}",
+  "ui.previewPrev": "আগের পৃষ্ঠা",
+  "ui.previewNext": "পরের পৃষ্ঠা",
+  "ui.previewFailed": "প্রিভিউ দেখানো যায়নি। তবুও আপনি ফাইলটি ডাউনলোড করতে পারেন।",
 } as PartialMessages;

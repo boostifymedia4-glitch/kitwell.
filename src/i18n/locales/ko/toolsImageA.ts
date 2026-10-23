@@ -31,7 +31,7 @@ export default {
   'imageCompress.maxSize.800': '800 px',
   'imageCompress.background': '투명 영역 배경',
   'imageCompress.noteSmaller': '{before} → {after} (-{saved}%)',
-  'imageCompress.noteLarger': '{before} → {after} (더 커짐, 원본을 유지하거나 품질을 낮추세요)',
+  "imageCompress.noteLarger": "{before} → {after}(더 작아지지 않아 원본 파일을 유지했습니다)",
 
   'imageResize.action': '이미지 크기 조정',
   'imageResize.resizeBy': '조정 기준',

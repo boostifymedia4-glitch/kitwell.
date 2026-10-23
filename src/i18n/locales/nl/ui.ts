@@ -54,4 +54,12 @@ export default {
   'tool.faq': 'Veelgestelde vragen',
   'tool.related': 'Verwante tools',
   'tool.allInCategory': 'Alle {category}',
+  "ui.fileName": "Bestandsnaam",
+  "ui.showPreview": "Voorbeeld",
+  "ui.hidePreview": "Voorbeeld verbergen",
+  "ui.previewAlt": "Voorbeeld van pagina {page}",
+  "ui.previewPage": "Pagina {page} van {total}",
+  "ui.previewPrev": "Vorige pagina",
+  "ui.previewNext": "Volgende pagina",
+  "ui.previewFailed": "Het voorbeeld kon niet worden getoond. Je kunt het bestand nog steeds downloaden.",
 } as PartialMessages;

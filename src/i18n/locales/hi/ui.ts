@@ -54,4 +54,12 @@ export default {
   'tool.faq': 'अक्सर पूछे जाने वाले प्रश्न',
   'tool.related': 'संबंधित टूल',
   'tool.allInCategory': 'सभी {category} टूल',
+  "ui.fileName": "फ़ाइल का नाम",
+  "ui.showPreview": "पूर्वावलोकन",
+  "ui.hidePreview": "पूर्वावलोकन छिपाएँ",
+  "ui.previewAlt": "पृष्ठ {page} का पूर्वावलोकन",
+  "ui.previewPage": "{total} में से पृष्ठ {page}",
+  "ui.previewPrev": "पिछला पृष्ठ",
+  "ui.previewNext": "अगला पृष्ठ",
+  "ui.previewFailed": "पूर्वावलोकन नहीं दिखाया जा सका। आप फिर भी फ़ाइल डाउनलोड कर सकते हैं।",
 } as PartialMessages;

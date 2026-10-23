@@ -58,4 +58,12 @@ export default {
   'tool.faq': 'Často kladené otázky',
   'tool.related': 'Související nástroje',
   'tool.allInCategory': 'Všechny nástroje: {category}',
+  "ui.fileName": "Název souboru",
+  "ui.showPreview": "Náhled",
+  "ui.hidePreview": "Skrýt náhled",
+  "ui.previewAlt": "Náhled stránky {page}",
+  "ui.previewPage": "Stránka {page} z {total}",
+  "ui.previewPrev": "Předchozí stránka",
+  "ui.previewNext": "Další stránka",
+  "ui.previewFailed": "Náhled se nepodařilo zobrazit. Soubor si můžete přesto stáhnout.",
 } as PartialMessages;

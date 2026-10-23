@@ -52,4 +52,12 @@ export default {
   'tool.faq': 'よくある質問',
   'tool.related': '関連ツール',
   'tool.allInCategory': '{category}をすべて見る',
+  "ui.fileName": "ファイル名",
+  "ui.showPreview": "プレビュー",
+  "ui.hidePreview": "プレビューを隠す",
+  "ui.previewAlt": "{page}ページ目のプレビュー",
+  "ui.previewPage": "{page} / {total} ページ",
+  "ui.previewPrev": "前のページ",
+  "ui.previewNext": "次のページ",
+  "ui.previewFailed": "プレビューを表示できませんでした。ファイルはそのままダウンロードできます。",
 } as PartialMessages;

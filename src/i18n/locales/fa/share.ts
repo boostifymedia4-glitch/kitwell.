@@ -1,4 +1,34 @@
 import type { PartialMessages } from '../../en';
 
-const share: PartialMessages = {};
+const share: PartialMessages = {
+  "page.share.name": "فایل اشتراکی",
+  "meta.share.title": "فایل اشتراکی | {site}",
+  "meta.share.description": "فایلی را که از طریق یک پیوند موقت {site} با شما به اشتراک گذاشته شده دانلود کنید.",
+  "share.create": "دریافت پیوند اشتراک‌گذاری",
+  "share.creating": "در حال بارگذاری…",
+  "share.hint": "یک پیوند دانلود موقت و کد QR می‌سازد. فایل به مدت {hours} ساعت روی سرور ما بارگذاری می‌شود و سپس حذف می‌گردد. هر کسی که پیوند را داشته باشد می‌تواند آن را دانلود کند.",
+  "share.ready": "پیوند شما آماده است. تا {time} کار می‌کند و پس از آن فایل حذف می‌شود.",
+  "share.link": "پیوند اشتراک‌گذاری",
+  "share.qrAlt": "کد QR پیوند اشتراک‌گذاری",
+  "share.err.tooLarge": "این فایل برای اشتراک‌گذاری بیش از حد بزرگ است (حد مجاز {max}).",
+  "share.err.rateLimit": "پیوندهای اشتراک‌گذاری بیش از حد ساخته شده است. لطفاً چند دقیقه دیگر دوباره تلاش کنید.",
+  "share.err.failed": "پیوند اشتراک‌گذاری ساخته نشد. لطفاً دوباره تلاش کنید.",
+  "share.page.title": "دانلود فایل اشتراکی",
+  "share.page.loading": "در حال جست‌وجوی فایل…",
+  "share.page.notFound": "این پیوند منقضی شده یا وجود ندارد. فایل‌های اشتراکی پس از مدتی محدود خودکار حذف می‌شوند.",
+  "share.page.error": "جست‌وجوی فایل ممکن نشد. لطفاً بعداً دوباره تلاش کنید.",
+  "share.page.noId": "این پیوند ناقص است. از فرستنده بخواهید دوباره آن را به اشتراک بگذارد.",
+  "share.page.info": "{size} · در دسترس تا {time}",
+  "share.page.download": "دانلود {name}",
+  "share.page.note": "فقط فایل‌های افرادی را دانلود کنید که به آن‌ها اعتماد دارید. این فایل بررسی نشده است.",
+  "cloud.or": "یا یک فایل را انتخاب کنید از",
+  "cloud.google": "Google Drive",
+  "cloud.dropbox": "Dropbox",
+  "cloud.pickFailed": "فایل از {service} بارگذاری نشد. بررسی کنید پنجره‌های بازشو مجاز باشند و دوباره تلاش کنید.",
+  "cloud.saveGoogle": "ذخیره در Google Drive",
+  "cloud.saveDropbox": "ذخیره در Dropbox",
+  "cloud.saving": "در حال ذخیره در {service}…",
+  "cloud.saved": "در {service} ذخیره شد.",
+  "cloud.saveFailed": "فایل در {service} ذخیره نشد. بررسی کنید پنجره‌های بازشو مجاز باشند و دوباره تلاش کنید.",
+};
 export default share;

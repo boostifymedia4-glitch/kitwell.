@@ -1,4 +1,34 @@
 import type { PartialMessages } from '../../en';
 
-const share: PartialMessages = {};
+const share: PartialMessages = {
+  "page.share.name": "Arquivo compartilhado",
+  "meta.share.title": "Arquivo compartilhado | {site}",
+  "meta.share.description": "Baixe um arquivo compartilhado com você por um link temporário do {site}.",
+  "share.create": "Obter link de compartilhamento",
+  "share.creating": "Enviando…",
+  "share.hint": "Cria um link de download temporário e um código QR. O arquivo é enviado ao nosso servidor por {hours} horas e depois excluído. Qualquer pessoa com o link pode baixá-lo.",
+  "share.ready": "Seu link está pronto. Ele funciona até {time}, depois o arquivo é excluído.",
+  "share.link": "Link de compartilhamento",
+  "share.qrAlt": "Código QR do link de compartilhamento",
+  "share.err.tooLarge": "Este arquivo é grande demais para compartilhar (limite: {max}).",
+  "share.err.rateLimit": "Foram criados links de compartilhamento demais. Tente novamente em alguns minutos.",
+  "share.err.failed": "Não foi possível criar o link de compartilhamento. Tente novamente.",
+  "share.page.title": "Baixar um arquivo compartilhado",
+  "share.page.loading": "Procurando o arquivo…",
+  "share.page.notFound": "Este link expirou ou não existe. Os arquivos compartilhados são excluídos automaticamente após um tempo limitado.",
+  "share.page.error": "Não foi possível consultar o arquivo. Tente novamente mais tarde.",
+  "share.page.noId": "Este link está incompleto. Peça ao remetente que o compartilhe novamente.",
+  "share.page.info": "{size} · disponível até {time}",
+  "share.page.download": "Baixar {name}",
+  "share.page.note": "Baixe apenas arquivos de pessoas em quem você confia. O arquivo não foi verificado.",
+  "cloud.or": "Ou escolha um arquivo do",
+  "cloud.google": "Google Drive",
+  "cloud.dropbox": "Dropbox",
+  "cloud.pickFailed": "Não foi possível carregar o arquivo do {service}. Verifique se os pop-ups estão permitidos e tente novamente.",
+  "cloud.saveGoogle": "Salvar no Google Drive",
+  "cloud.saveDropbox": "Salvar no Dropbox",
+  "cloud.saving": "Salvando no {service}…",
+  "cloud.saved": "Salvo no {service}.",
+  "cloud.saveFailed": "Não foi possível salvar o arquivo no {service}. Verifique se os pop-ups estão permitidos e tente novamente.",
+};
 export default share;

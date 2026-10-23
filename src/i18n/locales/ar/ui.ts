@@ -62,4 +62,12 @@ export default {
   'tool.faq': 'الأسئلة الشائعة',
   'tool.related': 'أدوات ذات صلة',
   'tool.allInCategory': 'كل أدوات {category}',
+  "ui.fileName": "اسم الملف",
+  "ui.showPreview": "معاينة",
+  "ui.hidePreview": "إخفاء المعاينة",
+  "ui.previewAlt": "معاينة الصفحة {page}",
+  "ui.previewPage": "الصفحة {page} من {total}",
+  "ui.previewPrev": "الصفحة السابقة",
+  "ui.previewNext": "الصفحة التالية",
+  "ui.previewFailed": "تعذّر عرض المعاينة. ما زال بإمكانك تنزيل الملف.",
 } as PartialMessages;

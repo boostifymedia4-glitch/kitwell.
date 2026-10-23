@@ -54,4 +54,12 @@ export default {
   'tool.faq': 'Συχνές ερωτήσεις',
   'tool.related': 'Σχετικά εργαλεία',
   'tool.allInCategory': 'Όλα τα εργαλεία: {category}',
+  "ui.fileName": "Όνομα αρχείου",
+  "ui.showPreview": "Προεπισκόπηση",
+  "ui.hidePreview": "Απόκρυψη προεπισκόπησης",
+  "ui.previewAlt": "Προεπισκόπηση της σελίδας {page}",
+  "ui.previewPage": "Σελίδα {page} από {total}",
+  "ui.previewPrev": "Προηγούμενη σελίδα",
+  "ui.previewNext": "Επόμενη σελίδα",
+  "ui.previewFailed": "Η προεπισκόπηση δεν μπόρεσε να εμφανιστεί. Μπορείτε παρ’ όλα αυτά να κατεβάσετε το αρχείο.",
 } as PartialMessages;

@@ -33,7 +33,7 @@ export default {
   'imageCompress.maxSize.800': '800 px',
   'imageCompress.background': 'Fondo para la transparencia',
   'imageCompress.noteSmaller': '{before} → {after} (-{saved}%)',
-  'imageCompress.noteLarger': '{before} → {after} (más grande; conserva el original o baja la calidad)',
+  "imageCompress.noteLarger": "{before} → {after} (no es más pequeño, así que se conservó el archivo original)",
 
   'imageResize.action': 'Cambiar tamaño de imágenes',
   'imageResize.resizeBy': 'Cambiar tamaño por',

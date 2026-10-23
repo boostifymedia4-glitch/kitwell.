@@ -1,4 +1,34 @@
 import type { PartialMessages } from '../../en';
 
-const share: PartialMessages = {};
+const share: PartialMessages = {
+  "page.share.name": "공유된 파일",
+  "meta.share.title": "공유된 파일 | {site}",
+  "meta.share.description": "{site} 임시 링크로 공유된 파일을 다운로드하세요.",
+  "share.create": "공유 링크 만들기",
+  "share.creating": "업로드 중…",
+  "share.hint": "임시 다운로드 링크와 QR 코드를 만듭니다. 파일은 {hours}시간 동안 서버에 업로드되었다가 삭제됩니다. 링크가 있는 사람은 누구나 다운로드할 수 있습니다.",
+  "share.ready": "링크가 준비되었습니다. {time}까지 사용할 수 있으며, 이후 파일은 삭제됩니다.",
+  "share.link": "공유 링크",
+  "share.qrAlt": "공유 링크의 QR 코드",
+  "share.err.tooLarge": "이 파일은 공유하기에 너무 큽니다(제한 {max}).",
+  "share.err.rateLimit": "공유 링크가 너무 많이 만들어졌습니다. 몇 분 후에 다시 시도하세요.",
+  "share.err.failed": "공유 링크를 만들 수 없었습니다. 다시 시도하세요.",
+  "share.page.title": "공유된 파일 다운로드",
+  "share.page.loading": "파일을 찾는 중…",
+  "share.page.notFound": "이 링크는 만료되었거나 존재하지 않습니다. 공유된 파일은 제한된 시간이 지나면 자동으로 삭제됩니다.",
+  "share.page.error": "파일을 조회할 수 없었습니다. 나중에 다시 시도하세요.",
+  "share.page.noId": "이 링크는 완전하지 않습니다. 보낸 사람에게 다시 공유해 달라고 요청하세요.",
+  "share.page.info": "{size} · {time}까지 이용 가능",
+  "share.page.download": "{name} 다운로드",
+  "share.page.note": "신뢰하는 사람의 파일만 다운로드하세요. 이 파일은 검사되지 않았습니다.",
+  "cloud.or": "또는 다음에서 파일 선택",
+  "cloud.google": "Google Drive",
+  "cloud.dropbox": "Dropbox",
+  "cloud.pickFailed": "{service}에서 파일을 불러올 수 없었습니다. 팝업이 허용되어 있는지 확인하고 다시 시도하세요.",
+  "cloud.saveGoogle": "Google Drive에 저장",
+  "cloud.saveDropbox": "Dropbox에 저장",
+  "cloud.saving": "{service}에 저장 중…",
+  "cloud.saved": "{service}에 저장했습니다.",
+  "cloud.saveFailed": "파일을 {service}에 저장할 수 없었습니다. 팝업이 허용되어 있는지 확인하고 다시 시도하세요.",
+};
 export default share;

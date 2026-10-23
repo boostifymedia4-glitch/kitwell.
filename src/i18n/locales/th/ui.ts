@@ -52,4 +52,12 @@ export default {
   'tool.faq': 'คำถามที่พบบ่อย',
   'tool.related': 'เครื่องมือที่เกี่ยวข้อง',
   'tool.allInCategory': 'เครื่องมือ{category}ทั้งหมด',
+  "ui.fileName": "ชื่อไฟล์",
+  "ui.showPreview": "ดูตัวอย่าง",
+  "ui.hidePreview": "ซ่อนตัวอย่าง",
+  "ui.previewAlt": "ตัวอย่างหน้า {page}",
+  "ui.previewPage": "หน้า {page} จาก {total}",
+  "ui.previewPrev": "หน้าก่อนหน้า",
+  "ui.previewNext": "หน้าถัดไป",
+  "ui.previewFailed": "ไม่สามารถแสดงตัวอย่างได้ แต่คุณยังดาวน์โหลดไฟล์ได้",
 } as PartialMessages;

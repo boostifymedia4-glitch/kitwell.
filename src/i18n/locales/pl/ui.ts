@@ -58,4 +58,12 @@ export default {
   'tool.faq': 'Najczęściej zadawane pytania',
   'tool.related': 'Powiązane narzędzia',
   'tool.allInCategory': 'Wszystkie narzędzia: {category}',
+  "ui.fileName": "Nazwa pliku",
+  "ui.showPreview": "Podgląd",
+  "ui.hidePreview": "Ukryj podgląd",
+  "ui.previewAlt": "Podgląd strony {page}",
+  "ui.previewPage": "Strona {page} z {total}",
+  "ui.previewPrev": "Poprzednia strona",
+  "ui.previewNext": "Następna strona",
+  "ui.previewFailed": "Nie udało się wyświetlić podglądu. Nadal możesz pobrać plik.",
 } as PartialMessages;

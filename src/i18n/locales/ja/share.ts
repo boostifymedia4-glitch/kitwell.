@@ -1,4 +1,34 @@
 import type { PartialMessages } from '../../en';
 
-const share: PartialMessages = {};
+const share: PartialMessages = {
+  "page.share.name": "共有ファイル",
+  "meta.share.title": "共有ファイル | {site}",
+  "meta.share.description": "{site}の一時リンクで共有されたファイルをダウンロードします。",
+  "share.create": "共有リンクを取得",
+  "share.creating": "アップロード中…",
+  "share.hint": "一時的なダウンロードリンクとQRコードを作成します。ファイルは{hours}時間だけ当サーバーにアップロードされ、その後削除されます。リンクを知っている人は誰でもダウンロードできます。",
+  "share.ready": "リンクの準備ができました。{time}まで有効で、その後ファイルは削除されます。",
+  "share.link": "共有リンク",
+  "share.qrAlt": "共有リンクのQRコード",
+  "share.err.tooLarge": "このファイルは大きすぎて共有できません（上限 {max}）。",
+  "share.err.rateLimit": "共有リンクの作成が多すぎます。数分後にもう一度お試しください。",
+  "share.err.failed": "共有リンクを作成できませんでした。もう一度お試しください。",
+  "share.page.title": "共有ファイルをダウンロード",
+  "share.page.loading": "ファイルを探しています…",
+  "share.page.notFound": "このリンクは期限切れか、存在しません。共有ファイルは一定時間後に自動的に削除されます。",
+  "share.page.error": "ファイルを確認できませんでした。しばらくしてからもう一度お試しください。",
+  "share.page.noId": "このリンクは不完全です。送信者にもう一度共有してもらってください。",
+  "share.page.info": "{size} · {time}まで利用可能",
+  "share.page.download": "{name} をダウンロード",
+  "share.page.note": "信頼できる人からのファイルだけをダウンロードしてください。このファイルは検査されていません。",
+  "cloud.or": "または次からファイルを選択",
+  "cloud.google": "Google ドライブ",
+  "cloud.dropbox": "Dropbox",
+  "cloud.pickFailed": "{service}からファイルを読み込めませんでした。ポップアップが許可されているか確認して、もう一度お試しください。",
+  "cloud.saveGoogle": "Google ドライブに保存",
+  "cloud.saveDropbox": "Dropbox に保存",
+  "cloud.saving": "{service}に保存中…",
+  "cloud.saved": "{service}に保存しました。",
+  "cloud.saveFailed": "ファイルを{service}に保存できませんでした。ポップアップが許可されているか確認して、もう一度お試しください。",
+};
 export default share;

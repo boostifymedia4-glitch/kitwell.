@@ -36,7 +36,7 @@ export default {
   'imageCompress.maxSize.800': '800 px',
   'imageCompress.background': 'خلفية للشفافية',
   'imageCompress.noteSmaller': '{before} ← {after} (-{saved}%)',
-  'imageCompress.noteLarger': '{before} ← {after} (أكبر؛ احتفظ بالأصل أو خفّض الجودة)',
+  "imageCompress.noteLarger": "{before} → {after} (لم يصبح أصغر، لذا أُبقي على الملف الأصلي)",
 
   'imageResize.action': 'تغيير حجم الصور',
   'imageResize.resizeBy': 'تغيير الحجم حسب',

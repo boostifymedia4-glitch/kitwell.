@@ -1,4 +1,34 @@
 import type { PartialMessages } from '../../en';
 
-const share: PartialMessages = {};
+const share: PartialMessages = {
+  "page.share.name": "Geteilte Datei",
+  "meta.share.title": "Geteilte Datei | {site}",
+  "meta.share.description": "Laden Sie eine Datei herunter, die über einen temporären {site}-Link mit Ihnen geteilt wurde.",
+  "share.create": "Freigabelink erstellen",
+  "share.creating": "Wird hochgeladen…",
+  "share.hint": "Erstellt einen temporären Download-Link und einen QR-Code. Die Datei wird für {hours} Stunden auf unseren Server hochgeladen und danach gelöscht. Jeder mit dem Link kann sie herunterladen.",
+  "share.ready": "Ihr Link ist bereit. Er funktioniert bis {time}, danach wird die Datei gelöscht.",
+  "share.link": "Freigabelink",
+  "share.qrAlt": "QR-Code für den Freigabelink",
+  "share.err.tooLarge": "Diese Datei ist zu groß zum Teilen (Limit {max}).",
+  "share.err.rateLimit": "Es wurden zu viele Freigabelinks erstellt. Bitte versuchen Sie es in einigen Minuten erneut.",
+  "share.err.failed": "Der Freigabelink konnte nicht erstellt werden. Bitte versuchen Sie es erneut.",
+  "share.page.title": "Geteilte Datei herunterladen",
+  "share.page.loading": "Datei wird gesucht…",
+  "share.page.notFound": "Dieser Link ist abgelaufen oder existiert nicht. Geteilte Dateien werden nach begrenzter Zeit automatisch gelöscht.",
+  "share.page.error": "Die Datei konnte nicht abgerufen werden. Bitte versuchen Sie es später erneut.",
+  "share.page.noId": "Dieser Link ist unvollständig. Bitten Sie den Absender, ihn erneut zu teilen.",
+  "share.page.info": "{size} · verfügbar bis {time}",
+  "share.page.download": "{name} herunterladen",
+  "share.page.note": "Laden Sie nur Dateien von Personen herunter, denen Sie vertrauen. Die Datei wurde nicht geprüft.",
+  "cloud.or": "Oder eine Datei auswählen aus",
+  "cloud.google": "Google Drive",
+  "cloud.dropbox": "Dropbox",
+  "cloud.pickFailed": "Die Datei konnte nicht von {service} geladen werden. Prüfen Sie, ob Pop-ups erlaubt sind, und versuchen Sie es erneut.",
+  "cloud.saveGoogle": "In Google Drive speichern",
+  "cloud.saveDropbox": "In Dropbox speichern",
+  "cloud.saving": "Wird in {service} gespeichert…",
+  "cloud.saved": "In {service} gespeichert.",
+  "cloud.saveFailed": "Die Datei konnte nicht in {service} gespeichert werden. Prüfen Sie, ob Pop-ups erlaubt sind, und versuchen Sie es erneut.",
+};
 export default share;

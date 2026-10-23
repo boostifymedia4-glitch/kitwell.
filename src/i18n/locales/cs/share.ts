@@ -1,4 +1,34 @@
 import type { PartialMessages } from '../../en';
 
-const share: PartialMessages = {};
+const share: PartialMessages = {
+  "page.share.name": "Sdílený soubor",
+  "meta.share.title": "Sdílený soubor | {site}",
+  "meta.share.description": "Stáhněte si soubor, který s vámi byl sdílen přes dočasný odkaz {site}.",
+  "share.create": "Získat odkaz ke sdílení",
+  "share.creating": "Nahrávání…",
+  "share.hint": "Vytvoří dočasný odkaz ke stažení a QR kód. Soubor se na {hours} h nahraje na náš server a poté se smaže. Stáhnout ho může každý, kdo má odkaz.",
+  "share.ready": "Váš odkaz je připraven. Funguje do {time}, poté se soubor smaže.",
+  "share.link": "Odkaz ke sdílení",
+  "share.qrAlt": "QR kód odkazu ke sdílení",
+  "share.err.tooLarge": "Tento soubor je příliš velký ke sdílení (limit {max}).",
+  "share.err.rateLimit": "Bylo vytvořeno příliš mnoho odkazů ke sdílení. Zkuste to znovu za několik minut.",
+  "share.err.failed": "Odkaz ke sdílení se nepodařilo vytvořit. Zkuste to znovu.",
+  "share.page.title": "Stáhnout sdílený soubor",
+  "share.page.loading": "Hledání souboru…",
+  "share.page.notFound": "Platnost tohoto odkazu vypršela nebo neexistuje. Sdílené soubory se po omezené době automaticky mažou.",
+  "share.page.error": "Soubor se nepodařilo vyhledat. Zkuste to později.",
+  "share.page.noId": "Tento odkaz je neúplný. Požádejte odesílatele, aby ho sdílel znovu.",
+  "share.page.info": "{size} · dostupný do {time}",
+  "share.page.download": "Stáhnout {name}",
+  "share.page.note": "Stahujte jen soubory od lidí, kterým věříte. Soubor nebyl zkontrolován.",
+  "cloud.or": "Nebo vyberte soubor z",
+  "cloud.google": "Google Drive",
+  "cloud.dropbox": "Dropbox",
+  "cloud.pickFailed": "Soubor se nepodařilo načíst z {service}. Zkontrolujte, zda jsou povolena vyskakovací okna, a zkuste to znovu.",
+  "cloud.saveGoogle": "Uložit na Google Drive",
+  "cloud.saveDropbox": "Uložit do Dropboxu",
+  "cloud.saving": "Ukládání do {service}…",
+  "cloud.saved": "Uloženo do {service}.",
+  "cloud.saveFailed": "Soubor se nepodařilo uložit do {service}. Zkontrolujte, zda jsou povolena vyskakovací okna, a zkuste to znovu.",
+};
 export default share;

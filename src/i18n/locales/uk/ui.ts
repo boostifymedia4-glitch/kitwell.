@@ -58,4 +58,12 @@ export default {
   'tool.faq': 'Поширені запитання',
   'tool.related': 'Схожі інструменти',
   'tool.allInCategory': 'Усі інструменти: {category}',
+  "ui.fileName": "Назва файлу",
+  "ui.showPreview": "Попередній перегляд",
+  "ui.hidePreview": "Сховати попередній перегляд",
+  "ui.previewAlt": "Попередній перегляд сторінки {page}",
+  "ui.previewPage": "Сторінка {page} з {total}",
+  "ui.previewPrev": "Попередня сторінка",
+  "ui.previewNext": "Наступна сторінка",
+  "ui.previewFailed": "Не вдалося показати попередній перегляд. Файл усе одно можна завантажити.",
 } as PartialMessages;

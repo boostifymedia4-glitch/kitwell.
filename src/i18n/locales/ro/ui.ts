@@ -56,4 +56,12 @@ export default {
   'tool.faq': 'Întrebări frecvente',
   'tool.related': 'Instrumente similare',
   'tool.allInCategory': 'Toate instrumentele din categoria {category}',
+  "ui.fileName": "Numele fișierului",
+  "ui.showPreview": "Previzualizare",
+  "ui.hidePreview": "Ascunde previzualizarea",
+  "ui.previewAlt": "Previzualizare a paginii {page}",
+  "ui.previewPage": "Pagina {page} din {total}",
+  "ui.previewPrev": "Pagina anterioară",
+  "ui.previewNext": "Pagina următoare",
+  "ui.previewFailed": "Previzualizarea nu a putut fi afișată. Poți descărca totuși fișierul.",
 } as PartialMessages;

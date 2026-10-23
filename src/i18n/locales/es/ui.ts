@@ -56,4 +56,12 @@ export default {
   'tool.faq': 'Preguntas frecuentes',
   'tool.related': 'Herramientas relacionadas',
   'tool.allInCategory': 'Todas las herramientas de {category}',
+  "ui.fileName": "Nombre del archivo",
+  "ui.showPreview": "Vista previa",
+  "ui.hidePreview": "Ocultar vista previa",
+  "ui.previewAlt": "Vista previa de la página {page}",
+  "ui.previewPage": "Página {page} de {total}",
+  "ui.previewPrev": "Página anterior",
+  "ui.previewNext": "Página siguiente",
+  "ui.previewFailed": "No se pudo mostrar la vista previa. Aun así puedes descargar el archivo.",
 } as PartialMessages;

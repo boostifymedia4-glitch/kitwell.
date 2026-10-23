@@ -56,4 +56,12 @@ export default {
   'tool.faq': 'Domande frequenti',
   'tool.related': 'Strumenti correlati',
   'tool.allInCategory': 'Tutti gli strumenti: {category}',
+  "ui.fileName": "Nome del file",
+  "ui.showPreview": "Anteprima",
+  "ui.hidePreview": "Nascondi anteprima",
+  "ui.previewAlt": "Anteprima della pagina {page}",
+  "ui.previewPage": "Pagina {page} di {total}",
+  "ui.previewPrev": "Pagina precedente",
+  "ui.previewNext": "Pagina successiva",
+  "ui.previewFailed": "Non è stato possibile mostrare l’anteprima. Puoi comunque scaricare il file.",
 } as PartialMessages;

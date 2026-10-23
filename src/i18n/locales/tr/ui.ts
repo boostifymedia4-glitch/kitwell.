@@ -54,4 +54,12 @@ export default {
   'tool.faq': 'Sık sorulan sorular',
   'tool.related': 'İlgili araçlar',
   'tool.allInCategory': 'Tüm {category} araçları',
+  "ui.fileName": "Dosya adı",
+  "ui.showPreview": "Önizleme",
+  "ui.hidePreview": "Önizlemeyi gizle",
+  "ui.previewAlt": "{page}. sayfanın önizlemesi",
+  "ui.previewPage": "Sayfa {page} / {total}",
+  "ui.previewPrev": "Önceki sayfa",
+  "ui.previewNext": "Sonraki sayfa",
+  "ui.previewFailed": "Önizleme gösterilemedi. Dosyayı yine de indirebilirsiniz.",
 } as PartialMessages;

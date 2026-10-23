@@ -57,4 +57,12 @@ export default {
   'tool.faq': 'Questions fréquentes',
   'tool.related': 'Outils associés',
   'tool.allInCategory': 'Tous les outils {category}',
+  "ui.fileName": "Nom du fichier",
+  "ui.showPreview": "Aperçu",
+  "ui.hidePreview": "Masquer l’aperçu",
+  "ui.previewAlt": "Aperçu de la page {page}",
+  "ui.previewPage": "Page {page} sur {total}",
+  "ui.previewPrev": "Page précédente",
+  "ui.previewNext": "Page suivante",
+  "ui.previewFailed": "L’aperçu n’a pas pu être affiché. Vous pouvez quand même télécharger le fichier.",
 } as PartialMessages;

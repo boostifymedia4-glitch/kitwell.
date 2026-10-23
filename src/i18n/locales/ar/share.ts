@@ -1,4 +1,34 @@
 import type { PartialMessages } from '../../en';
 
-const share: PartialMessages = {};
+const share: PartialMessages = {
+  "page.share.name": "ملف مشترك",
+  "meta.share.title": "ملف مشترك | {site}",
+  "meta.share.description": "نزّل ملفًا شُورك معك عبر رابط {site} مؤقت.",
+  "share.create": "احصل على رابط مشاركة",
+  "share.creating": "جارٍ الرفع…",
+  "share.hint": "ينشئ رابط تنزيل مؤقتًا ورمز QR. يُرفع الملف إلى خادمنا لمدة {hours} ساعة ثم يُحذف. يمكن لأي شخص لديه الرابط تنزيله.",
+  "share.ready": "رابطك جاهز. يعمل حتى {time}، وبعد ذلك يُحذف الملف.",
+  "share.link": "رابط المشاركة",
+  "share.qrAlt": "رمز QR لرابط المشاركة",
+  "share.err.tooLarge": "هذا الملف أكبر من أن يُشارك (الحد {max}).",
+  "share.err.rateLimit": "أُنشئ عدد كبير جدًا من روابط المشاركة. يُرجى المحاولة مجددًا بعد بضع دقائق.",
+  "share.err.failed": "تعذّر إنشاء رابط المشاركة. يُرجى المحاولة مجددًا.",
+  "share.page.title": "تنزيل ملف مشترك",
+  "share.page.loading": "جارٍ البحث عن الملف…",
+  "share.page.notFound": "انتهت صلاحية هذا الرابط أو أنه غير موجود. تُحذف الملفات المشتركة تلقائيًا بعد مدة محدودة.",
+  "share.page.error": "تعذّر البحث عن الملف. يُرجى المحاولة لاحقًا.",
+  "share.page.noId": "هذا الرابط غير مكتمل. اطلب من المرسل مشاركته مجددًا.",
+  "share.page.info": "{size} · متاح حتى {time}",
+  "share.page.download": "تنزيل {name}",
+  "share.page.note": "نزّل الملفات من أشخاص تثق بهم فقط. لم يُفحص هذا الملف.",
+  "cloud.or": "أو اختر ملفًا من",
+  "cloud.google": "Google Drive",
+  "cloud.dropbox": "Dropbox",
+  "cloud.pickFailed": "تعذّر تحميل الملف من {service}. تأكد من السماح بالنوافذ المنبثقة ثم حاول مجددًا.",
+  "cloud.saveGoogle": "الحفظ في Google Drive",
+  "cloud.saveDropbox": "الحفظ في Dropbox",
+  "cloud.saving": "جارٍ الحفظ في {service}…",
+  "cloud.saved": "تم الحفظ في {service}.",
+  "cloud.saveFailed": "تعذّر حفظ الملف في {service}. تأكد من السماح بالنوافذ المنبثقة ثم حاول مجددًا.",
+};
 export default share;

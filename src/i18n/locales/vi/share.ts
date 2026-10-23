@@ -1,4 +1,34 @@
 import type { PartialMessages } from '../../en';
 
-const share: PartialMessages = {};
+const share: PartialMessages = {
+  "page.share.name": "Tệp được chia sẻ",
+  "meta.share.title": "Tệp được chia sẻ | {site}",
+  "meta.share.description": "Tải xuống tệp được chia sẻ với bạn qua một liên kết {site} tạm thời.",
+  "share.create": "Lấy liên kết chia sẻ",
+  "share.creating": "Đang tải lên…",
+  "share.hint": "Tạo một liên kết tải xuống tạm thời và mã QR. Tệp được tải lên máy chủ của chúng tôi trong {hours} giờ rồi bị xóa. Bất kỳ ai có liên kết đều có thể tải xuống.",
+  "share.ready": "Liên kết của bạn đã sẵn sàng. Nó hoạt động đến {time}, sau đó tệp sẽ bị xóa.",
+  "share.link": "Liên kết chia sẻ",
+  "share.qrAlt": "Mã QR của liên kết chia sẻ",
+  "share.err.tooLarge": "Tệp này quá lớn để chia sẻ (giới hạn {max}).",
+  "share.err.rateLimit": "Đã tạo quá nhiều liên kết chia sẻ. Vui lòng thử lại sau vài phút.",
+  "share.err.failed": "Không thể tạo liên kết chia sẻ. Vui lòng thử lại.",
+  "share.page.title": "Tải xuống tệp được chia sẻ",
+  "share.page.loading": "Đang tìm tệp…",
+  "share.page.notFound": "Liên kết này đã hết hạn hoặc không tồn tại. Các tệp được chia sẻ sẽ tự động bị xóa sau một thời gian giới hạn.",
+  "share.page.error": "Không thể tra cứu tệp. Vui lòng thử lại sau.",
+  "share.page.noId": "Liên kết này chưa đầy đủ. Hãy nhờ người gửi chia sẻ lại.",
+  "share.page.info": "{size} · khả dụng đến {time}",
+  "share.page.download": "Tải xuống {name}",
+  "share.page.note": "Chỉ tải tệp từ những người bạn tin tưởng. Tệp chưa được kiểm tra.",
+  "cloud.or": "Hoặc chọn tệp từ",
+  "cloud.google": "Google Drive",
+  "cloud.dropbox": "Dropbox",
+  "cloud.pickFailed": "Không thể tải tệp từ {service}. Hãy kiểm tra xem cửa sổ bật lên có được cho phép không rồi thử lại.",
+  "cloud.saveGoogle": "Lưu vào Google Drive",
+  "cloud.saveDropbox": "Lưu vào Dropbox",
+  "cloud.saving": "Đang lưu vào {service}…",
+  "cloud.saved": "Đã lưu vào {service}.",
+  "cloud.saveFailed": "Không thể lưu tệp vào {service}. Hãy kiểm tra xem cửa sổ bật lên có được cho phép không rồi thử lại.",
+};
 export default share;

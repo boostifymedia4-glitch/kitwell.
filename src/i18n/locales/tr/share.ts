@@ -1,4 +1,34 @@
 import type { PartialMessages } from '../../en';
 
-const share: PartialMessages = {};
+const share: PartialMessages = {
+  "page.share.name": "Paylaşılan dosya",
+  "meta.share.title": "Paylaşılan dosya | {site}",
+  "meta.share.description": "Sizinle geçici bir {site} bağlantısıyla paylaşılan bir dosyayı indirin.",
+  "share.create": "Paylaşım bağlantısı al",
+  "share.creating": "Yükleniyor…",
+  "share.hint": "Geçici bir indirme bağlantısı ve QR kodu oluşturur. Dosya sunucumuza {hours} saat süreyle yüklenir ve sonra silinir. Bağlantıya sahip herkes indirebilir.",
+  "share.ready": "Bağlantınız hazır. {time} tarihine kadar çalışır, ardından dosya silinir.",
+  "share.link": "Paylaşım bağlantısı",
+  "share.qrAlt": "Paylaşım bağlantısı için QR kodu",
+  "share.err.tooLarge": "Bu dosya paylaşılamayacak kadar büyük (sınır {max}).",
+  "share.err.rateLimit": "Çok fazla paylaşım bağlantısı oluşturuldu. Lütfen birkaç dakika sonra tekrar deneyin.",
+  "share.err.failed": "Paylaşım bağlantısı oluşturulamadı. Lütfen tekrar deneyin.",
+  "share.page.title": "Paylaşılan bir dosyayı indir",
+  "share.page.loading": "Dosya aranıyor…",
+  "share.page.notFound": "Bu bağlantının süresi dolmuş veya mevcut değil. Paylaşılan dosyalar sınırlı bir süre sonra otomatik olarak silinir.",
+  "share.page.error": "Dosya sorgulanamadı. Lütfen daha sonra tekrar deneyin.",
+  "share.page.noId": "Bu bağlantı eksik. Göndericiden yeniden paylaşmasını isteyin.",
+  "share.page.info": "{size} · {time} tarihine kadar kullanılabilir",
+  "share.page.download": "{name} dosyasını indir",
+  "share.page.note": "Yalnızca güvendiğiniz kişilerin dosyalarını indirin. Dosya kontrol edilmedi.",
+  "cloud.or": "Veya şuradan bir dosya seçin:",
+  "cloud.google": "Google Drive",
+  "cloud.dropbox": "Dropbox",
+  "cloud.pickFailed": "Dosya {service} üzerinden yüklenemedi. Açılır pencerelere izin verildiğini kontrol edip tekrar deneyin.",
+  "cloud.saveGoogle": "Google Drive'a kaydet",
+  "cloud.saveDropbox": "Dropbox'a kaydet",
+  "cloud.saving": "{service} üzerine kaydediliyor…",
+  "cloud.saved": "{service} üzerine kaydedildi.",
+  "cloud.saveFailed": "Dosya {service} üzerine kaydedilemedi. Açılır pencerelere izin verildiğini kontrol edip tekrar deneyin.",
+};
 export default share;

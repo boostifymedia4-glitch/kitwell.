@@ -52,4 +52,12 @@ export default {
   'tool.faq': '자주 묻는 질문',
   'tool.related': '관련 도구',
   'tool.allInCategory': '{category} 도구 모두 보기',
+  "ui.fileName": "파일 이름",
+  "ui.showPreview": "미리보기",
+  "ui.hidePreview": "미리보기 숨기기",
+  "ui.previewAlt": "{page}페이지 미리보기",
+  "ui.previewPage": "{total}페이지 중 {page}페이지",
+  "ui.previewPrev": "이전 페이지",
+  "ui.previewNext": "다음 페이지",
+  "ui.previewFailed": "미리보기를 표시할 수 없습니다. 파일은 그대로 다운로드할 수 있습니다.",
 } as PartialMessages;

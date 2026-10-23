@@ -33,7 +33,7 @@ export default {
   'imageCompress.maxSize.800': '800 px',
   'imageCompress.background': 'Fundal pentru transparență',
   'imageCompress.noteSmaller': '{before} → {after} (-{saved}%)',
-  'imageCompress.noteLarger': '{before} → {after} (mai mare; păstrați originalul sau reduceți calitatea)',
+  "imageCompress.noteLarger": "{before} → {after} (nu este mai mic, așa că fișierul original a fost păstrat)",
 
   'imageResize.action': 'Redimensionează imaginile',
   'imageResize.resizeBy': 'Redimensionare după',

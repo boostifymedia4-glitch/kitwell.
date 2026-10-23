@@ -32,7 +32,7 @@ export default {
   'imageCompress.maxSize.800': '800 px',
   'imageCompress.background': 'Achtergrond voor transparantie',
   'imageCompress.noteSmaller': '{before} → {after} (-{saved}%)',
-  'imageCompress.noteLarger': '{before} → {after} (groter; bewaar het origineel of verlaag de kwaliteit)',
+  "imageCompress.noteLarger": "{before} → {after} (niet kleiner, dus het originele bestand is behouden)",
 
   'imageResize.action': 'Formaat van afbeeldingen wijzigen',
   'imageResize.resizeBy': 'Formaat wijzigen op basis van',
