@@ -6,6 +6,7 @@ import pages from './pages';
 import help from './help';
 import legal from './legal';
 import errors from './errors';
+import about from './about';
 import toolsImageA from './toolsImageA';
 import toolsImageB from './toolsImageB';
 import toolsPdfA from './toolsPdfA';
@@ -17,5 +18,5 @@ import blog from './blog';
 export { default as tools } from './tools';
 
 /** Everything translated for this language, merged. */
-const messages: PartialMessages = { ...shell, ...ui, ...registry, ...pages, ...help, ...legal, ...errors, ...toolsImageA, ...toolsImageB, ...toolsPdfA, ...toolsPdfB, ...toolsPdfC, ...toolsTextDev, ...blog };
+const messages: PartialMessages = { ...shell, ...ui, ...registry, ...pages, ...help, ...legal, ...errors, ...about, ...toolsImageA, ...toolsImageB, ...toolsPdfA, ...toolsPdfB, ...toolsPdfC, ...toolsTextDev, ...blog };
 export default messages;

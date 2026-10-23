@@ -1,4 +1,6 @@
 import { site } from '@/config/site';
+import { tools } from '@/tools/registry';
+import { LANGUAGES } from './languages';
 import { buildFaq } from '@/pages/helpData';
 import type { Localizer } from '@/pageMeta';
 import type { PartialMessages } from './en';
@@ -15,7 +17,7 @@ const keyOf = (path: string) => (path === '/' ? 'home' : path.replace(/^\//, '')
 export function makeLocalizer(code: string, messages: PartialMessages, toolText: ToolTextMap): Localizer {
   const t = (key: string, vars?: Vars) => translateWith(code, messages, key, vars);
   const loc = makeLocalize(t, toolText, code);
-  const v = { site: site.name };
+  const v = { site: site.name, tools: tools.length, languages: LANGUAGES.length };
   return {
     staticPage: (p) => {
       const k = keyOf(p);

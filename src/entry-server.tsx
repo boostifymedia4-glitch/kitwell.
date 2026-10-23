@@ -32,7 +32,7 @@ export async function render(url: string) {
 export { allPaths };
 
 /** Paths that exist only in English (blog articles) and the date each was last changed, for the sitemap. */
-export const englishOnlyPaths = new Set([...posts.map((p) => postPath(p.slug)), '/about']);
+export const englishOnlyPaths = new Set(posts.map((p) => postPath(p.slug)));
 export const lastModified = (path: string): string | undefined => posts.find((p) => postPath(p.slug) === path)?.updated;
 export const languageCodes = LANGUAGES.map((l) => l.code);
 export const siteUrl = site.url;

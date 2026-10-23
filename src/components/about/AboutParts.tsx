@@ -105,7 +105,7 @@ const PHOTO = '/images/founder/ubaid-ullah';
  * a gentle float, an entrance, a pointer tilt with a light sheen (fine pointers only) and a "Founder & CEO" pill.
  * Every looping effect is switched off by CSS for visitors who prefer reduced motion.
  */
-export function FounderPhoto({ size = 'hero', pill = 'Founder & CEO', priority = false }: { size?: 'hero' | 'small'; pill?: string; priority?: boolean }) {
+export function FounderPhoto({ size = 'hero', pill, alt, priority = false }: { size?: 'hero' | 'small'; pill: string; alt: string; priority?: boolean }) {
   const tilt = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const el = tilt.current;
@@ -149,7 +149,7 @@ export function FounderPhoto({ size = 'hero', pill = 'Founder & CEO', priority =
                 src={`${PHOTO}.jpg`}
                 width={413}
                 height={531}
-                alt="Ubaid Ullah, founder of Kitwell"
+                alt={alt}
                 fetchPriority={priority ? 'high' : undefined}
                 loading={priority ? undefined : 'lazy'}
                 decoding="async"

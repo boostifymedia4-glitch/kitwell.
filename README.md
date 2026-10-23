@@ -64,7 +64,7 @@ Without `CONTACT_WEBHOOK_URL` the page says the form is not connected and the en
 
 ## About page
 
-`/about` is a founder-led story (`src/pages/About.tsx`, text in `src/pages/aboutContent.ts`, styles in `src/styles/about.css`, photo component in `src/components/about/AboutParts.tsx`). Like the blog it is **English only**: other languages show the English text, are `noindex` and point their canonical address at the English page. The tool and language counts are read from the registry and the language list, never typed. The portrait lives in `public/images/founder/` (`ubaid-ullah.jpg`, `.webp` and the 1200x630 social card `ubaid-ullah-og.jpg`). Looping effects (turning ring, glow, orbits, float, belief-block sweep) and the pointer tilt switch off for visitors who prefer reduced motion.
+`/about` is a founder-led story (`src/pages/About.tsx`, page structure in `src/pages/aboutContent.ts`, text in the translation catalog (`src/i18n/en/about.ts` and one `about.ts` per language), styles in `src/styles/about.css`, photo component in `src/components/about/AboutParts.tsx`). It is translated into all 25 languages like every other page (Urdu, Arabic and Persian render right to left). The tool and language counts are read from the registry and the language list, never typed. The portrait lives in `public/images/founder/` (`ubaid-ullah.jpg`, `.webp` and the 1200x630 social card `ubaid-ullah-og.jpg`). Looping effects (turning ring, glow, orbits, float, belief-block sweep) and the pointer tilt switch off for visitors who prefer reduced motion.
 
 ## Convert-to-PDF and repair tools
 

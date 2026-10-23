@@ -5,7 +5,6 @@ import { allHelpItems } from '@/pages/helpData';
 import { categories, categoryPath, getCategory, getTool, toolPath, toolTitle, tools } from '@/tools/registry';
 import type { Category, FaqItem, ToolDef } from '@/tools/types';
 import { getPost, postImage, postPath, posts } from '@/blog/posts';
-import { LANGUAGES } from '@/i18n/languages';
 import { en } from '@/i18n/en';
 
 export interface Crumb {
@@ -131,15 +130,10 @@ const breadcrumbLd = (path: string, l: Localizer) => ({
   })),
 });
 
-/**
- * The About page is written in English only: other languages show the English text, are not indexed and point their
- * canonical address at the English page. The tool and language counts come from the real data, never from typed numbers.
- */
-function aboutMeta(l: Localizer): PageMeta {
-  const url = canonicalFor('/about', 'en');
+/** The About page: translated like every page; the tool and language counts come from the real data, never from typed numbers. */
+function aboutMeta(l: Localizer, title: string, description: string): PageMeta {
+  const url = canonicalFor('/about', l.lang);
   const image = '/images/founder/ubaid-ullah-og.jpg';
-  const title = `About ${site.name} - Built by One Founder | Free Online Tools`;
-  const description = `Meet ${site.author.name}, the 20-year-old student from Karachi who built ${site.name} alone: ${tools.length} free online tools in ${LANGUAGES.length} languages.`;
   const person = {
     '@type': 'Person',
     '@id': `${url}#person`,
@@ -148,18 +142,16 @@ function aboutMeta(l: Localizer): PageMeta {
     url,
     image: absoluteUrl('/images/founder/ubaid-ullah.jpg'),
     sameAs: [site.author.profile],
-    worksFor: { '@type': 'Organization', name: site.name, url: canonicalFor('/', 'en') },
+    worksFor: { '@type': 'Organization', name: site.name, url: canonicalFor('/', l.lang) },
   };
   return {
     title,
     description,
     path: '/about',
     image,
-    englishOnly: true,
-    noindex: l.lang !== 'en',
     jsonLd: [
-      breadcrumbLd('/about', englishLocalizer),
-      { '@context': 'https://schema.org', '@type': 'AboutPage', name: title, description, url, inLanguage: 'en', mainEntity: { '@id': `${url}#person` }, primaryImageOfPage: absoluteUrl(image) },
+      breadcrumbLd('/about', l),
+      { '@context': 'https://schema.org', '@type': 'AboutPage', name: title, description, url, inLanguage: l.lang, mainEntity: { '@id': `${url}#person` }, primaryImageOfPage: absoluteUrl(image) },
       { '@context': 'https://schema.org', ...person },
     ],
   };
@@ -181,7 +173,7 @@ export function getPageMeta(path: string, l: Localizer = englishLocalizer): Page
     if (path === '/') {
       jsonLd.push({ '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, url: canonicalFor('/', l.lang), description: site.tagline });
     }
-    if (path === '/about') return aboutMeta(l);
+    if (path === '/about') return aboutMeta(l, sp.title, sp.description);
     return { title: sp.title, description: sp.description, path, jsonLd };
   }
 
