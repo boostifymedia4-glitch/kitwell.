@@ -51,7 +51,7 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: "¿Es WebP más pequeño que JPG?", a: "Normalmente entre un 20 y un 35 % más pequeño con una calidad visual similar, aunque el resultado depende de la imagen." },
-      { q: "¿Todos los navegadores admiten WebP?", a: "Todos los navegadores principales actuales pueden mostrar WebP. La codificación de WebP en el navegador es compatible con Chrome, Edge, Firefox y las versiones recientes de Safari; si el tuyo no puede, la herramienta te lo dice en lugar de producir un archivo erróneo." },
+      { q: "¿Todos los navegadores admiten WebP?", a: "Todos los navegadores principales actuales pueden mostrar WebP. La codificación de WebP en el navegador funciona en Chrome, Edge y Firefox; Safari no puede crear archivos WebP y, en ese caso, la herramienta se lo indica en lugar de producir un archivo incorrecto." },
     ],
     limits: [
       "Los archivos GIF o WebP animados se convierten usando solo su primer fotograma.",

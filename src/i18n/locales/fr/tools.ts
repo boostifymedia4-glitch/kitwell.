@@ -51,7 +51,7 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: "Le WebP est-il plus léger que le JPG ?", a: "En général 20 à 35 % plus léger à qualité visuelle similaire, mais le résultat dépend de l’image." },
-      { q: "Tous les navigateurs prennent-ils en charge le WebP ?", a: "Tous les principaux navigateurs actuels savent afficher le WebP. L’encodage WebP dans le navigateur est pris en charge par Chrome, Edge, Firefox et les versions récentes de Safari ; si le vôtre ne le peut pas, l’outil vous le dit au lieu de produire un fichier erroné." },
+      { q: "Tous les navigateurs prennent-ils en charge le WebP ?", a: "Tous les principaux navigateurs actuels savent afficher le WebP. L’encodage WebP dans le navigateur fonctionne dans Chrome, Edge et Firefox ; Safari ne peut pas créer de fichiers WebP, et l’outil vous le signale au lieu de produire un fichier erroné." },
     ],
     limits: [
       "Les fichiers GIF ou WebP animés sont convertis à partir de leur première image uniquement.",

@@ -51,7 +51,7 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: "WebP 比 JPG 小吗？", a: "在视觉质量相近的情况下，通常小 20–35%，但结果取决于图片。" },
-      { q: "所有浏览器都支持 WebP 吗？", a: "当前所有主流浏览器都能显示 WebP。在浏览器中编码 WebP 受 Chrome、Edge、Firefox 和较新的 Safari 支持；如果你的浏览器不行，工具会告诉你，而不是生成错误的文件。" },
+      { q: "所有浏览器都支持 WebP 吗？", a: "当前所有主流浏览器都能显示 WebP。在浏览器中编码 WebP 可在 Chrome、Edge 和 Firefox 中使用；Safari 无法生成 WebP 文件，此时工具会提示您，而不会生成错误的文件。" },
     ],
     limits: [
       "动画 GIF 或 WebP 文件仅按其第一帧转换。",

@@ -51,7 +51,7 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: "Apakah WebP lebih kecil dari JPG?", a: "Biasanya 20–35% lebih kecil pada kualitas visual yang serupa, meski hasilnya bergantung pada gambar." },
-      { q: "Apakah semua peramban mendukung WebP?", a: "Semua peramban utama saat ini dapat menampilkan WebP. Pengodean WebP di peramban didukung di Chrome, Edge, Firefox, dan Safari terbaru; jika peramban Anda tidak bisa, alat ini memberi tahu Anda alih-alih menghasilkan file yang salah." },
+      { q: "Apakah semua peramban mendukung WebP?", a: "Semua peramban utama saat ini dapat menampilkan WebP. Pengodean WebP di peramban berfungsi di Chrome, Edge, dan Firefox; Safari tidak dapat membuat berkas WebP, dan dalam kasus itu alat memberi tahu Anda alih-alih menghasilkan berkas yang salah." },
     ],
     limits: [
       "File GIF atau WebP beranimasi dikonversi hanya dari bingkai pertamanya.",

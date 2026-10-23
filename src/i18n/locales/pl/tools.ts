@@ -50,7 +50,7 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: "Czy WebP jest mniejszy niż JPG?", a: "Zwykle o 20–35% mniejszy przy podobnej jakości obrazu, choć wynik zależy od obrazu." },
-      { q: "Czy każda przeglądarka obsługuje WebP?", a: "Wszystkie obecne główne przeglądarki potrafią wyświetlać WebP. Kodowanie WebP w przeglądarce obsługują Chrome, Edge, Firefox i nowsze wersje Safari; jeśli Twoja nie potrafi, narzędzie to zgłosi, zamiast tworzyć błędny plik." },
+      { q: "Czy każda przeglądarka obsługuje WebP?", a: "Wszystkie obecne główne przeglądarki potrafią wyświetlać WebP. Kodowanie WebP w przeglądarce działa w Chrome, Edge i Firefoksie; Safari nie potrafi tworzyć plików WebP, a narzędzie poinformuje o tym zamiast tworzyć błędny plik." },
     ],
     limits: [
       "Animowane pliki GIF lub WebP są konwertowane wyłącznie na podstawie pierwszej klatki.",

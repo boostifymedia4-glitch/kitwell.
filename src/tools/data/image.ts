@@ -93,7 +93,7 @@ export const imageTools: ToolDef[] = [
       },
       {
         q: 'Does every browser support WebP?',
-        a: 'All current major browsers can display WebP. Encoding WebP in the browser is supported in Chrome, Edge, Firefox and recent Safari; if yours cannot, the tool tells you instead of producing a wrong file.',
+        a: 'All current major browsers can display WebP. Encoding WebP in the browser works in Chrome, Edge and Firefox; Safari cannot create WebP files, and in that case the tool tells you instead of producing a wrong file.',
       },
     ],
     limits: [...convertLimits, 'Your browser must support WebP encoding; unsupported browsers show an error.'],

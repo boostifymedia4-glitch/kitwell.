@@ -57,7 +57,7 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: "WebP, JPG'den küçük müdür?", a: "Benzer görsel kalitede genellikle %20–35 daha küçüktür, ancak sonuç görsele bağlıdır." },
-      { q: "Her tarayıcı WebP'yi destekler mi?", a: "Tüm güncel büyük tarayıcılar WebP'yi görüntüleyebilir. Tarayıcıda WebP kodlama Chrome, Edge, Firefox ve yeni Safari'de desteklenir; sizinki yapamıyorsa araç yanlış bir dosya üretmek yerine bunu size söyler." },
+      { q: "Her tarayıcı WebP'yi destekler mi?", a: "Tüm güncel büyük tarayıcılar WebP'yi görüntüleyebilir. Tarayıcıda WebP kodlama Chrome, Edge ve Firefox’ta çalışır; Safari WebP dosyası oluşturamaz ve bu durumda araç yanlış bir dosya üretmek yerine sizi bilgilendirir." },
     ],
     limits: [
       "Animasyonlu GIF veya WebP dosyaları yalnızca ilk karelerine göre dönüştürülür.",

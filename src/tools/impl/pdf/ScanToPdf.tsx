@@ -24,7 +24,7 @@ async function preparePage(file: File, filter: ScanFilter, t: (key: string) => s
     // onload instead of decode(): decode() never settles while the tab is in the background
     await new Promise<void>((resolve, reject) => {
       img.onload = () => resolve();
-      img.onerror = () => reject(new Error('image could not be decoded'));
+      img.onerror = () => reject(new Error(t('err.image.unreadable')));
     });
     const { width, height } = scaledSize(img.naturalWidth, img.naturalHeight);
     const canvas = document.createElement('canvas');

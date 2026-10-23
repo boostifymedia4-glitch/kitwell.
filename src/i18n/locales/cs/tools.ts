@@ -56,7 +56,7 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: "Je WebP menší než JPG?", a: "Obvykle o 20–35 % menší při podobné vizuální kvalitě, výsledek ale závisí na obrázku." },
-      { q: "Podporuje WebP každý prohlížeč?", a: "Všechny současné hlavní prohlížeče umí WebP zobrazit. Kódování WebP v prohlížeči podporují Chrome, Edge, Firefox a novější Safari; pokud to ten váš neumí, nástroj vám to řekne, místo aby vytvořil chybný soubor." },
+      { q: "Podporuje WebP každý prohlížeč?", a: "Všechny současné hlavní prohlížeče umí WebP zobrazit. Kódování WebP v prohlížeči funguje v Chrome, Edge a Firefoxu; Safari soubory WebP vytvořit neumí a nástroj vám to v takovém případě oznámí, místo aby vytvořil chybný soubor." },
     ],
     limits: [
       "Animované soubory GIF nebo WebP se převádějí jen podle prvního snímku.",

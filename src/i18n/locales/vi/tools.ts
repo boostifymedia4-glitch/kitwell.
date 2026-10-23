@@ -50,7 +50,7 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: "WebP có nhỏ hơn JPG không?", a: "Thường nhỏ hơn 20–35% ở chất lượng hình ảnh tương đương, tuy kết quả còn tùy từng ảnh." },
-      { q: "Trình duyệt nào cũng hỗ trợ WebP chứ?", a: "Mọi trình duyệt lớn hiện nay đều hiển thị được WebP. Mã hóa WebP trong trình duyệt được hỗ trợ ở Chrome, Edge, Firefox và Safari bản mới; nếu trình duyệt của bạn không làm được, công cụ sẽ báo cho bạn thay vì tạo ra tệp sai." },
+      { q: "Trình duyệt nào cũng hỗ trợ WebP chứ?", a: "Mọi trình duyệt lớn hiện nay đều hiển thị được WebP. Việc mã hóa WebP trong trình duyệt hoạt động trên Chrome, Edge và Firefox; Safari không thể tạo tệp WebP, và khi đó công cụ sẽ báo cho bạn thay vì tạo ra một tệp sai." },
     ],
     limits: [
       "Tệp GIF hoặc WebP động chỉ được chuyển đổi từ khung hình đầu tiên.",
