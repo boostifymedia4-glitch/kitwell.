@@ -89,15 +89,6 @@ export const articles: BlogPost[] = [
         id: 's5.p1'
       },
       {
-        type: 'ul',
-        id: 's5.l1',
-        items: 3
-      },
-      {
-        type: 'p',
-        id: 's5.p2'
-      },
-      {
         type: 'h2',
         id: 's6.h'
       },
@@ -304,6 +295,2356 @@ export const articles: BlogPost[] = [
     ]
   },
   {
+    slug: 'how-to-add-a-watermark-to-a-pdf',
+    published: '2026-10-23',
+    updated: '2026-10-23',
+    minutes: 6,
+    tool: 'watermark-pdf',
+    tools: [
+      'watermark-pdf',
+      'protect-pdf',
+      'add-page-numbers',
+      'redact-pdf',
+      'merge-pdf',
+      'compress-pdf'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'ul',
+        id: 's1.l1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ol',
+        id: 's2.o1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ul',
+        id: 's4.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'ul',
+        id: 's6.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'ul',
+        id: 's7.l1',
+        items: 2
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'ol',
+        id: 's8.o1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's8.p2'
+      },
+      {
+        type: 'p',
+        id: 's8.p3'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ul',
+        id: 's9.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ol',
+        id: 's10.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-add-page-numbers-to-a-pdf',
+    published: '2026-10-23',
+    updated: '2026-10-23',
+    minutes: 6,
+    tool: 'add-page-numbers',
+    tools: [
+      'add-page-numbers',
+      'merge-pdf',
+      'rotate-pdf',
+      'watermark-pdf',
+      'extract-pdf-pages',
+      'compress-pdf'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'ul',
+        id: 's1.l1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ol',
+        id: 's2.o1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ul',
+        id: 's3.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ul',
+        id: 's4.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'p',
+        id: 's4.p3'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'ul',
+        id: 's8.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'p',
+        id: 's9.p1'
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ul',
+        id: 's10.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's11.h'
+      },
+      {
+        type: 'ol',
+        id: 's11.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-compare-two-pdf-files',
+    published: '2026-10-23',
+    updated: '2026-10-23',
+    minutes: 6,
+    tool: 'compare-pdf',
+    tools: [
+      'compare-pdf',
+      'ocr-pdf',
+      'extract-pdf-text',
+      'merge-pdf',
+      'extract-pdf-pages',
+      'pdf-viewer'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'p',
+        id: 's1.p3'
+      },
+      {
+        type: 'p',
+        id: 's1.p4'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ol',
+        id: 's2.o1',
+        items: 6
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'ul',
+        id: 's3.l1',
+        items: 3
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ul',
+        id: 's4.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'ul',
+        id: 's6.l1',
+        items: 2
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'ul',
+        id: 's7.l1',
+        items: 4
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'ul',
+        id: 's8.l1',
+        items: 4
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ul',
+        id: 's9.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ol',
+        id: 's10.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-convert-excel-to-pdf',
+    published: '2026-10-23',
+    updated: '2026-10-23',
+    minutes: 6,
+    tool: 'excel-to-pdf',
+    tools: [
+      'excel-to-pdf',
+      'word-to-pdf',
+      'powerpoint-to-pdf',
+      'merge-pdf',
+      'compress-pdf',
+      'add-page-numbers'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ol',
+        id: 's2.o1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ul',
+        id: 's4.l1',
+        items: 6
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'ol',
+        id: 's7.o1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'ul',
+        id: 's8.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ul',
+        id: 's9.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ol',
+        id: 's10.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-convert-html-to-pdf',
+    published: '2026-10-23',
+    updated: '2026-10-23',
+    minutes: 5,
+    tool: 'html-to-pdf',
+    tools: [
+      'html-to-pdf',
+      'word-to-pdf',
+      'merge-pdf',
+      'compress-pdf',
+      'pdf-to-markdown',
+      'add-page-numbers'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'ul',
+        id: 's1.l1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ol',
+        id: 's2.o1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'ul',
+        id: 's4.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'ol',
+        id: 's6.o1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'ul',
+        id: 's8.l1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ul',
+        id: 's9.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ol',
+        id: 's10.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-convert-pdf-to-jpg',
+    published: '2026-10-23',
+    updated: '2026-10-23',
+    minutes: 6,
+    tool: 'pdf-to-jpg',
+    tools: [
+      'pdf-to-jpg',
+      'pdf-to-png',
+      'jpg-to-pdf',
+      'image-compressor',
+      'unlock-pdf',
+      'ocr-pdf'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ul',
+        id: 's2.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ol',
+        id: 's3.o1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ul',
+        id: 's5.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'ol',
+        id: 's6.o1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'p',
+        id: 's7.p2'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ul',
+        id: 's9.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ol',
+        id: 's10.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-convert-pdf-to-markdown',
+    published: '2026-10-23',
+    updated: '2026-10-23',
+    minutes: 5,
+    tool: 'pdf-to-markdown',
+    tools: [
+      'pdf-to-markdown',
+      'extract-pdf-text',
+      'ocr-pdf',
+      'html-to-pdf',
+      'word-to-pdf',
+      'markdown-previewer'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'ul',
+        id: 's1.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ol',
+        id: 's2.o1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ul',
+        id: 's4.l1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'ol',
+        id: 's7.o1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ul',
+        id: 's9.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ol',
+        id: 's10.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-convert-powerpoint-to-pdf',
+    published: '2026-10-23',
+    updated: '2026-10-23',
+    minutes: 5,
+    tool: 'powerpoint-to-pdf',
+    tools: [
+      'powerpoint-to-pdf',
+      'word-to-pdf',
+      'excel-to-pdf',
+      'merge-pdf',
+      'compress-pdf',
+      'extract-pdf-pages'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ol',
+        id: 's2.o1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'ul',
+        id: 's3.l1',
+        items: 6
+      },
+      {
+        type: 'p',
+        id: 's3.p3'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ol',
+        id: 's5.o1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'ul',
+        id: 's6.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'ul',
+        id: 's7.l1',
+        items: 4
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'ul',
+        id: 's8.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ol',
+        id: 's9.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-convert-webp-to-jpg',
+    published: '2026-10-23',
+    updated: '2026-10-23',
+    minutes: 5,
+    tool: 'webp-to-jpg',
+    tools: [
+      'webp-to-jpg',
+      'jpg-to-webp',
+      'png-to-webp',
+      'webp-to-png',
+      'image-compressor',
+      'image-format-converter'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'ul',
+        id: 's2.l1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ol',
+        id: 's3.o1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'ul',
+        id: 's6.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'p',
+        id: 's7.p2'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ul',
+        id: 's9.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ol',
+        id: 's10.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-create-a-qr-code',
+    published: '2026-10-23',
+    updated: '2026-10-23',
+    minutes: 6,
+    tool: 'qr-code-generator',
+    tools: [
+      'qr-code-generator',
+      'qr-code-scanner',
+      'password-generator',
+      'url-encoder-decoder',
+      'image-compressor',
+      'image-to-base64'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ul',
+        id: 's2.l1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'p',
+        id: 's2.p3'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ol',
+        id: 's3.o1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ul',
+        id: 's5.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'ul',
+        id: 's6.l1',
+        items: 2
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'ol',
+        id: 's7.o1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's7.p2'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ul',
+        id: 's9.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ol',
+        id: 's10.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-crop-an-image-to-a-specific-size',
+    published: '2026-10-23',
+    updated: '2026-10-23',
+    minutes: 6,
+    tool: 'image-cropper',
+    tools: [
+      'image-cropper',
+      'image-resizer',
+      'image-rotator',
+      'image-compressor',
+      'image-format-converter',
+      'image-flipper'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ol',
+        id: 's2.o1',
+        items: 6
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ul',
+        id: 's3.l1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ul',
+        id: 's4.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'p',
+        id: 's4.p3'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ul',
+        id: 's5.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'ul',
+        id: 's7.l1',
+        items: 2
+      },
+      {
+        type: 'p',
+        id: 's7.p2'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'ul',
+        id: 's8.l1',
+        items: 3
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ul',
+        id: 's9.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ol',
+        id: 's10.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-crop-pdf-pages',
+    published: '2026-10-23',
+    updated: '2026-10-23',
+    minutes: 5,
+    tool: 'crop-pdf',
+    tools: [
+      'crop-pdf',
+      'redact-pdf',
+      'rotate-pdf',
+      'extract-pdf-pages',
+      'scan-to-pdf',
+      'compress-pdf'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'ul',
+        id: 's1.l1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ol',
+        id: 's2.o1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'ul',
+        id: 's5.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's5.p3'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'ul',
+        id: 's6.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'ul',
+        id: 's8.l1',
+        items: 4
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ul',
+        id: 's9.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ol',
+        id: 's10.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-extract-pages-from-a-pdf',
+    published: '2026-10-23',
+    updated: '2026-10-23',
+    minutes: 6,
+    tool: 'extract-pdf-pages',
+    tools: [
+      'extract-pdf-pages',
+      'remove-pdf-pages',
+      'split-pdf',
+      'reorder-pdf-pages',
+      'merge-pdf',
+      'compress-pdf'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ol',
+        id: 's2.o1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ul',
+        id: 's3.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ul',
+        id: 's5.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'ul',
+        id: 's6.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'ul',
+        id: 's7.l1',
+        items: 2
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ul',
+        id: 's9.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ol',
+        id: 's10.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-fill-out-a-pdf-form',
+    published: '2026-10-23',
+    updated: '2026-10-23',
+    minutes: 6,
+    tool: 'fill-pdf-forms',
+    tools: [
+      'fill-pdf-forms',
+      'sign-pdf',
+      'protect-pdf',
+      'merge-pdf',
+      'compress-pdf',
+      'ocr-pdf'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'ul',
+        id: 's1.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ol',
+        id: 's2.o1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ul',
+        id: 's3.l1',
+        items: 2
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ol',
+        id: 's5.o1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'ul',
+        id: 's7.l1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'ul',
+        id: 's8.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ol',
+        id: 's9.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
     slug: 'how-to-format-and-validate-json',
     published: '2026-10-15',
     updated: '2026-10-15',
@@ -472,6 +2813,175 @@ export const articles: BlogPost[] = [
     ]
   },
   {
+    slug: 'how-to-generate-a-strong-password',
+    published: '2026-10-23',
+    updated: '2026-10-23',
+    minutes: 7,
+    tool: 'password-generator',
+    tools: [
+      'password-generator',
+      'protect-pdf',
+      'uuid-generator',
+      'qr-code-generator',
+      'base64-encoder-decoder',
+      'text-cleaner'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'p',
+        id: 's1.p3'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ul',
+        id: 's3.l1',
+        items: 2
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'p',
+        id: 's3.p3'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ol',
+        id: 's4.o1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'ul',
+        id: 's5.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'ul',
+        id: 's6.l1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ul',
+        id: 's9.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ol',
+        id: 's10.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
     slug: 'how-to-merge-pdf-files',
     published: '2026-10-15',
     updated: '2026-10-15',
@@ -621,6 +3131,682 @@ export const articles: BlogPost[] = [
         type: 'faq',
         id: 'faq',
         items: 5
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-redact-a-pdf-properly',
+    published: '2026-10-23',
+    updated: '2026-10-23',
+    minutes: 6,
+    tool: 'redact-pdf',
+    tools: [
+      'redact-pdf',
+      'ocr-pdf',
+      'edit-pdf-metadata',
+      'crop-pdf',
+      'protect-pdf',
+      'compare-pdf'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'ul',
+        id: 's1.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'ul',
+        id: 's2.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's2.p3'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ol',
+        id: 's3.o1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'ul',
+        id: 's4.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's4.p3'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ul',
+        id: 's5.l1',
+        items: 6
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'ol',
+        id: 's6.o1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'ul',
+        id: 's7.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'ul',
+        id: 's8.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ol',
+        id: 's9.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-remove-metadata-from-photos-and-pdfs',
+    published: '2026-10-23',
+    updated: '2026-10-23',
+    minutes: 6,
+    tool: 'edit-pdf-metadata',
+    tools: [
+      'edit-pdf-metadata',
+      'image-compressor',
+      'image-resizer',
+      'image-format-converter',
+      'redact-pdf',
+      'pdf-metadata-viewer'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'ul',
+        id: 's1.l1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's1.p3'
+      },
+      {
+        type: 'ul',
+        id: 's1.l2',
+        items: 2
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ul',
+        id: 's2.l1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ol',
+        id: 's3.o1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'p',
+        id: 's3.p3'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ul',
+        id: 's4.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'p',
+        id: 's4.p3'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ul',
+        id: 's5.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'ol',
+        id: 's6.o1',
+        items: 6
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'ul',
+        id: 's7.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'ol',
+        id: 's8.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-resize-an-image-without-losing-quality',
+    published: '2026-10-23',
+    updated: '2026-10-23',
+    minutes: 6,
+    tool: 'image-resizer',
+    tools: [
+      'image-resizer',
+      'image-cropper',
+      'image-compressor',
+      'enlarge-image',
+      'image-format-converter',
+      'image-rotator'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ul',
+        id: 's2.l1',
+        items: 2
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ol',
+        id: 's3.o1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ul',
+        id: 's5.l1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'ul',
+        id: 's7.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's7.p2'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ul',
+        id: 's9.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ol',
+        id: 's10.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-rotate-pdf-pages-permanently',
+    published: '2026-10-23',
+    updated: '2026-10-23',
+    minutes: 6,
+    tool: 'rotate-pdf',
+    tools: [
+      'rotate-pdf',
+      'reorder-pdf-pages',
+      'crop-pdf',
+      'extract-pdf-pages',
+      'merge-pdf',
+      'scan-to-pdf'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'ul',
+        id: 's1.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ol',
+        id: 's2.o1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'ul',
+        id: 's4.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ul',
+        id: 's5.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'ul',
+        id: 's6.l1',
+        items: 4
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'ul',
+        id: 's7.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's7.p2'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'ul',
+        id: 's8.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ol',
+        id: 's9.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 6
       },
       {
         type: 'h2',
@@ -1821,6 +5007,184 @@ export const articles: BlogPost[] = [
         type: 'faq',
         id: 'faq',
         items: 5
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'what-is-pdf-a-and-when-to-use-it',
+    published: '2026-10-23',
+    updated: '2026-10-23',
+    minutes: 6,
+    tool: 'pdf-to-pdfa',
+    tools: [
+      'pdf-to-pdfa',
+      'repair-pdf',
+      'unlock-pdf',
+      'ocr-pdf',
+      'compress-pdf',
+      'edit-pdf-metadata'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'ul',
+        id: 's1.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'ul',
+        id: 's2.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's2.p3'
+      },
+      {
+        type: 'ul',
+        id: 's2.l2',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's2.p4'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ul',
+        id: 's3.l1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ol',
+        id: 's4.o1',
+        items: 4
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ul',
+        id: 's9.l1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ol',
+        id: 's10.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 6
       },
       {
         type: 'h2',
