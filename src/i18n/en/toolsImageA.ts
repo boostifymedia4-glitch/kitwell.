@@ -31,7 +31,7 @@ export const toolsImageA = {
   'imageCompress.maxSize.800': '800 px',
   'imageCompress.background': 'Background for transparency',
   'imageCompress.noteSmaller': '{before} → {after} (-{saved}%)',
-  'imageCompress.noteLarger': '{before} → {after} (larger; keep the original or lower the quality)',
+  'imageCompress.noteLarger': '{before} → {after} (not smaller, so the original file was kept)',
 
   'imageResize.action': 'Resize images',
   'imageResize.resizeBy': 'Resize by',

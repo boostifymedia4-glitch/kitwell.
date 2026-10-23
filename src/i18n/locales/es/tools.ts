@@ -14,7 +14,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: '¿Mejora la calidad al convertir JPG a PNG?', a: 'No. JPG es un formato con pérdida, así que el detalle que se descartó al guardar el JPG no se puede recuperar. PNG simplemente guarda los píxeles actuales sin más pérdidas, lo que resulta útil para editar o trabajar con transparencias.' },
       { q: '¿Por qué el PNG pesa más que el JPG?', a: 'PNG es un formato sin pérdida y suele almacenar las fotografías de forma menos eficiente que JPG. Usa JPG o WebP cuando el tamaño del archivo importe más que los píxeles exactos.' },
-      { q: '¿Se suben mis imágenes a un servidor?', a: 'No. Tu navegador decodifica y vuelve a codificar la imagen con la API Canvas. Esta herramienta no envía el archivo a ningún sitio.' },
     ],
     limits: [
       'Los archivos GIF o WebP animados se convierten usando solo su primer fotograma.',
@@ -33,8 +32,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: '¿Qué ocurre con las zonas transparentes?', a: 'JPG no admite transparencia, así que los píxeles transparentes se rellenan con el color de fondo que elijas (blanco de forma predeterminada).' },
-      { q: '¿Qué ajuste de calidad debo usar?', a: 'Entre 80 y 90 es un buen equilibrio para la mayoría de las imágenes. Por debajo de 60, aproximadamente, los artefactos de compresión se notan en el texto y en los bordes nítidos.' },
-      { q: '¿Se suben mis imágenes a un servidor?', a: 'No. Tu navegador decodifica y vuelve a codificar la imagen con la API Canvas. Esta herramienta no envía el archivo a ningún sitio.' },
     ],
     limits: [
       'Los archivos GIF o WebP animados se convierten usando solo su primer fotograma.',
@@ -55,7 +52,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: '¿Es WebP más pequeño que JPG?', a: 'Normalmente entre un 20 % y un 35 % más pequeño con una calidad visual similar, aunque el resultado depende de la imagen.' },
       { q: '¿Todos los navegadores admiten WebP?', a: 'Todos los navegadores principales actuales pueden mostrar WebP. La codificación de WebP en el navegador es compatible con Chrome, Edge, Firefox y las versiones recientes de Safari; si el tuyo no puede, la herramienta te lo indica en lugar de generar un archivo incorrecto.' },
-      { q: '¿Se suben mis imágenes a un servidor?', a: 'No. Tu navegador decodifica y vuelve a codificar la imagen con la API Canvas. Esta herramienta no envía el archivo a ningún sitio.' },
     ],
     limits: [
       'Los archivos GIF o WebP animados se convierten usando solo su primer fotograma.',
@@ -76,7 +72,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: '¿Se conserva la transparencia?', a: 'Sí. WebP admite canal alfa, así que los PNG transparentes siguen siendo transparentes.' },
       { q: '¿Puedo obtener un resultado sin pérdida?', a: 'Ajusta la calidad a 100 para obtener la máxima fidelidad. Los navegadores codifican WebP con pérdida, así que usa PNG si necesitas una copia matemáticamente exacta.' },
-      { q: '¿Se suben mis imágenes a un servidor?', a: 'No. Tu navegador decodifica y vuelve a codificar la imagen con la API Canvas. Esta herramienta no envía el archivo a ningún sitio.' },
     ],
     limits: [
       'Los archivos GIF o WebP animados se convierten usando solo su primer fotograma.',
@@ -96,7 +91,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: '¿Por qué convertir WebP a JPG?', a: 'Algunos programas antiguos, clientes de correo y formularios de subida todavía rechazan WebP. JPG se acepta casi en todas partes.' },
-      { q: '¿Se suben mis imágenes a un servidor?', a: 'No. Tu navegador decodifica y vuelve a codificar la imagen con la API Canvas. Esta herramienta no envía el archivo a ningún sitio.' },
     ],
     limits: [
       'Los archivos GIF o WebP animados se convierten usando solo su primer fotograma.',
@@ -116,7 +110,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: '¿Se conserva la transparencia?', a: 'Sí. PNG admite transparencia, así que el canal alfa del WebP se mantiene.' },
-      { q: '¿Se suben mis imágenes a un servidor?', a: 'No. Tu navegador decodifica y vuelve a codificar la imagen con la API Canvas. Esta herramienta no envía el archivo a ningún sitio.' },
     ],
     limits: [
       'Los archivos GIF o WebP animados se convierten usando solo su primer fotograma.',
@@ -177,7 +170,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: '¿Recortar reduce la calidad?', a: 'El recorte conserva los píxeles originales. La calidad solo cambia si guardas como JPG o WebP con un ajuste de calidad más bajo.' },
-      { q: '¿Se suben mis imágenes a un servidor?', a: 'No. Tu navegador decodifica y vuelve a codificar la imagen con la API Canvas. Esta herramienta no envía el archivo a ningún sitio.' },
     ],
     limits: [
       'Una imagen a la vez.',
@@ -196,7 +188,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: '¿Qué ocurre con los giros que no son de ángulo recto?', a: 'El canvas se amplía para ajustarse a la imagen girada. En la salida JPG las esquinas vacías se rellenan con el fondo que elijas; PNG y WebP las mantienen transparentes.' },
-      { q: '¿Se suben mis imágenes a un servidor?', a: 'No. Tu navegador decodifica y vuelve a codificar la imagen con la API Canvas. Esta herramienta no envía el archivo a ningún sitio.' },
     ],
     limits: [
       'Los archivos GIF o WebP animados se convierten usando solo su primer fotograma.',
@@ -215,7 +206,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: '¿Cuál es la diferencia entre voltear en horizontal y en vertical?', a: 'El volteo horizontal refleja la izquierda y la derecha, como un espejo. El volteo vertical pone la imagen boca abajo a lo largo de su eje horizontal.' },
-      { q: '¿Se suben mis imágenes a un servidor?', a: 'No. Tu navegador decodifica y vuelve a codificar la imagen con la API Canvas. Esta herramienta no envía el archivo a ningún sitio.' },
     ],
     limits: [
       'Los archivos GIF o WebP animados se convierten usando solo su primer fotograma.',
@@ -235,7 +225,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: '¿Qué formatos puedo usar?', a: 'Entrada: JPG, PNG, WebP, GIF, BMP y AVIF si tu navegador puede decodificarlos. Salida: JPG, PNG y WebP.' },
       { q: '¿Y HEIC o TIFF?', a: 'Los navegadores no pueden decodificar HEIC ni TIFF de forma nativa, así que todavía no son compatibles.' },
-      { q: '¿Se suben mis imágenes a un servidor?', a: 'No. Tu navegador decodifica y vuelve a codificar la imagen con la API Canvas. Esta herramienta no envía el archivo a ningún sitio.' },
     ],
     limits: [
       'Los archivos GIF o WebP animados se convierten usando solo su primer fotograma.',
@@ -255,7 +244,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: '¿Cuándo debo usar imágenes en Base64?', a: 'Para iconos pequeños en CSS o en correos, donde una solicitud adicional cuesta más que el aumento de tamaño de aproximadamente un 33 %. Evítalo con fotos grandes.' },
-      { q: '¿Se suben mis imágenes a un servidor?', a: 'No. Tu navegador decodifica y vuelve a codificar la imagen con la API Canvas. Esta herramienta no envía el archivo a ningún sitio.' },
     ],
     limits: [
       'Máximo 5 MB por imagen, ya que el texto Base64 se vuelve muy grande.',
@@ -291,7 +279,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: '¿Cómo se calcula la paleta?', a: 'La imagen se reduce de tamaño y sus colores se agrupan en intervalos; se muestran los más comunes. Es una aproximación de los colores dominantes, no una lista exhaustiva.' },
-      { q: '¿Se suben mis imágenes a un servidor?', a: 'No. Tu navegador decodifica y vuelve a codificar la imagen con la API Canvas. Esta herramienta no envía el archivo a ningún sitio.' },
     ],
     limits: [
       'Una imagen a la vez.',
@@ -332,7 +319,6 @@ const tools: ToolTextMap = {
       { q: '¿La imagen se mantendrá nítida en tamaños grandes?', a: 'Sí. El SVG se dibuja al tamaño que elijas, así que una exportación a 4× es tan nítida como una a 1×.' },
       { q: '¿Por qué mi SVG se ve diferente?', a: 'Los navegadores no admiten todas las funciones de SVG, y los SVG que dependen de fuentes o imágenes externas recurren a valores predeterminados. Incrusta las fuentes y las imágenes dentro del SVG para obtener el mejor resultado.' },
       { q: '¿Es seguro abrir archivos SVG aquí?', a: 'Sí. El SVG se dibuja como una imagen, por lo que los scripts que contenga no se ejecutan.' },
-      { q: '¿Se suben mis imágenes a un servidor?', a: 'No. Tu navegador decodifica y vuelve a codificar la imagen con la API Canvas. Esta herramienta no envía el archivo a ningún sitio.' },
     ],
     limits: [
       'Máximo 25 MB por archivo y 20 archivos por lote.',
@@ -396,7 +382,6 @@ const tools: ToolTextMap = {
       { q: '¿Puede escanear con mi cámara?', a: 'Todavía no. Esta herramienta lee códigos QR de archivos de imagen. En un teléfono, haz una foto del código y elígela aquí, o usa la aplicación de la cámara.' },
       { q: '¿Es seguro abrir los enlaces escaneados?', a: 'Comprueba primero la dirección. Se muestra el enlace completo y desde aquí solo se pueden abrir enlaces web (http o https). Los enlaces de script y de datos nunca se abren.' },
       { q: '¿Por qué no se encontró ningún código?', a: 'Puede que el código esté borroso, recortado, demasiado pequeño o con poco contraste. Prueba con una imagen más nítida y cercana que muestre el código completo con un margen claro alrededor.' },
-      { q: '¿Se suben mis imágenes?', a: 'No. La imagen se lee en tu navegador y esta herramienta no la envía a ningún sitio.' },
     ],
     limits: [
       'Hasta 10 imágenes, de 25 MB cada una.',
@@ -416,7 +401,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: '¿Por qué mi GIF pesa tanto?', a: 'Los GIF almacenan cada fotograma como una imagen limitada a 256 colores. Menos fotogramas, un ancho menor y menos colores reducen el archivo. La herramienta muestra el tamaño en cuanto se crea el GIF.' },
       { q: '¿Puedo conservar las zonas transparentes?', a: 'Sí, activa «Conservar zonas transparentes» para imágenes PNG o WebP con transparencia. La transparencia en GIF es de todo o nada por píxel, así que los bordes suaves se vuelven duros.' },
-      { q: '¿Se suben mis imágenes a un servidor?', a: 'No. Tu navegador decodifica y vuelve a codificar la imagen con la API Canvas. Esta herramienta no envía el archivo a ningún sitio.' },
     ],
     limits: [
       'Hasta 100 fotogramas; cuanto más grandes sean, más memoria necesitará tu navegador.',
@@ -436,7 +420,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: '¿Se modifica el archivo original?', a: 'No. Tu archivo nunca se modifica; la imagen editada se crea como una descarga nueva.' },
       { q: '¿Se pierde calidad al exportar?', a: 'PNG conserva cada píxel. JPG y WebP son con pérdida; usa una calidad de 90 o superior para que las fotos se vean igual. Las ediciones se aplican al tamaño completo de tu imagen, no al de la vista previa.' },
-      { q: '¿Se suben mis imágenes a un servidor?', a: 'No. Tu navegador decodifica y vuelve a codificar la imagen con la API Canvas. Esta herramienta no envía el archivo a ningún sitio.' },
     ],
     limits: [
       'Una foto a la vez, de hasta 25 MB y unos 50 megapíxeles.',
@@ -456,7 +439,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: '¿Baja la calidad de la imagen?', a: 'No. Los archivos JPG se incrustan en el PDF tal cual, sin recomprimir.' },
-      { q: '¿Se sube mi PDF a algún sitio?', a: 'No. Tu navegador lee y reescribe el PDF. Esta herramienta no envía el archivo a ningún servidor.' },
     ],
     limits: [
       'Máximo 25 MB por imagen y 100 imágenes por PDF.',
@@ -474,7 +456,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: '¿Se conserva la transparencia?', a: 'Sí. Las imágenes PNG se incrustan con su canal alfa, así que las zonas transparentes dejan ver la página blanca que hay detrás.' },
-      { q: '¿Se sube mi PDF a algún sitio?', a: 'No. Tu navegador lee y reescribe el PDF. Esta herramienta no envía el archivo a ningún servidor.' },
     ],
     limits: [
       'Máximo 25 MB por imagen y 100 imágenes por PDF.',
@@ -493,7 +474,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: '¿Qué formatos de imagen funcionan?', a: 'JPG y PNG se incrustan directamente. WebP, GIF y BMP se convierten primero a PNG si tu navegador puede decodificarlos.' },
       { q: '¿Qué hace «Ajustar a la imagen»?', a: 'Cada página tiene el tamaño de su imagen, de modo que nada se escala ni se rellena. Elige A4 o Carta para páginas de documento estándar.' },
-      { q: '¿Se sube mi PDF a algún sitio?', a: 'No. Tu navegador lee y reescribe el PDF. Esta herramienta no envía el archivo a ningún servidor.' },
     ],
     limits: [
       'Máximo 25 MB por imagen y 100 imágenes por PDF.',
@@ -511,7 +491,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: '¿Se conservan los marcadores y los campos de formulario?', a: 'Las páginas se copian con su contenido visible y sus enlaces. Los marcadores a nivel de documento y los datos interactivos de formulario no se trasladan.' },
       { q: '¿Puede abrir PDF protegidos con contraseña?', a: 'No. Los PDF cifrados se detectan y se rechazan con un mensaje claro. Quita primero la contraseña con nuestra herramienta Desbloquear PDF.' },
-      { q: '¿Se sube mi PDF a algún sitio?', a: 'No. Tu navegador lee y reescribe el PDF. Esta herramienta no envía el archivo a ningún servidor.' },
     ],
     limits: [
       'Máximo 100 MB por PDF.',
@@ -802,7 +781,6 @@ const tools: ToolTextMap = {
       { q: '¿Qué tan sólida es la protección?', a: 'Los archivos se cifran con AES-256, el estándar de cifrado de PDF más fuerte. En la práctica, la seguridad depende de tu contraseña: usa una larga que no utilices en ningún otro sitio.' },
       { q: '¿Qué pasa si olvido la contraseña?', a: 'No se puede recuperar. No se almacena ni se envía nada a ningún sitio, y no hay forma de restablecerla. Guarda tu archivo original y la contraseña en un lugar seguro.' },
       { q: '¿Se aplican de forma estricta las opciones de imprimir, copiar y editar?', a: 'Son solicitudes que la mayoría de los programas de PDF respetan, pero no son infranqueables. Lo que realmente protege el archivo es la contraseña.' },
-      { q: '¿Se sube mi contraseña?', a: 'No. El cifrado se realiza en tu navegador.' },
     ],
     limits: [
       'Máximo 100 MB por PDF.',
@@ -823,7 +801,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: '¿Puede desbloquear un PDF si olvidé la contraseña?', a: 'No. Esta herramienta nunca adivina ni descifra contraseñas. Quita la protección solo cuando proporcionas la contraseña correcta o cuando el archivo se limita a restringir acciones como la impresión.' },
       { q: '¿Está permitido?', a: 'Úsala solo en archivos que te pertenezcan o que tengas permiso para abrir. Eres responsable del uso que hagas del resultado.' },
-      { q: '¿Se sube mi contraseña?', a: 'No. Todo ocurre en tu navegador.' },
     ],
     limits: [
       'Máximo 100 MB por PDF.',
@@ -866,7 +843,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: '¿Por qué mi PDF apenas se redujo?', a: 'El modo estándar recomprime las imágenes JPEG, así que ayuda más con PDF llenos de fotos o escaneos. Un PDF que es sobre todo texto, o cuyas imágenes ya son pequeñas, no puede reducirse mucho. La herramienta te avisa cuando no ha podido ahorrar nada en lugar de fingir.' },
       { q: '¿Empeorará la calidad?', a: 'Las imágenes pierden algo de detalle a cambio de tamaño; Ligera las deja casi sin cambios y Fuerte las hace visiblemente más suaves. El texto y los gráficos vectoriales no se tocan en el modo estándar. El modo «Máxima» convierte cada página en una imagen, por lo que el texto ya no se puede seleccionar ni buscar.' },
-      { q: '¿Se sube mi PDF a algún sitio?', a: 'No. Tu navegador lee y reescribe el PDF. Esta herramienta no envía el archivo a ningún servidor.' },
     ],
     limits: [
       'Solo se recomprimen las imágenes JPEG incrustadas. Las imágenes de tipo PNG (Flate), las fuentes y el resto del contenido se mantienen como están.',
@@ -886,7 +862,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: '¿Qué idiomas son compatibles?', a: 'Por ahora, solo inglés. El texto en otros idiomas se leerá mal. Se podrán añadir más idiomas más adelante sin cambiar el funcionamiento de la herramienta.' },
-      { q: '¿Se envía mi documento a un servicio de OCR?', a: 'No. El motor de reconocimiento (Tesseract, compilado a WebAssembly) y sus datos en inglés se sirven desde este sitio web y se ejecutan dentro de tu navegador. El documento no se sube.' },
       { q: '¿Qué tan preciso es?', a: 'Los mejores resultados se obtienen con escaneos limpios y rectos de texto impreso a 200 o 300 DPI. La escritura a mano, la letra muy pequeña y las páginas de bajo contraste o torcidas producen más errores. Comprueba siempre los números importantes.' },
     ],
     limits: [
@@ -907,8 +882,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: '¿Es una firma digital con validez legal?', a: 'Es una firma visual: una imagen de tu firma colocada en la página. No es una firma digital criptográfica, no incluye ningún certificado y no puede demostrar quién firmó ni detectar cambios posteriores. Que se acepte o no depende de quien la solicite. Algunas organizaciones exigen servicios de firma electrónica certificados.' },
-      { q: '¿Se guarda mi firma en algún sitio?', a: 'No. Se crea en tu navegador, solo se usa para este archivo y se olvida cuando sales de la página o la recargas.' },
-      { q: '¿Se sube mi PDF a algún sitio?', a: 'No. Tu navegador lee y reescribe el PDF. Esta herramienta no envía el archivo a ningún servidor.' },
     ],
     limits: [
       'Solo firma visual: sin certificado, sin marca de tiempo y sin detección de manipulación.',
@@ -928,7 +901,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Mi PDF no muestra campos. ¿Por qué?', a: 'Aquí solo se pueden completar los PDF con campos de formulario reales. Un formulario que es solo una imagen o texto simple no tiene campos; usa Firmar PDF para colocar una firma, o la herramienta de marca de agua para añadir texto. No se admiten los formularios creados con XFA (algunos formularios de gobiernos y bancos).' },
       { q: '¿Qué hace aplanar?', a: 'Aplanar fija tus respuestas en la página y elimina los campos del formulario, de modo que las respuestas ya no se pueden editar. Úsalo para la copia que envíes; conserva una copia editable para ti.' },
-      { q: '¿Se sube mi PDF a algún sitio?', a: 'No. Tu navegador lee y reescribe el PDF. Esta herramienta no envía el archivo a ningún servidor.' },
     ],
     limits: [
       'El texto puede usar letras latinas, dígitos y símbolos comunes (la fuente del formulario no tiene otros alfabetos).',
@@ -970,7 +942,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: '¿Qué muestra la comparación de texto?', a: 'Para cada página, las palabras que se añadieron (en verde) y se eliminaron (en rojo) entre el documento original y el revisado, con el texto sin cambios contraído. Las páginas se emparejan por número.' },
       { q: '¿Qué pasa con los PDF escaneados?', a: 'Los escaneos no tienen texto seleccionable, así que la comparación de texto no encuentra nada. Usa la comparación visual, o ejecuta antes OCR de PDF en ambos archivos.' },
-      { q: '¿Se sube mi PDF a algún sitio?', a: 'No. Tu navegador lee y reescribe el PDF. Esta herramienta no envía el archivo a ningún servidor.' },
     ],
     limits: [
       'Las páginas se comparan por número: si se insertó una página, las siguientes aparecerán como modificadas.',
@@ -1102,7 +1073,6 @@ const tools: ToolTextMap = {
       'Copia o descarga el resultado con formato.',
     ],
     faq: [
-      { q: '¿Se envía mi JSON a un servidor?', a: 'No. El análisis y el formato se hacen en tu navegador con el analizador de JSON integrado.' },
       { q: '¿Por qué rechaza mi JSON?', a: 'El JSON estricto no admite comentarios, comas finales ni comillas simples. El mensaje de error indica la línea y la columna del problema.' },
     ],
     limits: [
@@ -1250,7 +1220,6 @@ const tools: ToolTextMap = {
       'Copia una contraseña y guárdala en un gestor de contraseñas.',
     ],
     faq: [
-      { q: '¿Se guardan o se envían a algún sitio las contraseñas generadas?', a: 'No. Las contraseñas se generan en tu navegador con crypto.getRandomValues y nunca se transmiten ni se guardan.' },
       { q: '¿Es segura una contraseña como Tesla2026#Tech?', a: 'Es mejor que una palabra sin más, pero más débil que un texto aleatorio. Quien intente adivinarla puede partir de listas de nombres conocidos, así que la fortaleza real depende del número de posibilidades, que se muestra en bits. Usa contraseñas basadas en nombres para cuentas de bajo riesgo y totalmente aleatorias para el correo, la banca y los gestores de contraseñas.' },
       { q: '¿Por qué solo unos pocos símbolos?', a: 'Las contraseñas generadas solo usan los cuatro símbolos @ # $ * porque casi todos los sitios web los aceptan y son fáciles de escribir en cualquier teclado.' },
       { q: '¿Qué longitud debe tener una contraseña?', a: 'Al menos 16 caracteres para las cuentas importantes. La longitud importa más que la complejidad.' },
@@ -1323,7 +1292,6 @@ const tools: ToolTextMap = {
       { q: '¿Caducan los códigos?', a: 'No. Son códigos estáticos: los datos se guardan en el propio código, así que funcionan para siempre y no se rastrea nada.' },
       { q: '¿Qué nivel de corrección de errores debo elegir?', a: 'Medio sirve para la mayoría de los usos. Elige Cuartil o Alto si el código puede ensuciarse o dañarse, pero los niveles más altos hacen el código más denso y más difícil de escanear en tamaños pequeños.' },
       { q: '¿Puedo usar los códigos con fines comerciales?', a: 'Sí. El estándar del código QR es abierto, y los códigos creados aquí no llevan tarifas, marcas de agua ni rastreo por nuestra parte.' },
-      { q: '¿Se envían mis datos a algún sitio?', a: 'No. El código se genera en tu navegador, y las contraseñas de Wi-Fi que introduces se quedan en tu dispositivo.' },
     ],
     limits: [
       'Solo códigos estáticos: sin seguimiento de escaneos ni códigos editables.',
@@ -1344,7 +1312,6 @@ const tools: ToolTextMap = {
       { q: "¿Reconoce el texto de la página?", a: "No. Escanear a PDF convierte las imágenes en páginas PDF y puede limpiarlas, pero el texto sigue formando parte de la imagen. Para que sea buscable, pasa el resultado por OCR de PDF." },
       { q: "¿Puedo usar la cámara del móvil?", a: "En móviles y tabletas cuyo navegador lo admite, el botón «Hacer una foto» abre la cámara. Si no, elige fotos que ya estén guardadas en tu dispositivo." },
       { q: "¿Qué hacen los estilos de limpieza?", a: "«Original» mantiene los colores. «Escala de grises» elimina el color. «Documento en blanco y negro» convierte la página en texto negro puro sobre papel blanco y suaviza las sombras y la iluminación desigual, algo adecuado para páginas impresas y notas, pero no para fotografías." },
-      { q: "¿Se sube mi archivo a algún sitio?", a: "No. Tu navegador lee y convierte el archivo. Esta herramienta no lo envía a ningún servidor." },
     ],
     limits: [
       "Máximo 25 MB por imagen y 100 imágenes por PDF.",
@@ -1366,7 +1333,6 @@ const tools: ToolTextMap = {
       { q: "¿El PDF se verá como la página web?", a: "No, no exactamente. La herramienta lee la estructura del documento (títulos, párrafos, listas, tablas, enlaces, texto en negrita y cursiva e imágenes incrustadas) y la maqueta como un documento sencillo. No se aplican estilos CSS, scripts, fuentes web, columnas ni elementos posicionados." },
       { q: "¿Es seguro convertir HTML en el que no confío?", a: "El HTML se lee como texto inerte: los scripts no se ejecutan y no se carga nada de internet. Solo se usan las imágenes incrustadas en el propio HTML." },
       { q: "¿Qué idiomas y fuentes se admiten en el PDF?", a: "El PDF se escribe con Noto Sans, que cubre texto latino (incluidas las letras polacas, checas, rumanas y turcas), cirílico, griego, vietnamita y devanagari. El texto árabe, hebreo, tailandés, chino, japonés y coreano aún no se admite: esos caracteres aparecen como signos de interrogación y la herramienta te indica cuántos se vieron afectados. No se conservan las fuentes originales del documento." },
-      { q: "¿Se sube mi archivo a algún sitio?", a: "No. Tu navegador lee y convierte el archivo. Esta herramienta no lo envía a ningún servidor." },
     ],
     limits: [
       "Máximo 10 MB de HTML.",
@@ -1388,7 +1354,6 @@ const tools: ToolTextMap = {
       { q: "¿Qué se convierte y qué no?", a: "Se convierte: texto con negrita, cursiva, subrayado y enlaces, títulos, listas con viñetas y numeradas, tablas, imágenes JPEG y PNG, saltos de línea y de página, alineación y orientación de página. No se convierte: encabezados y pies de página, notas al pie, cuadros de texto, ecuaciones, gráficos, formas y otros formatos de imagen." },
       { q: "¿Puedo convertir un archivo .doc antiguo?", a: "No. Ábrelo en Word y guárdalo primero como archivo DOCX." },
       { q: "¿Qué idiomas y fuentes se admiten en el PDF?", a: "El PDF se escribe con Noto Sans, que cubre texto latino (incluidas las letras polacas, checas, rumanas y turcas), cirílico, griego, vietnamita y devanagari. El texto árabe, hebreo, tailandés, chino, japonés y coreano aún no se admite: esos caracteres aparecen como signos de interrogación y la herramienta te indica cuántos se vieron afectados. No se conservan las fuentes originales del documento." },
-      { q: "¿Se sube mi archivo a algún sitio?", a: "No. Tu navegador lee y convierte el archivo. Esta herramienta no lo envía a ningún servidor." },
     ],
     limits: [
       "Solo archivos DOCX, máximo 50 MB. No se admiten archivos .doc antiguos ni documentos protegidos con contraseña.",
@@ -1410,7 +1375,6 @@ const tools: ToolTextMap = {
       { q: "¿Qué no se convierte?", a: "Gráficos, SmartArt, vídeo y audio, animaciones y transiciones, notas del orador, degradados, líneas y conectores, e imágenes en formatos distintos de JPEG y PNG. La herramienta te indica cuántos elementos se omitieron." },
       { q: "¿Puedo convertir un archivo .ppt antiguo?", a: "No. Ábrelo en PowerPoint y guárdalo primero como archivo PPTX." },
       { q: "¿Qué idiomas y fuentes se admiten en el PDF?", a: "El PDF se escribe con Noto Sans, que cubre texto latino (incluidas las letras polacas, checas, rumanas y turcas), cirílico, griego, vietnamita y devanagari. El texto árabe, hebreo, tailandés, chino, japonés y coreano aún no se admite: esos caracteres aparecen como signos de interrogación y la herramienta te indica cuántos se vieron afectados. No se conservan las fuentes originales del documento." },
-      { q: "¿Se sube mi archivo a algún sitio?", a: "No. Tu navegador lee y convierte el archivo. Esta herramienta no lo envía a ningún servidor." },
     ],
     limits: [
       "Solo archivos PPTX, máximo 100 MB y 300 diapositivas. No se admiten archivos .ppt antiguos ni presentaciones protegidas con contraseña.",
@@ -1432,7 +1396,6 @@ const tools: ToolTextMap = {
       { q: "¿Se verá como el diseño de impresión de Excel?", a: "No. Cada hoja visible se convierte en una tabla sencilla ajustada al ancho de la página. No se conservan los colores de celda, las celdas combinadas, los anchos de columna, los gráficos, las imágenes, las áreas de impresión ni los saltos de página." },
       { q: "¿Puedo convertir un archivo .xls antiguo?", a: "No. Ábrelo en Excel y guárdalo primero como archivo XLSX." },
       { q: "¿Qué idiomas y fuentes se admiten en el PDF?", a: "El PDF se escribe con Noto Sans, que cubre texto latino (incluidas las letras polacas, checas, rumanas y turcas), cirílico, griego, vietnamita y devanagari. El texto árabe, hebreo, tailandés, chino, japonés y coreano aún no se admite: esos caracteres aparecen como signos de interrogación y la herramienta te indica cuántos se vieron afectados. No se conservan las fuentes originales del documento." },
-      { q: "¿Se sube mi archivo a algún sitio?", a: "No. Tu navegador lee y convierte el archivo. Esta herramienta no lo envía a ningún servidor." },
     ],
     limits: [
       "Solo archivos XLSX, máximo 50 MB. No se admiten archivos .xls antiguos ni libros protegidos con contraseña.",
@@ -1453,7 +1416,6 @@ const tools: ToolTextMap = {
       { q: "¿Cómo se detectan los títulos y las listas?", a: "Los títulos son líneas con una fuente más grande que el texto normal, las listas son líneas que empiezan con una viñeta o un número, y los párrafos se separan por el espacio entre líneas. Es una buena estimación, no una garantía, así que revisa el resultado." },
       { q: "¿Por qué el resultado está vacío con mi PDF escaneado?", a: "Un escaneo es una imagen de una página y no tiene texto que extraer. Ejecuta primero OCR de PDF para añadir una capa de texto y luego convierte el resultado." },
       { q: "¿Y las tablas, las columnas y las imágenes?", a: "Las tablas y las columnas no se reconstruyen: su texto aparece como líneas normales, en orden de lectura cuando es posible. No se incluyen las imágenes, los enlaces, el texto en negrita y cursiva, las notas al pie ni las ecuaciones." },
-      { q: "¿Se sube mi archivo a algún sitio?", a: "No. Tu navegador lee y convierte el archivo. Esta herramienta no lo envía a ningún servidor." },
     ],
     limits: [
       "Máximo 100 MB por PDF. Los PDF protegidos con contraseña deben desbloquearse primero.",
@@ -1474,7 +1436,6 @@ const tools: ToolTextMap = {
       { q: "¿Qué tipos de daño se pueden reparar?", a: "Daños en la estructura del archivo: un índice de objetos (tabla de referencias cruzadas) ausente o incorrecto, un trailer ausente, datos basura antes del inicio o una lista de páginas rota. Si el archivo se cortó, se pueden recuperar las páginas guardadas antes del corte." },
       { q: "¿Qué no se puede recuperar?", a: "El contenido que ya no está en el archivo. Las páginas, imágenes o fuentes ausentes o dañadas no se pueden recuperar, y algunos archivos no tienen arreglo. La herramienta te indica cuántas páginas conservó y lo dice cuando no puede generar un archivo utilizable; nunca ofrece una descarga que no haya creado." },
       { q: "¿Y si mi PDF se abre bien?", a: "Entonces no hay nada que reparar. La herramienta te lo indica y ofrece una copia limpia del archivo." },
-      { q: "¿Se sube mi archivo a algún sitio?", a: "No. Tu navegador lee y convierte el archivo. Esta herramienta no lo envía a ningún servidor." },
     ],
     limits: [
       "Máximo 100 MB por PDF. Los PDF protegidos con contraseña deben desbloquearse primero.",
@@ -1496,7 +1457,6 @@ const tools: ToolTextMap = {
       { q: "¿Cuál es la diferencia entre las dos formas de convertir?", a: "«Conservar texto y fuentes» solo cambia la estructura y los metadatos del archivo, así que el texto sigue siendo seleccionable. Solo funciona si todas las fuentes están incrustadas y el archivo no usa color CMYK. «Convertir las páginas en imágenes» renderiza cada página como imagen y construye con ellas un nuevo PDF/A. Siempre funciona, pero el texto ya no se puede seleccionar y el archivo es mayor." },
       { q: "¿Por qué se rechazó mi PDF al elegir conservar el texto?", a: "PDF/A exige que todas las fuentes estén incrustadas y no permite color CMYK sin perfil CMYK, compresión LZW ni anotaciones sin apariencia. Eso no se puede corregir sin cambiar las páginas, así que la herramienta enumera lo que encontró en lugar de simular un resultado. Aún puedes usar el modo de imágenes." },
       { q: "¿Qué cambia la herramienta en el archivo?", a: "Añade la identificación PDF/A y metadatos XMP, un perfil de color sRGB como condición de salida y un identificador de archivo. Elimina JavaScript, acciones prohibidas, adjuntos, información de documento sobrante y ajustes de anotaciones que PDF/A no permite." },
-      { q: "¿Mi archivo se sube a algún sitio?", a: "No. El archivo lo lee y lo convierte tu navegador. Esta herramienta no lo envía a ningún servidor." },
     ],
     limits: [
       "Máximo 100 MB por PDF. Los PDF protegidos con contraseña deben desbloquearse primero, porque un archivo PDF/A no puede estar cifrado.",

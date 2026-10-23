@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { IMAGE_EXTENSIONS, MAX_IMAGE_BYTES } from '@/components/tool/BatchImageTool';
 import { CropSelector } from '@/components/tool/CropSelector';
-import { ColorField, NumberField, RangeField, SelectField } from '@/components/tool/Fields';
+import { NumberField, SelectField } from '@/components/tool/Fields';
 import { ErrorMessage, ProcessingState, RejectionList } from '@/components/tool/Feedback';
 import { ResetButton, ResultFiles, ResultPanel } from '@/components/tool/Results';
 import { UploadDropzone } from '@/components/tool/UploadDropzone';
@@ -25,8 +25,6 @@ const ImageCrop: ToolImplementation = () => {
   const [rect, setRect] = useState<Rect>({ x: 0, y: 0, w: 0, h: 0 });
   const [ratioKey, setRatioKey] = useState('free');
   const [format, setFormat] = useState<FormatKey | 'same'>('same');
-  const [quality, setQuality] = useState(92);
-  const [background, setBackground] = useState('#ffffff');
   const [loadError, setLoadError] = useState<string | null>(null);
   const task = useTask<{ name: string; blob: Blob; note: string }>();
 
@@ -62,7 +60,7 @@ const ImageCrop: ToolImplementation = () => {
       const key = format === 'same' ? sameFormatAs(file) : format;
       const fmt = FORMATS[key];
       const c = { x: Math.round(rect.x), y: Math.round(rect.y), width: Math.max(1, Math.round(rect.w)), height: Math.max(1, Math.round(rect.h)) };
-      const result = await processImage(file, { mime: fmt.mime, quality: quality / 100, background, crop: c });
+      const result = await processImage(file, { mime: fmt.mime, quality: 0.92, background: '#ffffff', crop: c });
       return { name: outputName(file.name, fmt.ext, '-cropped'), blob: result.blob, note: t('imageCrop.note', { width: result.width, height: result.height }) };
     });
 
@@ -100,13 +98,11 @@ const ImageCrop: ToolImplementation = () => {
               </p>
               <div className="options-grid">
                 <SelectField label={t('imageCrop.aspectRatio')} value={ratioKey} options={cropRatioOptions()} onChange={chooseRatio} />
-                <NumberField label={t('imageCrop.x')} value={Math.round(rect.x)} min={0} max={natural.w} onChange={(v) => setField('x', v)} />
-                <NumberField label={t('imageCrop.y')} value={Math.round(rect.y)} min={0} max={natural.h} onChange={(v) => setField('y', v)} />
+                <NumberField label={t('imageCrop.x')} value={Math.round(rect.x)} min={0} max={natural.w - MIN_CROP} onChange={(v) => setField('x', v)} />
+                <NumberField label={t('imageCrop.y')} value={Math.round(rect.y)} min={0} max={natural.h - MIN_CROP} onChange={(v) => setField('y', v)} />
                 <NumberField label={t('imageCrop.width')} value={Math.round(rect.w)} min={MIN_CROP} max={natural.w} onChange={(v) => setField('w', v)} />
                 <NumberField label={t('imageCrop.height')} value={Math.round(rect.h)} min={MIN_CROP} max={natural.h} onChange={(v) => setField('h', v)} />
                 <SelectField label={t('imageCrop.outputFormat')} value={format} onChange={setFormat} options={[{ value: 'same', label: t('imageCrop.sameAsOriginal') }, ...FORMAT_OPTIONS]} />
-                <RangeField label={t('imageCrop.quality')} value={quality} min={10} max={100} onChange={setQuality} format={(v) => `${v}%`} />
-                <ColorField label={t('imageCrop.background')} value={background} onChange={setBackground} />
               </div>
               <div className="toolbar">
                 <button type="button" className="btn btn-primary btn-lg" onClick={crop} disabled={running}>

@@ -301,3 +301,7 @@ input[type='color'] { width: 44px; height: 42px; padding: 2px; border-radius: va
 .pw-chip-warning { background: var(--warning-soft); color: var(--warning); }
 .pw-chip-success { background: var(--success-soft); color: var(--success); }
 .contact-card .options-grid { align-items: start; }
+
+/* Image Resizer: Width and Height sit side by side, each label directly above its input. */
+.size-fields { grid-column: 1 / -1; display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); align-items: start; }
+.size-fields-lock { grid-column: 1 / -1; }

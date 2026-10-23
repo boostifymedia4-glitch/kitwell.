@@ -35,11 +35,13 @@ const ImageResize: ToolImplementation = () => {
             ]}
           />
           {mode === 'pixels' ? (
-            <>
+            <div className="size-fields">
               <NumberField label={t('imageResize.width')} value={width} min={1} max={16000} onChange={setWidth} hint={t('imageResize.widthHint')} />
               <NumberField label={t('imageResize.height')} value={height} min={1} max={16000} onChange={setHeight} hint={t('imageResize.heightHint')} />
-              <CheckField label={t('imageResize.keepAspect')} checked={lock} onChange={setLock} />
-            </>
+              <div className="size-fields-lock">
+                <CheckField label={t('imageResize.keepAspect')} checked={lock} onChange={setLock} />
+              </div>
+            </div>
           ) : (
             <RangeField label={t('imageResize.scale')} value={percent} min={5} max={300} onChange={setPercent} format={(v) => `${v}%`} />
           )}

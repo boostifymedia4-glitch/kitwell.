@@ -13,7 +13,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Czy konwersja JPG na PNG poprawi jakość?', a: 'Nie. JPG to format stratny, więc szczegółów utraconych przy zapisie pliku JPG nie można odzyskać. PNG po prostu zapisuje aktualne piksele bez dalszych strat, co przydaje się przy edycji lub pracy z przezroczystością.' },
       { q: 'Dlaczego plik PNG jest większy niż JPG?', a: 'PNG jest bezstratny i zwykle zapisuje fotografie mniej wydajnie niż JPG. Gdy rozmiar pliku jest ważniejszy niż dokładność co do piksela, wybierz JPG lub WebP.' },
-      { q: 'Czy moje obrazy są przesyłane na serwer?', a: 'Nie. Obraz jest dekodowany i ponownie kodowany przez Twoją przeglądarkę za pomocą Canvas API. To narzędzie nigdzie nie wysyła pliku.' },
     ],
     limits: [
       'Animowane pliki GIF lub WebP są konwertowane tylko na podstawie pierwszej klatki.',
@@ -32,8 +31,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Co się dzieje z przezroczystymi obszarami?', a: 'JPG nie obsługuje przezroczystości, więc przezroczyste piksele są wypełniane wybranym kolorem tła (domyślnie białym).' },
-      { q: 'Jakie ustawienie jakości wybrać?', a: 'Wartości 80–90 to dobry kompromis dla większości obrazów. Poniżej około 60 artefakty kompresji stają się widoczne na tekście i ostrych krawędziach.' },
-      { q: 'Czy moje obrazy są przesyłane na serwer?', a: 'Nie. Obraz jest dekodowany i ponownie kodowany przez Twoją przeglądarkę za pomocą Canvas API. To narzędzie nigdzie nie wysyła pliku.' },
     ],
     limits: [
       'Animowane pliki GIF lub WebP są konwertowane tylko na podstawie pierwszej klatki.',
@@ -54,7 +51,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Czy WebP jest mniejszy niż JPG?', a: 'Zazwyczaj o 20–35% mniejszy przy podobnej jakości wizualnej, choć wynik zależy od obrazu.' },
       { q: 'Czy każda przeglądarka obsługuje WebP?', a: 'Wszystkie obecne popularne przeglądarki potrafią wyświetlać WebP. Kodowanie WebP w przeglądarce jest obsługiwane w Chrome, Edge, Firefox i nowszych wersjach Safari; jeśli Twoja przeglądarka tego nie potrafi, narzędzie poinformuje o tym zamiast tworzyć błędny plik.' },
-      { q: 'Czy moje obrazy są przesyłane na serwer?', a: 'Nie. Obraz jest dekodowany i ponownie kodowany przez Twoją przeglądarkę za pomocą Canvas API. To narzędzie nigdzie nie wysyła pliku.' },
     ],
     limits: [
       'Animowane pliki GIF lub WebP są konwertowane tylko na podstawie pierwszej klatki.',
@@ -75,7 +71,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Czy przezroczystość jest zachowana?', a: 'Tak. WebP obsługuje kanał alfa, więc przezroczyste pliki PNG pozostają przezroczyste.' },
       { q: 'Czy mogę uzyskać wynik bezstratny?', a: 'Ustaw jakość na 100, aby uzyskać najwyższą wierność. Przeglądarki kodują WebP jako format stratny, więc jeśli potrzebujesz matematycznie identycznej kopii, użyj PNG.' },
-      { q: 'Czy moje obrazy są przesyłane na serwer?', a: 'Nie. Obraz jest dekodowany i ponownie kodowany przez Twoją przeglądarkę za pomocą Canvas API. To narzędzie nigdzie nie wysyła pliku.' },
     ],
     limits: [
       'Animowane pliki GIF lub WebP są konwertowane tylko na podstawie pierwszej klatki.',
@@ -95,7 +90,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Po co konwertować WebP na JPG?', a: 'Niektóre starsze programy, klienty poczty i formularze przesyłania plików nadal odrzucają WebP. JPG jest akceptowany niemal wszędzie.' },
-      { q: 'Czy moje obrazy są przesyłane na serwer?', a: 'Nie. Obraz jest dekodowany i ponownie kodowany przez Twoją przeglądarkę za pomocą Canvas API. To narzędzie nigdzie nie wysyła pliku.' },
     ],
     limits: [
       'Animowane pliki GIF lub WebP są konwertowane tylko na podstawie pierwszej klatki.',
@@ -115,7 +109,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Czy przezroczystość zostaje zachowana?', a: 'Tak. PNG obsługuje przezroczystość, więc kanał alfa z pliku WebP jest przenoszony do wyniku.' },
-      { q: 'Czy moje obrazy są przesyłane na serwer?', a: 'Nie. Obraz jest dekodowany i ponownie kodowany przez Twoją przeglądarkę za pomocą Canvas API. To narzędzie nigdzie nie wysyła pliku.' },
     ],
     limits: [
       'Animowane pliki GIF lub WebP są konwertowane tylko na podstawie pierwszej klatki.',
@@ -176,7 +169,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Czy przycinanie obniża jakość?', a: 'Przycinanie zachowuje oryginalne piksele. Jakość zmienia się tylko wtedy, gdy zapiszesz plik jako JPG lub WebP z niższym ustawieniem jakości.' },
-      { q: 'Czy moje obrazy są przesyłane na serwer?', a: 'Nie. Obraz jest dekodowany i ponownie kodowany przez Twoją przeglądarkę za pomocą Canvas API. To narzędzie nigdzie nie wysyła pliku.' },
     ],
     limits: [
       'Jeden obraz naraz.',
@@ -195,7 +187,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Co się dzieje przy obrotach o kąt inny niż prosty?', a: 'Canvas powiększa się, aby pomieścić obrócony obraz. W przypadku wyniku JPG puste rogi są wypełniane wybranym tłem; PNG i WebP pozostawiają je przezroczyste.' },
-      { q: 'Czy moje obrazy są przesyłane na serwer?', a: 'Nie. Obraz jest dekodowany i ponownie kodowany przez Twoją przeglądarkę za pomocą Canvas API. To narzędzie nigdzie nie wysyła pliku.' },
     ],
     limits: [
       'Animowane pliki GIF lub WebP są konwertowane tylko na podstawie pierwszej klatki.',
@@ -214,7 +205,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Jaka jest różnica między odbiciem poziomym a pionowym?', a: 'Odbicie poziome zamienia lewą i prawą stronę, jak w lustrze. Odbicie pionowe przewraca obraz do góry nogami wzdłuż osi poziomej.' },
-      { q: 'Czy moje obrazy są przesyłane na serwer?', a: 'Nie. Obraz jest dekodowany i ponownie kodowany przez Twoją przeglądarkę za pomocą Canvas API. To narzędzie nigdzie nie wysyła pliku.' },
     ],
     limits: [
       'Animowane pliki GIF lub WebP są konwertowane tylko na podstawie pierwszej klatki.',
@@ -234,7 +224,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Jakich formatów mogę używać?', a: 'Wejście: JPG, PNG, WebP, GIF, BMP oraz AVIF, jeśli Twoja przeglądarka potrafi je zdekodować. Wyjście: JPG, PNG i WebP.' },
       { q: 'A HEIC lub TIFF?', a: 'Przeglądarki nie potrafią natywnie dekodować HEIC ani TIFF, więc te formaty nie są jeszcze obsługiwane.' },
-      { q: 'Czy moje obrazy są przesyłane na serwer?', a: 'Nie. Obraz jest dekodowany i ponownie kodowany przez Twoją przeglądarkę za pomocą Canvas API. To narzędzie nigdzie nie wysyła pliku.' },
     ],
     limits: [
       'Animowane pliki GIF lub WebP są konwertowane tylko na podstawie pierwszej klatki.',
@@ -254,7 +243,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Kiedy warto używać obrazów Base64?', a: 'Do drobnych ikon w CSS lub e-mailach, gdzie dodatkowe żądanie kosztuje więcej niż około 33% wzrost rozmiaru. Unikaj tego przy dużych zdjęciach.' },
-      { q: 'Czy moje obrazy są przesyłane na serwer?', a: 'Nie. Obraz jest dekodowany i ponownie kodowany przez Twoją przeglądarkę za pomocą Canvas API. To narzędzie nigdzie nie wysyła pliku.' },
     ],
     limits: [
       'Maksymalnie 5 MB na obraz, ponieważ tekst Base64 staje się bardzo duży.',
@@ -290,7 +278,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Jak obliczana jest paleta?', a: 'Obraz jest pomniejszany, a jego kolory są grupowane w przedziały; wyświetlane są najczęstsze z nich. To przybliżenie kolorów dominujących, a nie pełna lista.' },
-      { q: 'Czy moje obrazy są przesyłane na serwer?', a: 'Nie. Obraz jest dekodowany i ponownie kodowany przez Twoją przeglądarkę za pomocą Canvas API. To narzędzie nigdzie nie wysyła pliku.' },
     ],
     limits: [
       'Jeden obraz naraz.',
@@ -331,7 +318,6 @@ const tools: ToolTextMap = {
       { q: 'Czy obraz pozostanie ostry w dużych rozmiarach?', a: 'Tak. SVG jest rysowany w wybranym rozmiarze, więc eksport 4× jest tak samo wyraźny jak 1×.' },
       { q: 'Dlaczego mój SVG wygląda inaczej?', a: 'Przeglądarki nie obsługują wszystkich funkcji SVG, a pliki SVG korzystające z zewnętrznych czcionek lub obrazów wracają do ustawień domyślnych. Aby uzyskać najlepszy wynik, osadź czcionki i obrazy wewnątrz pliku SVG.' },
       { q: 'Czy bezpiecznie jest otwierać tutaj pliki SVG?', a: 'Tak. SVG jest rysowany jako obraz, więc skrypty w nim zawarte nie są uruchamiane.' },
-      { q: 'Czy moje obrazy są przesyłane na serwer?', a: 'Nie. Obraz jest dekodowany i ponownie kodowany przez Twoją przeglądarkę za pomocą Canvas API. To narzędzie nigdzie nie wysyła pliku.' },
     ],
     limits: [
       'Maksymalnie 25 MB na plik i 20 plików w jednej partii.',
@@ -395,7 +381,6 @@ const tools: ToolTextMap = {
       { q: 'Czy mogę skanować aparatem?', a: 'Jeszcze nie. To narzędzie odczytuje kody QR z plików obrazów. Na telefonie zrób zdjęcie kodu i wybierz je tutaj albo użyj aplikacji aparatu.' },
       { q: 'Czy bezpiecznie jest otwierać zeskanowane linki?', a: 'Najpierw sprawdź adres. Wyświetlany jest pełny link, a stąd można otworzyć tylko linki internetowe (http lub https). Linków skryptowych i data nigdy się nie otwiera.' },
       { q: 'Dlaczego nie znaleziono kodu?', a: 'Kod może być nieostry, przycięty, zbyt mały lub mieć niski kontrast. Spróbuj użyć ostrzejszego, bliższego obrazu, na którym widać cały kod z wyraźnym marginesem wokół niego.' },
-      { q: 'Czy moje obrazy są przesyłane?', a: 'Nie. Obraz jest odczytywany w Twojej przeglądarce, a to narzędzie nigdzie go nie wysyła.' },
     ],
     limits: [
       'Do 10 obrazów, po 25 MB każdy.',
@@ -415,7 +400,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Dlaczego mój GIF jest tak duży?', a: 'GIF zapisuje każdą klatkę jako obraz ograniczony do 256 kolorów. Mniej klatek, mniejsza szerokość i mniej kolorów zmniejszają plik. Narzędzie pokazuje rozmiar zaraz po utworzeniu GIF-a.' },
       { q: 'Czy mogę zachować przezroczyste obszary?', a: 'Tak, włącz opcję „Zachowaj przezroczyste obszary” dla obrazów PNG lub WebP z przezroczystością. Przezroczystość w GIF jest włączona lub wyłączona dla każdego piksela, więc miękkie krawędzie stają się ostre.' },
-      { q: 'Czy moje obrazy są przesyłane na serwer?', a: 'Nie. Obraz jest dekodowany i ponownie kodowany przez Twoją przeglądarkę za pomocą Canvas API. To narzędzie nigdzie nie wysyła pliku.' },
     ],
     limits: [
       'Do 100 klatek; im większe klatki, tym więcej pamięci potrzebuje przeglądarka.',
@@ -435,7 +419,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Czy oryginalny plik jest zmieniany?', a: 'Nie. Twój plik nigdy nie jest modyfikowany; edytowany obraz powstaje jako nowy plik do pobrania.' },
       { q: 'Czy eksport obniża jakość?', a: 'PNG zachowuje każdy piksel. JPG i WebP są stratne; użyj jakości 90 lub wyższej, aby zdjęcia wyglądały tak samo. Zmiany są stosowane w pełnym rozmiarze zdjęcia, a nie w rozmiarze podglądu.' },
-      { q: 'Czy moje obrazy są przesyłane na serwer?', a: 'Nie. Obraz jest dekodowany i ponownie kodowany przez Twoją przeglądarkę za pomocą Canvas API. To narzędzie nigdzie nie wysyła pliku.' },
     ],
     limits: [
       'Jedno zdjęcie naraz, do 25 MB i około 50 megapikseli.',
@@ -455,7 +438,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Czy jakość obrazu się pogarsza?', a: 'Nie. Pliki JPG są osadzane w pliku PDF w niezmienionej postaci, bez ponownej kompresji.' },
-      { q: 'Czy mój plik PDF jest gdzieś przesyłany?', a: 'Nie. Plik PDF jest odczytywany i zapisywany ponownie przez Twoją przeglądarkę. To narzędzie nie wysyła pliku na serwer.' },
     ],
     limits: [
       'Maksymalnie 25 MB na obraz i 100 obrazów w jednym pliku PDF.',
@@ -473,7 +455,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Czy przezroczystość zostaje zachowana?', a: 'Tak. Obrazy PNG są osadzane wraz z kanałem alfa, więc przezroczyste obszary pokazują białą stronę znajdującą się pod nimi.' },
-      { q: 'Czy mój plik PDF jest gdzieś przesyłany?', a: 'Nie. Plik PDF jest odczytywany i zapisywany ponownie przez Twoją przeglądarkę. To narzędzie nie wysyła pliku na serwer.' },
     ],
     limits: [
       'Maksymalnie 25 MB na obraz i 100 obrazów w jednym pliku PDF.',
@@ -492,7 +473,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Jakie formaty obrazów są obsługiwane?', a: 'JPG i PNG są osadzane bezpośrednio. WebP, GIF i BMP są najpierw konwertowane na PNG, jeśli Twoja przeglądarka potrafi je zdekodować.' },
       { q: 'Co robi opcja „Dopasuj do obrazu”?', a: 'Każda strona otrzymuje rozmiar swojego obrazu, więc nic nie jest skalowane ani dopełniane. Wybierz A4 lub Letter, aby uzyskać standardowe strony dokumentu.' },
-      { q: 'Czy mój plik PDF jest gdzieś przesyłany?', a: 'Nie. Plik PDF jest odczytywany i zapisywany ponownie przez Twoją przeglądarkę. To narzędzie nie wysyła pliku na serwer.' },
     ],
     limits: [
       'Maksymalnie 25 MB na obraz i 100 obrazów w jednym pliku PDF.',
@@ -510,7 +490,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Czy zakładki i pola formularzy są zachowywane?', a: 'Strony są kopiowane wraz z widoczną zawartością i linkami. Zakładki na poziomie dokumentu oraz interaktywne dane formularzy nie są przenoszone.' },
       { q: 'Czy narzędzie otworzy pliki PDF chronione hasłem?', a: 'Nie. Zaszyfrowane pliki PDF są wykrywane i odrzucane z czytelnym komunikatem. Najpierw usuń hasło za pomocą naszego narzędzia Odblokuj PDF.' },
-      { q: 'Czy mój plik PDF jest gdzieś przesyłany?', a: 'Nie. Plik PDF jest odczytywany i zapisywany ponownie przez Twoją przeglądarkę. To narzędzie nie wysyła pliku na serwer.' },
     ],
     limits: [
       'Maksymalnie 100 MB na plik PDF.',
@@ -801,7 +780,6 @@ const tools: ToolTextMap = {
       { q: 'Jak silna jest ochrona?', a: 'Pliki są szyfrowane algorytmem AES-256, najsilniejszym standardowym szyfrowaniem PDF. W praktyce bezpieczeństwo zależy od hasła: użyj długiego, którego nie używasz nigdzie indziej.' },
       { q: 'Co, jeśli zapomnę hasła?', a: 'Nie można go odzyskać. Nic nie jest przechowywane ani nigdzie wysyłane i nie ma resetowania. Zachowaj oryginalny plik i hasło w bezpiecznym miejscu.' },
       { q: 'Czy opcje drukowania, kopiowania i edycji są wymuszane?', a: 'To prośby, które respektuje większość programów do PDF, ale nie są nie do obejścia. To hasło naprawdę chroni plik.' },
-      { q: 'Czy moje hasło jest przesyłane?', a: 'Nie. Szyfrowanie odbywa się w Twojej przeglądarce.' },
     ],
     limits: [
       'Maksymalnie 100 MB na plik PDF.',
@@ -822,7 +800,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Czy może odblokować plik PDF, jeśli zapomniałem hasła?', a: 'Nie. To narzędzie nigdy nie zgaduje ani nie łamie haseł. Usuwa zabezpieczenie tylko wtedy, gdy podasz prawidłowe hasło lub gdy plik jedynie ogranicza działania, takie jak drukowanie.' },
       { q: 'Czy to jest dozwolone?', a: 'Używaj go tylko na plikach, których jesteś właścicielem lub do których masz pozwolenie na otwarcie. Odpowiadasz za sposób wykorzystania wyniku.' },
-      { q: 'Czy moje hasło jest przesyłane?', a: 'Nie. Wszystko odbywa się w Twojej przeglądarce.' },
     ],
     limits: [
       'Maksymalnie 100 MB na plik PDF.',
@@ -865,7 +842,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Dlaczego mój plik PDF prawie się nie zmniejszył?', a: 'Tryb standardowy ponownie kompresuje obrazy JPEG, więc najbardziej pomaga w plikach PDF pełnych zdjęć lub skanów. Plik PDF składający się głównie z tekstu lub z już małymi obrazami nie może się znacznie zmniejszyć. Narzędzie informuje, gdy niczego nie udało się zaoszczędzić, zamiast udawać sukces.' },
       { q: 'Czy jakość się pogorszy?', a: 'Obrazy tracą część szczegółów w zamian za rozmiar; Lekka zostawia je prawie bez zmian, a Mocna sprawia, że są wyraźnie bardziej miękkie. W trybie standardowym tekst i grafika wektorowa nie są dotykane. Tryb „Maksymalny” zamienia każdą stronę w obraz, więc tekstu nie można już zaznaczać ani przeszukiwać.' },
-      { q: 'Czy mój plik PDF jest gdzieś przesyłany?', a: 'Nie. Plik PDF jest odczytywany i zapisywany ponownie przez Twoją przeglądarkę. To narzędzie nie wysyła pliku na serwer.' },
     ],
     limits: [
       'Ponownie kompresowane są tylko osadzone obrazy JPEG. Obrazy typu PNG (Flate), czcionki i pozostała zawartość pozostają bez zmian.',
@@ -885,7 +861,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Jakie języki są obsługiwane?', a: 'Na razie tylko angielski. Tekst w innych językach zostanie odczytany błędnie. Kolejne języki można dodać później bez zmiany sposobu działania narzędzia.' },
-      { q: 'Czy mój dokument jest wysyłany do usługi OCR?', a: 'Nie. Silnik rozpoznawania (Tesseract skompilowany do WebAssembly) i jego dane dla języka angielskiego są udostępniane z tej witryny i działają w Twojej przeglądarce. Dokument nie jest przesyłany.' },
       { q: 'Jak dokładne jest rozpoznawanie?', a: 'Najlepiej sprawdzają się czyste, proste skany tekstu drukowanego w rozdzielczości 200–300 DPI. Pismo odręczne, bardzo drobny druk oraz strony o niskim kontraście lub przekrzywione dają więcej błędów. Zawsze sprawdzaj ważne liczby.' },
     ],
     limits: [
@@ -906,8 +881,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Czy to prawnie wiążący podpis cyfrowy?', a: 'To podpis wizualny: obraz Twojego podpisu umieszczony na stronie. Nie jest kryptograficznym podpisem cyfrowym, nie zawiera certyfikatu i nie potrafi udowodnić, kto się podpisał, ani wykryć późniejszych zmian. To, czy zostanie zaakceptowany, zależy od podmiotu, który go wymaga. Niektóre organizacje wymagają certyfikowanych usług podpisu elektronicznego.' },
-      { q: 'Czy mój podpis jest gdzieś przechowywany?', a: 'Nie. Jest tworzony w Twojej przeglądarce, używany tylko dla tego pliku i zapominany po opuszczeniu lub odświeżeniu strony.' },
-      { q: 'Czy mój plik PDF jest gdzieś przesyłany?', a: 'Nie. Plik PDF jest odczytywany i zapisywany ponownie przez Twoją przeglądarkę. To narzędzie nie wysyła pliku na serwer.' },
     ],
     limits: [
       'Tylko podpis wizualny: bez certyfikatu, znacznika czasu i wykrywania zmian.',
@@ -927,7 +900,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Mój plik PDF nie pokazuje żadnych pól. Dlaczego?', a: 'Tutaj można wypełniać tylko pliki PDF z prawdziwymi polami formularza. Formularz będący tylko obrazem lub zwykłym tekstem nie ma pól; użyj narzędzia Podpisz PDF, aby umieścić podpis, lub narzędzia Znak wodny w PDF, aby dodać tekst. Formularze wykonane w XFA (niektóre formularze urzędowe i bankowe) nie są obsługiwane.' },
       { q: 'Co robi spłaszczanie?', a: 'Spłaszczanie wtapia Twoje odpowiedzi w stronę i usuwa pola formularza, więc odpowiedzi nie można już edytować. Użyj go dla kopii, którą wysyłasz; edytowalną kopię zachowaj dla siebie.' },
-      { q: 'Czy mój plik PDF jest gdzieś przesyłany?', a: 'Nie. Plik PDF jest odczytywany i zapisywany ponownie przez Twoją przeglądarkę. To narzędzie nie wysyła pliku na serwer.' },
     ],
     limits: [
       'Tekst może zawierać litery łacińskie, cyfry i popularne symbole (czcionka formularza nie obejmuje innych alfabetów).',
@@ -969,7 +941,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Co pokazuje porównanie tekstu?', a: 'Dla każdej strony słowa dodane (na zielono) i usunięte (na czerwono) między dokumentem oryginalnym a poprawionym, z zwiniętym niezmienionym tekstem. Strony są dopasowywane według numeru.' },
       { q: 'A zeskanowane pliki PDF?', a: 'Skany nie mają zaznaczalnego tekstu, więc porównanie tekstu nic nie znajdzie. Użyj porównania wizualnego albo najpierw uruchom OCR PDF na obu plikach.' },
-      { q: 'Czy mój plik PDF jest gdzieś przesyłany?', a: 'Nie. Plik PDF jest odczytywany i zapisywany ponownie przez Twoją przeglądarkę. To narzędzie nie wysyła pliku na serwer.' },
     ],
     limits: [
       'Strony są porównywane według numeru: jeśli wstawiono stronę, kolejne strony zostaną pokazane jako zmienione.',
@@ -1101,7 +1072,6 @@ const tools: ToolTextMap = {
       'Skopiuj lub pobierz sformatowany wynik.',
     ],
     faq: [
-      { q: 'Czy mój JSON jest wysyłany na serwer?', a: 'Nie. Parsowanie i formatowanie odbywa się w Twojej przeglądarce za pomocą wbudowanego parsera JSON.' },
       { q: 'Dlaczego odrzuca mój JSON?', a: 'Ścisły JSON nie dopuszcza komentarzy, końcowych przecinków ani pojedynczych cudzysłowów. Komunikat o błędzie pokazuje wiersz i kolumnę problemu.' },
     ],
     limits: [
@@ -1249,7 +1219,6 @@ const tools: ToolTextMap = {
       'Skopiuj hasło i zachowaj je w menedżerze haseł.',
     ],
     faq: [
-      { q: 'Czy wygenerowane hasła są gdzieś przechowywane lub wysyłane?', a: 'Nie. Hasła są generowane w Twojej przeglądarce za pomocą crypto.getRandomValues i nigdy nie są przesyłane ani zapisywane.' },
       { q: 'Czy hasło takie jak Tesla2026#Tech jest bezpieczne?', a: 'Jest lepsze niż zwykłe słowo, ale słabsze niż losowy tekst. Osoba zgadująca może zacząć od list znanych imion i nazw, więc prawdziwa siła wynika z liczby możliwości, podanej w bitach. Używaj haseł opartych na imionach do kont o niskim ryzyku, a w pełni losowych do poczty, bankowości i menedżerów haseł.' },
       { q: 'Dlaczego tylko kilka symboli?', a: 'Generowane hasła używają tylko czterech symboli @ # $ *, ponieważ są akceptowane przez prawie każdą witrynę i łatwo je wpisać na każdej klawiaturze.' },
       { q: 'Jak długie powinno być hasło?', a: 'Co najmniej 16 znaków dla ważnych kont. Długość liczy się bardziej niż złożoność.' },
@@ -1322,7 +1291,6 @@ const tools: ToolTextMap = {
       { q: 'Czy kody wygasają?', a: 'Nie. To kody statyczne: dane są zapisane w samym kodzie, więc działają zawsze i nic nie jest śledzone.' },
       { q: 'Jaki poziom korekcji błędów wybrać?', a: 'Średni odpowiada większości zastosowań. Wybierz Kwartylowy lub Wysoki, jeśli kod może się zabrudzić lub uszkodzić, ale wyższe poziomy czynią kod gęstszym i trudniejszym do zeskanowania w małych rozmiarach.' },
       { q: 'Czy mogę używać kodów komercyjnie?', a: 'Tak. Standard kodów QR jest otwarty, a kody tworzone tutaj nie wiążą się z opłatami, znakami wodnymi ani śledzeniem z naszej strony.' },
-      { q: 'Czy moje dane są gdzieś wysyłane?', a: 'Nie. Kod jest generowany w Twojej przeglądarce, a wpisane hasła do sieci Wi-Fi pozostają na Twoim urządzeniu.' },
     ],
     limits: [
       'Tylko kody statyczne: bez śledzenia skanów i bez edytowalnych kodów.',
@@ -1343,7 +1311,6 @@ const tools: ToolTextMap = {
       { q: "Czy narzędzie rozpoznaje tekst na stronie?", a: "Nie. Skan do PDF zamienia obrazy w strony PDF i może je czyścić, ale tekst pozostaje częścią obrazu. Aby można go było przeszukiwać, przepuść wynik przez OCR PDF." },
       { q: "Czy mogę użyć aparatu w telefonie?", a: "Na telefonach i tabletach, których przeglądarka to obsługuje, przycisk „Zrób zdjęcie” otwiera aparat. W przeciwnym razie wybierz zdjęcia już zapisane na urządzeniu." },
       { q: "Co robią style czyszczenia?", a: "„Oryginał” zachowuje kolory. „Skala szarości” usuwa kolor. „Dokument czarno-biały” zamienia stronę w czysto czarny tekst na białym papierze i wyrównuje cienie oraz nierówne oświetlenie, co nadaje się do wydrukowanych stron i notatek, ale nie do fotografii." },
-      { q: "Czy mój plik jest dokądś przesyłany?", a: "Nie. Plik jest odczytywany i konwertowany przez Twoją przeglądarkę. To narzędzie nie wysyła go na serwer." },
     ],
     limits: [
       "Maksymalnie 25 MB na obraz i 100 obrazów na plik PDF.",
@@ -1365,7 +1332,6 @@ const tools: ToolTextMap = {
       { q: "Czy plik PDF będzie wyglądał jak strona internetowa?", a: "Nie, nie dokładnie. Narzędzie odczytuje strukturę dokumentu (nagłówki, akapity, listy, tabele, łącza, tekst pogrubiony i pochylony oraz osadzone obrazy) i składa ją jako prosty dokument. Style CSS, skrypty, czcionki internetowe, kolumny i elementy pozycjonowane nie są stosowane." },
       { q: "Czy konwertowanie HTML, któremu nie ufam, jest bezpieczne?", a: "HTML jest odczytywany jako nieaktywny tekst: skrypty się nie uruchamiają, a z internetu nic nie jest wczytywane. Używane są tylko obrazy osadzone w samym HTML." },
       { q: "Jakie języki i czcionki są obsługiwane w pliku PDF?", a: "Plik PDF jest tworzony z czcionką Noto Sans, która obejmuje tekst łaciński (w tym polskie, czeskie, rumuńskie i tureckie litery), cyrylicę, grekę, wietnamski i dewanagari. Tekst arabski, hebrajski, tajski, chiński, japoński i koreański nie jest jeszcze obsługiwany: takie znaki pojawiają się jako znaki zapytania, a narzędzie informuje, ile ich dotyczyło. Oryginalne czcionki dokumentu nie są zachowywane." },
-      { q: "Czy mój plik jest dokądś przesyłany?", a: "Nie. Plik jest odczytywany i konwertowany przez Twoją przeglądarkę. To narzędzie nie wysyła go na serwer." },
     ],
     limits: [
       "Maksymalnie 10 MB HTML.",
@@ -1387,7 +1353,6 @@ const tools: ToolTextMap = {
       { q: "Co jest konwertowane, a co nie?", a: "Konwertowane: tekst z pogrubieniem, pochyleniem, podkreśleniem i łączami, nagłówki, listy punktowane i numerowane, tabele, obrazy JPEG i PNG, podziały wierszy i stron, wyrównanie oraz orientacja strony. Niekonwertowane: nagłówki i stopki, przypisy, pola tekstowe, równania, wykresy, kształty i obrazy w innych formatach." },
       { q: "Czy mogę skonwertować stary plik .doc?", a: "Nie. Otwórz go w Wordzie i najpierw zapisz jako plik DOCX." },
       { q: "Jakie języki i czcionki są obsługiwane w pliku PDF?", a: "Plik PDF jest tworzony z czcionką Noto Sans, która obejmuje tekst łaciński (w tym polskie, czeskie, rumuńskie i tureckie litery), cyrylicę, grekę, wietnamski i dewanagari. Tekst arabski, hebrajski, tajski, chiński, japoński i koreański nie jest jeszcze obsługiwany: takie znaki pojawiają się jako znaki zapytania, a narzędzie informuje, ile ich dotyczyło. Oryginalne czcionki dokumentu nie są zachowywane." },
-      { q: "Czy mój plik jest dokądś przesyłany?", a: "Nie. Plik jest odczytywany i konwertowany przez Twoją przeglądarkę. To narzędzie nie wysyła go na serwer." },
     ],
     limits: [
       "Tylko pliki DOCX, maksymalnie 50 MB. Stare pliki .doc i dokumenty zabezpieczone hasłem nie są obsługiwane.",
@@ -1409,7 +1374,6 @@ const tools: ToolTextMap = {
       { q: "Co nie jest konwertowane?", a: "Wykresy, SmartArt, wideo i dźwięk, animacje i przejścia, notatki prelegenta, gradienty, linie i łączniki oraz obrazy w formatach innych niż JPEG i PNG. Narzędzie informuje, ile elementów pominięto." },
       { q: "Czy mogę skonwertować stary plik .ppt?", a: "Nie. Otwórz go w PowerPoincie i najpierw zapisz jako plik PPTX." },
       { q: "Jakie języki i czcionki są obsługiwane w pliku PDF?", a: "Plik PDF jest tworzony z czcionką Noto Sans, która obejmuje tekst łaciński (w tym polskie, czeskie, rumuńskie i tureckie litery), cyrylicę, grekę, wietnamski i dewanagari. Tekst arabski, hebrajski, tajski, chiński, japoński i koreański nie jest jeszcze obsługiwany: takie znaki pojawiają się jako znaki zapytania, a narzędzie informuje, ile ich dotyczyło. Oryginalne czcionki dokumentu nie są zachowywane." },
-      { q: "Czy mój plik jest dokądś przesyłany?", a: "Nie. Plik jest odczytywany i konwertowany przez Twoją przeglądarkę. To narzędzie nie wysyła go na serwer." },
     ],
     limits: [
       "Tylko pliki PPTX, maksymalnie 100 MB i 300 slajdów. Stare pliki .ppt i prezentacje zabezpieczone hasłem nie są obsługiwane.",
@@ -1431,7 +1395,6 @@ const tools: ToolTextMap = {
       { q: "Czy będzie wyglądał jak układ wydruku w Excelu?", a: "Nie. Każdy widoczny arkusz staje się prostą tabelą dopasowaną do szerokości strony. Kolory komórek, scalone komórki, szerokości kolumn, wykresy, obrazy, obszary wydruku i podziały stron nie są zachowywane." },
       { q: "Czy mogę skonwertować stary plik .xls?", a: "Nie. Otwórz go w Excelu i najpierw zapisz jako plik XLSX." },
       { q: "Jakie języki i czcionki są obsługiwane w pliku PDF?", a: "Plik PDF jest tworzony z czcionką Noto Sans, która obejmuje tekst łaciński (w tym polskie, czeskie, rumuńskie i tureckie litery), cyrylicę, grekę, wietnamski i dewanagari. Tekst arabski, hebrajski, tajski, chiński, japoński i koreański nie jest jeszcze obsługiwany: takie znaki pojawiają się jako znaki zapytania, a narzędzie informuje, ile ich dotyczyło. Oryginalne czcionki dokumentu nie są zachowywane." },
-      { q: "Czy mój plik jest dokądś przesyłany?", a: "Nie. Plik jest odczytywany i konwertowany przez Twoją przeglądarkę. To narzędzie nie wysyła go na serwer." },
     ],
     limits: [
       "Tylko pliki XLSX, maksymalnie 50 MB. Stare pliki .xls i skoroszyty zabezpieczone hasłem nie są obsługiwane.",
@@ -1452,7 +1415,6 @@ const tools: ToolTextMap = {
       { q: "Jak rozpoznawane są nagłówki i listy?", a: "Nagłówki to wiersze zapisane większą czcionką niż tekst zasadniczy, listy to wiersze zaczynające się od punktora lub liczby, a akapity są rozdzielane odstępami między wierszami. To dobre oszacowanie, ale nie gwarancja, dlatego sprawdź wynik." },
       { q: "Dlaczego wynik jest pusty dla mojego zeskanowanego pliku PDF?", a: "Skan to obraz strony i nie zawiera tekstu do wyodrębnienia. Najpierw uruchom OCR PDF, aby dodać warstwę tekstową, a następnie skonwertuj wynik." },
       { q: "Co z tabelami, kolumnami i obrazami?", a: "Tabele i kolumny nie są odtwarzane: ich tekst pojawia się jako zwykłe wiersze, w miarę możliwości w kolejności czytania. Obrazy, łącza, tekst pogrubiony i pochylony, przypisy i równania nie są przenoszone." },
-      { q: "Czy mój plik jest dokądś przesyłany?", a: "Nie. Plik jest odczytywany i konwertowany przez Twoją przeglądarkę. To narzędzie nie wysyła go na serwer." },
     ],
     limits: [
       "Maksymalnie 100 MB na plik PDF. Pliki PDF zabezpieczone hasłem trzeba najpierw odblokować.",
@@ -1473,7 +1435,6 @@ const tools: ToolTextMap = {
       { q: "Jakie rodzaje uszkodzeń można naprawić?", a: "Uszkodzenia struktury pliku: brakujący lub błędny indeks obiektów (tabela odsyłaczy), brakujący trailer, śmieci przed początkiem lub zepsuta lista stron. Jeśli plik został ucięty, strony zapisane przed ucięciem można odzyskać." },
       { q: "Czego nie da się odzyskać?", a: "Treści, której nie ma już w pliku. Brakujących lub uszkodzonych stron, obrazów i czcionek nie da się przywrócić, a niektórych plików nie można uratować. Narzędzie informuje, ile stron zachowało, i mówi o tym, gdy nie potrafi utworzyć użytecznego pliku; nigdy nie oferuje pobrania pliku, którego nie utworzyło." },
       { q: "A jeśli mój plik PDF otwiera się normalnie?", a: "Wtedy nie ma czego naprawiać. Narzędzie poinformuje o tym i zaoferuje oczyszczoną kopię pliku." },
-      { q: "Czy mój plik jest dokądś przesyłany?", a: "Nie. Plik jest odczytywany i konwertowany przez Twoją przeglądarkę. To narzędzie nie wysyła go na serwer." },
     ],
     limits: [
       "Maksymalnie 100 MB na plik PDF. Pliki PDF zabezpieczone hasłem trzeba najpierw odblokować.",
@@ -1495,7 +1456,6 @@ const tools: ToolTextMap = {
       { q: "Czym różnią się oba sposoby konwersji?", a: "„Zachowaj tekst i czcionki” zmienia tylko strukturę i metadane pliku, więc tekst pozostaje zaznaczalny. Działa to tylko wtedy, gdy wszystkie czcionki są osadzone, a plik nie używa kolorów CMYK. „Zamień strony na obrazy” renderuje każdą stronę jako obraz i buduje z nich nowy PDF/A. Działa to zawsze, ale tekst nie jest już zaznaczalny, a plik jest większy." },
       { q: "Dlaczego mój PDF został odrzucony, gdy wybrałem zachowanie tekstu?", a: "PDF/A wymaga, by każda czcionka była osadzona w pliku, i nie dopuszcza kolorów CMYK bez profilu CMYK, kompresji LZW ani adnotacji bez wyglądu. Nie da się tego naprawić bez zmiany stron, więc narzędzie wypisuje to, co znalazło, zamiast udawać wynik. Nadal możesz użyć trybu obrazów." },
       { q: "Co narzędzie zmienia w pliku?", a: "Dodaje identyfikację PDF/A i metadane XMP, profil kolorów sRGB jako warunek wyjściowy oraz identyfikator pliku. Usuwa JavaScript, zabronione akcje, załączniki, zbędne informacje o dokumencie i ustawienia adnotacji, których PDF/A nie dopuszcza." },
-      { q: "Czy mój plik jest dokądś wysyłany?", a: "Nie. Plik jest odczytywany i konwertowany przez Twoją przeglądarkę. To narzędzie nie wysyła go na żaden serwer." },
     ],
     limits: [
       "Maksymalnie 100 MB na plik PDF. Pliki PDF chronione hasłem trzeba najpierw odblokować, ponieważ plik PDF/A nie może być zaszyfrowany.",

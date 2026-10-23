@@ -52,7 +52,7 @@ const ImageTransform: ToolImplementation = ({ tool }) => {
               <CheckField label={t('imageTransform.vertical')} checked={flipV} onChange={setFlipV} />
             </div>
           )}
-          <RangeField label={t('imageTransform.quality')} value={quality} min={10} max={100} onChange={setQuality} format={(v) => `${v}%`} />
+          {rotateMode && <RangeField label={t('imageTransform.quality')} value={quality} min={10} max={100} onChange={setQuality} format={(v) => `${v}%`} />}
           {rotateMode && preset === 'custom' && <ColorField label={t('imageTransform.background')} value={background} onChange={setBackground} />}
         </>
       }
@@ -60,7 +60,7 @@ const ImageTransform: ToolImplementation = ({ tool }) => {
         const fmt = FORMATS[sameFormatAs(file)];
         const result = await processImage(file, {
           mime: fmt.mime,
-          quality: quality / 100,
+          quality: rotateMode ? quality / 100 : 0.92,
           background,
           rotate: rotateMode ? angle : 0,
           flipH: !rotateMode && flipH,

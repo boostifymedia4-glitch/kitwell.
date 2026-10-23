@@ -20,10 +20,6 @@ const tools: ToolTextMap = {
         q: 'PNG neden JPG’den daha büyük?',
         a: 'PNG kayıpsızdır ve fotoğrafları genellikle JPG’den daha verimsiz saklar. Dosya boyutu birebir piksellerden daha önemliyse JPG veya WebP kullanın.',
       },
-      {
-        q: 'Görsellerim bir sunucuya yükleniyor mu?',
-        a: 'Hayır. Görsel, tarayıcınız tarafından Canvas API kullanılarak çözülür ve yeniden kodlanır. Bu araç dosyayı hiçbir yere göndermez.',
-      },
     ],
     limits: [
       'Animasyonlu GIF veya WebP dosyaları yalnızca ilk karesi kullanılarak dönüştürülür.',
@@ -44,14 +40,6 @@ const tools: ToolTextMap = {
       {
         q: 'Saydam alanlara ne olur?',
         a: 'JPG saydamlığı desteklemez; bu yüzden saydam pikseller seçtiğiniz arka plan rengiyle doldurulur (varsayılan beyazdır).',
-      },
-      {
-        q: 'Hangi kalite ayarını kullanmalıyım?',
-        a: 'Çoğu görsel için 80–90 iyi bir dengedir. Yaklaşık 60’ın altında metinlerde ve keskin kenarlarda sıkıştırma kusurları görünür hale gelir.',
-      },
-      {
-        q: 'Görsellerim bir sunucuya yükleniyor mu?',
-        a: 'Hayır. Görsel, tarayıcınız tarafından Canvas API kullanılarak çözülür ve yeniden kodlanır. Bu araç dosyayı hiçbir yere göndermez.',
       },
     ],
     limits: [
@@ -79,10 +67,6 @@ const tools: ToolTextMap = {
         q: 'Her tarayıcı WebP’yi destekler mi?',
         a: 'Güncel tüm büyük tarayıcılar WebP görüntüleyebilir. Tarayıcıda WebP kodlama Chrome, Edge, Firefox ve yeni Safari sürümlerinde desteklenir; sizinki desteklemiyorsa araç hatalı bir dosya üretmek yerine bunu size bildirir.',
       },
-      {
-        q: 'Görsellerim bir sunucuya yükleniyor mu?',
-        a: 'Hayır. Görsel, tarayıcınız tarafından Canvas API kullanılarak çözülür ve yeniden kodlanır. Bu araç dosyayı hiçbir yere göndermez.',
-      },
     ],
     limits: [
       'Animasyonlu GIF veya WebP dosyaları yalnızca ilk karesi kullanılarak dönüştürülür.',
@@ -109,10 +93,6 @@ const tools: ToolTextMap = {
         q: 'Kayıpsız bir sonuç alabilir miyim?',
         a: 'En yüksek doğruluk için kaliteyi 100 yapın. Tarayıcılar WebP’yi kayıplı olarak kodlar; bu nedenle matematiksel olarak birebir bir kopya gerekiyorsa PNG kullanın.',
       },
-      {
-        q: 'Görsellerim bir sunucuya yükleniyor mu?',
-        a: 'Hayır. Görsel, tarayıcınız tarafından Canvas API kullanılarak çözülür ve yeniden kodlanır. Bu araç dosyayı hiçbir yere göndermez.',
-      },
     ],
     limits: [
       'Animasyonlu GIF veya WebP dosyaları yalnızca ilk karesi kullanılarak dönüştürülür.',
@@ -135,10 +115,6 @@ const tools: ToolTextMap = {
         q: 'WebP neden JPG’ye dönüştürülür?',
         a: 'Bazı eski yazılımlar, e-posta istemcileri ve yükleme formları hâlâ WebP’yi kabul etmez. JPG neredeyse her yerde kabul edilir.',
       },
-      {
-        q: 'Görsellerim bir sunucuya yükleniyor mu?',
-        a: 'Hayır. Görsel, tarayıcınız tarafından Canvas API kullanılarak çözülür ve yeniden kodlanır. Bu araç dosyayı hiçbir yere göndermez.',
-      },
     ],
     limits: [
       'Animasyonlu GIF veya WebP dosyaları yalnızca ilk karesi kullanılarak dönüştürülür.',
@@ -160,10 +136,6 @@ const tools: ToolTextMap = {
       {
         q: 'Saydamlık korunuyor mu?',
         a: 'Evet. PNG saydamlığı desteklediği için WebP’deki alfa kanalı aktarılır.',
-      },
-      {
-        q: 'Görsellerim bir sunucuya yükleniyor mu?',
-        a: 'Hayır. Görsel, tarayıcınız tarafından Canvas API kullanılarak çözülür ve yeniden kodlanır. Bu araç dosyayı hiçbir yere göndermez.',
       },
     ],
     limits: [
@@ -246,10 +218,6 @@ const tools: ToolTextMap = {
         q: 'Kırpma kaliteyi düşürür mü?',
         a: 'Kırpma orijinal pikselleri korur. Kalite yalnızca JPG veya WebP olarak daha düşük kalite ayarıyla kaydederseniz değişir.',
       },
-      {
-        q: 'Görsellerim bir sunucuya yükleniyor mu?',
-        a: 'Hayır. Görsel, tarayıcınız tarafından Canvas API kullanılarak çözülür ve yeniden kodlanır. Bu araç dosyayı hiçbir yere göndermez.',
-      },
     ],
     limits: [
       'Aynı anda tek görsel.',
@@ -271,10 +239,6 @@ const tools: ToolTextMap = {
         q: 'Dik açı olmayan döndürmelerde ne olur?',
         a: 'Canvas, döndürülen görsele sığacak şekilde büyür. JPG çıktısında boş köşeler seçtiğiniz arka planla doldurulur; PNG ve WebP bunları saydam bırakır.',
       },
-      {
-        q: 'Görsellerim bir sunucuya yükleniyor mu?',
-        a: 'Hayır. Görsel, tarayıcınız tarafından Canvas API kullanılarak çözülür ve yeniden kodlanır. Bu araç dosyayı hiçbir yere göndermez.',
-      },
     ],
     limits: [
       'Animasyonlu GIF veya WebP dosyaları yalnızca ilk karesi kullanılarak dönüştürülür.',
@@ -295,10 +259,6 @@ const tools: ToolTextMap = {
       {
         q: 'Yatay ve dikey çevirme arasındaki fark nedir?',
         a: 'Yatay çevirme, bir ayna gibi sol ile sağı yansıtır. Dikey çevirme ise görseli yatay ekseni boyunca baş aşağı çevirir.',
-      },
-      {
-        q: 'Görsellerim bir sunucuya yükleniyor mu?',
-        a: 'Hayır. Görsel, tarayıcınız tarafından Canvas API kullanılarak çözülür ve yeniden kodlanır. Bu araç dosyayı hiçbir yere göndermez.',
       },
     ],
     limits: [
@@ -325,10 +285,6 @@ const tools: ToolTextMap = {
         q: 'HEIC veya TIFF ne olacak?',
         a: 'Tarayıcılar HEIC veya TIFF’i yerel olarak çözemez; bu nedenle şimdilik desteklenmiyorlar.',
       },
-      {
-        q: 'Görsellerim bir sunucuya yükleniyor mu?',
-        a: 'Hayır. Görsel, tarayıcınız tarafından Canvas API kullanılarak çözülür ve yeniden kodlanır. Bu araç dosyayı hiçbir yere göndermez.',
-      },
     ],
     limits: [
       'Animasyonlu GIF veya WebP dosyaları yalnızca ilk karesi kullanılarak dönüştürülür.',
@@ -350,10 +306,6 @@ const tools: ToolTextMap = {
       {
         q: 'Base64 görselleri ne zaman kullanmalıyım?',
         a: 'Ek bir isteğin, yaklaşık %33’lük boyut artışından daha pahalıya geldiği CSS veya e-postalardaki küçük simgeler için. Büyük fotoğraflarda kullanmaktan kaçının.',
-      },
-      {
-        q: 'Görsellerim bir sunucuya yükleniyor mu?',
-        a: 'Hayır. Görsel, tarayıcınız tarafından Canvas API kullanılarak çözülür ve yeniden kodlanır. Bu araç dosyayı hiçbir yere göndermez.',
       },
     ],
     limits: [
@@ -398,10 +350,6 @@ const tools: ToolTextMap = {
       {
         q: 'Palet nasıl hesaplanıyor?',
         a: 'Görselin çözünürlüğü düşürülür ve renkleri gruplara ayrılır; en yaygın gruplar gösterilir. Bu, baskın renklerin bir yaklaşımıdır, eksiksiz bir liste değildir.',
-      },
-      {
-        q: 'Görsellerim bir sunucuya yükleniyor mu?',
-        a: 'Hayır. Görsel, tarayıcınız tarafından Canvas API kullanılarak çözülür ve yeniden kodlanır. Bu araç dosyayı hiçbir yere göndermez.',
       },
     ],
     limits: [
@@ -460,10 +408,6 @@ const tools: ToolTextMap = {
       {
         q: 'SVG dosyalarını burada açmak güvenli mi?',
         a: 'Evet. SVG bir resim olarak çizilir, bu yüzden içindeki komut dosyaları çalışmaz.',
-      },
-      {
-        q: 'Görsellerim bir sunucuya yükleniyor mu?',
-        a: 'Hayır. Görsel, tarayıcınız tarafından Canvas API kullanılarak çözülür ve yeniden kodlanır. Bu araç dosyayı hiçbir yere göndermez.',
       },
     ],
     limits: [
@@ -558,10 +502,6 @@ const tools: ToolTextMap = {
         q: 'Neden kod bulunamadı?',
         a: 'Kod bulanık, kırpılmış, çok küçük veya kontrastı düşük olabilir. Kodun tamamını etrafında net bir boşlukla gösteren, daha keskin ve daha yakın bir görsel deneyin.',
       },
-      {
-        q: 'Görsellerim yükleniyor mu?',
-        a: 'Hayır. Görsel tarayıcınızda okunur ve bu araç onu hiçbir yere göndermez.',
-      },
     ],
     limits: [
       'Her biri 25 MB olmak üzere en fazla 10 görsel.',
@@ -586,10 +526,6 @@ const tools: ToolTextMap = {
       {
         q: 'Saydam alanları koruyabilir miyim?',
         a: 'Evet; saydamlığı olan PNG veya WebP resimleri için “Saydam alanları koru” seçeneğini açın. GIF saydamlığı piksel başına açık ya da kapalıdır, bu yüzden yumuşak kenarlar sertleşir.',
-      },
-      {
-        q: 'Görsellerim bir sunucuya yükleniyor mu?',
-        a: 'Hayır. Görsel, tarayıcınız tarafından Canvas API kullanılarak çözülür ve yeniden kodlanır. Bu araç dosyayı hiçbir yere göndermez.',
       },
     ],
     limits: [
@@ -616,10 +552,6 @@ const tools: ToolTextMap = {
         q: 'Dışa aktarmak kaliteyi düşürür mü?',
         a: 'PNG her pikseli korur. JPG ve WebP kayıplıdır; fotoğrafların aynı görünmesi için 90 veya daha yüksek bir kalite kullanın. Düzenlemeler önizleme boyutunda değil, resminizin tam boyutunda uygulanır.',
       },
-      {
-        q: 'Görsellerim bir sunucuya yükleniyor mu?',
-        a: 'Hayır. Görsel, tarayıcınız tarafından Canvas API kullanılarak çözülür ve yeniden kodlanır. Bu araç dosyayı hiçbir yere göndermez.',
-      },
     ],
     limits: [
       'Aynı anda tek fotoğraf, en fazla 25 MB ve yaklaşık 50 megapiksel.',
@@ -642,10 +574,6 @@ const tools: ToolTextMap = {
         q: 'Görsel kalitesi düşer mi?',
         a: 'Hayır. JPG dosyaları PDF’ye olduğu gibi, yeniden sıkıştırılmadan gömülür.',
       },
-      {
-        q: 'PDF’im bir yere yükleniyor mu?',
-        a: 'Hayır. PDF, tarayıcınız tarafından okunur ve yeniden yazılır. Bu araç dosyayı bir sunucuya göndermez.',
-      },
     ],
     limits: [
       'Görsel başına en fazla 25 MB ve PDF başına en fazla 100 görsel.',
@@ -665,10 +593,6 @@ const tools: ToolTextMap = {
       {
         q: 'Saydamlık korunuyor mu?',
         a: 'Evet. PNG görseller alfa kanallarıyla gömülür; bu yüzden saydam alanlarda arkadaki beyaz sayfa görünür.',
-      },
-      {
-        q: 'PDF’im bir yere yükleniyor mu?',
-        a: 'Hayır. PDF, tarayıcınız tarafından okunur ve yeniden yazılır. Bu araç dosyayı bir sunucuya göndermez.',
       },
     ],
     limits: [
@@ -694,10 +618,6 @@ const tools: ToolTextMap = {
         q: '“Görsele sığdır” ne yapar?',
         a: 'Her sayfa kendi görselinin boyutunda olur; bu yüzden hiçbir şey ölçeklenmez veya boşlukla doldurulmaz. Standart belge sayfaları için A4 veya Letter’ı seçin.',
       },
-      {
-        q: 'PDF’im bir yere yükleniyor mu?',
-        a: 'Hayır. PDF, tarayıcınız tarafından okunur ve yeniden yazılır. Bu araç dosyayı bir sunucuya göndermez.',
-      },
     ],
     limits: [
       'Görsel başına en fazla 25 MB ve PDF başına en fazla 100 görsel.',
@@ -720,10 +640,6 @@ const tools: ToolTextMap = {
       {
         q: 'Parola korumalı PDF’leri açabilir mi?',
         a: 'Hayır. Şifreli PDF’ler algılanır ve net bir mesajla reddedilir. Önce PDF Kilidini Aç aracımızla parolayı kaldırın.',
-      },
-      {
-        q: 'PDF’im bir yere yükleniyor mu?',
-        a: 'Hayır. PDF, tarayıcınız tarafından okunur ve yeniden yazılır. Bu araç dosyayı bir sunucuya göndermez.',
       },
     ],
     limits: [
@@ -1132,10 +1048,6 @@ const tools: ToolTextMap = {
         q: 'Yazdırma, kopyalama ve düzenleme seçenekleri zorunlu tutuluyor mu?',
         a: 'Bunlar çoğu PDF programının uyduğu isteklerdir, ancak aşılamaz değildir. Dosyayı asıl koruyan paroladır.',
       },
-      {
-        q: 'Parolam yükleniyor mu?',
-        a: 'Hayır. Şifreleme tarayıcınızda yapılır.',
-      },
     ],
     limits: [
       'PDF başına en fazla 100 MB.',
@@ -1161,10 +1073,6 @@ const tools: ToolTextMap = {
       {
         q: 'Buna izin var mı?',
         a: 'Yalnızca size ait olan veya açma izniniz bulunan dosyalarda kullanın. Sonucu nasıl kullandığınızdan siz sorumlusunuz.',
-      },
-      {
-        q: 'Parolam yükleniyor mu?',
-        a: 'Hayır. Her şey tarayıcınızda gerçekleşir.',
       },
     ],
     limits: [
@@ -1223,10 +1131,6 @@ const tools: ToolTextMap = {
         q: 'Kalite düşer mi?',
         a: 'Görseller boyut karşılığında bir miktar ayrıntı kaybeder; Hafif onları neredeyse değiştirmeden bırakır, Güçlü ise gözle görülür biçimde yumuşatır. Standart modda metne ve vektör grafiklere dokunulmaz. “Maksimum” modu her sayfayı bir resme dönüştürür, bu yüzden metin artık seçilemez ve aranamaz.',
       },
-      {
-        q: 'PDF’im bir yere yükleniyor mu?',
-        a: 'Hayır. PDF, tarayıcınız tarafından okunur ve yeniden yazılır. Bu araç dosyayı bir sunucuya göndermez.',
-      },
     ],
     limits: [
       'Yalnızca gömülü JPEG görseller yeniden sıkıştırılır. PNG tarzı (Flate) görseller, yazı tipleri ve diğer içerik olduğu gibi korunur.',
@@ -1248,10 +1152,6 @@ const tools: ToolTextMap = {
       {
         q: 'Hangi diller destekleniyor?',
         a: 'Şimdilik yalnızca İngilizce. Diğer dillerdeki metin yanlış okunur. Araç çalışma şekli değişmeden ileride daha fazla dil eklenebilir.',
-      },
-      {
-        q: 'Belgem bir OCR hizmetine gönderiliyor mu?',
-        a: 'Hayır. Tanıma motoru (WebAssembly olarak derlenmiş Tesseract) ve İngilizce verileri bu web sitesinden sunulur ve tarayıcınızın içinde çalışır. Belge yüklenmez.',
       },
       {
         q: 'Ne kadar doğru?',
@@ -1279,14 +1179,6 @@ const tools: ToolTextMap = {
         q: 'Bu, yasal olarak bağlayıcı bir dijital imza mı?',
         a: 'Bu bir görsel imzadır: imzanızın sayfaya yerleştirilmiş bir resmi. Kriptografik bir dijital imza değildir, sertifika taşımaz, kimin imzaladığını kanıtlayamaz ve sonradan yapılan değişiklikleri algılayamaz. Kabul edilip edilmeyeceği sizden isteyen tarafa bağlıdır. Bazı kurumlar sertifikalı e-imza hizmetleri ister.',
       },
-      {
-        q: 'İmzam bir yerde saklanıyor mu?',
-        a: 'Hayır. Tarayıcınızda oluşturulur, yalnızca bu dosya için kullanılır ve sayfadan ayrıldığınızda ya da sayfayı yenilediğinizde unutulur.',
-      },
-      {
-        q: 'PDF’im bir yere yükleniyor mu?',
-        a: 'Hayır. PDF, tarayıcınız tarafından okunur ve yeniden yazılır. Bu araç dosyayı bir sunucuya göndermez.',
-      },
     ],
     limits: [
       'Yalnızca görsel imza: sertifika, zaman damgası veya kurcalama algılama yoktur.',
@@ -1311,10 +1203,6 @@ const tools: ToolTextMap = {
       {
         q: 'Düzleştirme ne yapar?',
         a: 'Düzleştirme yanıtlarınızı sayfaya işler ve form alanlarını kaldırır; böylece yanıtlar artık düzenlenemez. Göndereceğiniz kopya için kullanın; düzenlenebilir bir kopyayı kendiniz için saklayın.',
-      },
-      {
-        q: 'PDF’im bir yere yükleniyor mu?',
-        a: 'Hayır. PDF, tarayıcınız tarafından okunur ve yeniden yazılır. Bu araç dosyayı bir sunucuya göndermez.',
       },
     ],
     limits: [
@@ -1371,10 +1259,6 @@ const tools: ToolTextMap = {
       {
         q: 'Taranmış PDF’lerde ne olur?',
         a: 'Taramalarda seçilebilir metin olmadığından metin karşılaştırması hiçbir şey bulamaz. Görsel karşılaştırmayı kullanın veya önce her iki dosyaya da OCR PDF uygulayın.',
-      },
-      {
-        q: 'PDF’im bir yere yükleniyor mu?',
-        a: 'Hayır. PDF, tarayıcınız tarafından okunur ve yeniden yazılır. Bu araç dosyayı bir sunucuya göndermez.',
       },
     ],
     limits: [
@@ -1534,10 +1418,6 @@ const tools: ToolTextMap = {
       'Biçimlendirilmiş sonucu kopyalayın veya indirin.',
     ],
     faq: [
-      {
-        q: 'JSON’um bir sunucuya gönderiliyor mu?',
-        a: 'Hayır. Ayrıştırma ve biçimlendirme tarayıcınızda, yerleşik JSON ayrıştırıcısıyla yapılır.',
-      },
       {
         q: 'JSON’um neden reddediliyor?',
         a: 'Katı JSON yorumlara, sondaki virgüllere veya tek tırnaklara izin vermez. Hata mesajı sorunun satırını ve sütununu gösterir.',
@@ -1719,10 +1599,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       {
-        q: 'Oluşturulan parolalar saklanıyor veya bir yere gönderiliyor mu?',
-        a: 'Hayır. Parolalar tarayıcınızda crypto.getRandomValues kullanılarak oluşturulur ve asla iletilmez ya da kaydedilmez.',
-      },
-      {
         q: 'Tesla2026#Tech gibi bir parola güvenli mi?',
         a: 'Sıradan bir sözcükten iyidir ancak rastgele metinden zayıftır. Tahmin etmeye çalışan biri iyi bilinen isim listelerinden başlayabilir; bu yüzden gerçek güç, bit olarak gösterilen olasılık sayısından gelir. İsim tabanlı parolaları düşük riskli hesaplar için, tamamen rastgele olanları e-posta, bankacılık ve parola yöneticileri için kullanın.',
       },
@@ -1821,10 +1697,6 @@ const tools: ToolTextMap = {
         q: 'Kodları ticari amaçla kullanabilir miyim?',
         a: 'Evet. QR kod standardı açıktır ve burada oluşturulan kodlarda bizden ücret, filigran veya izleme yoktur.',
       },
-      {
-        q: 'Verilerim bir yere gönderiliyor mu?',
-        a: 'Hayır. Kod tarayıcınızda oluşturulur ve girdiğiniz Wi-Fi parolaları cihazınızda kalır.',
-      },
     ],
     limits: [
       'Yalnızca statik kodlar: tarama izleme ve düzenlenebilir kod yoktur.',
@@ -1845,7 +1717,6 @@ const tools: ToolTextMap = {
       { q: "Sayfadaki metni tanıyor mu?", a: "Hayır. Taramadan PDF’ye, görselleri PDF sayfalarına dönüştürür ve temizleyebilir, ancak metin görselin bir parçası olarak kalır. Aranabilir hale getirmek için sonucu OCR PDF’den geçirin." },
       { q: "Telefonumun kamerasını kullanabilir miyim?", a: "Tarayıcısı destekleyen telefon ve tabletlerde “Fotoğraf çek” düğmesi kamerayı açar. Aksi halde cihazınıza zaten kaydedilmiş fotoğrafları seçin." },
       { q: "Temizleme stilleri ne yapar?", a: "“Orijinal” renkleri korur. “Gri tonlamalı” rengi kaldırır. “Siyah beyaz belge” sayfayı beyaz kâğıt üzerinde saf siyah metne çevirir ve gölgeleri ile düzensiz aydınlatmayı dengeler; basılı sayfalara ve notlara uygundur, fotoğraflara uygun değildir." },
-      { q: "Dosyam bir yere yükleniyor mu?", a: "Hayır. Dosya tarayıcınız tarafından okunur ve dönüştürülür. Bu araç dosyayı bir sunucuya göndermez." },
     ],
     limits: [
       "Görsel başına en fazla 25 MB ve PDF başına 100 görsel.",
@@ -1867,7 +1738,6 @@ const tools: ToolTextMap = {
       { q: "PDF web sayfasına benzer mi?", a: "Hayır, birebir değil. Araç belgenin yapısını (başlıklar, paragraflar, listeler, tablolar, bağlantılar, kalın ve italik metin ile gömülü görseller) okur ve basit bir belge olarak düzenler. CSS stilleri, betikler, web yazı tipleri, sütunlar ve konumlandırılmış öğeler uygulanmaz." },
       { q: "Güvenmediğim bir HTML’yi dönüştürmek güvenli mi?", a: "HTML etkisiz metin olarak okunur: betikler çalışmaz ve internetten hiçbir şey yüklenmez. Yalnızca HTML’in kendisine gömülü görseller kullanılır." },
       { q: "PDF’de hangi diller ve yazı tipleri destekleniyor?", a: "PDF, Latin (Lehçe, Çekçe, Rumence ve Türkçe harfler dahil), Kiril, Yunan, Vietnam ve Devanagari metinlerini kapsayan Noto Sans ile yazılır. Arapça, İbranice, Tayca, Çince, Japonca ve Korece metin henüz desteklenmiyor: bu karakterler soru işareti olarak görünür ve araç kaç tanesinin etkilendiğini size bildirir. Belgenin özgün yazı tipleri korunmaz." },
-      { q: "Dosyam bir yere yükleniyor mu?", a: "Hayır. Dosya tarayıcınız tarafından okunur ve dönüştürülür. Bu araç dosyayı bir sunucuya göndermez." },
     ],
     limits: [
       "En fazla 10 MB HTML.",
@@ -1889,7 +1759,6 @@ const tools: ToolTextMap = {
       { q: "Neler dönüştürülür, neler dönüştürülmez?", a: "Dönüştürülenler: kalın, italik, altı çizili metin ve bağlantılar, başlıklar, madde işaretli ve numaralı listeler, tablolar, JPEG ve PNG görseller, satır ve sayfa sonları, hizalama ve sayfa yönü. Dönüştürülmeyenler: üst bilgi ve alt bilgiler, dipnotlar, metin kutuları, denklemler, grafikler, şekiller ve diğer görsel biçimleri." },
       { q: "Eski bir .doc dosyasını dönüştürebilir miyim?", a: "Hayır. Dosyayı Word’de açın ve önce DOCX dosyası olarak kaydedin." },
       { q: "PDF’de hangi diller ve yazı tipleri destekleniyor?", a: "PDF, Latin (Lehçe, Çekçe, Rumence ve Türkçe harfler dahil), Kiril, Yunan, Vietnam ve Devanagari metinlerini kapsayan Noto Sans ile yazılır. Arapça, İbranice, Tayca, Çince, Japonca ve Korece metin henüz desteklenmiyor: bu karakterler soru işareti olarak görünür ve araç kaç tanesinin etkilendiğini size bildirir. Belgenin özgün yazı tipleri korunmaz." },
-      { q: "Dosyam bir yere yükleniyor mu?", a: "Hayır. Dosya tarayıcınız tarafından okunur ve dönüştürülür. Bu araç dosyayı bir sunucuya göndermez." },
     ],
     limits: [
       "Yalnızca DOCX dosyaları, en fazla 50 MB. Eski .doc dosyaları ve parola korumalı belgeler desteklenmez.",
@@ -1911,7 +1780,6 @@ const tools: ToolTextMap = {
       { q: "Nelerin dönüştürülmediği?", a: "Grafikler, SmartArt, video ve ses, animasyonlar ve geçişler, konuşmacı notları, gradyanlar, çizgiler ve bağlayıcılar ile JPEG ve PNG dışındaki biçimlerdeki görseller. Araç kaç öğenin dışarıda bırakıldığını size bildirir." },
       { q: "Eski bir .ppt dosyasını dönüştürebilir miyim?", a: "Hayır. Dosyayı PowerPoint’te açın ve önce PPTX dosyası olarak kaydedin." },
       { q: "PDF’de hangi diller ve yazı tipleri destekleniyor?", a: "PDF, Latin (Lehçe, Çekçe, Rumence ve Türkçe harfler dahil), Kiril, Yunan, Vietnam ve Devanagari metinlerini kapsayan Noto Sans ile yazılır. Arapça, İbranice, Tayca, Çince, Japonca ve Korece metin henüz desteklenmiyor: bu karakterler soru işareti olarak görünür ve araç kaç tanesinin etkilendiğini size bildirir. Belgenin özgün yazı tipleri korunmaz." },
-      { q: "Dosyam bir yere yükleniyor mu?", a: "Hayır. Dosya tarayıcınız tarafından okunur ve dönüştürülür. Bu araç dosyayı bir sunucuya göndermez." },
     ],
     limits: [
       "Yalnızca PPTX dosyaları, en fazla 100 MB ve 300 slayt. Eski .ppt dosyaları ve parola korumalı sunular desteklenmez.",
@@ -1933,7 +1801,6 @@ const tools: ToolTextMap = {
       { q: "Excel’deki yazdırma düzenine benzer mi?", a: "Hayır. Görünür her sayfa, sayfa genişliğine sığdırılan basit bir tablo olur. Hücre renkleri, birleştirilmiş hücreler, sütun genişlikleri, grafikler, resimler, yazdırma alanları ve sayfa sonları korunmaz." },
       { q: "Eski bir .xls dosyasını dönüştürebilir miyim?", a: "Hayır. Dosyayı Excel’de açın ve önce XLSX dosyası olarak kaydedin." },
       { q: "PDF’de hangi diller ve yazı tipleri destekleniyor?", a: "PDF, Latin (Lehçe, Çekçe, Rumence ve Türkçe harfler dahil), Kiril, Yunan, Vietnam ve Devanagari metinlerini kapsayan Noto Sans ile yazılır. Arapça, İbranice, Tayca, Çince, Japonca ve Korece metin henüz desteklenmiyor: bu karakterler soru işareti olarak görünür ve araç kaç tanesinin etkilendiğini size bildirir. Belgenin özgün yazı tipleri korunmaz." },
-      { q: "Dosyam bir yere yükleniyor mu?", a: "Hayır. Dosya tarayıcınız tarafından okunur ve dönüştürülür. Bu araç dosyayı bir sunucuya göndermez." },
     ],
     limits: [
       "Yalnızca XLSX dosyaları, en fazla 50 MB. Eski .xls dosyaları ve parola korumalı çalışma kitapları desteklenmez.",
@@ -1954,7 +1821,6 @@ const tools: ToolTextMap = {
       { q: "Başlıklar ve listeler nasıl bulunuyor?", a: "Başlıklar gövde metninden daha büyük yazı tipindeki satırlardır, listeler madde işareti veya numarayla başlayan satırlardır ve paragraflar satırlar arasındaki boşlukla ayrılır. Bu iyi bir tahmindir, garanti değildir; bu yüzden sonucu kontrol edin." },
       { q: "Taranmış PDF’m için sonuç neden boş?", a: "Tarama bir sayfanın görselidir ve çıkarılacak metni yoktur. Önce metin katmanı eklemek için OCR PDF’yi çalıştırın, ardından sonucu dönüştürün." },
       { q: "Tablolar, sütunlar ve görseller ne olur?", a: "Tablolar ve sütunlar yeniden oluşturulmaz: metinleri, mümkün olduğunda okuma sırasıyla sıradan satırlar olarak görünür. Görseller, bağlantılar, kalın ve italik metin, dipnotlar ve denklemler aktarılmaz." },
-      { q: "Dosyam bir yere yükleniyor mu?", a: "Hayır. Dosya tarayıcınız tarafından okunur ve dönüştürülür. Bu araç dosyayı bir sunucuya göndermez." },
     ],
     limits: [
       "PDF başına en fazla 100 MB. Parola korumalı PDF’lerin önce kilidi açılmalıdır.",
@@ -1975,7 +1841,6 @@ const tools: ToolTextMap = {
       { q: "Ne tür hasarlar onarılabilir?", a: "Dosyanın yapısındaki hasarlar: eksik veya yanlış bir nesne dizini (çapraz başvuru tablosu), eksik bir trailer, başlangıçtan önceki çöp veriler veya bozuk bir sayfa listesi. Dosya kesilmişse, kesilmeden önce kaydedilen sayfalar kurtarılabilir." },
       { q: "Neler kurtarılamaz?", a: "Artık dosyada bulunmayan içerik. Eksik veya hasarlı sayfalar, görseller ya da yazı tipleri geri getirilemez ve bazı dosyalar onarılamayacak durumdadır. Araç kaç sayfayı koruduğunu bildirir ve kullanılabilir bir dosya üretemediğinde bunu söyler; oluşturmadığı bir indirmeyi asla sunmaz." },
       { q: "PDF’m sorunsuz açılıyorsa ne olur?", a: "O zaman onarılacak bir şey yoktur. Araç bunu söyler ve dosyanın temizlenmiş bir kopyasını sunar." },
-      { q: "Dosyam bir yere yükleniyor mu?", a: "Hayır. Dosya tarayıcınız tarafından okunur ve dönüştürülür. Bu araç dosyayı bir sunucuya göndermez." },
     ],
     limits: [
       "PDF başına en fazla 100 MB. Parola korumalı PDF’lerin önce kilidi açılmalıdır.",
@@ -1997,7 +1862,6 @@ const tools: ToolTextMap = {
       { q: "İki dönüştürme biçimi arasındaki fark nedir?", a: "“Metni ve yazı tiplerini koru” yalnızca dosyanın yapısını ve meta verilerini değiştirir, böylece metin seçilebilir kalır. Sadece tüm yazı tipleri gömülüyse ve dosya CMYK renk kullanmıyorsa çalışır. “Sayfaları resme dönüştür” her sayfayı resim olarak işler ve bunlardan yeni bir PDF/A oluşturur. Her zaman çalışır, ancak metin artık seçilemez ve dosya daha büyüktür." },
       { q: "Metni korumayı seçtiğimde PDF’m neden reddedildi?", a: "PDF/A, her yazı tipinin dosyaya gömülü olmasını ister; CMYK profili olmayan CMYK rengine, LZW sıkıştırmasına ve görünümü olmayan açıklamalara izin vermez. Bunlar sayfaları değiştirmeden düzeltilemez, bu yüzden araç sahte bir sonuç üretmek yerine bulduklarını listeler. Resim modunu yine de kullanabilirsiniz." },
       { q: "Araç dosyada neyi değiştirir?", a: "PDF/A tanımını ve XMP meta verilerini, çıktı koşulu olarak sRGB renk profilini ve bir dosya kimliğini ekler. JavaScript’i, yasak eylemleri, ekleri, fazla belge bilgilerini ve PDF/A’nın izin vermediği açıklama ayarlarını kaldırır." },
-      { q: "Dosyam bir yere yükleniyor mu?", a: "Hayır. Dosya tarayıcınız tarafından okunur ve dönüştürülür. Bu araç dosyayı hiçbir sunucuya göndermez." },
     ],
     limits: [
       "PDF başına en fazla 100 MB. Parola korumalı PDF’lerin önce kilidi açılmalıdır, çünkü PDF/A dosyası şifrelenemez.",

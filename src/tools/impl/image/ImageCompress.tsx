@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { BatchImageTool } from '@/components/tool/BatchImageTool';
-import { ColorField, RangeField, SelectField } from '@/components/tool/Fields';
+import { SelectField } from '@/components/tool/Fields';
 import { formatBytes, outputName } from '@/lib/format';
 import { processImage } from '@/lib/image';
 import { FORMATS, sameFormatAs, type FormatKey } from '@/lib/imageFormats';
@@ -9,12 +9,14 @@ import type { ToolImplementation } from '../../types';
 
 type Target = 'same' | FormatKey;
 
+/** Fixed encoder quality for JPG and WebP (PNG is lossless). Transparent areas become white in a JPG. */
+const QUALITY = 0.75;
+const BACKGROUND = '#ffffff';
+
 const ImageCompress: ToolImplementation = () => {
   const { t } = useI18n();
   const [target, setTarget] = useState<Target>('same');
-  const [quality, setQuality] = useState(75);
   const [maxDim, setMaxDim] = useState('0');
-  const [background, setBackground] = useState('#ffffff');
 
   return (
     <BatchImageTool
@@ -33,7 +35,6 @@ const ImageCompress: ToolImplementation = () => {
               { value: 'png', label: t('imageCompress.format.png') },
             ]}
           />
-          <RangeField label={t('imageCompress.quality')} value={quality} min={10} max={100} onChange={setQuality} format={(v) => `${v}%`} />
           <SelectField
             label={t('imageCompress.maxSize')}
             value={maxDim}
@@ -48,7 +49,6 @@ const ImageCompress: ToolImplementation = () => {
               { value: '800', label: t('imageCompress.maxSize.800') },
             ]}
           />
-          <ColorField label={t('imageCompress.background')} value={background} onChange={setBackground} />
         </>
       }
       process={async (file) => {
@@ -56,16 +56,16 @@ const ImageCompress: ToolImplementation = () => {
         const fmt = FORMATS[key];
         const result = await processImage(file, {
           mime: fmt.mime,
-          quality: quality / 100,
-          background,
+          quality: QUALITY,
+          background: BACKGROUND,
           maxDimension: Number(maxDim) || undefined,
         });
+        if (result.blob.size >= file.size) {
+          // Never hand back a file that is not smaller: keep the original bytes and say so.
+          return { name: file.name, blob: file, note: t('imageCompress.noteLarger', { before: formatBytes(file.size), after: formatBytes(result.blob.size) }) };
+        }
         const saved = Math.round((1 - result.blob.size / file.size) * 100);
-        const note =
-          result.blob.size < file.size
-            ? t('imageCompress.noteSmaller', { before: formatBytes(file.size), after: formatBytes(result.blob.size), saved })
-            : t('imageCompress.noteLarger', { before: formatBytes(file.size), after: formatBytes(result.blob.size) });
-        return { name: outputName(file.name, fmt.ext, '-compressed'), blob: result.blob, note };
+        return { name: outputName(file.name, fmt.ext, '-compressed'), blob: result.blob, note: t('imageCompress.noteSmaller', { before: formatBytes(file.size), after: formatBytes(result.blob.size), saved }) };
       }}
     />
   );

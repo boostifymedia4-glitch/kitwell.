@@ -12,7 +12,7 @@ import { Breadcrumbs } from '../ui/Breadcrumbs';
 import { Faq } from '../ui/Faq';
 import { ToolGrid } from '../ui/ToolCard';
 import { ToolIcon } from '../ui/ToolIcon';
-import { ErrorMessage, PrivacyNotice } from './Feedback';
+import { ErrorMessage } from './Feedback';
 import { usePageMeta } from '@/i18n/usePageMeta';
 
 /** Heights approximate the loaded UI (file tools ~208px, text/developer tools taller) to avoid layout shift. */
@@ -95,7 +95,6 @@ export function ToolPage({ tool: source }: { tool: ToolDef }) {
         <section className="card tool-panel" aria-label={t('tool.region', { name: tool.name })} key={tool.slug}>
           <ToolInterface tool={tool} />
         </section>
-        <PrivacyNotice fileTool={tool.fileTool} />
         <AdSlot id="tool-below" />
 
         <div className="info-grid">

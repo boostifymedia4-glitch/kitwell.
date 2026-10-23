@@ -19,10 +19,6 @@ const tools: ToolTextMap = {
         q: 'Proč je soubor PNG větší než JPG?',
         a: 'PNG je bezeztrátový a fotografie obvykle ukládá méně úsporně než JPG. Pokud je důležitější velikost souboru než přesné pixely, použijte JPG nebo WebP.',
       },
-      {
-        q: 'Nahrávají se moje obrázky na server?',
-        a: 'Ne. Obrázek dekóduje a znovu zakóduje váš prohlížeč pomocí rozhraní Canvas API. Tento nástroj soubor nikam neodesílá.',
-      },
     ],
     limits: [
       'Animované soubory GIF nebo WebP se převádějí pouze z prvního snímku.',
@@ -43,14 +39,6 @@ const tools: ToolTextMap = {
       {
         q: 'Co se stane s průhlednými oblastmi?',
         a: 'JPG průhlednost nepodporuje, proto se průhledné pixely vyplní zvolenou barvou pozadí (ve výchozím nastavení bílou).',
-      },
-      {
-        q: 'Jakou kvalitu mám nastavit?',
-        a: 'Pro většinu obrázků je dobrým kompromisem 80–90. Pod hodnotou asi 60 jsou na textu a ostrých hranách vidět kompresní artefakty.',
-      },
-      {
-        q: 'Nahrávají se moje obrázky na server?',
-        a: 'Ne. Obrázek dekóduje a znovu zakóduje váš prohlížeč pomocí rozhraní Canvas API. Tento nástroj soubor nikam neodesílá.',
       },
     ],
     limits: [
@@ -78,10 +66,6 @@ const tools: ToolTextMap = {
         q: 'Podporuje WebP každý prohlížeč?',
         a: 'Všechny současné hlavní prohlížeče umějí WebP zobrazit. Kódování WebP v prohlížeči podporují Chrome, Edge, Firefox a novější Safari; pokud to váš prohlížeč neumí, nástroj vám to oznámí, místo aby vytvořil chybný soubor.',
       },
-      {
-        q: 'Nahrávají se moje obrázky na server?',
-        a: 'Ne. Obrázek dekóduje a znovu zakóduje váš prohlížeč pomocí rozhraní Canvas API. Tento nástroj soubor nikam neodesílá.',
-      },
     ],
     limits: [
       'Animované soubory GIF nebo WebP se převádějí pouze z prvního snímku.',
@@ -108,10 +92,6 @@ const tools: ToolTextMap = {
         q: 'Mohu získat bezeztrátový výsledek?',
         a: 'Pro nejvyšší věrnost nastavte kvalitu na 100. Prohlížeče kódují WebP ztrátově, proto použijte PNG, pokud potřebujete matematicky přesnou kopii.',
       },
-      {
-        q: 'Nahrávají se moje obrázky na server?',
-        a: 'Ne. Obrázek dekóduje a znovu zakóduje váš prohlížeč pomocí rozhraní Canvas API. Tento nástroj soubor nikam neodesílá.',
-      },
     ],
     limits: [
       'Animované soubory GIF nebo WebP se převádějí pouze z prvního snímku.',
@@ -134,10 +114,6 @@ const tools: ToolTextMap = {
         q: 'Proč převádět WebP na JPG?',
         a: 'Některé starší programy, e-mailoví klienti a nahrávací formuláře WebP stále odmítají. JPG se přijímá téměř všude.',
       },
-      {
-        q: 'Nahrávají se moje obrázky na server?',
-        a: 'Ne. Obrázek dekóduje a znovu zakóduje váš prohlížeč pomocí rozhraní Canvas API. Tento nástroj soubor nikam neodesílá.',
-      },
     ],
     limits: [
       'Animované soubory GIF nebo WebP se převádějí pouze z prvního snímku.',
@@ -159,10 +135,6 @@ const tools: ToolTextMap = {
       {
         q: 'Zachová se průhlednost?',
         a: 'Ano. PNG podporuje průhlednost, takže alfa kanál z WebP se přenese.',
-      },
-      {
-        q: 'Nahrávají se moje obrázky na server?',
-        a: 'Ne. Obrázek dekóduje a znovu zakóduje váš prohlížeč pomocí rozhraní Canvas API. Tento nástroj soubor nikam neodesílá.',
       },
     ],
     limits: [
@@ -245,10 +217,6 @@ const tools: ToolTextMap = {
         q: 'Snižuje oříznutí kvalitu?',
         a: 'Oříznutí zachovává původní pixely. Kvalita se změní jen tehdy, když uložíte jako JPG nebo WebP s nižším nastavením kvality.',
       },
-      {
-        q: 'Nahrávají se moje obrázky na server?',
-        a: 'Ne. Obrázek dekóduje a znovu zakóduje váš prohlížeč pomocí rozhraní Canvas API. Tento nástroj soubor nikam neodesílá.',
-      },
     ],
     limits: [
       'Vždy jen jeden obrázek.',
@@ -270,10 +238,6 @@ const tools: ToolTextMap = {
         q: 'Co se stane při otočení o jiný než pravý úhel?',
         a: 'Plátno se zvětší tak, aby se do něj otočený obrázek vešel. U výstupu JPG se prázdné rohy vyplní zvolenou barvou pozadí; PNG a WebP je ponechají průhledné.',
       },
-      {
-        q: 'Nahrávají se moje obrázky na server?',
-        a: 'Ne. Obrázek dekóduje a znovu zakóduje váš prohlížeč pomocí rozhraní Canvas API. Tento nástroj soubor nikam neodesílá.',
-      },
     ],
     limits: [
       'Animované soubory GIF nebo WebP se převádějí pouze z prvního snímku.',
@@ -294,10 +258,6 @@ const tools: ToolTextMap = {
       {
         q: 'Jaký je rozdíl mezi vodorovným a svislým překlopením?',
         a: 'Vodorovné překlopení zrcadlí vlevo a vpravo, jako zrcadlo. Svislé překlopení obrátí obrázek vzhůru nohama podle vodorovné osy.',
-      },
-      {
-        q: 'Nahrávají se moje obrázky na server?',
-        a: 'Ne. Obrázek dekóduje a znovu zakóduje váš prohlížeč pomocí rozhraní Canvas API. Tento nástroj soubor nikam neodesílá.',
       },
     ],
     limits: [
@@ -324,10 +284,6 @@ const tools: ToolTextMap = {
         q: 'A co HEIC nebo TIFF?',
         a: 'Prohlížeče neumějí HEIC ani TIFF nativně dekódovat, proto zatím nejsou podporovány.',
       },
-      {
-        q: 'Nahrávají se moje obrázky na server?',
-        a: 'Ne. Obrázek dekóduje a znovu zakóduje váš prohlížeč pomocí rozhraní Canvas API. Tento nástroj soubor nikam neodesílá.',
-      },
     ],
     limits: [
       'Animované soubory GIF nebo WebP se převádějí pouze z prvního snímku.',
@@ -349,10 +305,6 @@ const tools: ToolTextMap = {
       {
         q: 'Kdy použít obrázky v Base64?',
         a: 'Pro drobné ikony v CSS nebo e-mailech, kde je jeden požadavek navíc dražší než zhruba 33% nárůst velikosti. U velkých fotografií se tomu vyhněte.',
-      },
-      {
-        q: 'Nahrávají se moje obrázky na server?',
-        a: 'Ne. Obrázek dekóduje a znovu zakóduje váš prohlížeč pomocí rozhraní Canvas API. Tento nástroj soubor nikam neodesílá.',
       },
     ],
     limits: [
@@ -397,10 +349,6 @@ const tools: ToolTextMap = {
       {
         q: 'Jak se počítá paleta?',
         a: 'Obrázek se zmenší a jeho barvy se seskupí do skupin; zobrazí se nejčastější z nich. Jde o přiblížení dominantních barev, nikoli o vyčerpávající seznam.',
-      },
-      {
-        q: 'Nahrávají se moje obrázky na server?',
-        a: 'Ne. Obrázek dekóduje a znovu zakóduje váš prohlížeč pomocí rozhraní Canvas API. Tento nástroj soubor nikam neodesílá.',
       },
     ],
     limits: [
@@ -459,10 +407,6 @@ const tools: ToolTextMap = {
       {
         q: 'Je bezpečné zde otevírat soubory SVG?',
         a: 'Ano. SVG se vykresluje jako obrázek, takže skripty uvnitř se nespouštějí.',
-      },
-      {
-        q: 'Nahrávají se moje obrázky na server?',
-        a: 'Ne. Obrázek dekóduje a znovu zakóduje váš prohlížeč pomocí rozhraní Canvas API. Tento nástroj soubor nikam neodesílá.',
       },
     ],
     limits: [
@@ -557,10 +501,6 @@ const tools: ToolTextMap = {
         q: 'Proč nebyl nalezen žádný kód?',
         a: 'Kód může být rozmazaný, oříznutý, příliš malý nebo málo kontrastní. Zkuste ostřejší a bližší snímek, na kterém je celý kód s jasným okrajem kolem.',
       },
-      {
-        q: 'Nahrávají se moje obrázky?',
-        a: 'Ne. Obrázek se čte ve vašem prohlížeči a tento nástroj ho nikam neodesílá.',
-      },
     ],
     limits: [
       'Až 10 obrázků, každý do 25 MB.',
@@ -585,10 +525,6 @@ const tools: ToolTextMap = {
       {
         q: 'Mohu zachovat průhledné oblasti?',
         a: 'Ano, zapněte volbu „Zachovat průhledné oblasti“ u obrázků PNG nebo WebP s průhledností. Průhlednost v GIFu je u každého pixelu buď zapnutá, nebo vypnutá, takže měkké okraje zostří.',
-      },
-      {
-        q: 'Nahrávají se moje obrázky na server?',
-        a: 'Ne. Obrázek dekóduje a znovu zakóduje váš prohlížeč pomocí rozhraní Canvas API. Tento nástroj soubor nikam neodesílá.',
       },
     ],
     limits: [
@@ -615,10 +551,6 @@ const tools: ToolTextMap = {
         q: 'Ztrácí se při exportu kvalita?',
         a: 'PNG zachová každý pixel. JPG a WebP jsou ztrátové; při kvalitě 90 nebo vyšší budou fotografie vypadat stejně. Úpravy se použijí v plné velikosti obrázku, nikoli ve velikosti náhledu.',
       },
-      {
-        q: 'Nahrávají se moje obrázky na server?',
-        a: 'Ne. Obrázek dekóduje a znovu zakóduje váš prohlížeč pomocí rozhraní Canvas API. Tento nástroj soubor nikam neodesílá.',
-      },
     ],
     limits: [
       'Vždy jen jedna fotografie, do 25 MB a zhruba 50 megapixelů.',
@@ -641,10 +573,6 @@ const tools: ToolTextMap = {
         q: 'Sníží se kvalita obrázku?',
         a: 'Ne. Soubory JPG se do PDF vkládají tak, jak jsou, bez opětovné komprese.',
       },
-      {
-        q: 'Nahrává se moje PDF někam?',
-        a: 'Ne. PDF čte a znovu zapisuje váš prohlížeč. Tento nástroj soubor na server neodesílá.',
-      },
     ],
     limits: [
       'Maximálně 25 MB na obrázek a 100 obrázků v jednom PDF.',
@@ -664,10 +592,6 @@ const tools: ToolTextMap = {
       {
         q: 'Zachová se průhlednost?',
         a: 'Ano. Obrázky PNG se vkládají s alfa kanálem, takže průhledné oblasti zobrazují bílou stránku pod sebou.',
-      },
-      {
-        q: 'Nahrává se moje PDF někam?',
-        a: 'Ne. PDF čte a znovu zapisuje váš prohlížeč. Tento nástroj soubor na server neodesílá.',
       },
     ],
     limits: [
@@ -693,10 +617,6 @@ const tools: ToolTextMap = {
         q: 'Co dělá volba „Podle obrázku“?',
         a: 'Každá stránka má velikost svého obrázku, takže se nic nezmenšuje ani nedoplňuje. Pro standardní stránky dokumentu zvolte A4 nebo Letter.',
       },
-      {
-        q: 'Nahrává se moje PDF někam?',
-        a: 'Ne. PDF čte a znovu zapisuje váš prohlížeč. Tento nástroj soubor na server neodesílá.',
-      },
     ],
     limits: [
       'Maximálně 25 MB na obrázek a 100 obrázků v jednom PDF.',
@@ -719,10 +639,6 @@ const tools: ToolTextMap = {
       {
         q: 'Otevře nástroj PDF chráněná heslem?',
         a: 'Ne. Šifrované PDF se rozpozná a zamítne s jasnou zprávou. Nejprve z něj odstraňte heslo naším nástrojem Odemknout PDF.',
-      },
-      {
-        q: 'Nahrává se moje PDF někam?',
-        a: 'Ne. PDF čte a znovu zapisuje váš prohlížeč. Tento nástroj soubor na server neodesílá.',
       },
     ],
     limits: [
@@ -1131,10 +1047,6 @@ const tools: ToolTextMap = {
         q: 'Jsou volby tisku, kopírování a úprav vynucovány?',
         a: 'Jde o požadavky, které většina programů pro PDF respektuje, ale nejsou neprolomitelné. Soubor skutečně chrání heslo.',
       },
-      {
-        q: 'Nahrává se moje heslo?',
-        a: 'Ne. Šifrování probíhá ve vašem prohlížeči.',
-      },
     ],
     limits: [
       'Maximálně 100 MB na PDF.',
@@ -1160,10 +1072,6 @@ const tools: ToolTextMap = {
       {
         q: 'Je to povoleno?',
         a: 'Používejte ho jen na soubory, které vlastníte nebo k jejichž otevření máte oprávnění. Za použití výsledku odpovídáte vy.',
-      },
-      {
-        q: 'Nahrává se moje heslo?',
-        a: 'Ne. Vše probíhá ve vašem prohlížeči.',
       },
     ],
     limits: [
@@ -1222,10 +1130,6 @@ const tools: ToolTextMap = {
         q: 'Zhorší se kvalita?',
         a: 'Obrázky přijdou výměnou za velikost o část detailů; Lehká komprese je zachová téměř beze změny a Silná je viditelně změkčí. Text a vektorová grafika se ve standardním režimu nemění. Režim „Maximální“ změní každou stránku na obrázek, takže text už nelze vybírat ani v něm vyhledávat.',
       },
-      {
-        q: 'Nahrává se moje PDF někam?',
-        a: 'Ne. PDF čte a znovu zapisuje váš prohlížeč. Tento nástroj soubor na server neodesílá.',
-      },
     ],
     limits: [
       'Znovu se komprimují pouze vložené obrázky JPEG. Obrázky ve stylu PNG (Flate), písma a další obsah zůstávají beze změny.',
@@ -1247,10 +1151,6 @@ const tools: ToolTextMap = {
       {
         q: 'Které jazyky jsou podporovány?',
         a: 'Zatím pouze angličtina. Text v jiných jazycích se přečte chybně. Další jazyky lze přidat později, aniž by se změnil způsob fungování nástroje.',
-      },
-      {
-        q: 'Odesílá se můj dokument službě OCR?',
-        a: 'Ne. Rozpoznávací modul (Tesseract zkompilovaný do WebAssembly) a jeho anglická data se poskytují z tohoto webu a běží uvnitř vašeho prohlížeče. Dokument se nenahrává.',
       },
       {
         q: 'Jak je přesné?',
@@ -1278,14 +1178,6 @@ const tools: ToolTextMap = {
         q: 'Je to právně závazný digitální podpis?',
         a: 'Jde o vizuální podpis: obrázek vašeho podpisu umístěný na stránce. Není to kryptografický digitální podpis, nemá certifikát a nemůže prokázat, kdo podepsal, ani odhalit pozdější změny. Zda bude přijat, záleží na tom, kdo ho požaduje. Některé organizace vyžadují certifikované služby elektronického podpisu.',
       },
-      {
-        q: 'Ukládá se můj podpis někam?',
-        a: 'Ne. Vytváří se ve vašem prohlížeči, používá se jen pro tento soubor a po opuštění nebo opětovném načtení stránky se zapomene.',
-      },
-      {
-        q: 'Nahrává se moje PDF někam?',
-        a: 'Ne. PDF čte a znovu zapisuje váš prohlížeč. Tento nástroj soubor na server neodesílá.',
-      },
     ],
     limits: [
       'Pouze vizuální podpis: bez certifikátu, bez časového razítka, bez detekce manipulace.',
@@ -1310,10 +1202,6 @@ const tools: ToolTextMap = {
       {
         q: 'Co dělá zploštění?',
         a: 'Zploštění vypálí vaše odpovědi do stránky a odstraní formulářová pole, takže odpovědi už nelze upravovat. Použijte ho pro kopii, kterou odesíláte; upravitelnou kopii si ponechte pro sebe.',
-      },
-      {
-        q: 'Nahrává se moje PDF někam?',
-        a: 'Ne. PDF čte a znovu zapisuje váš prohlížeč. Tento nástroj soubor na server neodesílá.',
       },
     ],
     limits: [
@@ -1370,10 +1258,6 @@ const tools: ToolTextMap = {
       {
         q: 'A co naskenovaná PDF?',
         a: 'Skeny nemají vybratelný text, takže porovnání textu nic nenajde. Použijte vizuální porovnání, nebo na oba soubory nejprve spusťte OCR PDF.',
-      },
-      {
-        q: 'Nahrává se moje PDF někam?',
-        a: 'Ne. PDF čte a znovu zapisuje váš prohlížeč. Tento nástroj soubor na server neodesílá.',
       },
     ],
     limits: [
@@ -1533,10 +1417,6 @@ const tools: ToolTextMap = {
       'Zkopírujte nebo stáhněte naformátovaný výsledek.',
     ],
     faq: [
-      {
-        q: 'Odesílá se můj JSON na server?',
-        a: 'Ne. Zpracování a formátování probíhá ve vašem prohlížeči pomocí vestavěného parseru JSON.',
-      },
       {
         q: 'Proč nástroj můj JSON odmítá?',
         a: 'Striktní JSON nepovoluje komentáře, koncové čárky ani jednoduché uvozovky. Chybová zpráva ukazuje řádek a sloupec problému.',
@@ -1718,10 +1598,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       {
-        q: 'Ukládají se vygenerovaná hesla nebo se někam odesílají?',
-        a: 'Ne. Hesla se generují ve vašem prohlížeči pomocí crypto.getRandomValues a nikdy se nepřenášejí ani neukládají.',
-      },
-      {
         q: 'Je heslo jako Tesla2026#Tech bezpečné?',
         a: 'Je lepší než obyčejné slovo, ale slabší než náhodný text. Útočník může vycházet ze seznamů známých jmen, takže skutečná síla vychází z počtu možností, který se uvádí v bitech. Hesla na bázi jmen používejte pro málo důležité účty a zcela náhodná pro e-mail, bankovnictví a správce hesel.',
       },
@@ -1820,10 +1696,6 @@ const tools: ToolTextMap = {
         q: 'Mohu kódy používat komerčně?',
         a: 'Ano. Standard kódu QR je otevřený a kódy vytvořené zde nemají od nás žádné poplatky, vodoznaky ani sledování.',
       },
-      {
-        q: 'Odesílají se moje data někam?',
-        a: 'Ne. Kód se generuje ve vašem prohlížeči a hesla k Wi-Fi, která zadáte, zůstávají ve vašem zařízení.',
-      },
     ],
     limits: [
       'Pouze statické kódy: bez sledování skenování a bez upravitelných kódů.',
@@ -1844,7 +1716,6 @@ const tools: ToolTextMap = {
       { q: "Rozpozná nástroj text na stránce?", a: "Ne. Sken do PDF mění obrázky na stránky PDF a může je vyčistit, ale text zůstává součástí obrázku. Aby se v něm dalo vyhledávat, pusťte výsledek přes OCR PDF." },
       { q: "Mohu použít fotoaparát telefonu?", a: "Na telefonech a tabletech, jejichž prohlížeč to podporuje, tlačítko „Vyfotit“ otevře fotoaparát. Jinak vyberte fotky, které už máte uložené v zařízení." },
       { q: "Co dělají styly čištění?", a: "„Originál“ zachová barvy. „Odstíny šedi“ odstraní barvu. „Černobílý dokument“ změní stránku na čistě černý text na bílém papíře a vyrovná stíny a nerovnoměrné osvětlení, což se hodí pro tištěné stránky a poznámky, ne pro fotografie." },
-      { q: "Nahrává se můj soubor někam?", a: "Ne. Soubor čte a převádí váš prohlížeč. Tento nástroj jej neodesílá na server." },
     ],
     limits: [
       "Nejvýše 25 MB na obrázek a 100 obrázků na PDF.",
@@ -1866,7 +1737,6 @@ const tools: ToolTextMap = {
       { q: "Bude PDF vypadat jako webová stránka?", a: "Ne, ne přesně. Nástroj čte strukturu dokumentu (nadpisy, odstavce, seznamy, tabulky, odkazy, tučný a kurzivní text a vložené obrázky) a sestaví z ní jednoduchý dokument. Styly CSS, skripty, webová písma, sloupce a umístěné prvky se neuplatní." },
       { q: "Je bezpečné převádět HTML, kterému nedůvěřuji?", a: "HTML se čte jako neaktivní text: skripty se nespouštějí a z internetu se nic nenačítá. Používají se jen obrázky vložené přímo v HTML." },
       { q: "Jaké jazyky a písma jsou v PDF podporovány?", a: "PDF se vytváří písmem Noto Sans, které pokrývá latinku (včetně polských, českých, rumunských a tureckých písmen), cyrilici, řečtinu, vietnamštinu a dévanágarí. Arabský, hebrejský, thajský, čínský, japonský a korejský text zatím podporován není: tyto znaky se zobrazí jako otazníky a nástroj vám sdělí, kolika se to týkalo. Původní písma dokumentu se nezachovají." },
-      { q: "Nahrává se můj soubor někam?", a: "Ne. Soubor čte a převádí váš prohlížeč. Tento nástroj jej neodesílá na server." },
     ],
     limits: [
       "Nejvýše 10 MB HTML.",
@@ -1888,7 +1758,6 @@ const tools: ToolTextMap = {
       { q: "Co se převádí a co ne?", a: "Převádí se: text s tučným písmem, kurzívou, podtržením a odkazy, nadpisy, odrážkové a číslované seznamy, tabulky, obrázky JPEG a PNG, zalomení řádků a stránek, zarovnání a orientace stránky. Nepřevádí se: záhlaví a zápatí, poznámky pod čarou, textová pole, rovnice, grafy, tvary a obrázky v jiných formátech." },
       { q: "Mohu převést starý soubor .doc?", a: "Ne. Otevřete jej ve Wordu a nejprve uložte jako soubor DOCX." },
       { q: "Jaké jazyky a písma jsou v PDF podporovány?", a: "PDF se vytváří písmem Noto Sans, které pokrývá latinku (včetně polských, českých, rumunských a tureckých písmen), cyrilici, řečtinu, vietnamštinu a dévanágarí. Arabský, hebrejský, thajský, čínský, japonský a korejský text zatím podporován není: tyto znaky se zobrazí jako otazníky a nástroj vám sdělí, kolika se to týkalo. Původní písma dokumentu se nezachovají." },
-      { q: "Nahrává se můj soubor někam?", a: "Ne. Soubor čte a převádí váš prohlížeč. Tento nástroj jej neodesílá na server." },
     ],
     limits: [
       "Pouze soubory DOCX, nejvýše 50 MB. Staré soubory .doc a dokumenty chráněné heslem nejsou podporovány.",
@@ -1910,7 +1779,6 @@ const tools: ToolTextMap = {
       { q: "Co se nepřevádí?", a: "Grafy, SmartArt, video a zvuk, animace a přechody, poznámky řečníka, přechody barev, čáry a spojnice a obrázky v jiných formátech než JPEG a PNG. Nástroj vám sdělí, kolik prvků bylo vynecháno." },
       { q: "Mohu převést starý soubor .ppt?", a: "Ne. Otevřete jej v PowerPointu a nejprve uložte jako soubor PPTX." },
       { q: "Jaké jazyky a písma jsou v PDF podporovány?", a: "PDF se vytváří písmem Noto Sans, které pokrývá latinku (včetně polských, českých, rumunských a tureckých písmen), cyrilici, řečtinu, vietnamštinu a dévanágarí. Arabský, hebrejský, thajský, čínský, japonský a korejský text zatím podporován není: tyto znaky se zobrazí jako otazníky a nástroj vám sdělí, kolika se to týkalo. Původní písma dokumentu se nezachovají." },
-      { q: "Nahrává se můj soubor někam?", a: "Ne. Soubor čte a převádí váš prohlížeč. Tento nástroj jej neodesílá na server." },
     ],
     limits: [
       "Pouze soubory PPTX, nejvýše 100 MB a 300 snímků. Staré soubory .ppt a prezentace chráněné heslem nejsou podporovány.",
@@ -1932,7 +1800,6 @@ const tools: ToolTextMap = {
       { q: "Bude to vypadat jako rozvržení tisku v Excelu?", a: "Ne. Každý viditelný list se stane jednoduchou tabulkou přizpůsobenou šířce stránky. Barvy buněk, sloučené buňky, šířky sloupců, grafy, obrázky, oblasti tisku a zalomení stránek se nezachovají." },
       { q: "Mohu převést starý soubor .xls?", a: "Ne. Otevřete jej v Excelu a nejprve uložte jako soubor XLSX." },
       { q: "Jaké jazyky a písma jsou v PDF podporovány?", a: "PDF se vytváří písmem Noto Sans, které pokrývá latinku (včetně polských, českých, rumunských a tureckých písmen), cyrilici, řečtinu, vietnamštinu a dévanágarí. Arabský, hebrejský, thajský, čínský, japonský a korejský text zatím podporován není: tyto znaky se zobrazí jako otazníky a nástroj vám sdělí, kolika se to týkalo. Původní písma dokumentu se nezachovají." },
-      { q: "Nahrává se můj soubor někam?", a: "Ne. Soubor čte a převádí váš prohlížeč. Tento nástroj jej neodesílá na server." },
     ],
     limits: [
       "Pouze soubory XLSX, nejvýše 50 MB. Staré soubory .xls a sešity chráněné heslem nejsou podporovány.",
@@ -1953,7 +1820,6 @@ const tools: ToolTextMap = {
       { q: "Jak se poznají nadpisy a seznamy?", a: "Nadpisy jsou řádky většího písma než běžný text, seznamy jsou řádky začínající odrážkou nebo číslem a odstavce se oddělují podle mezer mezi řádky. Je to dobrý odhad, ne záruka, proto výsledek zkontrolujte." },
       { q: "Proč je výsledek u mého skenovaného PDF prázdný?", a: "Sken je obrázek stránky a neobsahuje žádný text k extrakci. Nejprve spusťte OCR PDF, aby se přidala textová vrstva, a poté převeďte výsledek." },
       { q: "Co tabulky, sloupce a obrázky?", a: "Tabulky a sloupce se nerekonstruují: jejich text se objeví jako běžné řádky, pokud možno v pořadí čtení. Obrázky, odkazy, tučný a kurzivní text, poznámky pod čarou a rovnice se nepřenášejí." },
-      { q: "Nahrává se můj soubor někam?", a: "Ne. Soubor čte a převádí váš prohlížeč. Tento nástroj jej neodesílá na server." },
     ],
     limits: [
       "Nejvýše 100 MB na PDF. PDF chráněná heslem je třeba nejprve odemknout.",
@@ -1974,7 +1840,6 @@ const tools: ToolTextMap = {
       { q: "Jaké druhy poškození lze opravit?", a: "Poškození struktury souboru: chybějící nebo chybný rejstřík objektů (tabulka křížových odkazů), chybějící trailer, nesmysly před začátkem nebo porušený seznam stránek. Pokud byl soubor useknut, lze obnovit stránky uložené před useknutím." },
       { q: "Co nelze obnovit?", a: "Obsah, který už v souboru není. Chybějící nebo poškozené stránky, obrázky či písma nelze vrátit a některé soubory jsou nezachranitelné. Nástroj vám sdělí, kolik stránek zachoval, a řekne to, když nedokáže vytvořit použitelný soubor; nikdy nenabízí stažení souboru, který nevytvořil." },
       { q: "A když se moje PDF otevře normálně?", a: "Pak není co opravovat. Nástroj vám to sdělí a nabídne vyčištěnou kopii souboru." },
-      { q: "Nahrává se můj soubor někam?", a: "Ne. Soubor čte a převádí váš prohlížeč. Tento nástroj jej neodesílá na server." },
     ],
     limits: [
       "Nejvýše 100 MB na PDF. PDF chráněná heslem je třeba nejprve odemknout.",
@@ -1996,7 +1861,6 @@ const tools: ToolTextMap = {
       { q: "Jaký je rozdíl mezi dvěma způsoby převodu?", a: "„Zachovat text a písma“ mění jen strukturu a metadata souboru, takže text zůstane označitelný. Funguje to pouze tehdy, když jsou všechna písma vložená a soubor nepoužívá barvy CMYK. „Změnit stránky na obrázky“ vykreslí každou stránku jako obrázek a sestaví z nich nový PDF/A. Funguje to vždy, ale text už nelze označit a soubor je větší." },
       { q: "Proč byl můj PDF odmítnut, když jsem zvolil zachování textu?", a: "PDF/A vyžaduje, aby všechna písma byla vložená do souboru, a nepovoluje barvy CMYK bez profilu CMYK, kompresi LZW ani poznámky bez vzhledu. Bez změny stránek to opravit nelze, proto nástroj vypíše, co našel, místo aby předstíral výsledek. Režim obrázků můžete stále použít." },
       { q: "Co nástroj v souboru mění?", a: "Přidá identifikaci PDF/A a metadata XMP, barevný profil sRGB jako výstupní podmínku a identifikátor souboru. Odstraní JavaScript, zakázané akce, přílohy, nadbytečné informace o dokumentu a nastavení poznámek, která PDF/A nepovoluje." },
-      { q: "Nahrává se můj soubor někam?", a: "Ne. Soubor čte a převádí váš prohlížeč. Tento nástroj ho neodesílá na žádný server." },
     ],
     limits: [
       "Nejvýše 100 MB na PDF. PDF chráněné heslem je nutné nejprve odemknout, protože soubor PDF/A nesmí být šifrovaný.",

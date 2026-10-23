@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import { Link } from '@/i18n/Link';
 import { useI18n } from '@/i18n';
 import type { Progress } from '@/lib/hooks';
 import { Icon } from '../Icon';
@@ -69,14 +68,3 @@ export function ProcessingState({ label, progress }: { label?: string; progress?
   );
 }
 
-export function PrivacyNotice({ fileTool }: { fileTool: boolean }) {
-  const { t } = useI18n();
-  return (
-    <div className="privacy-note">
-      <Icon name="shield" size={18} />
-      <p>
-        {fileTool ? t('ui.privacyFile') : t('ui.privacyText')} <Link to="/privacy">{t('ui.privacyDetails')}</Link>
-      </p>
-    </div>
-  );
-}

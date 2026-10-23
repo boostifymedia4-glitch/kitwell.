@@ -14,7 +14,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Wordt de kwaliteit beter als ik JPG naar PNG omzet?', a: 'Nee. JPG is verliesgevend, dus detail dat bij het opslaan van de JPG is weggegooid, kun je niet terugkrijgen. PNG slaat de huidige pixels gewoon zonder verder verlies op, wat handig is voor bewerken of werk met transparantie.' },
       { q: 'Waarom is de PNG groter dan de JPG?', a: 'PNG is verliesvrij en slaat foto’s meestal minder efficiënt op dan JPG. Gebruik JPG of WebP als de bestandsgrootte belangrijker is dan exacte pixels.' },
-      { q: 'Worden mijn afbeeldingen naar een server geüpload?', a: 'Nee. De afbeelding wordt door je browser gedecodeerd en opnieuw gecodeerd met de Canvas API. Deze tool stuurt het bestand nergens naartoe.' },
     ],
     limits: [
       'Geanimeerde GIF- of WebP-bestanden worden alleen met hun eerste frame geconverteerd.',
@@ -33,8 +32,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Wat gebeurt er met transparante delen?', a: 'JPG kent geen transparantie, dus transparante pixels worden gevuld met de achtergrondkleur die je kiest (standaard wit).' },
-      { q: 'Welke kwaliteitsinstelling moet ik gebruiken?', a: '80–90 is voor de meeste afbeeldingen een goede balans. Onder ongeveer 60 worden compressieartefacten zichtbaar op tekst en scherpe randen.' },
-      { q: 'Worden mijn afbeeldingen naar een server geüpload?', a: 'Nee. De afbeelding wordt door je browser gedecodeerd en opnieuw gecodeerd met de Canvas API. Deze tool stuurt het bestand nergens naartoe.' },
     ],
     limits: [
       'Geanimeerde GIF- of WebP-bestanden worden alleen met hun eerste frame geconverteerd.',
@@ -55,7 +52,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Is WebP kleiner dan JPG?', a: 'Meestal 20–35% kleiner bij een vergelijkbare beeldkwaliteit, al hangt het resultaat van de afbeelding af.' },
       { q: 'Ondersteunt elke browser WebP?', a: 'Alle huidige grote browsers kunnen WebP weergeven. WebP maken in de browser wordt ondersteund in Chrome, Edge, Firefox en recente versies van Safari; als jouw browser dat niet kan, meldt de tool dat in plaats van een foutief bestand te maken.' },
-      { q: 'Worden mijn afbeeldingen naar een server geüpload?', a: 'Nee. De afbeelding wordt door je browser gedecodeerd en opnieuw gecodeerd met de Canvas API. Deze tool stuurt het bestand nergens naartoe.' },
     ],
     limits: [
       'Geanimeerde GIF- of WebP-bestanden worden alleen met hun eerste frame geconverteerd.',
@@ -76,7 +72,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Blijft de transparantie behouden?', a: 'Ja. WebP ondersteunt een alfakanaal, dus transparante PNG’s blijven transparant.' },
       { q: 'Kan ik een verliesvrij resultaat krijgen?', a: 'Stel de kwaliteit in op 100 voor de hoogste getrouwheid. Browsers coderen WebP verliesgevend, dus gebruik PNG als je een wiskundig exacte kopie nodig hebt.' },
-      { q: 'Worden mijn afbeeldingen naar een server geüpload?', a: 'Nee. De afbeelding wordt door je browser gedecodeerd en opnieuw gecodeerd met de Canvas API. Deze tool stuurt het bestand nergens naartoe.' },
     ],
     limits: [
       'Geanimeerde GIF- of WebP-bestanden worden alleen met hun eerste frame geconverteerd.',
@@ -96,7 +91,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Waarom WebP naar JPG omzetten?', a: 'Sommige oudere software, e-mailprogramma’s en uploadformulieren weigeren WebP nog. JPG wordt bijna overal geaccepteerd.' },
-      { q: 'Worden mijn afbeeldingen naar een server geüpload?', a: 'Nee. De afbeelding wordt door je browser gedecodeerd en opnieuw gecodeerd met de Canvas API. Deze tool stuurt het bestand nergens naartoe.' },
     ],
     limits: [
       'Geanimeerde GIF- of WebP-bestanden worden alleen met hun eerste frame geconverteerd.',
@@ -116,7 +110,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Blijft de transparantie behouden?', a: 'Ja. PNG ondersteunt transparantie, dus de alfa van de WebP wordt overgenomen.' },
-      { q: 'Worden mijn afbeeldingen naar een server geüpload?', a: 'Nee. De afbeelding wordt door je browser gedecodeerd en opnieuw gecodeerd met de Canvas API. Deze tool stuurt het bestand nergens naartoe.' },
     ],
     limits: [
       'Geanimeerde GIF- of WebP-bestanden worden alleen met hun eerste frame geconverteerd.',
@@ -177,7 +170,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Vermindert bijsnijden de kwaliteit?', a: 'Bijsnijden behoudt de originele pixels. De kwaliteit verandert alleen als je opslaat als JPG of WebP met een lagere kwaliteitsinstelling.' },
-      { q: 'Worden mijn afbeeldingen naar een server geüpload?', a: 'Nee. De afbeelding wordt door je browser gedecodeerd en opnieuw gecodeerd met de Canvas API. Deze tool stuurt het bestand nergens naartoe.' },
     ],
     limits: [
       'Eén afbeelding tegelijk.',
@@ -196,7 +188,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Wat gebeurt er bij rotaties die geen rechte hoek zijn?', a: 'Het canvas wordt groter zodat de gedraaide afbeelding erin past. Bij JPG-uitvoer worden de lege hoeken gevuld met de gekozen achtergrond; PNG en WebP houden ze transparant.' },
-      { q: 'Worden mijn afbeeldingen naar een server geüpload?', a: 'Nee. De afbeelding wordt door je browser gedecodeerd en opnieuw gecodeerd met de Canvas API. Deze tool stuurt het bestand nergens naartoe.' },
     ],
     limits: [
       'Geanimeerde GIF- of WebP-bestanden worden alleen met hun eerste frame geconverteerd.',
@@ -215,7 +206,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Wat is het verschil tussen horizontaal en verticaal spiegelen?', a: 'Horizontaal spiegelen verwisselt links en rechts, zoals in een spiegel. Verticaal spiegelen zet de afbeelding ondersteboven langs de horizontale as.' },
-      { q: 'Worden mijn afbeeldingen naar een server geüpload?', a: 'Nee. De afbeelding wordt door je browser gedecodeerd en opnieuw gecodeerd met de Canvas API. Deze tool stuurt het bestand nergens naartoe.' },
     ],
     limits: [
       'Geanimeerde GIF- of WebP-bestanden worden alleen met hun eerste frame geconverteerd.',
@@ -235,7 +225,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Welke formaten kan ik gebruiken?', a: 'Invoer: JPG, PNG, WebP, GIF, BMP en AVIF als je browser ze kan decoderen. Uitvoer: JPG, PNG en WebP.' },
       { q: 'En HEIC of TIFF?', a: 'Browsers kunnen HEIC of TIFF niet standaard decoderen, dus die worden nog niet ondersteund.' },
-      { q: 'Worden mijn afbeeldingen naar een server geüpload?', a: 'Nee. De afbeelding wordt door je browser gedecodeerd en opnieuw gecodeerd met de Canvas API. Deze tool stuurt het bestand nergens naartoe.' },
     ],
     limits: [
       'Geanimeerde GIF- of WebP-bestanden worden alleen met hun eerste frame geconverteerd.',
@@ -255,7 +244,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Wanneer gebruik ik Base64-afbeeldingen?', a: 'Voor kleine pictogrammen in CSS of e-mail, waar een extra verzoek meer kost dan de ongeveer 33% grotere omvang. Vermijd het bij grote foto’s.' },
-      { q: 'Worden mijn afbeeldingen naar een server geüpload?', a: 'Nee. De afbeelding wordt door je browser gedecodeerd en opnieuw gecodeerd met de Canvas API. Deze tool stuurt het bestand nergens naartoe.' },
     ],
     limits: [
       'Maximaal 5 MB per afbeelding, omdat Base64-tekst erg groot wordt.',
@@ -291,7 +279,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Hoe wordt het palet berekend?', a: 'De afbeelding wordt verkleind bemonsterd en de kleuren worden in groepen verdeeld; de meest voorkomende groepen worden getoond. Het is een benadering van de dominante kleuren, geen volledige lijst.' },
-      { q: 'Worden mijn afbeeldingen naar een server geüpload?', a: 'Nee. De afbeelding wordt door je browser gedecodeerd en opnieuw gecodeerd met de Canvas API. Deze tool stuurt het bestand nergens naartoe.' },
     ],
     limits: [
       'Eén afbeelding tegelijk.',
@@ -332,7 +319,6 @@ const tools: ToolTextMap = {
       { q: 'Blijft de afbeelding scherp op grote formaten?', a: 'Ja. De SVG wordt getekend op het formaat dat je kiest, dus een export op 4× is net zo scherp als een op 1×.' },
       { q: 'Waarom ziet mijn SVG er anders uit?', a: 'Browsers ondersteunen niet elke SVG-functie, en SVG’s die op externe lettertypen of afbeeldingen leunen, vallen terug op standaardwaarden. Sluit lettertypen en afbeeldingen in de SVG zelf in voor het beste resultaat.' },
       { q: 'Is het veilig om SVG-bestanden hier te openen?', a: 'Ja. De SVG wordt als afbeelding getekend, dus scripts erin worden niet uitgevoerd.' },
-      { q: 'Worden mijn afbeeldingen naar een server geüpload?', a: 'Nee. De afbeelding wordt door je browser gedecodeerd en opnieuw gecodeerd met de Canvas API. Deze tool stuurt het bestand nergens naartoe.' },
     ],
     limits: [
       'Maximaal 25 MB per bestand en 20 bestanden per batch.',
@@ -396,7 +382,6 @@ const tools: ToolTextMap = {
       { q: 'Kan ik scannen met mijn camera?', a: 'Nog niet. Deze tool leest QR-codes uit afbeeldingsbestanden. Maak op een telefoon een foto van de code en kies die hier, of gebruik je camera-app.' },
       { q: 'Is het veilig om gescande links te openen?', a: 'Controleer eerst het adres. De volledige link wordt getoond en alleen weblinks (http of https) kunnen vanaf hier worden geopend. Script- en datalinks worden nooit geopend.' },
       { q: 'Waarom is er geen code gevonden?', a: 'De code kan wazig, afgesneden, te klein of te contrastarm zijn. Probeer een scherpere, dichterbij genomen afbeelding die de hele code toont met een duidelijke rand eromheen.' },
-      { q: 'Worden mijn afbeeldingen geüpload?', a: 'Nee. De afbeelding wordt in je browser gelezen en deze tool stuurt hem nergens naartoe.' },
     ],
     limits: [
       'Maximaal 10 afbeeldingen, elk 25 MB.',
@@ -416,7 +401,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Waarom is mijn GIF zo groot?', a: 'GIF’s slaan elk frame op als een afbeelding die beperkt is tot 256 kleuren. Minder frames, een kleinere breedte en minder kleuren maken het bestand allemaal kleiner. De tool toont de grootte zodra de GIF is gemaakt.' },
       { q: 'Kan ik transparante delen behouden?', a: 'Ja, zet "Transparante delen behouden" aan voor PNG- of WebP-afbeeldingen met transparantie. GIF-transparantie staat per pixel aan of uit, dus zachte randen worden hard.' },
-      { q: 'Worden mijn afbeeldingen naar een server geüpload?', a: 'Nee. De afbeelding wordt door je browser gedecodeerd en opnieuw gecodeerd met de Canvas API. Deze tool stuurt het bestand nergens naartoe.' },
     ],
     limits: [
       'Maximaal 100 frames; hoe groter de frames, hoe meer geheugen je browser nodig heeft.',
@@ -436,7 +420,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Wordt het originele bestand gewijzigd?', a: 'Nee. Je bestand wordt nooit aangepast; de bewerkte afbeelding wordt als nieuwe download gemaakt.' },
       { q: 'Gaat er kwaliteit verloren bij het exporteren?', a: 'PNG behoudt elke pixel. JPG en WebP zijn verliesgevend; gebruik een kwaliteit van 90 of hoger om foto’s er hetzelfde uit te laten zien. Bewerkingen worden toegepast op het volledige formaat van je afbeelding, niet op het formaat van het voorbeeld.' },
-      { q: 'Worden mijn afbeeldingen naar een server geüpload?', a: 'Nee. De afbeelding wordt door je browser gedecodeerd en opnieuw gecodeerd met de Canvas API. Deze tool stuurt het bestand nergens naartoe.' },
     ],
     limits: [
       'Eén foto tegelijk, tot 25 MB en ongeveer 50 megapixels.',
@@ -456,7 +439,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Gaat de beeldkwaliteit achteruit?', a: 'Nee. JPG-bestanden worden ongewijzigd in de pdf ingesloten, zonder hercompressie.' },
-      { q: 'Wordt mijn pdf ergens geüpload?', a: 'Nee. De pdf wordt door je browser gelezen en herschreven. Deze tool stuurt het bestand niet naar een server.' },
     ],
     limits: [
       'Maximaal 25 MB per afbeelding en 100 afbeeldingen per pdf.',
@@ -474,7 +456,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Blijft de transparantie behouden?', a: 'Ja. PNG-afbeeldingen worden met hun alfakanaal ingesloten, dus transparante delen tonen de witte pagina erachter.' },
-      { q: 'Wordt mijn pdf ergens geüpload?', a: 'Nee. De pdf wordt door je browser gelezen en herschreven. Deze tool stuurt het bestand niet naar een server.' },
     ],
     limits: [
       'Maximaal 25 MB per afbeelding en 100 afbeeldingen per pdf.',
@@ -493,7 +474,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Welke afbeeldingsformaten werken?', a: 'JPG en PNG worden rechtstreeks ingesloten. WebP, GIF en BMP worden eerst naar PNG omgezet als je browser ze kan decoderen.' },
       { q: 'Wat doet "Aanpassen aan afbeelding"?', a: 'Elke pagina krijgt het formaat van zijn afbeelding, dus er wordt niets geschaald of opgevuld. Kies A4 of Letter voor standaard documentpagina’s.' },
-      { q: 'Wordt mijn pdf ergens geüpload?', a: 'Nee. De pdf wordt door je browser gelezen en herschreven. Deze tool stuurt het bestand niet naar een server.' },
     ],
     limits: [
       'Maximaal 25 MB per afbeelding en 100 afbeeldingen per pdf.',
@@ -511,7 +491,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Blijven bladwijzers en formuliervelden behouden?', a: 'Pagina’s worden gekopieerd met hun zichtbare inhoud en links. Bladwijzers op documentniveau en interactieve formuliergegevens worden niet meegenomen.' },
       { q: 'Kan het met een wachtwoord beveiligde pdf’s openen?', a: 'Nee. Versleutelde pdf’s worden herkend en met een duidelijke melding geweigerd. Verwijder eerst het wachtwoord met onze tool PDF ontgrendelen.' },
-      { q: 'Wordt mijn pdf ergens geüpload?', a: 'Nee. De pdf wordt door je browser gelezen en herschreven. Deze tool stuurt het bestand niet naar een server.' },
     ],
     limits: [
       'Maximaal 100 MB per pdf.',
@@ -802,7 +781,6 @@ const tools: ToolTextMap = {
       { q: 'Hoe sterk is de beveiliging?', a: 'Bestanden worden versleuteld met AES-256, de sterkste standaard voor pdf-versleuteling. In de praktijk hangt de veiligheid af van je wachtwoord: kies een lang wachtwoord dat je nergens anders gebruikt.' },
       { q: 'Wat als ik het wachtwoord vergeet?', a: 'Het kan niet worden hersteld. Er wordt niets opgeslagen of verstuurd en er is geen reset. Bewaar je originele bestand en het wachtwoord op een veilige plek.' },
       { q: 'Worden de opties voor afdrukken, kopiëren en bewerken afgedwongen?', a: 'Het zijn verzoeken die de meeste pdf-programma’s respecteren, maar ze zijn niet onbreekbaar. Het wachtwoord is wat het bestand echt beschermt.' },
-      { q: 'Wordt mijn wachtwoord geüpload?', a: 'Nee. De versleuteling gebeurt in je browser.' },
     ],
     limits: [
       'Maximaal 100 MB per pdf.',
@@ -823,7 +801,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Kan het een pdf ontgrendelen als ik het wachtwoord ben vergeten?', a: 'Nee. Deze tool raadt of kraakt nooit wachtwoorden. Hij verwijdert de beveiliging alleen als je het juiste wachtwoord geeft, of als het bestand slechts acties zoals afdrukken beperkt.' },
       { q: 'Is dit toegestaan?', a: 'Gebruik het alleen op bestanden die van jou zijn of die je mag openen. Jij bent verantwoordelijk voor hoe je het resultaat gebruikt.' },
-      { q: 'Wordt mijn wachtwoord geüpload?', a: 'Nee. Alles gebeurt in je browser.' },
     ],
     limits: [
       'Maximaal 100 MB per pdf.',
@@ -866,7 +843,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Waarom is mijn pdf nauwelijks kleiner geworden?', a: 'De standaardmodus comprimeert JPEG-afbeeldingen opnieuw, dus het helpt het meest bij pdf’s vol foto’s of scans. Een pdf die vooral uit tekst bestaat, of waarvan de afbeeldingen al klein zijn, kan niet veel krimpen. De tool meldt het als er niets bespaard kon worden, in plaats van te doen alsof.' },
       { q: 'Wordt de kwaliteit slechter?', a: 'Afbeeldingen verliezen wat detail in ruil voor grootte; Licht houdt ze bijna ongewijzigd en Sterk maakt ze zichtbaar zachter. Tekst en vectorafbeeldingen worden in de standaardmodus niet aangeraakt. De modus “Maximaal” maakt van elke pagina een afbeelding, waardoor tekst niet meer kan worden geselecteerd of doorzocht.' },
-      { q: 'Wordt mijn pdf ergens geüpload?', a: 'Nee. De pdf wordt door je browser gelezen en herschreven. Deze tool stuurt het bestand niet naar een server.' },
     ],
     limits: [
       'Alleen ingesloten JPEG-afbeeldingen worden opnieuw gecomprimeerd. Afbeeldingen in PNG-stijl (Flate), lettertypen en andere inhoud blijven zoals ze zijn.',
@@ -886,7 +862,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Welke talen worden ondersteund?', a: 'Voorlopig alleen Engels. Tekst in andere talen wordt verkeerd gelezen. Er kunnen later meer talen worden toegevoegd zonder dat de werking van de tool verandert.' },
-      { q: 'Wordt mijn document naar een OCR-dienst gestuurd?', a: 'Nee. De herkenningsengine (Tesseract, gecompileerd naar WebAssembly) en de Engelse gegevens worden vanaf deze website aangeboden en draaien in je browser. Het document wordt niet geüpload.' },
       { q: 'Hoe nauwkeurig is het?', a: 'Schone, rechte scans van gedrukte tekst op 200 tot 300 DPI werken het best. Handschrift, zeer kleine letters, pagina’s met weinig contrast of scheve pagina’s geven meer fouten. Controleer belangrijke getallen altijd.' },
     ],
     limits: [
@@ -907,8 +882,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Is dit een juridisch bindende digitale handtekening?', a: 'Het is een visuele handtekening: een afbeelding van je handtekening op de pagina. Het is geen cryptografische digitale handtekening, heeft geen certificaat en kan niet aantonen wie heeft ondertekend of latere wijzigingen opsporen. Of het wordt geaccepteerd, hangt af van wie erom vraagt. Sommige organisaties eisen gecertificeerde e-handtekeningdiensten.' },
-      { q: 'Wordt mijn handtekening ergens opgeslagen?', a: 'Nee. Hij wordt in je browser gemaakt, alleen voor dit bestand gebruikt en vergeten zodra je de pagina verlaat of opnieuw laadt.' },
-      { q: 'Wordt mijn pdf ergens geüpload?', a: 'Nee. De pdf wordt door je browser gelezen en herschreven. Deze tool stuurt het bestand niet naar een server.' },
     ],
     limits: [
       'Alleen een visuele handtekening: geen certificaat, geen tijdstempel, geen detectie van manipulatie.',
@@ -928,7 +901,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Mijn pdf toont geen velden. Waarom?', a: 'Alleen pdf’s met echte formuliervelden kunnen hier worden ingevuld. Een formulier dat alleen een afbeelding of gewone tekst is, heeft geen velden; gebruik PDF ondertekenen om een handtekening te plaatsen, of de tool Watermerk op PDF om tekst toe te voegen. Formulieren gemaakt met XFA (sommige overheids- en bankformulieren) worden niet ondersteund.' },
       { q: 'Wat doet vlakmaken?', a: 'Vlakmaken brandt je antwoorden in de pagina en verwijdert de formuliervelden, zodat de antwoorden niet meer te bewerken zijn. Gebruik het voor de kopie die je verstuurt; bewaar zelf een bewerkbare kopie.' },
-      { q: 'Wordt mijn pdf ergens geüpload?', a: 'Nee. De pdf wordt door je browser gelezen en herschreven. Deze tool stuurt het bestand niet naar een server.' },
     ],
     limits: [
       'Tekst kan Latijnse letters, cijfers en gangbare symbolen bevatten (het formulierlettertype heeft geen andere alfabetten).',
@@ -970,7 +942,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Wat toont de tekstvergelijking?', a: 'Per pagina de woorden die tussen het originele en het herziene document zijn toegevoegd (groen) en verwijderd (rood), met de ongewijzigde tekst ingeklapt. Pagina’s worden op nummer gekoppeld.' },
       { q: 'En gescande pdf’s?', a: 'Scans hebben geen selecteerbare tekst, dus de tekstvergelijking vindt niets. Gebruik de visuele vergelijking, of voer eerst OCR PDF uit op beide bestanden.' },
-      { q: 'Wordt mijn pdf ergens geüpload?', a: 'Nee. De pdf wordt door je browser gelezen en herschreven. Deze tool stuurt het bestand niet naar een server.' },
     ],
     limits: [
       'Pagina’s worden op nummer vergeleken: als er een pagina is ingevoegd, lijken latere pagina’s gewijzigd.',
@@ -1102,7 +1073,6 @@ const tools: ToolTextMap = {
       'Kopieer of download het opgemaakte resultaat.',
     ],
     faq: [
-      { q: 'Wordt mijn JSON naar een server gestuurd?', a: 'Nee. Parsen en opmaken gebeuren in je browser met de ingebouwde JSON-parser.' },
       { q: 'Waarom wordt mijn JSON geweigerd?', a: 'Strikte JSON staat geen opmerkingen, afsluitende komma’s of enkele aanhalingstekens toe. De foutmelding toont de regel en kolom van het probleem.' },
     ],
     limits: [
@@ -1250,7 +1220,6 @@ const tools: ToolTextMap = {
       'Kopieer een wachtwoord en bewaar het in een wachtwoordmanager.',
     ],
     faq: [
-      { q: 'Worden gegenereerde wachtwoorden ergens opgeslagen of verstuurd?', a: 'Nee. Wachtwoorden worden in je browser gegenereerd met crypto.getRandomValues en worden nooit verzonden of opgeslagen.' },
       { q: 'Is een wachtwoord als Tesla2026#Tech veilig?', a: 'Het is beter dan een los woord, maar zwakker dan willekeurige tekst. Iemand die gokt, kan beginnen bij lijsten met bekende namen, dus de echte sterkte zit in het aantal mogelijkheden, getoond in bits. Gebruik wachtwoorden op basis van namen voor accounts met weinig risico en volledig willekeurige voor e-mail, bankieren en wachtwoordmanagers.' },
       { q: 'Waarom maar een paar symbolen?', a: 'Gegenereerde wachtwoorden gebruiken alleen de vier symbolen @ # $ * omdat bijna elke website ze accepteert en ze op elk toetsenbord makkelijk te typen zijn.' },
       { q: 'Hoe lang moet een wachtwoord zijn?', a: 'Minstens 16 tekens voor belangrijke accounts. Lengte telt zwaarder dan complexiteit.' },
@@ -1323,7 +1292,6 @@ const tools: ToolTextMap = {
       { q: 'Verlopen de codes?', a: 'Nee. Dit zijn statische codes: de gegevens zitten in de code zelf, dus ze werken eeuwig en er wordt niets gevolgd.' },
       { q: 'Welk foutcorrectieniveau moet ik kiezen?', a: 'Gemiddeld past bij de meeste toepassingen. Kies Kwartiel of Hoog als de code vuil of beschadigd kan raken, maar hogere niveaus maken de code dichter en moeilijker te scannen op kleine formaten.' },
       { q: 'Mag ik de codes commercieel gebruiken?', a: 'Ja. De QR-codestandaard is open en codes die hier worden gemaakt, dragen geen kosten, watermerken of tracking van ons.' },
-      { q: 'Worden mijn gegevens ergens naartoe gestuurd?', a: 'Nee. De code wordt in je browser gegenereerd en wifiwachtwoorden die je invoert, blijven op je apparaat.' },
     ],
     limits: [
       'Alleen statische codes: geen scantracking en geen bewerkbare codes.',
@@ -1344,7 +1312,6 @@ const tools: ToolTextMap = {
       { q: "Herkent dit de tekst op de pagina?", a: "Nee. Scan naar PDF zet de afbeeldingen om in pdf-pagina’s en kan ze opschonen, maar de tekst blijft deel van de afbeelding. Laat het resultaat door OCR PDF lopen om het doorzoekbaar te maken." },
       { q: "Kan ik de camera van mijn telefoon gebruiken?", a: "Op telefoons en tablets waarvan de browser dit ondersteunt, opent de knop ‘Foto maken’ de camera. Kies anders foto’s die al op je apparaat staan." },
       { q: "Wat doen de opschoonstijlen?", a: "‘Origineel’ behoudt de kleuren. ‘Grijstinten’ haalt de kleur weg. ‘Zwart-wit document’ maakt van de pagina zuiver zwarte tekst op wit papier en egaliseert schaduwen en ongelijkmatige belichting, wat past bij gedrukte pagina’s en aantekeningen maar niet bij foto’s." },
-      { q: "Wordt mijn bestand ergens geüpload?", a: "Nee. Het bestand wordt door je browser gelezen en omgezet. Deze tool stuurt het niet naar een server." },
     ],
     limits: [
       "Maximaal 25 MB per afbeelding en 100 afbeeldingen per pdf.",
@@ -1366,7 +1333,6 @@ const tools: ToolTextMap = {
       { q: "Ziet de pdf eruit als de webpagina?", a: "Nee, niet precies. De tool leest de structuur van het document (koppen, alinea’s, lijsten, tabellen, links, vetgedrukte en cursieve tekst en ingesloten afbeeldingen) en maakt er een eenvoudig document van. CSS-stijlen, scripts, weblettertypen, kolommen en gepositioneerde elementen worden niet toegepast." },
       { q: "Is het veilig om HTML om te zetten die ik niet vertrouw?", a: "De HTML wordt als inerte tekst gelezen: scripts worden niet uitgevoerd en er wordt niets van internet geladen. Alleen afbeeldingen die in de HTML zelf zijn ingesloten, worden gebruikt." },
       { q: "Welke talen en lettertypen worden in de pdf ondersteund?", a: "De pdf wordt geschreven met Noto Sans, dat Latijnse tekst (inclusief Poolse, Tsjechische, Roemeense en Turkse letters), Cyrillisch, Grieks, Vietnamees en Devanagari dekt. Arabische, Hebreeuwse, Thaise, Chinese, Japanse en Koreaanse tekst wordt nog niet ondersteund: die tekens verschijnen als vraagtekens en de tool laat weten hoeveel er getroffen waren. De oorspronkelijke lettertypen van het document blijven niet behouden." },
-      { q: "Wordt mijn bestand ergens geüpload?", a: "Nee. Het bestand wordt door je browser gelezen en omgezet. Deze tool stuurt het niet naar een server." },
     ],
     limits: [
       "Maximaal 10 MB HTML.",
@@ -1388,7 +1354,6 @@ const tools: ToolTextMap = {
       { q: "Wat wordt wel en niet omgezet?", a: "Omgezet: tekst met vet, cursief, onderstreept en links, koppen, opsommingen en genummerde lijsten, tabellen, JPEG- en PNG-afbeeldingen, regel- en pagina-einden, uitlijning en paginarichting. Niet omgezet: kop- en voetteksten, voetnoten, tekstvakken, vergelijkingen, grafieken, vormen en andere afbeeldingsformaten." },
       { q: "Kan ik een oud .doc-bestand omzetten?", a: "Nee. Open het in Word en sla het eerst op als DOCX-bestand." },
       { q: "Welke talen en lettertypen worden in de pdf ondersteund?", a: "De pdf wordt geschreven met Noto Sans, dat Latijnse tekst (inclusief Poolse, Tsjechische, Roemeense en Turkse letters), Cyrillisch, Grieks, Vietnamees en Devanagari dekt. Arabische, Hebreeuwse, Thaise, Chinese, Japanse en Koreaanse tekst wordt nog niet ondersteund: die tekens verschijnen als vraagtekens en de tool laat weten hoeveel er getroffen waren. De oorspronkelijke lettertypen van het document blijven niet behouden." },
-      { q: "Wordt mijn bestand ergens geüpload?", a: "Nee. Het bestand wordt door je browser gelezen en omgezet. Deze tool stuurt het niet naar een server." },
     ],
     limits: [
       "Alleen DOCX-bestanden, maximaal 50 MB. Oude .doc-bestanden en met een wachtwoord beveiligde documenten worden niet ondersteund.",
@@ -1410,7 +1375,6 @@ const tools: ToolTextMap = {
       { q: "Wat wordt niet omgezet?", a: "Grafieken, SmartArt, video en audio, animaties en overgangen, sprekersnotities, kleurverlopen, lijnen en verbindingen, en afbeeldingen in andere formaten dan JPEG en PNG. De tool laat weten hoeveel items zijn weggelaten." },
       { q: "Kan ik een oud .ppt-bestand omzetten?", a: "Nee. Open het in PowerPoint en sla het eerst op als PPTX-bestand." },
       { q: "Welke talen en lettertypen worden in de pdf ondersteund?", a: "De pdf wordt geschreven met Noto Sans, dat Latijnse tekst (inclusief Poolse, Tsjechische, Roemeense en Turkse letters), Cyrillisch, Grieks, Vietnamees en Devanagari dekt. Arabische, Hebreeuwse, Thaise, Chinese, Japanse en Koreaanse tekst wordt nog niet ondersteund: die tekens verschijnen als vraagtekens en de tool laat weten hoeveel er getroffen waren. De oorspronkelijke lettertypen van het document blijven niet behouden." },
-      { q: "Wordt mijn bestand ergens geüpload?", a: "Nee. Het bestand wordt door je browser gelezen en omgezet. Deze tool stuurt het niet naar een server." },
     ],
     limits: [
       "Alleen PPTX-bestanden, maximaal 100 MB en 300 dia’s. Oude .ppt-bestanden en met een wachtwoord beveiligde presentaties worden niet ondersteund.",
@@ -1432,7 +1396,6 @@ const tools: ToolTextMap = {
       { q: "Ziet het eruit als de afdrukopmaak in Excel?", a: "Nee. Elk zichtbaar werkblad wordt een eenvoudige tabel die op de paginabreedte wordt afgestemd. Celkleuren, samengevoegde cellen, kolombreedtes, grafieken, afbeeldingen, afdrukbereiken en pagina-einden blijven niet behouden." },
       { q: "Kan ik een oud .xls-bestand omzetten?", a: "Nee. Open het in Excel en sla het eerst op als XLSX-bestand." },
       { q: "Welke talen en lettertypen worden in de pdf ondersteund?", a: "De pdf wordt geschreven met Noto Sans, dat Latijnse tekst (inclusief Poolse, Tsjechische, Roemeense en Turkse letters), Cyrillisch, Grieks, Vietnamees en Devanagari dekt. Arabische, Hebreeuwse, Thaise, Chinese, Japanse en Koreaanse tekst wordt nog niet ondersteund: die tekens verschijnen als vraagtekens en de tool laat weten hoeveel er getroffen waren. De oorspronkelijke lettertypen van het document blijven niet behouden." },
-      { q: "Wordt mijn bestand ergens geüpload?", a: "Nee. Het bestand wordt door je browser gelezen en omgezet. Deze tool stuurt het niet naar een server." },
     ],
     limits: [
       "Alleen XLSX-bestanden, maximaal 50 MB. Oude .xls-bestanden en met een wachtwoord beveiligde werkmappen worden niet ondersteund.",
@@ -1453,7 +1416,6 @@ const tools: ToolTextMap = {
       { q: "Hoe worden koppen en lijsten herkend?", a: "Koppen zijn regels in een groter lettertype dan de lopende tekst, lijsten zijn regels die met een opsommingsteken of een getal beginnen en alinea’s worden gescheiden door de ruimte tussen regels. Dit is een goede gok, geen garantie. Controleer het resultaat dus." },
       { q: "Waarom is het resultaat leeg voor mijn gescande pdf?", a: "Een scan is een afbeelding van een pagina en bevat geen tekst om te extraheren. Voer eerst OCR PDF uit om een tekstlaag toe te voegen en zet het resultaat daarna om." },
       { q: "Wat gebeurt er met tabellen, kolommen en afbeeldingen?", a: "Tabellen en kolommen worden niet nagebouwd: hun tekst verschijnt als gewone regels, waar mogelijk in leesvolgorde. Afbeeldingen, links, vette en cursieve tekst, voetnoten en vergelijkingen worden niet overgenomen." },
-      { q: "Wordt mijn bestand ergens geüpload?", a: "Nee. Het bestand wordt door je browser gelezen en omgezet. Deze tool stuurt het niet naar een server." },
     ],
     limits: [
       "Maximaal 100 MB per pdf. Met een wachtwoord beveiligde pdf’s moeten eerst worden ontgrendeld.",
@@ -1474,7 +1436,6 @@ const tools: ToolTextMap = {
       { q: "Welke soorten schade kunnen worden gerepareerd?", a: "Schade aan de structuur van het bestand: een ontbrekende of onjuiste objectindex (kruisverwijzingstabel), een ontbrekende trailer, rommel voor het begin of een kapotte paginalijst. Als het bestand is afgekapt, kunnen de pagina’s die vóór de afbreuk zijn opgeslagen worden hersteld." },
       { q: "Wat kan niet worden hersteld?", a: "Inhoud die niet meer in het bestand staat. Ontbrekende of beschadigde pagina’s, afbeeldingen of lettertypen kunnen niet worden teruggehaald en sommige bestanden zijn niet meer te redden. De tool meldt hoeveel pagina’s hij heeft behouden en zegt het wanneer hij geen bruikbaar bestand kan maken; hij biedt nooit een download aan die hij niet heeft gemaakt." },
       { q: "En als mijn pdf gewoon opent?", a: "Dan valt er niets te repareren. De tool zegt dat en biedt een opgeschoonde kopie van het bestand aan." },
-      { q: "Wordt mijn bestand ergens geüpload?", a: "Nee. Het bestand wordt door je browser gelezen en omgezet. Deze tool stuurt het niet naar een server." },
     ],
     limits: [
       "Maximaal 100 MB per pdf. Met een wachtwoord beveiligde pdf’s moeten eerst worden ontgrendeld.",
@@ -1496,7 +1457,6 @@ const tools: ToolTextMap = {
       { q: "Wat is het verschil tussen de twee manieren om te converteren?", a: "‘Tekst en lettertypen behouden’ wijzigt alleen de structuur en metadata van het bestand, zodat de tekst selecteerbaar blijft. Dat werkt alleen als alle lettertypen zijn ingesloten en het bestand geen CMYK-kleuren gebruikt. ‘Pagina’s omzetten in afbeeldingen’ rendert elke pagina als afbeelding en bouwt daarvan een nieuwe PDF/A. Dat werkt altijd, maar de tekst is daarna niet meer te selecteren en het bestand is groter." },
       { q: "Waarom werd mijn pdf geweigerd toen ik de tekst wilde behouden?", a: "PDF/A vereist dat elk lettertype in het bestand is ingesloten en staat geen CMYK-kleuren zonder CMYK-profiel, LZW-compressie of annotaties zonder uiterlijk toe. Dat is niet te herstellen zonder de pagina’s te wijzigen, dus de tool toont wat hij heeft gevonden in plaats van een resultaat voor te wenden. Je kunt nog steeds de afbeeldingsmodus gebruiken." },
       { q: "Wat verandert de tool in het bestand?", a: "Het voegt de PDF/A-identificatie en XMP-metadata toe, een sRGB-kleurprofiel als uitvoercondities en een bestandsidentificatie. Het verwijdert JavaScript, verboden acties, bijlagen, overbodige documentinformatie en annotatie-instellingen die PDF/A niet toestaat." },
-      { q: "Wordt mijn bestand ergens geüpload?", a: "Nee. Het bestand wordt door je browser gelezen en geconverteerd. Deze tool stuurt het niet naar een server." },
     ],
     limits: [
       "Maximaal 100 MB per pdf. Met wachtwoord beveiligde pdf’s moeten eerst worden ontgrendeld, omdat een PDF/A-bestand niet versleuteld mag zijn.",

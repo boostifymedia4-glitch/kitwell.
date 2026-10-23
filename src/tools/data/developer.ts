@@ -18,10 +18,6 @@ export const developerTools: ToolDef[] = [
     steps: ['Paste your JSON.', 'Choose indentation and sorting.', 'Copy or download the formatted result.'],
     faq: [
       {
-        q: 'Is my JSON sent to a server?',
-        a: 'No. Parsing and formatting happen in your browser with the built-in JSON parser.',
-      },
-      {
         q: 'Why does it reject my JSON?',
         a: 'Strict JSON does not allow comments, trailing commas or single quotes. The error message shows the line and column of the problem.',
       },
@@ -228,10 +224,6 @@ export const developerTools: ToolDef[] = [
     ],
     faq: [
       {
-        q: 'Are generated passwords stored or sent anywhere?',
-        a: 'No. Passwords are generated in your browser using crypto.getRandomValues and are never transmitted or saved.',
-      },
-      {
         q: 'Is a password like Tesla2026#Tech safe?',
         a: 'It is better than a plain word, but weaker than random text. Anyone guessing can start from lists of well-known names, so the real strength comes from the number of possibilities, shown as bits. Use name-based passwords for low-risk accounts and fully random ones for email, banking and password managers.',
       },
@@ -340,7 +332,6 @@ export const developerTools: ToolDef[] = [
         a: 'Medium suits most uses. Choose Quartile or High if the code may get dirty or damaged, but higher levels make the code denser and harder to scan at small sizes.',
       },
       { q: 'Can I use the codes commercially?', a: 'Yes. The QR code standard is open, and codes made here carry no fees, watermarks or tracking from us.' },
-      { q: 'Is my data sent anywhere?', a: 'No. The code is generated in your browser, and Wi-Fi passwords you enter stay on your device.' },
     ],
     limits: [
       'Static codes only: no scan tracking and no editable codes.',

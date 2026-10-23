@@ -5,11 +5,6 @@ import type { FaqItem, ToolDef } from '../types';
  * All of them run in the browser (no upload). The limits below are what the code really does; keep them in step with
  * src/lib/docPdf.ts, docx.ts, xlsx.ts, pptxPdf.ts, htmlDoc.ts, pdfMarkdown.ts and pdfRepair.ts.
  */
-const privacyFaq: FaqItem = {
-  q: 'Is my file uploaded anywhere?',
-  a: 'No. The file is read and converted by your browser. This tool does not send it to a server.',
-};
-
 const fontFaq: FaqItem = {
   q: 'Which languages and fonts are supported in the PDF?',
   a: 'The PDF is written with Noto Sans, which covers Latin (including Polish, Czech, Romanian and Turkish letters), Cyrillic, Greek, Vietnamese and Devanagari text. Arabic, Hebrew, Thai, Chinese, Japanese and Korean text is not supported yet: those characters appear as question marks and the tool tells you how many were affected. The original fonts of the document are not kept.',
@@ -48,7 +43,6 @@ export const pdfConvertTools: ToolDef[] = [
         q: 'What do the clean-up styles do?',
         a: 'Original keeps the colours. Grayscale removes colour. Black and white document turns the page into pure black text on white paper and evens out shadows and uneven lighting, which suits printed pages and notes but not photographs.',
       },
-      privacyFaq,
     ],
     limits: [
       'Maximum 25 MB per image and 100 images per PDF.',
@@ -88,7 +82,6 @@ export const pdfConvertTools: ToolDef[] = [
         a: 'The HTML is read as inert text: scripts do not run and nothing is loaded from the internet. Only pictures embedded in the HTML itself are used.',
       },
       fontFaq,
-      privacyFaq,
     ],
     limits: [
       'Maximum 10 MB of HTML.',
@@ -124,7 +117,6 @@ export const pdfConvertTools: ToolDef[] = [
         a: 'No. Open it in Word and save it as a DOCX file first.',
       },
       fontFaq,
-      privacyFaq,
     ],
     limits: [
       'DOCX files only, maximum 50 MB. Old .doc files and password-protected documents are not supported.',
@@ -160,7 +152,6 @@ export const pdfConvertTools: ToolDef[] = [
         a: 'No. Open it in PowerPoint and save it as a PPTX file first.',
       },
       fontFaq,
-      privacyFaq,
     ],
     limits: [
       'PPTX files only, maximum 100 MB and 300 slides. Old .ppt files and password-protected presentations are not supported.',
@@ -196,7 +187,6 @@ export const pdfConvertTools: ToolDef[] = [
         a: 'No. Open it in Excel and save it as an XLSX file first.',
       },
       fontFaq,
-      privacyFaq,
     ],
     limits: [
       'XLSX files only, maximum 50 MB. Old .xls files and password-protected workbooks are not supported.',
@@ -231,7 +221,6 @@ export const pdfConvertTools: ToolDef[] = [
         q: 'What about tables, columns and images?',
         a: 'Tables and columns are not rebuilt: their text appears as ordinary lines, in reading order where possible. Images, links, bold and italic text, footnotes and equations are not carried over.',
       },
-      privacyFaq,
     ],
     limits: [
       'Maximum 100 MB per PDF. Password-protected PDFs must be unlocked first.',
@@ -265,7 +254,6 @@ export const pdfConvertTools: ToolDef[] = [
         q: 'What if my PDF opens fine?',
         a: 'Then there is nothing to repair. The tool says so and offers a cleaned copy of the file.',
       },
-      privacyFaq,
     ],
     limits: [
       'Maximum 100 MB per PDF. Password-protected PDFs must be unlocked first.',
@@ -307,7 +295,6 @@ export const pdfConvertTools: ToolDef[] = [
         q: 'What does the tool change in the file?',
         a: 'It adds the PDF/A identification and XMP metadata, an sRGB colour profile as the output intent and a file identifier. It removes JavaScript, forbidden actions, attachments, extra document information and annotation settings that PDF/A does not allow.',
       },
-      privacyFaq,
     ],
     limits: [
       'Maximum 100 MB per PDF. Password-protected PDFs must be unlocked first, because a PDF/A file cannot be encrypted.',

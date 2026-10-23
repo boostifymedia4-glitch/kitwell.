@@ -46,6 +46,21 @@ export function setRectField(rect: Rect, key: keyof Rect, value: number, ratio: 
   let next = { ...rect, [key]: value };
   if (key === 'w') next.w = clamp(value, min, W);
   if (key === 'h') next.h = clamp(value, min, H);
+  // A position can be typed anywhere inside the image: the box gets smaller instead of the value being ignored.
+  if (key === 'x') {
+    next.x = clamp(value, 0, W - min);
+    next.w = Math.min(next.w, W - next.x);
+  }
+  if (key === 'y') {
+    next.y = clamp(value, 0, H - min);
+    next.h = Math.min(next.h, H - next.y);
+  }
+  if (ratio && (key === 'x' || key === 'y')) {
+    // keep the locked ratio: the smaller side decides
+    const w = Math.min(next.w, next.h * ratio);
+    next.w = w;
+    next.h = w / ratio;
+  }
   if (ratio && key === 'w') next.h = next.w / ratio;
   if (ratio && key === 'h') next.w = next.h * ratio;
   next = fitToRatio(next, ratio, W, H);

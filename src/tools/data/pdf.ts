@@ -1,10 +1,5 @@
 import type { FaqItem, ToolDef } from '../types';
 
-const privacyFaq: FaqItem = {
-  q: 'Is my PDF uploaded anywhere?',
-  a: 'No. The PDF is read and rewritten by your browser. This tool does not send the file to a server.',
-};
-
 const encryptedFaq: FaqItem = {
   q: 'Can it open password-protected PDFs?',
   a: 'No. Encrypted PDFs are detected and rejected with a clear message. Remove the password first with our Unlock PDF tool.',
@@ -42,7 +37,6 @@ export const pdfTools: ToolDef[] = [
         q: 'Does the image quality drop?',
         a: 'No. JPG files are embedded into the PDF as they are, without re-compression.',
       },
-      privacyFaq,
     ],
     limits: ['Maximum 25 MB per image and 100 images per PDF.', 'Only JPG images are accepted here; use Images to PDF for mixed formats.'],
     related: ['images-to-pdf', 'png-to-pdf', 'merge-pdf', 'pdf-to-jpg', 'image-compressor'],
@@ -66,7 +60,6 @@ export const pdfTools: ToolDef[] = [
         q: 'Is transparency preserved?',
         a: 'Yes. PNG images are embedded with their alpha channel, so transparent areas show the white page behind them.',
       },
-      privacyFaq,
     ],
     limits: ['Maximum 25 MB per image and 100 images per PDF.', 'Only PNG images are accepted here; use Images to PDF for mixed formats.'],
     related: ['images-to-pdf', 'jpg-to-pdf', 'merge-pdf', 'pdf-to-png', 'image-compressor'],
@@ -98,7 +91,6 @@ export const pdfTools: ToolDef[] = [
         q: 'What does "Fit to image" do?',
         a: 'Each page is sized to its image, so nothing is scaled or padded. Choose A4 or Letter for standard document pages.',
       },
-      privacyFaq,
     ],
     limits: ['Maximum 25 MB per image and 100 images per PDF.'],
     related: ['jpg-to-pdf', 'scan-to-pdf', 'merge-pdf', 'reorder-pdf-pages', 'image-compressor'],
@@ -125,7 +117,6 @@ export const pdfTools: ToolDef[] = [
         a: 'Pages are copied with their visible content and links. Document-level bookmarks and interactive form data are not carried across.',
       },
       encryptedFaq,
-      privacyFaq,
     ],
     limits: [...pdfLimits, 'Bookmarks/outlines and form fields of the source files are not merged.'],
     related: ['split-pdf', 'rotate-pdf', 'extract-pdf-pages', 'reorder-pdf-pages', 'images-to-pdf', 'add-page-numbers', 'protect-pdf', 'compress-pdf'],
@@ -511,13 +502,12 @@ export const pdfTools: ToolDef[] = [
       },
       {
         q: 'What if I forget the password?',
-        a: 'It cannot be recovered. Nothing is stored or sent anywhere, and there is no reset. Keep your original file and the password somewhere safe.',
+        a: 'It cannot be recovered, and there is no password reset. Keep your original file and the password somewhere safe.',
       },
       {
         q: 'Are the print, copy and edit options enforced?',
         a: 'They are requests that most PDF programs respect, but they are not unbreakable. The password is what really protects the file.',
       },
-      { q: 'Is my password uploaded?', a: 'No. Encryption happens in your browser.' },
     ],
     limits: [
       'Maximum 100 MB per PDF.',
@@ -549,7 +539,6 @@ export const pdfTools: ToolDef[] = [
         a: 'No. This tool never guesses or cracks passwords. It removes protection only when you give the correct password, or when the file merely restricts actions such as printing.',
       },
       { q: 'Is this allowed?', a: 'Use it only on files you own or have permission to open. You are responsible for how you use the result.' },
-      { q: 'Is my password uploaded?', a: 'No. Everything happens in your browser.' },
     ],
     limits: [
       'Maximum 100 MB per PDF.',
@@ -612,7 +601,6 @@ export const pdfTools: ToolDef[] = [
         q: 'Will the quality get worse?',
         a: 'Images lose some detail in exchange for size; Light keeps them almost unchanged and Strong makes them visibly softer. Text and vector graphics are not touched in the standard mode. The "Maximum" mode turns every page into a picture, so text can no longer be selected or searched.',
       },
-      privacyFaq,
     ],
     limits: [
       'Only embedded JPEG images are recompressed. PNG-style (Flate) images, fonts and other content are kept as they are.',
@@ -642,10 +630,6 @@ export const pdfTools: ToolDef[] = [
       {
         q: 'Which languages are supported?',
         a: 'English only for now. Text in other languages will be misread. More languages can be added later without changing how the tool works.',
-      },
-      {
-        q: 'Is my document sent to an OCR service?',
-        a: 'No. The recognition engine (Tesseract, compiled to WebAssembly) and its English data are served from this website and run inside your browser. The document is not uploaded.',
       },
       {
         q: 'How accurate is it?',
@@ -681,11 +665,6 @@ export const pdfTools: ToolDef[] = [
         q: 'Is this a legally binding digital signature?',
         a: 'It is a visual signature: an image of your signature placed on the page. It is not a cryptographic digital signature, it carries no certificate, and it cannot prove who signed or detect later changes. Whether it is accepted depends on who asks for it. Some organisations require certified e-signature services.',
       },
-      {
-        q: 'Is my signature stored anywhere?',
-        a: 'No. It is created in your browser, only used for this file, and forgotten when you leave or reload the page.',
-      },
-      privacyFaq,
     ],
     limits: [
       'Visual signature only: no certificate, no timestamp, no tamper detection.',
@@ -719,7 +698,6 @@ export const pdfTools: ToolDef[] = [
         q: 'What does flattening do?',
         a: 'Flattening burns your answers into the page and removes the form fields, so the answers can no longer be edited. Use it for the copy you send; keep an editable copy for yourself.',
       },
-      privacyFaq,
     ],
     limits: [
       'Text can use Latin letters, digits and common symbols (the form font has no other alphabets).',
@@ -792,7 +770,6 @@ export const pdfTools: ToolDef[] = [
         q: 'What about scanned PDFs?',
         a: 'Scans have no selectable text, so the text comparison finds nothing. Use the visual comparison, or run OCR PDF on both files first.',
       },
-      privacyFaq,
     ],
     limits: [
       'Pages are compared by number: if a page was inserted, later pages will show as changed.',
