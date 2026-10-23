@@ -185,7 +185,6 @@ export default {
   'pdfOcr.stat.words': 'Parole trovate',
   'pdfOcr.stat.confidence': 'Affidabilità media',
   'pdfOcr.resultNote': 'Le pagine appaiono esattamente come prima; un livello di testo invisibile le rende ricercabili e copiabili. Controlla i numeri importanti confrontandoli con l’originale.',
-  'pdfOcr.download': 'Scarica il PDF ricercabile',
   'pdfOcr.output': 'Testo riconosciuto',
   'pdfProtect.hint.empty': 'Usa almeno 8 caratteri; più è lunga, più è sicura.',
   'pdfProtect.hint.short': 'Le password corte sono facili da indovinare. Punta a 12 o più caratteri.',

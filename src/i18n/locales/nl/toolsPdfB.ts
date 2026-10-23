@@ -183,7 +183,6 @@ export default {
   'pdfOcr.stat.words': 'Gevonden woorden',
   'pdfOcr.stat.confidence': 'Gemiddelde betrouwbaarheid',
   'pdfOcr.resultNote': 'De pagina’s zien er precies hetzelfde uit als voorheen; een onzichtbare tekstlaag maakt ze doorzoekbaar en kopieerbaar. Controleer belangrijke getallen aan de hand van het origineel.',
-  'pdfOcr.download': 'Doorzoekbare PDF downloaden',
   'pdfOcr.output': 'Herkende tekst',
 
   'pdfProtect.hint.empty': 'Gebruik minstens 8 tekens; langer is sterker.',

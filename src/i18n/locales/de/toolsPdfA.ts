@@ -26,7 +26,6 @@ export default {
   'imagesToPdf.ready': 'Ihre PDF ist fertig',
   'imagesToPdf.summary.one': '{count} Seite · {size}',
   'imagesToPdf.summary.other': '{count} Seiten · {size}',
-  'imagesToPdf.download': 'images.pdf herunterladen',
 
   'pdfMerge.merging': 'Wird zusammengefügt',
   'pdfMerge.addMore': 'Weitere PDFs hinzufügen',
@@ -36,7 +35,6 @@ export default {
   'pdfMerge.clear': 'Alle entfernen',
   'pdfMerge.processing': 'PDFs werden zusammengefügt…',
   'pdfMerge.ready': 'Ihre zusammengefügte PDF ist fertig',
-  'pdfMerge.download': 'merged.pdf herunterladen',
 
   'pdfSplit.tooMany': 'Dabei würden mehr als 500 Dateien entstehen. Verwenden Sie mehr Seiten pro Datei.',
   'pdfSplit.splitting': 'Wird geteilt',
@@ -88,7 +86,6 @@ export default {
   'pdfOrganize.removePage': 'Seite {n} entfernen',
   'pdfOrganize.building': 'PDF wird erstellt…',
   'pdfOrganize.ready': 'Ihre PDF ist fertig',
-  'pdfOrganize.download': '{name} herunterladen',
 
   'pdfPageNumbers.pos.bottom-center': 'Unten Mitte',
   'pdfPageNumbers.pos.bottom-right': 'Unten rechts',

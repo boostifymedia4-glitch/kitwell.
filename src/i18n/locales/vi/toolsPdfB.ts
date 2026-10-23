@@ -170,7 +170,6 @@ export default {
   'pdfOcr.stat.words': 'Từ tìm thấy',
   'pdfOcr.stat.confidence': 'Độ tin cậy trung bình',
   'pdfOcr.resultNote': 'Các trang trông y hệt như trước; một lớp văn bản vô hình giúp chúng có thể tìm kiếm và sao chép. Hãy đối chiếu các con số quan trọng với bản gốc.',
-  'pdfOcr.download': 'Tải xuống PDF có thể tìm kiếm',
   'pdfOcr.output': 'Văn bản đã nhận dạng',
   'pdfProtect.hint.empty': 'Dùng ít nhất 8 ký tự; càng dài càng mạnh.',
   'pdfProtect.hint.short': 'Mật khẩu ngắn rất dễ đoán. Hãy hướng tới 12 ký tự trở lên.',

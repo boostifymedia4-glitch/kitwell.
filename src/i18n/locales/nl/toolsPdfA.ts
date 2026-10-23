@@ -26,7 +26,6 @@ export default {
   'imagesToPdf.ready': 'Je PDF is klaar',
   'imagesToPdf.summary.one': '{count} pagina · {size}',
   'imagesToPdf.summary.other': '{count} pagina’s · {size}',
-  'imagesToPdf.download': 'images.pdf downloaden',
 
   'pdfMerge.merging': 'Samenvoegen',
   'pdfMerge.addMore': 'Meer PDF’s toevoegen',
@@ -36,7 +35,6 @@ export default {
   'pdfMerge.clear': 'Alles wissen',
   'pdfMerge.processing': 'PDF’s samenvoegen…',
   'pdfMerge.ready': 'Je samengevoegde PDF is klaar',
-  'pdfMerge.download': 'merged.pdf downloaden',
 
   'pdfSplit.tooMany': 'Dat zou meer dan 500 bestanden opleveren. Gebruik een groter aantal pagina’s per bestand.',
   'pdfSplit.splitting': 'Splitsen',
@@ -88,7 +86,6 @@ export default {
   'pdfOrganize.removePage': 'Pagina {n} verwijderen',
   'pdfOrganize.building': 'PDF opbouwen…',
   'pdfOrganize.ready': 'Je PDF is klaar',
-  'pdfOrganize.download': '{name} downloaden',
 
   'pdfPageNumbers.pos.bottom-center': 'Onder in het midden',
   'pdfPageNumbers.pos.bottom-right': 'Rechtsonder',

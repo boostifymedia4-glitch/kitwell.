@@ -188,7 +188,6 @@ export const toolsPdfB = {
   'pdfOcr.stat.words': 'Words found',
   'pdfOcr.stat.confidence': 'Average confidence',
   'pdfOcr.resultNote': 'The pages look exactly as before; an invisible text layer makes them searchable and copyable. Check important numbers against the original.',
-  'pdfOcr.download': 'Download searchable PDF',
   'pdfOcr.output': 'Recognised text',
   'pdfProtect.hint.empty': 'Use at least 8 characters; longer is stronger.',
   'pdfProtect.hint.short': 'Short passwords are easy to guess. Aim for 12 or more.',

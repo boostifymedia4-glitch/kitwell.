@@ -27,7 +27,6 @@ export default {
   'imagesToPdf.ready': 'PDF’niz hazır',
   'imagesToPdf.summary.one': '{count} sayfa · {size}',
   'imagesToPdf.summary.other': '{count} sayfa · {size}',
-  'imagesToPdf.download': 'images.pdf dosyasını indir',
 
   'pdfMerge.merging': 'Birleştiriliyor',
   'pdfMerge.addMore': 'Daha fazla PDF ekle',
@@ -37,7 +36,6 @@ export default {
   'pdfMerge.clear': 'Tümünü temizle',
   'pdfMerge.processing': 'PDF’ler birleştiriliyor…',
   'pdfMerge.ready': 'Birleştirilen PDF’niz hazır',
-  'pdfMerge.download': 'merged.pdf dosyasını indir',
 
   'pdfSplit.tooMany': 'Bu işlem 500’den fazla dosya oluşturur. Dosya başına daha fazla sayfa kullanın.',
   'pdfSplit.splitting': 'Bölünüyor',
@@ -89,7 +87,6 @@ export default {
   'pdfOrganize.removePage': '{n}. sayfayı kaldır',
   'pdfOrganize.building': 'PDF oluşturuluyor…',
   'pdfOrganize.ready': 'PDF’niz hazır',
-  'pdfOrganize.download': '{name} dosyasını indir',
 
   'pdfPageNumbers.pos.bottom-center': 'Alt orta',
   'pdfPageNumbers.pos.bottom-right': 'Sağ alt',

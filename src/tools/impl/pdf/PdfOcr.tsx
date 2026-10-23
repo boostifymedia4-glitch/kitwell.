@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { ErrorMessage, Notice, ProcessingState } from '@/components/tool/Feedback';
 import { CheckField, Field, SelectField } from '@/components/tool/Fields';
 import { PdfSource } from '@/components/tool/PdfSource';
-import { DownloadButton, ResetButton, ResultPanel } from '@/components/tool/Results';
+import { PdfOutput, ResetButton, ResultPanel } from '@/components/tool/Results';
 import { OutputBox, Stats } from '@/components/tool/TextIO';
 import { Icon } from '@/components/Icon';
 import { baseName, errorMessage, formatBytes } from '@/lib/format';
@@ -158,10 +158,9 @@ const PdfOcr: ToolImplementation = () => {
                 <p className="muted">
                   {formatBytes(done.pdf.size)} · {t('pdfOcr.resultNote')}
                 </p>
-                <div className="toolbar">
-                  <DownloadButton blob={done.pdf} name={`${baseName(ready.file.name)}-ocr.pdf`} label={t('pdfOcr.download')} />
-                  <ResetButton onClick={reset} />
-                </div>
+                <PdfOutput blob={done.pdf} name={`${baseName(ready.file.name)}-ocr.pdf`}>
+<ResetButton onClick={reset} />
+</PdfOutput>
                 <OutputBox label={t('pdfOcr.output')} value={done.text} rows={10} filename={`${baseName(ready.file.name)}-ocr.txt`} />
               </ResultPanel>
             )}

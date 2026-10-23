@@ -170,7 +170,6 @@ export default {
   'pdfOcr.stat.words': '見つかった単語',
   'pdfOcr.stat.confidence': '平均信頼度',
   'pdfOcr.resultNote': 'ページの見た目は以前とまったく同じです。見えないテキストレイヤーにより、検索とコピーができるようになります。重要な数字は元の文書と照らし合わせて確認してください。',
-  'pdfOcr.download': '検索可能なPDFをダウンロード',
   'pdfOcr.output': '認識したテキスト',
   'pdfProtect.hint.empty': '8文字以上にしてください。長いほど強力です。',
   'pdfProtect.hint.short': '短いパスワードは推測されやすくなります。12文字以上を目安にしてください。',

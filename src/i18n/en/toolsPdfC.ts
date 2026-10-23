@@ -100,7 +100,6 @@ export const toolsPdfC = {
   'repairPdf.pages': 'Pages in the repaired file',
   'repairPdf.done': 'What was done',
   'repairPdf.hint': 'Repairing rebuilds the file’s structure. Content that is missing from the file cannot be brought back.',
-  'repairPdf.download': 'Download repaired PDF',
 
   // PDF to PDF/A
   'pdfa.drop': 'Drop a PDF here or choose one',
@@ -123,7 +122,6 @@ export const toolsPdfC = {
   'pdfa.blockedIntro': 'These problems stop a PDF/A conversion that keeps the text:',
   'pdfa.blockedHint': 'You can still convert it by turning the pages into pictures. The text will then no longer be selectable.',
   'pdfa.useFlatten': 'Turn pages into pictures instead',
-  'pdfa.download': 'Download PDF/A',
   'pdfa.fix.metadata': 'Added the PDF/A identification and metadata.',
   'pdfa.fix.intent': 'Added the sRGB colour profile as the output intent.',
   'pdfa.fix.id': 'Added a file identifier.',

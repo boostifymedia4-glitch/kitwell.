@@ -26,7 +26,6 @@ export default {
   'imagesToPdf.ready': 'آپ کی PDF تیار ہے',
   'imagesToPdf.summary.one': '{count} صفحہ · {size}',
   'imagesToPdf.summary.other': '{count} صفحات · {size}',
-  'imagesToPdf.download': 'images.pdf ڈاؤن لوڈ کریں',
 
   'pdfMerge.merging': 'جوڑا جا رہا ہے',
   'pdfMerge.addMore': 'مزید PDF شامل کریں',
@@ -36,7 +35,6 @@ export default {
   'pdfMerge.clear': 'سب صاف کریں',
   'pdfMerge.processing': 'PDF جوڑی جا رہی ہیں…',
   'pdfMerge.ready': 'آپ کی جوڑی ہوئی PDF تیار ہے',
-  'pdfMerge.download': 'merged.pdf ڈاؤن لوڈ کریں',
 
   'pdfSplit.tooMany': 'اس سے 500 سے زیادہ فائلیں بنیں گی۔ ہر فائل میں صفحات کی زیادہ تعداد رکھیں۔',
   'pdfSplit.splitting': 'تقسیم کیا جا رہا ہے',
@@ -88,7 +86,6 @@ export default {
   'pdfOrganize.removePage': 'صفحہ {n} ہٹائیں',
   'pdfOrganize.building': 'PDF بن رہی ہے…',
   'pdfOrganize.ready': 'آپ کی PDF تیار ہے',
-  'pdfOrganize.download': '{name} ڈاؤن لوڈ کریں',
 
   'pdfPageNumbers.pos.bottom-center': 'نیچے وسط میں',
   'pdfPageNumbers.pos.bottom-right': 'نیچے دائیں',

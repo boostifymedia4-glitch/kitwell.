@@ -3,7 +3,7 @@ import type { PDFDocumentProxy } from 'pdfjs-dist';
 import { ErrorMessage, ProcessingState } from '@/components/tool/Feedback';
 import { Field } from '@/components/tool/Fields';
 import { PdfSource } from '@/components/tool/PdfSource';
-import { DownloadButton, ResultPanel } from '@/components/tool/Results';
+import { PdfOutput, ResultPanel } from '@/components/tool/Results';
 import { Icon } from '@/components/Icon';
 import { useI18n } from '@/i18n';
 import { baseName, errorMessage, formatBytes } from '@/lib/format';
@@ -304,9 +304,7 @@ function Organizer({ bytes, pageCount, name, mode }: { bytes: Uint8Array; pageCo
       {task.state.status === 'done' && (
         <ResultPanel title={t('pdfOrganize.ready')}>
           <p className="muted">{formatBytes(task.state.result.size)}</p>
-          <div className="toolbar">
-            <DownloadButton blob={task.state.result} name={`${baseName(name)}-${suffix}.pdf`} label={t('pdfOrganize.download', { name: `${baseName(name)}-${suffix}.pdf` })} />
-          </div>
+          <PdfOutput blob={task.state.result} name={`${baseName(name)}-${suffix}.pdf`} />
         </ResultPanel>
       )}
     </div>

@@ -28,7 +28,6 @@ export default {
   'imagesToPdf.summary.few': '{count} stránky · {size}',
   'imagesToPdf.summary.many': '{count} stránky · {size}',
   'imagesToPdf.summary.other': '{count} stránek · {size}',
-  'imagesToPdf.download': 'Stáhnout images.pdf',
 
   'pdfMerge.merging': 'Slučuji',
   'pdfMerge.addMore': 'Přidat další PDF',
@@ -38,7 +37,6 @@ export default {
   'pdfMerge.clear': 'Vymazat vše',
   'pdfMerge.processing': 'Slučuji PDF…',
   'pdfMerge.ready': 'Vaše sloučené PDF je připraveno',
-  'pdfMerge.download': 'Stáhnout merged.pdf',
 
   'pdfSplit.tooMany': 'Vzniklo by více než 500 souborů. Zadejte větší počet stránek na soubor.',
   'pdfSplit.splitting': 'Dělím',
@@ -104,7 +102,6 @@ export default {
   'pdfOrganize.removePage': 'Odebrat stránku {n}',
   'pdfOrganize.building': 'Vytvářím PDF…',
   'pdfOrganize.ready': 'Vaše PDF je připraveno',
-  'pdfOrganize.download': 'Stáhnout {name}',
 
   'pdfPageNumbers.pos.bottom-center': 'Dole uprostřed',
   'pdfPageNumbers.pos.bottom-right': 'Vpravo dole',

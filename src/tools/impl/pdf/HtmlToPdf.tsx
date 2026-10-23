@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ErrorMessage, Notice, ProcessingState, RejectionList } from '@/components/tool/Feedback';
 import { Field, Segmented, SelectField } from '@/components/tool/Fields';
 import { FileList } from '@/components/tool/FileList';
-import { DownloadButton, ResetButton, ResultPanel } from '@/components/tool/Results';
+import { PdfOutput, ResetButton, ResultPanel } from '@/components/tool/Results';
 import { UploadDropzone } from '@/components/tool/UploadDropzone';
 import { Icon } from '@/components/Icon';
 import { useI18n } from '@/i18n';
@@ -116,10 +116,9 @@ const HtmlToPdf: ToolImplementation = () => {
               </ul>
             </Notice>
           )}
-          <div className="toolbar">
-            <DownloadButton blob={task.state.result.blob} name={task.state.result.name} />
-            <ResetButton onClick={reset} />
-          </div>
+          <PdfOutput blob={task.state.result.blob} name={task.state.result.name}>
+<ResetButton onClick={reset} />
+</PdfOutput>
         </ResultPanel>
       )}
     </div>

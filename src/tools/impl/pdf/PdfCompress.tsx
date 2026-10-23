@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ErrorMessage, Notice, ProcessingState } from '@/components/tool/Feedback';
 import { Segmented } from '@/components/tool/Fields';
 import { PdfSource } from '@/components/tool/PdfSource';
-import { DownloadButton, ResetButton, ResultPanel } from '@/components/tool/Results';
+import { PdfOutput, ResetButton, ResultPanel } from '@/components/tool/Results';
 import { Icon } from '@/components/Icon';
 import { baseName, formatBytes } from '@/lib/format';
 import { browserJpegEncoder } from '@/lib/jpegRecompress';
@@ -64,10 +64,9 @@ const PdfCompress: ToolImplementation = () => {
                   {done.report.imagesSkipped > 0 ? ` ${t('pdfCompress.result.skipped', { count: done.report.imagesSkipped })}` : ''}
                 </p>
                 {done.kept && <Notice tone="warn">{t('pdfCompress.result.alreadyOptimised')}</Notice>}
-                <div className="toolbar">
-                  <DownloadButton blob={done.blob} name={name} label={done.kept ? t('pdfCompress.downloadOriginal', { name }) : t('pdfCompress.download', { name })} />
+                <PdfOutput blob={done.blob} name={name} label={(n) => (done.kept ? t('pdfCompress.downloadOriginal', { name: n }) : t('pdfCompress.download', { name: n }))}>
                   <ResetButton onClick={reset} />
-                </div>
+                </PdfOutput>
               </ResultPanel>
             )}
           </>

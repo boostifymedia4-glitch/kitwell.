@@ -28,7 +28,6 @@ export default {
   'imagesToPdf.summary.few': '{count} strony · {size}',
   'imagesToPdf.summary.many': '{count} stron · {size}',
   'imagesToPdf.summary.other': '{count} strony · {size}',
-  'imagesToPdf.download': 'Pobierz images.pdf',
 
   'pdfMerge.merging': 'Scalanie',
   'pdfMerge.addMore': 'Dodaj więcej plików PDF',
@@ -38,7 +37,6 @@ export default {
   'pdfMerge.clear': 'Wyczyść wszystko',
   'pdfMerge.processing': 'Scalanie plików PDF…',
   'pdfMerge.ready': 'Twój scalony PDF jest gotowy',
-  'pdfMerge.download': 'Pobierz merged.pdf',
 
   'pdfSplit.tooMany': 'Powstałoby ponad 500 plików. Użyj większej liczby stron na plik.',
   'pdfSplit.splitting': 'Dzielenie',
@@ -104,7 +102,6 @@ export default {
   'pdfOrganize.removePage': 'Usuń stronę {n}',
   'pdfOrganize.building': 'Tworzenie PDF…',
   'pdfOrganize.ready': 'Twój PDF jest gotowy',
-  'pdfOrganize.download': 'Pobierz {name}',
 
   'pdfPageNumbers.pos.bottom-center': 'Dół, środek',
   'pdfPageNumbers.pos.bottom-right': 'Prawy dolny róg',

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ErrorMessage, Notice, ProcessingState, RejectionList } from '@/components/tool/Feedback';
 import { SelectField, Segmented } from '@/components/tool/Fields';
 import { FileList } from '@/components/tool/FileList';
-import { DownloadButton, ResetButton, ResultPanel } from '@/components/tool/Results';
+import { PdfOutput, ResetButton, ResultPanel } from '@/components/tool/Results';
 import { UploadDropzone } from '@/components/tool/UploadDropzone';
 import { Icon } from '@/components/Icon';
 import { useI18n } from '@/i18n';
@@ -144,10 +144,9 @@ const PdfToPdfA: ToolImplementation = () => {
           </div>
           <Notice tone="success">{t('pdfa.selfcheck')}</Notice>
           <Notice tone="warn">{t('pdfa.notValidated')}</Notice>
-          <div className="toolbar">
-            <DownloadButton blob={outcome.blob} name={`${baseName(item.file.name)}-pdfa.pdf`} label={t('pdfa.download')} />
-            <ResetButton onClick={reset} />
-          </div>
+          <PdfOutput blob={outcome.blob} name={`${baseName(item.file.name)}-pdfa.pdf`}>
+<ResetButton onClick={reset} />
+</PdfOutput>
         </ResultPanel>
       )}
     </div>

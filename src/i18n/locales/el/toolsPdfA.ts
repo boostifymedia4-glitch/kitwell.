@@ -26,7 +26,6 @@ export default {
   'imagesToPdf.ready': 'Το PDF σας είναι έτοιμο',
   'imagesToPdf.summary.one': '{count} σελίδα · {size}',
   'imagesToPdf.summary.other': '{count} σελίδες · {size}',
-  'imagesToPdf.download': 'Λήψη images.pdf',
 
   'pdfMerge.merging': 'Συγχώνευση',
   'pdfMerge.addMore': 'Προσθήκη περισσότερων PDF',
@@ -36,7 +35,6 @@ export default {
   'pdfMerge.clear': 'Εκκαθάριση όλων',
   'pdfMerge.processing': 'Συγχώνευση PDF…',
   'pdfMerge.ready': 'Το συγχωνευμένο PDF σας είναι έτοιμο',
-  'pdfMerge.download': 'Λήψη merged.pdf',
 
   'pdfSplit.tooMany': 'Αυτό θα δημιουργούσε περισσότερα από 500 αρχεία. Χρησιμοποιήστε μεγαλύτερο αριθμό σελίδων ανά αρχείο.',
   'pdfSplit.splitting': 'Διαχωρισμός',
@@ -88,7 +86,6 @@ export default {
   'pdfOrganize.removePage': 'Αφαίρεση της σελίδας {n}',
   'pdfOrganize.building': 'Δημιουργία PDF…',
   'pdfOrganize.ready': 'Το PDF σας είναι έτοιμο',
-  'pdfOrganize.download': 'Λήψη του {name}',
 
   'pdfPageNumbers.pos.bottom-center': 'Κάτω στο κέντρο',
   'pdfPageNumbers.pos.bottom-right': 'Κάτω δεξιά',

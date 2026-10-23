@@ -178,7 +178,6 @@ export default {
   'pdfOcr.stat.words': 'Bulunan kelimeler',
   'pdfOcr.stat.confidence': 'Ortalama güven',
   'pdfOcr.resultNote': 'Sayfalar öncekiyle aynı görünür; görünmez bir metin katmanı onları aranabilir ve kopyalanabilir yapar. Önemli sayıları özgün dosyayla karşılaştırarak kontrol edin.',
-  'pdfOcr.download': 'Aranabilir PDF’yi indir',
   'pdfOcr.output': 'Tanınan metin',
   'pdfProtect.hint.empty': 'En az 8 karakter kullanın; ne kadar uzunsa o kadar güçlüdür.',
   'pdfProtect.hint.short': 'Kısa parolalar kolay tahmin edilir. 12 veya daha fazla karakteri hedefleyin.',

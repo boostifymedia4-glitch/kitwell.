@@ -177,7 +177,6 @@ export default {
   'pdfOcr.stat.words': 'Gefundene Wörter',
   'pdfOcr.stat.confidence': 'Durchschnittliche Sicherheit',
   'pdfOcr.resultNote': 'Die Seiten sehen genau aus wie zuvor; eine unsichtbare Textebene macht sie durchsuchbar und kopierbar. Prüfen Sie wichtige Zahlen anhand des Originals.',
-  'pdfOcr.download': 'Durchsuchbare PDF herunterladen',
   'pdfOcr.output': 'Erkannter Text',
   'pdfProtect.hint.empty': 'Verwenden Sie mindestens 8 Zeichen; länger ist stärker.',
   'pdfProtect.hint.short': 'Kurze Passwörter sind leicht zu erraten. Streben Sie 12 oder mehr an.',

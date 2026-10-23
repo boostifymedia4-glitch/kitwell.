@@ -3,7 +3,7 @@ import { IMAGE_EXTENSIONS, MAX_IMAGE_BYTES } from '@/components/tool/BatchImageT
 import { ErrorMessage, ProcessingState, RejectionList } from '@/components/tool/Feedback';
 import { SelectField } from '@/components/tool/Fields';
 import { FileList } from '@/components/tool/FileList';
-import { DownloadButton, ResetButton, ResultPanel } from '@/components/tool/Results';
+import { PdfOutput, ResetButton, ResultPanel } from '@/components/tool/Results';
 import { UploadDropzone } from '@/components/tool/UploadDropzone';
 import { Icon } from '@/components/Icon';
 import { formatBytes } from '@/lib/format';
@@ -139,10 +139,9 @@ const ImagesToPdf: ToolImplementation = ({ tool }) => {
           <p className="muted">
             {t('imagesToPdf.summary', { count: queue.items.length, size: formatBytes(task.state.result.size) })}
           </p>
-          <div className="toolbar">
-            <DownloadButton blob={task.state.result} name="images.pdf" label={t('imagesToPdf.download')} />
-            <ResetButton onClick={reset} />
-          </div>
+          <PdfOutput blob={task.state.result} name="images.pdf">
+<ResetButton onClick={reset} />
+</PdfOutput>
         </ResultPanel>
       )}
     </div>

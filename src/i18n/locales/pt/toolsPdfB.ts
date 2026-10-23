@@ -192,7 +192,6 @@ export default {
   'pdfOcr.stat.words': 'Palavras encontradas',
   'pdfOcr.stat.confidence': 'Confiança média',
   'pdfOcr.resultNote': 'As páginas ficam exatamente como antes; uma camada de texto invisível as torna pesquisáveis e copiáveis. Confira números importantes com o original.',
-  'pdfOcr.download': 'Baixar PDF pesquisável',
   'pdfOcr.output': 'Texto reconhecido',
 
   'pdfProtect.hint.empty': 'Use pelo menos 8 caracteres; quanto mais longa, mais forte.',

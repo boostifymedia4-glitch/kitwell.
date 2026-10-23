@@ -25,7 +25,6 @@ export default {
   'imagesToPdf.creating': 'PDF를 만드는 중…',
   'imagesToPdf.ready': 'PDF가 준비되었습니다',
   'imagesToPdf.summary.other': '{count}페이지 · {size}',
-  'imagesToPdf.download': 'images.pdf 다운로드',
 
   'pdfMerge.merging': '병합 중',
   'pdfMerge.addMore': 'PDF 더 추가',
@@ -35,7 +34,6 @@ export default {
   'pdfMerge.clear': '모두 지우기',
   'pdfMerge.processing': 'PDF를 병합하는 중…',
   'pdfMerge.ready': '병합된 PDF가 준비되었습니다',
-  'pdfMerge.download': 'merged.pdf 다운로드',
 
   'pdfSplit.tooMany': '파일이 500개를 넘게 만들어집니다. 파일당 페이지 수를 더 크게 지정하세요.',
   'pdfSplit.splitting': '분할 중',
@@ -80,7 +78,6 @@ export default {
   'pdfOrganize.removePage': '{n}페이지 삭제',
   'pdfOrganize.building': 'PDF 만드는 중…',
   'pdfOrganize.ready': 'PDF가 준비되었습니다',
-  'pdfOrganize.download': '{name} 다운로드',
 
   'pdfPageNumbers.pos.bottom-center': '아래 가운데',
   'pdfPageNumbers.pos.bottom-right': '오른쪽 아래',

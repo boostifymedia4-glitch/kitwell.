@@ -27,7 +27,6 @@ export default {
   'imagesToPdf.summary.one': '{count} pagină · {size}',
   'imagesToPdf.summary.few': '{count} pagini · {size}',
   'imagesToPdf.summary.other': '{count} de pagini · {size}',
-  'imagesToPdf.download': 'Descarcă images.pdf',
 
   'pdfMerge.merging': 'Se îmbină',
   'pdfMerge.addMore': 'Adăugați mai multe PDF-uri',
@@ -37,7 +36,6 @@ export default {
   'pdfMerge.clear': 'Șterge tot',
   'pdfMerge.processing': 'Se îmbină PDF-urile…',
   'pdfMerge.ready': 'PDF-ul îmbinat este gata',
-  'pdfMerge.download': 'Descarcă merged.pdf',
 
   'pdfSplit.tooMany': 'Aceasta ar crea mai mult de 500 de fișiere. Folosiți un număr mai mare de pagini pe fișier.',
   'pdfSplit.splitting': 'Se împarte',
@@ -96,7 +94,6 @@ export default {
   'pdfOrganize.removePage': 'Elimină pagina {n}',
   'pdfOrganize.building': 'Se creează PDF-ul…',
   'pdfOrganize.ready': 'PDF-ul dvs. este gata',
-  'pdfOrganize.download': 'Descarcă {name}',
 
   'pdfPageNumbers.pos.bottom-center': 'Jos, centru',
   'pdfPageNumbers.pos.bottom-right': 'Jos, dreapta',

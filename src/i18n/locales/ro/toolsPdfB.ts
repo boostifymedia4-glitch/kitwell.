@@ -187,7 +187,6 @@ export default {
   'pdfOcr.stat.words': 'Cuvinte găsite',
   'pdfOcr.stat.confidence': 'Încredere medie',
   'pdfOcr.resultNote': 'Paginile arată exact ca înainte; un strat de text invizibil le face căutabile și copiabile. Verificați cifrele importante în raport cu originalul.',
-  'pdfOcr.download': 'Descarcă PDF-ul cu text căutabil',
   'pdfOcr.output': 'Text recunoscut',
 
   // Protect PDF

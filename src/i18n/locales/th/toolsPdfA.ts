@@ -25,7 +25,6 @@ export default {
   'imagesToPdf.creating': 'กำลังสร้าง PDF…',
   'imagesToPdf.ready': 'PDF ของคุณพร้อมแล้ว',
   'imagesToPdf.summary.other': '{count} หน้า · {size}',
-  'imagesToPdf.download': 'ดาวน์โหลด images.pdf',
 
   'pdfMerge.merging': 'กำลังรวม',
   'pdfMerge.addMore': 'เพิ่ม PDF',
@@ -35,7 +34,6 @@ export default {
   'pdfMerge.clear': 'ล้างทั้งหมด',
   'pdfMerge.processing': 'กำลังรวม PDF…',
   'pdfMerge.ready': 'PDF ที่รวมแล้วของคุณพร้อมแล้ว',
-  'pdfMerge.download': 'ดาวน์โหลด merged.pdf',
 
   'pdfSplit.tooMany': 'จะสร้างไฟล์มากกว่า 500 ไฟล์ ใช้จำนวนหน้าต่อไฟล์ที่มากขึ้น',
   'pdfSplit.splitting': 'กำลังแยก',
@@ -80,7 +78,6 @@ export default {
   'pdfOrganize.removePage': 'ลบหน้า {n}',
   'pdfOrganize.building': 'กำลังสร้าง PDF…',
   'pdfOrganize.ready': 'PDF ของคุณพร้อมแล้ว',
-  'pdfOrganize.download': 'ดาวน์โหลด {name}',
 
   'pdfPageNumbers.pos.bottom-center': 'ล่างกลาง',
   'pdfPageNumbers.pos.bottom-right': 'ล่างขวา',

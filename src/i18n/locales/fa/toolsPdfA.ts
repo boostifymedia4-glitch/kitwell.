@@ -26,7 +26,6 @@ export default {
   'imagesToPdf.ready': 'PDF شما آماده است',
   'imagesToPdf.summary.one': '{count} صفحه · {size}',
   'imagesToPdf.summary.other': '{count} صفحه · {size}',
-  'imagesToPdf.download': 'دانلود images.pdf',
 
   'pdfMerge.merging': 'در حال ادغام',
   'pdfMerge.addMore': 'افزودن PDFهای بیشتر',
@@ -36,7 +35,6 @@ export default {
   'pdfMerge.clear': 'پاک کردن همه',
   'pdfMerge.processing': 'در حال ادغام PDFها…',
   'pdfMerge.ready': 'PDF ادغام‌شده شما آماده است',
-  'pdfMerge.download': 'دانلود merged.pdf',
 
   'pdfSplit.tooMany': 'این کار بیش از 500 فایل می‌سازد. تعداد صفحه بیشتری برای هر فایل انتخاب کنید.',
   'pdfSplit.splitting': 'در حال تقسیم',
@@ -88,7 +86,6 @@ export default {
   'pdfOrganize.removePage': 'حذف صفحه {n}',
   'pdfOrganize.building': 'در حال ساخت PDF…',
   'pdfOrganize.ready': 'PDF شما آماده است',
-  'pdfOrganize.download': 'دانلود {name}',
 
   'pdfPageNumbers.pos.bottom-center': 'پایین وسط',
   'pdfPageNumbers.pos.bottom-right': 'پایین راست',

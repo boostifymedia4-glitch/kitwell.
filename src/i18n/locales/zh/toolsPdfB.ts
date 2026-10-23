@@ -170,7 +170,6 @@ export default {
   'pdfOcr.stat.words': '找到的词数',
   'pdfOcr.stat.confidence': '平均置信度',
   'pdfOcr.resultNote': '页面外观与之前完全一致；一个不可见的文字层使它们可以被搜索和复制。请将重要数字与原件核对。',
-  'pdfOcr.download': '下载可搜索的 PDF',
   'pdfOcr.output': '识别出的文字',
   'pdfProtect.hint.empty': '请至少使用 8 个字符；越长越安全。',
   'pdfProtect.hint.short': '短密码很容易被猜出。建议 12 个字符或更多。',
