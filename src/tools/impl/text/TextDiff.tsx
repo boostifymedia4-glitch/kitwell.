@@ -35,7 +35,9 @@ const TextDiff: ToolImplementation = () => {
       return;
     }
     const timer = window.setTimeout(() => {
-      setChanges(mode === 'lines' ? lib.diffLines(a, b, { ignoreWhitespace: ignoreWs }) : lib.diffWordsWithSpace(a, b));
+      // A last line without a line break must still match the same line in the other text.
+      const withBreak = (s: string) => (s && !s.endsWith('\n') ? `${s}\n` : s);
+      setChanges(mode === 'lines' ? lib.diffLines(withBreak(a), withBreak(b), { ignoreWhitespace: ignoreWs }) : lib.diffWordsWithSpace(a, b));
     }, 150);
     return () => window.clearTimeout(timer);
   }, [lib, a, b, mode, ignoreWs, tooLarge]);
