@@ -5,6 +5,8 @@ import { formatBytes } from '@/lib/format';
 import { Icon } from '../Icon';
 import { ErrorMessage } from './Feedback';
 import { PdfPreview, pdfFileName, stemOf } from './PdfPreview';
+import { CloudSave } from './CloudButtons';
+import { ShareLink } from './ShareLink';
 
 export function DownloadButton({ blob, name, label, variant = 'primary' }: { blob: Blob; name: string; label?: string; variant?: 'primary' | 'secondary' }) {
   const { t } = useI18n();
@@ -111,6 +113,8 @@ export function ResultFiles({ files, zipName }: { files: ResultFile[]; zipName: 
         </div>
       )}
       {zipError && <ErrorMessage>{zipError}</ErrorMessage>}
+      {files.length === 1 && <CloudSave blob={files[0].blob} name={nameOf(files[0], 0)} />}
+      {files.length === 1 && <ShareLink blob={files[0].blob} name={nameOf(files[0], 0)} />}
     </div>
   );
 }
@@ -136,6 +140,8 @@ export function PdfOutput({ blob, name, label, variant, children }: { blob: Blob
         <DownloadButton blob={blob} name={fileName} label={label ? label(fileName) : t('ui.downloadFile', { name: fileName })} variant={variant} />
         {children}
       </div>
+      <CloudSave blob={blob} name={fileName} />
+      <ShareLink blob={blob} name={fileName} />
     </>
   );
 }

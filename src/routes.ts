@@ -14,6 +14,7 @@ const BlogPost = lazyPage(() => import('./pages/BlogPost'));
 const Privacy = lazyPage(() => import('./pages/Privacy'));
 const Terms = lazyPage(() => import('./pages/Terms'));
 const Cookies = lazyPage(() => import('./pages/Cookies'));
+const Share = lazyPage(() => import('./pages/Share'));
 export const NotFound = lazyPage(() => import('./pages/NotFound'));
 
 const fixed: Record<string, LazyPage> = {
@@ -26,6 +27,7 @@ const fixed: Record<string, LazyPage> = {
   '/privacy': Privacy,
   '/terms': Terms,
   '/cookies': Cookies,
+  '/share': Share,
 };
 
 export function normalizePath(pathname: string): string {

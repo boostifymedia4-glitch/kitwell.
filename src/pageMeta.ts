@@ -60,6 +60,11 @@ export const staticPages: Record<string, StaticPage> = {
     title: `Terms & Conditions | ${site.name}`,
     description: `The terms that apply when you use the ${site.name} website and its browser-based tools, including acceptable use and disclaimers.`,
   },
+  '/share': {
+    name: 'Shared file',
+    title: `Shared file | ${site.name}`,
+    description: `Download a file that was shared with you through a temporary ${site.name} link.`,
+  },
   '/cookies': {
     name: 'Cookie Information',
     title: `Cookie & Local Storage Information | ${site.name}`,
@@ -174,6 +179,7 @@ export function getPageMeta(path: string, l: Localizer = englishLocalizer): Page
       jsonLd.push({ '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, url: canonicalFor('/', l.lang), description: site.tagline });
     }
     if (path === '/about') return aboutMeta(l, sp.title, sp.description);
+    if (path === '/share') return { title: sp.title, description: sp.description, path, jsonLd, noindex: true };
     return { title: sp.title, description: sp.description, path, jsonLd };
   }
 

@@ -13,7 +13,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = join(root, 'dist');
 const ssrEntry = pathToFileURL(join(root, 'dist-ssr', 'entry-server.js')).href;
 
-const { render, allPaths, siteUrl, siteName, languageCodes, englishOnlyPaths, lastModified } = await import(ssrEntry);
+const { render, allPaths, siteUrl, siteName, languageCodes, englishOnlyPaths, sitemapExcludedPaths, lastModified } = await import(ssrEntry);
 const template = await readFile(join(dist, 'index.html'), 'utf8');
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -81,6 +81,7 @@ const abs = (url) => `${siteUrl}${url === '/' ? '' : url}`;
 const entries = [];
 for (const code of languageCodes) {
   for (const path of paths) {
+    if (sitemapExcludedPaths.has(path)) continue;
     const englishOnly = englishOnlyPaths.has(path);
     if (englishOnly && code !== 'en') continue; // English-only articles are listed once, without language alternates
     const url = prefix(code, path);

@@ -1,9 +1,10 @@
 /**
  * Production server for the prerendered site.
  *
- * There are no upload endpoints: every tool runs in the browser. The server serves static files,
- * applies security headers and compression, rate-limits requests, returns a real 404 status for
- * unknown URLs, and hosts one small API for the contact form (POST /api/contact).
+ * Every tool runs in the browser and never calls the server. The server serves static files, applies security
+ * headers and compression, rate-limits requests, returns a real 404 status for unknown URLs, and hosts two small
+ * APIs: the contact form (POST /api/contact) and temporary share links that the visitor starts with a button
+ * (/api/share, see server/share.mjs).
  */
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
@@ -13,6 +14,7 @@ import express from 'express';
 import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
 import { contactRouter } from './contact.mjs';
+import { shareRouter } from './share.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -66,8 +68,9 @@ export function createApp({ distDir = join(root, 'dist'), env = process.env, fet
     }),
   );
 
-  // The only endpoint: the contact form (see server/contact.mjs). Tools never call the server.
+  // The contact form (see server/contact.mjs) and share links (server/share.mjs). Tools never call the server by themselves.
   app.use('/api/contact', contactRouter({ env, fetchImpl }));
+  app.use('/api/share', shareRouter({ env }));
 
   app.use((req, res, next) => {
     if (req.method !== 'GET' && req.method !== 'HEAD') {
