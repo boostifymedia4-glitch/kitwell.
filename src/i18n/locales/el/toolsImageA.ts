@@ -32,7 +32,7 @@ export default {
   'imageCompress.maxSize.800': '800 px',
   'imageCompress.background': 'Φόντο για τη διαφάνεια',
   'imageCompress.noteSmaller': '{before} → {after} (-{saved}%)',
-  'imageCompress.noteLarger': '{before} → {after} (μεγαλύτερο· κρατήστε το πρωτότυπο ή χαμηλώστε την ποιότητα)',
+  "imageCompress.noteLarger": "{before} → {after} (δεν έγινε μικρότερο, γι’ αυτό διατηρήθηκε το αρχικό αρχείο)",
 
   'imageResize.action': 'Αλλαγή μεγέθους εικόνων',
   'imageResize.resizeBy': 'Αλλαγή μεγέθους κατά',

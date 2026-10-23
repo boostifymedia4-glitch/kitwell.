@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { ErrorMessage, Notice, ProcessingState, RejectionList } from '@/components/tool/Feedback';
 import { SelectField, Segmented } from '@/components/tool/Fields';
 import { FileList } from '@/components/tool/FileList';
-import { DownloadButton, ResetButton, ResultPanel } from '@/components/tool/Results';
+import { PdfOutput, ResetButton, ResultPanel } from '@/components/tool/Results';
 import { UploadDropzone } from '@/components/tool/UploadDropzone';
 import { Icon } from '@/components/Icon';
 import { useI18n } from '@/i18n';
 import { baseName, formatBytes } from '@/lib/format';
 import { useFileQueue, useTask } from '@/lib/hooks';
+import { DEFAULT_PROFILE, PDFA_PROFILES, pdfaLabel, type PdfAProfile } from '@/lib/pdfAProfiles';
 import type { PdfAAnalysis, PdfAResult } from '@/lib/pdfA';
 import type { ToolImplementation } from '../../types';
 
@@ -21,6 +22,7 @@ const PdfToPdfA: ToolImplementation = () => {
   const task = useTask<Outcome>();
   const { reset: resetTask } = task;
   const [mode, setMode] = useState<Mode>('keep');
+  const [profile, setProfile] = useState<PdfAProfile>(DEFAULT_PROFILE);
   const [dpi, setDpi] = useState('200');
   const item = queue.items[0];
   useEffect(() => {
@@ -38,7 +40,7 @@ const PdfToPdfA: ToolImplementation = () => {
       if (chosen === 'keep') {
         report(0, 1, t('pdfa.converting'));
         try {
-          const { result } = await lib.convertKeepingContent(bytes, fallbackTitle);
+          const { result } = await lib.convertKeepingContent(bytes, fallbackTitle, profile);
           return { kind: 'done', blob: new Blob([result.bytes.buffer as ArrayBuffer], { type: 'application/pdf' }), result };
         } catch (err) {
           if (err instanceof lib.PdfABlocked) return { kind: 'blocked', analysis: err.analysis };
@@ -57,7 +59,7 @@ const PdfToPdfA: ToolImplementation = () => {
         }
         report(doc.numPages, doc.numPages, t('pdfa.converting'));
         const original = await lib.readOriginalInfo(bytes);
-        const result = await lib.buildFlattenedPdfA(pages, { ...original, fallbackTitle });
+        const result = await lib.buildFlattenedPdfA(pages, { ...original, fallbackTitle }, profile);
         result.actions.unshift(t('pdfa.fix.flatten', { pages: pages.length, dpi }));
         return { kind: 'done', blob: new Blob([result.bytes.buffer as ArrayBuffer], { type: 'application/pdf' }), result };
       } finally {
@@ -79,6 +81,7 @@ const PdfToPdfA: ToolImplementation = () => {
         <>
           <FileList items={queue.items} kind="pdf" onRemove={queue.remove} disabled={running} />
           <p className="hint">{t('pdfa.hint')}</p>
+          <SelectField label={t('pdfa.profile')} value={profile} options={PDFA_PROFILES.map((p) => ({ value: p, label: pdfaLabel(p) }))} onChange={setProfile} hint={t('pdfa.profileHint')} />
           <Segmented
             label={t('pdfa.mode')}
             value={mode}
@@ -144,10 +147,9 @@ const PdfToPdfA: ToolImplementation = () => {
           </div>
           <Notice tone="success">{t('pdfa.selfcheck')}</Notice>
           <Notice tone="warn">{t('pdfa.notValidated')}</Notice>
-          <div className="toolbar">
-            <DownloadButton blob={outcome.blob} name={`${baseName(item.file.name)}-pdfa.pdf`} label={t('pdfa.download')} />
+          <PdfOutput blob={outcome.blob} name={`${baseName(item.file.name)}-pdfa.pdf`}>
             <ResetButton onClick={reset} />
-          </div>
+          </PdfOutput>
         </ResultPanel>
       )}
     </div>

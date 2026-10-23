@@ -33,7 +33,7 @@ export default {
   'imageCompress.maxSize.800': '800 px',
   'imageCompress.background': 'Saydamlık için arka plan',
   'imageCompress.noteSmaller': '{before} → {after} (-%{saved})',
-  'imageCompress.noteLarger': '{before} → {after} (daha büyük; özgün dosyayı koruyun veya kaliteyi düşürün)',
+  "imageCompress.noteLarger": "{before} → {after} (daha küçük olmadığı için orijinal dosya korundu)",
 
   'imageResize.action': 'Görselleri yeniden boyutlandır',
   'imageResize.resizeBy': 'Boyutlandırma ölçütü',

@@ -31,7 +31,7 @@ export default {
   'imageCompress.maxSize.800': '800 px',
   'imageCompress.background': '透明部分の背景',
   'imageCompress.noteSmaller': '{before} → {after}（-{saved}%）',
-  'imageCompress.noteLarger': '{before} → {after}（大きくなりました。元のファイルを使うか、品質を下げてください）',
+  "imageCompress.noteLarger": "{before} → {after}（小さくならなかったため、元のファイルを保持しました）",
 
   'imageResize.action': '画像をリサイズ',
   'imageResize.resizeBy': 'リサイズの方法',

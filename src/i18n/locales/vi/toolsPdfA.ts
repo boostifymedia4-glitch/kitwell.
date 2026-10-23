@@ -25,7 +25,6 @@ export default {
   'imagesToPdf.creating': 'Đang tạo PDF…',
   'imagesToPdf.ready': 'Tệp PDF của bạn đã sẵn sàng',
   'imagesToPdf.summary.other': '{count} trang · {size}',
-  'imagesToPdf.download': 'Tải xuống images.pdf',
 
   'pdfMerge.merging': 'Đang gộp',
   'pdfMerge.addMore': 'Thêm PDF',
@@ -35,7 +34,6 @@ export default {
   'pdfMerge.clear': 'Xóa tất cả',
   'pdfMerge.processing': 'Đang gộp PDF…',
   'pdfMerge.ready': 'Tệp PDF đã gộp của bạn đã sẵn sàng',
-  'pdfMerge.download': 'Tải xuống merged.pdf',
 
   'pdfSplit.tooMany': 'Cách này sẽ tạo ra hơn 500 tệp. Hãy dùng số trang mỗi tệp lớn hơn.',
   'pdfSplit.splitting': 'Đang tách',
@@ -80,7 +78,6 @@ export default {
   'pdfOrganize.removePage': 'Xóa trang {n}',
   'pdfOrganize.building': 'Đang tạo PDF…',
   'pdfOrganize.ready': 'Tệp PDF của bạn đã sẵn sàng',
-  'pdfOrganize.download': 'Tải xuống {name}',
 
   'pdfPageNumbers.pos.bottom-center': 'Dưới giữa',
   'pdfPageNumbers.pos.bottom-right': 'Dưới bên phải',

@@ -26,7 +26,6 @@ export default {
   'imagesToPdf.ready': 'आपकी PDF तैयार है',
   'imagesToPdf.summary.one': '{count} पेज · {size}',
   'imagesToPdf.summary.other': '{count} पेज · {size}',
-  'imagesToPdf.download': 'images.pdf डाउनलोड करें',
 
   'pdfMerge.merging': 'मर्ज हो रही है',
   'pdfMerge.addMore': 'और PDF जोड़ें',
@@ -36,7 +35,6 @@ export default {
   'pdfMerge.clear': 'सब साफ़ करें',
   'pdfMerge.processing': 'PDF मर्ज हो रही हैं…',
   'pdfMerge.ready': 'आपकी मर्ज की गई PDF तैयार है',
-  'pdfMerge.download': 'merged.pdf डाउनलोड करें',
 
   'pdfSplit.tooMany': 'इससे 500 से ज़्यादा फ़ाइलें बनेंगी। प्रति फ़ाइल पेजों की संख्या बढ़ाएँ।',
   'pdfSplit.splitting': 'स्प्लिट हो रही है',
@@ -88,7 +86,6 @@ export default {
   'pdfOrganize.removePage': 'पेज {n} हटाएँ',
   'pdfOrganize.building': 'PDF बन रही है…',
   'pdfOrganize.ready': 'आपकी PDF तैयार है',
-  'pdfOrganize.download': '{name} डाउनलोड करें',
 
   'pdfPageNumbers.pos.bottom-center': 'नीचे बीच में',
   'pdfPageNumbers.pos.bottom-right': 'नीचे दाएँ',

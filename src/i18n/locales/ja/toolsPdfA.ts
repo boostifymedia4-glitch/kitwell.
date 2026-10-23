@@ -25,7 +25,6 @@ export default {
   'imagesToPdf.creating': 'PDFを作成中…',
   'imagesToPdf.ready': 'PDFの準備ができました',
   'imagesToPdf.summary.other': '{count}ページ · {size}',
-  'imagesToPdf.download': 'images.pdfをダウンロード',
 
   'pdfMerge.merging': '結合中',
   'pdfMerge.addMore': 'PDFを追加',
@@ -35,7 +34,6 @@ export default {
   'pdfMerge.clear': 'すべてクリア',
   'pdfMerge.processing': 'PDFを結合中…',
   'pdfMerge.ready': '結合したPDFの準備ができました',
-  'pdfMerge.download': 'merged.pdfをダウンロード',
 
   'pdfSplit.tooMany': '500個を超えるファイルが作成されてしまいます。1ファイルあたりのページ数を増やしてください。',
   'pdfSplit.splitting': '分割中',
@@ -80,7 +78,6 @@ export default {
   'pdfOrganize.removePage': '{n}ページ目を削除',
   'pdfOrganize.building': 'PDFを作成中…',
   'pdfOrganize.ready': 'PDFの準備ができました',
-  'pdfOrganize.download': '{name}をダウンロード',
 
   'pdfPageNumbers.pos.bottom-center': '下中央',
   'pdfPageNumbers.pos.bottom-right': '右下',

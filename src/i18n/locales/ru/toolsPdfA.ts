@@ -29,7 +29,6 @@ export default {
   'imagesToPdf.summary.few': '{count} страницы · {size}',
   'imagesToPdf.summary.many': '{count} страниц · {size}',
   'imagesToPdf.summary.other': '{count} страницы · {size}',
-  'imagesToPdf.download': 'Скачать images.pdf',
 
   'pdfMerge.merging': 'Объединение',
   'pdfMerge.addMore': 'Добавить ещё PDF',
@@ -39,7 +38,6 @@ export default {
   'pdfMerge.clear': 'Очистить всё',
   'pdfMerge.processing': 'Объединение PDF…',
   'pdfMerge.ready': 'Объединённый PDF готов',
-  'pdfMerge.download': 'Скачать merged.pdf',
 
   'pdfSplit.tooMany': 'Получилось бы больше 500 файлов. Укажите больше страниц на файл.',
   'pdfSplit.splitting': 'Разделение',
@@ -105,7 +103,6 @@ export default {
   'pdfOrganize.removePage': 'Удалить страницу {n}',
   'pdfOrganize.building': 'Создание PDF…',
   'pdfOrganize.ready': 'Ваш PDF готов',
-  'pdfOrganize.download': 'Скачать {name}',
 
   'pdfPageNumbers.pos.bottom-center': 'По центру внизу',
   'pdfPageNumbers.pos.bottom-right': 'Справа внизу',

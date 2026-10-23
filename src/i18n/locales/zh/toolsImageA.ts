@@ -31,7 +31,7 @@ export default {
   'imageCompress.maxSize.800': '800 px',
   'imageCompress.background': '透明区域的背景',
   'imageCompress.noteSmaller': '{before} → {after}（-{saved}%）',
-  'imageCompress.noteLarger': '{before} → {after}（更大了；请保留原文件或降低质量）',
+  "imageCompress.noteLarger": "{before} → {after}（没有变小，因此保留了原文件）",
 
   'imageResize.action': '调整图片大小',
   'imageResize.resizeBy': '调整方式',

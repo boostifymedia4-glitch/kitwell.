@@ -5,11 +5,6 @@ import type { FaqItem, ToolDef } from '../types';
  * All of them run in the browser (no upload). The limits below are what the code really does; keep them in step with
  * src/lib/docPdf.ts, docx.ts, xlsx.ts, pptxPdf.ts, htmlDoc.ts, pdfMarkdown.ts and pdfRepair.ts.
  */
-const privacyFaq: FaqItem = {
-  q: 'Is my file uploaded anywhere?',
-  a: 'No. The file is read and converted by your browser. This tool does not send it to a server.',
-};
-
 const fontFaq: FaqItem = {
   q: 'Which languages and fonts are supported in the PDF?',
   a: 'The PDF is written with Noto Sans, which covers Latin (including Polish, Czech, Romanian and Turkish letters), Cyrillic, Greek, Vietnamese and Devanagari text. Arabic, Hebrew, Thai, Chinese, Japanese and Korean text is not supported yet: those characters appear as question marks and the tool tells you how many were affected. The original fonts of the document are not kept.',
@@ -48,7 +43,6 @@ export const pdfConvertTools: ToolDef[] = [
         q: 'What do the clean-up styles do?',
         a: 'Original keeps the colours. Grayscale removes colour. Black and white document turns the page into pure black text on white paper and evens out shadows and uneven lighting, which suits printed pages and notes but not photographs.',
       },
-      privacyFaq,
     ],
     limits: [
       'Maximum 25 MB per image and 100 images per PDF.',
@@ -88,7 +82,6 @@ export const pdfConvertTools: ToolDef[] = [
         a: 'The HTML is read as inert text: scripts do not run and nothing is loaded from the internet. Only pictures embedded in the HTML itself are used.',
       },
       fontFaq,
-      privacyFaq,
     ],
     limits: [
       'Maximum 10 MB of HTML.',
@@ -124,7 +117,6 @@ export const pdfConvertTools: ToolDef[] = [
         a: 'No. Open it in Word and save it as a DOCX file first.',
       },
       fontFaq,
-      privacyFaq,
     ],
     limits: [
       'DOCX files only, maximum 50 MB. Old .doc files and password-protected documents are not supported.',
@@ -160,7 +152,6 @@ export const pdfConvertTools: ToolDef[] = [
         a: 'No. Open it in PowerPoint and save it as a PPTX file first.',
       },
       fontFaq,
-      privacyFaq,
     ],
     limits: [
       'PPTX files only, maximum 100 MB and 300 slides. Old .ppt files and password-protected presentations are not supported.',
@@ -196,7 +187,6 @@ export const pdfConvertTools: ToolDef[] = [
         a: 'No. Open it in Excel and save it as an XLSX file first.',
       },
       fontFaq,
-      privacyFaq,
     ],
     limits: [
       'XLSX files only, maximum 50 MB. Old .xls files and password-protected workbooks are not supported.',
@@ -231,7 +221,6 @@ export const pdfConvertTools: ToolDef[] = [
         q: 'What about tables, columns and images?',
         a: 'Tables and columns are not rebuilt: their text appears as ordinary lines, in reading order where possible. Images, links, bold and italic text, footnotes and equations are not carried over.',
       },
-      privacyFaq,
     ],
     limits: [
       'Maximum 100 MB per PDF. Password-protected PDFs must be unlocked first.',
@@ -265,7 +254,6 @@ export const pdfConvertTools: ToolDef[] = [
         q: 'What if my PDF opens fine?',
         a: 'Then there is nothing to repair. The tool says so and offers a cleaned copy of the file.',
       },
-      privacyFaq,
     ],
     limits: [
       'Maximum 100 MB per PDF. Password-protected PDFs must be unlocked first.',
@@ -281,19 +269,23 @@ export const pdfConvertTools: ToolDef[] = [
     name: 'PDF to PDF/A',
     icon: 'badge-check',
     impl: 'pdf-to-pdfa',
-    description: 'Prepare a PDF as PDF/A-2b for archiving, keeping the text or using page pictures.',
+    description: 'Prepare a PDF as PDF/A (1b to 4) for archiving, keeping text or using page images.',
     metaDescription:
-      'PDF to PDF/A online: prepare a PDF as PDF/A-2b for archiving with PDF/A identification, metadata and a colour profile. Keeps text when possible. Runs in your browser.',
-    keywords: ['pdf to pdf/a', 'pdfa', 'pdf/a-2b', 'archive pdf', 'convert pdf to pdfa', 'long term archiving'],
+      'PDF to PDF/A online: prepare PDF/A-1b, 2b, 2u, 3b, 3u or 4 for archiving with metadata and a colour profile. Keeps text when possible. In your browser.',
+    keywords: ['pdf to pdf/a', 'pdfa', 'pdf/a-1b', 'pdf/a-2b', 'pdf/a-3b', 'pdf/a-4', 'archive pdf', 'convert pdf to pdfa', 'long term archiving'],
     steps: [
       'Choose a PDF. A password-protected file must be unlocked first.',
-      'Choose how to convert: keep the text and fonts, or turn the pages into pictures.',
+      'Choose the PDF/A version, then how to convert: keep the text and fonts, or turn the pages into pictures.',
       'Convert it, read what was done and download the PDF/A file.',
     ],
     faq: [
       {
         q: 'Is the result a certified PDF/A file?',
-        a: 'No. Kitwell prepares your PDF as PDF/A-2b, the basic archival level, and checks its own work against the rules it applies. It does not include a full PDF/A validator. If you must prove compliance, check the file with a validator such as veraPDF.',
+        a: 'No. Kitwell prepares your PDF in the PDF/A version you choose and checks its own work against the rules it applies. Test files converted this way passed the veraPDF validator, but the browser tool itself does not include a full PDF/A validator. If you must prove compliance, check your file with a validator such as veraPDF.',
+      },
+      {
+        q: 'Which PDF/A version should I choose?',
+        a: 'PDF/A-2b is the most widely accepted and the default. PDF/A-1b is the oldest and strictest: it does not allow transparency or layers. The "u" versions (2u, 3u) also guarantee that text can be copied reliably, so they need every font to carry a text mapping. PDF/A-3b has the same rules as 2b, and PDF/A-4 is the newest, based on PDF 2.0. The "a" levels (1a, 2a, 3a) need a tagged document structure that cannot be created automatically, and 4e and 4f are for 3D and attached files, so they are not offered.',
       },
       {
         q: 'What is the difference between the two ways to convert?',
@@ -301,19 +293,19 @@ export const pdfConvertTools: ToolDef[] = [
       },
       {
         q: 'Why was my PDF refused when I chose to keep the text?',
-        a: 'PDF/A needs every font to be embedded in the file, and it does not allow CMYK colour without a CMYK profile, LZW compression or annotations without an appearance. These cannot be fixed without changing the pages, so the tool lists what it found instead of faking a result. You can still use the picture mode.',
+        a: 'PDF/A needs every font to be embedded in the file, and it does not allow CMYK colour without a CMYK profile, LZW compression or annotations without an appearance. PDF/A-1b also refuses transparency, layers and JPEG 2000 images, and the "u" versions and PDF/A-4 need a text mapping for every font. These cannot be fixed without changing the pages, so the tool lists what it found instead of faking a result. You can still use the picture mode.',
       },
       {
         q: 'What does the tool change in the file?',
         a: 'It adds the PDF/A identification and XMP metadata, an sRGB colour profile as the output intent and a file identifier. It removes JavaScript, forbidden actions, attachments, extra document information and annotation settings that PDF/A does not allow.',
       },
-      privacyFaq,
     ],
     limits: [
       'Maximum 100 MB per PDF. Password-protected PDFs must be unlocked first, because a PDF/A file cannot be encrypted.',
       'Keep text and fonts works only when every font is embedded and the file has no CMYK colour or LZW compression.',
       'Turning pages into pictures is limited to 200 pages. The text is no longer selectable and the file gets larger.',
-      'The result is PDF/A-2b prepared by Kitwell and checked against the rules it applies; it is not validated by a full PDF/A validator.',
+      'The result is prepared by Kitwell and checked against the rules it applies; it is not validated by a full PDF/A validator in your browser.',
+      'Available versions: PDF/A-1b, 2b, 2u, 3b, 3u and 4. The "a" levels (tagged PDF) and 4e/4f are not offered.',
     ],
     related: ['compress-pdf', 'repair-pdf', 'ocr-pdf', 'pdf-metadata-viewer', 'unlock-pdf'],
   },

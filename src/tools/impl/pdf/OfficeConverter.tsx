@@ -1,7 +1,7 @@
 import { useEffect, type ReactNode } from 'react';
 import { ErrorMessage, Notice, ProcessingState, RejectionList } from '@/components/tool/Feedback';
 import { FileList } from '@/components/tool/FileList';
-import { DownloadButton, ResetButton, ResultPanel } from '@/components/tool/Results';
+import { PdfOutput, ResetButton, ResultPanel } from '@/components/tool/Results';
 import { UploadDropzone } from '@/components/tool/UploadDropzone';
 import { Icon } from '@/components/Icon';
 import { useI18n } from '@/i18n';
@@ -90,10 +90,9 @@ export function OfficeConverter({ format, extension, extensions, maxBytes, optio
               </ul>
             </Notice>
           )}
-          <div className="toolbar">
-            <DownloadButton blob={task.state.result.blob} name={`${baseName(item.file.name)}.pdf`} />
-            <ResetButton onClick={reset} />
-          </div>
+          <PdfOutput blob={task.state.result.blob} name={`${baseName(item.file.name)}.pdf`}>
+<ResetButton onClick={reset} />
+</PdfOutput>
         </ResultPanel>
       )}
     </div>

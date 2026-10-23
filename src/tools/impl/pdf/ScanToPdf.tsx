@@ -3,7 +3,7 @@ import { IMAGE_EXTENSIONS, MAX_IMAGE_BYTES } from '@/components/tool/BatchImageT
 import { ErrorMessage, Notice, ProcessingState, RejectionList } from '@/components/tool/Feedback';
 import { SelectField } from '@/components/tool/Fields';
 import { FileList } from '@/components/tool/FileList';
-import { DownloadButton, ResetButton, ResultPanel } from '@/components/tool/Results';
+import { PdfOutput, ResetButton, ResultPanel } from '@/components/tool/Results';
 import { UploadDropzone } from '@/components/tool/UploadDropzone';
 import { Icon } from '@/components/Icon';
 import { useI18n } from '@/i18n';
@@ -21,7 +21,11 @@ async function preparePage(file: File, filter: ScanFilter, t: (key: string) => s
   try {
     const img = new Image();
     img.src = url;
-    await img.decode();
+    // onload instead of decode(): decode() never settles while the tab is in the background
+    await new Promise<void>((resolve, reject) => {
+      img.onload = () => resolve();
+      img.onerror = () => reject(new Error(t('err.image.unreadable')));
+    });
     const { width, height } = scaledSize(img.naturalWidth, img.naturalHeight);
     const canvas = document.createElement('canvas');
     canvas.width = width;
@@ -169,10 +173,9 @@ const ScanToPdf: ToolImplementation = () => {
         <ResultPanel title={t('imagesToPdf.ready')}>
           <p className="muted">{t('convert.summary', { pages: t('ui.pages', { count: queue.items.length }), size: formatBytes(task.state.result.size) })}</p>
           <Notice tone="info">{t('scanToPdf.note')}</Notice>
-          <div className="toolbar">
-            <DownloadButton blob={task.state.result} name="scan.pdf" />
-            <ResetButton onClick={reset} />
-          </div>
+          <PdfOutput blob={task.state.result} name="scan.pdf">
+<ResetButton onClick={reset} />
+</PdfOutput>
         </ResultPanel>
       )}
     </div>

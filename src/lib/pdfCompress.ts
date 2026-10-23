@@ -21,9 +21,9 @@ export interface LevelSettings {
 }
 
 export const LEVELS: Record<CompressLevel, LevelSettings> = {
-  light: { quality: 0.8, maxSide: 2600, dpi: 150 },
-  recommended: { quality: 0.65, maxSide: 1800, dpi: 120 },
   strong: { quality: 0.45, maxSide: 1200, dpi: 90 },
+  recommended: { quality: 0.65, maxSide: 1800, dpi: 120 },
+  light: { quality: 0.8, maxSide: 2600, dpi: 150 },
 };
 
 export interface EncodedJpeg {

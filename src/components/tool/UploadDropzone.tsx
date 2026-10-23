@@ -2,6 +2,7 @@ import { useId, useRef, useState, type DragEvent } from 'react';
 import { useI18n } from '@/i18n';
 import { formatBytes } from '@/lib/format';
 import { Icon } from '../Icon';
+import { CloudPick } from './CloudButtons';
 
 interface Props {
   /** Extensions without the dot, e.g. ['jpg', 'png']. */
@@ -68,6 +69,7 @@ export function UploadDropzone({ extensions, multiple = false, maxBytes, maxFile
           if (files.length) onFiles(files);
         }}
       />
+      <CloudPick extensions={extensions} multiple={multiple} onFiles={onFiles} disabled={disabled} />
     </div>
   );
 }

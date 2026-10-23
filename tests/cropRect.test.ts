@@ -45,7 +45,10 @@ describe('crop rectangle maths', () => {
 
   it('applies typed values, honouring bounds and a locked ratio', () => {
     expect(setRectField(r(0, 0, 200, 100), 'x', 50, null, W, H)).toEqual(r(50, 0, 200, 100));
-    expect(setRectField(r(0, 0, 200, 100), 'x', 5000, null, W, H).x).toBe(800); // keeps the box inside
+    const farRight = setRectField(r(0, 0, 200, 100), 'x', 5000, null, W, H); // typed positions are honoured; the box shrinks to stay inside
+    expect(farRight.x).toBe(W - 8);
+    expect(farRight.w).toBe(8);
+    expect(setRectField(r(0, 0, 200, 100), 'y', 400, null, W, H).y).toBe(400); // the Y bug: values beyond the old limit are accepted
     expect(setRectField(r(0, 0, 200, 100), 'w', 5000, null, W, H).w).toBe(W);
     expect(setRectField(r(0, 0, 200, 100), 'w', 1, null, W, H).w).toBe(8);
     const locked = setRectField(r(0, 0, 200, 100), 'w', 400, 2, W, H);

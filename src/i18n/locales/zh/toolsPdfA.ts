@@ -25,7 +25,6 @@ export default {
   'imagesToPdf.creating': '正在创建 PDF…',
   'imagesToPdf.ready': '您的 PDF 已就绪',
   'imagesToPdf.summary.other': '{count} 页 · {size}',
-  'imagesToPdf.download': '下载 images.pdf',
 
   'pdfMerge.merging': '正在合并',
   'pdfMerge.addMore': '添加更多 PDF',
@@ -35,7 +34,6 @@ export default {
   'pdfMerge.clear': '全部清除',
   'pdfMerge.processing': '正在合并 PDF…',
   'pdfMerge.ready': '合并后的 PDF 已就绪',
-  'pdfMerge.download': '下载 merged.pdf',
 
   'pdfSplit.tooMany': '这将创建超过 500 个文件。请增大每个文件的页数。',
   'pdfSplit.splitting': '正在拆分',
@@ -80,7 +78,6 @@ export default {
   'pdfOrganize.removePage': '删除第 {n} 页',
   'pdfOrganize.building': '正在生成 PDF…',
   'pdfOrganize.ready': '您的 PDF 已就绪',
-  'pdfOrganize.download': '下载 {name}',
 
   'pdfPageNumbers.pos.bottom-center': '下方居中',
   'pdfPageNumbers.pos.bottom-right': '右下',

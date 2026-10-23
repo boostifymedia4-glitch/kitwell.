@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { ErrorMessage, Notice, ProcessingState, RejectionList } from '@/components/tool/Feedback';
 import { FileList } from '@/components/tool/FileList';
-import { DownloadButton, ResetButton, ResultPanel } from '@/components/tool/Results';
+import { PdfOutput, ResetButton, ResultPanel } from '@/components/tool/Results';
 import { UploadDropzone } from '@/components/tool/UploadDropzone';
 import { Icon } from '@/components/Icon';
 import { useI18n } from '@/i18n';
@@ -97,10 +97,9 @@ const RepairPdf: ToolImplementation = () => {
               ))}
             </ul>
           </div>
-          <div className="toolbar">
-            <DownloadButton blob={done.blob} name={`${baseName(item.file.name)}-repaired.pdf`} label={t('repairPdf.download')} />
-            <ResetButton onClick={reset} />
-          </div>
+          <PdfOutput blob={done.blob} name={`${baseName(item.file.name)}-repaired.pdf`}>
+<ResetButton onClick={reset} />
+</PdfOutput>
         </ResultPanel>
       )}
     </div>

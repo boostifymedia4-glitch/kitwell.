@@ -31,7 +31,7 @@ export default {
   'imageCompress.maxSize.800': '800 px',
   'imageCompress.background': 'พื้นหลังสำหรับส่วนโปร่งใส',
   'imageCompress.noteSmaller': '{before} → {after} (-{saved}%)',
-  'imageCompress.noteLarger': '{before} → {after} (ใหญ่ขึ้น ควรเก็บไฟล์ต้นฉบับไว้หรือลดคุณภาพลง)',
+  "imageCompress.noteLarger": "{before} → {after} (ไม่เล็กลง จึงเก็บไฟล์ต้นฉบับไว้)",
 
   'imageResize.action': 'ปรับขนาดรูปภาพ',
   'imageResize.resizeBy': 'ปรับขนาดโดย',

@@ -29,7 +29,7 @@ export default {
   'imageCompress.maxSize.800': '800 px',
   'imageCompress.background': 'Latar belakang untuk transparansi',
   'imageCompress.noteSmaller': '{before} → {after} (-{saved}%)',
-  'imageCompress.noteLarger': '{before} → {after} (lebih besar; pertahankan aslinya atau turunkan kualitas)',
+  "imageCompress.noteLarger": "{before} → {after} (tidak lebih kecil, jadi file asli dipertahankan)",
   'imageResize.action': 'Ubah ukuran gambar',
   'imageResize.resizeBy': 'Ubah ukuran menurut',
   'imageResize.pixels': 'Piksel',

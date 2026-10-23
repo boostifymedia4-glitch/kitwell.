@@ -14,7 +14,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Apakah mengubah JPG ke PNG meningkatkan kualitas?', a: 'Tidak. JPG bersifat lossy, sehingga detail yang hilang saat JPG disimpan tidak dapat dipulihkan. PNG hanya menyimpan piksel saat ini tanpa kehilangan kualitas lagi, yang berguna untuk penyuntingan atau pekerjaan dengan transparansi.' },
       { q: 'Mengapa PNG lebih besar daripada JPG?', a: 'PNG bersifat lossless dan biasanya menyimpan foto kurang efisien dibanding JPG. Gunakan JPG atau WebP jika ukuran file lebih penting daripada piksel yang persis sama.' },
-      { q: 'Apakah gambar saya diunggah ke server?', a: 'Tidak. Gambar didekode dan dienkode ulang oleh browser Anda menggunakan Canvas API. Alat ini tidak mengirim file ke mana pun.' },
     ],
     limits: [
       'GIF atau WebP animasi dikonversi hanya dari bingkai pertamanya.',
@@ -22,87 +21,82 @@ const tools: ToolTextMap = {
       'Metadata EXIF dan profil warna tersemat tidak dipertahankan.',
     ],
   },
-  'png-to-jpg': {
-    name: 'PNG ke JPG',
-    description: 'Ubah gambar PNG menjadi file JPG yang lebih kecil dengan kualitas yang dapat diatur.',
-    metaDescription: 'Ubah PNG ke JPG online gratis. Pilih kualitas dan warna latar untuk gambar transparan. Diproses di browser Anda.',
+  "png-to-jpg": {
+    name: "PNG ke JPG",
+    description: "Ubah gambar PNG menjadi file JPG yang lebih kecil dengan satu klik.",
+    metaDescription: "Konversi PNG ke JPG online gratis. Area transparan diisi putih. Diproses di peramban Anda.",
     steps: [
-      'Tambahkan file PNG Anda.',
-      'Atur kualitas JPG dan warna latar untuk mengisi area transparan.',
-      'Tekan Konversi lalu unduh hasilnya.',
+      "Tambahkan file PNG Anda.",
+      "Area transparan diisi putih, karena JPG tidak dapat menyimpan transparansi.",
+      "Tekan Konversi dan unduh hasilnya.",
     ],
     faq: [
-      { q: 'Apa yang terjadi pada area transparan?', a: 'JPG tidak mendukung transparansi, jadi piksel transparan diisi dengan warna latar yang Anda pilih (putih secara default).' },
-      { q: 'Pengaturan kualitas mana yang sebaiknya saya pakai?', a: '80–90 adalah keseimbangan yang baik untuk sebagian besar gambar. Di bawah sekitar 60, artefak kompresi mulai terlihat pada teks dan tepi yang tajam.' },
-      { q: 'Apakah gambar saya diunggah ke server?', a: 'Tidak. Gambar didekode dan dienkode ulang oleh browser Anda menggunakan Canvas API. Alat ini tidak mengirim file ke mana pun.' },
+      { q: "Apa yang terjadi pada area transparan?", a: "JPG tidak punya transparansi, jadi piksel transparan diisi putih." },
     ],
     limits: [
-      'GIF atau WebP animasi dikonversi hanya dari bingkai pertamanya.',
-      'Maksimum 25 MB per file dan 20 file per batch, agar browser Anda tetap responsif.',
-      'Metadata EXIF dan profil warna tersemat tidak dipertahankan.',
-      'Transparansi diratakan ke satu warna solid karena JPG tidak dapat menyimpannya.',
+      "File GIF atau WebP beranimasi dikonversi hanya dari bingkai pertamanya.",
+      "Maksimal 25 MB per file dan 20 file per kelompok, agar peramban Anda tetap responsif.",
+      "Metadata EXIF dan profil warna tertanam tidak dipertahankan.",
+      "Area transparan diisi putih karena JPG tidak dapat menyimpan transparansi.",
     ],
   },
-  'jpg-to-webp': {
-    name: 'JPG ke WebP',
-    description: 'Ubah foto JPG ke WebP modern untuk file yang lebih kecil dan halaman yang lebih cepat.',
-    metaDescription: 'Ubah JPG ke WebP online gratis. Perkecil ukuran foto untuk web dengan kualitas yang dapat diatur, diproses lokal di browser Anda.',
+  "jpg-to-webp": {
+    name: "JPG ke WebP",
+    description: "Konversi foto JPG ke WebP modern untuk file lebih kecil dan halaman lebih cepat.",
+    metaDescription: "Konversi JPG ke WebP online gratis. Perkecil foto untuk web dengan kualitas tetap yang seimbang, diproses di peramban Anda.",
     steps: [
-      'Tambahkan file JPG Anda.',
-      'Pilih kualitas WebP (80 adalah nilai awal yang wajar).',
-      'Konversi lalu unduh.',
+      "Tambahkan file JPG Anda.",
+      "Tidak ada yang perlu diatur: alat ini memakai kualitas seimbang untuk file WebP.",
+      "Konversi dan unduh.",
     ],
     faq: [
-      { q: 'Apakah WebP lebih kecil daripada JPG?', a: 'Biasanya 20–35% lebih kecil pada kualitas visual yang serupa, meskipun hasilnya bergantung pada gambarnya.' },
-      { q: 'Apakah semua browser mendukung WebP?', a: 'Semua browser utama saat ini dapat menampilkan WebP. Pengodean WebP di browser didukung di Chrome, Edge, Firefox, dan Safari terbaru; jika browser Anda tidak mendukungnya, alat ini akan memberi tahu Anda, bukan menghasilkan file yang salah.' },
-      { q: 'Apakah gambar saya diunggah ke server?', a: 'Tidak. Gambar didekode dan dienkode ulang oleh browser Anda menggunakan Canvas API. Alat ini tidak mengirim file ke mana pun.' },
+      { q: "Apakah WebP lebih kecil dari JPG?", a: "Biasanya 20–35% lebih kecil pada kualitas visual yang serupa, meski hasilnya bergantung pada gambar." },
+      { q: "Apakah semua peramban mendukung WebP?", a: "Semua peramban utama saat ini dapat menampilkan WebP. Pengodean WebP di peramban berfungsi di Chrome, Edge, dan Firefox; Safari tidak dapat membuat berkas WebP, dan dalam kasus itu alat memberi tahu Anda alih-alih menghasilkan berkas yang salah." },
     ],
     limits: [
-      'GIF atau WebP animasi dikonversi hanya dari bingkai pertamanya.',
-      'Maksimum 25 MB per file dan 20 file per batch, agar browser Anda tetap responsif.',
-      'Metadata EXIF dan profil warna tersemat tidak dipertahankan.',
-      'Browser Anda harus mendukung pengodean WebP; browser yang tidak mendukung akan menampilkan pesan kesalahan.',
+      "File GIF atau WebP beranimasi dikonversi hanya dari bingkai pertamanya.",
+      "Maksimal 25 MB per file dan 20 file per kelompok, agar peramban Anda tetap responsif.",
+      "Metadata EXIF dan profil warna tertanam tidak dipertahankan.",
+      "Peramban Anda harus mendukung pengodean WebP; peramban yang tidak mendukung akan menampilkan galat.",
     ],
   },
-  'png-to-webp': {
-    name: 'PNG ke WebP',
-    description: 'Ubah gambar PNG ke WebP dan pertahankan transparansi dengan ukuran jauh lebih kecil.',
-    metaDescription: 'Ubah PNG ke WebP online gratis. Mempertahankan transparansi, memperkecil ukuran file, dan berjalan sepenuhnya di browser Anda.',
+  "png-to-webp": {
+    name: "PNG ke WebP",
+    description: "Konversi gambar PNG ke WebP dan pertahankan transparansi dengan ukuran jauh lebih kecil.",
+    metaDescription: "Konversi PNG ke WebP online gratis. Mempertahankan transparansi, memperkecil ukuran file, dan berjalan sepenuhnya di peramban Anda.",
     steps: [
-      'Tambahkan file PNG Anda.',
-      'Pilih kualitas WebP.',
-      'Konversi lalu unduh.',
+      "Tambahkan file PNG Anda.",
+      "Tidak ada yang perlu diatur: alat ini memakai kualitas seimbang untuk file WebP.",
+      "Konversi dan unduh.",
     ],
     faq: [
-      { q: 'Apakah transparansi dipertahankan?', a: 'Ya. WebP mendukung kanal alfa, sehingga PNG transparan tetap transparan.' },
-      { q: 'Bisakah saya mendapatkan hasil lossless?', a: 'Atur kualitas ke 100 untuk ketelitian tertinggi. Browser menyandikan WebP secara lossy, jadi gunakan PNG jika Anda memerlukan salinan yang persis sama secara matematis.' },
-      { q: 'Apakah gambar saya diunggah ke server?', a: 'Tidak. Gambar didekode dan dienkode ulang oleh browser Anda menggunakan Canvas API. Alat ini tidak mengirim file ke mana pun.' },
+      { q: "Apakah transparansi dipertahankan?", a: "Ya. WebP mendukung kanal alfa, jadi PNG transparan tetap transparan." },
+      { q: "Bisakah saya mendapatkan hasil tanpa kehilangan kualitas?", a: "Alat ini menyandikan WebP dengan kualitas tinggi yang seimbang. Peramban menyandikan WebP dengan kehilangan data, jadi gunakan PNG jika Anda membutuhkan salinan yang persis secara matematis." },
     ],
     limits: [
-      'GIF atau WebP animasi dikonversi hanya dari bingkai pertamanya.',
-      'Maksimum 25 MB per file dan 20 file per batch, agar browser Anda tetap responsif.',
-      'Metadata EXIF dan profil warna tersemat tidak dipertahankan.',
-      'Browser Anda harus mendukung pengodean WebP; browser yang tidak mendukung akan menampilkan pesan kesalahan.',
+      "File GIF atau WebP beranimasi dikonversi hanya dari bingkai pertamanya.",
+      "Maksimal 25 MB per file dan 20 file per kelompok, agar peramban Anda tetap responsif.",
+      "Metadata EXIF dan profil warna tertanam tidak dipertahankan.",
+      "Peramban Anda harus mendukung pengodean WebP; peramban yang tidak mendukung akan menampilkan galat.",
     ],
   },
-  'webp-to-jpg': {
-    name: 'WebP ke JPG',
-    description: 'Ubah gambar WebP menjadi file JPG yang kompatibel di mana saja.',
-    metaDescription: 'Ubah WebP ke JPG online gratis. Buat gambar WebP dapat dipakai di mana saja, dikonversi lokal di browser Anda.',
+  "webp-to-jpg": {
+    name: "WebP ke JPG",
+    description: "Konversi gambar WebP ke file JPG yang kompatibel luas.",
+    metaDescription: "Konversi WebP ke JPG online gratis. Buat gambar WebP bisa dipakai di mana saja, dikonversi secara lokal di peramban Anda.",
     steps: [
-      'Tambahkan file WebP Anda.',
-      'Atur kualitas dan warna latar untuk area transparan.',
-      'Konversi lalu unduh.',
+      "Tambahkan file WebP Anda.",
+      "Area transparan diisi putih, karena JPG tidak dapat menyimpan transparansi.",
+      "Konversi dan unduh.",
     ],
     faq: [
-      { q: 'Mengapa mengubah WebP ke JPG?', a: 'Beberapa perangkat lunak lama, klien email, dan formulir unggah masih menolak WebP. JPG diterima hampir di mana saja.' },
-      { q: 'Apakah gambar saya diunggah ke server?', a: 'Tidak. Gambar didekode dan dienkode ulang oleh browser Anda menggunakan Canvas API. Alat ini tidak mengirim file ke mana pun.' },
+      { q: "Mengapa mengonversi WebP ke JPG?", a: "Beberapa perangkat lunak lama, klien email, dan formulir unggah masih menolak WebP. JPG diterima hampir di mana saja." },
     ],
     limits: [
-      'GIF atau WebP animasi dikonversi hanya dari bingkai pertamanya.',
-      'Maksimum 25 MB per file dan 20 file per batch, agar browser Anda tetap responsif.',
-      'Metadata EXIF dan profil warna tersemat tidak dipertahankan.',
-      'Transparansi diratakan ke satu warna solid karena JPG tidak dapat menyimpannya.',
+      "File GIF atau WebP beranimasi dikonversi hanya dari bingkai pertamanya.",
+      "Maksimal 25 MB per file dan 20 file per kelompok, agar peramban Anda tetap responsif.",
+      "Metadata EXIF dan profil warna tertanam tidak dipertahankan.",
+      "Area transparan diisi putih karena JPG tidak dapat menyimpan transparansi.",
     ],
   },
   'webp-to-png': {
@@ -116,7 +110,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Apakah transparansi dipertahankan?', a: 'Ya. PNG mendukung transparansi, sehingga kanal alfa dari WebP ikut terbawa.' },
-      { q: 'Apakah gambar saya diunggah ke server?', a: 'Tidak. Gambar didekode dan dienkode ulang oleh browser Anda menggunakan Canvas API. Alat ini tidak mengirim file ke mana pun.' },
     ],
     limits: [
       'GIF atau WebP animasi dikonversi hanya dari bingkai pertamanya.',
@@ -124,25 +117,25 @@ const tools: ToolTextMap = {
       'Metadata EXIF dan profil warna tersemat tidak dipertahankan.',
     ],
   },
-  'image-compressor': {
-    name: 'Kompresor Gambar',
-    description: 'Perkecil ukuran file gambar dengan kualitas yang dapat diatur dan lihat penghematan yang tepat.',
-    metaDescription: 'Kompres gambar JPG, PNG, dan WebP online gratis. Atur kualitas, batasi dimensi bila perlu, dan bandingkan ukuran file. Berjalan di browser Anda.',
+  "image-compressor": {
+    name: "Kompres Gambar",
+    description: "Perkecil ukuran file gambar dan lihat penghematan yang tepat.",
+    metaDescription: "Kompres gambar JPG, PNG, dan WebP online gratis. Batasi dimensi bila perlu dan bandingkan ukuran file. Berjalan di peramban Anda.",
     steps: [
-      'Tambahkan gambar Anda.',
-      'Pilih format output dan kualitas, serta lebar atau tinggi maksimum jika perlu.',
-      'Kompres, bandingkan ukuran sebelum dan sesudah, lalu unduh.',
+      "Tambahkan gambar Anda.",
+      "Pilih format keluaran dan, bila perlu, lebar atau tinggi maksimum.",
+      "Kompres, bandingkan ukuran sebelum dan sesudah, lalu unduh.",
     ],
     faq: [
-      { q: 'Bagaimana kompresor memperkecil ukuran?', a: 'Alat ini mengenkode ulang gambar pada kualitas yang Anda pilih dan juga dapat memperkecil dimensinya. Output PNG bersifat lossless, jadi ukurannya hanya mengecil jika Anda juga mengurangi dimensi.' },
-      { q: 'Bagaimana jika hasilnya lebih besar daripada aslinya?', a: 'Hal ini bisa terjadi pada file yang sudah dioptimalkan. Alat ini menandainya agar Anda dapat mempertahankan file aslinya.' },
-      { q: 'Apakah data EXIF atau lokasi dipertahankan?', a: 'Tidak. Pengodean ulang melalui canvas menghapus metadata EXIF seperti model kamera dan lokasi GPS, yang sering kali memang diinginkan sebelum membagikan foto. Profil warna juga tidak dipertahankan.' },
+      { q: "Bagaimana kompresor memperkecil ukuran?", a: "Alat ini menyandikan ulang gambar dengan kualitas tetap yang seimbang dan juga dapat memperkecilnya. Keluaran PNG tanpa kehilangan kualitas, jadi hanya mengecil jika Anda juga mengurangi dimensinya." },
+      { q: "Bagaimana jika hasilnya lebih besar dari aslinya?", a: "Ini bisa terjadi pada file yang sudah dioptimalkan. Alat ini kemudian mempertahankan file asli tanpa perubahan dan memberi tahu Anda." },
+      { q: "Apakah data EXIF atau lokasi dipertahankan?", a: "Tidak. Penyandian ulang melalui kanvas membuang metadata EXIF seperti model kamera dan lokasi GPS, yang sering kali memang diinginkan sebelum membagikan foto. Profil warna juga tidak dipertahankan." },
     ],
     limits: [
-      'GIF atau WebP animasi dikonversi hanya dari bingkai pertamanya.',
-      'Maksimum 25 MB per file dan 20 file per batch, agar browser Anda tetap responsif.',
-      'Metadata EXIF dan profil warna tersemat tidak dipertahankan.',
-      'Hasil terbaik didapat dari output JPG atau WebP; output PNG bersifat lossless dan mungkin tidak mengecil.',
+      "File GIF atau WebP beranimasi dikonversi hanya dari bingkai pertamanya.",
+      "Maksimal 25 MB per file dan 20 file per kelompok, agar peramban Anda tetap responsif.",
+      "Metadata EXIF dan profil warna tertanam tidak dipertahankan.",
+      "Hasil terbaik datang dari keluaran JPG atau WebP; keluaran PNG tanpa kehilangan kualitas dan mungkin tidak mengecil.",
     ],
   },
   'image-resizer': {
@@ -166,23 +159,22 @@ const tools: ToolTextMap = {
       'Output dibatasi hingga 16.000 px per sisi.',
     ],
   },
-  'image-cropper': {
-    name: 'Pangkas Gambar',
-    description: 'Pangkas gambar ke area tertentu atau rasio aspek tetap dengan pratinjau langsung.',
-    metaDescription: 'Pangkas gambar online gratis. Pilih rasio aspek tetap atau atur nilai piksel tepat dengan pratinjau langsung. Diproses di browser Anda.',
+  "image-cropper": {
+    name: "Pangkas Gambar",
+    description: "Pangkas gambar ke area yang tepat atau rasio aspek tetap dengan pratinjau langsung.",
+    metaDescription: "Pangkas gambar online gratis. Pilih rasio aspek tetap atau tetapkan nilai piksel yang tepat dengan pratinjau langsung. Diproses di peramban Anda.",
     steps: [
-      'Tambahkan gambar.',
-      'Pilih rasio aspek atau seret kotak pangkas, lalu sesuaikan posisi dan ukuran dengan kolom angka.',
-      'Tekan Pangkas lalu unduh.',
+      "Tambahkan sebuah gambar.",
+      "Pilih rasio aspek atau seret kotak pangkas, lalu sesuaikan posisi dan ukuran dengan kolom angka.",
+      "Tekan Pangkas dan unduh.",
     ],
     faq: [
-      { q: 'Apakah memangkas menurunkan kualitas?', a: 'Memangkas mempertahankan piksel asli. Kualitas hanya berubah jika Anda menyimpan sebagai JPG atau WebP dengan pengaturan kualitas yang lebih rendah.' },
-      { q: 'Apakah gambar saya diunggah ke server?', a: 'Tidak. Gambar didekode dan dienkode ulang oleh browser Anda menggunakan Canvas API. Alat ini tidak mengirim file ke mana pun.' },
+      { q: "Apakah memangkas menurunkan kualitas?", a: "Memangkas mempertahankan piksel asli. Hasil JPG dan WebP disimpan dengan kualitas tetap yang tinggi, jadi pada penggunaan normal tidak terlihat penurunan." },
     ],
     limits: [
-      'Satu gambar dalam satu waktu.',
-      'Maksimum 25 MB per file.',
-      'Gambar animasi memakai bingkai pertama.',
+      "Satu gambar dalam satu waktu.",
+      "Maksimal 25 MB per file.",
+      "Gambar beranimasi memakai bingkai pertama.",
     ],
   },
   'image-rotator': {
@@ -196,7 +188,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Apa yang terjadi pada rotasi dengan sudut selain sudut siku-siku?', a: 'Canvas diperbesar agar muat dengan gambar yang diputar. Untuk output JPG, sudut yang kosong diisi dengan latar yang Anda pilih; PNG dan WebP membiarkannya transparan.' },
-      { q: 'Apakah gambar saya diunggah ke server?', a: 'Tidak. Gambar didekode dan dienkode ulang oleh browser Anda menggunakan Canvas API. Alat ini tidak mengirim file ke mana pun.' },
     ],
     limits: [
       'GIF atau WebP animasi dikonversi hanya dari bingkai pertamanya.',
@@ -215,7 +206,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Apa perbedaan antara pembalikan horizontal dan vertikal?', a: 'Pembalikan horizontal mencerminkan kiri dan kanan, seperti cermin. Pembalikan vertikal membalik gambar terbalik atas-bawah sepanjang sumbu horizontalnya.' },
-      { q: 'Apakah gambar saya diunggah ke server?', a: 'Tidak. Gambar didekode dan dienkode ulang oleh browser Anda menggunakan Canvas API. Alat ini tidak mengirim file ke mana pun.' },
     ],
     limits: [
       'GIF atau WebP animasi dikonversi hanya dari bingkai pertamanya.',
@@ -223,25 +213,24 @@ const tools: ToolTextMap = {
       'Metadata EXIF dan profil warna tersemat tidak dipertahankan.',
     ],
   },
-  'image-format-converter': {
-    name: 'Konverter Format Gambar',
-    description: 'Konversi antara JPG, PNG, dan WebP dengan satu alat yang fleksibel.',
-    metaDescription: 'Konversi gambar antara JPG, PNG, dan WebP online gratis. Pilih format output dan kualitas, diproses lokal di browser Anda.',
+  "image-format-converter": {
+    name: "Konversi Format Gambar",
+    description: "Konversi antara JPG, PNG, dan WebP dengan satu alat yang fleksibel.",
+    metaDescription: "Konversi gambar antara JPG, PNG, dan WebP online gratis. Pilih format keluaran, diproses di peramban Anda.",
     steps: [
-      'Tambahkan gambar dalam format apa pun yang didukung.',
-      'Pilih format output dan kualitas.',
-      'Konversi lalu unduh.',
+      "Tambahkan gambar dalam format apa pun yang didukung.",
+      "Pilih format keluaran.",
+      "Konversi dan unduh.",
     ],
     faq: [
-      { q: 'Format apa saja yang dapat saya gunakan?', a: 'Input: JPG, PNG, WebP, GIF, BMP, dan AVIF jika browser Anda dapat mendekodenya. Output: JPG, PNG, dan WebP.' },
-      { q: 'Bagaimana dengan HEIC atau TIFF?', a: 'Browser tidak dapat mendekode HEIC atau TIFF secara bawaan, jadi format tersebut belum didukung.' },
-      { q: 'Apakah gambar saya diunggah ke server?', a: 'Tidak. Gambar didekode dan dienkode ulang oleh browser Anda menggunakan Canvas API. Alat ini tidak mengirim file ke mana pun.' },
+      { q: "Format apa yang bisa saya gunakan?", a: "Masukan: JPG, PNG, WebP, GIF, BMP, dan AVIF jika peramban Anda dapat mendekodenya. Keluaran: JPG, PNG, dan WebP." },
+      { q: "Bagaimana dengan HEIC atau TIFF?", a: "Peramban tidak dapat mendekode HEIC atau TIFF secara bawaan, jadi belum didukung." },
     ],
     limits: [
-      'GIF atau WebP animasi dikonversi hanya dari bingkai pertamanya.',
-      'Maksimum 25 MB per file dan 20 file per batch, agar browser Anda tetap responsif.',
-      'Metadata EXIF dan profil warna tersemat tidak dipertahankan.',
-      'File HEIC/HEIF, TIFF, dan RAW tidak didukung.',
+      "File GIF atau WebP beranimasi dikonversi hanya dari bingkai pertamanya.",
+      "Maksimal 25 MB per file dan 20 file per kelompok, agar peramban Anda tetap responsif.",
+      "Metadata EXIF dan profil warna tertanam tidak dipertahankan.",
+      "File HEIC/HEIF, TIFF, dan RAW tidak didukung.",
     ],
   },
   'image-to-base64': {
@@ -255,7 +244,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Kapan sebaiknya saya memakai gambar Base64?', a: 'Untuk ikon kecil di CSS atau email, saat satu permintaan tambahan lebih mahal daripada kenaikan ukuran sekitar 33%. Hindari untuk foto berukuran besar.' },
-      { q: 'Apakah gambar saya diunggah ke server?', a: 'Tidak. Gambar didekode dan dienkode ulang oleh browser Anda menggunakan Canvas API. Alat ini tidak mengirim file ke mana pun.' },
     ],
     limits: [
       'Maksimum 5 MB per gambar, karena teks Base64 menjadi sangat besar.',
@@ -291,7 +279,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Bagaimana palet dihitung?', a: 'Gambar diperkecil sampelnya dan warnanya dikelompokkan ke dalam beberapa wadah; wadah yang paling umum ditampilkan. Ini adalah perkiraan warna dominan, bukan daftar lengkap.' },
-      { q: 'Apakah gambar saya diunggah ke server?', a: 'Tidak. Gambar didekode dan dienkode ulang oleh browser Anda menggunakan Canvas API. Alat ini tidak mengirim file ke mana pun.' },
     ],
     limits: [
       'Satu gambar dalam satu waktu.',
@@ -332,7 +319,6 @@ const tools: ToolTextMap = {
       { q: 'Apakah gambar tetap tajam pada ukuran besar?', a: 'Ya. SVG digambar pada ukuran yang Anda pilih, sehingga ekspor 4× sama tajamnya dengan ekspor 1×.' },
       { q: 'Mengapa SVG saya terlihat berbeda?', a: 'Browser tidak mendukung setiap fitur SVG, dan SVG yang bergantung pada font atau gambar eksternal akan kembali ke bawaan. Sematkan font dan gambar di dalam SVG untuk hasil terbaik.' },
       { q: 'Apakah aman membuka file SVG di sini?', a: 'Ya. SVG digambar sebagai gambar, sehingga skrip di dalamnya tidak dijalankan.' },
-      { q: 'Apakah gambar saya diunggah ke server?', a: 'Tidak. Gambar didekode dan dienkode ulang oleh browser Anda menggunakan Canvas API. Alat ini tidak mengirim file ke mana pun.' },
     ],
     limits: [
       'Maksimum 25 MB per file dan 20 file per batch.',
@@ -396,7 +382,6 @@ const tools: ToolTextMap = {
       { q: 'Bisakah memindai dengan kamera saya?', a: 'Belum. Alat ini membaca kode QR dari file gambar. Di ponsel, ambil foto kodenya lalu pilih di sini, atau gunakan aplikasi kamera Anda.' },
       { q: 'Apakah aman membuka tautan hasil pindai?', a: 'Periksa alamatnya terlebih dahulu. Tautan lengkap ditampilkan, dan hanya tautan web (http atau https) yang dapat dibuka dari sini. Tautan skrip dan data tidak pernah dibuka.' },
       { q: 'Mengapa tidak ada kode yang ditemukan?', a: 'Kode mungkin buram, terpotong, terlalu kecil, atau berkontras rendah. Coba gambar yang lebih tajam dan lebih dekat yang menampilkan seluruh kode dengan margin yang jelas di sekelilingnya.' },
-      { q: 'Apakah gambar saya diunggah?', a: 'Tidak. Gambar dibaca di browser Anda dan alat ini tidak mengirimkannya ke mana pun.' },
     ],
     limits: [
       'Hingga 10 gambar, masing-masing 25 MB.',
@@ -416,7 +401,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Mengapa GIF saya sangat besar?', a: 'GIF menyimpan setiap bingkai sebagai gambar yang dibatasi 256 warna. Bingkai yang lebih sedikit, lebar yang lebih kecil, dan warna yang lebih sedikit semuanya memperkecil file. Alat ini menampilkan ukurannya begitu GIF dibuat.' },
       { q: 'Bisakah saya mempertahankan area transparan?', a: 'Bisa, aktifkan “Pertahankan area transparan” untuk gambar PNG atau WebP yang transparan. Transparansi GIF hanya aktif atau mati per piksel, sehingga tepi yang lembut menjadi kasar.' },
-      { q: 'Apakah gambar saya diunggah ke server?', a: 'Tidak. Gambar didekode dan dienkode ulang oleh browser Anda menggunakan Canvas API. Alat ini tidak mengirim file ke mana pun.' },
     ],
     limits: [
       'Hingga 100 bingkai; semakin besar bingkainya, semakin banyak memori yang dibutuhkan browser Anda.',
@@ -436,7 +420,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Apakah file asli diubah?', a: 'Tidak. File Anda tidak pernah dimodifikasi; gambar hasil suntingan dibuat sebagai unduhan baru.' },
       { q: 'Apakah mengekspor menurunkan kualitas?', a: 'PNG mempertahankan setiap piksel. JPG dan WebP bersifat lossy; gunakan kualitas 90 atau lebih tinggi agar foto tetap terlihat sama. Suntingan diterapkan pada ukuran penuh gambar Anda, bukan ukuran pratinjau.' },
-      { q: 'Apakah gambar saya diunggah ke server?', a: 'Tidak. Gambar didekode dan dienkode ulang oleh browser Anda menggunakan Canvas API. Alat ini tidak mengirim file ke mana pun.' },
     ],
     limits: [
       'Satu foto dalam satu waktu, hingga 25 MB dan sekitar 50 megapiksel.',
@@ -456,7 +439,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Apakah kualitas gambar menurun?', a: 'Tidak. File JPG disematkan ke dalam PDF apa adanya, tanpa kompresi ulang.' },
-      { q: 'Apakah PDF saya diunggah ke mana pun?', a: 'Tidak. PDF dibaca dan ditulis ulang oleh browser Anda. Alat ini tidak mengirim file ke server.' },
     ],
     limits: [
       'Maksimum 25 MB per gambar dan 100 gambar per PDF.',
@@ -474,7 +456,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Apakah transparansi dipertahankan?', a: 'Ya. Gambar PNG disematkan beserta kanal alfanya, sehingga area transparan menampilkan halaman putih di belakangnya.' },
-      { q: 'Apakah PDF saya diunggah ke mana pun?', a: 'Tidak. PDF dibaca dan ditulis ulang oleh browser Anda. Alat ini tidak mengirim file ke server.' },
     ],
     limits: [
       'Maksimum 25 MB per gambar dan 100 gambar per PDF.',
@@ -493,7 +474,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Format gambar apa yang dapat dipakai?', a: 'JPG dan PNG disematkan langsung. WebP, GIF, dan BMP dikonversi ke PNG terlebih dahulu jika browser Anda dapat mendekodenya.' },
       { q: 'Apa fungsi “Sesuaikan dengan gambar”?', a: 'Setiap halaman diberi ukuran sesuai gambarnya, sehingga tidak ada yang diskalakan atau diberi ruang kosong. Pilih A4 atau Letter untuk halaman dokumen standar.' },
-      { q: 'Apakah PDF saya diunggah ke mana pun?', a: 'Tidak. PDF dibaca dan ditulis ulang oleh browser Anda. Alat ini tidak mengirim file ke server.' },
     ],
     limits: [
       'Maksimum 25 MB per gambar dan 100 gambar per PDF.',
@@ -511,7 +491,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Apakah penanda buku dan kolom formulir dipertahankan?', a: 'Halaman disalin beserta konten yang terlihat dan tautannya. Penanda buku tingkat dokumen dan data formulir interaktif tidak ikut terbawa.' },
       { q: 'Bisakah alat ini membuka PDF yang dilindungi kata sandi?', a: 'Tidak. PDF terenkripsi dideteksi dan ditolak dengan pesan yang jelas. Hapus kata sandinya terlebih dahulu dengan alat Buka Kunci PDF kami.' },
-      { q: 'Apakah PDF saya diunggah ke mana pun?', a: 'Tidak. PDF dibaca dan ditulis ulang oleh browser Anda. Alat ini tidak mengirim file ke server.' },
     ],
     limits: [
       'Maksimum 100 MB per PDF.',
@@ -789,26 +768,25 @@ const tools: ToolTextMap = {
       'Hanya properti tingkat dokumen yang diubah. Komentar, data formulir, dan konten halaman tetap seperti semula.',
     ],
   },
-  'protect-pdf': {
-    name: 'Lindungi PDF',
-    description: 'Kunci PDF dengan kata sandi menggunakan enkripsi AES-256.',
-    metaDescription: 'Lindungi PDF dengan kata sandi online gratis. Enkripsi AES-256 dilakukan di browser Anda; file dan kata sandi Anda tidak pernah diunggah.',
+  "protect-pdf": {
+    name: "Lindungi PDF",
+    description: "Kunci PDF dengan kata sandi menggunakan enkripsi AES-256.",
+    metaDescription: "Lindungi PDF dengan kata sandi online gratis. Enkripsi AES-256 berlangsung di peramban Anda; file dan kata sandi Anda tidak pernah diunggah.",
     steps: [
-      'Tambahkan PDF.',
-      'Ketik kata sandi dua kali dan pilih apa yang boleh dilakukan pembaca (cetak, salin, edit).',
-      'Lindungi lalu unduh salinan terenkripsi.',
+      "Tambahkan sebuah PDF.",
+      "Ketik kata sandi dua kali dan pilih apa yang boleh dilakukan pembaca (mencetak, menyalin, mengedit).",
+      "Lindungi dan unduh salinan terenkripsinya.",
     ],
     faq: [
-      { q: 'Seberapa kuat perlindungannya?', a: 'File dienkripsi dengan AES-256, standar enkripsi PDF terkuat. Dalam praktiknya, keamanan bergantung pada kata sandi Anda: gunakan yang panjang dan tidak Anda pakai di tempat lain.' },
-      { q: 'Bagaimana jika saya lupa kata sandinya?', a: 'Kata sandi tidak dapat dipulihkan. Tidak ada yang disimpan atau dikirim ke mana pun, dan tidak ada fitur reset. Simpan file asli dan kata sandi Anda di tempat yang aman.' },
-      { q: 'Apakah opsi cetak, salin, dan edit ditegakkan?', a: 'Itu adalah permintaan yang dipatuhi oleh sebagian besar program PDF, tetapi bukan pembatasan yang tak bisa ditembus. Kata sandilah yang benar-benar melindungi file.' },
-      { q: 'Apakah kata sandi saya diunggah?', a: 'Tidak. Enkripsi dilakukan di browser Anda.' },
+      { q: "Seberapa kuat perlindungannya?", a: "File dienkripsi dengan AES-256, enkripsi PDF standar terkuat. Dalam praktiknya, keamanan bergantung pada kata sandi Anda: gunakan yang panjang dan tidak Anda pakai di tempat lain." },
+      { q: "Bagaimana jika saya lupa kata sandinya?", a: "Tidak dapat dipulihkan, dan tidak ada reset kata sandi. Simpan file asli dan kata sandi di tempat aman." },
+      { q: "Apakah opsi cetak, salin, dan edit ditegakkan?", a: "Itu adalah permintaan yang dihormati sebagian besar program PDF, tetapi tidak mustahil dilewati. Kata sandilah yang benar-benar melindungi file." },
     ],
     limits: [
-      'Maksimum 100 MB per PDF.',
-      'Kata sandi: hingga 127 karakter standar (huruf, angka, dan simbol).',
-      'PDF yang sudah memiliki kata sandi harus dibuka kuncinya terlebih dahulu.',
-      'Pembaca PDF yang sangat lama (sebelum sekitar 2008) mungkin tidak dapat membuka file AES-256.',
+      "Maksimal 100 MB per PDF.",
+      "Kata sandi: hingga 127 karakter standar (huruf, angka, dan simbol).",
+      "PDF yang sudah memiliki kata sandi harus dibuka kuncinya terlebih dahulu.",
+      "Pembaca PDF yang sangat lama (sebelum sekitar 2008) mungkin tidak dapat membuka file AES-256.",
     ],
   },
   'unlock-pdf': {
@@ -823,7 +801,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Bisakah alat ini membuka kunci PDF jika saya lupa kata sandinya?', a: 'Tidak. Alat ini tidak pernah menebak atau membobol kata sandi. Alat ini menghapus perlindungan hanya jika Anda memberikan kata sandi yang benar, atau jika file hanya membatasi tindakan seperti mencetak.' },
       { q: 'Apakah ini diperbolehkan?', a: 'Gunakan hanya pada file yang Anda miliki atau yang Anda berwenang membukanya. Anda bertanggung jawab atas cara Anda menggunakan hasilnya.' },
-      { q: 'Apakah kata sandi saya diunggah?', a: 'Tidak. Semuanya terjadi di browser Anda.' },
     ],
     limits: [
       'Maksimum 100 MB per PDF.',
@@ -854,25 +831,23 @@ const tools: ToolTextMap = {
       'Urutan baca mengikuti PDF dan dapat berbeda dari urutan visual pada tata letak yang kompleks.',
     ],
   },
-  'compress-pdf': {
-    name: 'Kompres PDF',
-    description: 'Perkecil PDF dengan mengompresi ulang gambarnya sementara teks tetap dapat dipilih.',
-    metaDescription: 'Kompres PDF online gratis. Kompres ulang gambar tersemat untuk memperkecil ukuran file sementara teks tetap dapat dipilih, atau ratakan halaman untuk file terkecil. Berjalan di browser Anda.',
+  "compress-pdf": {
+    name: "Kompres PDF",
+    description: "Perkecil PDF dengan mengompres ulang gambarnya sementara teks tetap dapat dipilih.",
+    metaDescription: "Kompres PDF online gratis. Pilih kompresi ekstrem, yang direkomendasikan, atau ringan untuk memperkecil ukuran file sementara teks tetap dapat dipilih. Berjalan di peramban Anda.",
     steps: [
-      'Tambahkan PDF Anda.',
-      'Pilih cara dan tingkat kekuatan kompresi: bawaannya mempertahankan teks agar dapat dipilih dan hanya mengompresi ulang gambar.',
-      'Kompres, periksa ukuran yang dihemat, lalu unduh hasilnya.',
+      "Tambahkan PDF Anda.",
+      "Pilih kompresi ekstrem, yang direkomendasikan, atau ringan. Teks tetap dapat dipilih; hanya gambar yang dikompres ulang.",
+      "Kompres, periksa ukuran yang dihemat, dan unduh hasilnya.",
     ],
     faq: [
-      { q: 'Mengapa PDF saya hampir tidak mengecil?', a: 'Mode standar mengompresi ulang gambar JPEG, sehingga paling berguna untuk PDF yang penuh foto atau hasil pindai. PDF yang sebagian besar berupa teks, atau yang gambarnya sudah kecil, tidak dapat mengecil banyak. Alat ini memberi tahu Anda jika tidak ada yang dapat dihemat, bukan berpura-pura.' },
-      { q: 'Apakah kualitasnya akan memburuk?', a: 'Gambar kehilangan sebagian detail sebagai ganti ukuran; Ringan mempertahankannya hampir tidak berubah dan Kuat membuatnya tampak jelas lebih lembut. Teks dan grafik vektor tidak disentuh pada mode standar. Mode “Maksimum” mengubah setiap halaman menjadi gambar, sehingga teks tidak lagi dapat dipilih atau dicari.' },
-      { q: 'Apakah PDF saya diunggah ke mana pun?', a: 'Tidak. PDF dibaca dan ditulis ulang oleh browser Anda. Alat ini tidak mengirim file ke server.' },
+      { q: "Mengapa PDF saya hampir tidak mengecil?", a: "Alat ini mengompres ulang gambar JPEG, jadi paling membantu pada PDF yang penuh foto atau hasil pindai. PDF yang sebagian besar teks, atau yang gambarnya sudah kecil, tidak bisa mengecil banyak. Bila tidak ada yang bisa dihemat, alat ini mengatakannya dan mengembalikan file asli Anda alih-alih file yang lebih besar." },
+      { q: "Apakah kualitasnya akan menurun?", a: "Gambar kehilangan sedikit detail demi ukuran; kompresi ringan membuatnya hampir tidak berubah dan kompresi ekstrem membuatnya tampak lebih lembut. Teks dan grafik vektor tidak disentuh, jadi teks tetap dapat dipilih dan dicari." },
     ],
     limits: [
-      'Hanya gambar JPEG tersemat yang dikompresi ulang. Gambar bergaya PNG (Flate), font, dan konten lain dibiarkan apa adanya.',
-      'Mode Maksimum mengubah setiap halaman menjadi gambar: teks, tautan, dan kolom formulir berhenti berfungsi dan file tidak dapat dicari.',
-      'Warna gambar yang dikompresi ulang dapat bergeser sangat sedikit.',
-      'Maksimum 100 MB per PDF. PDF yang dilindungi kata sandi harus dibuka kuncinya terlebih dahulu.',
+      "Hanya gambar JPEG tertanam yang dikompres ulang. Gambar bergaya PNG (Flate), font, dan konten lain dibiarkan apa adanya.",
+      "Warna gambar yang dikompres ulang bisa bergeser sangat sedikit.",
+      "Maksimal 100 MB per PDF. PDF yang dilindungi kata sandi harus dibuka kuncinya terlebih dahulu.",
     ],
   },
   'ocr-pdf': {
@@ -886,7 +861,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Bahasa apa saja yang didukung?', a: 'Hanya bahasa Inggris untuk saat ini. Teks dalam bahasa lain akan salah terbaca. Bahasa lain dapat ditambahkan nanti tanpa mengubah cara kerja alat ini.' },
-      { q: 'Apakah dokumen saya dikirim ke layanan OCR?', a: 'Tidak. Mesin pengenalan (Tesseract, dikompilasi ke WebAssembly) beserta data bahasa Inggrisnya disajikan dari situs web ini dan berjalan di dalam browser Anda. Dokumen tidak diunggah.' },
       { q: 'Seberapa akurat hasilnya?', a: 'Hasil pindai yang bersih dan lurus dari teks cetak pada 200 hingga 300 DPI memberikan hasil terbaik. Tulisan tangan, cetakan yang sangat kecil, halaman berkontras rendah atau miring menghasilkan lebih banyak kesalahan. Selalu periksa angka-angka penting.' },
     ],
     limits: [
@@ -907,8 +881,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Apakah ini tanda tangan digital yang mengikat secara hukum?', a: 'Ini adalah tanda tangan visual: gambar tanda tangan Anda yang diletakkan pada halaman. Ini bukan tanda tangan digital kriptografis, tidak memiliki sertifikat, dan tidak dapat membuktikan siapa yang menandatangani atau mendeteksi perubahan berikutnya. Diterima atau tidaknya bergantung pada pihak yang memintanya. Beberapa organisasi mewajibkan layanan tanda tangan elektronik tersertifikasi.' },
-      { q: 'Apakah tanda tangan saya disimpan di suatu tempat?', a: 'Tidak. Tanda tangan dibuat di browser Anda, hanya dipakai untuk file ini, dan dilupakan saat Anda meninggalkan atau memuat ulang halaman.' },
-      { q: 'Apakah PDF saya diunggah ke mana pun?', a: 'Tidak. PDF dibaca dan ditulis ulang oleh browser Anda. Alat ini tidak mengirim file ke server.' },
     ],
     limits: [
       'Hanya tanda tangan visual: tanpa sertifikat, tanpa stempel waktu, tanpa deteksi pengubahan.',
@@ -916,25 +888,25 @@ const tools: ToolTextMap = {
       'Maksimum 100 MB per PDF. PDF yang dilindungi kata sandi harus dibuka kuncinya terlebih dahulu.',
     ],
   },
-  'fill-pdf-forms': {
-    name: 'Isi Formulir PDF',
-    description: 'Isi kotak teks, kotak centang, dan menu pada formulir PDF yang dapat diisi.',
-    metaDescription: 'Isi formulir PDF online gratis. Ketik pada kolom, centang kotak, dan pilih opsi di PDF yang dapat diisi, lalu unduh dalam bentuk dapat diedit atau diratakan. Di browser Anda.',
+  "fill-pdf-forms": {
+    name: "Isi Formulir PDF",
+    description: "Isi kotak teks, kotak centang, dan menu pada formulir PDF, atau tulis di atas PDF apa pun.",
+    metaDescription: "Isi formulir PDF online gratis. Ketik di kolom, centang kotak, dan pilih opsi pada PDF yang dapat diisi, lalu unduh dalam bentuk dapat diedit atau diratakan. Di peramban Anda.",
     steps: [
-      'Tambahkan formulir PDF yang dapat diisi.',
-      'Isi kolom yang tercantum di bawah nama file. Kolom dikelompokkan per halaman.',
-      'Pilih apakah formulir tetap dapat diedit atau diratakan, lalu unduh PDF yang sudah diisi.',
+      "Tambahkan formulir PDF. Pada PDF tanpa kolom, Anda bisa menulis dengan mengeklik halaman.",
+      "Isi kolom yang tercantum di bawah nama file. Kolom dikelompokkan per halaman.",
+      "Pilih apakah formulir tetap dapat diedit atau diratakan, lalu unduh PDF yang sudah diisi.",
     ],
     faq: [
-      { q: 'PDF saya tidak menampilkan kolom apa pun. Mengapa?', a: 'Hanya PDF dengan kolom formulir sungguhan yang dapat diisi di sini. Formulir yang hanya berupa gambar atau teks biasa tidak memiliki kolom; gunakan Tanda Tangani PDF untuk menempatkan tanda tangan, atau alat Watermark untuk menambahkan teks. Formulir yang dibuat dengan XFA (sebagian formulir pemerintah dan bank) tidak didukung.' },
-      { q: 'Apa fungsi perataan (flatten)?', a: 'Perataan menanamkan jawaban Anda ke halaman dan menghapus kolom formulir, sehingga jawaban tidak dapat diedit lagi. Gunakan untuk salinan yang Anda kirim; simpan salinan yang dapat diedit untuk Anda sendiri.' },
-      { q: 'Apakah PDF saya diunggah ke mana pun?', a: 'Tidak. PDF dibaca dan ditulis ulang oleh browser Anda. Alat ini tidak mengirim file ke server.' },
+      { q: "PDF saya tidak menampilkan kolom. Mengapa?", a: "PDF tidak memiliki kolom formulir yang sebenarnya, misalnya berupa hasil pindai atau formulir yang hanya gambar. Anda tetap dapat mengeklik halaman di tempat teks akan diletakkan, mengetiknya, dan menyimpan salinan dengan teks tertulis. Formulir XFA (beberapa formulir pemerintah dan bank) tidak dapat diisi kolomnya." },
+      { q: "Apa yang dilakukan perataan?", a: "Perataan menanamkan jawaban Anda ke halaman dan menghapus kolom formulir, sehingga jawaban tidak dapat diedit lagi. Gunakan untuk salinan yang Anda kirim; simpan salinan yang dapat diedit untuk diri sendiri." },
     ],
     limits: [
-      'Teks dapat memakai huruf Latin, angka, dan simbol umum (font formulir tidak mencakup alfabet lain).',
-      'Kolom tanda tangan dan tombol ditampilkan tetapi tidak dapat diisi; gunakan Tanda Tangani PDF untuk tanda tangan.',
-      'Formulir XFA (dinamis) tidak didukung.',
-      'Maksimum 100 MB per PDF.',
+      "Teks dapat memakai huruf Latin, angka, dan simbol umum (font formulir tidak memiliki alfabet lain).",
+      "Kolom tanda tangan dan tombol ditampilkan tetapi tidak dapat diisi; gunakan Tanda Tangani PDF untuk tanda tangan.",
+      "Formulir XFA (dinamis): kolom tidak dapat diisi, tetapi Anda dapat menulis di atas halaman.",
+      "Teks yang ditulis di PDF tanpa kolom ditanamkan ke halaman dan tidak dapat diedit setelahnya.",
+      "Maksimal 100 MB per PDF.",
     ],
   },
   'redact-pdf': {
@@ -970,7 +942,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Apa yang ditampilkan oleh perbandingan teks?', a: 'Untuk setiap halaman, kata yang ditambahkan (hijau) dan dihapus (merah) antara dokumen asli dan dokumen revisi, dengan teks yang tidak berubah diciutkan. Halaman dicocokkan berdasarkan nomor.' },
       { q: 'Bagaimana dengan PDF hasil pindai?', a: 'Hasil pindai tidak memiliki teks yang dapat dipilih, sehingga perbandingan teks tidak menemukan apa pun. Gunakan perbandingan visual, atau jalankan OCR PDF pada kedua file terlebih dahulu.' },
-      { q: 'Apakah PDF saya diunggah ke mana pun?', a: 'Tidak. PDF dibaca dan ditulis ulang oleh browser Anda. Alat ini tidak mengirim file ke server.' },
     ],
     limits: [
       'Halaman dibandingkan berdasarkan nomor: jika ada halaman yang disisipkan, halaman berikutnya akan tampak berubah.',
@@ -1102,7 +1073,6 @@ const tools: ToolTextMap = {
       'Salin atau unduh hasil yang sudah diformat.',
     ],
     faq: [
-      { q: 'Apakah JSON saya dikirim ke server?', a: 'Tidak. Penguraian dan pemformatan terjadi di browser Anda dengan pengurai JSON bawaan.' },
       { q: 'Mengapa JSON saya ditolak?', a: 'JSON yang ketat tidak mengizinkan komentar, koma di akhir, atau tanda kutip tunggal. Pesan kesalahan menampilkan baris dan kolom masalahnya.' },
     ],
     limits: [
@@ -1250,7 +1220,6 @@ const tools: ToolTextMap = {
       'Salin kata sandi dan simpan di pengelola kata sandi.',
     ],
     faq: [
-      { q: 'Apakah kata sandi yang dibuat disimpan atau dikirim ke mana pun?', a: 'Tidak. Kata sandi dibuat di browser Anda menggunakan crypto.getRandomValues dan tidak pernah dikirim atau disimpan.' },
       { q: 'Apakah kata sandi seperti Tesla2026#Tech aman?', a: 'Lebih baik daripada kata biasa, tetapi lebih lemah daripada teks acak. Siapa pun yang menebak dapat memulai dari daftar nama terkenal, jadi kekuatan sebenarnya berasal dari jumlah kemungkinan, yang ditampilkan dalam bit. Gunakan kata sandi berbasis nama untuk akun berisiko rendah dan yang acak sepenuhnya untuk email, perbankan, dan pengelola kata sandi.' },
       { q: 'Mengapa hanya beberapa simbol?', a: 'Kata sandi yang dibuat hanya memakai empat simbol @ # $ * karena diterima oleh hampir setiap situs web dan mudah diketik di keyboard apa pun.' },
       { q: 'Seberapa panjang sebaiknya kata sandi?', a: 'Minimal 16 karakter untuk akun penting. Panjang lebih penting daripada kerumitan.' },
@@ -1323,7 +1292,6 @@ const tools: ToolTextMap = {
       { q: 'Apakah kode ini kedaluwarsa?', a: 'Tidak. Ini adalah kode statis: data disimpan di dalam kode itu sendiri, sehingga berfungsi selamanya dan tidak ada yang dilacak.' },
       { q: 'Tingkat koreksi kesalahan mana yang sebaiknya saya pilih?', a: 'Sedang cocok untuk sebagian besar penggunaan. Pilih Quartile atau Tinggi jika kode mungkin kotor atau rusak, tetapi tingkat yang lebih tinggi membuat kode lebih padat dan lebih sulit dipindai pada ukuran kecil.' },
       { q: 'Bisakah saya memakai kode ini secara komersial?', a: 'Bisa. Standar kode QR bersifat terbuka, dan kode yang dibuat di sini tidak dikenai biaya, watermark, atau pelacakan dari kami.' },
-      { q: 'Apakah data saya dikirim ke mana pun?', a: 'Tidak. Kode dibuat di browser Anda, dan kata sandi Wi-Fi yang Anda masukkan tetap berada di perangkat Anda.' },
     ],
     limits: [
       'Hanya kode statis: tanpa pelacakan pemindaian dan tanpa kode yang dapat diedit.',
@@ -1344,7 +1312,6 @@ const tools: ToolTextMap = {
       { q: "Apakah alat ini mengenali teks pada halaman?", a: "Tidak. Pindai ke PDF mengubah gambar menjadi halaman PDF dan dapat membersihkannya, tetapi teks tetap menjadi bagian dari gambar. Agar dapat dicari, jalankan hasilnya melalui OCR PDF." },
       { q: "Bisakah saya menggunakan kamera ponsel?", a: "Pada ponsel dan tablet yang peramban-nya mendukung, tombol “Ambil foto” membuka kamera. Jika tidak, pilih foto yang sudah tersimpan di perangkat Anda." },
       { q: "Apa yang dilakukan gaya pembersihan?", a: "“Asli” mempertahankan warna. “Skala abu-abu” menghilangkan warna. “Dokumen hitam putih” mengubah halaman menjadi teks hitam murni di atas kertas putih dan meratakan bayangan serta pencahayaan yang tidak merata, cocok untuk halaman cetak dan catatan tetapi tidak untuk foto." },
-      { q: "Apakah berkas saya diunggah ke suatu tempat?", a: "Tidak. Berkas dibaca dan dikonversi oleh peramban Anda. Alat ini tidak mengirimkannya ke server." },
     ],
     limits: [
       "Maksimum 25 MB per gambar dan 100 gambar per PDF.",
@@ -1366,7 +1333,6 @@ const tools: ToolTextMap = {
       { q: "Apakah PDF akan terlihat seperti halaman webnya?", a: "Tidak, tidak persis. Alat membaca struktur dokumen (judul, paragraf, daftar, tabel, tautan, teks tebal dan miring, serta gambar tertanam) dan menatanya sebagai dokumen sederhana. Gaya CSS, skrip, font web, kolom, dan elemen berposisi tidak diterapkan." },
       { q: "Apakah aman mengonversi HTML yang tidak saya percayai?", a: "HTML dibaca sebagai teks pasif: skrip tidak dijalankan dan tidak ada yang dimuat dari internet. Hanya gambar yang tertanam di HTML itu sendiri yang digunakan." },
       { q: "Bahasa dan font apa yang didukung dalam PDF?", a: "PDF ditulis dengan Noto Sans, yang mencakup teks Latin (termasuk huruf Polandia, Ceko, Rumania, dan Turki), Sirilik, Yunani, Vietnam, dan Devanagari. Teks Arab, Ibrani, Thai, Tionghoa, Jepang, dan Korea belum didukung: karakter tersebut muncul sebagai tanda tanya dan alat memberi tahu Anda berapa banyak yang terpengaruh. Font asli dokumen tidak dipertahankan." },
-      { q: "Apakah berkas saya diunggah ke suatu tempat?", a: "Tidak. Berkas dibaca dan dikonversi oleh peramban Anda. Alat ini tidak mengirimkannya ke server." },
     ],
     limits: [
       "Maksimum 10 MB HTML.",
@@ -1388,7 +1354,6 @@ const tools: ToolTextMap = {
       { q: "Apa yang dikonversi, dan apa yang tidak?", a: "Dikonversi: teks dengan huruf tebal, miring, garis bawah, dan tautan, judul, daftar berpoin dan bernomor, tabel, gambar JPEG dan PNG, pemisah baris dan halaman, perataan, serta orientasi halaman. Tidak dikonversi: header dan footer, catatan kaki, kotak teks, persamaan, bagan, bentuk, dan format gambar lain." },
       { q: "Bisakah saya mengonversi berkas .doc lama?", a: "Tidak. Buka di Word dan simpan terlebih dahulu sebagai berkas DOCX." },
       { q: "Bahasa dan font apa yang didukung dalam PDF?", a: "PDF ditulis dengan Noto Sans, yang mencakup teks Latin (termasuk huruf Polandia, Ceko, Rumania, dan Turki), Sirilik, Yunani, Vietnam, dan Devanagari. Teks Arab, Ibrani, Thai, Tionghoa, Jepang, dan Korea belum didukung: karakter tersebut muncul sebagai tanda tanya dan alat memberi tahu Anda berapa banyak yang terpengaruh. Font asli dokumen tidak dipertahankan." },
-      { q: "Apakah berkas saya diunggah ke suatu tempat?", a: "Tidak. Berkas dibaca dan dikonversi oleh peramban Anda. Alat ini tidak mengirimkannya ke server." },
     ],
     limits: [
       "Hanya berkas DOCX, maksimum 50 MB. Berkas .doc lama dan dokumen yang dilindungi kata sandi tidak didukung.",
@@ -1410,7 +1375,6 @@ const tools: ToolTextMap = {
       { q: "Apa yang tidak dikonversi?", a: "Bagan, SmartArt, video dan audio, animasi dan transisi, catatan pembicara, gradasi, garis dan konektor, serta gambar dalam format selain JPEG dan PNG. Alat memberi tahu Anda berapa banyak item yang dilewati." },
       { q: "Bisakah saya mengonversi berkas .ppt lama?", a: "Tidak. Buka di PowerPoint dan simpan terlebih dahulu sebagai berkas PPTX." },
       { q: "Bahasa dan font apa yang didukung dalam PDF?", a: "PDF ditulis dengan Noto Sans, yang mencakup teks Latin (termasuk huruf Polandia, Ceko, Rumania, dan Turki), Sirilik, Yunani, Vietnam, dan Devanagari. Teks Arab, Ibrani, Thai, Tionghoa, Jepang, dan Korea belum didukung: karakter tersebut muncul sebagai tanda tanya dan alat memberi tahu Anda berapa banyak yang terpengaruh. Font asli dokumen tidak dipertahankan." },
-      { q: "Apakah berkas saya diunggah ke suatu tempat?", a: "Tidak. Berkas dibaca dan dikonversi oleh peramban Anda. Alat ini tidak mengirimkannya ke server." },
     ],
     limits: [
       "Hanya berkas PPTX, maksimum 100 MB dan 300 slide. Berkas .ppt lama dan presentasi yang dilindungi kata sandi tidak didukung.",
@@ -1432,7 +1396,6 @@ const tools: ToolTextMap = {
       { q: "Apakah hasilnya seperti tata letak cetak di Excel?", a: "Tidak. Setiap lembar yang terlihat menjadi tabel sederhana yang disesuaikan dengan lebar halaman. Warna sel, sel gabungan, lebar kolom, bagan, gambar, area cetak, dan pemisah halaman tidak dipertahankan." },
       { q: "Bisakah saya mengonversi berkas .xls lama?", a: "Tidak. Buka di Excel dan simpan terlebih dahulu sebagai berkas XLSX." },
       { q: "Bahasa dan font apa yang didukung dalam PDF?", a: "PDF ditulis dengan Noto Sans, yang mencakup teks Latin (termasuk huruf Polandia, Ceko, Rumania, dan Turki), Sirilik, Yunani, Vietnam, dan Devanagari. Teks Arab, Ibrani, Thai, Tionghoa, Jepang, dan Korea belum didukung: karakter tersebut muncul sebagai tanda tanya dan alat memberi tahu Anda berapa banyak yang terpengaruh. Font asli dokumen tidak dipertahankan." },
-      { q: "Apakah berkas saya diunggah ke suatu tempat?", a: "Tidak. Berkas dibaca dan dikonversi oleh peramban Anda. Alat ini tidak mengirimkannya ke server." },
     ],
     limits: [
       "Hanya berkas XLSX, maksimum 50 MB. Berkas .xls lama dan buku kerja yang dilindungi kata sandi tidak didukung.",
@@ -1453,7 +1416,6 @@ const tools: ToolTextMap = {
       { q: "Bagaimana judul dan daftar ditemukan?", a: "Judul adalah baris dengan font lebih besar daripada teks isi, daftar adalah baris yang diawali poin atau angka, dan paragraf dipisahkan oleh jarak antarbaris. Ini perkiraan yang baik, bukan jaminan, jadi periksa hasilnya." },
       { q: "Mengapa hasilnya kosong untuk PDF pindaian saya?", a: "Pindaian adalah gambar halaman dan tidak memiliki teks untuk diekstrak. Jalankan OCR PDF terlebih dahulu untuk menambahkan lapisan teks, lalu konversi hasilnya." },
       { q: "Bagaimana dengan tabel, kolom, dan gambar?", a: "Tabel dan kolom tidak dibangun ulang: teksnya muncul sebagai baris biasa, dalam urutan baca jika memungkinkan. Gambar, tautan, teks tebal dan miring, catatan kaki, dan persamaan tidak ikut terbawa." },
-      { q: "Apakah berkas saya diunggah ke suatu tempat?", a: "Tidak. Berkas dibaca dan dikonversi oleh peramban Anda. Alat ini tidak mengirimkannya ke server." },
     ],
     limits: [
       "Maksimum 100 MB per PDF. PDF yang dilindungi kata sandi harus dibuka kuncinya terlebih dahulu.",
@@ -1474,7 +1436,6 @@ const tools: ToolTextMap = {
       { q: "Jenis kerusakan apa yang dapat diperbaiki?", a: "Kerusakan pada struktur berkas: indeks objek (tabel referensi silang) yang hilang atau salah, trailer yang hilang, sampah sebelum awal, atau daftar halaman yang rusak. Jika berkas terpotong, halaman yang tersimpan sebelum pemotongan dapat dipulihkan." },
       { q: "Apa yang tidak dapat dipulihkan?", a: "Konten yang tidak ada lagi dalam berkas. Halaman, gambar, atau font yang hilang atau rusak tidak dapat dikembalikan, dan beberapa berkas tidak dapat diselamatkan. Alat memberi tahu Anda berapa halaman yang dipertahankan dan menyatakannya ketika tidak dapat menghasilkan berkas yang dapat digunakan; alat tidak pernah menawarkan unduhan yang tidak dibuatnya." },
       { q: "Bagaimana jika PDF saya terbuka dengan baik?", a: "Maka tidak ada yang perlu diperbaiki. Alat menyampaikannya dan menawarkan salinan berkas yang sudah dibersihkan." },
-      { q: "Apakah berkas saya diunggah ke suatu tempat?", a: "Tidak. Berkas dibaca dan dikonversi oleh peramban Anda. Alat ini tidak mengirimkannya ke server." },
     ],
     limits: [
       "Maksimum 100 MB per PDF. PDF yang dilindungi kata sandi harus dibuka kuncinya terlebih dahulu.",
@@ -1484,25 +1445,26 @@ const tools: ToolTextMap = {
   },
   "pdf-to-pdfa": {
     name: "PDF ke PDF/A",
-    description: "Siapkan PDF sebagai PDF/A-2b untuk pengarsipan jangka panjang, dengan mempertahankan teks atau mengubah halaman menjadi gambar.",
-    metaDescription: "PDF ke PDF/A online: siapkan PDF sebagai PDF/A-2b untuk pengarsipan, lengkap dengan identifikasi PDF/A, metadata, dan profil warna. Mempertahankan teks bila memungkinkan. Berjalan di browser Anda.",
+    description: "Siapkan PDF sebagai PDF/A (1b, 2b, 2u, 3b, 3u, atau 4) untuk pengarsipan, dengan mempertahankan teks atau memakai gambar halaman.",
+    metaDescription: "PDF ke PDF/A online: siapkan PDF sebagai PDF/A-1b, 2b, 2u, 3b, 3u, atau 4 untuk pengarsipan, dengan identifikasi PDF/A, metadata, dan profil warna. Mempertahankan teks bila memungkinkan. Berjalan di peramban Anda.",
     steps: [
-      "Pilih PDF. File yang dilindungi kata sandi harus dibuka kuncinya terlebih dahulu.",
-      "Pilih cara mengonversi: pertahankan teks dan font, atau ubah halaman menjadi gambar.",
-      "Konversi, baca yang telah dilakukan, lalu unduh file PDF/A.",
+      "Pilih sebuah PDF. File yang dilindungi kata sandi harus dibuka kuncinya terlebih dahulu.",
+      "Pilih versi PDF/A, lalu cara mengonversi: pertahankan teks dan font, atau ubah halaman menjadi gambar.",
+      "Konversi, baca apa yang dilakukan, dan unduh file PDF/A.",
     ],
     faq: [
-      { q: "Apakah hasilnya file PDF/A bersertifikat?", a: "Tidak. Kitwell menyiapkan PDF Anda sebagai PDF/A-2b, tingkat dasar untuk pengarsipan, dan memeriksa pekerjaannya sendiri berdasarkan aturan yang diterapkannya. Alat ini tidak menyertakan validator PDF/A lengkap. Jika Anda harus membuktikan kepatuhan, periksa file dengan validator seperti veraPDF." },
-      { q: "Apa perbedaan kedua cara mengonversi?", a: "“Pertahankan teks dan font” hanya mengubah struktur dan metadata file, sehingga teks tetap bisa dipilih. Ini hanya berfungsi jika semua font tertanam dan file tidak memakai warna CMYK. “Ubah halaman menjadi gambar” merender setiap halaman sebagai gambar dan membangun PDF/A baru dari gambar-gambar itu. Ini selalu berfungsi, tetapi teks tidak bisa dipilih lagi dan file menjadi lebih besar." },
-      { q: "Mengapa PDF saya ditolak ketika saya memilih mempertahankan teks?", a: "PDF/A mengharuskan setiap font tertanam di dalam file, dan tidak mengizinkan warna CMYK tanpa profil CMYK, kompresi LZW, atau anotasi tanpa tampilan. Hal ini tidak bisa diperbaiki tanpa mengubah halaman, sehingga alat ini mendaftar temuannya alih-alih berpura-pura menghasilkan sesuatu. Anda tetap bisa memakai mode gambar." },
-      { q: "Apa yang diubah alat ini pada file?", a: "Alat ini menambahkan identifikasi PDF/A dan metadata XMP, profil warna sRGB sebagai kondisi keluaran, dan pengenal file. Alat ini menghapus JavaScript, aksi terlarang, lampiran, informasi dokumen tambahan, dan pengaturan anotasi yang tidak diizinkan PDF/A." },
-      { q: "Apakah file saya diunggah ke mana pun?", a: "Tidak. File dibaca dan dikonversi oleh browser Anda. Alat ini tidak mengirimkannya ke server mana pun." },
+      { q: "Apakah hasilnya file PDF/A bersertifikat?", a: "Tidak. Kitwell menyiapkan PDF Anda dalam versi PDF/A yang Anda pilih dan memeriksa pekerjaannya sendiri terhadap aturan yang diterapkannya. File uji yang dikonversi dengan cara ini lolos validator veraPDF, tetapi alat di peramban itu sendiri tidak menyertakan validator PDF/A lengkap. Jika Anda harus membuktikan kepatuhan, periksa file Anda dengan validator seperti veraPDF." },
+      { q: "Versi PDF/A mana yang sebaiknya saya pilih?", a: "PDF/A-2b adalah yang paling luas diterima dan menjadi bawaan. PDF/A-1b paling lama dan paling ketat: tidak mengizinkan transparansi maupun lapisan. Versi “u” (2u, 3u) juga menjamin teks dapat disalin dengan andal, sehingga mewajibkan setiap font memiliki pemetaan teks. PDF/A-3b memiliki aturan yang sama dengan 2b, dan PDF/A-4 paling baru, berbasis PDF 2.0. Tingkat “a” (1a, 2a, 3a) memerlukan struktur dokumen bertag yang tidak dapat dibuat otomatis, dan 4e serta 4f untuk 3D dan file terlampir, sehingga tidak ditawarkan." },
+      { q: "Apa perbedaan kedua cara mengonversi?", a: "“Pertahankan teks dan font” hanya mengubah struktur dan metadata file, sehingga teks tetap dapat dipilih. Cara ini hanya berhasil bila setiap font tertanam dan file tidak memakai warna CMYK. “Ubah halaman menjadi gambar” merender setiap halaman sebagai gambar dan membangun PDF/A baru darinya. Cara ini selalu berhasil, tetapi teks tidak dapat dipilih lagi dan file menjadi lebih besar." },
+      { q: "Mengapa PDF saya ditolak saat saya memilih mempertahankan teks?", a: "PDF/A mewajibkan setiap font tertanam di dalam file, dan tidak mengizinkan warna CMYK tanpa profil CMYK, kompresi LZW, atau anotasi tanpa tampilan. PDF/A-1b juga menolak transparansi, lapisan, dan gambar JPEG 2000, dan versi “u” serta PDF/A-4 membutuhkan pemetaan teks untuk setiap font. Hal-hal ini tidak dapat diperbaiki tanpa mengubah halaman, jadi alat ini mendaftar temuannya alih-alih memalsukan hasil. Anda tetap dapat memakai mode gambar." },
+      { q: "Apa yang diubah alat ini pada file?", a: "Alat ini menambahkan identifikasi PDF/A dan metadata XMP, profil warna sRGB sebagai tujuan keluaran, dan pengenal file. Alat ini menghapus JavaScript, tindakan terlarang, lampiran, informasi dokumen tambahan, dan pengaturan anotasi yang tidak diizinkan PDF/A." },
     ],
     limits: [
-      "Maksimum 100 MB per PDF. PDF yang dilindungi kata sandi harus dibuka kuncinya terlebih dahulu, karena file PDF/A tidak boleh dienkripsi.",
-      "“Pertahankan teks dan font” hanya berfungsi jika semua font tertanam dan file tidak memiliki warna CMYK atau kompresi LZW.",
-      "Mengubah halaman menjadi gambar dibatasi hingga 200 halaman. Teks tidak bisa dipilih lagi dan file menjadi lebih besar.",
-      "Hasilnya adalah PDF/A-2b yang disiapkan Kitwell dan diperiksa berdasarkan aturan yang diterapkannya; belum divalidasi oleh validator PDF/A lengkap.",
+      "Maksimal 100 MB per PDF. PDF yang dilindungi kata sandi harus dibuka kuncinya terlebih dahulu, karena file PDF/A tidak boleh terenkripsi.",
+      "“Pertahankan teks dan font” hanya berhasil bila setiap font tertanam dan file tidak memiliki warna CMYK atau kompresi LZW.",
+      "Mengubah halaman menjadi gambar dibatasi hingga 200 halaman. Teks tidak lagi dapat dipilih dan file menjadi lebih besar.",
+      "Hasilnya disiapkan oleh Kitwell dan diperiksa terhadap aturan yang diterapkannya; hasil tidak divalidasi oleh validator PDF/A lengkap di peramban Anda.",
+      "Versi yang tersedia: PDF/A-1b, 2b, 2u, 3b, 3u, dan 4. Tingkat “a” (PDF bertag) serta 4e/4f tidak ditawarkan.",
     ],
   },
 };

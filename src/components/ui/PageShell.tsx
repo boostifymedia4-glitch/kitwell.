@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import { useI18n } from '@/i18n';
 import { usePageMeta } from '@/i18n/usePageMeta';
 import { Seo } from '../Seo';
 import { Breadcrumbs } from './Breadcrumbs';
@@ -28,18 +27,7 @@ export function Placeholder({ children }: { children: ReactNode }) {
   return <span className="placeholder">[{children}]</span>;
 }
 
-/** The body of a legal page. Outside English a note says the text is a translation and the English version is authoritative. */
+/** The body of a legal page. */
 export function LegalBody({ children }: { children: ReactNode }) {
-  const { t, lang } = useI18n();
-  return (
-    <>
-      {lang.code !== 'en' && (
-        <p className="note" role="note">
-          {t('legal.translationNote')}
-        </p>
-      )}
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }
-

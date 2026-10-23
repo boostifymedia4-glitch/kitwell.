@@ -30,7 +30,7 @@ export default {
   'imageCompress.maxSize.800': '800 px',
   'imageCompress.background': 'স্বচ্ছতার জন্য ব্যাকগ্রাউন্ড',
   'imageCompress.noteSmaller': '{before} → {after} (-{saved}%)',
-  'imageCompress.noteLarger': '{before} → {after} (বড় হয়েছে; মূলটি রাখুন বা মান কমান)',
+  "imageCompress.noteLarger": "{before} → {after} (ছোট হয়নি, তাই মূল ফাইল রাখা হয়েছে)",
   'imageResize.action': 'ছবি রিসাইজ করুন',
   'imageResize.resizeBy': 'রিসাইজের মাপকাঠি',
   'imageResize.pixels': 'পিক্সেল',

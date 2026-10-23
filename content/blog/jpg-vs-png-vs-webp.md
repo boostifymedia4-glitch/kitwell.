@@ -52,7 +52,7 @@ Strengths: smaller pages and faster loading, with transparency when you need it.
 Kitwell has a converter for each common pair. All of them work in your browser, so your pictures are not uploaded, and they accept up to 20 files of 25 MB each per batch:
 
 - <tool_jpg_to_png>JPG to PNG</tool_jpg_to_png>: when an application needs PNG, or you want to stop further quality loss from re-saving.
-- <tool_png_to_jpg>PNG to JPG</tool_png_to_jpg>: to make a photo or screenshot smaller, with adjustable quality.
+- <tool_png_to_jpg>PNG to JPG</tool_png_to_jpg>: to make a photo or screenshot smaller.
 - <tool_jpg_to_webp>JPG to WebP</tool_jpg_to_webp> and <tool_png_to_webp>PNG to WebP</tool_png_to_webp>: for smaller web images.
 - <tool_webp_to_jpg>WebP to JPG</tool_webp_to_jpg> and <tool_webp_to_png>WebP to PNG</tool_webp_to_png>: when a site or program does not accept WebP.
 
@@ -61,7 +61,7 @@ Kitwell has a converter for each common pair. All of them work in your browser, 
 Converting changes how the picture is stored, and each direction has a consequence:
 
 - JPG to PNG: the file usually becomes larger, and the picture looks identical. It does not recover detail that the JPG compression already removed. PNG simply stops further loss.
-- PNG to JPG: the file becomes smaller, but transparent areas must be filled with a solid colour, because JPG cannot store transparency. You choose that colour. Fine detail can soften slightly at lower quality.
+- PNG to JPG: the file becomes smaller, but transparent areas are filled with white, because JPG cannot store transparency. Fine detail can soften slightly.
 - Anything to WebP: smaller file, same look at a sensible quality. Transparency is kept when converting from PNG.
 - WebP to JPG or PNG: for compatibility. Going to JPG flattens transparency onto a colour; going to PNG keeps it.
 
@@ -94,7 +94,7 @@ Q: Does converting JPG to PNG improve the quality?
 A: No. The picture looks the same. PNG just prevents further loss when you save it again, and the file becomes larger.
 
 Q: Will my transparent PNG keep its transparency as a JPG?
-A: No. JPG cannot store transparency, so transparent areas are filled with a solid background colour that you choose.
+A: No. JPG cannot store transparency, so transparent areas are filled with white.
 
 Q: Are my pictures uploaded when I convert them?
 A: No. The converters run in your browser, so the files stay on your device.

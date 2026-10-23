@@ -32,7 +32,7 @@ export default {
   'imageCompress.maxSize.800': '800 px',
   'imageCompress.background': 'شفافیت کے لیے پس منظر',
   'imageCompress.noteSmaller': '{before} → {after} (-{saved}%)',
-  'imageCompress.noteLarger': '{before} → {after} (بڑی ہو گئی؛ اصل رکھیں یا معیار کم کریں)',
+  "imageCompress.noteLarger": "{before} → {after} (چھوٹی نہیں ہوئی، اس لیے اصل فائل رکھی گئی)",
 
   'imageResize.action': 'تصاویر ری سائز کریں',
   'imageResize.resizeBy': 'ری سائز کا طریقہ',

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { ErrorMessage, ProcessingState, RejectionList } from '@/components/tool/Feedback';
 import { FileList } from '@/components/tool/FileList';
-import { DownloadButton, ResetButton, ResultPanel } from '@/components/tool/Results';
+import { PdfOutput, ResetButton, ResultPanel } from '@/components/tool/Results';
 import { UploadDropzone } from '@/components/tool/UploadDropzone';
 import { Icon } from '@/components/Icon';
 import { useI18n } from '@/i18n';
@@ -73,10 +73,9 @@ const PdfMerge: ToolImplementation = () => {
       {task.state.status === 'done' && (
         <ResultPanel title={t('pdfMerge.ready')}>
           <p className="muted">{formatBytes(task.state.result.blob.size)}</p>
-          <div className="toolbar">
-            <DownloadButton blob={task.state.result.blob} name="merged.pdf" label={t('pdfMerge.download')} />
-            <ResetButton onClick={reset} />
-          </div>
+          <PdfOutput blob={task.state.result.blob} name="merged.pdf">
+<ResetButton onClick={reset} />
+</PdfOutput>
         </ResultPanel>
       )}
     </div>

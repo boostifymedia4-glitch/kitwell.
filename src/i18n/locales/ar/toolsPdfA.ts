@@ -30,7 +30,6 @@ export default {
   'imagesToPdf.summary.few': '{count} صفحات · {size}',
   'imagesToPdf.summary.many': '{count} صفحة · {size}',
   'imagesToPdf.summary.other': '{count} صفحة · {size}',
-  'imagesToPdf.download': 'تنزيل images.pdf',
 
   'pdfMerge.merging': 'جارٍ الدمج',
   'pdfMerge.addMore': 'إضافة ملفات PDF أخرى',
@@ -40,7 +39,6 @@ export default {
   'pdfMerge.clear': 'مسح الكل',
   'pdfMerge.processing': 'جارٍ دمج ملفات PDF…',
   'pdfMerge.ready': 'ملف PDF المدموج جاهز',
-  'pdfMerge.download': 'تنزيل merged.pdf',
 
   'pdfSplit.tooMany': 'سيؤدي ذلك إلى إنشاء أكثر من 500 ملف. استخدم عددًا أكبر من الصفحات لكل ملف.',
   'pdfSplit.splitting': 'جارٍ التقسيم',
@@ -120,7 +118,6 @@ export default {
   'pdfOrganize.removePage': 'حذف الصفحة {n}',
   'pdfOrganize.building': 'جارٍ إنشاء PDF…',
   'pdfOrganize.ready': 'ملف PDF جاهز',
-  'pdfOrganize.download': 'تنزيل {name}',
 
   'pdfPageNumbers.pos.bottom-center': 'أسفل الوسط',
   'pdfPageNumbers.pos.bottom-right': 'أسفل اليمين',

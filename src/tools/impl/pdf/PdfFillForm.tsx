@@ -3,6 +3,7 @@ import { ErrorMessage, Notice, ProcessingState } from '@/components/tool/Feedbac
 import { CheckField } from '@/components/tool/Fields';
 import { PdfSource } from '@/components/tool/PdfSource';
 import { PdfResult } from '@/components/tool/Results';
+import { PdfFlatText } from './PdfFlatText';
 import { Icon } from '@/components/Icon';
 import { baseName, errorMessage } from '@/lib/format';
 import { fieldIsFillable, fillForm, readFormFields, type FieldValue, type FormField, type FormInfo } from '@/lib/pdfForms';
@@ -165,10 +166,12 @@ const PdfFillForm: ToolImplementation = () => {
         if (!info) return <ProcessingState label={t('pdfFillForm.looking')} />;
         if (info.fields.length === 0) {
           return (
-            <Notice tone="warn">
-              <strong>{t('pdfFillForm.noFields')}</strong>{' '}
-              {info.xfa ? t('pdfFillForm.xfaOnly') : t('pdfFillForm.flatDocument')}
-            </Notice>
+            <>
+              <Notice>
+                <strong>{t('pdfFillForm.noFields')}</strong> {info.xfa ? t('pdfFillForm.xfaOnly') : t('pdfFillForm.flatDocument')}
+              </Notice>
+              <PdfFlatText bytes={ready.bytes} name={ready.file.name} pageCount={ready.pageCount} onReset={reset} />
+            </>
           );
         }
         const title = (page: number | undefined) => (page ? t('pdfFillForm.page', { page }) : t('pdfFillForm.otherFields'));

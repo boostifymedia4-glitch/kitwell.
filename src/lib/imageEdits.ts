@@ -328,7 +328,11 @@ export async function rasterizeSvg(file: Blob, size: SvgSize, out: { mime: Outpu
     const img = new Image();
     img.src = url;
     try {
-      await img.decode();
+      // onload instead of decode(): decode() never settles while the tab is in the background
+      await new Promise<void>((resolve, reject) => {
+        img.onload = () => resolve();
+        img.onerror = () => reject(new Error('image could not be decoded'));
+      });
     } catch {
       throw new ImageEditError(tr('err.image.svgFailed'));
     }

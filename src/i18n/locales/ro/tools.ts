@@ -13,7 +13,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Se îmbunătățește calitatea prin conversia JPG în PNG?', a: 'Nu. JPG pierde informație la salvare, iar detaliile eliminate atunci nu mai pot fi recuperate. PNG doar păstrează pixelii actuali, fără alte pierderi, ceea ce este util pentru editare sau pentru lucrul cu transparența.' },
       { q: 'De ce este PNG-ul mai mare decât JPG-ul?', a: 'PNG este fără pierderi și stochează de obicei fotografiile mai puțin eficient decât JPG. Folosește JPG sau WebP atunci când dimensiunea fișierului contează mai mult decât pixelii exacți.' },
-      { q: 'Imaginile mele sunt încărcate pe un server?', a: 'Nu. Imaginea este decodificată și recodificată de browser cu ajutorul API-ului Canvas. Instrumentul nu trimite fișierul nicăieri.' },
     ],
     limits: [
       'Fișierele GIF sau WebP animate sunt convertite folosind doar primul cadru.',
@@ -21,87 +20,82 @@ const tools: ToolTextMap = {
       'Metadatele EXIF și profilurile de culoare încorporate nu sunt păstrate.',
     ],
   },
-  'png-to-jpg': {
-    name: 'PNG în JPG',
-    description: 'Transformă imaginile PNG în fișiere JPG mai mici, cu calitate reglabilă.',
-    metaDescription: 'Convertește PNG în JPG online, gratuit. Alege calitatea și culoarea de fundal pentru imaginile transparente. Procesare în browser.',
+  "png-to-jpg": {
+    name: "PNG în JPG",
+    description: "Transformă imaginile PNG în fișiere JPG mai mici dintr-un clic.",
+    metaDescription: "Convertește PNG în JPG online gratuit. Zonele transparente sunt umplute cu alb. Procesat în browserul tău.",
     steps: [
-      'Adaugă fișierele PNG.',
-      'Setează calitatea JPG și culoarea de fundal folosită pentru zonele transparente.',
-      'Apasă Convertește și descarcă rezultatele.',
+      "Adaugă fișierele PNG.",
+      "Zonele transparente sunt umplute cu alb, deoarece JPG nu poate stoca transparența.",
+      "Apasă Convertește și descarcă rezultatele.",
     ],
     faq: [
-      { q: 'Ce se întâmplă cu zonele transparente?', a: 'JPG nu acceptă transparența, așa că pixelii transparenți sunt umpluți cu culoarea de fundal aleasă (implicit alb).' },
-      { q: 'Ce setare de calitate să folosesc?', a: 'Între 80 și 90 este un echilibru bun pentru majoritatea imaginilor. Sub aproximativ 60, artefactele de compresie devin vizibile pe text și pe marginile clare.' },
-      { q: 'Imaginile mele sunt încărcate pe un server?', a: 'Nu. Imaginea este decodificată și recodificată de browser cu ajutorul API-ului Canvas. Instrumentul nu trimite fișierul nicăieri.' },
+      { q: "Ce se întâmplă cu zonele transparente?", a: "JPG nu are transparență, așa că pixelii transparenți sunt umpluți cu alb." },
     ],
     limits: [
-      'Fișierele GIF sau WebP animate sunt convertite folosind doar primul cadru.',
-      'Maximum 25 MB per fișier și 20 de fișiere per lot, pentru ca browserul să rămână fluid.',
-      'Metadatele EXIF și profilurile de culoare încorporate nu sunt păstrate.',
-      'Transparența este aplatizată pe o culoare uniformă, deoarece JPG nu o poate stoca.',
+      "Fișierele GIF sau WebP animate sunt convertite folosind doar primul cadru.",
+      "Maximum 25 MB per fișier și 20 de fișiere per lot, pentru ca browserul să rămână receptiv.",
+      "Metadatele EXIF și profilurile de culoare încorporate nu sunt păstrate.",
+      "Zonele transparente sunt umplute cu alb deoarece JPG nu poate stoca transparența.",
     ],
   },
-  'jpg-to-webp': {
-    name: 'JPG în WebP',
-    description: 'Convertește fotografii JPG în WebP modern, pentru fișiere mai mici și pagini mai rapide.',
-    metaDescription: 'Convertește JPG în WebP online, gratuit. Micșorează fotografiile pentru web, cu calitate reglabilă, procesate local în browser.',
+  "jpg-to-webp": {
+    name: "JPG în WebP",
+    description: "Convertește fotografiile JPG în WebP modern pentru fișiere mai mici și pagini mai rapide.",
+    metaDescription: "Convertește JPG în WebP online gratuit. Micșorează fotografiile pentru web cu o calitate fixă și echilibrată, procesate în browserul tău.",
     steps: [
-      'Adaugă fișierele JPG.',
-      'Alege calitatea WebP (80 este o valoare implicită rezonabilă).',
-      'Convertește și descarcă.',
+      "Adaugă fișierele JPG.",
+      "Nu e nimic de setat: instrumentul folosește o calitate echilibrată pentru fișierul WebP.",
+      "Convertește și descarcă.",
     ],
     faq: [
-      { q: 'Este WebP mai mic decât JPG?', a: 'De obicei cu 20–35% mai mic la o calitate vizuală similară, deși rezultatul depinde de imagine.' },
-      { q: 'Toate browserele acceptă WebP?', a: 'Toate browserele principale actuale pot afișa WebP. Codificarea WebP în browser este acceptată în Chrome, Edge, Firefox și în versiunile recente de Safari; dacă al tău nu o poate face, instrumentul te anunță în loc să producă un fișier greșit.' },
-      { q: 'Imaginile mele sunt încărcate pe un server?', a: 'Nu. Imaginea este decodificată și recodificată de browser cu ajutorul API-ului Canvas. Instrumentul nu trimite fișierul nicăieri.' },
+      { q: "Este WebP mai mic decât JPG?", a: "De obicei cu 20–35% mai mic la o calitate vizuală similară, deși rezultatul depinde de imagine." },
+      { q: "Acceptă orice browser WebP?", a: "Toate browserele principale actuale pot afișa WebP. Codarea WebP în browser funcționează în Chrome, Edge și Firefox; Safari nu poate crea fișiere WebP, iar în acest caz instrumentul vă anunță în loc să producă un fișier greșit." },
     ],
     limits: [
-      'Fișierele GIF sau WebP animate sunt convertite folosind doar primul cadru.',
-      'Maximum 25 MB per fișier și 20 de fișiere per lot, pentru ca browserul să rămână fluid.',
-      'Metadatele EXIF și profilurile de culoare încorporate nu sunt păstrate.',
-      'Browserul trebuie să accepte codificarea WebP; browserele fără suport afișează o eroare.',
+      "Fișierele GIF sau WebP animate sunt convertite folosind doar primul cadru.",
+      "Maximum 25 MB per fișier și 20 de fișiere per lot, pentru ca browserul să rămână receptiv.",
+      "Metadatele EXIF și profilurile de culoare încorporate nu sunt păstrate.",
+      "Browserul tău trebuie să accepte codificarea WebP; browserele neacceptate afișează o eroare.",
     ],
   },
-  'png-to-webp': {
-    name: 'PNG în WebP',
-    description: 'Convertește imagini PNG în WebP, păstrând transparența, la o fracțiune din dimensiune.',
-    metaDescription: 'Convertește PNG în WebP online, gratuit. Păstrează transparența, reduce dimensiunea fișierului și rulează integral în browser.',
+  "png-to-webp": {
+    name: "PNG în WebP",
+    description: "Convertește imaginile PNG în WebP și păstrează transparența la o fracțiune din dimensiune.",
+    metaDescription: "Convertește PNG în WebP online gratuit. Păstrează transparența, reduce dimensiunea fișierului și rulează complet în browserul tău.",
     steps: [
-      'Adaugă fișierele PNG.',
-      'Alege calitatea WebP.',
-      'Convertește și descarcă.',
+      "Adaugă fișierele PNG.",
+      "Nu e nimic de setat: instrumentul folosește o calitate echilibrată pentru fișierul WebP.",
+      "Convertește și descarcă.",
     ],
     faq: [
-      { q: 'Se păstrează transparența?', a: 'Da. WebP acceptă canal alfa, așa că PNG-urile transparente rămân transparente.' },
-      { q: 'Pot obține un rezultat fără pierderi?', a: 'Setează calitatea la 100 pentru cea mai mare fidelitate. Browserele codifică WebP cu pierderi, așa că folosește PNG dacă ai nevoie de o copie identică matematic.' },
-      { q: 'Imaginile mele sunt încărcate pe un server?', a: 'Nu. Imaginea este decodificată și recodificată de browser cu ajutorul API-ului Canvas. Instrumentul nu trimite fișierul nicăieri.' },
+      { q: "Este păstrată transparența?", a: "Da. WebP acceptă un canal alfa, așa că PNG-urile transparente rămân transparente." },
+      { q: "Pot obține un rezultat fără pierderi?", a: "Instrumentul codifică WebP cu o calitate înaltă și echilibrată. Browserele codifică WebP cu pierderi, așa că folosește PNG dacă ai nevoie de o copie exactă matematic." },
     ],
     limits: [
-      'Fișierele GIF sau WebP animate sunt convertite folosind doar primul cadru.',
-      'Maximum 25 MB per fișier și 20 de fișiere per lot, pentru ca browserul să rămână fluid.',
-      'Metadatele EXIF și profilurile de culoare încorporate nu sunt păstrate.',
-      'Browserul trebuie să accepte codificarea WebP; browserele fără suport afișează o eroare.',
+      "Fișierele GIF sau WebP animate sunt convertite folosind doar primul cadru.",
+      "Maximum 25 MB per fișier și 20 de fișiere per lot, pentru ca browserul să rămână receptiv.",
+      "Metadatele EXIF și profilurile de culoare încorporate nu sunt păstrate.",
+      "Browserul tău trebuie să accepte codificarea WebP; browserele neacceptate afișează o eroare.",
     ],
   },
-  'webp-to-jpg': {
-    name: 'WebP în JPG',
-    description: 'Convertește imagini WebP în fișiere JPG compatibile aproape peste tot.',
-    metaDescription: 'Convertește WebP în JPG online, gratuit. Fă imaginile WebP utilizabile peste tot, convertite local în browserul tău.',
+  "webp-to-jpg": {
+    name: "WebP în JPG",
+    description: "Convertește imaginile WebP în fișiere JPG larg compatibile.",
+    metaDescription: "Convertește WebP în JPG online gratuit. Fă imaginile WebP să funcționeze oriunde, convertite local în browserul tău.",
     steps: [
-      'Adaugă fișierele WebP.',
-      'Setează calitatea și culoarea de fundal pentru zonele transparente.',
-      'Convertește și descarcă.',
+      "Adaugă fișierele WebP.",
+      "Zonele transparente sunt umplute cu alb, deoarece JPG nu poate stoca transparența.",
+      "Convertește și descarcă.",
     ],
     faq: [
-      { q: 'De ce să convertesc WebP în JPG?', a: 'Unele programe mai vechi, clienți de e-mail și formulare de încărcare resping încă WebP. JPG este acceptat aproape peste tot.' },
-      { q: 'Imaginile mele sunt încărcate pe un server?', a: 'Nu. Imaginea este decodificată și recodificată de browser cu ajutorul API-ului Canvas. Instrumentul nu trimite fișierul nicăieri.' },
+      { q: "De ce să convertesc WebP în JPG?", a: "Unele programe mai vechi, clienți de e-mail și formulare de încărcare încă resping WebP. JPG este acceptat aproape peste tot." },
     ],
     limits: [
-      'Fișierele GIF sau WebP animate sunt convertite folosind doar primul cadru.',
-      'Maximum 25 MB per fișier și 20 de fișiere per lot, pentru ca browserul să rămână fluid.',
-      'Metadatele EXIF și profilurile de culoare încorporate nu sunt păstrate.',
-      'Transparența este aplatizată pe o culoare uniformă, deoarece JPG nu o poate stoca.',
+      "Fișierele GIF sau WebP animate sunt convertite folosind doar primul cadru.",
+      "Maximum 25 MB per fișier și 20 de fișiere per lot, pentru ca browserul să rămână receptiv.",
+      "Metadatele EXIF și profilurile de culoare încorporate nu sunt păstrate.",
+      "Zonele transparente sunt umplute cu alb deoarece JPG nu poate stoca transparența.",
     ],
   },
   'webp-to-png': {
@@ -115,7 +109,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Se păstrează transparența?', a: 'Da. PNG acceptă transparența, așa că valorile alfa din WebP sunt preluate.' },
-      { q: 'Imaginile mele sunt încărcate pe un server?', a: 'Nu. Imaginea este decodificată și recodificată de browser cu ajutorul API-ului Canvas. Instrumentul nu trimite fișierul nicăieri.' },
     ],
     limits: [
       'Fișierele GIF sau WebP animate sunt convertite folosind doar primul cadru.',
@@ -123,25 +116,25 @@ const tools: ToolTextMap = {
       'Metadatele EXIF și profilurile de culoare încorporate nu sunt păstrate.',
     ],
   },
-  'image-compressor': {
-    name: 'Compresor de imagini',
-    description: 'Redu dimensiunea imaginilor cu calitate reglabilă și vezi exact cât economisești.',
-    metaDescription: 'Comprimă imagini JPG, PNG și WebP online, gratuit. Ajustează calitatea, limitează opțional dimensiunile și compară mărimile. Rulează în browser.',
+  "image-compressor": {
+    name: "Comprimă imaginea",
+    description: "Reduce dimensiunea fișierului imaginii și vezi economia exactă.",
+    metaDescription: "Comprimă imagini JPG, PNG și WebP online gratuit. Limitează opțional dimensiunile și compară dimensiunile fișierelor. Rulează în browserul tău.",
     steps: [
-      'Adaugă imaginile.',
-      'Alege formatul de ieșire și calitatea și, opțional, o lățime sau o înălțime maximă.',
-      'Comprimă, compară dimensiunile dinainte și de după, apoi descarcă.',
+      "Adaugă imaginile.",
+      "Alege un format de ieșire și, opțional, o lățime sau înălțime maximă.",
+      "Comprimă, compară dimensiunile înainte și după, apoi descarcă.",
     ],
     faq: [
-      { q: 'Cum reduce compresorul dimensiunea?', a: 'Recodifică imaginea la calitatea aleasă și o poate și micșora. Ieșirea PNG este fără pierderi, așa că se reduce doar dacă micșorezi și dimensiunile.' },
-      { q: 'Ce se întâmplă dacă rezultatul este mai mare decât originalul?', a: 'Se poate întâmpla la fișierele deja optimizate. Instrumentul te avertizează, ca să poți păstra originalul.' },
-      { q: 'Se păstrează datele EXIF sau de locație?', a: 'Nu. Recodificarea printr-un canvas elimină metadatele EXIF, cum ar fi modelul aparatului și locația GPS, ceea ce este adesea exact ce îți dorești înainte de a trimite o fotografie. Nici profilurile de culoare nu sunt păstrate.' },
+      { q: "Cum reduce compresorul dimensiunea?", a: "Recodifică imaginea cu o calitate fixă și echilibrată și o poate și micșora. Ieșirea PNG este fără pierderi, așa că se micșorează doar dacă reduci și dimensiunile." },
+      { q: "Ce se întâmplă dacă rezultatul este mai mare decât originalul?", a: "Se poate întâmpla cu fișiere deja optimizate. Instrumentul păstrează atunci fișierul original neschimbat și îți spune asta." },
+      { q: "Se păstrează datele EXIF sau de locație?", a: "Nu. Recodificarea printr-un canvas elimină metadatele EXIF, precum modelul camerei și locația GPS, ceea ce este adesea dorit înainte de a partaja o fotografie. Nici profilurile de culoare nu sunt păstrate." },
     ],
     limits: [
-      'Fișierele GIF sau WebP animate sunt convertite folosind doar primul cadru.',
-      'Maximum 25 MB per fișier și 20 de fișiere per lot, pentru ca browserul să rămână fluid.',
-      'Metadatele EXIF și profilurile de culoare încorporate nu sunt păstrate.',
-      'Cele mai bune rezultate se obțin cu ieșire JPG sau WebP; ieșirea PNG este fără pierderi și este posibil să nu se micșoreze.',
+      "Fișierele GIF sau WebP animate sunt convertite folosind doar primul cadru.",
+      "Maximum 25 MB per fișier și 20 de fișiere per lot, pentru ca browserul să rămână receptiv.",
+      "Metadatele EXIF și profilurile de culoare încorporate nu sunt păstrate.",
+      "Cele mai bune rezultate vin din ieșirea JPG sau WebP; ieșirea PNG este fără pierderi și poate să nu se micșoreze.",
     ],
   },
   'image-resizer': {
@@ -165,23 +158,22 @@ const tools: ToolTextMap = {
       'Ieșirea este plafonată la 16.000 px pe latură.',
     ],
   },
-  'image-cropper': {
-    name: 'Decupare imagine',
-    description: 'Decupează o imagine la o regiune exactă sau la un raport de aspect fix, cu previzualizare în timp real.',
-    metaDescription: 'Decupează imagini online, gratuit. Alege un raport de aspect fix sau valori exacte în pixeli, cu previzualizare în timp real. Procesare în browser.',
+  "image-cropper": {
+    name: "Decupează imaginea",
+    description: "Decupează o imagine la o zonă exactă sau la un raport de aspect fix, cu previzualizare în timp real.",
+    metaDescription: "Decupează imagini online gratuit. Alege un raport de aspect fix sau setează valori exacte în pixeli, cu previzualizare în timp real. Procesat în browserul tău.",
     steps: [
-      'Adaugă o imagine.',
-      'Alege un raport de aspect sau trage cadrul de decupare, apoi ajustează fin poziția și dimensiunea din câmpurile numerice.',
-      'Apasă Decupează și descarcă.',
+      "Adaugă o imagine.",
+      "Alege un raport de aspect sau trage caseta de decupare, apoi ajustează fin poziția și dimensiunea cu câmpurile numerice.",
+      "Apasă Decupează și descarcă.",
     ],
     faq: [
-      { q: 'Decuparea reduce calitatea?', a: 'Decuparea păstrează pixelii originali. Calitatea se schimbă doar dacă salvezi ca JPG sau WebP cu o setare de calitate mai mică.' },
-      { q: 'Imaginile mele sunt încărcate pe un server?', a: 'Nu. Imaginea este decodificată și recodificată de browser cu ajutorul API-ului Canvas. Instrumentul nu trimite fișierul nicăieri.' },
+      { q: "Reduce decuparea calitatea?", a: "Decuparea păstrează pixelii originali. Rezultatele JPG și WebP sunt salvate la o calitate înaltă fixă, așa că la utilizarea normală nu se vede nicio pierdere." },
     ],
     limits: [
-      'O singură imagine odată.',
-      'Maximum 25 MB per fișier.',
-      'Imaginile animate folosesc primul cadru.',
+      "O singură imagine odată.",
+      "Maximum 25 MB per fișier.",
+      "Imaginile animate folosesc primul cadru.",
     ],
   },
   'image-rotator': {
@@ -195,7 +187,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Ce se întâmplă la rotirile cu unghiuri care nu sunt drepte?', a: 'Canvasul se mărește pentru a cuprinde imaginea rotită. La ieșirea JPG, colțurile goale se umplu cu fundalul ales; PNG și WebP le păstrează transparente.' },
-      { q: 'Imaginile mele sunt încărcate pe un server?', a: 'Nu. Imaginea este decodificată și recodificată de browser cu ajutorul API-ului Canvas. Instrumentul nu trimite fișierul nicăieri.' },
     ],
     limits: [
       'Fișierele GIF sau WebP animate sunt convertite folosind doar primul cadru.',
@@ -214,7 +205,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Care este diferența dintre oglindirea orizontală și cea verticală?', a: 'Oglindirea orizontală inversează stânga cu dreapta, ca într-o oglindă. Oglindirea verticală întoarce imaginea cu susul în jos, față de axa ei orizontală.' },
-      { q: 'Imaginile mele sunt încărcate pe un server?', a: 'Nu. Imaginea este decodificată și recodificată de browser cu ajutorul API-ului Canvas. Instrumentul nu trimite fișierul nicăieri.' },
     ],
     limits: [
       'Fișierele GIF sau WebP animate sunt convertite folosind doar primul cadru.',
@@ -222,25 +212,24 @@ const tools: ToolTextMap = {
       'Metadatele EXIF și profilurile de culoare încorporate nu sunt păstrate.',
     ],
   },
-  'image-format-converter': {
-    name: 'Convertor de format imagine',
-    description: 'Convertește între JPG, PNG și WebP cu un singur instrument flexibil.',
-    metaDescription: 'Convertește imagini între JPG, PNG și WebP online, gratuit. Alege formatul de ieșire și calitatea, procesate local în browser.',
+  "image-format-converter": {
+    name: "Convertește formatul imaginii",
+    description: "Convertește între JPG, PNG și WebP cu un singur instrument flexibil.",
+    metaDescription: "Convertește imagini între JPG, PNG și WebP online gratuit. Alege formatul de ieșire, procesat în browserul tău.",
     steps: [
-      'Adaugă imagini în orice format acceptat.',
-      'Alege formatul de ieșire și calitatea.',
-      'Convertește și descarcă.',
+      "Adaugă imagini în orice format acceptat.",
+      "Alege formatul de ieșire.",
+      "Convertește și descarcă.",
     ],
     faq: [
-      { q: 'Ce formate pot folosi?', a: 'Intrare: JPG, PNG, WebP, GIF, BMP și AVIF, dacă browserul le poate decodifica. Ieșire: JPG, PNG și WebP.' },
-      { q: 'Dar HEIC sau TIFF?', a: 'Browserele nu pot decodifica nativ HEIC sau TIFF, așa că acestea nu sunt încă acceptate.' },
-      { q: 'Imaginile mele sunt încărcate pe un server?', a: 'Nu. Imaginea este decodificată și recodificată de browser cu ajutorul API-ului Canvas. Instrumentul nu trimite fișierul nicăieri.' },
+      { q: "Ce formate pot folosi?", a: "Intrare: JPG, PNG, WebP, GIF, BMP și AVIF dacă browserul tău le poate decoda. Ieșire: JPG, PNG și WebP." },
+      { q: "Dar HEIC sau TIFF?", a: "Browserele nu pot decoda nativ HEIC sau TIFF, așa că acestea nu sunt încă acceptate." },
     ],
     limits: [
-      'Fișierele GIF sau WebP animate sunt convertite folosind doar primul cadru.',
-      'Maximum 25 MB per fișier și 20 de fișiere per lot, pentru ca browserul să rămână fluid.',
-      'Metadatele EXIF și profilurile de culoare încorporate nu sunt păstrate.',
-      'Fișierele HEIC/HEIF, TIFF și RAW nu sunt acceptate.',
+      "Fișierele GIF sau WebP animate sunt convertite folosind doar primul cadru.",
+      "Maximum 25 MB per fișier și 20 de fișiere per lot, pentru ca browserul să rămână receptiv.",
+      "Metadatele EXIF și profilurile de culoare încorporate nu sunt păstrate.",
+      "Fișierele HEIC/HEIF, TIFF și RAW nu sunt acceptate.",
     ],
   },
   'image-to-base64': {
@@ -254,7 +243,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Când să folosesc imagini Base64?', a: 'Pentru pictograme mici în CSS sau în e-mailuri, unde o cerere suplimentară costă mai mult decât creșterea de aproximativ 33% a dimensiunii. Evită-le pentru fotografii mari.' },
-      { q: 'Imaginile mele sunt încărcate pe un server?', a: 'Nu. Imaginea este decodificată și recodificată de browser cu ajutorul API-ului Canvas. Instrumentul nu trimite fișierul nicăieri.' },
     ],
     limits: [
       'Maximum 5 MB per imagine, deoarece textul Base64 devine foarte mare.',
@@ -290,7 +278,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Cum este calculată paleta?', a: 'Imaginea este redusă ca rezoluție, iar culorile sunt grupate în intervale; sunt afișate cele mai frecvente. Este o aproximare a culorilor dominante, nu o listă exhaustivă.' },
-      { q: 'Imaginile mele sunt încărcate pe un server?', a: 'Nu. Imaginea este decodificată și recodificată de browser cu ajutorul API-ului Canvas. Instrumentul nu trimite fișierul nicăieri.' },
     ],
     limits: [
       'O singură imagine odată.',
@@ -331,7 +318,6 @@ const tools: ToolTextMap = {
       { q: 'Imaginea rămâne clară la dimensiuni mari?', a: 'Da. SVG-ul este desenat la dimensiunea pe care o alegi, așa că un export 4× este la fel de clar ca unul 1×.' },
       { q: 'De ce arată SVG-ul meu diferit?', a: 'Browserele nu acceptă toate funcțiile SVG, iar fișierele SVG care depind de fonturi sau imagini externe revin la valorile implicite. Încorporează fonturile și imaginile în SVG pentru cel mai bun rezultat.' },
       { q: 'Este sigur să deschid fișiere SVG aici?', a: 'Da. SVG-ul este desenat ca o imagine, așa că scripturile din el nu rulează.' },
-      { q: 'Imaginile mele sunt încărcate pe un server?', a: 'Nu. Imaginea este decodificată și recodificată de browser cu ajutorul API-ului Canvas. Instrumentul nu trimite fișierul nicăieri.' },
     ],
     limits: [
       'Maximum 25 MB per fișier și 20 de fișiere per lot.',
@@ -395,7 +381,6 @@ const tools: ToolTextMap = {
       { q: 'Pot scana cu camera?', a: 'Încă nu. Acest instrument citește coduri QR din fișiere imagine. Pe telefon, fotografiază codul și alege fotografia aici sau folosește aplicația camerei.' },
       { q: 'Este sigur să deschid linkurile scanate?', a: 'Verifică mai întâi adresa. Linkul complet este afișat, iar de aici pot fi deschise doar linkurile web (http sau https). Linkurile de tip script și de date nu sunt deschise niciodată.' },
       { q: 'De ce nu a fost găsit niciun cod?', a: 'Codul poate fi neclar, tăiat, prea mic sau cu contrast scăzut. Încearcă o imagine mai clară și mai apropiată, care arată tot codul, cu o margine liberă în jurul lui.' },
-      { q: 'Imaginile mele sunt încărcate?', a: 'Nu. Imaginea este citită în browser, iar acest instrument nu o trimite nicăieri.' },
     ],
     limits: [
       'Până la 10 imagini, de câte 25 MB fiecare.',
@@ -415,7 +400,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'De ce este GIF-ul meu atât de mare?', a: 'GIF stochează fiecare cadru ca o imagine limitată la 256 de culori. Mai puține cadre, o lățime mai mică și mai puține culori reduc dimensiunea fișierului. Instrumentul afișează dimensiunea imediat ce GIF-ul este creat.' },
       { q: 'Pot păstra zonele transparente?', a: 'Da, activează „Păstrează zonele transparente” pentru imaginile PNG sau WebP cu transparență. Transparența GIF este activă sau inactivă pentru fiecare pixel, așa că marginile fine devin dure.' },
-      { q: 'Imaginile mele sunt încărcate pe un server?', a: 'Nu. Imaginea este decodificată și recodificată de browser cu ajutorul API-ului Canvas. Instrumentul nu trimite fișierul nicăieri.' },
     ],
     limits: [
       'Până la 100 de cadre; cu cât cadrele sunt mai mari, cu atât browserul are nevoie de mai multă memorie.',
@@ -435,7 +419,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Se modifică fișierul original?', a: 'Nu. Fișierul tău nu este modificat niciodată; imaginea editată este creată ca o descărcare nouă.' },
       { q: 'Se pierde calitate la export?', a: 'PNG păstrează fiecare pixel. JPG și WebP sunt cu pierderi; folosește o calitate de 90 sau mai mare ca fotografiile să arate la fel. Modificările se aplică la dimensiunea completă a imaginii, nu la cea din previzualizare.' },
-      { q: 'Imaginile mele sunt încărcate pe un server?', a: 'Nu. Imaginea este decodificată și recodificată de browser cu ajutorul API-ului Canvas. Instrumentul nu trimite fișierul nicăieri.' },
     ],
     limits: [
       'O singură fotografie odată, de până la 25 MB și aproximativ 50 de megapixeli.',
@@ -455,7 +438,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Scade calitatea imaginii?', a: 'Nu. Fișierele JPG sunt încorporate în PDF așa cum sunt, fără recomprimare.' },
-      { q: 'PDF-ul meu este încărcat undeva?', a: 'Nu. PDF-ul este citit și rescris de browserul tău. Instrumentul nu trimite fișierul către un server.' },
     ],
     limits: [
       'Maximum 25 MB per imagine și 100 de imagini per PDF.',
@@ -473,7 +455,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Se păstrează transparența?', a: 'Da. Imaginile PNG sunt încorporate cu canalul alfa, așa că zonele transparente lasă să se vadă pagina albă din spate.' },
-      { q: 'PDF-ul meu este încărcat undeva?', a: 'Nu. PDF-ul este citit și rescris de browserul tău. Instrumentul nu trimite fișierul către un server.' },
     ],
     limits: [
       'Maximum 25 MB per imagine și 100 de imagini per PDF.',
@@ -492,7 +473,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Ce formate de imagine funcționează?', a: 'JPG și PNG sunt încorporate direct. WebP, GIF și BMP sunt mai întâi convertite în PNG, dacă browserul le poate decodifica.' },
       { q: 'Ce face opțiunea „Potrivit imaginii”?', a: 'Fiecare pagină are dimensiunea imaginii sale, așa că nimic nu este scalat sau completat cu margini. Alege A4 sau Letter pentru pagini de document standard.' },
-      { q: 'PDF-ul meu este încărcat undeva?', a: 'Nu. PDF-ul este citit și rescris de browserul tău. Instrumentul nu trimite fișierul către un server.' },
     ],
     limits: [
       'Maximum 25 MB per imagine și 100 de imagini per PDF.',
@@ -510,7 +490,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Se păstrează marcajele și câmpurile de formular?', a: 'Paginile sunt copiate cu conținutul vizibil și cu linkurile. Marcajele la nivel de document și datele interactive din formulare nu sunt transferate.' },
       { q: 'Poate deschide PDF-uri protejate cu parolă?', a: 'Nu. PDF-urile criptate sunt detectate și respinse cu un mesaj clar. Elimină mai întâi parola cu instrumentul nostru Deblochează PDF.' },
-      { q: 'PDF-ul meu este încărcat undeva?', a: 'Nu. PDF-ul este citit și rescris de browserul tău. Instrumentul nu trimite fișierul către un server.' },
     ],
     limits: [
       'Maximum 100 MB per PDF.',
@@ -788,26 +767,25 @@ const tools: ToolTextMap = {
       'Sunt modificate doar proprietățile la nivel de document. Comentariile, datele din formulare și conținutul paginilor rămân neschimbate.',
     ],
   },
-  'protect-pdf': {
-    name: 'Protejează PDF',
-    description: 'Blochează un PDF cu o parolă, folosind criptare AES-256.',
-    metaDescription: 'Protejează un PDF cu parolă online, gratuit. Criptarea AES-256 se face în browser; fișierul și parola ta nu sunt încărcate niciodată.',
+  "protect-pdf": {
+    name: "Protejează PDF",
+    description: "Blochează un PDF cu o parolă folosind criptarea AES-256.",
+    metaDescription: "Protejează un PDF cu parolă online gratuit. Criptarea AES-256 se face în browserul tău; fișierul și parola ta nu sunt încărcate niciodată.",
     steps: [
-      'Adaugă un PDF.',
-      'Scrie parola de două ori și alege ce pot face cititorii (tipărire, copiere, editare).',
-      'Protejează-l și descarcă copia criptată.',
+      "Adaugă un PDF.",
+      "Scrie parola de două ori și alege ce pot face cititorii (tipărire, copiere, editare).",
+      "Protejează-l și descarcă copia criptată.",
     ],
     faq: [
-      { q: 'Cât de puternică este protecția?', a: 'Fișierele sunt criptate cu AES-256, cel mai puternic standard de criptare PDF. În practică, siguranța depinde de parola ta: folosește una lungă, pe care nu o folosești în altă parte.' },
-      { q: 'Ce fac dacă uit parola?', a: 'Nu poate fi recuperată. Nimic nu este stocat sau trimis nicăieri și nu există resetare. Păstrează fișierul original și parola într-un loc sigur.' },
-      { q: 'Opțiunile de tipărire, copiere și editare sunt impuse?', a: 'Sunt solicitări pe care majoritatea programelor PDF le respectă, dar nu sunt imposibil de ocolit. Parola este cea care protejează cu adevărat fișierul.' },
-      { q: 'Parola mea este încărcată?', a: 'Nu. Criptarea se face în browser.' },
+      { q: "Cât de puternică este protecția?", a: "Fișierele sunt criptate cu AES-256, cea mai puternică criptare PDF standard. În practică, siguranța depinde de parola ta: folosește una lungă, pe care nu o folosești nicăieri altundeva." },
+      { q: "Ce fac dacă uit parola?", a: "Nu poate fi recuperată și nu există resetare a parolei. Păstrează fișierul original și parola într-un loc sigur." },
+      { q: "Sunt aplicate opțiunile de tipărire, copiere și editare?", a: "Sunt cereri pe care majoritatea programelor PDF le respectă, dar nu sunt imposibil de ocolit. Parola este cea care protejează cu adevărat fișierul." },
     ],
     limits: [
-      'Maximum 100 MB per PDF.',
-      'Parole: până la 127 de caractere standard (litere, cifre și simboluri).',
-      'Un PDF care are deja o parolă trebuie deblocat mai întâi.',
-      'Cititoarele PDF foarte vechi (de dinainte de aproximativ 2008) pot să nu deschidă fișierele AES-256.',
+      "Maximum 100 MB per PDF.",
+      "Parole: până la 127 de caractere standard (litere, cifre și simboluri).",
+      "Un PDF care are deja parolă trebuie mai întâi deblocat.",
+      "Cititoarele PDF foarte vechi (dinainte de aproximativ 2008) pot să nu deschidă fișierele AES-256.",
     ],
   },
   'unlock-pdf': {
@@ -822,7 +800,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Poate debloca un PDF dacă am uitat parola?', a: 'Nu. Acest instrument nu ghicește și nu sparge niciodată parole. Elimină protecția doar când furnizezi parola corectă sau când fișierul doar restricționează acțiuni precum tipărirea.' },
       { q: 'Este permis acest lucru?', a: 'Folosește-l doar pe fișiere care îți aparțin sau pe care ai permisiunea să le deschizi. Ești responsabil pentru modul în care folosești rezultatul.' },
-      { q: 'Parola mea este încărcată?', a: 'Nu. Totul se întâmplă în browser.' },
     ],
     limits: [
       'Maximum 100 MB per PDF.',
@@ -853,25 +830,23 @@ const tools: ToolTextMap = {
       'Ordinea de citire urmează PDF-ul și poate diferi de ordinea vizuală în aranjamentele complexe.',
     ],
   },
-  'compress-pdf': {
-    name: 'Comprimă PDF',
-    description: 'Micșorează un PDF recomprimându-i imaginile, în timp ce textul rămâne selectabil.',
-    metaDescription: 'Comprimă PDF online, gratuit. Recomprimă imaginile încorporate pentru a reduce dimensiunea, cu text selectabil, sau aplatizează paginile pentru cel mai mic fișier.',
+  "compress-pdf": {
+    name: "Comprimă PDF",
+    description: "Micșorează un PDF recomprimând imaginile sale, în timp ce textul rămâne selectabil.",
+    metaDescription: "Comprimă PDF online gratuit. Alege compresia extremă, recomandată sau ușoară pentru a reduce dimensiunea, în timp ce textul rămâne selectabil. Rulează în browserul tău.",
     steps: [
-      'Adaugă PDF-ul.',
-      'Alege cum și cât de puternic să fie comprimat: modul implicit păstrează textul selectabil și recomprimă doar imaginile.',
-      'Comprimă, verifică dimensiunea economisită și descarcă rezultatul.',
+      "Adaugă PDF-ul.",
+      "Alege compresia extremă, recomandată sau ușoară. Textul rămâne selectabil; doar imaginile sunt recomprimate.",
+      "Comprimă, verifică dimensiunea economisită și descarcă rezultatul.",
     ],
     faq: [
-      { q: 'De ce nu s-a micșorat aproape deloc PDF-ul meu?', a: 'Modul standard recomprimă imaginile JPEG, deci ajută cel mai mult la PDF-urile pline de fotografii sau scanări. Un PDF care conține mai ales text sau ale cărui imagini sunt deja mici nu se poate micșora mult. Instrumentul îți spune când nu a putut economisi nimic, în loc să se prefacă.' },
-      { q: 'Se va înrăutăți calitatea?', a: 'Imaginile pierd puțin din detalii în schimbul dimensiunii; Ușor le păstrează aproape neschimbate, iar Puternic le face vizibil mai moi. Textul și grafica vectorială nu sunt atinse în modul standard. Modul „Maxim” transformă fiecare pagină într-o imagine, deci textul nu mai poate fi selectat sau căutat.' },
-      { q: 'PDF-ul meu este încărcat undeva?', a: 'Nu. PDF-ul este citit și rescris de browserul tău. Instrumentul nu trimite fișierul către un server.' },
+      { q: "De ce s-a micșorat PDF-ul meu foarte puțin?", a: "Instrumentul recomprimă imaginile JPEG, așa că ajută cel mai mult la PDF-urile pline de fotografii sau scanări. Un PDF care este mai ales text sau ale cărui imagini sunt deja mici nu se poate micșora mult. Când nu se poate economisi nimic, instrumentul spune asta și îți returnează fișierul original în loc de unul mai mare." },
+      { q: "Se va degrada calitatea?", a: "Imaginile pierd puțin din detalii în schimbul dimensiunii; compresia ușoară le lasă aproape neschimbate, iar cea extremă le face vizibil mai moi. Textul și graficele vectoriale nu sunt atinse, așa că textul rămâne selectabil și căutabil." },
     ],
     limits: [
-      'Sunt recomprimate doar imaginile JPEG încorporate. Imaginile de tip PNG (Flate), fonturile și restul conținutului rămân neschimbate.',
-      'Modul Maxim convertește fiecare pagină într-o imagine: textul, linkurile și câmpurile de formular nu mai funcționează, iar fișierul nu mai poate fi căutat.',
-      'Culorile imaginilor recomprimate se pot schimba foarte ușor.',
-      'Maximum 100 MB per PDF. PDF-urile protejate cu parolă trebuie deblocate mai întâi.',
+      "Doar imaginile JPEG încorporate sunt recomprimate. Imaginile de tip PNG (Flate), fonturile și alt conținut rămân așa cum sunt.",
+      "Culorile imaginilor recomprimate se pot schimba foarte ușor.",
+      "Maximum 100 MB per PDF. PDF-urile protejate cu parolă trebuie mai întâi deblocate.",
     ],
   },
   'ocr-pdf': {
@@ -885,7 +860,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Ce limbi sunt acceptate?', a: 'Deocamdată doar engleza. Textul în alte limbi va fi citit greșit. Se pot adăuga mai multe limbi ulterior, fără a schimba modul de funcționare al instrumentului.' },
-      { q: 'Documentul meu este trimis unui serviciu OCR?', a: 'Nu. Motorul de recunoaștere (Tesseract, compilat în WebAssembly) și datele lui pentru engleză sunt servite de acest site și rulează în browserul tău. Documentul nu este încărcat.' },
       { q: 'Cât de precis este?', a: 'Scanările curate și drepte ale textului tipărit, la 200–300 DPI, funcționează cel mai bine. Scrisul de mână, textul foarte mic, paginile cu contrast scăzut sau înclinate produc mai multe greșeli. Verifică întotdeauna numerele importante.' },
     ],
     limits: [
@@ -906,8 +880,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Este o semnătură digitală cu valoare juridică?', a: 'Este o semnătură vizuală: o imagine a semnăturii tale plasată pe pagină. Nu este o semnătură digitală criptografică, nu are certificat și nu poate dovedi cine a semnat sau detecta modificări ulterioare. Acceptarea ei depinde de cel care o cere. Unele organizații cer servicii de semnătură electronică certificate.' },
-      { q: 'Semnătura mea este stocată undeva?', a: 'Nu. Este creată în browser, folosită doar pentru acest fișier și uitată când părăsești sau reîncarci pagina.' },
-      { q: 'PDF-ul meu este încărcat undeva?', a: 'Nu. PDF-ul este citit și rescris de browserul tău. Instrumentul nu trimite fișierul către un server.' },
     ],
     limits: [
       'Doar semnătură vizuală: fără certificat, fără marcă temporală, fără detectarea modificărilor.',
@@ -915,25 +887,25 @@ const tools: ToolTextMap = {
       'Maximum 100 MB per PDF. PDF-urile protejate cu parolă trebuie deblocate mai întâi.',
     ],
   },
-  'fill-pdf-forms': {
-    name: 'Completează formulare PDF',
-    description: 'Completează casetele de text, casetele de selectare și meniurile unui formular PDF completabil.',
-    metaDescription: 'Completează formulare PDF online, gratuit. Scrie în câmpuri, bifează casete și alege opțiuni într-un PDF completabil, apoi descarcă-l editabil sau aplatizat. În browser.',
+  "fill-pdf-forms": {
+    name: "Completează formulare PDF",
+    description: "Completează casetele de text, casetele de selectare și meniurile unui formular PDF sau scrie pe orice PDF.",
+    metaDescription: "Completează formulare PDF online gratuit. Scrie în câmpuri, bifează casete și alege opțiuni într-un PDF completabil, apoi descarcă-l editabil sau aplatizat. În browserul tău.",
     steps: [
-      'Adaugă un formular PDF completabil.',
-      'Completează câmpurile listate sub numele fișierului. Câmpurile sunt grupate pe pagini.',
-      'Alege dacă formularul rămâne editabil sau este aplatizat, apoi descarcă PDF-ul completat.',
+      "Adaugă un formular PDF. Pe un PDF fără câmpuri poți scrie făcând clic pe pagină.",
+      "Completează câmpurile listate sub numele fișierului. Câmpurile sunt grupate pe pagini.",
+      "Alege dacă formularul rămâne editabil sau este aplatizat, apoi descarcă PDF-ul completat.",
     ],
     faq: [
-      { q: 'PDF-ul meu nu afișează câmpuri. De ce?', a: 'Aici pot fi completate doar PDF-urile cu câmpuri de formular reale. Un formular care este doar o imagine sau text simplu nu are câmpuri; folosește Semnează PDF pentru a plasa o semnătură sau instrumentul Filigran pentru a adăuga text. Formularele create cu XFA (unele formulare guvernamentale și bancare) nu sunt acceptate.' },
-      { q: 'Ce face aplatizarea?', a: 'Aplatizarea înglobează răspunsurile în pagină și elimină câmpurile formularului, astfel încât răspunsurile nu mai pot fi editate. Folosește-o pentru copia pe care o trimiți; păstrează pentru tine o copie editabilă.' },
-      { q: 'PDF-ul meu este încărcat undeva?', a: 'Nu. PDF-ul este citit și rescris de browserul tău. Instrumentul nu trimite fișierul către un server.' },
+      { q: "PDF-ul meu nu arată câmpuri. De ce?", a: "PDF-ul nu are câmpuri de formular reale, de exemplu este o scanare sau un formular care este doar o imagine. Poți totuși să faci clic pe pagină unde trebuie să ajungă textul, să-l scrii și să salvezi o copie cu textul scris. Câmpurile formularelor XFA (unele formulare guvernamentale și bancare) nu pot fi completate." },
+      { q: "Ce face aplatizarea?", a: "Aplatizarea arde răspunsurile tale în pagină și elimină câmpurile formularului, astfel încât răspunsurile nu mai pot fi editate. Folosește-o pentru copia pe care o trimiți; păstrează pentru tine o copie editabilă." },
     ],
     limits: [
-      'Textul poate conține litere latine, cifre și simboluri uzuale (fontul formularului nu are alte alfabete).',
-      'Câmpurile de semnătură și butoanele sunt afișate, dar nu pot fi completate; folosește Semnează PDF pentru semnături.',
-      'Formularele XFA (dinamice) nu sunt acceptate.',
-      'Maximum 100 MB per PDF.',
+      "Textul poate folosi litere latine, cifre și simboluri uzuale (fontul formularului nu are alte alfabete).",
+      "Câmpurile de semnătură și butoanele sunt afișate, dar nu pot fi completate; folosește Semnează PDF pentru semnături.",
+      "Formulare XFA (dinamice): câmpurile nu pot fi completate, dar poți scrie pe pagini.",
+      "Textul scris pe un PDF fără câmpuri este înscris în pagină și nu mai poate fi editat ulterior.",
+      "Maximum 100 MB per PDF.",
     ],
   },
   'redact-pdf': {
@@ -969,7 +941,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Ce arată compararea textului?', a: 'Pentru fiecare pagină, cuvintele adăugate (verde) și eliminate (roșu) între documentul original și cel revizuit, cu textul neschimbat restrâns. Paginile sunt asociate după număr.' },
       { q: 'Ce se întâmplă cu PDF-urile scanate?', a: 'Scanările nu au text selectabil, deci compararea textului nu găsește nimic. Folosește compararea vizuală sau rulează mai întâi OCR PDF pe ambele fișiere.' },
-      { q: 'PDF-ul meu este încărcat undeva?', a: 'Nu. PDF-ul este citit și rescris de browserul tău. Instrumentul nu trimite fișierul către un server.' },
     ],
     limits: [
       'Paginile sunt comparate după număr: dacă a fost inserată o pagină, paginile următoare vor apărea ca modificate.',
@@ -1101,7 +1072,6 @@ const tools: ToolTextMap = {
       'Copiază sau descarcă rezultatul formatat.',
     ],
     faq: [
-      { q: 'JSON-ul meu este trimis unui server?', a: 'Nu. Analiza și formatarea se fac în browser, cu parserul JSON încorporat.' },
       { q: 'De ce îmi respinge JSON-ul?', a: 'JSON strict nu permite comentarii, virgule finale sau ghilimele simple. Mesajul de eroare arată rândul și coloana problemei.' },
     ],
     limits: [
@@ -1249,7 +1219,6 @@ const tools: ToolTextMap = {
       'Copiază o parolă și păstreaz-o într-un manager de parole.',
     ],
     faq: [
-      { q: 'Parolele generate sunt stocate sau trimise undeva?', a: 'Nu. Parolele sunt generate în browser cu crypto.getRandomValues și nu sunt transmise sau salvate niciodată.' },
       { q: 'Este sigură o parolă precum Tesla2026#Tech?', a: 'Este mai bună decât un cuvânt simplu, dar mai slabă decât un text aleatoriu. Cine încearcă să o ghicească poate porni de la liste de nume cunoscute, așa că puterea reală vine din numărul de posibilități, afișat în biți. Folosește parole bazate pe nume pentru conturi cu risc scăzut și parole complet aleatorii pentru e-mail, servicii bancare și manageri de parole.' },
       { q: 'De ce doar câteva simboluri?', a: 'Parolele generate folosesc doar cele patru simboluri @ # $ *, pentru că sunt acceptate de aproape orice site și se tastează ușor pe orice tastatură.' },
       { q: 'Cât de lungă ar trebui să fie o parolă?', a: 'Cel puțin 16 caractere pentru conturile importante. Lungimea contează mai mult decât complexitatea.' },
@@ -1322,7 +1291,6 @@ const tools: ToolTextMap = {
       { q: 'Codurile expiră?', a: 'Nu. Acestea sunt coduri statice: datele sunt stocate chiar în cod, deci funcționează pentru totdeauna și nimic nu este urmărit.' },
       { q: 'Ce nivel de corecție a erorilor să aleg?', a: 'Mediu se potrivește în majoritatea cazurilor. Alege Quartile sau Ridicat dacă codul se poate murdări sau deteriora, dar nivelurile mai mari fac codul mai dens și mai greu de scanat la dimensiuni mici.' },
       { q: 'Pot folosi codurile în scop comercial?', a: 'Da. Standardul codurilor QR este deschis, iar codurile create aici nu au taxe, filigrane sau urmărire din partea noastră.' },
-      { q: 'Datele mele sunt trimise undeva?', a: 'Nu. Codul este generat în browser, iar parolele Wi-Fi pe care le introduci rămân pe dispozitivul tău.' },
     ],
     limits: [
       'Doar coduri statice: fără urmărirea scanărilor și fără coduri editabile.',
@@ -1343,7 +1311,6 @@ const tools: ToolTextMap = {
       { q: "Recunoaște instrumentul textul de pe pagină?", a: "Nu. Scanare în PDF transformă imaginile în pagini PDF și le poate curăța, dar textul rămâne parte din imagine. Pentru a-l face căutabil, treceți rezultatul prin OCR PDF." },
       { q: "Pot folosi camera telefonului?", a: "Pe telefoanele și tabletele al căror browser permite acest lucru, butonul „Fă o fotografie” deschide camera. În caz contrar, alegeți fotografii deja salvate pe dispozitiv." },
       { q: "Ce fac stilurile de curățare?", a: "„Original” păstrează culorile. „Tonuri de gri” elimină culoarea. „Document alb-negru” transformă pagina în text negru pur pe hârtie albă și uniformizează umbrele și iluminarea neuniformă, ceea ce se potrivește paginilor tipărite și notițelor, dar nu fotografiilor." },
-      { q: "Este fișierul meu încărcat undeva?", a: "Nu. Fișierul este citit și convertit de browserul dumneavoastră. Acest instrument nu îl trimite către un server." },
     ],
     limits: [
       "Maximum 25 MB pe imagine și 100 de imagini pe PDF.",
@@ -1365,7 +1332,6 @@ const tools: ToolTextMap = {
       { q: "Va arăta PDF-ul ca pagina web?", a: "Nu, nu exact. Instrumentul citește structura documentului (titluri, paragrafe, liste, tabele, linkuri, text aldin și cursiv și imagini încorporate) și o aranjează ca un document simplu. Stilurile CSS, scripturile, fonturile web, coloanele și elementele poziționate nu sunt aplicate." },
       { q: "Este sigur să convertesc HTML în care nu am încredere?", a: "HTML-ul este citit ca text inert: scripturile nu rulează și nimic nu este încărcat de pe internet. Sunt folosite doar imaginile încorporate chiar în HTML." },
       { q: "Ce limbi și fonturi sunt acceptate în PDF?", a: "PDF-ul este scris cu Noto Sans, care acoperă textul latin (inclusiv literele poloneze, cehe, românești și turcești), chirilic, grecesc, vietnamez și devanagari. Textul arab, ebraic, thailandez, chinez, japonez și coreean nu este încă acceptat: acele caractere apar ca semne de întrebare, iar instrumentul vă spune câte au fost afectate. Fonturile originale ale documentului nu sunt păstrate." },
-      { q: "Este fișierul meu încărcat undeva?", a: "Nu. Fișierul este citit și convertit de browserul dumneavoastră. Acest instrument nu îl trimite către un server." },
     ],
     limits: [
       "Maximum 10 MB de HTML.",
@@ -1387,7 +1353,6 @@ const tools: ToolTextMap = {
       { q: "Ce se convertește și ce nu?", a: "Se convertesc: textul cu aldin, cursiv, subliniat și linkuri, titluri, liste cu buline și numerotate, tabele, imagini JPEG și PNG, întreruperi de rând și de pagină, aliniere și orientarea paginii. Nu se convertesc: anteturile și subsolurile, notele de subsol, casetele de text, ecuațiile, diagramele, formele și imaginile în alte formate." },
       { q: "Pot converti un fișier .doc vechi?", a: "Nu. Deschideți-l în Word și salvați-l mai întâi ca fișier DOCX." },
       { q: "Ce limbi și fonturi sunt acceptate în PDF?", a: "PDF-ul este scris cu Noto Sans, care acoperă textul latin (inclusiv literele poloneze, cehe, românești și turcești), chirilic, grecesc, vietnamez și devanagari. Textul arab, ebraic, thailandez, chinez, japonez și coreean nu este încă acceptat: acele caractere apar ca semne de întrebare, iar instrumentul vă spune câte au fost afectate. Fonturile originale ale documentului nu sunt păstrate." },
-      { q: "Este fișierul meu încărcat undeva?", a: "Nu. Fișierul este citit și convertit de browserul dumneavoastră. Acest instrument nu îl trimite către un server." },
     ],
     limits: [
       "Doar fișiere DOCX, maximum 50 MB. Fișierele .doc vechi și documentele protejate cu parolă nu sunt acceptate.",
@@ -1409,7 +1374,6 @@ const tools: ToolTextMap = {
       { q: "Ce nu se convertește?", a: "Diagramele, SmartArt, videoul și audio, animațiile și tranzițiile, notele vorbitorului, gradientele, liniile și conectorii, precum și imaginile în alte formate decât JPEG și PNG. Instrumentul vă spune câte elemente au fost omise." },
       { q: "Pot converti un fișier .ppt vechi?", a: "Nu. Deschideți-l în PowerPoint și salvați-l mai întâi ca fișier PPTX." },
       { q: "Ce limbi și fonturi sunt acceptate în PDF?", a: "PDF-ul este scris cu Noto Sans, care acoperă textul latin (inclusiv literele poloneze, cehe, românești și turcești), chirilic, grecesc, vietnamez și devanagari. Textul arab, ebraic, thailandez, chinez, japonez și coreean nu este încă acceptat: acele caractere apar ca semne de întrebare, iar instrumentul vă spune câte au fost afectate. Fonturile originale ale documentului nu sunt păstrate." },
-      { q: "Este fișierul meu încărcat undeva?", a: "Nu. Fișierul este citit și convertit de browserul dumneavoastră. Acest instrument nu îl trimite către un server." },
     ],
     limits: [
       "Doar fișiere PPTX, maximum 100 MB și 300 de diapozitive. Fișierele .ppt vechi și prezentările protejate cu parolă nu sunt acceptate.",
@@ -1431,7 +1395,6 @@ const tools: ToolTextMap = {
       { q: "Va arăta ca aspectul de tipărire din Excel?", a: "Nu. Fiecare foaie vizibilă devine un tabel simplu, potrivit la lățimea paginii. Culorile celulelor, celulele îmbinate, lățimile coloanelor, diagramele, imaginile, zonele de tipărire și sfârșiturile de pagină nu sunt păstrate." },
       { q: "Pot converti un fișier .xls vechi?", a: "Nu. Deschideți-l în Excel și salvați-l mai întâi ca fișier XLSX." },
       { q: "Ce limbi și fonturi sunt acceptate în PDF?", a: "PDF-ul este scris cu Noto Sans, care acoperă textul latin (inclusiv literele poloneze, cehe, românești și turcești), chirilic, grecesc, vietnamez și devanagari. Textul arab, ebraic, thailandez, chinez, japonez și coreean nu este încă acceptat: acele caractere apar ca semne de întrebare, iar instrumentul vă spune câte au fost afectate. Fonturile originale ale documentului nu sunt păstrate." },
-      { q: "Este fișierul meu încărcat undeva?", a: "Nu. Fișierul este citit și convertit de browserul dumneavoastră. Acest instrument nu îl trimite către un server." },
     ],
     limits: [
       "Doar fișiere XLSX, maximum 50 MB. Fișierele .xls vechi și registrele protejate cu parolă nu sunt acceptate.",
@@ -1452,7 +1415,6 @@ const tools: ToolTextMap = {
       { q: "Cum sunt găsite titlurile și listele?", a: "Titlurile sunt rânduri scrise cu un font mai mare decât textul de bază, listele sunt rânduri care încep cu o bulină sau un număr, iar paragrafele sunt separate de spațiul dintre rânduri. Este o estimare bună, nu o garanție, așa că verificați rezultatul." },
       { q: "De ce este gol rezultatul pentru PDF-ul meu scanat?", a: "O scanare este o imagine a unei pagini și nu are text de extras. Rulați mai întâi OCR PDF pentru a adăuga un strat de text, apoi convertiți rezultatul." },
       { q: "Ce se întâmplă cu tabelele, coloanele și imaginile?", a: "Tabelele și coloanele nu sunt reconstruite: textul lor apare ca rânduri obișnuite, în ordinea de citire, atunci când este posibil. Imaginile, linkurile, textul aldin și cursiv, notele de subsol și ecuațiile nu sunt preluate." },
-      { q: "Este fișierul meu încărcat undeva?", a: "Nu. Fișierul este citit și convertit de browserul dumneavoastră. Acest instrument nu îl trimite către un server." },
     ],
     limits: [
       "Maximum 100 MB pe PDF. PDF-urile protejate cu parolă trebuie deblocate mai întâi.",
@@ -1473,7 +1435,6 @@ const tools: ToolTextMap = {
       { q: "Ce tipuri de deteriorări pot fi reparate?", a: "Deteriorările structurii fișierului: un index de obiecte (tabel de referințe încrucișate) lipsă sau greșit, un trailer lipsă, date inutile înainte de început sau o listă de pagini stricată. Dacă fișierul a fost tăiat, paginile salvate înainte de tăiere pot fi recuperate." },
       { q: "Ce nu se poate recupera?", a: "Conținutul care nu mai este în fișier. Paginile, imaginile sau fonturile lipsă ori deteriorate nu pot fi readuse, iar unele fișiere nu mai pot fi salvate. Instrumentul vă spune câte pagini a păstrat și anunță când nu poate produce un fișier utilizabil; nu oferă niciodată o descărcare pe care nu a creat-o." },
       { q: "Ce se întâmplă dacă PDF-ul meu se deschide normal?", a: "Atunci nu e nimic de reparat. Instrumentul vă spune acest lucru și oferă o copie curățată a fișierului." },
-      { q: "Este fișierul meu încărcat undeva?", a: "Nu. Fișierul este citit și convertit de browserul dumneavoastră. Acest instrument nu îl trimite către un server." },
     ],
     limits: [
       "Maximum 100 MB pe PDF. PDF-urile protejate cu parolă trebuie deblocate mai întâi.",
@@ -1483,25 +1444,26 @@ const tools: ToolTextMap = {
   },
   "pdf-to-pdfa": {
     name: "PDF în PDF/A",
-    description: "Pregătiți un PDF ca PDF/A-2b pentru arhivare pe termen lung, păstrând textul sau transformând paginile în imagini.",
-    metaDescription: "PDF în PDF/A online: pregătiți un PDF ca PDF/A-2b pentru arhivare, cu identificare PDF/A, metadate și profil de culoare. Păstrează textul când este posibil. Funcționează în browserul dvs.",
+    description: "Pregătește un PDF ca PDF/A (1b, 2b, 2u, 3b, 3u sau 4) pentru arhivare, păstrând textul sau folosind imagini ale paginilor.",
+    metaDescription: "PDF în PDF/A online: pregătește un PDF ca PDF/A-1b, 2b, 2u, 3b, 3u sau 4 pentru arhivare, cu identificare PDF/A, metadate și profil de culoare. Păstrează textul când este posibil. Rulează în browserul tău.",
     steps: [
-      "Alegeți un PDF. Un fișier protejat cu parolă trebuie mai întâi deblocat.",
-      "Alegeți cum să convertiți: păstrați textul și fonturile sau transformați paginile în imagini.",
-      "Convertiți-l, citiți ce s-a făcut și descărcați fișierul PDF/A.",
+      "Alege un PDF. Un fișier protejat cu parolă trebuie mai întâi deblocat.",
+      "Alege versiunea PDF/A, apoi modul de conversie: păstrează textul și fonturile sau transformă paginile în imagini.",
+      "Convertește, citește ce s-a făcut și descarcă fișierul PDF/A.",
     ],
     faq: [
-      { q: "Rezultatul este un fișier PDF/A certificat?", a: "Nu. Kitwell pregătește PDF-ul dvs. ca PDF/A-2b, nivelul de bază pentru arhivare, și își verifică munca după regulile pe care le aplică. Nu include un validator PDF/A complet. Dacă trebuie să dovediți conformitatea, verificați fișierul cu un validator precum veraPDF." },
-      { q: "Care este diferența dintre cele două moduri de conversie?", a: "„Păstrează textul și fonturile” modifică doar structura și metadatele fișierului, deci textul rămâne selectabil. Funcționează numai dacă toate fonturile sunt încorporate și fișierul nu folosește culori CMYK. „Transformă paginile în imagini” randează fiecare pagină ca imagine și construiește din ele un nou PDF/A. Funcționează întotdeauna, dar textul nu mai poate fi selectat, iar fișierul este mai mare." },
-      { q: "De ce a fost refuzat PDF-ul meu când am ales să păstrez textul?", a: "PDF/A cere ca toate fonturile să fie încorporate în fișier și nu permite culori CMYK fără profil CMYK, comprimarea LZW sau adnotări fără aspect. Acestea nu pot fi corectate fără a modifica paginile, așa că instrumentul listează ce a găsit în loc să simuleze un rezultat. Puteți folosi în continuare modul cu imagini." },
-      { q: "Ce modifică instrumentul în fișier?", a: "Adaugă identificarea PDF/A și metadatele XMP, un profil de culoare sRGB ca condiție de ieșire și un identificator de fișier. Elimină JavaScript, acțiunile interzise, atașamentele, informațiile suplimentare ale documentului și setările de adnotări pe care PDF/A nu le permite." },
-      { q: "Fișierul meu este încărcat undeva?", a: "Nu. Fișierul este citit și convertit de browserul dvs. Acest instrument nu îl trimite către niciun server." },
+      { q: "Este rezultatul un fișier PDF/A certificat?", a: "Nu. Kitwell pregătește PDF-ul tău în versiunea PDF/A aleasă și își verifică propria muncă după regulile pe care le aplică. Fișierele de test convertite astfel au trecut de validatorul veraPDF, dar instrumentul din browser nu include un validator PDF/A complet. Dacă trebuie să dovedești conformitatea, verifică fișierul cu un validator precum veraPDF." },
+      { q: "Ce versiune PDF/A să aleg?", a: "PDF/A-2b este cea mai larg acceptată și cea implicită. PDF/A-1b este cea mai veche și mai strictă: nu permite transparență și straturi. Versiunile „u” (2u, 3u) garantează în plus că textul poate fi copiat fiabil, deci cer ca fiecare font să aibă o mapare a textului. PDF/A-3b are aceleași reguli ca 2b, iar PDF/A-4 este cea mai nouă, bazată pe PDF 2.0. Nivelurile „a” (1a, 2a, 3a) necesită o structură de document etichetată care nu poate fi creată automat, iar 4e și 4f sunt pentru 3D și fișiere atașate, deci nu sunt oferite." },
+      { q: "Care e diferența dintre cele două moduri de conversie?", a: "„Păstrează textul și fonturile” schimbă doar structura și metadatele fișierului, așa că textul rămâne selectabil. Funcționează doar când toate fonturile sunt încorporate și fișierul nu folosește culori CMYK. „Transformă paginile în imagini” randează fiecare pagină ca imagine și construiește din ele un nou PDF/A. Aceasta funcționează întotdeauna, dar textul nu mai poate fi selectat și fișierul este mai mare." },
+      { q: "De ce a fost respins PDF-ul meu când am ales să păstrez textul?", a: "PDF/A cere ca fiecare font să fie încorporat în fișier și nu permite culori CMYK fără profil CMYK, compresia LZW sau adnotări fără aspect. PDF/A-1b respinge în plus transparența, straturile și imaginile JPEG 2000, iar versiunile „u” și PDF/A-4 au nevoie de o mapare a textului pentru fiecare font. Acestea nu pot fi remediate fără a modifica paginile, așa că instrumentul listează ce a găsit în loc să simuleze un rezultat. Poți folosi în continuare modul cu imagini." },
+      { q: "Ce schimbă instrumentul în fișier?", a: "Adaugă identificarea PDF/A și metadatele XMP, un profil de culoare sRGB ca intenție de ieșire și un identificator de fișier. Elimină JavaScript, acțiunile interzise, atașamentele, informațiile suplimentare despre document și setările de adnotare pe care PDF/A nu le permite." },
     ],
     limits: [
       "Maximum 100 MB per PDF. PDF-urile protejate cu parolă trebuie mai întâi deblocate, deoarece un fișier PDF/A nu poate fi criptat.",
-      "„Păstrează textul și fonturile” funcționează numai dacă toate fonturile sunt încorporate și fișierul nu are culori CMYK sau comprimare LZW.",
-      "Transformarea paginilor în imagini este limitată la 200 de pagini. Textul nu mai poate fi selectat, iar fișierul devine mai mare.",
-      "Rezultatul este PDF/A-2b pregătit de Kitwell și verificat după regulile pe care le aplică; nu este validat de un validator PDF/A complet.",
+      "„Păstrează textul și fonturile” funcționează doar când toate fonturile sunt încorporate și fișierul nu are culori CMYK sau compresie LZW.",
+      "Transformarea paginilor în imagini este limitată la 200 de pagini. Textul nu mai este selectabil și fișierul devine mai mare.",
+      "Rezultatul este pregătit de Kitwell și verificat după regulile pe care le aplică; nu este validat de un validator PDF/A complet în browserul tău.",
+      "Versiuni disponibile: PDF/A-1b, 2b, 2u, 3b, 3u și 4. Nivelurile „a” (PDF etichetat) și 4e/4f nu sunt oferite.",
     ],
   },
 };

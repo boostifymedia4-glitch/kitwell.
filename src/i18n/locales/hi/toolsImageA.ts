@@ -32,7 +32,7 @@ export default {
   'imageCompress.maxSize.800': '800 px',
   'imageCompress.background': 'पारदर्शिता के लिए बैकग्राउंड',
   'imageCompress.noteSmaller': '{before} → {after} (-{saved}%)',
-  'imageCompress.noteLarger': '{before} → {after} (बड़ी हुई; मूल रखें या गुणवत्ता घटाएँ)',
+  "imageCompress.noteLarger": "{before} → {after} (छोटी नहीं हुई, इसलिए मूल फ़ाइल रखी गई)",
 
   'imageResize.action': 'इमेज रीसाइज़ करें',
   'imageResize.resizeBy': 'रीसाइज़ का आधार',

@@ -13,7 +13,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Chuyển JPG sang PNG có cải thiện chất lượng không?', a: 'Không. JPG là định dạng nén mất dữ liệu, nên chi tiết đã bị loại bỏ khi lưu JPG không thể khôi phục. PNG chỉ lưu các điểm ảnh hiện tại mà không mất thêm dữ liệu, điều này hữu ích khi chỉnh sửa hoặc làm việc với độ trong suốt.' },
       { q: 'Vì sao tệp PNG lớn hơn tệp JPG?', a: 'PNG không làm mất dữ liệu và thường lưu ảnh chụp kém hiệu quả hơn JPG. Hãy dùng JPG hoặc WebP khi dung lượng tệp quan trọng hơn độ chính xác từng điểm ảnh.' },
-      { q: 'Ảnh của tôi có bị tải lên máy chủ không?', a: 'Không. Ảnh được trình duyệt của bạn giải mã và mã hóa lại bằng Canvas API. Công cụ này không gửi tệp đi đâu cả.' },
     ],
     limits: [
       'Tệp GIF hoặc WebP động chỉ được chuyển đổi bằng khung hình đầu tiên.',
@@ -21,87 +20,82 @@ const tools: ToolTextMap = {
       'Siêu dữ liệu EXIF và hồ sơ màu nhúng không được giữ lại.',
     ],
   },
-  'png-to-jpg': {
-    name: 'PNG sang JPG',
-    description: 'Chuyển ảnh PNG thành tệp JPG nhỏ hơn với chất lượng có thể điều chỉnh.',
-    metaDescription: 'Chuyển PNG sang JPG trực tuyến miễn phí. Chọn chất lượng và màu nền cho ảnh có vùng trong suốt. Xử lý ngay trong trình duyệt của bạn.',
+  "png-to-jpg": {
+    name: "PNG sang JPG",
+    description: "Chuyển ảnh PNG thành tệp JPG nhỏ hơn chỉ với một cú nhấp.",
+    metaDescription: "Chuyển PNG sang JPG trực tuyến miễn phí. Vùng trong suốt được tô màu trắng. Xử lý ngay trong trình duyệt của bạn.",
     steps: [
-      'Thêm các tệp PNG của bạn.',
-      'Đặt chất lượng JPG và màu nền dùng để lấp đầy các vùng trong suốt.',
-      'Nhấn Chuyển đổi và tải kết quả về.',
+      "Thêm các tệp PNG của bạn.",
+      "Vùng trong suốt được tô màu trắng, vì JPG không thể lưu độ trong suốt.",
+      "Nhấn Chuyển đổi và tải kết quả xuống.",
     ],
     faq: [
-      { q: 'Các vùng trong suốt sẽ ra sao?', a: 'JPG không hỗ trợ độ trong suốt, nên các điểm ảnh trong suốt được lấp bằng màu nền bạn chọn (mặc định là trắng).' },
-      { q: 'Tôi nên dùng mức chất lượng nào?', a: 'Từ 80 đến 90 là mức cân bằng tốt cho hầu hết ảnh. Dưới khoảng 60, các lỗi nén sẽ hiện rõ trên chữ và các cạnh sắc nét.' },
-      { q: 'Ảnh của tôi có bị tải lên máy chủ không?', a: 'Không. Ảnh được trình duyệt của bạn giải mã và mã hóa lại bằng Canvas API. Công cụ này không gửi tệp đi đâu cả.' },
+      { q: "Điều gì xảy ra với vùng trong suốt?", a: "JPG không có độ trong suốt, nên các điểm ảnh trong suốt được tô màu trắng." },
     ],
     limits: [
-      'Tệp GIF hoặc WebP động chỉ được chuyển đổi bằng khung hình đầu tiên.',
-      'Tối đa 25 MB mỗi tệp và 20 tệp mỗi lượt, để trình duyệt của bạn luôn hoạt động mượt.',
-      'Siêu dữ liệu EXIF và hồ sơ màu nhúng không được giữ lại.',
-      'Độ trong suốt được làm phẳng thành một màu đặc vì JPG không lưu được độ trong suốt.',
+      "Tệp GIF hoặc WebP động chỉ được chuyển đổi từ khung hình đầu tiên.",
+      "Tối đa 25 MB mỗi tệp và 20 tệp mỗi lô, để trình duyệt của bạn luôn mượt.",
+      "Siêu dữ liệu EXIF và hồ sơ màu nhúng không được giữ lại.",
+      "Vùng trong suốt được tô màu trắng vì JPG không thể lưu độ trong suốt.",
     ],
   },
-  'jpg-to-webp': {
-    name: 'JPG sang WebP',
-    description: 'Chuyển ảnh JPG sang WebP hiện đại để có tệp nhỏ hơn và trang tải nhanh hơn.',
-    metaDescription: 'Chuyển JPG sang WebP trực tuyến miễn phí. Thu nhỏ ảnh cho web với chất lượng điều chỉnh được, xử lý cục bộ ngay trong trình duyệt của bạn.',
+  "jpg-to-webp": {
+    name: "JPG sang WebP",
+    description: "Chuyển ảnh JPG sang WebP hiện đại để có tệp nhỏ hơn và trang tải nhanh hơn.",
+    metaDescription: "Chuyển JPG sang WebP trực tuyến miễn phí. Thu nhỏ ảnh cho web với chất lượng cố định, cân bằng, xử lý ngay trong trình duyệt của bạn.",
     steps: [
-      'Thêm các tệp JPG của bạn.',
-      'Chọn chất lượng WebP (80 là mức mặc định hợp lý).',
-      'Chuyển đổi và tải về.',
+      "Thêm các tệp JPG của bạn.",
+      "Không có gì cần cài đặt: công cụ dùng chất lượng cân bằng cho tệp WebP.",
+      "Chuyển đổi và tải xuống.",
     ],
     faq: [
-      { q: 'WebP có nhỏ hơn JPG không?', a: 'Thường nhỏ hơn 20–35% ở chất lượng hình ảnh tương đương, tuy kết quả còn tùy từng ảnh.' },
-      { q: 'Mọi trình duyệt đều hỗ trợ WebP không?', a: 'Tất cả trình duyệt lớn hiện nay đều hiển thị được WebP. Việc mã hóa WebP trong trình duyệt được hỗ trợ trên Chrome, Edge, Firefox và Safari bản mới; nếu trình duyệt của bạn không hỗ trợ, công cụ sẽ báo cho bạn thay vì tạo ra tệp sai.' },
-      { q: 'Ảnh của tôi có bị tải lên máy chủ không?', a: 'Không. Ảnh được trình duyệt của bạn giải mã và mã hóa lại bằng Canvas API. Công cụ này không gửi tệp đi đâu cả.' },
+      { q: "WebP có nhỏ hơn JPG không?", a: "Thường nhỏ hơn 20–35% ở chất lượng hình ảnh tương đương, tuy kết quả còn tùy từng ảnh." },
+      { q: "Trình duyệt nào cũng hỗ trợ WebP chứ?", a: "Mọi trình duyệt lớn hiện nay đều hiển thị được WebP. Việc mã hóa WebP trong trình duyệt hoạt động trên Chrome, Edge và Firefox; Safari không thể tạo tệp WebP, và khi đó công cụ sẽ báo cho bạn thay vì tạo ra một tệp sai." },
     ],
     limits: [
-      'Tệp GIF hoặc WebP động chỉ được chuyển đổi bằng khung hình đầu tiên.',
-      'Tối đa 25 MB mỗi tệp và 20 tệp mỗi lượt, để trình duyệt của bạn luôn hoạt động mượt.',
-      'Siêu dữ liệu EXIF và hồ sơ màu nhúng không được giữ lại.',
-      'Trình duyệt của bạn phải hỗ trợ mã hóa WebP; trình duyệt không hỗ trợ sẽ hiện thông báo lỗi.',
+      "Tệp GIF hoặc WebP động chỉ được chuyển đổi từ khung hình đầu tiên.",
+      "Tối đa 25 MB mỗi tệp và 20 tệp mỗi lô, để trình duyệt của bạn luôn mượt.",
+      "Siêu dữ liệu EXIF và hồ sơ màu nhúng không được giữ lại.",
+      "Trình duyệt của bạn phải hỗ trợ mã hóa WebP; trình duyệt không hỗ trợ sẽ hiện lỗi.",
     ],
   },
-  'png-to-webp': {
-    name: 'PNG sang WebP',
-    description: 'Chuyển ảnh PNG sang WebP và giữ độ trong suốt với dung lượng chỉ bằng một phần nhỏ.',
-    metaDescription: 'Chuyển PNG sang WebP trực tuyến miễn phí. Giữ độ trong suốt, giảm dung lượng tệp và chạy hoàn toàn trong trình duyệt của bạn.',
+  "png-to-webp": {
+    name: "PNG sang WebP",
+    description: "Chuyển ảnh PNG sang WebP và giữ độ trong suốt với dung lượng chỉ bằng một phần nhỏ.",
+    metaDescription: "Chuyển PNG sang WebP trực tuyến miễn phí. Giữ độ trong suốt, giảm dung lượng tệp và chạy hoàn toàn trong trình duyệt của bạn.",
     steps: [
-      'Thêm các tệp PNG của bạn.',
-      'Chọn chất lượng WebP.',
-      'Chuyển đổi và tải về.',
+      "Thêm các tệp PNG của bạn.",
+      "Không có gì cần cài đặt: công cụ dùng chất lượng cân bằng cho tệp WebP.",
+      "Chuyển đổi và tải xuống.",
     ],
     faq: [
-      { q: 'Độ trong suốt có được giữ lại không?', a: 'Có. WebP hỗ trợ kênh alpha, nên ảnh PNG trong suốt vẫn giữ nguyên độ trong suốt.' },
-      { q: 'Tôi có thể có kết quả không mất dữ liệu không?', a: 'Hãy đặt chất lượng là 100 để có độ trung thực cao nhất. Trình duyệt mã hóa WebP theo kiểu nén mất dữ liệu, vì vậy hãy dùng PNG nếu bạn cần một bản sao chính xác tuyệt đối.' },
-      { q: 'Ảnh của tôi có bị tải lên máy chủ không?', a: 'Không. Ảnh được trình duyệt của bạn giải mã và mã hóa lại bằng Canvas API. Công cụ này không gửi tệp đi đâu cả.' },
+      { q: "Độ trong suốt có được giữ lại không?", a: "Có. WebP hỗ trợ kênh alpha, nên PNG trong suốt vẫn trong suốt." },
+      { q: "Tôi có thể có kết quả không suy hao không?", a: "Công cụ mã hóa WebP với chất lượng cao, cân bằng. Trình duyệt mã hóa WebP có suy hao, vì vậy hãy dùng PNG nếu bạn cần một bản sao chính xác tuyệt đối." },
     ],
     limits: [
-      'Tệp GIF hoặc WebP động chỉ được chuyển đổi bằng khung hình đầu tiên.',
-      'Tối đa 25 MB mỗi tệp và 20 tệp mỗi lượt, để trình duyệt của bạn luôn hoạt động mượt.',
-      'Siêu dữ liệu EXIF và hồ sơ màu nhúng không được giữ lại.',
-      'Trình duyệt của bạn phải hỗ trợ mã hóa WebP; trình duyệt không hỗ trợ sẽ hiện thông báo lỗi.',
+      "Tệp GIF hoặc WebP động chỉ được chuyển đổi từ khung hình đầu tiên.",
+      "Tối đa 25 MB mỗi tệp và 20 tệp mỗi lô, để trình duyệt của bạn luôn mượt.",
+      "Siêu dữ liệu EXIF và hồ sơ màu nhúng không được giữ lại.",
+      "Trình duyệt của bạn phải hỗ trợ mã hóa WebP; trình duyệt không hỗ trợ sẽ hiện lỗi.",
     ],
   },
-  'webp-to-jpg': {
-    name: 'WebP sang JPG',
-    description: 'Chuyển ảnh WebP sang tệp JPG tương thích rộng rãi.',
-    metaDescription: 'Chuyển WebP sang JPG trực tuyến miễn phí. Giúp ảnh WebP dùng được ở mọi nơi, chuyển đổi cục bộ ngay trong trình duyệt của bạn.',
+  "webp-to-jpg": {
+    name: "WebP sang JPG",
+    description: "Chuyển ảnh WebP thành tệp JPG tương thích rộng rãi.",
+    metaDescription: "Chuyển WebP sang JPG trực tuyến miễn phí. Giúp ảnh WebP dùng được ở mọi nơi, chuyển đổi cục bộ ngay trong trình duyệt của bạn.",
     steps: [
-      'Thêm các tệp WebP của bạn.',
-      'Đặt chất lượng và màu nền cho các vùng trong suốt.',
-      'Chuyển đổi và tải về.',
+      "Thêm các tệp WebP của bạn.",
+      "Vùng trong suốt được tô màu trắng, vì JPG không thể lưu độ trong suốt.",
+      "Chuyển đổi và tải xuống.",
     ],
     faq: [
-      { q: 'Vì sao nên chuyển WebP sang JPG?', a: 'Một số phần mềm cũ, ứng dụng email và biểu mẫu tải lên vẫn từ chối WebP. JPG được chấp nhận gần như ở mọi nơi.' },
-      { q: 'Ảnh của tôi có bị tải lên máy chủ không?', a: 'Không. Ảnh được trình duyệt của bạn giải mã và mã hóa lại bằng Canvas API. Công cụ này không gửi tệp đi đâu cả.' },
+      { q: "Vì sao nên chuyển WebP sang JPG?", a: "Một số phần mềm cũ, ứng dụng email và biểu mẫu tải lên vẫn từ chối WebP. JPG được chấp nhận gần như ở mọi nơi." },
     ],
     limits: [
-      'Tệp GIF hoặc WebP động chỉ được chuyển đổi bằng khung hình đầu tiên.',
-      'Tối đa 25 MB mỗi tệp và 20 tệp mỗi lượt, để trình duyệt của bạn luôn hoạt động mượt.',
-      'Siêu dữ liệu EXIF và hồ sơ màu nhúng không được giữ lại.',
-      'Độ trong suốt được làm phẳng thành một màu đặc vì JPG không lưu được độ trong suốt.',
+      "Tệp GIF hoặc WebP động chỉ được chuyển đổi từ khung hình đầu tiên.",
+      "Tối đa 25 MB mỗi tệp và 20 tệp mỗi lô, để trình duyệt của bạn luôn mượt.",
+      "Siêu dữ liệu EXIF và hồ sơ màu nhúng không được giữ lại.",
+      "Vùng trong suốt được tô màu trắng vì JPG không thể lưu độ trong suốt.",
     ],
   },
   'webp-to-png': {
@@ -115,7 +109,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Độ trong suốt có được giữ lại không?', a: 'Có. PNG hỗ trợ độ trong suốt, nên kênh alpha từ WebP được giữ nguyên.' },
-      { q: 'Ảnh của tôi có bị tải lên máy chủ không?', a: 'Không. Ảnh được trình duyệt của bạn giải mã và mã hóa lại bằng Canvas API. Công cụ này không gửi tệp đi đâu cả.' },
     ],
     limits: [
       'Tệp GIF hoặc WebP động chỉ được chuyển đổi bằng khung hình đầu tiên.',
@@ -123,25 +116,25 @@ const tools: ToolTextMap = {
       'Siêu dữ liệu EXIF và hồ sơ màu nhúng không được giữ lại.',
     ],
   },
-  'image-compressor': {
-    name: 'Nén ảnh',
-    description: 'Giảm dung lượng ảnh với chất lượng điều chỉnh được và xem chính xác mức tiết kiệm.',
-    metaDescription: 'Nén ảnh JPG, PNG và WebP trực tuyến miễn phí. Điều chỉnh chất lượng, giới hạn kích thước nếu muốn và so sánh dung lượng. Chạy trong trình duyệt của bạn.',
+  "image-compressor": {
+    name: "Nén ảnh",
+    description: "Giảm dung lượng tệp ảnh và xem chính xác mức tiết kiệm.",
+    metaDescription: "Nén ảnh JPG, PNG và WebP trực tuyến miễn phí. Có thể giới hạn kích thước và so sánh dung lượng tệp. Chạy trong trình duyệt của bạn.",
     steps: [
-      'Thêm ảnh của bạn.',
-      'Chọn định dạng đầu ra và chất lượng, và có thể chọn chiều rộng hoặc chiều cao tối đa.',
-      'Nén, so sánh dung lượng trước và sau, rồi tải về.',
+      "Thêm các ảnh của bạn.",
+      "Chọn định dạng đầu ra và, nếu muốn, chiều rộng hoặc chiều cao tối đa.",
+      "Nén, so sánh dung lượng trước và sau, rồi tải xuống.",
     ],
     faq: [
-      { q: 'Trình nén giảm dung lượng bằng cách nào?', a: 'Nó mã hóa lại ảnh ở chất lượng bạn chọn và cũng có thể thu nhỏ ảnh. Đầu ra PNG không làm mất dữ liệu, nên chỉ nhỏ đi khi bạn đồng thời giảm kích thước ảnh.' },
-      { q: 'Nếu kết quả lớn hơn bản gốc thì sao?', a: 'Điều này có thể xảy ra với các tệp đã được tối ưu. Công cụ sẽ đánh dấu để bạn giữ lại bản gốc.' },
-      { q: 'EXIF hoặc dữ liệu vị trí có được giữ lại không?', a: 'Không. Mã hóa lại qua canvas sẽ loại bỏ siêu dữ liệu EXIF như kiểu máy ảnh và vị trí GPS, thường đúng là điều bạn muốn trước khi chia sẻ ảnh. Hồ sơ màu cũng không được giữ lại.' },
+      { q: "Bộ nén giảm dung lượng bằng cách nào?", a: "Nó mã hóa lại ảnh với chất lượng cố định, cân bằng và cũng có thể thu nhỏ ảnh. Đầu ra PNG không suy hao, nên chỉ nhỏ đi khi bạn cũng giảm kích thước." },
+      { q: "Nếu kết quả lớn hơn bản gốc thì sao?", a: "Điều này có thể xảy ra với tệp đã được tối ưu. Khi đó công cụ giữ nguyên tệp gốc và cho bạn biết." },
+      { q: "Dữ liệu EXIF hay vị trí có được giữ lại không?", a: "Không. Mã hóa lại qua canvas sẽ bỏ siêu dữ liệu EXIF như kiểu máy ảnh và vị trí GPS, điều thường là điều bạn muốn trước khi chia sẻ ảnh. Hồ sơ màu cũng không được giữ lại." },
     ],
     limits: [
-      'Tệp GIF hoặc WebP động chỉ được chuyển đổi bằng khung hình đầu tiên.',
-      'Tối đa 25 MB mỗi tệp và 20 tệp mỗi lượt, để trình duyệt của bạn luôn hoạt động mượt.',
-      'Siêu dữ liệu EXIF và hồ sơ màu nhúng không được giữ lại.',
-      'Kết quả tốt nhất đến từ đầu ra JPG hoặc WebP; đầu ra PNG không làm mất dữ liệu và có thể không nhỏ đi.',
+      "Tệp GIF hoặc WebP động chỉ được chuyển đổi từ khung hình đầu tiên.",
+      "Tối đa 25 MB mỗi tệp và 20 tệp mỗi lô, để trình duyệt của bạn luôn mượt.",
+      "Siêu dữ liệu EXIF và hồ sơ màu nhúng không được giữ lại.",
+      "Kết quả tốt nhất đến từ đầu ra JPG hoặc WebP; đầu ra PNG không suy hao và có thể không nhỏ đi.",
     ],
   },
   'image-resizer': {
@@ -165,23 +158,22 @@ const tools: ToolTextMap = {
       'Đầu ra bị giới hạn ở 16.000 px mỗi cạnh.',
     ],
   },
-  'image-cropper': {
-    name: 'Cắt ảnh',
-    description: 'Cắt ảnh theo vùng chính xác hoặc tỷ lệ khung hình cố định với bản xem trước trực tiếp.',
-    metaDescription: 'Cắt ảnh trực tuyến miễn phí. Chọn tỷ lệ khung hình cố định hoặc đặt giá trị điểm ảnh chính xác với bản xem trước trực tiếp. Xử lý trong trình duyệt của bạn.',
+  "image-cropper": {
+    name: "Cắt ảnh",
+    description: "Cắt ảnh theo vùng chính xác hoặc tỷ lệ khung hình cố định với bản xem trước trực tiếp.",
+    metaDescription: "Cắt ảnh trực tuyến miễn phí. Chọn tỷ lệ khung hình cố định hoặc đặt giá trị pixel chính xác với bản xem trước trực tiếp. Xử lý ngay trong trình duyệt của bạn.",
     steps: [
-      'Thêm một ảnh.',
-      'Chọn tỷ lệ khung hình hoặc kéo khung cắt, sau đó tinh chỉnh vị trí và kích thước bằng các ô số.',
-      'Nhấn Cắt và tải về.',
+      "Thêm một ảnh.",
+      "Chọn tỷ lệ khung hình hoặc kéo khung cắt, rồi tinh chỉnh vị trí và kích thước bằng các ô số.",
+      "Nhấn Cắt và tải xuống.",
     ],
     faq: [
-      { q: 'Cắt ảnh có làm giảm chất lượng không?', a: 'Việc cắt giữ nguyên các điểm ảnh gốc. Chất lượng chỉ thay đổi nếu bạn lưu dưới dạng JPG hoặc WebP với chất lượng thấp hơn.' },
-      { q: 'Ảnh của tôi có bị tải lên máy chủ không?', a: 'Không. Ảnh được trình duyệt của bạn giải mã và mã hóa lại bằng Canvas API. Công cụ này không gửi tệp đi đâu cả.' },
+      { q: "Cắt ảnh có làm giảm chất lượng không?", a: "Việc cắt giữ nguyên các điểm ảnh gốc. Kết quả JPG và WebP được lưu ở chất lượng cố định cao, nên khi dùng bình thường không thấy suy giảm." },
     ],
     limits: [
-      'Mỗi lần một ảnh.',
-      'Tối đa 25 MB mỗi tệp.',
-      'Ảnh động dùng khung hình đầu tiên.',
+      "Mỗi lần một ảnh.",
+      "Tối đa 25 MB mỗi tệp.",
+      "Ảnh động dùng khung hình đầu tiên.",
     ],
   },
   'image-rotator': {
@@ -195,7 +187,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Điều gì xảy ra với các góc xoay không phải góc vuông?', a: 'Canvas được mở rộng để chứa vừa ảnh đã xoay. Với đầu ra JPG, các góc trống được lấp bằng màu nền bạn chọn; PNG và WebP giữ chúng trong suốt.' },
-      { q: 'Ảnh của tôi có bị tải lên máy chủ không?', a: 'Không. Ảnh được trình duyệt của bạn giải mã và mã hóa lại bằng Canvas API. Công cụ này không gửi tệp đi đâu cả.' },
     ],
     limits: [
       'Tệp GIF hoặc WebP động chỉ được chuyển đổi bằng khung hình đầu tiên.',
@@ -214,7 +205,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Lật ngang và lật dọc khác nhau thế nào?', a: 'Lật ngang đối xứng trái và phải, như soi gương. Lật dọc đảo ngược ảnh theo trục ngang của nó.' },
-      { q: 'Ảnh của tôi có bị tải lên máy chủ không?', a: 'Không. Ảnh được trình duyệt của bạn giải mã và mã hóa lại bằng Canvas API. Công cụ này không gửi tệp đi đâu cả.' },
     ],
     limits: [
       'Tệp GIF hoặc WebP động chỉ được chuyển đổi bằng khung hình đầu tiên.',
@@ -222,25 +212,24 @@ const tools: ToolTextMap = {
       'Siêu dữ liệu EXIF và hồ sơ màu nhúng không được giữ lại.',
     ],
   },
-  'image-format-converter': {
-    name: 'Chuyển đổi định dạng ảnh',
-    description: 'Chuyển đổi giữa JPG, PNG và WebP chỉ với một công cụ linh hoạt.',
-    metaDescription: 'Chuyển đổi ảnh giữa JPG, PNG và WebP trực tuyến miễn phí. Chọn định dạng đầu ra và chất lượng, xử lý cục bộ trong trình duyệt của bạn.',
+  "image-format-converter": {
+    name: "Chuyển định dạng ảnh",
+    description: "Chuyển đổi giữa JPG, PNG và WebP bằng một công cụ linh hoạt.",
+    metaDescription: "Chuyển ảnh giữa JPG, PNG và WebP trực tuyến miễn phí. Chọn định dạng đầu ra, xử lý ngay trong trình duyệt của bạn.",
     steps: [
-      'Thêm ảnh ở bất kỳ định dạng nào được hỗ trợ.',
-      'Chọn định dạng đầu ra và chất lượng.',
-      'Chuyển đổi và tải về.',
+      "Thêm ảnh ở bất kỳ định dạng nào được hỗ trợ.",
+      "Chọn định dạng đầu ra.",
+      "Chuyển đổi và tải xuống.",
     ],
     faq: [
-      { q: 'Tôi có thể dùng những định dạng nào?', a: 'Đầu vào: JPG, PNG, WebP, GIF, BMP và AVIF nếu trình duyệt của bạn giải mã được. Đầu ra: JPG, PNG và WebP.' },
-      { q: 'Còn HEIC hoặc TIFF thì sao?', a: 'Trình duyệt không thể giải mã HEIC hoặc TIFF theo mặc định, nên hiện chưa hỗ trợ các định dạng này.' },
-      { q: 'Ảnh của tôi có bị tải lên máy chủ không?', a: 'Không. Ảnh được trình duyệt của bạn giải mã và mã hóa lại bằng Canvas API. Công cụ này không gửi tệp đi đâu cả.' },
+      { q: "Tôi có thể dùng những định dạng nào?", a: "Đầu vào: JPG, PNG, WebP, GIF, BMP và AVIF nếu trình duyệt của bạn giải mã được. Đầu ra: JPG, PNG và WebP." },
+      { q: "Còn HEIC hoặc TIFF thì sao?", a: "Trình duyệt không thể giải mã HEIC hay TIFF một cách tự nhiên, nên hiện chưa được hỗ trợ." },
     ],
     limits: [
-      'Tệp GIF hoặc WebP động chỉ được chuyển đổi bằng khung hình đầu tiên.',
-      'Tối đa 25 MB mỗi tệp và 20 tệp mỗi lượt, để trình duyệt của bạn luôn hoạt động mượt.',
-      'Siêu dữ liệu EXIF và hồ sơ màu nhúng không được giữ lại.',
-      'Không hỗ trợ tệp HEIC/HEIF, TIFF và RAW.',
+      "Tệp GIF hoặc WebP động chỉ được chuyển đổi từ khung hình đầu tiên.",
+      "Tối đa 25 MB mỗi tệp và 20 tệp mỗi lô, để trình duyệt của bạn luôn mượt.",
+      "Siêu dữ liệu EXIF và hồ sơ màu nhúng không được giữ lại.",
+      "Không hỗ trợ tệp HEIC/HEIF, TIFF và RAW.",
     ],
   },
   'image-to-base64': {
@@ -254,7 +243,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Khi nào nên dùng ảnh Base64?', a: 'Cho các biểu tượng rất nhỏ trong CSS hoặc email, nơi một yêu cầu bổ sung tốn kém hơn mức tăng dung lượng khoảng 33%. Tránh dùng cho ảnh chụp lớn.' },
-      { q: 'Ảnh của tôi có bị tải lên máy chủ không?', a: 'Không. Ảnh được trình duyệt của bạn giải mã và mã hóa lại bằng Canvas API. Công cụ này không gửi tệp đi đâu cả.' },
     ],
     limits: [
       'Tối đa 5 MB mỗi ảnh, vì văn bản Base64 trở nên rất lớn.',
@@ -290,7 +278,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Bảng màu được tính như thế nào?', a: 'Ảnh được giảm mẫu và các màu của nó được gom vào các nhóm; những nhóm phổ biến nhất sẽ được hiển thị. Đây là phép xấp xỉ các màu chủ đạo, không phải danh sách đầy đủ.' },
-      { q: 'Ảnh của tôi có bị tải lên máy chủ không?', a: 'Không. Ảnh được trình duyệt của bạn giải mã và mã hóa lại bằng Canvas API. Công cụ này không gửi tệp đi đâu cả.' },
     ],
     limits: [
       'Mỗi lần một ảnh.',
@@ -331,7 +318,6 @@ const tools: ToolTextMap = {
       { q: 'Ảnh có giữ được độ sắc nét ở kích thước lớn không?', a: 'Có. SVG được vẽ ở đúng kích thước bạn chọn, nên bản xuất 4× sắc nét như bản 1×.' },
       { q: 'Vì sao SVG của tôi trông khác?', a: 'Trình duyệt không hỗ trợ mọi tính năng của SVG, và các SVG dựa vào phông chữ hoặc ảnh bên ngoài sẽ dùng giá trị mặc định. Hãy nhúng phông chữ và ảnh vào bên trong SVG để có kết quả tốt nhất.' },
       { q: 'Mở tệp SVG ở đây có an toàn không?', a: 'Có. SVG được vẽ như một bức ảnh, nên các tập lệnh bên trong nó không chạy.' },
-      { q: 'Ảnh của tôi có bị tải lên máy chủ không?', a: 'Không. Ảnh được trình duyệt của bạn giải mã và mã hóa lại bằng Canvas API. Công cụ này không gửi tệp đi đâu cả.' },
     ],
     limits: [
       'Tối đa 25 MB mỗi tệp và 20 tệp mỗi lượt.',
@@ -395,7 +381,6 @@ const tools: ToolTextMap = {
       { q: 'Tôi có thể quét bằng camera không?', a: 'Chưa. Công cụ này đọc mã QR từ các tệp ảnh. Trên điện thoại, hãy chụp ảnh mã rồi chọn nó ở đây, hoặc dùng ứng dụng camera của bạn.' },
       { q: 'Mở các liên kết đã quét có an toàn không?', a: 'Hãy kiểm tra địa chỉ trước. Liên kết đầy đủ được hiển thị, và chỉ các liên kết web (http hoặc https) mới có thể mở từ đây. Liên kết tập lệnh và dữ liệu không bao giờ được mở.' },
       { q: 'Vì sao không tìm thấy mã?', a: 'Mã có thể bị mờ, bị cắt, quá nhỏ hoặc độ tương phản thấp. Hãy thử một ảnh nét hơn, gần hơn, thể hiện đầy đủ mã với lề rõ ràng xung quanh.' },
-      { q: 'Ảnh của tôi có bị tải lên không?', a: 'Không. Ảnh được đọc trong trình duyệt của bạn và công cụ này không gửi nó đi đâu cả.' },
     ],
     limits: [
       'Tối đa 10 ảnh, mỗi ảnh 25 MB.',
@@ -415,7 +400,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Vì sao GIF của tôi lớn như vậy?', a: 'GIF lưu mỗi khung hình dưới dạng một bức ảnh giới hạn ở 256 màu. Ít khung hình hơn, chiều rộng nhỏ hơn và ít màu hơn đều làm tệp nhỏ đi. Công cụ hiển thị dung lượng ngay khi GIF được tạo.' },
       { q: 'Tôi có thể giữ các vùng trong suốt không?', a: 'Có, hãy bật "Giữ vùng trong suốt" cho ảnh PNG hoặc WebP có độ trong suốt. Độ trong suốt của GIF chỉ có bật hoặc tắt cho từng điểm ảnh, nên các cạnh mềm sẽ trở nên cứng.' },
-      { q: 'Ảnh của tôi có bị tải lên máy chủ không?', a: 'Không. Ảnh được trình duyệt của bạn giải mã và mã hóa lại bằng Canvas API. Công cụ này không gửi tệp đi đâu cả.' },
     ],
     limits: [
       'Tối đa 100 khung hình; khung hình càng lớn, trình duyệt của bạn càng cần nhiều bộ nhớ.',
@@ -435,7 +419,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Tệp gốc có bị thay đổi không?', a: 'Không. Tệp của bạn không bao giờ bị sửa; ảnh đã chỉnh sửa được tạo thành một bản tải xuống mới.' },
       { q: 'Xuất ảnh có làm mất chất lượng không?', a: 'PNG giữ nguyên mọi điểm ảnh. JPG và WebP nén mất dữ liệu; hãy dùng chất lượng từ 90 trở lên để ảnh trông như cũ. Các chỉnh sửa được áp dụng ở kích thước đầy đủ của ảnh, không phải kích thước xem trước.' },
-      { q: 'Ảnh của tôi có bị tải lên máy chủ không?', a: 'Không. Ảnh được trình duyệt của bạn giải mã và mã hóa lại bằng Canvas API. Công cụ này không gửi tệp đi đâu cả.' },
     ],
     limits: [
       'Mỗi lần một ảnh, tối đa 25 MB và khoảng 50 megapixel.',
@@ -455,7 +438,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Chất lượng ảnh có giảm không?', a: 'Không. Các tệp JPG được nhúng vào PDF nguyên trạng, không nén lại.' },
-      { q: 'PDF của tôi có bị tải lên đâu không?', a: 'Không. PDF được trình duyệt của bạn đọc và ghi lại. Công cụ này không gửi tệp đến máy chủ.' },
     ],
     limits: [
       'Tối đa 25 MB mỗi ảnh và 100 ảnh mỗi PDF.',
@@ -473,7 +455,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Độ trong suốt có được giữ lại không?', a: 'Có. Ảnh PNG được nhúng cùng kênh alpha, nên các vùng trong suốt hiển thị nền trang màu trắng phía sau.' },
-      { q: 'PDF của tôi có bị tải lên đâu không?', a: 'Không. PDF được trình duyệt của bạn đọc và ghi lại. Công cụ này không gửi tệp đến máy chủ.' },
     ],
     limits: [
       'Tối đa 25 MB mỗi ảnh và 100 ảnh mỗi PDF.',
@@ -492,7 +473,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Những định dạng ảnh nào dùng được?', a: 'JPG và PNG được nhúng trực tiếp. WebP, GIF và BMP được chuyển sang PNG trước nếu trình duyệt của bạn giải mã được.' },
       { q: '"Vừa với ảnh" có tác dụng gì?', a: 'Mỗi trang có kích thước bằng ảnh của nó, nên không có gì bị thu phóng hay thêm viền. Chọn A4 hoặc Letter cho trang tài liệu tiêu chuẩn.' },
-      { q: 'PDF của tôi có bị tải lên đâu không?', a: 'Không. PDF được trình duyệt của bạn đọc và ghi lại. Công cụ này không gửi tệp đến máy chủ.' },
     ],
     limits: [
       'Tối đa 25 MB mỗi ảnh và 100 ảnh mỗi PDF.',
@@ -510,7 +490,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Dấu trang và trường biểu mẫu có được giữ lại không?', a: 'Các trang được sao chép cùng nội dung hiển thị và liên kết. Dấu trang ở cấp tài liệu và dữ liệu biểu mẫu tương tác không được chuyển sang.' },
       { q: 'Công cụ có mở được PDF có mật khẩu không?', a: 'Không. PDF được mã hóa sẽ được phát hiện và từ chối kèm thông báo rõ ràng. Hãy xóa mật khẩu trước bằng công cụ Mở khóa PDF của chúng tôi.' },
-      { q: 'PDF của tôi có bị tải lên đâu không?', a: 'Không. PDF được trình duyệt của bạn đọc và ghi lại. Công cụ này không gửi tệp đến máy chủ.' },
     ],
     limits: [
       'Tối đa 100 MB mỗi PDF.',
@@ -788,26 +767,25 @@ const tools: ToolTextMap = {
       'Chỉ các thuộc tính ở cấp tài liệu được thay đổi. Ghi chú, dữ liệu biểu mẫu và nội dung trang được giữ nguyên.',
     ],
   },
-  'protect-pdf': {
-    name: 'Bảo vệ PDF',
-    description: 'Khóa PDF bằng mật khẩu với mã hóa AES-256.',
-    metaDescription: 'Bảo vệ PDF bằng mật khẩu trực tuyến miễn phí. Mã hóa AES-256 diễn ra trong trình duyệt của bạn; tệp và mật khẩu không bao giờ được tải lên.',
+  "protect-pdf": {
+    name: "Bảo vệ PDF",
+    description: "Khóa PDF bằng mật khẩu với mã hóa AES-256.",
+    metaDescription: "Bảo vệ PDF bằng mật khẩu trực tuyến miễn phí. Mã hóa AES-256 diễn ra trong trình duyệt của bạn; tệp và mật khẩu không bao giờ được tải lên.",
     steps: [
-      'Thêm một PDF.',
-      'Nhập mật khẩu hai lần và chọn những gì người đọc được phép làm (in, sao chép, chỉnh sửa).',
-      'Bảo vệ và tải bản đã mã hóa về.',
+      "Thêm một PDF.",
+      "Nhập mật khẩu hai lần và chọn điều người đọc được phép làm (in, sao chép, chỉnh sửa).",
+      "Bảo vệ và tải xuống bản đã mã hóa.",
     ],
     faq: [
-      { q: 'Mức bảo vệ mạnh đến đâu?', a: 'Tệp được mã hóa bằng AES-256, chuẩn mã hóa PDF mạnh nhất. Trên thực tế, độ an toàn phụ thuộc vào mật khẩu của bạn: hãy dùng mật khẩu dài và không dùng ở bất kỳ nơi nào khác.' },
-      { q: 'Nếu tôi quên mật khẩu thì sao?', a: 'Không thể khôi phục. Không có gì được lưu hoặc gửi đi đâu cả, và không có cách đặt lại. Hãy cất tệp gốc và mật khẩu ở nơi an toàn.' },
-      { q: 'Các tùy chọn in, sao chép và chỉnh sửa có được thực thi không?', a: 'Đó là các yêu cầu mà hầu hết chương trình PDF tôn trọng, nhưng không phải không thể phá vỡ. Mật khẩu mới là thứ thực sự bảo vệ tệp.' },
-      { q: 'Mật khẩu của tôi có bị tải lên không?', a: 'Không. Việc mã hóa diễn ra trong trình duyệt của bạn.' },
+      { q: "Mức bảo vệ mạnh đến đâu?", a: "Tệp được mã hóa bằng AES-256, chuẩn mã hóa PDF mạnh nhất. Trên thực tế, độ an toàn phụ thuộc vào mật khẩu của bạn: hãy dùng mật khẩu dài mà bạn không dùng ở nơi nào khác." },
+      { q: "Nếu tôi quên mật khẩu thì sao?", a: "Không thể khôi phục và không có tính năng đặt lại mật khẩu. Hãy cất giữ tệp gốc và mật khẩu ở nơi an toàn." },
+      { q: "Các tùy chọn in, sao chép và chỉnh sửa có được thực thi không?", a: "Đó là những yêu cầu mà hầu hết chương trình PDF tôn trọng, nhưng không phải không thể phá vỡ. Chính mật khẩu mới thực sự bảo vệ tệp." },
     ],
     limits: [
-      'Tối đa 100 MB mỗi PDF.',
-      'Mật khẩu: tối đa 127 ký tự tiêu chuẩn (chữ cái, chữ số và ký hiệu).',
-      'PDF đã có mật khẩu phải được mở khóa trước.',
-      'Các trình đọc PDF rất cũ (trước khoảng năm 2008) có thể không mở được tệp AES-256.',
+      "Tối đa 100 MB mỗi PDF.",
+      "Mật khẩu: tối đa 127 ký tự tiêu chuẩn (chữ cái, chữ số và ký hiệu).",
+      "PDF đã có mật khẩu phải được mở khóa trước.",
+      "Các trình đọc PDF rất cũ (trước khoảng năm 2008) có thể không mở được tệp AES-256.",
     ],
   },
   'unlock-pdf': {
@@ -822,7 +800,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'Công cụ có mở khóa được PDF nếu tôi quên mật khẩu không?', a: 'Không. Công cụ này không bao giờ đoán hay bẻ khóa mật khẩu. Nó chỉ gỡ bảo vệ khi bạn cung cấp đúng mật khẩu, hoặc khi tệp chỉ hạn chế các thao tác như in.' },
       { q: 'Việc này có được phép không?', a: 'Chỉ dùng cho các tệp bạn sở hữu hoặc được phép mở. Bạn chịu trách nhiệm về cách sử dụng kết quả.' },
-      { q: 'Mật khẩu của tôi có bị tải lên không?', a: 'Không. Mọi thứ diễn ra trong trình duyệt của bạn.' },
     ],
     limits: [
       'Tối đa 100 MB mỗi PDF.',
@@ -853,25 +830,23 @@ const tools: ToolTextMap = {
       'Thứ tự đọc theo PDF và có thể khác thứ tự hiển thị trong các bố cục phức tạp.',
     ],
   },
-  'compress-pdf': {
-    name: 'Nén PDF',
-    description: 'Làm PDF nhỏ hơn bằng cách nén lại hình ảnh trong khi văn bản vẫn chọn được.',
-    metaDescription: 'Nén PDF trực tuyến miễn phí. Nén lại hình ảnh nhúng để giảm dung lượng tệp mà văn bản vẫn chọn được, hoặc làm phẳng các trang để có tệp nhỏ nhất. Chạy trong trình duyệt của bạn.',
+  "compress-pdf": {
+    name: "Nén PDF",
+    description: "Thu nhỏ PDF bằng cách nén lại các ảnh trong đó, trong khi văn bản vẫn chọn được.",
+    metaDescription: "Nén PDF trực tuyến miễn phí. Chọn nén tối đa, khuyến nghị hoặc nhẹ để giảm dung lượng trong khi văn bản vẫn chọn được. Chạy trong trình duyệt của bạn.",
     steps: [
-      'Thêm PDF của bạn.',
-      'Chọn cách nén và mức nén: mặc định giữ văn bản chọn được và chỉ nén lại hình ảnh.',
-      'Nén, xem dung lượng bạn đã tiết kiệm và tải kết quả về.',
+      "Thêm PDF của bạn.",
+      "Chọn nén tối đa, khuyến nghị hoặc nhẹ. Văn bản vẫn chọn được; chỉ các ảnh được nén lại.",
+      "Nén, kiểm tra dung lượng đã tiết kiệm và tải kết quả xuống.",
     ],
     faq: [
-      { q: 'Vì sao PDF của tôi hầu như không nhỏ đi?', a: 'Chế độ tiêu chuẩn nén lại ảnh JPEG, nên hiệu quả nhất với PDF đầy ảnh chụp hoặc bản quét. PDF chủ yếu là văn bản, hoặc có hình ảnh vốn đã nhỏ, không thể giảm nhiều. Công cụ sẽ cho bạn biết khi nó không tiết kiệm được gì thay vì giả vờ.' },
-      { q: 'Chất lượng có bị kém đi không?', a: 'Hình ảnh mất bớt chi tiết để đổi lấy dung lượng; Nhẹ giữ chúng gần như không đổi còn Mạnh làm chúng mềm đi rõ rệt. Văn bản và đồ họa vector không bị động đến ở chế độ tiêu chuẩn. Chế độ "Tối đa" biến mỗi trang thành một bức ảnh, nên không thể chọn hay tìm kiếm văn bản nữa.' },
-      { q: 'PDF của tôi có bị tải lên đâu không?', a: 'Không. PDF được trình duyệt của bạn đọc và ghi lại. Công cụ này không gửi tệp đến máy chủ.' },
+      { q: "Vì sao PDF của tôi gần như không nhỏ đi?", a: "Công cụ nén lại ảnh JPEG, nên hiệu quả nhất với PDF chứa nhiều ảnh chụp hoặc bản quét. PDF chủ yếu là văn bản, hoặc có ảnh vốn đã nhỏ, thì không thể nhỏ đi nhiều. Khi không thể tiết kiệm được gì, công cụ sẽ nói rõ và trả lại tệp gốc cho bạn thay vì một tệp lớn hơn." },
+      { q: "Chất lượng có kém đi không?", a: "Ảnh mất một chút chi tiết để đổi lấy dung lượng; nén nhẹ giữ chúng gần như không đổi, còn nén tối đa làm chúng mềm đi rõ rệt. Văn bản và đồ họa vector không bị động đến, nên văn bản vẫn chọn được và tìm kiếm được." },
     ],
     limits: [
-      'Chỉ các ảnh JPEG nhúng được nén lại. Ảnh kiểu PNG (Flate), phông chữ và nội dung khác được giữ nguyên.',
-      'Chế độ Tối đa chuyển mọi trang thành ảnh: văn bản, liên kết và trường biểu mẫu ngừng hoạt động và không thể tìm kiếm trong tệp.',
-      'Màu của các ảnh được nén lại có thể lệch rất nhẹ.',
-      'Tối đa 100 MB mỗi PDF. PDF có mật khẩu phải được mở khóa trước.',
+      "Chỉ ảnh JPEG nhúng được nén lại. Ảnh kiểu PNG (Flate), phông chữ và nội dung khác được giữ nguyên.",
+      "Màu của ảnh được nén lại có thể lệch rất nhẹ.",
+      "Tối đa 100 MB mỗi PDF. PDF có mật khẩu phải được mở khóa trước.",
     ],
   },
   'ocr-pdf': {
@@ -885,7 +860,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Hỗ trợ những ngôn ngữ nào?', a: 'Hiện chỉ có tiếng Anh. Văn bản bằng ngôn ngữ khác sẽ bị đọc sai. Có thể thêm ngôn ngữ sau này mà không thay đổi cách công cụ hoạt động.' },
-      { q: 'Tài liệu của tôi có bị gửi đến dịch vụ OCR không?', a: 'Không. Bộ máy nhận dạng (Tesseract, biên dịch sang WebAssembly) và dữ liệu tiếng Anh của nó được cung cấp từ chính trang web này và chạy bên trong trình duyệt của bạn. Tài liệu không được tải lên.' },
       { q: 'Độ chính xác ra sao?', a: 'Bản quét sạch, thẳng của văn bản in ở 200 đến 300 DPI cho kết quả tốt nhất. Chữ viết tay, chữ in rất nhỏ, trang có độ tương phản thấp hoặc bị lệch sẽ có nhiều lỗi hơn. Hãy luôn kiểm tra các con số quan trọng.' },
     ],
     limits: [
@@ -906,8 +880,6 @@ const tools: ToolTextMap = {
     ],
     faq: [
       { q: 'Đây có phải là chữ ký số có giá trị pháp lý ràng buộc không?', a: 'Đây là chữ ký trực quan: một hình ảnh chữ ký của bạn được đặt lên trang. Nó không phải là chữ ký số mật mã, không kèm chứng chỉ, và không thể chứng minh ai đã ký hay phát hiện các thay đổi về sau. Việc nó có được chấp nhận hay không tùy vào bên yêu cầu. Một số tổ chức yêu cầu dịch vụ chữ ký điện tử được chứng nhận.' },
-      { q: 'Chữ ký của tôi có được lưu ở đâu không?', a: 'Không. Nó được tạo trong trình duyệt của bạn, chỉ dùng cho tệp này, và bị quên khi bạn rời đi hoặc tải lại trang.' },
-      { q: 'PDF của tôi có bị tải lên đâu không?', a: 'Không. PDF được trình duyệt của bạn đọc và ghi lại. Công cụ này không gửi tệp đến máy chủ.' },
     ],
     limits: [
       'Chỉ là chữ ký trực quan: không có chứng chỉ, không có dấu thời gian, không phát hiện can thiệp.',
@@ -915,25 +887,25 @@ const tools: ToolTextMap = {
       'Tối đa 100 MB mỗi PDF. PDF có mật khẩu phải được mở khóa trước.',
     ],
   },
-  'fill-pdf-forms': {
-    name: 'Điền biểu mẫu PDF',
-    description: 'Điền vào các ô văn bản, hộp kiểm và menu của biểu mẫu PDF có thể điền.',
-    metaDescription: 'Điền biểu mẫu PDF trực tuyến miễn phí. Nhập vào các trường, đánh dấu hộp kiểm và chọn tùy chọn trong PDF có thể điền, rồi tải về dạng có thể sửa hoặc đã làm phẳng. Trong trình duyệt của bạn.',
+  "fill-pdf-forms": {
+    name: "Điền biểu mẫu PDF",
+    description: "Điền vào ô văn bản, hộp kiểm và menu của biểu mẫu PDF, hoặc viết lên bất kỳ PDF nào.",
+    metaDescription: "Điền biểu mẫu PDF trực tuyến miễn phí. Nhập vào các trường, đánh dấu hộp kiểm và chọn tùy chọn trong PDF điền được, rồi tải xuống ở dạng chỉnh sửa được hoặc đã làm phẳng. Ngay trong trình duyệt của bạn.",
     steps: [
-      'Thêm một biểu mẫu PDF có thể điền.',
-      'Điền vào các trường được liệt kê bên dưới tên tệp. Các trường được nhóm theo trang.',
-      'Chọn giữ biểu mẫu có thể chỉnh sửa hay làm phẳng, rồi tải PDF đã điền về.',
+      "Thêm một biểu mẫu PDF. PDF không có trường có thể viết lên bằng cách nhấp vào trang.",
+      "Điền các trường được liệt kê bên dưới tên tệp. Các trường được nhóm theo trang.",
+      "Chọn giữ biểu mẫu chỉnh sửa được hay làm phẳng, rồi tải xuống PDF đã điền.",
     ],
     faq: [
-      { q: 'PDF của tôi không hiện trường nào. Vì sao?', a: 'Chỉ những PDF có trường biểu mẫu thực sự mới điền được ở đây. Biểu mẫu chỉ là một bức ảnh hoặc văn bản thuần thì không có trường; hãy dùng Ký PDF để đặt chữ ký, hoặc công cụ Thêm hình mờ để thêm chữ. Biểu mẫu tạo bằng XFA (một số biểu mẫu của cơ quan nhà nước và ngân hàng) không được hỗ trợ.' },
-      { q: 'Làm phẳng có tác dụng gì?', a: 'Làm phẳng ghi cố định câu trả lời của bạn vào trang và xóa các trường biểu mẫu, nên câu trả lời không thể sửa được nữa. Hãy dùng cho bản bạn gửi đi; giữ một bản có thể sửa cho riêng bạn.' },
-      { q: 'PDF của tôi có bị tải lên đâu không?', a: 'Không. PDF được trình duyệt của bạn đọc và ghi lại. Công cụ này không gửi tệp đến máy chủ.' },
+      { q: "PDF của tôi không hiện trường nào. Vì sao?", a: "PDF không có trường biểu mẫu thực, ví dụ là một bản quét hoặc biểu mẫu chỉ là hình ảnh. Bạn vẫn có thể nhấp vào trang ở nơi văn bản cần nằm, nhập nó và lưu một bản sao có văn bản đã viết. Các trường của biểu mẫu XFA (một số biểu mẫu của chính phủ và ngân hàng) không thể điền được." },
+      { q: "Làm phẳng để làm gì?", a: "Làm phẳng ghi cố định câu trả lời của bạn vào trang và xóa các trường biểu mẫu, nên câu trả lời không thể chỉnh sửa nữa. Hãy dùng cho bản sao bạn gửi đi; giữ lại một bản chỉnh sửa được cho riêng mình." },
     ],
     limits: [
-      'Văn bản có thể dùng chữ cái Latin, chữ số và các ký hiệu thông dụng (phông chữ của biểu mẫu không có bảng chữ cái khác).',
-      'Trường chữ ký và nút được hiển thị nhưng không thể điền; hãy dùng Ký PDF cho chữ ký.',
-      'Không hỗ trợ biểu mẫu XFA (động).',
-      'Tối đa 100 MB mỗi PDF.',
+      "Văn bản có thể dùng chữ Latin, chữ số và ký hiệu thông dụng (phông chữ của biểu mẫu không có bảng chữ cái khác).",
+      "Trường chữ ký và nút được hiển thị nhưng không thể điền; hãy dùng Ký PDF cho chữ ký.",
+      "Biểu mẫu XFA (động): không thể điền các trường, nhưng bạn có thể viết lên các trang.",
+      "Văn bản viết lên PDF không có trường được ghi vào trang và sau đó không thể chỉnh sửa.",
+      "Tối đa 100 MB mỗi PDF.",
     ],
   },
   'redact-pdf': {
@@ -969,7 +941,6 @@ const tools: ToolTextMap = {
     faq: [
       { q: 'So sánh văn bản hiển thị những gì?', a: 'Với mỗi trang, công cụ hiển thị các từ được thêm (màu xanh lá) và bị xóa (màu đỏ) giữa tài liệu gốc và tài liệu đã chỉnh sửa, còn phần văn bản không đổi được thu gọn. Các trang được ghép theo số trang.' },
       { q: 'Còn các tệp PDF được quét thì sao?', a: 'Bản quét không có văn bản chọn được nên phần so sánh văn bản sẽ không tìm thấy gì. Hãy dùng so sánh trực quan, hoặc chạy OCR PDF cho cả hai tệp trước.' },
-      { q: 'Tệp PDF của tôi có được tải lên đâu không?', a: 'Không. Trình duyệt của bạn đọc và ghi lại tệp PDF. Công cụ này không gửi tệp đến máy chủ.' },
     ],
     limits: [
       'Các trang được so sánh theo số trang: nếu có một trang được chèn thêm, các trang sau đó sẽ hiển thị là đã thay đổi.',
@@ -1101,7 +1072,6 @@ const tools: ToolTextMap = {
       'Sao chép hoặc tải xuống kết quả đã định dạng.',
     ],
     faq: [
-      { q: 'JSON của tôi có được gửi đến máy chủ không?', a: 'Không. Việc phân tích và định dạng diễn ra ngay trong trình duyệt bằng bộ phân tích JSON tích hợp sẵn.' },
       { q: 'Vì sao công cụ từ chối JSON của tôi?', a: 'JSON chuẩn không cho phép chú thích, dấu phẩy thừa ở cuối hoặc dấu nháy đơn. Thông báo lỗi cho biết dòng và cột của vị trí có vấn đề.' },
     ],
     limits: [
@@ -1249,7 +1219,6 @@ const tools: ToolTextMap = {
       'Sao chép mật khẩu và lưu nó trong trình quản lý mật khẩu.',
     ],
     faq: [
-      { q: 'Mật khẩu được tạo có bị lưu hoặc gửi đi đâu không?', a: 'Không. Mật khẩu được tạo ngay trong trình duyệt bằng crypto.getRandomValues và không bao giờ được truyền đi hay lưu lại.' },
       { q: 'Mật khẩu như Tesla2026#Tech có an toàn không?', a: 'Nó tốt hơn một từ đơn giản, nhưng yếu hơn văn bản ngẫu nhiên. Người đoán có thể bắt đầu từ danh sách các tên nổi tiếng, nên độ mạnh thực sự đến từ số khả năng có thể xảy ra, được hiển thị bằng bit. Hãy dùng mật khẩu dựa trên tên cho các tài khoản ít rủi ro và mật khẩu hoàn toàn ngẫu nhiên cho email, ngân hàng và trình quản lý mật khẩu.' },
       { q: 'Vì sao chỉ có vài ký hiệu?', a: 'Mật khẩu được tạo chỉ dùng bốn ký hiệu @ # $ * vì hầu như mọi trang web đều chấp nhận chúng và dễ gõ trên mọi bàn phím.' },
       { q: 'Mật khẩu nên dài bao nhiêu?', a: 'Ít nhất 16 ký tự cho các tài khoản quan trọng. Độ dài quan trọng hơn độ phức tạp.' },
@@ -1322,7 +1291,6 @@ const tools: ToolTextMap = {
       { q: 'Mã có hết hạn không?', a: 'Không. Đây là các mã tĩnh: dữ liệu được lưu ngay trong mã, nên chúng dùng được mãi mãi và không có gì bị theo dõi.' },
       { q: 'Tôi nên chọn mức sửa lỗi nào?', a: 'Mức Trung bình phù hợp với hầu hết trường hợp. Hãy chọn Khá cao hoặc Cao nếu mã có thể bị bẩn hoặc hư hại, nhưng mức cao hơn làm mã dày đặc hơn và khó quét hơn ở kích thước nhỏ.' },
       { q: 'Tôi có thể dùng mã cho mục đích thương mại không?', a: 'Có. Tiêu chuẩn mã QR là mở, và các mã tạo ở đây không có phí, hình mờ hay theo dõi nào từ chúng tôi.' },
-      { q: 'Dữ liệu của tôi có bị gửi đi đâu không?', a: 'Không. Mã được tạo ngay trong trình duyệt, và mật khẩu Wi-Fi bạn nhập vẫn nằm trên thiết bị của bạn.' },
     ],
     limits: [
       'Chỉ có mã tĩnh: không theo dõi lượt quét và không có mã chỉnh sửa được.',
@@ -1343,7 +1311,6 @@ const tools: ToolTextMap = {
       { q: "Công cụ có nhận dạng văn bản trên trang không?", a: "Không. Quét sang PDF biến hình ảnh thành các trang PDF và có thể làm sạch chúng, nhưng văn bản vẫn là một phần của hình ảnh. Để có thể tìm kiếm, hãy cho kết quả chạy qua OCR PDF." },
       { q: "Tôi có thể dùng camera điện thoại không?", a: "Trên điện thoại và máy tính bảng có trình duyệt hỗ trợ, nút “Chụp ảnh” sẽ mở camera. Nếu không, hãy chọn các ảnh đã lưu sẵn trên thiết bị của bạn." },
       { q: "Các kiểu làm sạch làm gì?", a: "“Gốc” giữ nguyên màu. “Thang xám” bỏ màu. “Tài liệu đen trắng” biến trang thành chữ đen thuần trên giấy trắng và làm đều bóng đổ cùng ánh sáng không đều, phù hợp với trang in và ghi chú nhưng không phù hợp với ảnh chụp." },
-      { q: "Tệp của tôi có bị tải lên đâu đó không?", a: "Không. Tệp được trình duyệt của bạn đọc và chuyển đổi. Công cụ này không gửi nó đến máy chủ." },
     ],
     limits: [
       "Tối đa 25 MB mỗi ảnh và 100 ảnh mỗi PDF.",
@@ -1365,7 +1332,6 @@ const tools: ToolTextMap = {
       { q: "PDF có giống trang web không?", a: "Không, không hoàn toàn. Công cụ đọc cấu trúc tài liệu (tiêu đề, đoạn văn, danh sách, bảng, liên kết, chữ đậm và nghiêng cùng ảnh nhúng) và dàn thành một tài liệu đơn giản. Kiểu CSS, script, phông web, cột và các thành phần định vị không được áp dụng." },
       { q: "Chuyển đổi HTML mà tôi không tin tưởng có an toàn không?", a: "HTML được đọc như văn bản vô hại: script không chạy và không có gì được tải từ internet. Chỉ các ảnh nhúng ngay trong HTML mới được dùng." },
       { q: "PDF hỗ trợ những ngôn ngữ và phông chữ nào?", a: "PDF được tạo bằng phông Noto Sans, bao phủ văn bản Latin (gồm cả các chữ cái Ba Lan, Séc, Rumani và Thổ Nhĩ Kỳ), Kirin, Hy Lạp, tiếng Việt và Devanagari. Văn bản tiếng Ả Rập, Do Thái, Thái, Trung, Nhật và Hàn chưa được hỗ trợ: các ký tự đó xuất hiện dưới dạng dấu hỏi và công cụ sẽ cho bạn biết có bao nhiêu ký tự bị ảnh hưởng. Phông chữ gốc của tài liệu không được giữ lại." },
-      { q: "Tệp của tôi có bị tải lên đâu đó không?", a: "Không. Tệp được trình duyệt của bạn đọc và chuyển đổi. Công cụ này không gửi nó đến máy chủ." },
     ],
     limits: [
       "Tối đa 10 MB HTML.",
@@ -1387,7 +1353,6 @@ const tools: ToolTextMap = {
       { q: "Những gì được chuyển đổi và những gì không?", a: "Được chuyển đổi: văn bản có chữ đậm, nghiêng, gạch chân và liên kết, tiêu đề, danh sách đầu dòng và đánh số, bảng, ảnh JPEG và PNG, ngắt dòng và ngắt trang, căn lề và hướng trang. Không được chuyển đổi: đầu trang và chân trang, chú thích cuối trang, hộp văn bản, phương trình, biểu đồ, hình khối và các định dạng ảnh khác." },
       { q: "Tôi có thể chuyển đổi tệp .doc cũ không?", a: "Không. Hãy mở nó trong Word và lưu thành tệp DOCX trước." },
       { q: "PDF hỗ trợ những ngôn ngữ và phông chữ nào?", a: "PDF được tạo bằng phông Noto Sans, bao phủ văn bản Latin (gồm cả các chữ cái Ba Lan, Séc, Rumani và Thổ Nhĩ Kỳ), Kirin, Hy Lạp, tiếng Việt và Devanagari. Văn bản tiếng Ả Rập, Do Thái, Thái, Trung, Nhật và Hàn chưa được hỗ trợ: các ký tự đó xuất hiện dưới dạng dấu hỏi và công cụ sẽ cho bạn biết có bao nhiêu ký tự bị ảnh hưởng. Phông chữ gốc của tài liệu không được giữ lại." },
-      { q: "Tệp của tôi có bị tải lên đâu đó không?", a: "Không. Tệp được trình duyệt của bạn đọc và chuyển đổi. Công cụ này không gửi nó đến máy chủ." },
     ],
     limits: [
       "Chỉ tệp DOCX, tối đa 50 MB. Tệp .doc cũ và tài liệu được bảo vệ bằng mật khẩu không được hỗ trợ.",
@@ -1409,7 +1374,6 @@ const tools: ToolTextMap = {
       { q: "Những gì không được chuyển đổi?", a: "Biểu đồ, SmartArt, video và âm thanh, hoạt ảnh và hiệu ứng chuyển trang, ghi chú của người trình bày, màu chuyển sắc, đường kẻ và đầu nối, cùng hình ảnh ở định dạng khác JPEG và PNG. Công cụ sẽ cho bạn biết có bao nhiêu mục bị bỏ qua." },
       { q: "Tôi có thể chuyển đổi tệp .ppt cũ không?", a: "Không. Hãy mở nó trong PowerPoint và lưu thành tệp PPTX trước." },
       { q: "PDF hỗ trợ những ngôn ngữ và phông chữ nào?", a: "PDF được tạo bằng phông Noto Sans, bao phủ văn bản Latin (gồm cả các chữ cái Ba Lan, Séc, Rumani và Thổ Nhĩ Kỳ), Kirin, Hy Lạp, tiếng Việt và Devanagari. Văn bản tiếng Ả Rập, Do Thái, Thái, Trung, Nhật và Hàn chưa được hỗ trợ: các ký tự đó xuất hiện dưới dạng dấu hỏi và công cụ sẽ cho bạn biết có bao nhiêu ký tự bị ảnh hưởng. Phông chữ gốc của tài liệu không được giữ lại." },
-      { q: "Tệp của tôi có bị tải lên đâu đó không?", a: "Không. Tệp được trình duyệt của bạn đọc và chuyển đổi. Công cụ này không gửi nó đến máy chủ." },
     ],
     limits: [
       "Chỉ tệp PPTX, tối đa 100 MB và 300 trang chiếu. Tệp .ppt cũ và bản trình bày được bảo vệ bằng mật khẩu không được hỗ trợ.",
@@ -1431,7 +1395,6 @@ const tools: ToolTextMap = {
       { q: "Kết quả có giống bố cục in trong Excel không?", a: "Không. Mỗi trang tính hiển thị trở thành một bảng đơn giản được vừa với chiều rộng trang. Màu ô, ô gộp, độ rộng cột, biểu đồ, hình ảnh, vùng in và ngắt trang không được giữ lại." },
       { q: "Tôi có thể chuyển đổi tệp .xls cũ không?", a: "Không. Hãy mở nó trong Excel và lưu thành tệp XLSX trước." },
       { q: "PDF hỗ trợ những ngôn ngữ và phông chữ nào?", a: "PDF được tạo bằng phông Noto Sans, bao phủ văn bản Latin (gồm cả các chữ cái Ba Lan, Séc, Rumani và Thổ Nhĩ Kỳ), Kirin, Hy Lạp, tiếng Việt và Devanagari. Văn bản tiếng Ả Rập, Do Thái, Thái, Trung, Nhật và Hàn chưa được hỗ trợ: các ký tự đó xuất hiện dưới dạng dấu hỏi và công cụ sẽ cho bạn biết có bao nhiêu ký tự bị ảnh hưởng. Phông chữ gốc của tài liệu không được giữ lại." },
-      { q: "Tệp của tôi có bị tải lên đâu đó không?", a: "Không. Tệp được trình duyệt của bạn đọc và chuyển đổi. Công cụ này không gửi nó đến máy chủ." },
     ],
     limits: [
       "Chỉ tệp XLSX, tối đa 50 MB. Tệp .xls cũ và sổ làm việc được bảo vệ bằng mật khẩu không được hỗ trợ.",
@@ -1452,7 +1415,6 @@ const tools: ToolTextMap = {
       { q: "Tiêu đề và danh sách được nhận ra như thế nào?", a: "Tiêu đề là các dòng có cỡ chữ lớn hơn văn bản chính, danh sách là các dòng bắt đầu bằng dấu đầu dòng hoặc số, còn các đoạn văn được tách bởi khoảng cách giữa các dòng. Đây là ước đoán tốt chứ không phải bảo đảm, vì vậy hãy kiểm tra kết quả." },
       { q: "Vì sao kết quả trống với PDF quét của tôi?", a: "Bản quét là hình ảnh của trang và không có văn bản để trích xuất. Hãy chạy OCR PDF trước để thêm lớp văn bản, rồi chuyển đổi kết quả." },
       { q: "Còn bảng, cột và hình ảnh thì sao?", a: "Bảng và cột không được dựng lại: văn bản của chúng xuất hiện như các dòng thông thường, theo thứ tự đọc khi có thể. Hình ảnh, liên kết, chữ đậm và nghiêng, chú thích cuối trang và phương trình không được mang theo." },
-      { q: "Tệp của tôi có bị tải lên đâu đó không?", a: "Không. Tệp được trình duyệt của bạn đọc và chuyển đổi. Công cụ này không gửi nó đến máy chủ." },
     ],
     limits: [
       "Tối đa 100 MB mỗi PDF. PDF được bảo vệ bằng mật khẩu cần được mở khóa trước.",
@@ -1473,7 +1435,6 @@ const tools: ToolTextMap = {
       { q: "Có thể sửa những loại hỏng hóc nào?", a: "Hỏng cấu trúc của tệp: chỉ mục đối tượng (bảng tham chiếu chéo) bị thiếu hoặc sai, thiếu trailer, rác ở phía trước hoặc danh sách trang bị hỏng. Nếu tệp bị cắt cụt, các trang đã lưu trước chỗ cắt có thể được khôi phục." },
       { q: "Điều gì không thể khôi phục?", a: "Nội dung không còn trong tệp. Các trang, hình ảnh hay phông chữ bị thiếu hoặc hỏng không thể lấy lại, và một số tệp không thể cứu được. Công cụ cho bạn biết đã giữ lại bao nhiêu trang và nói rõ khi không tạo được tệp dùng được; nó không bao giờ đưa ra bản tải xuống mà nó chưa tạo." },
       { q: "Nếu PDF của tôi mở bình thường thì sao?", a: "Khi đó không có gì để sửa. Công cụ sẽ cho bạn biết và cung cấp một bản sao đã làm sạch của tệp." },
-      { q: "Tệp của tôi có bị tải lên đâu đó không?", a: "Không. Tệp được trình duyệt của bạn đọc và chuyển đổi. Công cụ này không gửi nó đến máy chủ." },
     ],
     limits: [
       "Tối đa 100 MB mỗi PDF. PDF được bảo vệ bằng mật khẩu cần được mở khóa trước.",
@@ -1483,25 +1444,26 @@ const tools: ToolTextMap = {
   },
   "pdf-to-pdfa": {
     name: "PDF sang PDF/A",
-    description: "Chuẩn bị PDF thành PDF/A-2b để lưu trữ lâu dài, giữ văn bản hoặc chuyển các trang thành hình ảnh.",
-    metaDescription: "PDF sang PDF/A trực tuyến: chuẩn bị PDF thành PDF/A-2b để lưu trữ, với nhận dạng PDF/A, siêu dữ liệu và hồ sơ màu. Giữ văn bản khi có thể. Chạy ngay trong trình duyệt của bạn.",
+    description: "Chuẩn bị PDF thành PDF/A (1b, 2b, 2u, 3b, 3u hoặc 4) để lưu trữ, giữ văn bản hoặc dùng ảnh của các trang.",
+    metaDescription: "PDF sang PDF/A trực tuyến: chuẩn bị PDF thành PDF/A-1b, 2b, 2u, 3b, 3u hoặc 4 để lưu trữ, kèm nhận diện PDF/A, siêu dữ liệu và hồ sơ màu. Giữ văn bản khi có thể. Chạy trong trình duyệt của bạn.",
     steps: [
-      "Chọn một PDF. Tệp được bảo vệ bằng mật khẩu phải được mở khóa trước.",
-      "Chọn cách chuyển đổi: giữ văn bản và phông chữ, hoặc chuyển các trang thành hình ảnh.",
-      "Chuyển đổi, đọc những gì đã làm và tải tệp PDF/A.",
+      "Chọn một PDF. Tệp có mật khẩu phải được mở khóa trước.",
+      "Chọn phiên bản PDF/A, rồi chọn cách chuyển đổi: giữ văn bản và phông chữ, hoặc chuyển các trang thành hình ảnh.",
+      "Chuyển đổi, đọc những gì đã làm và tải xuống tệp PDF/A.",
     ],
     faq: [
-      { q: "Kết quả có phải là tệp PDF/A được chứng nhận không?", a: "Không. Kitwell chuẩn bị PDF của bạn thành PDF/A-2b, mức lưu trữ cơ bản, và kiểm tra công việc của mình theo các quy tắc mà nó áp dụng. Nó không có bộ xác thực PDF/A đầy đủ. Nếu bạn cần chứng minh sự tuân thủ, hãy kiểm tra tệp bằng một bộ xác thực như veraPDF." },
-      { q: "Hai cách chuyển đổi khác nhau thế nào?", a: "“Giữ văn bản và phông chữ” chỉ thay đổi cấu trúc và siêu dữ liệu của tệp nên văn bản vẫn chọn được. Cách này chỉ hoạt động khi mọi phông chữ đều được nhúng và tệp không dùng màu CMYK. “Chuyển các trang thành hình ảnh” dựng mỗi trang thành một hình ảnh rồi tạo PDF/A mới từ các hình đó. Cách này luôn hoạt động, nhưng văn bản không thể chọn được nữa và tệp lớn hơn." },
-      { q: "Vì sao PDF của tôi bị từ chối khi tôi chọn giữ văn bản?", a: "PDF/A yêu cầu mọi phông chữ phải được nhúng trong tệp, và không cho phép màu CMYK không có hồ sơ CMYK, nén LZW hay chú thích không có hình thức hiển thị. Những điều này không thể sửa mà không thay đổi các trang, nên công cụ liệt kê những gì nó tìm thấy thay vì giả vờ có kết quả. Bạn vẫn có thể dùng chế độ hình ảnh." },
-      { q: "Công cụ thay đổi gì trong tệp?", a: "Nó thêm nhận dạng PDF/A và siêu dữ liệu XMP, hồ sơ màu sRGB làm điều kiện đầu ra và mã định danh tệp. Nó xóa JavaScript, các hành động bị cấm, tệp đính kèm, thông tin tài liệu thừa và các thiết lập chú thích mà PDF/A không cho phép." },
-      { q: "Tệp của tôi có được tải lên đâu không?", a: "Không. Tệp được trình duyệt của bạn đọc và chuyển đổi. Công cụ này không gửi nó đến bất kỳ máy chủ nào." },
+      { q: "Kết quả có phải là tệp PDF/A được chứng nhận không?", a: "Không. Kitwell chuẩn bị PDF của bạn theo phiên bản PDF/A bạn chọn và tự kiểm tra công việc của mình theo các quy tắc nó áp dụng. Các tệp thử nghiệm được chuyển đổi theo cách này đã vượt qua trình xác thực veraPDF, nhưng bản thân công cụ trong trình duyệt không có trình xác thực PDF/A đầy đủ. Nếu cần chứng minh sự tuân thủ, hãy kiểm tra tệp của bạn bằng trình xác thực như veraPDF." },
+      { q: "Tôi nên chọn phiên bản PDF/A nào?", a: "PDF/A-2b được chấp nhận rộng rãi nhất và là mặc định. PDF/A-1b cũ nhất và nghiêm ngặt nhất: không cho phép độ trong suốt hay các lớp. Các phiên bản “u” (2u, 3u) còn đảm bảo văn bản có thể sao chép đáng tin cậy, nên yêu cầu mọi phông chữ đều có ánh xạ văn bản. PDF/A-3b có cùng quy tắc với 2b, còn PDF/A-4 mới nhất, dựa trên PDF 2.0. Các cấp “a” (1a, 2a, 3a) cần cấu trúc tài liệu được gắn thẻ mà không thể tạo tự động, còn 4e và 4f dành cho 3D và tệp đính kèm, nên không được cung cấp." },
+      { q: "Hai cách chuyển đổi khác nhau thế nào?", a: "“Giữ văn bản và phông chữ” chỉ thay đổi cấu trúc và siêu dữ liệu của tệp, nên văn bản vẫn chọn được. Cách này chỉ hoạt động khi mọi phông chữ đều được nhúng và tệp không dùng màu CMYK. “Chuyển các trang thành hình ảnh” dựng mỗi trang thành một ảnh và tạo PDF/A mới từ chúng. Cách này luôn hoạt động, nhưng văn bản không còn chọn được và tệp lớn hơn." },
+      { q: "Vì sao PDF của tôi bị từ chối khi tôi chọn giữ văn bản?", a: "PDF/A yêu cầu mọi phông chữ phải được nhúng trong tệp, và không cho phép màu CMYK khi không có hồ sơ CMYK, nén LZW hay chú thích không có hình dạng hiển thị. PDF/A-1b còn từ chối độ trong suốt, các lớp và ảnh JPEG 2000, và các phiên bản “u” cùng PDF/A-4 cần ánh xạ văn bản cho mỗi phông chữ. Những điều này không thể sửa nếu không thay đổi các trang, nên công cụ liệt kê những gì nó tìm thấy thay vì giả vờ có kết quả. Bạn vẫn có thể dùng chế độ hình ảnh." },
+      { q: "Công cụ thay đổi gì trong tệp?", a: "Nó thêm nhận diện PDF/A và siêu dữ liệu XMP, hồ sơ màu sRGB làm ý định đầu ra và mã nhận dạng tệp. Nó loại bỏ JavaScript, hành động bị cấm, tệp đính kèm, thông tin tài liệu thừa và các thiết lập chú thích mà PDF/A không cho phép." },
     ],
     limits: [
-      "Tối đa 100 MB mỗi PDF. PDF được bảo vệ bằng mật khẩu phải được mở khóa trước, vì tệp PDF/A không được mã hóa.",
+      "Tối đa 100 MB mỗi PDF. PDF có mật khẩu phải được mở khóa trước, vì tệp PDF/A không thể bị mã hóa.",
       "“Giữ văn bản và phông chữ” chỉ hoạt động khi mọi phông chữ đều được nhúng và tệp không có màu CMYK hay nén LZW.",
-      "Việc chuyển các trang thành hình ảnh giới hạn ở 200 trang. Văn bản không thể chọn được nữa và tệp lớn hơn.",
-      "Kết quả là PDF/A-2b do Kitwell chuẩn bị và kiểm tra theo các quy tắc nó áp dụng; nó chưa được xác thực bằng bộ xác thực PDF/A đầy đủ.",
+      "Chuyển các trang thành hình ảnh bị giới hạn ở 200 trang. Văn bản không còn chọn được và tệp lớn hơn.",
+      "Kết quả do Kitwell chuẩn bị và được kiểm tra theo các quy tắc nó áp dụng; nó không được trình xác thực PDF/A đầy đủ trong trình duyệt của bạn xác thực.",
+      "Các phiên bản có sẵn: PDF/A-1b, 2b, 2u, 3b, 3u và 4. Các cấp “a” (PDF gắn thẻ) và 4e/4f không được cung cấp.",
     ],
   },
 };

@@ -34,7 +34,6 @@ const ImageWatermark: ToolImplementation = () => {
   const [position, setPosition] = useState<MarkPosition>('bottom-right');
   const [layout, setLayout] = useState<'single' | 'tile'>('single');
   const [angle, setAngle] = useState<number | ''>(0);
-  const [quality, setQuality] = useState(92);
 
   const logo = useFileQueue({ extensions: ['png', 'jpg', 'jpeg', 'webp'], maxBytes: MAX_IMAGE_BYTES, maxFiles: 1 }, false);
   const logoFile = logo.items[0]?.file ?? null;
@@ -120,7 +119,6 @@ const ImageWatermark: ToolImplementation = () => {
           />
           {layout === 'single' && <SelectField label={t('imageWatermark.position')} value={position} onChange={setPosition} options={POSITIONS.map((p) => ({ value: p.value, label: t(p.key) }))} />}
           <NumberField label={t('imageWatermark.rotation')} value={angle} min={-180} max={180} onChange={setAngle} />
-          <RangeField label={t('imageWatermark.quality')} value={quality} min={10} max={100} onChange={setQuality} format={(v) => `${v}%`} />
         </>
       }
       process={async (file) => {
@@ -130,7 +128,7 @@ const ImageWatermark: ToolImplementation = () => {
         const result = await watermarkImage(
           file,
           { mark, opacity: opacity / 100, position, layout, angle: Number(angle) || 0 },
-          { mime: fmt.mime, quality: quality / 100, background: '#ffffff' },
+          { mime: fmt.mime, quality: 0.92, background: '#ffffff' },
         );
         return { name: outputName(file.name, fmt.ext, '-watermarked'), blob: result.blob, note: t('imageWatermark.note', { width: result.width, height: result.height }) };
       }}

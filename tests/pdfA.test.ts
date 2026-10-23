@@ -2,7 +2,7 @@ import { PDFArray, PDFDict, PDFDocument, PDFName, PDFNumber, PDFString, Standard
 import { describe, expect, it } from 'vitest';
 import { buildPdf, type Block } from '../src/lib/docPdf';
 import { srgbIccProfile } from '../src/lib/iccProfile';
-import { PdfABlocked, analyzeForPdfA, buildFlattenedPdfA, buildXmp, checkPdfA, convertKeepingContent } from '../src/lib/pdfA';
+import { PDFA_PROFILES, PdfABlocked, analyzeForPdfA, buildFlattenedPdfA, buildXmp, checkPdfA, convertKeepingContent, type PdfAProfile } from '../src/lib/pdfA';
 import { nodeFontLoader, pdfPages } from './helpers/pdfTestUtils';
 
 const blocks: Block[] = [
@@ -112,6 +112,33 @@ describe('PDF/A preparation', () => {
     expect(sizes).toEqual([[595, 842], [842, 595]]);
     const doc = await PDFDocument.load(result.bytes);
     expect(doc.getTitle()).toBe('Scanned');
+  });
+
+  it.each(PDFA_PROFILES)('writes PDF/A-%s identification, header and passes its own check', async (profile: PdfAProfile) => {
+    const { result } = await convertKeepingContent(await problematicPdf(), undefined, profile);
+    expect(await checkPdfA(result.bytes, profile)).toEqual([]);
+    const head = new TextDecoder('latin1').decode(result.bytes.subarray(0, 8));
+    expect(head).toBe(profile.startsWith('1') ? '%PDF-1.4' : profile === '4' ? '%PDF-2.0' : '%PDF-1.7');
+    const raw = new TextDecoder('latin1').decode(result.bytes);
+    expect(raw).toContain(`<pdfaid:part>${profile[0]}</pdfaid:part>`);
+    if (profile === '4') {
+      expect(raw).toContain('<pdfaid:rev>2020</pdfaid:rev>');
+      expect(raw).not.toContain('/Producer');
+    } else {
+      expect(raw).toContain(`<pdfaid:conformance>${profile[1].toUpperCase()}</pdfaid:conformance>`);
+    }
+    // a file prepared for one version is not accepted as another
+    expect((await checkPdfA(result.bytes, profile === '2b' ? '3b' : '2b')).length).toBeGreaterThan(0);
+  });
+
+  it('PDF/A-1b refuses transparency instead of faking it', async () => {
+    const doc = await PDFDocument.create();
+    const page = doc.addPage();
+    const font = await doc.embedFont(StandardFonts.Helvetica);
+    page.drawText('x', { font, opacity: 0.5 });
+    const analysis = analyzeForPdfA(await PDFDocument.load(await doc.save()), '1b');
+    expect(analysis.blockers.map((b) => b.key)).toContain('pdfa.block.transparency');
+    expect(analyzeForPdfA(await PDFDocument.load(await doc.save()), '2b').blockers.map((b) => b.key)).not.toContain('pdfa.block.transparency');
   });
 
   it('the self-check reports a plain PDF as not PDF/A', async () => {

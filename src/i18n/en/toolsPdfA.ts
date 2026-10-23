@@ -24,7 +24,6 @@ export const toolsPdfA = {
   'imagesToPdf.ready': 'Your PDF is ready',
   'imagesToPdf.summary.one': '{count} page · {size}',
   'imagesToPdf.summary.other': '{count} pages · {size}',
-  'imagesToPdf.download': 'Download images.pdf',
 
   'pdfMerge.merging': 'Merging',
   'pdfMerge.addMore': 'Add more PDFs',
@@ -34,7 +33,6 @@ export const toolsPdfA = {
   'pdfMerge.clear': 'Clear all',
   'pdfMerge.processing': 'Merging PDFs…',
   'pdfMerge.ready': 'Your merged PDF is ready',
-  'pdfMerge.download': 'Download merged.pdf',
 
   'pdfSplit.tooMany': 'That would create more than 500 files. Use a larger number of pages per file.',
   'pdfSplit.splitting': 'Splitting',
@@ -86,7 +84,6 @@ export const toolsPdfA = {
   'pdfOrganize.removePage': 'Remove page {n}',
   'pdfOrganize.building': 'Building PDF…',
   'pdfOrganize.ready': 'Your PDF is ready',
-  'pdfOrganize.download': 'Download {name}',
 
   'pdfPageNumbers.pos.bottom-center': 'Bottom centre',
   'pdfPageNumbers.pos.bottom-right': 'Bottom right',

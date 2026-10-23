@@ -31,7 +31,7 @@ export default {
   'imageCompress.maxSize.800': '800 px',
   'imageCompress.background': 'Nền cho vùng trong suốt',
   'imageCompress.noteSmaller': '{before} → {after} (-{saved}%)',
-  'imageCompress.noteLarger': '{before} → {after} (lớn hơn; hãy giữ bản gốc hoặc giảm chất lượng)',
+  "imageCompress.noteLarger": "{before} → {after} (không nhỏ hơn, nên tệp gốc được giữ lại)",
 
   'imageResize.action': 'Đổi kích thước ảnh',
   'imageResize.resizeBy': 'Đổi kích thước theo',

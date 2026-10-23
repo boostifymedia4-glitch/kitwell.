@@ -6,7 +6,6 @@
  * tools run in the browser): update them if that changes.
  */
 export const legal = {
-  'legal.translationNote': 'This page is a translation provided for convenience. The English version is the authoritative text; if the two differ, the English version applies.',
 
   'legal.privacy.intro': 'How {site} handles information when you use the website.',
   'legal.privacy.1.h': 'Files and text in the tools',

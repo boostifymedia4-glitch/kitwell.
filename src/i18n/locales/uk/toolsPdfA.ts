@@ -28,7 +28,6 @@ export default {
   'imagesToPdf.summary.few': '{count} сторінки · {size}',
   'imagesToPdf.summary.many': '{count} сторінок · {size}',
   'imagesToPdf.summary.other': '{count} сторінки · {size}',
-  'imagesToPdf.download': 'Завантажити images.pdf',
 
   'pdfMerge.merging': 'Об’єднання',
   'pdfMerge.addMore': 'Додати ще PDF',
@@ -38,7 +37,6 @@ export default {
   'pdfMerge.clear': 'Очистити все',
   'pdfMerge.processing': 'Об’єднання PDF…',
   'pdfMerge.ready': 'Ваш об’єднаний PDF готовий',
-  'pdfMerge.download': 'Завантажити merged.pdf',
 
   'pdfSplit.tooMany': 'Це створило б понад 500 файлів. Вкажіть більшу кількість сторінок на файл.',
   'pdfSplit.splitting': 'Розділення',
@@ -104,7 +102,6 @@ export default {
   'pdfOrganize.removePage': 'Видалити сторінку {n}',
   'pdfOrganize.building': 'Створення PDF…',
   'pdfOrganize.ready': 'Ваш PDF готовий',
-  'pdfOrganize.download': 'Завантажити «{name}»',
 
   'pdfPageNumbers.pos.bottom-center': 'Внизу по центру',
   'pdfPageNumbers.pos.bottom-right': 'Внизу праворуч',
