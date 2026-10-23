@@ -87,7 +87,7 @@ export function createDiskShareStore({ dir, ttlMs, maxBytes, now = Date.now }) {
     /** Deletes every expired share; returns how many were removed. */
     async sweep() {
       let removed = 0;
-      let ids = [];
+      let ids;
       try {
         ids = await readdir(dir);
       } catch {
@@ -95,7 +95,7 @@ export function createDiskShareStore({ dir, ttlMs, maxBytes, now = Date.now }) {
       }
       for (const id of ids) {
         if (!validShareId(id)) continue;
-        let expired = true;
+        let expired;
         try {
           expired = JSON.parse(await readFile(metaPath(id), 'utf8')).expiresAt <= now();
         } catch {

@@ -44,7 +44,7 @@ const randomId = () => {
 
 /** The same cleaning the server applies: no folders or control characters, bounded length. */
 // eslint-disable-next-line no-control-regex
-const cleanName = (name: string) => (name.split(/[\/]/).pop() ?? '').replace(/[\u0000-\u001f<>:"|?*]/g, '').replace(/^[\s.]+/, '').trim().slice(0, 120) || 'file';
+const cleanName = (name: string) => (name.split(/[/\\]/).pop() ?? '').replace(/[\u0000-\u001f<>:"|?*]/g, '').replace(/^[\s.]+/, '').trim().slice(0, 120) || 'file';
 
 /** Uploads the file and returns its id and expiry. */
 export async function createShare(blob: Blob, name: string, status: ShareStatus): Promise<{ id: string; expiresAt: number }> {

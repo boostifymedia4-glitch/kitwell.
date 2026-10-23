@@ -1,3 +1,4 @@
+/* global window, URLSearchParams */
 // Return page of the Dropbox sign-in pop-up: hands the access token (or the refusal) back to the page that opened it.
 (function () {
   var params = new URLSearchParams(window.location.hash.slice(1));
