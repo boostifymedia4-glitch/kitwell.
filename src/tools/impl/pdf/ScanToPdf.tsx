@@ -21,7 +21,11 @@ async function preparePage(file: File, filter: ScanFilter, t: (key: string) => s
   try {
     const img = new Image();
     img.src = url;
-    await img.decode();
+    // onload instead of decode(): decode() never settles while the tab is in the background
+    await new Promise<void>((resolve, reject) => {
+      img.onload = () => resolve();
+      img.onerror = () => reject(new Error('image could not be decoded'));
+    });
     const { width, height } = scaledSize(img.naturalWidth, img.naturalHeight);
     const canvas = document.createElement('canvas');
     canvas.width = width;
