@@ -68,7 +68,6 @@ export default {
   'pdfCompress.result.skipped.one': '{count} altă imagine (alt format, tonuri de gri sau CMYK) a fost lăsată așa cum este.',
   'pdfCompress.result.skipped.few': '{count} alte imagini (alte formate, tonuri de gri sau CMYK) au fost lăsate așa cum sunt.',
   'pdfCompress.result.skipped.other': '{count} de alte imagini (alte formate, tonuri de gri sau CMYK) au fost lăsate așa cum sunt.',
-  'pdfCompress.result.flattened.few': 'Toate cele {count} pagini sunt acum imagini; textul nu mai poate fi selectat.',
   "pdfCompress.result.alreadyOptimised": "PDF-ul tău este deja bine optimizat, așa că fișierul original a fost păstrat. Încearcă compresia extremă pentru un fișier mai mic.",
   'pdfCompress.download': 'Descarcă {name}',
   'pdfExtractText.progress': 'Se citește textul',

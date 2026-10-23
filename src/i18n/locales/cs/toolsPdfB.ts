@@ -69,8 +69,6 @@ export default {
   'pdfCompress.result.skipped.few': '{count} další obrázky (jiné formáty, odstíny šedi nebo CMYK) byly ponechány beze změny.',
   'pdfCompress.result.skipped.many': '{count} dalšího obrázku (jiné formáty, odstíny šedi nebo CMYK) bylo ponecháno beze změny.',
   'pdfCompress.result.skipped.other': '{count} dalších obrázků (jiné formáty, odstíny šedi nebo CMYK) bylo ponecháno beze změny.',
-  'pdfCompress.result.flattened.few': 'Všechny {count} stránky jsou nyní obrázky; text už nelze vybírat.',
-  'pdfCompress.result.flattened.many': 'Všech {count} stránky jsou nyní obrázky; text už nelze vybírat.',
   "pdfCompress.result.alreadyOptimised": "Vaše PDF je již dobře optimalizované, proto byl zachován původní soubor. Zkuste extrémní kompresi pro menší soubor.",
   'pdfCompress.download': 'Stáhnout {name}',
   'pdfExtractText.progress': 'Čtu text',

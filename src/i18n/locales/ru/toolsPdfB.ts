@@ -70,8 +70,6 @@ export default {
   'pdfCompress.result.skipped.few': 'Остались без изменений {count} других изображения (другие форматы, оттенки серого или CMYK).',
   'pdfCompress.result.skipped.many': 'Остались без изменений {count} других изображений (другие форматы, оттенки серого или CMYK).',
   'pdfCompress.result.skipped.other': 'Остались без изменений {count} других изображения (другие форматы, оттенки серого или CMYK).',
-  'pdfCompress.result.flattened.few': 'Все страницы ({count}) теперь являются изображениями; текст больше нельзя выделить.',
-  'pdfCompress.result.flattened.many': 'Все страницы ({count}) теперь являются изображениями; текст больше нельзя выделить.',
   "pdfCompress.result.alreadyOptimised": "Ваш PDF уже хорошо оптимизирован, поэтому исходный файл сохранён. Попробуйте экстремальное сжатие, чтобы получить файл меньше.",
   'pdfCompress.download': 'Скачать {name}',
   'pdfExtractText.progress': 'Чтение текста',

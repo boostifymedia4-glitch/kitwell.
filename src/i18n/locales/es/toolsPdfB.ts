@@ -69,7 +69,6 @@ export default {
   'pdfCompress.result.skipped.one': 'Se dejó tal cual {count} imagen más (otro formato, escala de grises o CMYK).',
   'pdfCompress.result.skipped.many': 'Se dejaron tal cual {count} imágenes más (otros formatos, escala de grises o CMYK).',
   'pdfCompress.result.skipped.other': 'Se dejaron tal cual {count} imágenes más (otros formatos, escala de grises o CMYK).',
-  'pdfCompress.result.flattened.many': 'Las {count} páginas ahora son imágenes; ya no se puede seleccionar el texto.',
   "pdfCompress.result.alreadyOptimised": "Tu PDF ya está bien optimizado, así que se conservó el archivo original. Prueba la compresión extrema para obtener un archivo más pequeño.",
   'pdfCompress.download': 'Descargar {name}',
 

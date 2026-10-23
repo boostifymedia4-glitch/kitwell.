@@ -69,8 +69,6 @@ export default {
   'pdfCompress.result.skipped.few': '{count} inne obrazy (inne formaty, skala szarości lub CMYK) pozostawiono bez zmian.',
   'pdfCompress.result.skipped.many': '{count} innych obrazów (inne formaty, skala szarości lub CMYK) pozostawiono bez zmian.',
   'pdfCompress.result.skipped.other': '{count} innego obrazu (inne formaty, skala szarości lub CMYK) pozostawiono bez zmian.',
-  'pdfCompress.result.flattened.few': 'Wszystkie strony ({count}) są teraz obrazami; tekstu nie można już zaznaczać.',
-  'pdfCompress.result.flattened.many': 'Wszystkie strony ({count}) są teraz obrazami; tekstu nie można już zaznaczać.',
   "pdfCompress.result.alreadyOptimised": "Twój PDF jest już dobrze zoptymalizowany, więc zachowano oryginalny plik. Spróbuj ekstremalnej kompresji, aby uzyskać mniejszy plik.",
   'pdfCompress.download': 'Pobierz {name}',
   'pdfExtractText.progress': 'Odczytywanie tekstu',

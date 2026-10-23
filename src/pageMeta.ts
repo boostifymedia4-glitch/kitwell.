@@ -2,6 +2,7 @@ import { absoluteUrl, site } from '@/config/site';
 import { canonicalFor } from '@/seo';
 import type { PageMeta } from '@/components/Seo';
 import { allHelpItems } from '@/pages/helpData';
+import { LANGUAGES } from '@/i18n/languages';
 import { categories, categoryPath, getCategory, getTool, toolPath, toolTitle, tools } from '@/tools/registry';
 import type { Category, FaqItem, ToolDef } from '@/tools/types';
 import { getPost, postImage, postPath, posts } from '@/blog/posts';
@@ -37,8 +38,8 @@ export const staticPages: Record<string, StaticPage> = {
   },
   '/about': {
     name: 'About',
-    title: `About ${site.name} – Browser-Based Everyday Tools`,
-    description: `Why ${site.name} exists, how the tools work in your browser, and what we do and do not do with your files.`,
+    title: `About ${site.name} - Built by One Founder | Free Online Tools`,
+    description: `Meet ${site.author.name}, the 20-year-old student from Karachi who built ${site.name} alone: ${tools.length} free online tools in ${LANGUAGES.length} languages.`,
   },
   '/contact': {
     name: 'Contact',

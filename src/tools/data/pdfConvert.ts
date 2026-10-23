@@ -269,9 +269,9 @@ export const pdfConvertTools: ToolDef[] = [
     name: 'PDF to PDF/A',
     icon: 'badge-check',
     impl: 'pdf-to-pdfa',
-    description: 'Prepare a PDF as PDF/A (1b, 2b, 2u, 3b, 3u or 4) for archiving, keeping the text or using page pictures.',
+    description: 'Prepare a PDF as PDF/A (1b to 4) for archiving, keeping text or using page images.',
     metaDescription:
-      'PDF to PDF/A online: prepare a PDF as PDF/A-1b, 2b, 2u, 3b, 3u or 4 for archiving, with PDF/A identification, metadata and a colour profile. Keeps text when possible. Runs in your browser.',
+      'PDF to PDF/A online: prepare PDF/A-1b, 2b, 2u, 3b, 3u or 4 for archiving with metadata and a colour profile. Keeps text when possible. In your browser.',
     keywords: ['pdf to pdf/a', 'pdfa', 'pdf/a-1b', 'pdf/a-2b', 'pdf/a-3b', 'pdf/a-4', 'archive pdf', 'convert pdf to pdfa', 'long term archiving'],
     steps: [
       'Choose a PDF. A password-protected file must be unlocked first.',

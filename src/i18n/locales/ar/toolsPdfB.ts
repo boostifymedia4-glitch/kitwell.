@@ -72,10 +72,6 @@ export default {
   'pdfCompress.result.skipped.few': 'تم ترك {count} صور أخرى (بصيغ أخرى أو بتدرج رمادي أو CMYK) كما هي.',
   'pdfCompress.result.skipped.many': 'تم ترك {count} صورة أخرى (بصيغ أخرى أو بتدرج رمادي أو CMYK) كما هي.',
   'pdfCompress.result.skipped.other': 'تم ترك {count} صورة أخرى (بصيغ أخرى أو بتدرج رمادي أو CMYK) كما هي.',
-  'pdfCompress.result.flattened.zero': 'أصبحت جميع الصفحات ({count}) صورًا الآن؛ لم يعد بالإمكان تحديد النص.',
-  'pdfCompress.result.flattened.two': 'أصبحت الصفحتان كلتاهما صورتين الآن؛ لم يعد بالإمكان تحديد النص.',
-  'pdfCompress.result.flattened.few': 'أصبحت جميع الصفحات ({count}) صورًا الآن؛ لم يعد بالإمكان تحديد النص.',
-  'pdfCompress.result.flattened.many': 'أصبحت جميع الصفحات ({count}) صورًا الآن؛ لم يعد بالإمكان تحديد النص.',
   "pdfCompress.result.alreadyOptimised": "ملف PDF لديك محسّن جيدًا بالفعل، لذا أُبقي على الملف الأصلي. جرّب الضغط الأقصى للحصول على ملف أصغر.",
   'pdfCompress.download': 'تنزيل {name}',
 

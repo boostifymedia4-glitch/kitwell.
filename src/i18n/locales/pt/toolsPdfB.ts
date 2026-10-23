@@ -70,7 +70,6 @@ export default {
   'pdfCompress.result.skipped.one': '{count} outra imagem (outro formato, tons de cinza ou CMYK) foi mantida como está.',
   'pdfCompress.result.skipped.many': '{count} outras imagens (outros formatos, tons de cinza ou CMYK) foram mantidas como estão.',
   'pdfCompress.result.skipped.other': '{count} outras imagens (outros formatos, tons de cinza ou CMYK) foram mantidas como estão.',
-  'pdfCompress.result.flattened.many': 'Todas as {count} páginas agora são imagens; não é mais possível selecionar o texto.',
   "pdfCompress.result.alreadyOptimised": "Seu PDF já está bem otimizado, então o arquivo original foi mantido. Experimente a compressão extrema para um arquivo menor.",
   'pdfCompress.download': 'Baixar {name}',
 

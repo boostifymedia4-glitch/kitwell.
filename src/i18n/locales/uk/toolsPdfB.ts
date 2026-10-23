@@ -70,8 +70,6 @@ export default {
   'pdfCompress.result.skipped.few': '{count} інші зображення (інші формати, відтінки сірого або CMYK) залишено як є.',
   'pdfCompress.result.skipped.many': '{count} інших зображень (інші формати, відтінки сірого або CMYK) залишено як є.',
   'pdfCompress.result.skipped.other': '{count} іншого зображення (інші формати, відтінки сірого або CMYK) залишено як є.',
-  'pdfCompress.result.flattened.few': 'Усі {count} сторінки тепер є зображеннями; текст більше не можна виділити.',
-  'pdfCompress.result.flattened.many': 'Усі {count} сторінок тепер є зображеннями; текст більше не можна виділити.',
   "pdfCompress.result.alreadyOptimised": "Ваш PDF уже добре оптимізований, тому вихідний файл збережено. Спробуйте екстремальне стискання, щоб отримати менший файл.",
   'pdfCompress.download': 'Завантажити «{name}»',
 
