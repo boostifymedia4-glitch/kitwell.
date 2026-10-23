@@ -27,28 +27,14 @@ import {
   type PDFObject,
 } from '@cantoo/pdf-lib';
 import { srgbIccProfile, SRGB_PROFILE_NAME } from './iccProfile';
+import { DEFAULT_PROFILE, PROFILE_INFO, type PdfAProfile } from './pdfAProfiles';
 import { PdfError } from './pdfOps';
 import { site } from '@/config/site';
 import { tr } from '@/i18n/translate';
 
 export const MAX_FLATTEN_PAGES = 200;
 
-/**
- * The profiles this tool produces. Each one was validated with veraPDF (see tests/pdfA.test.ts and the QA notes); A-level
- * profiles (1a, 2a, 3a) need tagged structure and PDF/A-4e/4f need 3D or attachments, so they are not offered.
- */
-export type PdfAProfile = '1b' | '2b' | '2u' | '3b' | '3u' | '4';
-export const PDFA_PROFILES: PdfAProfile[] = ['1b', '2b', '2u', '3b', '3u', '4'];
-export const DEFAULT_PROFILE: PdfAProfile = '2b';
-const PROFILE_INFO: Record<PdfAProfile, { part: number; conformance: 'B' | 'U' | null }> = {
-  '1b': { part: 1, conformance: 'B' },
-  '2b': { part: 2, conformance: 'B' },
-  '2u': { part: 2, conformance: 'U' },
-  '3b': { part: 3, conformance: 'B' },
-  '3u': { part: 3, conformance: 'U' },
-  '4': { part: 4, conformance: null },
-};
-export const pdfaLabel = (profile: PdfAProfile) => `PDF/A-${profile}`;
+export { DEFAULT_PROFILE, PDFA_PROFILES, pdfaLabel, type PdfAProfile } from './pdfAProfiles';
 
 export interface PdfAIssue {
   /** Translation key under `pdfa.fix.*` or `pdfa.block.*`. */

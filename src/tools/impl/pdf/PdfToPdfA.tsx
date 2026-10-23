@@ -8,7 +8,8 @@ import { Icon } from '@/components/Icon';
 import { useI18n } from '@/i18n';
 import { baseName, formatBytes } from '@/lib/format';
 import { useFileQueue, useTask } from '@/lib/hooks';
-import { DEFAULT_PROFILE, PDFA_PROFILES, pdfaLabel, type PdfAAnalysis, type PdfAProfile, type PdfAResult } from '@/lib/pdfA';
+import { DEFAULT_PROFILE, PDFA_PROFILES, pdfaLabel, type PdfAProfile } from '@/lib/pdfAProfiles';
+import type { PdfAAnalysis, PdfAResult } from '@/lib/pdfA';
 import type { ToolImplementation } from '../../types';
 
 const MAX_BYTES = 100 * 1024 * 1024;
