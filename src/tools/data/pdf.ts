@@ -585,26 +585,25 @@ export const pdfTools: ToolDef[] = [
     impl: 'pdf-compress',
     description: 'Make a PDF smaller by recompressing its images while the text stays selectable.',
     metaDescription:
-      'Compress PDF online for free. Recompress embedded images to cut file size while text stays selectable, or flatten pages for the smallest file. Runs in your browser.',
+      'Compress PDF online for free. Pick Extreme, Recommended or Less compression to cut file size while text stays selectable. Runs in your browser.',
     keywords: ['reduce pdf size', 'shrink pdf', 'pdf compressor', 'make pdf smaller', 'optimize pdf'],
     steps: [
       'Add your PDF.',
-      'Choose how to compress it and how strongly: the default keeps text selectable and only recompresses images.',
+      'Choose Extreme, Recommended or Less compression. Text stays selectable; only the images are recompressed.',
       'Compress, check the size you saved and download the result.',
     ],
     faq: [
       {
         q: 'Why did my PDF barely get smaller?',
-        a: 'The standard mode recompresses JPEG images, so it helps most with PDFs full of photos or scans. A PDF that is mostly text, or whose images are already small, cannot shrink much. The tool tells you when it could not save anything instead of pretending.',
+        a: 'The tool recompresses JPEG images, so it helps most with PDFs full of photos or scans. A PDF that is mostly text, or whose images are already small, cannot shrink much. When nothing can be saved, the tool says so and gives you your original file back instead of a bigger one.',
       },
       {
         q: 'Will the quality get worse?',
-        a: 'Images lose some detail in exchange for size; Light keeps them almost unchanged and Strong makes them visibly softer. Text and vector graphics are not touched in the standard mode. The "Maximum" mode turns every page into a picture, so text can no longer be selected or searched.',
+        a: 'Images lose some detail in exchange for size; Less compression keeps them almost unchanged and Extreme makes them visibly softer. Text and vector graphics are not touched, so text stays selectable and searchable.',
       },
     ],
     limits: [
       'Only embedded JPEG images are recompressed. PNG-style (Flate) images, fonts and other content are kept as they are.',
-      'Maximum mode converts every page to an image: text, links and form fields stop working and the file cannot be searched.',
       'Colours of recompressed images can shift very slightly.',
       'Maximum 100 MB per PDF. Password-protected PDFs must be unlocked first.',
     ],
