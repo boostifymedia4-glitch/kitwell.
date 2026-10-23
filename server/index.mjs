@@ -28,20 +28,31 @@ export function createApp({ distDir = join(root, 'dist'), env = process.env, fet
   // Behind a reverse proxy (Hostinger, Nginx, Cloudflare) set TRUST_PROXY=1 so rate limiting sees real client IPs.
   if (process.env.TRUST_PROXY) app.set('trust proxy', Number(process.env.TRUST_PROXY) || process.env.TRUST_PROXY);
 
+  // Google Drive and Dropbox buttons (only when their build-time variables are set) need their scripts, frames and APIs.
+  const google = Boolean(env.VITE_GOOGLE_CLIENT_ID && env.VITE_GOOGLE_API_KEY);
+  const dropbox = Boolean(env.VITE_DROPBOX_APP_KEY);
+  const cloud = {
+    script: [...(google ? ['https://apis.google.com', 'https://accounts.google.com'] : []), ...(dropbox ? ['https://www.dropbox.com'] : [])],
+    frame: [...(google ? ['https://accounts.google.com', 'https://docs.google.com', 'https://drive.google.com', 'https://content.googleapis.com'] : []), ...(dropbox ? ['https://www.dropbox.com'] : [])],
+    connect: [...(google ? ['https://www.googleapis.com', 'https://accounts.google.com'] : []), ...(dropbox ? ['https://content.dropboxapi.com', 'https://*.dropboxusercontent.com', 'https://www.dropbox.com'] : [])],
+  };
   app.use(
     helmet({
+      // Sign-in pop-ups of the providers must keep a link to this page.
+      crossOriginOpenerPolicy: { policy: google || dropbox ? 'same-origin-allow-popups' : 'same-origin' },
       contentSecurityPolicy: {
         useDefaults: false,
         directives: {
           'default-src': ["'self'"],
           // 'wasm-unsafe-eval' only allows compiling WebAssembly (needed by the OCR engine); it does not allow eval() or inline scripts.
-          'script-src': ["'self'", "'wasm-unsafe-eval'"],
+          'script-src': ["'self'", "'wasm-unsafe-eval'", ...cloud.script],
           'style-src': ["'self'"],
           // React sets a few inline style attributes (positions, sizes); scripts remain fully locked down.
           'style-src-attr': ["'unsafe-inline'"],
           'img-src': ["'self'", 'data:', 'blob:'],
           'font-src': ["'self'"],
-          'connect-src': ["'self'", 'blob:', 'data:'],
+          'connect-src': ["'self'", 'blob:', 'data:', ...cloud.connect],
+          ...(cloud.frame.length ? { 'frame-src': cloud.frame } : {}),
           'worker-src': ["'self'", 'blob:'],
           'object-src': ["'none'"],
           'base-uri': ["'self'"],
