@@ -14,9 +14,7 @@ import { MegaMenu } from './MegaMenu';
 export function BrandMark() {
   return (
     <span className="brand-mark" aria-hidden="true">
-      <svg width="18" height="18" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M10 6v20M10 16l10-10M13 13.5l9 12.5" />
-      </svg>
+      <img src="/logo-64.png" srcSet="/logo-64.png 1x, /logo-96.png 2x" width="32" height="32" alt="" decoding="async" />
     </span>
   );
 }
