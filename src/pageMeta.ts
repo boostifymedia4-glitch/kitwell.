@@ -148,7 +148,7 @@ function aboutMeta(l: Localizer, title: string, description: string): PageMeta {
     url,
     image: absoluteUrl('/images/founder/ubaid-ullah.jpg'),
     sameAs: [site.author.profile],
-    worksFor: { '@type': 'Organization', name: site.name, url: canonicalFor('/', l.lang) },
+    worksFor: { '@type': 'Organization', name: site.name, url: canonicalFor('/', l.lang), logo: absoluteUrl('/logo-512.png') },
   };
   return {
     title,
@@ -255,7 +255,7 @@ function postMeta(path: string, slug: string, l: Localizer): PageMeta | null {
       inLanguage: 'en',
       ...(category ? { articleSection: category.name } : {}),
       author: { '@type': 'Person', name: site.author.name, jobTitle: site.author.jobTitle, url: canonicalFor('/about', 'en'), sameAs: [site.author.profile] },
-      publisher: { '@type': 'Organization', name: site.name, url: canonicalFor('/', 'en') },
+      publisher: { '@type': 'Organization', name: site.name, url: canonicalFor('/', 'en'), logo: { '@type': 'ImageObject', url: absoluteUrl('/logo-512.png') } },
     },
   ];
   if (faqBlock && faqBlock.type === 'faq') {
