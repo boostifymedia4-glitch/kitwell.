@@ -295,6 +295,203 @@ export const articles: BlogPost[] = [
     ]
   },
   {
+    slug: 'hex-rgb-and-hsl-colors-explained',
+    published: '2026-10-25',
+    updated: '2026-10-25',
+    minutes: 7,
+    tool: 'color-converter',
+    tools: [
+      'color-converter',
+      'image-color-picker',
+      'qr-code-generator',
+      'svg-converter',
+      'photo-editor',
+      'markdown-previewer'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'p',
+        id: 's2.p3'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ul',
+        id: 's4.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ol',
+        id: 's5.o1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'p',
+        id: 's6.p3'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'p',
+        id: 's7.p2'
+      },
+      {
+        type: 'ul',
+        id: 's7.l1',
+        items: 2
+      },
+      {
+        type: 'p',
+        id: 's7.p3'
+      },
+      {
+        type: 'p',
+        id: 's7.p4'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'ul',
+        id: 's8.l1',
+        items: 3
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'p',
+        id: 's9.p1'
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ul',
+        id: 's10.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's11.h'
+      },
+      {
+        type: 'ol',
+        id: 's11.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
     slug: 'how-to-add-a-watermark-to-a-pdf',
     published: '2026-10-23',
     updated: '2026-10-23',
@@ -478,6 +675,205 @@ export const articles: BlogPost[] = [
     ]
   },
   {
+    slug: 'how-to-add-a-watermark-to-photos',
+    published: '2026-10-25',
+    updated: '2026-10-25',
+    minutes: 6,
+    tool: 'image-watermark',
+    tools: [
+      'image-watermark',
+      'image-resizer',
+      'image-compressor',
+      'image-format-converter',
+      'photo-editor',
+      'watermark-pdf'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'ol',
+        id: 's1.o1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ul',
+        id: 's2.l1',
+        items: 2
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ol',
+        id: 's3.o1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'p',
+        id: 's4.p3'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ul',
+        id: 's5.l1',
+        items: 2
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'ol',
+        id: 's6.o1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'p',
+        id: 's7.p2'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'ul',
+        id: 's8.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's8.p2'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'p',
+        id: 's9.p1'
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ul',
+        id: 's10.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's11.h'
+      },
+      {
+        type: 'ol',
+        id: 's11.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
     slug: 'how-to-add-page-numbers-to-a-pdf',
     published: '2026-10-23',
     updated: '2026-10-23',
@@ -640,6 +1036,196 @@ export const articles: BlogPost[] = [
         type: 'faq',
         id: 'faq',
         items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-blur-or-pixelate-part-of-an-image',
+    published: '2026-10-25',
+    updated: '2026-10-25',
+    minutes: 7,
+    tool: 'blur-image-area',
+    tools: [
+      'blur-image-area',
+      'image-cropper',
+      'image-compressor',
+      'image-format-converter',
+      'image-resizer',
+      'image-watermark'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'ul',
+        id: 's1.l1',
+        items: 6
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ol',
+        id: 's2.o1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ol',
+        id: 's3.o1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ul',
+        id: 's4.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ul',
+        id: 's5.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'p',
+        id: 's8.p2'
+      },
+      {
+        type: 'p',
+        id: 's8.p3'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'p',
+        id: 's9.p1'
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ul',
+        id: 's10.l1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's11.h'
+      },
+      {
+        type: 'ol',
+        id: 's11.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
       },
       {
         type: 'h2',
@@ -1642,6 +2228,187 @@ export const articles: BlogPost[] = [
     ]
   },
   {
+    slug: 'how-to-convert-svg-to-png',
+    published: '2026-10-25',
+    updated: '2026-10-25',
+    minutes: 7,
+    tool: 'svg-converter',
+    tools: [
+      'svg-converter',
+      'image-resizer',
+      'image-compressor',
+      'png-to-webp',
+      'image-format-converter',
+      'enlarge-image'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ul',
+        id: 's2.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ol',
+        id: 's3.o1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ul',
+        id: 's4.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'p',
+        id: 's4.p3'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'ul',
+        id: 's6.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'p',
+        id: 's8.p2'
+      },
+      {
+        type: 'p',
+        id: 's8.p3'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ul',
+        id: 's9.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ol',
+        id: 's10.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
     slug: 'how-to-convert-webp-to-jpg',
     published: '2026-10-23',
     updated: '2026-10-23',
@@ -1790,6 +2557,202 @@ export const articles: BlogPost[] = [
         type: 'faq',
         id: 'faq',
         items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-count-words-and-characters-online',
+    published: '2026-10-25',
+    updated: '2026-10-25',
+    minutes: 8,
+    tool: 'word-counter',
+    tools: [
+      'word-counter',
+      'character-counter',
+      'text-cleaner',
+      'case-converter',
+      'remove-duplicate-lines',
+      'text-diff-checker'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ul',
+        id: 's2.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ol',
+        id: 's3.o1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'p',
+        id: 's3.p3'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ul',
+        id: 's5.l1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'p',
+        id: 's5.p3'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'p',
+        id: 's6.p3'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'p',
+        id: 's7.p2'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'p',
+        id: 's8.p2'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'p',
+        id: 's9.p1'
+      },
+      {
+        type: 'p',
+        id: 's9.p2'
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ul',
+        id: 's10.l1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's11.h'
+      },
+      {
+        type: 'ol',
+        id: 's11.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
       },
       {
         type: 'h2',
@@ -2329,6 +3292,209 @@ export const articles: BlogPost[] = [
     ]
   },
   {
+    slug: 'how-to-edit-a-photo-in-your-browser',
+    published: '2026-10-25',
+    updated: '2026-10-25',
+    minutes: 7,
+    tool: 'photo-editor',
+    tools: [
+      'photo-editor',
+      'image-cropper',
+      'image-rotator',
+      'image-resizer',
+      'image-compressor',
+      'image-watermark',
+      'blur-image-area'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'ul',
+        id: 's1.l1',
+        items: 6
+      },
+      {
+        type: 'p',
+        id: 's1.p3'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ol',
+        id: 's2.o1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ul',
+        id: 's3.l1',
+        items: 3
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ol',
+        id: 's4.o1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'p',
+        id: 's7.p2'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'ul',
+        id: 's8.l1',
+        items: 2
+      },
+      {
+        type: 'p',
+        id: 's8.p2'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'p',
+        id: 's9.p1'
+      },
+      {
+        type: 'p',
+        id: 's9.p2'
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'p',
+        id: 's10.p1'
+      },
+      {
+        type: 'h2',
+        id: 's11.h'
+      },
+      {
+        type: 'ul',
+        id: 's11.l1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's12.h'
+      },
+      {
+        type: 'ol',
+        id: 's12.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
     slug: 'how-to-extract-pages-from-a-pdf',
     published: '2026-10-23',
     updated: '2026-10-23',
@@ -2813,6 +3979,212 @@ export const articles: BlogPost[] = [
     ]
   },
   {
+    slug: 'how-to-format-and-validate-xml',
+    published: '2026-10-25',
+    updated: '2026-10-25',
+    minutes: 7,
+    tool: 'xml-formatter',
+    tools: [
+      'xml-formatter',
+      'json-formatter',
+      'json-validator',
+      'html-encoder-decoder',
+      'url-encoder-decoder',
+      'text-diff-checker'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'p',
+        id: 's1.p3'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ul',
+        id: 's2.l1',
+        items: 6
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ol',
+        id: 's3.o1',
+        items: 6
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ol',
+        id: 's4.o1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'p',
+        id: 's4.p3'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'ul',
+        id: 's5.l1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's5.p3'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'p',
+        id: 's6.p3'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'ul',
+        id: 's7.l1',
+        items: 2
+      },
+      {
+        type: 'p',
+        id: 's7.p2'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'p',
+        id: 's8.p2'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'p',
+        id: 's9.p1'
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ul',
+        id: 's10.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's11.h'
+      },
+      {
+        type: 'ol',
+        id: 's11.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
     slug: 'how-to-generate-a-strong-password',
     published: '2026-10-23',
     updated: '2026-10-23',
@@ -2970,6 +4342,199 @@ export const articles: BlogPost[] = [
         type: 'faq',
         id: 'faq',
         items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-make-a-gif-from-images',
+    published: '2026-10-25',
+    updated: '2026-10-25',
+    minutes: 7,
+    tool: 'gif-maker',
+    tools: [
+      'gif-maker',
+      'image-resizer',
+      'image-compressor',
+      'images-to-pdf',
+      'image-cropper',
+      'photo-editor'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ol',
+        id: 's2.o1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ol',
+        id: 's3.o1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'p',
+        id: 's4.p3'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ul',
+        id: 's5.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'p',
+        id: 's6.p3'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'ol',
+        id: 's7.o1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's7.p2'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'p',
+        id: 's8.p2'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'p',
+        id: 's9.p1'
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ul',
+        id: 's10.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's11.h'
+      },
+      {
+        type: 'ol',
+        id: 's11.o1',
+        items: 6
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
       },
       {
         type: 'h2',
@@ -3975,6 +5540,211 @@ export const articles: BlogPost[] = [
     ]
   },
   {
+    slug: 'how-to-test-regular-expressions',
+    published: '2026-10-25',
+    updated: '2026-10-25',
+    minutes: 8,
+    tool: 'regex-tester',
+    tools: [
+      'regex-tester',
+      'text-cleaner',
+      'text-diff-checker',
+      'remove-duplicate-lines',
+      'json-formatter',
+      'url-encoder-decoder'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ul',
+        id: 's2.l1',
+        items: 8
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ol',
+        id: 's3.o1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ul',
+        id: 's4.l1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'p',
+        id: 's5.p3'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'ul',
+        id: 's6.l1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'p',
+        id: 's7.p2'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'p',
+        id: 's8.p2'
+      },
+      {
+        type: 'p',
+        id: 's8.p3'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'p',
+        id: 's9.p1'
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'p',
+        id: 's10.p1'
+      },
+      {
+        type: 'p',
+        id: 's10.p2'
+      },
+      {
+        type: 'h2',
+        id: 's11.h'
+      },
+      {
+        type: 'ul',
+        id: 's11.l1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's12.h'
+      },
+      {
+        type: 'ol',
+        id: 's12.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
     slug: 'jpg-vs-png-vs-webp',
     published: '2026-10-15',
     updated: '2026-10-15',
@@ -4855,6 +6625,202 @@ export const articles: BlogPost[] = [
       {
         type: 'p',
         id: 's7.p1'
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'unix-timestamps-explained',
+    published: '2026-10-25',
+    updated: '2026-10-25',
+    minutes: 7,
+    tool: 'timestamp-converter',
+    tools: [
+      'timestamp-converter',
+      'json-formatter',
+      'regex-tester',
+      'uuid-generator',
+      'base64-encoder-decoder',
+      'json-validator'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'p',
+        id: 's2.p3'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ol',
+        id: 's3.o1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'p',
+        id: 's3.p3'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'ul',
+        id: 's6.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'p',
+        id: 's7.p2'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'ul',
+        id: 's8.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's8.p2'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'p',
+        id: 's9.p1'
+      },
+      {
+        type: 'p',
+        id: 's9.p2'
+      },
+      {
+        type: 'p',
+        id: 's9.p3'
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ul',
+        id: 's10.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's11.h'
+      },
+      {
+        type: 'ol',
+        id: 's11.o1',
+        items: 5
       },
       {
         type: 'faq',
