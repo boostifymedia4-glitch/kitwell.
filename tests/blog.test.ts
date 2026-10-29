@@ -12,8 +12,8 @@ const textOf = (post: (typeof posts)[number]) => postKeys(post).map((k) => en[k]
 const wordsOf = (post: (typeof posts)[number]) => textOf(post).filter(Boolean).join(' ').replace(TAG, '$2').split(/\s+/).length;
 
 describe('blog articles', () => {
-  it('has forty-three articles with distinct slugs, newest first', () => {
-    expect(posts).toHaveLength(43);
+  it('has forty-eight articles with distinct slugs, newest first', () => {
+    expect(posts).toHaveLength(48);
     expect(new Set(posts.map((p) => p.slug)).size).toBe(posts.length);
     const dates = posts.map((p) => p.published);
     expect([...dates].sort().reverse()).toEqual(dates);

@@ -4,13 +4,13 @@ import { POST_THUMB_SIZE, postPath, postThumb, type BlogPost } from '@/blog/post
 import { useI18n } from '@/i18n';
 import { formatDate } from '@/lib/format';
 
-/** Card for one article in the blog index and the "Related guides" list. The thumbnail repeats the title, so it has an empty alt. */
+/** Card for one article in the blog index and the "Related guides" list. The thumbnail has the same picture description as the article page. */
 export function PostCard({ post, eager = false }: { post: BlogPost; eager?: boolean }) {
   const { t, lang } = useI18n();
   const key = (k: string) => `blog.${post.slug}.${k}`;
   return (
     <article className="card post-card">
-      <img className="post-card-media" src={postThumb(post.slug)} width={POST_THUMB_SIZE.width} height={POST_THUMB_SIZE.height} alt="" loading={eager ? 'eager' : 'lazy'} decoding="async" />
+      <img className="post-card-media" src={postThumb(post.slug)} width={POST_THUMB_SIZE.width} height={POST_THUMB_SIZE.height} alt={t(key('imageAlt'))} loading={eager ? 'eager' : 'lazy'} decoding="async" />
       <div className="post-card-body">
         <p className="post-meta">
           <time dateTime={post.published}>{formatDate(post.published, lang.code)}</time>
