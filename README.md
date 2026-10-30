@@ -97,7 +97,7 @@ These values are public identifiers (no client secret is used anywhere in the br
 
 ## Blog
 
-`/blog` has 48 guides written around the tools. **Articles are English only on purpose:** other languages show the English text, are marked `noindex`, point their canonical address at the English article, have no hreflang links and are left out of the sitemap (the blog index and its shared labels are translated).
+`/blog` has 53 guides written around the tools. **Articles are English only on purpose:** other languages show the English text, are marked `noindex`, point their canonical address at the English article, have no hreflang links and are left out of the sitemap (the blog index and its shared labels are translated).
 
 - **Writing:** one Markdown file per article in `content/blog/<slug>.md` (format described at the top of `scripts/build-blog.mjs`). Run `node scripts/build-blog.mjs` and commit the generated `src/blog/articles.ts` and `src/i18n/en/blogArticles.ts`. Inside text, `<tool_merge_pdf>…</tool_merge_pdf>`, `<post_slug>…</post_slug>` and `<all_pdf>…</all_pdf>` become internal links.
 - **Images:** every article needs `public/images/blog/<slug>.jpg` (1200x630, used on the page, Open Graph and structured data) and `<slug>-640.webp` (cards). The current ones are drawn as SVG and rendered in a browser; `tests/blog.test.ts` fails when a file is missing.
