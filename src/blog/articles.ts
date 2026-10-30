@@ -1417,6 +1417,193 @@ export const articles: BlogPost[] = [
     ]
   },
   {
+    slug: 'how-to-convert-an-image-to-base64-and-back',
+    published: '2026-10-30',
+    updated: '2026-10-30',
+    minutes: 7,
+    tool: 'image-to-base64',
+    tools: [
+      'image-to-base64',
+      'base64-to-image',
+      'base64-encoder-decoder',
+      'image-compressor',
+      'image-resizer',
+      'svg-converter'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'p',
+        id: 's1.p3'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ul',
+        id: 's2.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ol',
+        id: 's3.o1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'ul',
+        id: 's3.l1',
+        items: 4
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ol',
+        id: 's4.o1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ol',
+        id: 's5.o1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'ul',
+        id: 's6.l1',
+        items: 4
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'p',
+        id: 's7.p2'
+      },
+      {
+        type: 'p',
+        id: 's7.p3'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ul',
+        id: 's9.l1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ol',
+        id: 's10.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
     slug: 'how-to-convert-excel-to-pdf',
     published: '2026-10-23',
     updated: '2026-10-23',
@@ -4898,6 +5085,196 @@ export const articles: BlogPost[] = [
     ]
   },
   {
+    slug: 'how-to-minify-json-and-save-bytes',
+    published: '2026-10-30',
+    updated: '2026-10-30',
+    minutes: 6,
+    tool: 'json-minifier',
+    tools: [
+      'json-minifier',
+      'json-formatter',
+      'json-validator',
+      'text-diff-checker',
+      'base64-encoder-decoder',
+      'text-cleaner'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'p',
+        id: 's1.p3'
+      },
+      {
+        type: 'ul',
+        id: 's1.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's1.p4'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ol',
+        id: 's2.o1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ul',
+        id: 's3.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'p',
+        id: 's4.p3'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ul',
+        id: 's5.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'ul',
+        id: 's7.l1',
+        items: 4
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'p',
+        id: 's8.p2'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ul',
+        id: 's9.l1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ol',
+        id: 's10.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
     slug: 'how-to-redact-a-pdf-properly',
     published: '2026-10-23',
     updated: '2026-10-23',
@@ -5246,6 +5623,180 @@ export const articles: BlogPost[] = [
     ]
   },
   {
+    slug: 'how-to-reorder-and-remove-pdf-pages',
+    published: '2026-10-30',
+    updated: '2026-10-30',
+    minutes: 6,
+    tool: 'reorder-pdf-pages',
+    tools: [
+      'reorder-pdf-pages',
+      'remove-pdf-pages',
+      'extract-pdf-pages',
+      'rotate-pdf',
+      'merge-pdf',
+      'add-page-numbers'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'ul',
+        id: 's1.l1',
+        items: 2
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ol',
+        id: 's2.o1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'p',
+        id: 's2.p3'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'ol',
+        id: 's3.o1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ul',
+        id: 's4.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'p',
+        id: 's5.p3'
+      },
+      {
+        type: 'p',
+        id: 's5.p4'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'ol',
+        id: 's6.o1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'ul',
+        id: 's8.l1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ol',
+        id: 's9.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
     slug: 'how-to-resize-an-image-without-losing-quality',
     published: '2026-10-23',
     updated: '2026-10-23',
@@ -5403,6 +5954,204 @@ export const articles: BlogPost[] = [
         type: 'faq',
         id: 'faq',
         items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-rotate-and-flip-an-image',
+    published: '2026-10-30',
+    updated: '2026-10-30',
+    minutes: 7,
+    tool: 'image-rotator',
+    tools: [
+      'image-rotator',
+      'image-flipper',
+      'photo-editor',
+      'image-cropper',
+      'image-resizer',
+      'image-compressor'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'ul',
+        id: 's1.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'ul',
+        id: 's3.l1',
+        items: 2
+      },
+      {
+        type: 'p',
+        id: 's3.p3'
+      },
+      {
+        type: 'p',
+        id: 's3.p4'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ol',
+        id: 's4.o1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ul',
+        id: 's5.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'p',
+        id: 's6.p3'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'ul',
+        id: 's7.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's7.p2'
+      },
+      {
+        type: 'p',
+        id: 's7.p3'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'p',
+        id: 's8.p2'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ul',
+        id: 's9.l1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ol',
+        id: 's10.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
       },
       {
         type: 'h2',
@@ -6286,6 +7035,186 @@ export const articles: BlogPost[] = [
       {
         type: 'ol',
         id: 's12.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-view-pdf-properties-and-metadata',
+    published: '2026-10-30',
+    updated: '2026-10-30',
+    minutes: 6,
+    tool: 'pdf-metadata-viewer',
+    tools: [
+      'pdf-metadata-viewer',
+      'pdf-viewer',
+      'edit-pdf-metadata',
+      'unlock-pdf',
+      'extract-pdf-text',
+      'compare-pdf'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'p',
+        id: 's1.p3'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ul',
+        id: 's2.l1',
+        items: 6
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ol',
+        id: 's3.o1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'p',
+        id: 's3.p3'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ul',
+        id: 's4.l1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'p',
+        id: 's9.p1'
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ul',
+        id: 's10.l1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's11.h'
+      },
+      {
+        type: 'ol',
+        id: 's11.o1',
         items: 5
       },
       {
