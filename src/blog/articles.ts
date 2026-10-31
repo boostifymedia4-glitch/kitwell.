@@ -1239,8 +1239,8 @@ export const articles: BlogPost[] = [
   },
   {
     slug: 'how-to-change-text-case-online',
-    published: '2026-10-30',
-    updated: '2026-10-30',
+    published: '2026-10-31',
+    updated: '2026-10-31',
     minutes: 6,
     tool: 'case-converter',
     tools: [
@@ -1251,7 +1251,6 @@ export const articles: BlogPost[] = [
       'text-sorter',
       'regex-tester'
     ],
-    'publishAt': '2026-10-30T20:30:00+05:00',
     blocks: [
       {
         type: 'p',
@@ -2444,8 +2443,8 @@ export const articles: BlogPost[] = [
   },
   {
     slug: 'how-to-convert-png-to-jpg',
-    published: '2026-10-30',
-    updated: '2026-10-30',
+    published: '2026-10-31',
+    updated: '2026-10-31',
     minutes: 7,
     tool: 'png-to-jpg',
     tools: [
@@ -2456,7 +2455,6 @@ export const articles: BlogPost[] = [
       'image-format-converter',
       'jpg-to-webp'
     ],
-    'publishAt': '2026-10-30T17:00:00+05:00',
     blocks: [
       {
         type: 'p',
@@ -4419,8 +4417,8 @@ export const articles: BlogPost[] = [
   },
   {
     slug: 'how-to-extract-text-from-a-pdf',
-    published: '2026-10-30',
-    updated: '2026-10-30',
+    published: '2026-10-31',
+    updated: '2026-10-31',
     minutes: 7,
     tool: 'extract-pdf-text',
     tools: [
@@ -4431,7 +4429,6 @@ export const articles: BlogPost[] = [
       'word-counter',
       'pdf-viewer'
     ],
-    'publishAt': '2026-10-30T18:45:00+05:00',
     blocks: [
       {
         type: 'p',
@@ -7062,8 +7059,8 @@ export const articles: BlogPost[] = [
   },
   {
     slug: 'how-to-scan-documents-to-pdf-with-your-phone',
-    published: '2026-10-30',
-    updated: '2026-10-30',
+    published: '2026-10-31',
+    updated: '2026-10-31',
     minutes: 7,
     tool: 'scan-to-pdf',
     tools: [
@@ -7074,7 +7071,6 @@ export const articles: BlogPost[] = [
       'merge-pdf',
       'rotate-pdf'
     ],
-    'publishAt': '2026-10-30T23:30:00+05:00',
     blocks: [
       {
         type: 'p',
@@ -9273,8 +9269,8 @@ export const articles: BlogPost[] = [
   },
   {
     slug: 'url-encoding-explained',
-    published: '2026-10-30',
-    updated: '2026-10-30',
+    published: '2026-10-31',
+    updated: '2026-10-31',
     minutes: 8,
     tool: 'url-encoder-decoder',
     tools: [
@@ -9285,7 +9281,6 @@ export const articles: BlogPost[] = [
       'regex-tester',
       'json-formatter'
     ],
-    'publishAt': '2026-10-30T22:15:00+05:00',
     blocks: [
       {
         type: 'p',
