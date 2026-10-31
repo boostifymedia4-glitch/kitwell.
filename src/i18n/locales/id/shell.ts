@@ -41,7 +41,6 @@ export default {
   'footer.company': 'Perusahaan',
   'footer.allTools': 'Semua alat',
   'footer.help': 'Bantuan & FAQ',
-  'footer.sitemap': 'Peta situs',
   'footer.about': 'Tentang',
   'footer.contact': 'Kontak',
   'footer.privacy': 'Kebijakan Privasi',

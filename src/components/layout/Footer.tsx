@@ -74,9 +74,6 @@ export function Footer() {
                 <li>
                   <Link to="/blog">{t('footer.blog')}</Link>
                 </li>
-                <li>
-                  <a href="/sitemap.xml">{t('footer.sitemap')}</a>
-                </li>
               </ul>
               <h2 id="footer-company" className="footer-sub">
                 {t('footer.company')}

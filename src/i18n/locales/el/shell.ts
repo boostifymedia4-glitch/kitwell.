@@ -47,7 +47,6 @@ export default {
   'footer.company': 'Εταιρεία',
   'footer.allTools': 'Όλα τα εργαλεία',
   'footer.help': 'Βοήθεια και συχνές ερωτήσεις',
-  'footer.sitemap': 'Χάρτης ιστότοπου',
   'footer.about': 'Σχετικά',
   'footer.contact': 'Επικοινωνία',
   'footer.privacy': 'Πολιτική απορρήτου',

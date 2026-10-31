@@ -34,7 +34,6 @@ export default {
   'footer.company': '会社情報',
   'footer.allTools': 'すべてのツール',
   'footer.help': 'ヘルプとよくある質問',
-  'footer.sitemap': 'サイトマップ',
   'footer.about': '概要',
   'footer.contact': 'お問い合わせ',
   'footer.privacy': 'プライバシーポリシー',

@@ -47,7 +47,6 @@ export default {
   'footer.company': 'Về chúng tôi',
   'footer.allTools': 'Tất cả công cụ',
   'footer.help': 'Trợ giúp & câu hỏi thường gặp',
-  'footer.sitemap': 'Sơ đồ trang web',
   'footer.about': 'Giới thiệu',
   'footer.contact': 'Liên hệ',
   'footer.privacy': 'Chính sách quyền riêng tư',

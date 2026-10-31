@@ -41,7 +41,6 @@ export default {
   'footer.company': '회사',
   'footer.allTools': '모든 도구',
   'footer.help': '도움말 및 FAQ',
-  'footer.sitemap': '사이트맵',
   'footer.about': '소개',
   'footer.contact': '문의',
   'footer.privacy': '개인정보 처리방침',

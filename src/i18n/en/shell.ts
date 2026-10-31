@@ -60,7 +60,6 @@ export const shell = {
   'footer.company': 'Company',
   'footer.allTools': 'All tools',
   'footer.help': 'Help & FAQ',
-  'footer.sitemap': 'Sitemap',
   'footer.about': 'About',
   'footer.contact': 'Contact',
   'footer.privacy': 'Privacy Policy',
