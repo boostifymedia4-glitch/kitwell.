@@ -47,7 +47,6 @@ export default {
   'footer.company': 'บริษัท',
   'footer.allTools': 'เครื่องมือทั้งหมด',
   'footer.help': 'ความช่วยเหลือและคำถามที่พบบ่อย',
-  'footer.sitemap': 'แผนผังเว็บไซต์',
   'footer.about': 'เกี่ยวกับ',
   'footer.contact': 'ติดต่อ',
   'footer.privacy': 'นโยบายความเป็นส่วนตัว',

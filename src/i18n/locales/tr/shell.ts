@@ -47,7 +47,6 @@ export default {
   'footer.company': 'Şirket',
   'footer.allTools': 'Tüm araçlar',
   'footer.help': 'Yardım ve SSS',
-  'footer.sitemap': 'Site haritası',
   'footer.about': 'Hakkında',
   'footer.contact': 'İletişim',
   'footer.privacy': 'Gizlilik Politikası',

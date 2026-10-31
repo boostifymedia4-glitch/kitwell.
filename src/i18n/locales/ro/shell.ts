@@ -47,7 +47,6 @@ export default {
   'footer.company': 'Companie',
   'footer.allTools': 'Toate instrumentele',
   'footer.help': 'Ajutor și întrebări frecvente',
-  'footer.sitemap': 'Harta site-ului',
   'footer.about': 'Despre',
   'footer.contact': 'Contact',
   'footer.privacy': 'Politica de confidențialitate',

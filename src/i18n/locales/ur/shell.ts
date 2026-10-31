@@ -47,7 +47,6 @@ export default {
   'footer.company': 'کمپنی',
   'footer.allTools': 'تمام ٹولز',
   'footer.help': 'مدد اور اکثر پوچھے گئے سوالات',
-  'footer.sitemap': 'سائٹ میپ',
   'footer.about': 'ہمارے بارے میں',
   'footer.contact': 'رابطہ',
   'footer.privacy': 'پرائیویسی پالیسی',

@@ -41,7 +41,6 @@ export default {
   'footer.company': '公司',
   'footer.allTools': '全部工具',
   'footer.help': '帮助与常见问题',
-  'footer.sitemap': '网站地图',
   'footer.about': '关于',
   'footer.contact': '联系我们',
   'footer.privacy': '隐私政策',

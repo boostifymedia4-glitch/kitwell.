@@ -47,7 +47,6 @@ export default {
   'footer.company': 'Компанія',
   'footer.allTools': 'Усі інструменти',
   'footer.help': 'Довідка й поширені запитання',
-  'footer.sitemap': 'Мапа сайту',
   'footer.about': 'Про сайт',
   'footer.contact': 'Контакти',
   'footer.privacy': 'Політика конфіденційності',

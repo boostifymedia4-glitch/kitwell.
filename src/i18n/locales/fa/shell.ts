@@ -47,7 +47,6 @@ export default {
   'footer.company': 'شرکت',
   'footer.allTools': 'همه ابزارها',
   'footer.help': 'راهنما و پرسش‌های متداول',
-  'footer.sitemap': 'نقشه سایت',
   'footer.about': 'درباره ما',
   'footer.contact': 'تماس',
   'footer.privacy': 'سیاست حفظ حریم خصوصی',

@@ -47,7 +47,6 @@ export default {
   'footer.company': 'Azienda',
   'footer.allTools': 'Tutti gli strumenti',
   'footer.help': 'Aiuto e FAQ',
-  'footer.sitemap': 'Mappa del sito',
   'footer.about': 'Chi siamo',
   'footer.contact': 'Contatti',
   'footer.privacy': 'Informativa sulla privacy',

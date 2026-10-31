@@ -41,7 +41,6 @@ export default {
   'footer.company': 'कंपनी',
   'footer.allTools': 'सभी टूल',
   'footer.help': 'सहायता और अक्सर पूछे जाने वाले प्रश्न',
-  'footer.sitemap': 'साइटमैप',
   'footer.about': 'हमारे बारे में',
   'footer.contact': 'संपर्क',
   'footer.privacy': 'गोपनीयता नीति',

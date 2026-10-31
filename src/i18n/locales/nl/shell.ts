@@ -41,7 +41,6 @@ export default {
   'footer.company': 'Bedrijf',
   'footer.allTools': 'Alle tools',
   'footer.help': 'Help en veelgestelde vragen',
-  'footer.sitemap': 'Sitemap',
   'footer.about': 'Over ons',
   'footer.contact': 'Contact',
   'footer.privacy': 'Privacybeleid',

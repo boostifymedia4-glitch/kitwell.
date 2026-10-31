@@ -47,7 +47,6 @@ export default {
   'footer.company': 'Společnost',
   'footer.allTools': 'Všechny nástroje',
   'footer.help': 'Nápověda a FAQ',
-  'footer.sitemap': 'Mapa webu',
   'footer.about': 'O webu',
   'footer.contact': 'Kontakt',
   'footer.privacy': 'Zásady ochrany osobních údajů',
