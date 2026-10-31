@@ -1,4 +1,4 @@
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { getPost, postImage, postKeys, postPath, postThumb, posts, relatedPosts } from '../src/blog/posts';
 import { en } from '../src/i18n/en';
@@ -7,13 +7,22 @@ import { getPageMeta, allPaths } from '../src/pageMeta';
 import { alternatesFor } from '../src/seo';
 import { getCategory, getTool } from '../src/tools/registry';
 
+// Articles with a future publishAt are left out of a build (scripts/build-blog.mjs), so the number of articles depends on the time of the build.
+const sources = readdirSync('content/blog')
+  .filter((f) => f.endsWith('.md'))
+  .map((f) => ({ slug: f.replace(/\.md$/, ''), publishAt: /^publishAt:\s*(.+)$/m.exec(readFileSync(`content/blog/${f}`, 'utf8'))?.[1].trim() }));
+const unscheduled = sources.filter((s) => !s.publishAt);
+
 const TAG = /<([\w-]+)>([\s\S]*?)<\/\1>/g;
 const textOf = (post: (typeof posts)[number]) => postKeys(post).map((k) => en[k]);
 const wordsOf = (post: (typeof posts)[number]) => textOf(post).filter(Boolean).join(' ').replace(TAG, '$2').split(/\s+/).length;
 
 describe('blog articles', () => {
-  it('has fifty-three articles with distinct slugs, newest first', () => {
-    expect(posts).toHaveLength(53);
+  it('has every article that is due, with distinct slugs, newest first', () => {
+    expect(posts.length).toBeGreaterThanOrEqual(unscheduled.length);
+    expect(posts.length).toBeLessThanOrEqual(sources.length);
+    for (const p of posts) expect(sources.map((x) => x.slug), p.slug).toContain(p.slug);
+    for (const u of unscheduled) expect(getPost(u.slug), u.slug).toBeDefined();
     expect(new Set(posts.map((p) => p.slug)).size).toBe(posts.length);
     const dates = posts.map((p) => p.published);
     expect([...dates].sort().reverse()).toEqual(dates);

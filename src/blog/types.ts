@@ -12,6 +12,8 @@ export interface BlogPost {
   slug: string;
   /** ISO date of publication. */
   published: string;
+  /** Exact moment of publication for scheduled articles (ISO with offset); `published` is its date part. */
+  publishAt?: string;
   /** ISO date of the last substantive change. */
   updated: string;
   /** Reading time in minutes, computed from the article text. */

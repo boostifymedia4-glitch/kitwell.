@@ -1,0 +1,37 @@
+# Publishes scheduled blog articles. Articles with a future `publishAt` are left out of the Vercel build; this workflow
+# checks every 15 minutes whether one has become due and, if so, pushes an empty commit so that Vercel builds the site again.
+name: Publish scheduled posts
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-scheduled
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Is a scheduled post due?
+        id: due
+        run: node scripts/scheduled-publish.mjs
+      - name: Trigger a new deployment
+        if: steps.due.outputs.publish == 'true'
+        run: |
+          git config user.name "Kitwell Dev"
+          git config user.email "fn0316445@gmail.com"
+          git commit --allow-empty -m "Publish scheduled posts: ${{ steps.due.outputs.slugs }}"
+          git push origin HEAD:main

@@ -7,7 +7,7 @@
  *
  * Article format
  *   ---                       front matter: title, description, excerpt, imageAlt, published, updated, tool, tools (comma list),
- *   key: value                ctaHeading, cta
+ *   key: value                ctaHeading, cta, and the optional publishAt (see Scheduling)
  *   ---
  *   Intro paragraphs (blank-line separated)
  *   :::takeaways              optional "Key takeaways" box: one "- item" per line
@@ -27,10 +27,19 @@
  * Inside text, <tool_merge_pdf>anchor</tool_merge_pdf> links to a tool (hyphens written as underscores),
  * <post_some-slug>anchor</post_some-slug> to another article and <all_pdf>anchor</all_pdf> to a category.
  */
+/**
+ * Scheduling: an article with `publishAt: 2026-11-02T18:00:00+05:00` is left out of the build until that moment, so its text
+ * is not in the site, the sitemap or the JavaScript. `published` must be the date part of `publishAt`. The site is rebuilt by a
+ * small GitHub workflow (.github/workflows/publish-scheduled.yml) whenever an article becomes due. Use `--all` to build every
+ * article regardless of date (previews), and BLOG_NOW=<ISO time> to test what a build at that time would contain.
+ */
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join, basename } from 'node:path';
 
 const dir = 'content/blog';
+const includeAll = process.argv.includes('--all');
+const now = process.env.BLOG_NOW ? Date.parse(process.env.BLOG_NOW) : Date.now();
+if (Number.isNaN(now)) throw new Error('BLOG_NOW is not a valid date');
 const files = (await readdir(dir)).filter((f) => f.endsWith('.md')).sort();
 const esc = (s) => s.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 const plain = (s) => s.replace(/<[^>]+>/g, '');
@@ -146,6 +155,13 @@ function parse(file, source) {
   text['cta.h'] = meta.ctaHeading;
   text['cta.p'] = meta.cta;
 
+  if (meta.publishAt) {
+    if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?([+-]\d{2}:\d{2}|Z)$/.test(meta.publishAt) || Number.isNaN(Date.parse(meta.publishAt))) {
+      throw new Error(`${file}: publishAt must look like 2026-11-02T18:00:00+05:00`);
+    }
+    if (meta.publishAt.slice(0, 10) !== meta.published) throw new Error(`${file}: published must be the date part of publishAt`);
+  }
+
   const words = Object.values(text).reduce((n, t) => n + countWords(t), 0);
   const tools = meta.tools.split(',').map((s) => s.trim()).filter(Boolean);
   const post = {
@@ -155,6 +171,7 @@ function parse(file, source) {
     minutes: Math.max(3, Math.round(words / 210)),
     tool: meta.tool,
     tools,
+    ...(meta.publishAt ? { publishAt: meta.publishAt } : {}),
     blocks,
   };
   const catalog = { title: meta.title, description: meta.description, excerpt: meta.excerpt, imageAlt: meta.imageAlt, ...text };
@@ -163,10 +180,22 @@ function parse(file, source) {
 
 const posts = [];
 const entries = [];
+const parsed = [];
 for (const f of files) {
-  const { post, catalog, words } = parse(f, await readFile(join(dir, f), 'utf8'));
+  const item = parse(f, await readFile(join(dir, f), 'utf8'));
+  if (item.post.publishAt && !includeAll && Date.parse(item.post.publishAt) > now) {
+    console.log(`${item.post.slug.padEnd(48)} scheduled for ${item.post.publishAt} (left out of this build)`);
+    continue;
+  }
+  parsed.push(item);
+}
+// A link to an article that is not part of this build (still scheduled) is shown as plain text; it turns into a link by itself
+// in the first build that contains the article.
+const included = new Set(parsed.map((x) => x.post.slug));
+const unlink = (t) => t.replace(/<post_([a-z0-9-]+)>([\s\S]*?)<\/post_\1>/g, (m, slug, anchor) => (included.has(slug) ? m : anchor));
+for (const { post, catalog, words } of parsed) {
   posts.push(post);
-  for (const [k, v] of Object.entries(catalog)) entries.push(`  '${`blog.${post.slug}.${k}`}': '${esc(v)}',`);
+  for (const [k, v] of Object.entries(catalog)) entries.push(`  '${`blog.${post.slug}.${k}`}': '${esc(unlink(v))}',`);
   console.log(`${post.slug.padEnd(48)} ${String(words).padStart(5)} words  ${post.blocks.filter((b) => b.type === 'h2').length} h2  ${post.minutes} min`);
 }
 

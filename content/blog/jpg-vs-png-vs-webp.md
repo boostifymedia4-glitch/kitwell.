@@ -75,6 +75,8 @@ The converters read the pixels and write a new file. The camera information stor
 
 A new file in the right format can still be larger than you need. Run it through <tool_image_compressor>Compress Image</tool_image_compressor> or lower the dimensions. Our guide to <post_reduce-image-size-in-kb>reducing image size in KB</post_reduce-image-size-in-kb> explains the order that gives the least visible damage. If the images are going into a document, <post_convert-images-to-pdf>turn them into a PDF</post_convert-images-to-pdf> afterwards.
 
+If you only need one conversion, our guide to <post_how-to-convert-png-to-jpg>converting PNG to JPG</post_how-to-convert-png-to-jpg> explains what happens to transparent areas and sharp edges, step by step.
+
 ## Common mistakes
 
 - Using PNG for photographs on a website, which makes pages slow for no visible gain.
