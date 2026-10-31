@@ -3,9 +3,8 @@ title: URL Encoding Explained: Percent Signs, Spaces and Symbols
 description: Understand why web addresses turn spaces into %20, how component and full URL encoding differ, when a plus sign means a space and how to decode a messy link.
 excerpt: A clear guide to URL encoding: what percent encoding is, which characters are reserved, why accented letters become long codes, how to encode a query value and how to fix common link errors.
 imageAlt: A web address with special characters being converted into percent codes on a teal background
-published: 2026-10-30
-publishAt: 2026-10-30T22:15:00+05:00
-updated: 2026-10-30
+published: 2026-10-31
+updated: 2026-10-31
 tool: url-encoder-decoder
 tools: url-encoder-decoder, html-encoder-decoder, base64-encoder-decoder, qr-code-generator, regex-tester, json-formatter
 ctaHeading: Try it yourself
