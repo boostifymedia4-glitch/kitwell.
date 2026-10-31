@@ -1238,6 +1238,200 @@ export const articles: BlogPost[] = [
     ]
   },
   {
+    slug: 'how-to-change-text-case-online',
+    published: '2026-10-30',
+    updated: '2026-10-30',
+    minutes: 6,
+    tool: 'case-converter',
+    tools: [
+      'case-converter',
+      'text-cleaner',
+      'word-counter',
+      'remove-duplicate-lines',
+      'text-sorter',
+      'regex-tester'
+    ],
+    'publishAt': '2026-10-30T20:30:00+05:00',
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'ul',
+        id: 's1.l1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's1.p3'
+      },
+      {
+        type: 'ul',
+        id: 's1.l2',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ol',
+        id: 's2.o1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'p',
+        id: 's3.p3'
+      },
+      {
+        type: 'p',
+        id: 's3.p4'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ul',
+        id: 's5.l1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'p',
+        id: 's5.p3'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'p',
+        id: 's7.p2'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'p',
+        id: 's9.p1'
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ul',
+        id: 's10.l1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's11.h'
+      },
+      {
+        type: 'ol',
+        id: 's11.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
     slug: 'how-to-compare-two-pdf-files',
     published: '2026-10-23',
     updated: '2026-10-23',
@@ -2237,6 +2431,200 @@ export const articles: BlogPost[] = [
         type: 'faq',
         id: 'faq',
         items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-convert-png-to-jpg',
+    published: '2026-10-30',
+    updated: '2026-10-30',
+    minutes: 7,
+    tool: 'png-to-jpg',
+    tools: [
+      'png-to-jpg',
+      'jpg-to-png',
+      'image-compressor',
+      'image-resizer',
+      'image-format-converter',
+      'jpg-to-webp'
+    ],
+    'publishAt': '2026-10-30T17:00:00+05:00',
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'p',
+        id: 's1.p3'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ul',
+        id: 's2.l1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ul',
+        id: 's3.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ol',
+        id: 's4.o1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'p',
+        id: 's5.p3'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'ol',
+        id: 's7.o1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's7.p2'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'p',
+        id: 's9.p1'
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'p',
+        id: 's10.p1'
+      },
+      {
+        type: 'h2',
+        id: 's11.h'
+      },
+      {
+        type: 'ul',
+        id: 's11.l1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's12.h'
+      },
+      {
+        type: 'ol',
+        id: 's12.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
       },
       {
         type: 'h2',
@@ -4018,6 +4406,178 @@ export const articles: BlogPost[] = [
         type: 'faq',
         id: 'faq',
         items: 6
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-extract-text-from-a-pdf',
+    published: '2026-10-30',
+    updated: '2026-10-30',
+    minutes: 7,
+    tool: 'extract-pdf-text',
+    tools: [
+      'extract-pdf-text',
+      'ocr-pdf',
+      'pdf-to-markdown',
+      'text-cleaner',
+      'word-counter',
+      'pdf-viewer'
+    ],
+    'publishAt': '2026-10-30T18:45:00+05:00',
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'p',
+        id: 's1.p3'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ol',
+        id: 's2.o1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'p',
+        id: 's3.p3'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'ul',
+        id: 's4.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's4.p3'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'p',
+        id: 's5.p3'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'p',
+        id: 's7.p2'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'ul',
+        id: 's8.l1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ol',
+        id: 's9.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
       },
       {
         type: 'h2',
@@ -6501,6 +7061,193 @@ export const articles: BlogPost[] = [
     ]
   },
   {
+    slug: 'how-to-scan-documents-to-pdf-with-your-phone',
+    published: '2026-10-30',
+    updated: '2026-10-30',
+    minutes: 7,
+    tool: 'scan-to-pdf',
+    tools: [
+      'scan-to-pdf',
+      'ocr-pdf',
+      'images-to-pdf',
+      'compress-pdf',
+      'merge-pdf',
+      'rotate-pdf'
+    ],
+    'publishAt': '2026-10-30T23:30:00+05:00',
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ol',
+        id: 's2.o1',
+        items: 6
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'ol',
+        id: 's3.o1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ul',
+        id: 's4.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ul',
+        id: 's5.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'ol',
+        id: 's7.o1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's7.p2'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'p',
+        id: 's9.p1'
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ul',
+        id: 's10.l1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's11.h'
+      },
+      {
+        type: 'ol',
+        id: 's11.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
     slug: 'how-to-sort-lines-and-remove-duplicates',
     published: '2026-10-29',
     updated: '2026-10-29',
@@ -7544,6 +8291,10 @@ export const articles: BlogPost[] = [
         id: 's8.p1'
       },
       {
+        type: 'p',
+        id: 's8.p2'
+      },
+      {
         type: 'h2',
         id: 's9.h'
       },
@@ -7687,6 +8438,10 @@ export const articles: BlogPost[] = [
       {
         type: 'p',
         id: 's8.p1'
+      },
+      {
+        type: 'p',
+        id: 's8.p2'
       },
       {
         type: 'h2',
@@ -8491,6 +9246,199 @@ export const articles: BlogPost[] = [
         type: 'ul',
         id: 's10.l1',
         items: 5
+      },
+      {
+        type: 'h2',
+        id: 's11.h'
+      },
+      {
+        type: 'ol',
+        id: 's11.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'url-encoding-explained',
+    published: '2026-10-30',
+    updated: '2026-10-30',
+    minutes: 8,
+    tool: 'url-encoder-decoder',
+    tools: [
+      'url-encoder-decoder',
+      'html-encoder-decoder',
+      'base64-encoder-decoder',
+      'qr-code-generator',
+      'regex-tester',
+      'json-formatter'
+    ],
+    'publishAt': '2026-10-30T22:15:00+05:00',
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'p',
+        id: 's1.p3'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ul',
+        id: 's2.l1',
+        items: 7
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'p',
+        id: 's3.p3'
+      },
+      {
+        type: 'p',
+        id: 's3.p4'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'p',
+        id: 's4.p3'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ol',
+        id: 's5.o1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'p',
+        id: 's6.p3'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'ul',
+        id: 's7.l1',
+        items: 3
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'p',
+        id: 's9.p1'
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ul',
+        id: 's10.l1',
+        items: 6
       },
       {
         type: 'h2',

@@ -79,6 +79,8 @@ OCR is never perfect, so build a short review into your routine instead of trust
 
 Photos of pages work, but they give weaker results than flat scans, because of perspective, shadows and uneven light. Straighten and crop each picture, then turn the set into a PDF with <tool_scan_to_pdf>Scan to PDF</tool_scan_to_pdf>. Its black and white document style evens out shadows and makes printed text darker, which gives the OCR engine cleaner letters to read. Run <tool_ocr_pdf>OCR PDF</tool_ocr_pdf> on the result.
 
+Once the file is searchable, our guide to <post_how-to-extract-text-from-a-pdf>extracting text from a PDF</post_how-to-extract-text-from-a-pdf> shows how to copy all of its words cleanly, and the guide to <post_how-to-scan-documents-to-pdf-with-your-phone>scanning documents to PDF with your phone</post_how-to-scan-documents-to-pdf-with-your-phone> helps you take better pictures for the next scan.
+
 ## What to do next
 
 - Make the file smaller with <tool_compress_pdf>Compress PDF</tool_compress_pdf>. Scans are often large; see <post_compress-pdf-without-losing-quality>how to compress a PDF without losing quality</post_compress-pdf-without-losing-quality>.

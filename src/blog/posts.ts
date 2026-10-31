@@ -3,8 +3,10 @@ import type { Block, BlogPost } from './types';
 
 export type { Block, BlogPost };
 
-/** Newest first; articles with the same date keep the order of the content folder. */
-export const posts: BlogPost[] = [...articles].sort((a, b) => b.published.localeCompare(a.published));
+const moment = (p: BlogPost) => Date.parse(p.publishAt ?? p.published);
+
+/** Newest first (by the exact time for scheduled articles); articles with the same moment keep the order of the content folder. */
+export const posts: BlogPost[] = [...articles].sort((a, b) => moment(b) - moment(a));
 
 export const getPost = (slug: string) => posts.find((p) => p.slug === slug);
 export const postPath = (slug: string) => `/blog/${slug}`;
