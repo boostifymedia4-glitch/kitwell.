@@ -46,7 +46,7 @@ export function useFileQueue(rules: FileRules, multiple: boolean) {
   const add = useCallback(
     (files: File[]) => {
       const base = multiple ? itemsRef.current : [];
-      const { accepted, rejected } = validateFiles(multiple ? files : files.slice(0, 1), rulesRef.current, base.length);
+      const { accepted, rejected } = validateFiles(multiple ? files : files.slice(0, 1), rulesRef.current, base.length, base.reduce((n, i) => n + i.file.size, 0));
       const extra = multiple ? [] : files.slice(1).map((f) => ({ name: f.name, reason: tr('err.files.onlyOne') }));
       setRejections([...rejected, ...extra]);
       if (accepted.length > 0) setItems([...base, ...accepted.map((file) => ({ id: nextId(), file }))]);

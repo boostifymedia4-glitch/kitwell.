@@ -85,6 +85,20 @@ const featuredSlugs: Record<CategoryId, string[]> = {
   developer: ['json-formatter', 'json-validator', 'base64-encoder-decoder', 'url-encoder-decoder', 'regex-tester', 'uuid-generator', 'password-generator', 'qr-code-generator'],
 };
 
+/**
+ * The tools shown on the homepage, in order: eight for PDF, image and developer tools (two rows of four) and all seven text
+ * tools. The most useful and most searched tools come first. These lists only decide what the homepage shows; every tool keeps
+ * its own page and stays in the All Tools menus.
+ */
+const homeSlugs: Record<CategoryId, string[]> = {
+  pdf: ['merge-pdf', 'split-pdf', 'compress-pdf', 'pdf-to-jpg', 'jpg-to-pdf', 'word-to-pdf', 'sign-pdf', 'ocr-pdf'],
+  image: ['image-compressor', 'image-resizer', 'image-cropper', 'jpg-to-png', 'png-to-jpg', 'webp-to-jpg', 'photo-editor', 'image-watermark'],
+  developer: ['json-formatter', 'json-validator', 'base64-encoder-decoder', 'url-encoder-decoder', 'regex-tester', 'uuid-generator', 'password-generator', 'qr-code-generator'],
+  text: ['word-counter', 'character-counter', 'case-converter', 'remove-duplicate-lines', 'text-sorter', 'text-cleaner', 'text-diff-checker'],
+};
+/** Order of the category sections on the homepage. */
+export const homeCategoryOrder: CategoryId[] = ['pdf', 'image', 'developer', 'text'];
+
 const bySlug = new Map(tools.map((t) => [t.slug, t]));
 const catById = new Map(categories.map((c) => [c.id, c]));
 
@@ -93,6 +107,7 @@ export const getCategory = (id: string): Category | undefined => catById.get(id 
 export const toolsInCategory = (id: CategoryId) => tools.filter((t) => t.category === id);
 export const featuredTools = (id: CategoryId) =>
   featuredSlugs[id].map((s) => bySlug.get(s)).filter((t): t is ToolDef => Boolean(t));
+export const homeTools = (id: CategoryId) => homeSlugs[id].map((s) => bySlug.get(s)).filter((t): t is ToolDef => Boolean(t));
 export const groupsInCategory = (id: CategoryId) => groups.filter((g) => g.category === id);
 export const toolsInGroup = (id: CategoryId, name: string) => tools.filter((t) => t.category === id && t.group === name);
 export const groupId = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -113,7 +128,7 @@ export function toolTitle(t: ToolDef) {
 }
 
 /** Ranked search across name, keywords, description, group and category. */
-export function searchTools(query: string, limit = 8, extraText?: (tool: ToolDef) => string): ToolDef[] {
+export function searchTools(query: string, limit = 8, extraText?: (tool: ToolDef) => string, includeDescription = true): ToolDef[] {
   const q = query.trim().toLowerCase();
   if (!q) return [];
   const words = q.split(/\s+/);
@@ -122,7 +137,7 @@ export function searchTools(query: string, limit = 8, extraText?: (tool: ToolDef
       const name = t.name.toLowerCase();
       const cat = catById.get(t.category)?.name.toLowerCase() ?? '';
       const extra = extraText ? extraText(t).toLowerCase() : '';
-      const hay = `${name} ${t.keywords.join(' ')} ${t.description.toLowerCase()} ${t.group.toLowerCase()} ${cat} ${t.category} ${extra}`;
+      const hay = `${name} ${t.keywords.join(' ')} ${includeDescription ? t.description.toLowerCase() : ''} ${t.group.toLowerCase()} ${cat} ${t.category} ${extra}`;
       if (!words.every((w) => hay.includes(w))) return null;
       let score = 0;
       if (name === q || (extra && extra.startsWith(q))) score += 100;
