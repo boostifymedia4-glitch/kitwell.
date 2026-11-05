@@ -35,6 +35,11 @@ export const features: Record<string, string> = {
   'contact.fail.soon': 'The contact form is still under development, so your message was not sent. Nothing was stored. Please try again when the website is fully live.',
   'contact.fail.invalid': 'Some details in your message could not be accepted. Please check the form and try again.',
 
+  // OCR PDF
+  'pdfOcr.resultNote2': 'The pages look exactly as before. The recognised text sits invisibly behind them, so you can select, search and copy it. OCR does not turn pages into editable text: to change the words, use the recognised text below. Check important numbers against the original.',
+  'pdfOcr.outputEditable': 'Recognised text (you can correct it here)',
+  'pdfOcr.outputHint': 'OCR can make mistakes, especially with numbers and small print. Correct them here, then copy or download the text.',
+
   // Merge PDF
   'pdfMerge.outputName': 'Output file name',
   'pdfMerge.resultInfo': 'Pages: {pages} · Size: {size}',

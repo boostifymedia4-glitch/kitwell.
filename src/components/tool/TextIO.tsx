@@ -1,4 +1,4 @@
-import { useId, type ReactNode } from 'react';
+import { useEffect, useId, useState, type ReactNode } from 'react';
 import { useI18n } from '@/i18n';
 import { downloadText } from '@/lib/download';
 import { CopyButton } from './CopyButton';
@@ -72,6 +72,31 @@ export function OutputBox({ label, value, rows = 10, prose, filename, mime, plac
         <CopyButton text={value} label={t('ui.copyResult')} />
         {filename && (
           <button type="button" className="btn btn-secondary btn-sm" disabled={!value} onClick={() => downloadText(value, filename, mime)}>
+            {t('ui.download')}
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/** A text box whose content can be corrected before it is copied or downloaded, such as text recognised by OCR. */
+export function EditableTextBox({ label, hint, initial, rows = 10, filename }: { label: string; hint?: string; initial: string; rows?: number; filename?: string }) {
+  const { t } = useI18n();
+  const id = useId();
+  const [value, setValue] = useState(initial);
+  useEffect(() => setValue(initial), [initial]);
+  return (
+    <div className="field output-box">
+      <label className="label" htmlFor={id}>
+        {label}
+      </label>
+      <textarea id={id} className="textarea" rows={rows} value={value} onChange={(e) => setValue(e.target.value)} spellCheck={false} />
+      {hint && <p className="hint">{hint}</p>}
+      <div className="output-actions">
+        <CopyButton text={value} label={t('ui.copyResult')} />
+        {filename && (
+          <button type="button" className="btn btn-secondary btn-sm" disabled={!value} onClick={() => downloadText(value, filename)}>
             {t('ui.download')}
           </button>
         )}

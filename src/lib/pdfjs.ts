@@ -43,6 +43,41 @@ export async function destroyPdf(doc: PDFDocumentProxy): Promise<void> {
 
 export const MAX_RENDER_PIXELS = 50_000_000;
 
+/**
+ * True when a picture on the page is about as large as the page itself, which is how a scanned page is built. A page can be a
+ * scan and still carry a little real text (a page number or a stamp), so the amount of text alone cannot tell scans apart.
+ */
+export async function pageIsMostlyPicture(doc: PDFDocumentProxy, pageNumber: number): Promise<boolean> {
+  const pdfjs = await loadPdfjs();
+  const page = await doc.getPage(pageNumber);
+  try {
+    const [x0, y0, x1, y1] = page.view;
+    const pagePoints = Math.abs((x1 - x0) * (y1 - y0));
+    if (!(pagePoints > 0)) return false;
+    const list = await page.getOperatorList();
+    const { OPS } = pdfjs;
+    for (let i = 0; i < list.fnArray.length; i++) {
+      const fn = list.fnArray[i];
+      const args = list.argsArray[i] as unknown[] | undefined;
+      if (!args) continue;
+      let w = 0;
+      let h = 0;
+      if (fn === OPS.paintImageXObject) {
+        w = Number(args[1]);
+        h = Number(args[2]);
+      } else if (fn === OPS.paintInlineImageXObject || fn === OPS.paintImageMaskXObject) {
+        const img = args[0] as { width?: number; height?: number } | undefined;
+        w = Number(img?.width);
+        h = Number(img?.height);
+      }
+      if (w > 0 && h > 0 && w * h >= pagePoints * 0.9) return true;
+    }
+    return false;
+  } finally {
+    page.cleanup();
+  }
+}
+
 export async function renderPageToCanvas(
   doc: PDFDocumentProxy,
   pageNumber: number,
