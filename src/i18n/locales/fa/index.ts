@@ -15,9 +15,10 @@ import toolsPdfB from './toolsPdfB';
 import toolsPdfC from './toolsPdfC';
 import toolsTextDev from './toolsTextDev';
 import blog from './blog';
+import newStrings from './newStrings';
 
 export { default as tools } from './tools';
 
 /** Everything translated for this language, merged. */
-const messages: PartialMessages = { ...shell, ...ui, ...registry, ...pages, ...help, ...legal, ...errors, ...about, ...share, ...toolsImageA, ...toolsImageB, ...toolsPdfA, ...toolsPdfB, ...toolsPdfC, ...toolsTextDev, ...blog };
+const messages: PartialMessages = { ...shell, ...ui, ...registry, ...pages, ...help, ...legal, ...errors, ...about, ...share, ...toolsImageA, ...toolsImageB, ...toolsPdfA, ...toolsPdfB, ...toolsPdfC, ...toolsTextDev, ...blog, ...newStrings };
 export default messages;
