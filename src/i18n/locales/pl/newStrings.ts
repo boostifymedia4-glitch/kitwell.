@@ -9,6 +9,7 @@ const messages: PartialMessages = {
   'home.search.emptyText': "Sprawdź pisownię lub spróbuj krótszego słowa, na przykład „pdf”, „obraz” albo „json”. Możesz też przeglądać wszystkie narzędzia według kategorii.",
   'home.search.browse': "Przeglądaj wszystkie narzędzia",
   'home.allToolsLink': "Wszystkie narzędzia",
+  'home.filter.label': "Filtruj narzędzia według kategorii",
   'home.intro.title': "Wszystkie potrzebne narzędzia w jednym miejscu",
   'home.intro.text': "Przełączanie się między edytorem PDF, konwerterem obrazów i formaterem tekstu to strata czasu. {site} łączy {count} narzędzi do PDF, obrazów, tekstu i kodu, dzięki czemu całe zadanie wykonasz bez szukania kolejnej strony.",
   'home.trust.title': "Bezpiecznie, prywatnie i z myślą o zaufaniu",

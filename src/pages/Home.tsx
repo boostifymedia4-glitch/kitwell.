@@ -7,7 +7,7 @@ import { ToolGrid } from '@/components/ui/ToolCard';
 import { CategoryIcon } from '@/components/ui/CategoryIcon';
 import { ToolIcon } from '@/components/ui/ToolIcon';
 import { HomeSearch } from '@/components/home/HomeSearch';
-import { CompatSection, IntroSection, TrustSection, WhySection } from '@/components/home/HomeSections';
+import { CompatSection, TrustSection, WhySection } from '@/components/home/HomeSections';
 import { useLocalize } from '@/i18n/useLocalize';
 import { useI18n, type MessageKey } from '@/i18n';
 import { usePageMeta } from '@/i18n/usePageMeta';
@@ -65,6 +65,7 @@ export default function Home() {
   const { t } = useI18n();
   const loc = useLocalize();
   const [query, setQuery] = useState('');
+  const [filter, setFilter] = useState<'all' | (typeof homeCategoryOrder)[number]>('all');
   const q = query.trim();
   const results = useMemo(() => {
     if (!q) return [];
@@ -80,7 +81,7 @@ export default function Home() {
       {meta && <Seo {...meta} />}
       <section className="hero" aria-labelledby="hero-title">
         <div className="container">
-          <h1 id="hero-title">{t('home.title')}</h1>
+          <h1 id="hero-title">{t('home.intro.title')}</h1>
           <p className="lead">{t('home.hero.lead')}</p>
           <HomeSearch value={query} onChange={setQuery} />
         </div>
@@ -91,9 +92,15 @@ export default function Home() {
           <SearchResults query={q} results={results} onClear={() => setQuery('')} />
         ) : (
           <>
-            <IntroSection />
+            <div className="chips home-filter" role="group" aria-label={t('home.filter.label')}>
+              {(['all', ...homeCategoryOrder] as const).map((id) => (
+                <button key={id} type="button" className="chip" aria-pressed={filter === id} onClick={() => setFilter(id)}>
+                  {id === 'all' ? t('home.allToolsLink') : t(`cat.${id}` as MessageKey)}
+                </button>
+              ))}
+            </div>
 
-            {homeCategoryOrder.map((id) => (
+            {homeCategoryOrder.filter((id) => filter === 'all' || filter === id).map((id) => (
               <section key={id} className="section" aria-labelledby={`home-${id}`}>
                 <div className="section-head">
                   <div className="row" style={{ flexWrap: 'nowrap', alignItems: 'flex-start' }}>

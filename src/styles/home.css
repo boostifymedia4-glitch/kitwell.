@@ -46,10 +46,26 @@
 .feature-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--border-strong); }
 .feature-card h3 { margin: var(--space-3) 0 var(--space-2); }
 .feature-card p { color: var(--text-muted); font-size: var(--text-sm); }
+/* Colour tones for the badges and card icons. Each tone has a stronger shade for dark mode. */
+.tone-teal { --tone: #0f9488; --tone-2: #14b8a6; }
+.tone-blue { --tone: #2563eb; --tone-2: #38bdf8; }
+.tone-green { --tone: #16a34a; --tone-2: #4ade80; }
+.tone-violet { --tone: #7c3aed; --tone-2: #a78bfa; }
+.tone-amber { --tone: #d97706; --tone-2: #fbbf24; }
+.tone-rose { --tone: #e11d48; --tone-2: #fb7185; }
+:root[data-theme='dark'] .feature-icon { --tone: var(--tone-2); }
 .feature-icon {
-  display: grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; color: var(--accent);
-  background: var(--accent-soft); border: 1px solid var(--accent-soft-border);
+  display: grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; color: var(--tone, var(--accent));
+  background: color-mix(in srgb, var(--tone, var(--accent)) 14%, var(--bg-elevated));
+  border: 1px solid color-mix(in srgb, var(--tone, var(--accent)) 32%, var(--border));
+  transition: transform var(--dur) var(--ease);
 }
+.feature-card:hover .feature-icon { transform: scale(1.06) rotate(-3deg); }
+.head-badge {
+  display: inline-grid; place-items: center; width: 56px; height: 56px; margin-bottom: var(--space-3); border-radius: 16px; color: #fff;
+  background: linear-gradient(135deg, var(--tone), var(--tone-2)); box-shadow: 0 10px 22px -10px var(--tone);
+}
+.section-head-center .head-badge { display: grid; margin-inline: auto; }
 .section-foot { margin-top: var(--space-4); text-align: center; }
 .text-link { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: var(--accent); text-decoration: none; }
 .text-link:hover { text-decoration: underline; }

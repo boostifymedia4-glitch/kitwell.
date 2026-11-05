@@ -9,6 +9,7 @@ const messages: PartialMessages = {
   'home.search.emptyText': "Verifică ortografia sau încearcă un cuvânt mai scurt, de exemplu „pdf”, „imagine” sau „json”. Poți răsfoi și toate instrumentele pe categorii.",
   'home.search.browse': "Răsfoiește toate instrumentele",
   'home.allToolsLink': "Toate instrumentele",
+  'home.filter.label': "Filtrează instrumentele după categorie",
   'home.intro.title': "Toate instrumentele esențiale într-un singur loc",
   'home.intro.text': "Să sari între un editor PDF, un convertor de imagini și un formatator de text îți pierde timpul. {site} reunește {count} instrumente pentru PDF-uri, imagini, text și cod, ca să termini o sarcină întreagă fără să cauți alt site.",
   'home.trust.title': "Sigur, privat și construit pentru a inspira încredere",

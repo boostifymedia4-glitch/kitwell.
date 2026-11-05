@@ -9,6 +9,7 @@ const messages: PartialMessages = {
   'home.search.emptyText': "请检查拼写，或试试更短的词，例如“pdf”“图片”或“json”。你也可以按分类浏览所有工具。",
   'home.search.browse': "浏览所有工具",
   'home.allToolsLink': "所有工具",
+  'home.filter.label': "按分类筛选工具",
   'home.intro.title': "你需要的所有工具，集中在一处",
   'home.intro.text': "在 PDF 编辑器、图片转换器和文本格式化工具之间来回切换会浪费时间。{site} 汇集了 {count} 款用于 PDF、图片、文本和代码的工具，让你无需寻找下一个网站就能完成整项任务。",
   'home.trust.title': "安全、私密，值得信赖",

@@ -9,6 +9,7 @@ const messages: PartialMessages = {
   'home.search.emptyText': "Verifique a ortografia ou tente uma palavra mais curta, como “pdf”, “imagem” ou “json”. Você também pode explorar todas as ferramentas por categoria.",
   'home.search.browse': "Explorar todas as ferramentas",
   'home.allToolsLink': "Todas as ferramentas",
+  'home.filter.label': "Filtrar ferramentas por categoria",
   'home.intro.title': "Todas as ferramentas essenciais em um só lugar",
   'home.intro.text': "Alternar entre um editor de PDF, um conversor de imagens e um formatador de texto faz perder tempo. O {site} reúne {count} ferramentas para PDF, imagens, texto e código, para você concluir uma tarefa inteira sem procurar outro site.",
   'home.trust.title': "Seguro, privado e feito para merecer confiança",
