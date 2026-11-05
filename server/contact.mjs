@@ -7,14 +7,15 @@
  */
 import express from 'express';
 import rateLimit from 'express-rate-limit';
-import { contactConfigured, handleSubmission, validateContact, TOPICS, LIMITS } from './contactCore.mjs';
+import { contactConfigured, handleSubmission, validateContact, validateAttachment, TOPICS, LIMITS, ATTACHMENT } from './contactCore.mjs';
 
-export { contactConfigured, validateContact, TOPICS, LIMITS };
+export { contactConfigured, validateContact, validateAttachment, TOPICS, LIMITS, ATTACHMENT };
 
 /** Express router mounted at /api/contact. `fetchImpl` and `env` can be replaced in tests. */
 export function contactRouter({ env = process.env, fetchImpl = fetch } = {}) {
   const router = express.Router();
-  router.use(express.json({ limit: '16kb' }));
+  // Room for one attachment of up to 3 MB, which travels as base64 text inside the JSON body.
+  router.use(express.json({ limit: '4500kb' }));
   const limiter = rateLimit({
     windowMs: 15 * 60_000,
     limit: Number(env.CONTACT_RATE_LIMIT) || 5,

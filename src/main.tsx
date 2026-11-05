@@ -8,6 +8,7 @@ import './styles/motion.css';
 import './styles/about.css';
 import './styles/home.css';
 import './styles/upload.css';
+import './styles/pages.css';
 import { StrictMode } from 'react';
 import { hydrateRoot, createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';

@@ -24,7 +24,8 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'invalid', fields: [] });
     }
   }
-  if (JSON.stringify(body ?? {}).length > 16_000) return res.status(400).json({ error: 'invalid', fields: [] });
+  // A message with one attachment of up to 3 MB (sent as base64) stays below the 4.5 MB request limit of Vercel functions.
+  if (JSON.stringify(body ?? {}).length > 4_500_000) return res.status(400).json({ error: 'invalid', fields: [] });
   const result = await handleSubmission(body);
   return res.status(result.status).json(result.body);
 }
