@@ -7,7 +7,7 @@
  */
 import express from 'express';
 import rateLimit from 'express-rate-limit';
-import { contactConfigured, handleSubmission, validateContact, validateAttachment, TOPICS, LIMITS, ATTACHMENT } from './contactCore.mjs';
+import { contactConfigured, handleSubmission, requestAllowed, validateContact, validateAttachment, TOPICS, LIMITS, ATTACHMENT } from './contactCore.mjs';
 
 export { contactConfigured, validateContact, validateAttachment, TOPICS, LIMITS, ATTACHMENT };
 
@@ -28,6 +28,7 @@ export function contactRouter({ env = process.env, fetchImpl = fetch } = {}) {
 
   router.post('/', limiter, async (req, res) => {
     res.set('Cache-Control', 'no-store');
+    if (!requestAllowed(req.headers)) return res.status(403).json({ error: 'forbidden' });
     const result = await handleSubmission(req.body, { env, fetchImpl });
     return res.status(result.status).json(result.body);
   });

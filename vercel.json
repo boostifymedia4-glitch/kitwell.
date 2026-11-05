@@ -7,6 +7,39 @@
   ],
   "headers": [
     {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://apis.google.com https://accounts.google.com https://www.dropbox.com; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data: blob: https://*.gstatic.com https://*.googleusercontent.com https://*.dropbox.com https://*.dropboxstatic.com; font-src 'self'; connect-src 'self' blob: data: https://*.googleapis.com https://accounts.google.com https://content.dropboxapi.com https://*.dropboxusercontent.com https://www.dropbox.com; frame-src https://accounts.google.com https://docs.google.com https://drive.google.com https://content.googleapis.com https://www.dropbox.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin-allow-popups"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        }
+      ]
+    },
+    {
       "source": "/assets/(.*)",
       "headers": [
         {

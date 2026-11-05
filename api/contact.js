@@ -4,7 +4,7 @@
  * It uses the same rules as server/contact.mjs. Set CONTACT_WEBHOOK_URL in the Vercel project settings to deliver
  * messages; without it the function answers 503 and the page says the form is not connected.
  */
-import { createLimiter, handleSubmission } from '../server/contactCore.mjs';
+import { createLimiter, handleSubmission, requestAllowed } from '../server/contactCore.mjs';
 
 const limiter = createLimiter({ limit: Number(process.env.CONTACT_RATE_LIMIT) || 5 });
 
@@ -14,6 +14,7 @@ export default async function handler(req, res) {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'method_not_allowed' });
   }
+  if (!requestAllowed(req.headers)) return res.status(403).json({ error: 'forbidden' });
   const ip = String(req.headers['x-forwarded-for'] ?? req.socket?.remoteAddress ?? 'unknown').split(',')[0].trim();
   if (!limiter(ip)) return res.status(429).json({ error: 'rate_limited' });
   let body = req.body;

@@ -109,6 +109,24 @@ export async function forward(url, v, fetchImpl = fetch) {
 }
 
 /**
+ * Cross-site request check for the contact endpoint. Browsers add an Origin header to cross-site POSTs, and a form
+ * on another site can only send simple content types, so the request must be JSON and, when Origin is present, come
+ * from this site. Requests without Origin (scripts, curl) are still allowed; they are limited by the rate limiter.
+ */
+export function requestAllowed(headers = {}) {
+  const type = String(headers['content-type'] ?? '').toLowerCase();
+  if (!type.startsWith('application/json')) return false;
+  const origin = headers.origin;
+  if (!origin) return true;
+  const host = String(headers['x-forwarded-host'] ?? headers.host ?? '').split(',')[0].trim().toLowerCase();
+  try {
+    return new URL(String(origin)).host.toLowerCase() === host;
+  } catch {
+    return false;
+  }
+}
+
+/**
  * Handles one submission and returns `{ status, body }`. Used by the serverless function; the Express router
  * has the same behaviour. A message counts as sent only when the webhook accepted it.
  */

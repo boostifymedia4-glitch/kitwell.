@@ -178,11 +178,11 @@ describe('Vercel function /api/contact', () => {
     };
     return r;
   };
-  const call = async (body: unknown, method = 'POST') => {
+  const call = async (body: unknown, method = 'POST', extra: Record<string, string> = {}) => {
     // @ts-expect-error plain JS module without types
     const { default: handler } = await import('../api/contact.js');
     const res = fakeRes();
-    await handler({ method, body, headers: { 'x-forwarded-for': `10.0.0.${Math.floor(Math.random() * 250)}` } }, res);
+    await handler({ method, body, headers: { 'content-type': 'application/json', 'x-forwarded-for': `10.0.0.${Math.floor(Math.random() * 250)}`, ...extra } }, res);
     return res;
   };
 
@@ -191,6 +191,12 @@ describe('Vercel function /api/contact', () => {
     const res = await call(good);
     expect(res.code).toBe(503);
     expect(res.body).toEqual({ error: 'not_configured' });
+  });
+  it('refuses cross-site and non-JSON requests', async () => {
+    delete process.env.CONTACT_WEBHOOK_URL;
+    expect((await call(good, 'POST', { origin: 'https://evil.example', host: 'kitwell.vercel.app' })).code).toBe(403);
+    expect((await call(good, 'POST', { 'content-type': 'text/plain' })).code).toBe(403);
+    expect((await call(good, 'POST', { origin: 'https://kitwell.vercel.app', host: 'kitwell.vercel.app' })).code).toBe(503);
   });
   it('rejects other methods and invalid input', async () => {
     expect((await call(good, 'GET')).code).toBe(405);
