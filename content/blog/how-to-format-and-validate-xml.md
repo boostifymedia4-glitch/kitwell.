@@ -1,5 +1,5 @@
 ---
-title: How to Format and Validate XML and Find Errors Quickly
+title: How to format and validate XML and find errors quickly
 description: Pretty print or minify XML, find unclosed tags and mismatched elements with line and column numbers, and learn what well-formed XML means and what it does not.
 excerpt: A practical guide to XML: what well-formed means, how to format and minify it, how to find nesting errors, how escaping works and why schema validation is a separate step.
 imageAlt: Nested XML tags being indented and checked on a teal background

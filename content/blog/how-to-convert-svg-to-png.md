@@ -1,5 +1,5 @@
 ---
-title: How to Convert SVG to PNG, JPG or WebP at Any Size
+title: How to convert SVG to PNG, JPG or WebP at any size
 description: Turn SVG logos and icons into sharp PNG, JPG or WebP images at the exact size you need, and learn why an SVG can look different once it is exported.
 excerpt: A practical guide to exporting SVG files as PNG, JPG or WebP: how scale and width work, how to keep transparency, why fonts go missing and which size to choose for each use.
 imageAlt: A vector shape being turned into a picture file on a teal background

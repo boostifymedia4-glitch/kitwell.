@@ -1,5 +1,5 @@
 ---
-title: How to Format and Validate JSON: A Practical Guide
+title: How to format and validate JSON: a practical guide
 description: Learn the rules of valid JSON and the mistakes that break it, then format, validate and minify JSON in your browser with exact line and column errors.
 excerpt: Fix broken JSON quickly. See the syntax rules, the most common errors and how to pretty-print, validate and minify JSON.
 imageAlt: A block of curly-brace JSON code being aligned into neat indented lines on a teal background

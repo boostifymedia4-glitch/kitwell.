@@ -33,7 +33,6 @@ export default {
   'pdfMerge.drop': 'Trageți aici PDF-uri sau faceți clic pentru a alege',
   'pdfMerge.needMore': 'Adăugați cel puțin încă un PDF pentru îmbinare.',
   'pdfMerge.merge': 'Îmbină {count} PDF-uri',
-  'pdfMerge.clear': 'Șterge tot',
   'pdfMerge.processing': 'Se îmbină PDF-urile…',
   'pdfMerge.ready': 'PDF-ul îmbinat este gata',
 

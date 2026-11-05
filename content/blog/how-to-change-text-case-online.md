@@ -1,5 +1,5 @@
 ---
-title: How to Change Text Case: Upper, Lower, Title and camelCase
+title: How to change text case: upper, lower, title and camelCase
 description: Convert text to uppercase, lowercase, title case, sentence case and developer styles such as camelCase, snake_case and kebab-case, and learn which one fits where.
 excerpt: A practical guide to changing text case: when to use title or sentence case, how the title case rules treat small words, what the programmer styles are for and how to avoid typical mistakes.
 imageAlt: The same sentence shown in several letter cases next to a case switch on a teal background

@@ -31,7 +31,6 @@ export default {
   'pdfMerge.drop': 'PDF를 여기에 끌어다 놓거나 클릭해서 선택하세요',
   'pdfMerge.needMore': '병합하려면 PDF를 하나 이상 더 추가하세요.',
   'pdfMerge.merge': 'PDF {count}개 병합',
-  'pdfMerge.clear': '모두 지우기',
   'pdfMerge.processing': 'PDF를 병합하는 중…',
   'pdfMerge.ready': '병합된 PDF가 준비되었습니다',
 

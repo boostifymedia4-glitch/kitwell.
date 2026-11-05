@@ -1,5 +1,5 @@
 ---
-title: Random or Memorable Password: Which Is Safer?
+title: Random or memorable password: which is safer?
 description: Fully random passwords or easy-to-remember ones? Compare strength, reuse, password managers and passphrases, and learn when each style is the right choice.
 excerpt: A clear look at random versus memorable passwords: what makes a password strong, why length and uniqueness matter most, when to use a manager and how to choose the style for each account.
 imageAlt: A random password key beside a memorable one on a balance with a teal background

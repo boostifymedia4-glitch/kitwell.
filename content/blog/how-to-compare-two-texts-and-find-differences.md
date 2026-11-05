@@ -1,5 +1,5 @@
 ---
-title: How to Compare Two Texts and Find the Differences
+title: How to compare two texts and find the differences
 description: Paste two versions of a text, clause, list or code snippet and see what was added, removed or changed. Learn line and word modes and how to clean text first.
 excerpt: A practical guide to comparing two texts online: when a diff helps, how line and word modes differ, how to ignore whitespace, how to prepare the text and how to read the result.
 imageAlt: Two text columns with highlighted added and removed lines on a teal background

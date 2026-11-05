@@ -37,8 +37,6 @@ export default {
   'nav.contact': 'İletişim',
   'footer.blog': 'Blog',
   'home.title': 'Dosyalar, PDF’ler, metin ve kod için günlük araçlar',
-  'home.popular': 'Popüler araçlar',
-  'home.popularSub': 'İnsanların en çok kullandığı araçlar.',
   'home.allTools': 'Tüm {count} araç',
   'home.viewAll': '{count} aracın tümünü gör',
 

@@ -37,8 +37,6 @@ export default {
   'nav.contact': 'رابطہ',
   'footer.blog': 'بلاگ',
   'home.title': 'فائلوں، PDF، متن اور کوڈ کے لیے روزمرہ کے ٹولز',
-  'home.popular': 'مقبول ٹولز',
-  'home.popularSub': 'وہ ٹولز جو سب سے زیادہ استعمال ہوتے ہیں۔',
   'home.allTools': 'تمام {count} ٹولز',
   'home.viewAll': 'تمام {count} دیکھیں',
 

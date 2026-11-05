@@ -185,8 +185,6 @@ export default {
   'pdfOcr.stat.skipped': 'Pagini omise',
   'pdfOcr.stat.words': 'Cuvinte găsite',
   'pdfOcr.stat.confidence': 'Încredere medie',
-  'pdfOcr.resultNote': 'Paginile arată exact ca înainte; un strat de text invizibil le face căutabile și copiabile. Verificați cifrele importante în raport cu originalul.',
-  'pdfOcr.output': 'Text recunoscut',
 
   // Protect PDF
   'pdfProtect.hint.empty': 'Folosiți cel puțin 8 caractere; cu cât e mai lungă, cu atât e mai puternică.',

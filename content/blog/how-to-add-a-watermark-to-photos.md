@@ -1,5 +1,5 @@
 ---
-title: How to Add a Watermark to Photos in Bulk, Text or Logo
+title: How to add a watermark to photos in bulk, text or logo
 description: Stamp a text or logo watermark on many photos at once, choose size, opacity, position and tiling, and learn what a watermark can and cannot protect.
 excerpt: A practical guide to watermarking photos: text or logo, single mark or tiled pattern, how to choose opacity and position, how to process a whole folder and what watermarks do not prevent.
 imageAlt: A photo with a faint logo watermark in the corner on a teal background

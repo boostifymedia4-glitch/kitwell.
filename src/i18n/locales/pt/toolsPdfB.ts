@@ -190,8 +190,6 @@ export default {
   'pdfOcr.stat.skipped': 'Páginas puladas',
   'pdfOcr.stat.words': 'Palavras encontradas',
   'pdfOcr.stat.confidence': 'Confiança média',
-  'pdfOcr.resultNote': 'As páginas ficam exatamente como antes; uma camada de texto invisível as torna pesquisáveis e copiáveis. Confira números importantes com o original.',
-  'pdfOcr.output': 'Texto reconhecido',
 
   'pdfProtect.hint.empty': 'Use pelo menos 8 caracteres; quanto mais longa, mais forte.',
   'pdfProtect.hint.short': 'Senhas curtas são fáceis de adivinhar. Procure usar 12 ou mais.',

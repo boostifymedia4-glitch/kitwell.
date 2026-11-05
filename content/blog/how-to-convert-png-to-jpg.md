@@ -1,5 +1,5 @@
 ---
-title: How to Convert PNG to JPG and What Happens to Transparency
+title: How to convert PNG to JPG and what happens to transparency
 description: Turn PNG pictures into smaller JPG files in your browser, learn when the change helps and when it hurts, and see what happens to transparent areas and sharp edges.
 excerpt: A practical guide to converting PNG to JPG: when it makes files much smaller, why screenshots and logos suffer, what happens to transparency, and how to keep quality high.
 imageAlt: A PNG picture with a transparent checkerboard turning into a smaller JPG file on a teal background

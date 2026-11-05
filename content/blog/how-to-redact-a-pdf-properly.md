@@ -1,5 +1,5 @@
 ---
-title: How to Redact a PDF Properly So Hidden Text Is Really Gone
+title: How to redact a PDF properly so hidden text is really gone
 description: Black out names, numbers and areas in a PDF so the text underneath is destroyed, not just covered. Learn the right workflow and the checks to do.
 excerpt: Why a black box on top of text is not redaction, how page-to-image redaction removes the content for good and how to find and check every match before sharing.
 imageAlt: A PDF page with black redaction bars over lines of text on a teal background

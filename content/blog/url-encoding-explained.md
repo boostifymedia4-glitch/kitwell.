@@ -1,5 +1,5 @@
 ---
-title: URL Encoding Explained: Percent Signs, Spaces and Symbols
+title: URL encoding explained: percent signs, spaces and symbols
 description: Understand why web addresses turn spaces into %20, how component and full URL encoding differ, when a plus sign means a space and how to decode a messy link.
 excerpt: A clear guide to URL encoding: what percent encoding is, which characters are reserved, why accented letters become long codes, how to encode a query value and how to fix common link errors.
 imageAlt: A web address with special characters being converted into percent codes on a teal background

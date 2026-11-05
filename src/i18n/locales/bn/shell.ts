@@ -32,8 +32,6 @@ export default {
   'search.none': '“{query}” এর সাথে মিলে এমন কোনো টুল নেই। “png” বা “json” এর মতো কোনো ফরম্যাট বা কাজ চেষ্টা করুন।',
   'search.found': '{count}টি টুল পাওয়া গেছে',
   'home.title': 'ফাইল, PDF, টেক্সট ও কোডের জন্য প্রতিদিনের টুল',
-  'home.popular': 'জনপ্রিয় টুল',
-  'home.popularSub': 'যে টুলগুলো মানুষ সবচেয়ে বেশি ব্যবহার করে।',
   'home.allTools': 'সব {count}টি টুল',
   'home.viewAll': 'সব {count}টি দেখুন',
   'footer.popular': 'জনপ্রিয় টুল',

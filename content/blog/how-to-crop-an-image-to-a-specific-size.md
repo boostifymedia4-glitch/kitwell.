@@ -1,5 +1,5 @@
 ---
-title: How to Crop an Image to an Exact Size or Aspect Ratio
+title: How to crop an image to an exact size or aspect ratio
 description: Crop a photo to an exact region or a fixed aspect ratio with a live preview, fine-tune the position with pixel values and choose the output format.
 excerpt: Learn to crop pictures for profile photos, thumbnails and print: pick an aspect ratio, set exact X, Y, width and height in pixels, and keep the quality.
 imageAlt: A photo with a crop frame and corner handles on a teal background

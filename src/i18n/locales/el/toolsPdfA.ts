@@ -32,7 +32,6 @@ export default {
   'pdfMerge.drop': 'Αποθέστε PDF εδώ ή κάντε κλικ για επιλογή',
   'pdfMerge.needMore': 'Προσθέστε τουλάχιστον ένα ακόμη PDF για συγχώνευση.',
   'pdfMerge.merge': 'Συγχώνευση {count} PDF',
-  'pdfMerge.clear': 'Εκκαθάριση όλων',
   'pdfMerge.processing': 'Συγχώνευση PDF…',
   'pdfMerge.ready': 'Το συγχωνευμένο PDF σας είναι έτοιμο',
 

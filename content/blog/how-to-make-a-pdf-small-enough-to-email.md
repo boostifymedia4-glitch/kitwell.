@@ -1,5 +1,5 @@
 ---
-title: How to Make a PDF Small Enough to Email
+title: How to make a PDF small enough to email
 description: Your PDF is too big to attach? Check the real size limits, then shrink the file step by step: compress images, remove pages, split it or send a link instead.
 excerpt: A step-by-step plan for getting a PDF under an email limit: how limits really work, what makes a PDF heavy, the order of fixes that work best and what to do when nothing is small enough.
 imageAlt: A heavy PDF shrinking into a small envelope on a teal background

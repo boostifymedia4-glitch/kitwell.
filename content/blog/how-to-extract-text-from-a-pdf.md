@@ -1,5 +1,5 @@
 ---
-title: How to Extract Text From a PDF and Copy It Cleanly
+title: How to extract text from a PDF and copy it cleanly
 description: Copy all the selectable text out of a PDF page by page, choose a page range, mark page breaks, and fix the empty-result problem that scanned PDFs cause.
 excerpt: A practical guide to getting text out of PDF files: how extraction works, why scans return nothing, how to keep page breaks, how to clean the result and what happens to tables and columns.
 imageAlt: A PDF page with lines of text flowing out into a plain text document on a teal background

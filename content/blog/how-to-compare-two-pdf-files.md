@@ -1,5 +1,5 @@
 ---
-title: How to Compare Two PDF Files and See Exactly What Changed
+title: How to compare two PDF files and see exactly what changed
 description: Find the differences between two versions of a PDF with a text comparison and a visual view, and learn the limits for scans and inserted pages.
 excerpt: Compare an original and a revised PDF page by page, read the added and removed words, switch to a visual view of changed areas and avoid misleading results.
 imageAlt: Two PDF pages side by side with changed words highlighted in green and red on a teal background

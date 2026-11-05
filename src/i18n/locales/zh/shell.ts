@@ -32,8 +32,6 @@ export default {
   'nav.contact': '联系我们',
   'footer.blog': '博客',
   'home.title': '处理文件、PDF、文本和代码的日常工具',
-  'home.popular': '热门工具',
-  'home.popularSub': '大家最常用的工具。',
   'home.allTools': '全部 {count} 个工具',
   'home.viewAll': '查看全部 {count} 个',
   'footer.popular': '热门工具',

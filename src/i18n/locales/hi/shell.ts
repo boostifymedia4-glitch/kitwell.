@@ -32,8 +32,6 @@ export default {
   'nav.contact': 'संपर्क',
   'footer.blog': 'ब्लॉग',
   'home.title': 'फ़ाइलों, PDF, टेक्स्ट और कोड के लिए रोज़मर्रा के टूल',
-  'home.popular': 'लोकप्रिय टूल',
-  'home.popularSub': 'वे टूल जिनका सबसे ज़्यादा उपयोग होता है।',
   'home.allTools': 'सभी {count} टूल',
   'home.viewAll': 'सभी {count} देखें',
   'footer.popular': 'लोकप्रिय टूल',

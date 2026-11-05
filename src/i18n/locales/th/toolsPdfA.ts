@@ -31,7 +31,6 @@ export default {
   'pdfMerge.drop': 'วาง PDF ที่นี่หรือคลิกเพื่อเลือก',
   'pdfMerge.needMore': 'เพิ่ม PDF อย่างน้อยอีกหนึ่งไฟล์เพื่อรวม',
   'pdfMerge.merge': 'รวม PDF {count} ไฟล์',
-  'pdfMerge.clear': 'ล้างทั้งหมด',
   'pdfMerge.processing': 'กำลังรวม PDF…',
   'pdfMerge.ready': 'PDF ที่รวมแล้วของคุณพร้อมแล้ว',
 

@@ -1,5 +1,5 @@
 ---
-title: How to Add Page Numbers to a PDF: Position, Format and Start
+title: How to add page numbers to a PDF: position, format and start
 description: Number the pages of any PDF with the position, format and starting page you choose, skip the cover page and avoid common numbering mistakes.
 excerpt: A practical guide to numbering PDF pages: where to place the numbers, how to skip the cover page, which formats exist and how to check the result.
 imageAlt: A PDF page with a page number stamped in the bottom corner on a teal background

@@ -1,5 +1,5 @@
 ---
-title: How to Sort Lines and Remove Duplicates From Any List
+title: How to sort lines and remove duplicates from any list
 description: Sort a list A to Z, by number or by length, shuffle it, and remove repeated lines while keeping your order. A clear guide for email lists, keywords and data.
 excerpt: Learn how to sort lines alphabetically, numerically, naturally or by length, how to remove duplicate lines without losing order, and how to clean a list before you use it.
 imageAlt: A list of lines being sorted and merged into one clean list on a teal background

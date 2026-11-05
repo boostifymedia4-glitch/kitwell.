@@ -1,5 +1,5 @@
 ---
-title: What Is PDF/A? Versions, Uses and How to Convert Safely
+title: What is PDF/A? Versions, uses and how to convert safely
 description: PDF/A is the archival version of PDF. Learn what 1b, 2b, 2u, 3b, 3u and 4 mean, when you need it and why a real converter must never fake compliance.
 excerpt: Understand PDF/A for long-term archiving: what the standard guarantees, how the versions differ, why fonts and colours can block a conversion and how to validate the result.
 imageAlt: A PDF document with an archive badge and a checkmark on a teal background

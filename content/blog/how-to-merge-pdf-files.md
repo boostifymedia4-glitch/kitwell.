@@ -1,5 +1,5 @@
 ---
-title: How to Merge PDF Files Online: Order, Size and Limits
+title: How to merge PDF files online: order, size and limits
 description: Combine several PDFs into one document in the right order, keep the size under control and avoid common problems, all in your browser with no upload.
 excerpt: Join contracts, invoices and scans into one PDF in the order you choose, and learn what merging keeps, drops and how to keep the result small.
 imageAlt: Three separate PDF pages sliding together into one combined document on a teal background

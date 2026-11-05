@@ -1,5 +1,5 @@
 ---
-title: How to Scan Documents to PDF With Your Phone Camera
+title: How to scan documents to PDF with your phone camera
 description: Turn photos of paper pages into one clean PDF, choose page size and clean-up style, take better pictures of documents and make the scan searchable afterwards.
 excerpt: A practical guide to scanning with a phone: how to photograph a page, how to put pages in order, what the clean-up styles do, which page size to choose and how to make the result small and searchable.
 imageAlt: A phone taking a photo of a paper page that becomes a clean PDF on a teal background

@@ -1,5 +1,5 @@
 ---
-title: JSON vs XML: Which Data Format Should You Use?
+title: JSON vs XML: which data format should you use?
 description: Compare JSON and XML on readability, size, comments, schemas, tooling and typical uses, and learn which one fits an API, a config file or a document.
 excerpt: A plain comparison of JSON and XML: how they look, how big they get, what each can and cannot express, where each one is used and how to pick the right one for your data.
 imageAlt: Curly braces and angle brackets facing each other on a balance with a teal background

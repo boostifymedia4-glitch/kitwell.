@@ -30,7 +30,6 @@ export const toolsPdfA = {
   'pdfMerge.drop': 'Drop PDFs here or click to choose',
   'pdfMerge.needMore': 'Add at least one more PDF to merge.',
   'pdfMerge.merge': 'Merge {count} PDFs',
-  'pdfMerge.clear': 'Clear all',
   'pdfMerge.processing': 'Merging PDFs…',
   'pdfMerge.ready': 'Your merged PDF is ready',
 

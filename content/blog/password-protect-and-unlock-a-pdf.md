@@ -1,5 +1,5 @@
 ---
-title: How to Password-Protect and Unlock a PDF Safely
+title: How to password-protect and unlock a PDF safely
 description: Lock a PDF with AES-256 encryption, choose what readers may do, and unlock a file you own. Learn how passwords and permissions differ and what the limits are.
 excerpt: Learn how to protect a PDF with a strong password, how permissions differ from passwords, and how to unlock a file you have the password for.
 imageAlt: A PDF document with a padlock being closed, on a teal background

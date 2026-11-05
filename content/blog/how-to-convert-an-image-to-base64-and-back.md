@@ -1,5 +1,5 @@
 ---
-title: How to Convert an Image to Base64 and Back Again
+title: How to convert an image to Base64 and back again
 description: Turn a picture into a Base64 data URI for HTML, CSS or JSON, decode a Base64 string back into an image file, and learn when embedding pictures is a good idea.
 excerpt: A practical guide to Base64 images: what a data URI is, the four output styles, the 33 percent size cost, when embedding helps, how to decode a string and why SVG data is rejected.
 imageAlt: A picture turning into a long string of characters and back on a teal background

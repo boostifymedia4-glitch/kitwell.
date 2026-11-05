@@ -25,8 +25,6 @@ export default {
   'search.none': 'Ninguna herramienta coincide con «{query}». Prueba con un formato o una tarea, como «png» o «json».',
   'search.found': '{count} herramientas encontradas',
   'home.title': 'Herramientas cotidianas para archivos, PDF, texto y código',
-  'home.popular': 'Herramientas populares',
-  'home.popularSub': 'Las herramientas que más se usan.',
   'home.allTools': 'Todas las {count} herramientas',
   'home.viewAll': 'Ver las {count}',
   'footer.popular': 'Herramientas populares',

@@ -36,7 +36,6 @@ export default {
   'pdfMerge.drop': 'أسقط ملفات PDF هنا أو انقر للاختيار',
   'pdfMerge.needMore': 'أضف ملف PDF آخر على الأقل للدمج.',
   'pdfMerge.merge': 'دمج {count} من ملفات PDF',
-  'pdfMerge.clear': 'مسح الكل',
   'pdfMerge.processing': 'جارٍ دمج ملفات PDF…',
   'pdfMerge.ready': 'ملف PDF المدموج جاهز',
 

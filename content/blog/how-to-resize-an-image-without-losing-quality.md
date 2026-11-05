@@ -1,5 +1,5 @@
 ---
-title: How to Resize an Image Without Losing Quality
+title: How to resize an image without losing quality
 description: Resize photos by exact pixels or percentage while keeping the aspect ratio. Learn why shrinking works better than enlarging and how to choose a size.
 excerpt: A practical guide to resizing pictures for web, email and print: pixels versus percentage, the aspect-ratio lock, batch resizing and what happens to quality.
 imageAlt: A photo being scaled down with arrows pointing inward on a teal background

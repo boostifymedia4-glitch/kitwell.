@@ -190,8 +190,6 @@ export default {
   'pdfOcr.stat.skipped': 'Přeskočené stránky',
   'pdfOcr.stat.words': 'Nalezená slova',
   'pdfOcr.stat.confidence': 'Průměrná spolehlivost',
-  'pdfOcr.resultNote': 'Stránky vypadají přesně jako předtím; neviditelná textová vrstva je činí prohledávatelnými a kopírovatelnými. Důležitá čísla zkontrolujte podle originálu.',
-  'pdfOcr.output': 'Rozpoznaný text',
   'pdfProtect.hint.empty': 'Použijte alespoň 8 znaků; delší heslo je silnější.',
   'pdfProtect.hint.short': 'Krátká hesla se snadno uhodnou. Zkuste alespoň 12 znaků.',
   'pdfProtect.hint.fair': 'Přijatelné. Dvanáct a více znaků je lepší.',

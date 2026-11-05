@@ -1,5 +1,5 @@
 ---
-title: How to Minify JSON and Check How Many Bytes You Save
+title: How to minify JSON and check how many bytes you save
 description: Remove whitespace from JSON, see the exact bytes saved, learn when minifying helps compared with gzip compression and avoid the large-number precision trap.
 excerpt: A practical guide to JSON minification: what is removed, what stays the same, how much you really save, how it relates to gzip and Brotli, and the large-number trap to avoid.
 imageAlt: Curly braces being squeezed into a smaller block of text on a teal background

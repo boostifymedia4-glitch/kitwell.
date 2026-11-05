@@ -1,5 +1,5 @@
 ---
-title: HEX, RGB and HSL Colors Explained With a Contrast Check
+title: HEX, RGB and HSL colors explained with a contrast check
 description: Learn how HEX, RGB, HSL and HSV colours work, convert between them, pick exact colours from an image and check text contrast against accessibility rules.
 excerpt: A clear guide to colour codes: what HEX, RGB, HSL and HSV mean, how to convert between them, how to sample a colour from a picture and how to check contrast for readable text.
 imageAlt: Colour swatches with hexadecimal codes next to a colour wheel on a teal background

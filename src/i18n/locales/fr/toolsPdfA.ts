@@ -33,7 +33,6 @@ export default {
   'pdfMerge.drop': 'Déposez des PDF ici ou cliquez pour les choisir',
   'pdfMerge.needMore': 'Ajoutez au moins un PDF de plus pour fusionner.',
   'pdfMerge.merge': 'Fusionner {count} PDF',
-  'pdfMerge.clear': 'Tout effacer',
   'pdfMerge.processing': 'Fusion des PDF…',
   'pdfMerge.ready': 'Votre PDF fusionné est prêt',
 

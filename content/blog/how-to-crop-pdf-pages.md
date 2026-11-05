@@ -1,5 +1,5 @@
 ---
-title: How to Crop PDF Pages and Trim Margins Without Losing Text
+title: How to crop PDF pages and trim margins without losing text
 description: Trim white margins or keep only a chosen area of every PDF page with a live preview, and learn why cropping hides content instead of deleting it.
 excerpt: Crop PDF pages by dragging a box or typing margins, apply it to all or some pages, and understand why cropping is not a way to hide sensitive content.
 imageAlt: A PDF page with a crop frame trimming the white margins on a teal background

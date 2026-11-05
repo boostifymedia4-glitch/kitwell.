@@ -37,8 +37,6 @@ export default {
   'nav.contact': 'اتصل بنا',
   'footer.blog': 'المدونة',
   'home.title': 'أدوات يومية للملفات وPDF والنصوص والأكواد',
-  'home.popular': 'الأدوات الشائعة',
-  'home.popularSub': 'الأدوات الأكثر استخدامًا.',
   'home.allTools': 'كل الأدوات ({count})',
   'home.viewAll': 'عرض الكل ({count})',
 

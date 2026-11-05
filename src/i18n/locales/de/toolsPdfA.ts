@@ -32,7 +32,6 @@ export default {
   'pdfMerge.drop': 'PDFs hier ablegen oder zum Auswählen klicken',
   'pdfMerge.needMore': 'Fügen Sie mindestens eine weitere PDF zum Zusammenfügen hinzu.',
   'pdfMerge.merge': '{count} PDFs zusammenfügen',
-  'pdfMerge.clear': 'Alle entfernen',
   'pdfMerge.processing': 'PDFs werden zusammengefügt…',
   'pdfMerge.ready': 'Ihre zusammengefügte PDF ist fertig',
 

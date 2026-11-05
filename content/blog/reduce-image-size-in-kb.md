@@ -1,5 +1,5 @@
 ---
-title: How to Reduce Image Size in KB Without Blurry Results
+title: How to reduce image size in KB without blurry results
 description: Get a photo under an upload limit such as 200 KB or 1 MB. Learn how dimensions, format and quality work together, and how to check the result.
 excerpt: Shrink a photo to a target file size by combining the right format, quality and dimensions, without turning it into a blurry mess.
 imageAlt: A large photo shrinking into a small file size badge on a teal background

@@ -32,7 +32,6 @@ export default {
   'pdfMerge.drop': 'Sleep PDF’s hierheen of klik om te kiezen',
   'pdfMerge.needMore': 'Voeg minstens nog één PDF toe om samen te voegen.',
   'pdfMerge.merge': '{count} PDF’s samenvoegen',
-  'pdfMerge.clear': 'Alles wissen',
   'pdfMerge.processing': 'PDF’s samenvoegen…',
   'pdfMerge.ready': 'Je samengevoegde PDF is klaar',
 

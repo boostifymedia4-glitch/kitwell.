@@ -34,7 +34,6 @@ export default {
   'pdfMerge.drop': 'Upuść tutaj pliki PDF lub kliknij, aby wybrać',
   'pdfMerge.needMore': 'Dodaj co najmniej jeszcze jeden PDF do scalenia.',
   'pdfMerge.merge': 'Scal pliki PDF ({count})',
-  'pdfMerge.clear': 'Wyczyść wszystko',
   'pdfMerge.processing': 'Scalanie plików PDF…',
   'pdfMerge.ready': 'Twój scalony PDF jest gotowy',
 

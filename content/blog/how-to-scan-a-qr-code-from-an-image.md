@@ -1,5 +1,5 @@
 ---
-title: How to Scan a QR Code From an Image or Screenshot Safely
+title: How to scan a QR code from an image or screenshot safely
 description: Read a QR code from a photo or screenshot, see what it really contains before you open it, and learn how to spot unsafe links and fix codes that will not scan.
 excerpt: A practical guide to scanning QR codes from pictures: what the tool shows, how Wi-Fi, email and link codes differ, how to check a link before you open it and what to do when no code is found.
 imageAlt: A phone screenshot with a QR code being read and its link shown for checking on a teal background

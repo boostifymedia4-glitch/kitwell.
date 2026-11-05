@@ -32,8 +32,6 @@ export default {
   'nav.contact': 'Contato',
   'footer.blog': 'Blog',
   'home.title': 'Ferramentas do dia a dia para arquivos, PDFs, texto e código',
-  'home.popular': 'Ferramentas populares',
-  'home.popularSub': 'As ferramentas mais usadas.',
   'home.allTools': 'Todas as {count} ferramentas',
   'home.viewAll': 'Ver as {count}',
   'footer.popular': 'Ferramentas populares',

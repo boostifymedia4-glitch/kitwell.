@@ -169,8 +169,6 @@ export default {
   'pdfOcr.stat.skipped': 'Halaman dilewati',
   'pdfOcr.stat.words': 'Kata ditemukan',
   'pdfOcr.stat.confidence': 'Rata-rata tingkat keyakinan',
-  'pdfOcr.resultNote': 'Halaman tampak persis seperti sebelumnya; lapisan teks tak terlihat membuatnya dapat dicari dan disalin. Periksa angka-angka penting dengan file aslinya.',
-  'pdfOcr.output': 'Teks yang dikenali',
   'pdfProtect.hint.empty': 'Gunakan setidaknya 8 karakter; semakin panjang semakin kuat.',
   'pdfProtect.hint.short': 'Kata sandi pendek mudah ditebak. Usahakan 12 karakter atau lebih.',
   'pdfProtect.hint.fair': 'Cukup. Dua belas karakter atau lebih lebih baik.',

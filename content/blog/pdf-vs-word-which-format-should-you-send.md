@@ -1,5 +1,5 @@
 ---
-title: PDF vs Word: Which Format Should You Send?
+title: PDF vs Word: which format should you send?
 description: Compare PDF and Word for CVs, contracts, forms and drafts: layout, editing, security, file size and compatibility, with a simple rule for choosing the right one.
 excerpt: A practical comparison of PDF and Word documents: when a fixed layout matters, when the other person needs to edit, how each format behaves on different devices and how to switch between them.
 imageAlt: A PDF page and a Word page side by side with a balance between them on a teal background

@@ -37,8 +37,6 @@ export default {
   'nav.contact': 'Contact',
   'footer.blog': 'Blog',
   'home.title': 'Des outils du quotidien pour vos fichiers, PDF, textes et codes',
-  'home.popular': 'Outils populaires',
-  'home.popularSub': 'Les outils les plus utilisés.',
   'home.allTools': 'Les {count} outils',
   'home.viewAll': 'Voir les {count}',
 

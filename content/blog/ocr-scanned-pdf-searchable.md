@@ -1,5 +1,5 @@
 ---
-title: How to Make a Scanned PDF Searchable with OCR
+title: How to make a scanned PDF searchable with OCR
 description: Learn what OCR does, how to tell whether a PDF is a scan, and how to add a searchable text layer to scanned pages in your browser, with tips for better accuracy.
 excerpt: A scanned PDF is a stack of pictures. See how OCR turns it into text you can search and copy, and how to get the best results.
 imageAlt: A scanned page with a magnifying glass revealing selectable text lines, on a teal background

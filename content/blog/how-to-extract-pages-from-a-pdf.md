@@ -1,5 +1,5 @@
 ---
-title: How to Extract Pages From a PDF and Save Them as a New File
+title: How to extract pages from a PDF and save them as a new file
 description: Pick the pages you need from a PDF and save them as a new document. Learn page ranges, how extracting differs from splitting and how to keep the order.
 excerpt: Select pages by thumbnail or range, save just those pages as a new PDF, and learn when to extract, split or remove pages instead.
 imageAlt: Selected pages being lifted out of a stack of PDF pages into a new document on a teal background

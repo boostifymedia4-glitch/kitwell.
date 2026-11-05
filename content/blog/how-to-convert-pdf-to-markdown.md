@@ -1,5 +1,5 @@
 ---
-title: How to Convert PDF to Markdown: Headings, Lists and Limits
+title: How to convert PDF to Markdown: headings, lists and limits
 description: Turn the text of a PDF into a Markdown file with headings, paragraphs and lists. Learn how structure is guessed, what is lost and how to clean the result.
 excerpt: Extract a PDF’s text as Markdown for notes, wikis and documentation, understand how headings and lists are detected and fix the usual problems with tables and scans.
 imageAlt: A PDF page turning into lines of Markdown text on a teal background

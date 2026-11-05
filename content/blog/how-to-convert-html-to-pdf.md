@@ -1,5 +1,5 @@
 ---
-title: How to Convert HTML to PDF: Files, Pasted Code and Limits
+title: How to convert HTML to PDF: files, pasted code and limits
 description: Turn an HTML file or pasted HTML into a PDF with selectable text. Learn what is converted, why web page addresses are not accepted and how to save pages first.
 excerpt: Convert HTML documents, invoices and saved web pages into PDF in your browser, understand which tags and styles are supported and prepare your HTML for a clean result.
 imageAlt: HTML code brackets turning into a PDF page on a teal background

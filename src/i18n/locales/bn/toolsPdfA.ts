@@ -31,7 +31,6 @@ export default {
   'pdfMerge.drop': 'এখানে PDF ছেড়ে দিন বা ক্লিক করে বেছে নিন',
   'pdfMerge.needMore': 'মার্জ করার জন্য আরও অন্তত একটি PDF যোগ করুন।',
   'pdfMerge.merge': '{count}টি PDF মার্জ করুন',
-  'pdfMerge.clear': 'সব মুছুন',
   'pdfMerge.processing': 'PDF মার্জ হচ্ছে…',
   'pdfMerge.ready': 'আপনার মার্জ করা PDF তৈরি',
   'pdfSplit.tooMany': 'এতে 500টির বেশি ফাইল তৈরি হবে। প্রতি ফাইলে আরও বেশি পেজ দিন।',
