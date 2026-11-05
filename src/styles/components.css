@@ -273,13 +273,13 @@ input[type='color'] { width: 44px; height: 42px; padding: 2px; border-radius: va
 .compare-page[aria-current='true'] { border-color: var(--accent); background: var(--accent-soft); }
 .compare-page small { color: var(--text-muted); }
 .badge { justify-self: start; padding: 1px 8px; border-radius: 999px; font-size: 0.6875rem; font-weight: 650; background: var(--bg-sunken); color: var(--text-muted); }
-.badge-changed { background: #fff3d6; color: #8a5a00; }
-.badge-added { background: #dcf5e4; color: #14683a; }
-.badge-removed { background: #fde0e0; color: #9b1c1c; }
+.badge-changed { background: var(--warning-soft); color: var(--warning); }
+.badge-added { background: var(--success-soft); color: var(--success); }
+.badge-removed { background: var(--danger-soft); color: var(--danger); }
 .compare-detail { display: grid; gap: var(--space-3); min-width: 0; }
 .compare-text { padding: var(--space-4); border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-elevated); line-height: 1.7; max-height: 520px; overflow: auto; overflow-wrap: anywhere; }
-.compare-text ins { background: #dcf5e4; color: #0f5a32; text-decoration: none; border-radius: 3px; padding: 0 2px; }
-.compare-text del { background: #fde0e0; color: #9b1c1c; border-radius: 3px; padding: 0 2px; }
+.compare-text ins { background: var(--success-soft); color: var(--success); text-decoration: none; border-radius: 3px; padding: 0 2px; }
+.compare-text del { background: var(--danger-soft); color: var(--danger); border-radius: 3px; padding: 0 2px; }
 .compare-canvases canvas { display: block; max-width: 100%; height: auto; border: 1px solid var(--border); background: #fff; }
 
 /* GIF preview */

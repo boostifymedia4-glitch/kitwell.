@@ -9,6 +9,7 @@ import { Icon } from '../Icon';
 import { CategoryIcon } from '../ui/CategoryIcon';
 import { ToolIcon } from '../ui/ToolIcon';
 import { MegaMenu } from './MegaMenu';
+import { ThemeToggle } from './ThemeToggle';
 
 export function BrandMark() {
   return (
@@ -106,6 +107,8 @@ export function Header() {
             {t('nav.blog')}
           </NavLink>
         </nav>
+        <div className="header-actions">
+        <ThemeToggle />
         <button
           type="button"
           className="icon-btn menu-btn"
@@ -116,6 +119,7 @@ export function Header() {
         >
           <Icon name={open ? 'x' : 'menu'} size={22} />
         </button>
+        </div>
       </div>
       {open && <MobileNav onNavigate={() => setOpen(false)} />}
     </header>

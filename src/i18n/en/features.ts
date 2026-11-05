@@ -53,6 +53,9 @@ export const features: Record<string, string> = {
   'tool.guides': 'Related guides',
   'tool.allGuides': 'All guides',
 
+  // Theme
+  'theme.toggle': 'Toggle dark mode',
+
   // OCR PDF
   'pdfOcr.resultNote2': 'The pages look exactly as before. The recognised text sits invisibly behind them, so you can select, search and copy it. OCR does not turn pages into editable text: to change the words, use the recognised text below. Check important numbers against the original.',
   'pdfOcr.outputEditable': 'Recognised text (you can correct it here)',
