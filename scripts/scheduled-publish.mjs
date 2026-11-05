@@ -1,4 +1,3 @@
-/* global process, console */
 /**
  * Decides whether a scheduled blog article has become due since the latest commit, which is what makes Vercel rebuild the site.
  * The articles are static, so a post with `publishAt` in the future is left out of the build (see scripts/build-blog.mjs). When

@@ -142,7 +142,7 @@ const GifMaker: ToolImplementation = () => {
       <RejectionList items={queue.rejections} onDismiss={queue.dismissRejections} />
       {files.length > 0 && (
         <>
-          <FileList items={queue.items} kind="image" onRemove={(id) => { queue.remove(id); resetTask(); }} onMove={(a, b) => { queue.move(a, b); resetTask(); }} disabled={running} />
+          <FileList items={queue.items} kind="image" onRemove={(id) => { queue.remove(id); resetTask(); }} onMove={(a, b) => { queue.move(a, b); resetTask(); }} onClear={() => { queue.clear(); resetTask(); }} disabled={running} />
           {files.length < MAX_GIF_FRAMES && (
             <UploadDropzone multiple compact extensions={IMAGE_EXTENSIONS} maxBytes={MAX_IMAGE_BYTES} maxFiles={MAX_GIF_FRAMES} onFiles={(f) => { queue.add(f); resetTask(); }} disabled={running} title={t('gifMaker.addMore')} />
           )}

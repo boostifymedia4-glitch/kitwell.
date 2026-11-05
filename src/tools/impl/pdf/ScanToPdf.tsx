@@ -109,7 +109,7 @@ const ScanToPdf: ToolImplementation = () => {
         <input ref={camera} type="file" accept="image/*" capture="environment" hidden onChange={(e) => (queue.add(Array.from(e.target.files ?? [])), (e.target.value = ''))} />
       </div>
       <RejectionList items={queue.rejections} onDismiss={queue.dismissRejections} />
-      <FileList items={queue.items} kind="image" onRemove={queue.remove} onMove={queue.move} disabled={running} />
+      <FileList items={queue.items} kind="image" onRemove={queue.remove} onMove={queue.move} onClear={() => { queue.clear(); reset(); }} disabled={running} />
       {queue.items.length > 0 && (
         <>
           <p className="hint">{t('imagesToPdf.hint')}</p>
