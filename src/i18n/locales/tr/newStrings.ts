@@ -9,6 +9,7 @@ const messages: PartialMessages = {
   'home.search.emptyText': "Yazımı kontrol edin veya “pdf”, “görsel” ya da “json” gibi daha kısa bir sözcük deneyin. Tüm araçlara kategoriye göre de göz atabilirsiniz.",
   'home.search.browse': "Tüm araçlara göz at",
   'home.allToolsLink': "Tüm Araçlar",
+  'home.filter.label': "Araçları kategoriye göre filtrele",
   'home.intro.title': "Tüm temel araçlarınız tek bir yerde",
   'home.intro.text': "PDF düzenleyici, görsel dönüştürücü ve metin biçimlendirici arasında gidip gelmek zaman kaybettirir. {site}, PDF, görsel, metin ve kod için {count} aracı bir araya getirir; böylece bir sonraki siteyi aramadan görevin tamamını bitirebilirsiniz.",
   'home.trust.title': "Güvenli, gizli ve güven için tasarlandı",

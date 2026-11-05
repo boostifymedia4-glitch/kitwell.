@@ -9,6 +9,7 @@ const messages: PartialMessages = {
   'home.search.emptyText': "Controleer de spelling of probeer een korter woord, zoals “pdf”, “afbeelding” of “json”. Je kunt ook alle tools per categorie bekijken.",
   'home.search.browse': "Alle tools bekijken",
   'home.allToolsLink': "Alle tools",
+  'home.filter.label': "Tools filteren op categorie",
   'home.intro.title': "Al je essentiële tools op één plek",
   'home.intro.text': "Heen en weer springen tussen een pdf-editor, een afbeeldingsconverter en een tekstformatter kost tijd. {site} brengt {count} tools voor pdf’s, afbeeldingen, tekst en code samen, zodat je een hele taak afrondt zonder naar de volgende website te zoeken.",
   'home.trust.title': "Veilig, privé en gebouwd om te vertrouwen",

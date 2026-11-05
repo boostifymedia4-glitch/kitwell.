@@ -9,6 +9,7 @@ const messages: PartialMessages = {
   'home.search.emptyText': "Zkontrolujte pravopis nebo zkuste kratší slovo, například „pdf“, „obrázek“ nebo „json“. Můžete také procházet všechny nástroje podle kategorií.",
   'home.search.browse': "Procházet všechny nástroje",
   'home.allToolsLink': "Všechny nástroje",
+  'home.filter.label': "Filtrovat nástroje podle kategorie",
   'home.intro.title': "Všechny důležité nástroje na jednom místě",
   'home.intro.text': "Přepínání mezi editorem PDF, převodníkem obrázků a formátovačem textu zbytečně zdržuje. {site} spojuje {count} nástrojů pro PDF, obrázky, text a kód, takže dokončíte celý úkol, aniž byste hledali další web.",
   'home.trust.title': "Bezpečně, soukromě a s ohledem na důvěru",

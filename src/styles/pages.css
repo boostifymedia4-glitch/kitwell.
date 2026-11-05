@@ -34,3 +34,11 @@
 @media (prefers-reduced-motion: no-preference) {
   .post-list > li { animation: rise 320ms var(--ease-out) both; }
 }
+
+/* Centered page heading (blog) and the home category filter */
+.page-head-center { text-align: center; }
+.page-head-center .lead { margin-inline: auto; }
+.page-head-center .breadcrumbs, .page-head-center nav { justify-content: center; }
+.blog-tools .blog-search { margin-inline: auto; width: 100%; }
+.blog-tools .chips { justify-content: center; }
+.home-filter { justify-content: center; margin-block: var(--space-5) var(--space-2); }

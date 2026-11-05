@@ -3,13 +3,13 @@ import { usePageMeta } from '@/i18n/usePageMeta';
 import { Seo } from '../Seo';
 import { Breadcrumbs } from './Breadcrumbs';
 
-export function PageShell({ path, title, lead, children, wide }: { path: string; title: string; lead?: string; children?: ReactNode; wide?: boolean }) {
+export function PageShell({ path, title, lead, children, wide, centered }: { path: string; title: string; lead?: string; children?: ReactNode; wide?: boolean; centered?: boolean }) {
   const meta = usePageMeta(path);
   return (
     <>
       {meta && <Seo {...meta} />}
       <div className="container">
-        <header className="page-head">
+        <header className={centered ? 'page-head page-head-center' : 'page-head'}>
           <Breadcrumbs path={path} />
           <h1>{title}</h1>
           {lead && <p className="lead">{lead}</p>}

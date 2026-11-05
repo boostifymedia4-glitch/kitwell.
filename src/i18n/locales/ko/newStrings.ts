@@ -9,6 +9,7 @@ const messages: PartialMessages = {
   'home.search.emptyText': "철자를 확인하거나 “pdf”, “이미지”, “json”처럼 더 짧은 단어를 입력해 보세요. 카테고리별로 모든 도구를 둘러볼 수도 있습니다.",
   'home.search.browse': "모든 도구 둘러보기",
   'home.allToolsLink': "모든 도구",
+  'home.filter.label': "카테고리별로 도구 필터링",
   'home.intro.title': "꼭 필요한 도구를 한곳에서",
   'home.intro.text': "PDF 편집기, 이미지 변환기, 텍스트 서식 도구를 오가는 일은 시간을 낭비하게 합니다. {site}는 PDF, 이미지, 텍스트, 코드를 위한 {count}개의 도구를 한데 모아, 다음 웹사이트를 찾지 않고도 작업 전체를 끝낼 수 있게 해 줍니다.",
   'home.trust.title': "안전하고, 비공개이며, 믿을 수 있게 만들었습니다",

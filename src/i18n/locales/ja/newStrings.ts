@@ -9,6 +9,7 @@ const messages: PartialMessages = {
   'home.search.emptyText': "スペルを確認するか、「pdf」「画像」「json」のような短い言葉をお試しください。カテゴリからすべてのツールを見ることもできます。",
   'home.search.browse': "すべてのツールを見る",
   'home.allToolsLink': "すべてのツール",
+  'home.filter.label': "カテゴリでツールを絞り込む",
   'home.intro.title': "必要なツールがすべて一か所に",
   'home.intro.text': "PDF エディター、画像変換ツール、テキスト整形ツールの間を行き来するのは時間の無駄です。{site} は PDF、画像、テキスト、コード向けの {count} 個のツールをまとめているので、次のサイトを探さずに作業を最後まで終えられます。",
   'home.trust.title': "安全でプライベート、信頼できる設計",

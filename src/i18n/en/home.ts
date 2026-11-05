@@ -13,6 +13,7 @@ export const home: Record<string, string> = {
   'home.search.browse': 'Browse all tools',
 
   'home.allToolsLink': 'All Tools',
+  'home.filter.label': 'Filter tools by category',
 
   'home.intro.title': 'All your essential tools in one place',
   'home.intro.text':

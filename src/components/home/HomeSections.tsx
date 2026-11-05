@@ -19,10 +19,19 @@ export function IntroSection() {
   );
 }
 
-function FeatureCard({ icon, title, text }: { icon: string; title: ReactNode; text: ReactNode }) {
+/** A coloured badge with an icon, shown above or beside a section heading. */
+function HeadBadge({ icon, tone }: { icon: string; tone: string }) {
+  return (
+    <span className={`head-badge tone-${tone}`} aria-hidden="true">
+      <Icon name={icon} size={26} />
+    </span>
+  );
+}
+
+function FeatureCard({ icon, title, text, tone }: { icon: string; title: ReactNode; text: ReactNode; tone: string }) {
   return (
     <div className="card feature-card">
-      <span className="feature-icon" aria-hidden="true">
+      <span className={`feature-icon tone-${tone}`} aria-hidden="true">
         <Icon name={icon} size={24} />
       </span>
       <h3>{title}</h3>
@@ -35,23 +44,24 @@ function FeatureCard({ icon, title, text }: { icon: string; title: ReactNode; te
 export function TrustSection() {
   const { t } = useI18n();
   const ref = useReveal<HTMLDivElement>();
-  const cards: { icon: string; key: string }[] = [
-    { icon: 'monitor', key: 'browser' },
-    { icon: 'lock', key: 'https' },
-    { icon: 'share', key: 'choice' },
-    { icon: 'badge-check', key: 'limits' },
+  const cards: { icon: string; key: string; tone: string }[] = [
+    { icon: 'monitor', key: 'browser', tone: 'blue' },
+    { icon: 'lock', key: 'https', tone: 'green' },
+    { icon: 'share', key: 'choice', tone: 'violet' },
+    { icon: 'badge-check', key: 'limits', tone: 'amber' },
   ];
   return (
     <section className="section" aria-labelledby="home-trust-title">
       <div className="section-head section-head-center">
         <div>
+          <HeadBadge icon="lock" tone="green" />
           <h2 id="home-trust-title">{t('home.trust.title')}</h2>
           <p>{t('home.trust.intro', vars())}</p>
         </div>
       </div>
       <div className="feature-grid" ref={ref}>
         {cards.map((c) => (
-          <FeatureCard key={c.key} icon={c.icon} title={t(`home.trust.${c.key}.title` as MessageKey)} text={t(`home.trust.${c.key}.text` as MessageKey)} />
+          <FeatureCard key={c.key} icon={c.icon} tone={c.tone} title={t(`home.trust.${c.key}.title` as MessageKey)} text={t(`home.trust.${c.key}.text` as MessageKey)} />
         ))}
       </div>
       <p className="section-foot">
@@ -92,6 +102,7 @@ export function CompatSection() {
     <section className="section" aria-labelledby="home-compat-title">
       <div className="compat card" ref={ref}>
         <div className="compat-text">
+          <HeadBadge icon="laptop" tone="blue" />
           <h2 id="home-compat-title">{t('home.compat.title')}</h2>
           <p>{t('home.compat.intro', vars())}</p>
           <ul className="os-list">
@@ -134,25 +145,26 @@ export function CompatSection() {
 export function WhySection() {
   const { t } = useI18n();
   const ref = useReveal<HTMLDivElement>();
-  const cards: { icon: string; key: string }[] = [
-    { icon: 'grid', key: 'all' },
-    { icon: 'gift', key: 'free' },
-    { icon: 'globe', key: 'browser' },
-    { icon: 'sparkles', key: 'simple' },
-    { icon: 'languages', key: 'languages' },
-    { icon: 'shield', key: 'secure' },
+  const cards: { icon: string; key: string; tone: string }[] = [
+    { icon: 'grid', key: 'all', tone: 'teal' },
+    { icon: 'gift', key: 'free', tone: 'rose' },
+    { icon: 'globe', key: 'browser', tone: 'blue' },
+    { icon: 'sparkles', key: 'simple', tone: 'amber' },
+    { icon: 'languages', key: 'languages', tone: 'violet' },
+    { icon: 'shield', key: 'secure', tone: 'green' },
   ];
   return (
     <section className="section" aria-labelledby="home-why-title">
       <div className="section-head section-head-center">
         <div>
+          <HeadBadge icon="badge-check" tone="amber" />
           <h2 id="home-why-title">{t('home.why.title', vars())}</h2>
           <p>{t('home.why.intro')}</p>
         </div>
       </div>
       <div className="feature-grid feature-grid-3" ref={ref}>
         {cards.map((c) => (
-          <FeatureCard key={c.key} icon={c.icon} title={t(`home.why.${c.key}.title` as MessageKey)} text={t(`home.why.${c.key}.text` as MessageKey, vars())} />
+          <FeatureCard key={c.key} icon={c.icon} tone={c.tone} title={t(`home.why.${c.key}.title` as MessageKey)} text={t(`home.why.${c.key}.text` as MessageKey, vars())} />
         ))}
       </div>
     </section>

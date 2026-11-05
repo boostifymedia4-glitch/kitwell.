@@ -37,7 +37,7 @@ export default function Blog() {
   };
 
   return (
-    <PageShell path="/blog" title={t('blog.hero.title')} lead={t('blog.hero.lead', { site: site.name })} wide>
+    <PageShell path="/blog" title={t('blog.hero.title')} lead={t('blog.hero.lead', { site: site.name })} wide centered>
       {posts.length === 0 ? (
         <p className="muted">{t('blog.empty')}</p>
       ) : (

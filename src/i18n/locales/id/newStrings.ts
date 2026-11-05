@@ -9,6 +9,7 @@ const messages: PartialMessages = {
   'home.search.emptyText': "Periksa ejaan atau coba kata yang lebih pendek, seperti “pdf”, “gambar”, atau “json”. Anda juga dapat menelusuri semua alat menurut kategori.",
   'home.search.browse': "Telusuri semua alat",
   'home.allToolsLink': "Semua Alat",
+  'home.filter.label': "Saring alat menurut kategori",
   'home.intro.title': "Semua alat penting Anda di satu tempat",
   'home.intro.text': "Berpindah-pindah antara editor PDF, konverter gambar, dan pemformat teks membuang waktu. {site} menyatukan {count} alat untuk PDF, gambar, teks, dan kode, sehingga Anda bisa menyelesaikan satu tugas penuh tanpa mencari situs berikutnya.",
   'home.trust.title': "Aman, privat, dan dibangun untuk dipercaya",

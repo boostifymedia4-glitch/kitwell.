@@ -9,6 +9,7 @@ const messages: PartialMessages = {
   'home.search.emptyText': "Vérifiez l’orthographe ou essayez un mot plus court, comme « pdf », « image » ou « json ». Vous pouvez aussi parcourir tous les outils par catégorie.",
   'home.search.browse': "Parcourir tous les outils",
   'home.allToolsLink': "Tous les outils",
+  'home.filter.label': "Filtrer les outils par catégorie",
   'home.intro.title': "Tous vos outils essentiels au même endroit",
   'home.intro.text': "Passer d’un éditeur PDF à un convertisseur d’images puis à un formateur de texte fait perdre du temps. {site} réunit {count} outils pour les PDF, les images, le texte et le code, pour que vous terminiez une tâche entière sans chercher un autre site.",
   'home.trust.title': "Sûr, privé et conçu pour inspirer confiance",

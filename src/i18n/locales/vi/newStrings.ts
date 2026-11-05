@@ -9,6 +9,7 @@ const messages: PartialMessages = {
   'home.search.emptyText': "Hãy kiểm tra chính tả hoặc thử từ ngắn hơn, chẳng hạn “pdf”, “hình ảnh” hoặc “json”. Bạn cũng có thể duyệt mọi công cụ theo danh mục.",
   'home.search.browse': "Duyệt tất cả công cụ",
   'home.allToolsLink': "Tất cả công cụ",
+  'home.filter.label': "Lọc công cụ theo danh mục",
   'home.intro.title': "Mọi công cụ thiết yếu của bạn ở một nơi",
   'home.intro.text': "Chuyển qua lại giữa trình chỉnh sửa PDF, bộ chuyển đổi hình ảnh và công cụ định dạng văn bản rất tốn thời gian. {site} tập hợp {count} công cụ cho PDF, hình ảnh, văn bản và mã, để bạn hoàn thành cả một công việc mà không phải tìm trang web tiếp theo.",
   'home.trust.title': "An toàn, riêng tư và được xây dựng để đáng tin cậy",
