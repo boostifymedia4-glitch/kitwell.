@@ -52,6 +52,31 @@ export async function mergePdfs(
   return out.save();
 }
 
+/**
+ * Merges PDF files in the given order, reading and parsing one file at a time so that a long list does not hold every file
+ * in memory twice, and giving the browser a moment between files so the page stays responsive. Returns the merged file and
+ * its page count.
+ */
+export async function mergePdfFiles(files: File[], onProgress?: (done: number, total: number) => void): Promise<{ bytes: Uint8Array; pages: number }> {
+  if (files.length < 2) throw new PdfError(tr('err.pdf.mergeNeedTwo'));
+  const out = await PDFDocument.create();
+  for (let i = 0; i < files.length; i++) {
+    onProgress?.(i, files.length);
+    let src: PDFDocument;
+    try {
+      src = await loadPdf(new Uint8Array(await files[i].arrayBuffer()));
+    } catch (err) {
+      throw new PdfError(tr('err.pdf.mergeFile', { name: files[i].name, message: (err as Error).message }));
+    }
+    const pages = await out.copyPages(src, src.getPageIndices());
+    pages.forEach((p) => out.addPage(p));
+    await new Promise((resolve) => setTimeout(resolve, 0));
+  }
+  onProgress?.(files.length, files.length);
+  const pages = out.getPageCount();
+  return { bytes: await out.save(), pages };
+}
+
 export interface PageSpec {
   /** Zero-based index in the source document. */
   index: number;

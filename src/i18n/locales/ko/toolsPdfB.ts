@@ -169,8 +169,6 @@ export default {
   'pdfOcr.stat.skipped': '건너뛴 페이지',
   'pdfOcr.stat.words': '찾은 단어',
   'pdfOcr.stat.confidence': '평균 신뢰도',
-  'pdfOcr.resultNote': '페이지는 이전과 똑같이 보이며, 보이지 않는 텍스트 레이어 덕분에 검색하고 복사할 수 있습니다. 중요한 숫자는 원본과 대조해 확인하세요.',
-  'pdfOcr.output': '인식된 텍스트',
   'pdfProtect.hint.empty': '8자 이상을 사용하세요. 길수록 더 안전합니다.',
   'pdfProtect.hint.short': '짧은 비밀번호는 추측하기 쉽습니다. 12자 이상을 권장합니다.',
   'pdfProtect.hint.fair': '보통입니다. 12자 이상이 더 좋습니다.',

@@ -6,29 +6,37 @@ import { Field } from '@/components/tool/Fields';
 import { PageShell } from '@/components/ui/PageShell';
 import { useI18n } from '@/i18n';
 import { Rich } from '@/i18n/Rich';
+import { formatBytes } from '@/lib/format';
 import {
+  ATTACHMENT_RULES,
   CONTACT_LIMITS,
   CONTACT_TOPICS,
+  checkAttachment,
   contactConfigured,
   invalidContactFields,
+  readBase64,
   sendContact,
+  type AttachmentProblem,
   type ContactField,
   type ContactForm,
   type ContactResult,
 } from '@/lib/contact';
 
-const EMPTY: ContactForm = { name: '', email: '', topic: '', message: '', page: '' };
+const EMPTY: ContactForm = { name: '', email: '', topic: '', message: '', page: '', agree: false };
 type Status = 'idle' | 'sending' | 'sent' | 'failed';
 
 export default function Contact() {
   const { t } = useI18n();
   const [form, setForm] = useState<ContactForm>(EMPTY);
   const [website, setWebsite] = useState('');
+  const [file, setFile] = useState<File | null>(null);
+  const [fileProblem, setFileProblem] = useState<AttachmentProblem | null>(null);
   const [invalid, setInvalid] = useState<ContactField[]>([]);
   const [status, setStatus] = useState<Status>('idle');
   const [failure, setFailure] = useState<ContactResult | null>(null);
   const [configured, setConfigured] = useState<boolean | null>(null);
   const summary = useRef<HTMLDivElement>(null);
+  const fileInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     let live = true;
@@ -43,6 +51,18 @@ export default function Contact() {
     if (invalid.length) setInvalid((list) => list.filter((k) => k !== key));
   };
 
+  const choose = (picked: File | undefined) => {
+    if (!picked) return;
+    const problem = checkAttachment(picked);
+    setFileProblem(problem);
+    setFile(problem ? null : picked);
+  };
+  const removeFile = () => {
+    setFile(null);
+    setFileProblem(null);
+    if (fileInput.current) fileInput.current.value = '';
+  };
+
   const submit = async (e: FormEvent) => {
     e.preventDefault();
     if (status === 'sending') return;
@@ -52,12 +72,30 @@ export default function Contact() {
       setTimeout(() => summary.current?.focus(), 0);
       return;
     }
+    // While the form is still being built, nothing is sent and nothing is stored.
+    if (configured === false) {
+      setFailure('not_configured');
+      setStatus('failed');
+      setTimeout(() => summary.current?.focus(), 0);
+      return;
+    }
     setStatus('sending');
     setFailure(null);
-    const result = await sendContact({ ...form, website });
+    let attachment: { name: string; data: string } | undefined;
+    if (file) {
+      try {
+        attachment = { name: file.name, data: await readBase64(file) };
+      } catch {
+        setFailure('invalid');
+        setStatus('failed');
+        return;
+      }
+    }
+    const result = await sendContact({ ...form, website, attachment });
     if (result === 'sent') {
       setStatus('sent');
       setForm(EMPTY);
+      removeFile();
     } else {
       setFailure(result);
       setStatus('failed');
@@ -66,20 +104,29 @@ export default function Contact() {
   };
 
   const bad = (field: ContactField) => invalid.includes(field) || undefined;
+  const tooLong = form.message.trim().length > CONTACT_LIMITS.message;
   const errorText: Record<ContactField, string> = {
     name: t('contact.err.name'),
     email: t('contact.err.email'),
     topic: t('contact.err.subject'),
-    message: t('contact.err.message', { min: CONTACT_LIMITS.minMessage, max: CONTACT_LIMITS.message }),
+    message: tooLong ? t('contact.err.messageLong') : t('contact.err.messageMin', { min: CONTACT_LIMITS.minMessage }),
+    agree: t('contact.err.agree'),
   };
   const failureText = (r: ContactResult) =>
     r === 'not_configured'
-      ? t('contact.fail.notConfigured')
+      ? t('contact.fail.soon')
       : r === 'rate_limited'
         ? t('contact.fail.rate')
         : r === 'network'
           ? t('contact.fail.network')
-          : t('contact.fail.delivery');
+          : r === 'invalid'
+            ? t('contact.fail.invalid')
+            : t('contact.fail.delivery');
+  const fileText: Record<AttachmentProblem, string> = {
+    type: t('contact.attach.errType'),
+    size: t('contact.attach.errSize', { size: formatBytes(ATTACHMENT_RULES.maxBytes) }),
+    empty: t('contact.attach.errEmpty'),
+  };
 
   return (
     <PageShell path="/contact" title={t('contact.title')} lead={t('contact.lead')} wide>
@@ -88,10 +135,10 @@ export default function Contact() {
           <h2 id="contact-form-title">{t('contact.form.h')}</h2>
 
           {configured === false && (
-            <Notice tone="warn">
-              <strong>{t('contact.unavailable.h')}</strong>
+            <Notice tone="info">
+              <strong>{t('contact.notice.h')}</strong>
               <br />
-              {t('contact.unavailable.p')}
+              {t('contact.notice.p')}
             </Notice>
           )}
 
@@ -128,7 +175,7 @@ export default function Contact() {
                     <input id={id} className="input" value={form.name} maxLength={CONTACT_LIMITS.name} autoComplete="name" placeholder={t('contact.form.namePlaceholder')} aria-invalid={bad('name')} onChange={(e) => set('name', e.target.value)} />
                   )}
                 </Field>
-                <Field label={t('contact.form.email')} hint={t('contact.form.emailHint')}>
+                <Field label={t('contact.form.email')}>
                   {(id) => (
                     <input
                       id={id}
@@ -138,6 +185,7 @@ export default function Contact() {
                       value={form.email}
                       maxLength={CONTACT_LIMITS.email}
                       autoComplete="email"
+                      placeholder={t('contact.form.emailPlaceholder')}
                       aria-invalid={bad('email')}
                       onChange={(e) => set('email', e.target.value)}
                     />
@@ -165,23 +213,68 @@ export default function Contact() {
               </div>
               <Field label={t('contact.form.message')} hint={t('contact.form.messageHint', { min: CONTACT_LIMITS.minMessage })}>
                 {(id) => (
-                  <>
-                    <textarea
-                      id={id}
-                      className="textarea prose-font"
-                      rows={7}
-                      value={form.message}
-                      maxLength={CONTACT_LIMITS.message}
-                      aria-invalid={bad('message')}
-                      placeholder={t('contact.form.messagePlaceholder')}
-                      onChange={(e) => set('message', e.target.value)}
-                    />
-                    <span className="hint contact-counter" aria-hidden="true">
-                      {t('contact.form.counter', { count: form.message.length, max: CONTACT_LIMITS.message })}
-                    </span>
-                  </>
+                  <textarea
+                    id={id}
+                    className="textarea prose-font"
+                    rows={7}
+                    value={form.message}
+                    aria-invalid={bad('message')}
+                    placeholder={t('contact.form.messagePlaceholder')}
+                    onChange={(e) => set('message', e.target.value)}
+                  />
                 )}
               </Field>
+
+              <div className="field">
+                <span className="label" id="contact-attach-label">
+                  {t('contact.attach.label')}
+                </span>
+                <div className="attach">
+                  <button type="button" className="btn btn-secondary" onClick={() => fileInput.current?.click()} aria-describedby="contact-attach-hint">
+                    <Icon name="paperclip" size={16} />
+                    {t('contact.attach.button')}
+                  </button>
+                  <input
+                    ref={fileInput}
+                    type="file"
+                    hidden
+                    tabIndex={-1}
+                    aria-labelledby="contact-attach-label"
+                    accept={ATTACHMENT_RULES.extensions.map((x) => `.${x}`).join(',')}
+                    onChange={(e) => choose(e.target.files?.[0])}
+                  />
+                  <span className="hint" id="contact-attach-hint">
+                    {t('contact.attach.hint', { size: formatBytes(ATTACHMENT_RULES.maxBytes) })}
+                  </span>
+                </div>
+                {file && (
+                  <div className="attach-chip">
+                    <Icon name="file-text" size={18} />
+                    <span className="attach-name" title={file.name}>
+                      {file.name}
+                    </span>
+                    <span className="attach-size">{formatBytes(file.size)}</span>
+                    <button type="button" className="icon-btn" aria-label={t('contact.attach.remove', { name: file.name })} onClick={removeFile}>
+                      <Icon name="x" size={16} />
+                    </button>
+                  </div>
+                )}
+                {fileProblem && (
+                  <p className="field-error" role="alert">
+                    {fileText[fileProblem]}
+                  </p>
+                )}
+              </div>
+
+              <label className="check contact-agree" data-invalid={bad('agree')}>
+                <input type="checkbox" checked={form.agree} aria-invalid={bad('agree')} onChange={(e) => set('agree', e.target.checked)} />
+                <span>
+                  <Rich
+                    text={t('contact.agree')}
+                    tags={{ terms: (c) => <Link to="/terms">{c}</Link>, privacy: (c) => <Link to="/privacy">{c}</Link> }}
+                  />
+                </span>
+              </label>
 
               {/* Hidden from people; automated form fillers tend to complete it. */}
               <div className="contact-trap" aria-hidden="true">
@@ -197,24 +290,9 @@ export default function Contact() {
                   {status === 'sending' ? t('contact.form.sending') : t('contact.form.send')}
                 </button>
               </div>
-              <p className="hint">
-                <Rich text={t('contact.privacy')} tags={{ privacy: (c) => <Link to="/privacy">{c}</Link> }} />
-              </p>
             </form>
           )}
         </section>
-
-        <aside className="contact-side">
-          <section className="card contact-card" aria-labelledby="contact-report">
-            <h2 id="contact-report">{t('contact.report.h')}</h2>
-            <p>{t('contact.report.intro')}</p>
-            <ul className="limit-list">
-              {[1, 2, 3, 4].map((n) => (
-                <li key={n}>{t(`contact.report.${n}`)}</li>
-              ))}
-            </ul>
-          </section>
-        </aside>
       </div>
     </PageShell>
   );

@@ -1,10 +1,11 @@
 ---
-title: How to Rotate PDF Pages and Save the Change Permanently
+title: How to rotate PDF pages and save the change permanently
 description: Fix sideways or upside-down pages in a PDF, rotate one page or all of them, and save the new orientation so it stays that way in every viewer.
 excerpt: Rotate single pages or the whole PDF with thumbnail previews, learn why scans arrive sideways and how to save the rotation so it sticks.
 imageAlt: A sideways PDF page being turned upright with a curved arrow on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: rotate-pdf
 tools: rotate-pdf, reorder-pdf-pages, crop-pdf, extract-pdf-pages, merge-pdf, scan-to-pdf
 ctaHeading: Try it yourself

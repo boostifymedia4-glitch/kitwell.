@@ -32,8 +32,6 @@ export default {
   'nav.contact': '문의',
   'footer.blog': '블로그',
   'home.title': '파일, PDF, 텍스트, 코드를 위한 일상 도구',
-  'home.popular': '인기 도구',
-  'home.popularSub': '가장 많이 쓰는 도구입니다.',
   'home.allTools': '도구 {count}개 전체',
   'home.viewAll': '{count}개 모두 보기',
   'footer.popular': '인기 도구',

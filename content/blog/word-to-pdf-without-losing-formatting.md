@@ -1,9 +1,10 @@
 ---
-title: Word to PDF Without Losing Formatting: What to Expect
+title: Word to PDF without losing formatting: what to expect
 description: Convert a DOCX file to PDF in your browser. See what is kept, what is approximated, and how to prepare your document so the PDF comes out clean.
 excerpt: An honest look at converting Word documents to PDF in the browser: what carries over, what changes and how to prepare the file.
 imageAlt: A Word document page transforming into a PDF page with a red PDF label on a teal background
 published: 2026-10-15
+category: tutorials
 tool: word-to-pdf
 tools: word-to-pdf, compress-pdf, merge-pdf, protect-pdf, excel-to-pdf, powerpoint-to-pdf, html-to-pdf
 ctaHeading: Convert a document now

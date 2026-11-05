@@ -32,8 +32,6 @@ export default {
   'nav.contact': 'Contact',
   'footer.blog': 'Blog',
   'home.title': 'Dagelijkse tools voor bestanden, PDF’s, tekst en code',
-  'home.popular': 'Populaire tools',
-  'home.popularSub': 'De tools die mensen het vaakst gebruiken.',
   'home.allTools': 'Alle {count} tools',
   'home.viewAll': 'Bekijk alle {count}',
   'footer.popular': 'Populaire tools',

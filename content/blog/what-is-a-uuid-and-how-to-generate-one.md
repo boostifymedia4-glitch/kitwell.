@@ -1,10 +1,11 @@
 ---
-title: What Is a UUID and How to Generate One in Bulk
+title: What is a UUID and how to generate one in bulk
 description: Learn what a UUID is, why version 4 random identifiers almost never collide, how to choose the format and how to generate up to a thousand of them at once.
 excerpt: A clear guide to UUIDs: what the pattern means, how version 4 works, how likely a collision really is, when to use a UUID instead of a counter and how to generate them in your browser.
 imageAlt: A long unique identifier made of hexadecimal groups on a teal background
 published: 2026-10-29
 updated: 2026-10-29
+category: guides
 tool: uuid-generator
 tools: uuid-generator, timestamp-converter, json-formatter, password-generator, base64-encoder-decoder, text-sorter
 ctaHeading: Try it yourself

@@ -1,10 +1,11 @@
 ---
-title: How to Create a QR Code for Links, Wi-Fi, Email and Text
+title: How to create a QR code for links, Wi-Fi, email and text
 description: Make static QR codes for links, Wi-Fi, email and phone numbers, choose size, colours and error correction, and test them before printing.
 excerpt: A practical guide to QR codes: what static codes are, how to pick error correction, which colours scan best, how large to print them and how to avoid unreadable codes.
 imageAlt: A QR code on a card being scanned by a phone on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: qr-code-generator
 tools: qr-code-generator, qr-code-scanner, password-generator, url-encoder-decoder, image-compressor, image-to-base64
 ctaHeading: Try it yourself

@@ -1,10 +1,11 @@
 ---
-title: How to Test Regular Expressions With Live Matches
+title: How to test regular expressions with live matches
 description: Learn the basics of regular expressions, test patterns against sample text, read capture groups and flags, and avoid patterns that freeze your browser.
 excerpt: A beginner-friendly guide to regular expressions: patterns, flags, groups and replacements, a short list of useful patterns and how to avoid slow, runaway patterns.
 imageAlt: A search pattern highlighting matches inside lines of text on a teal background
 published: 2026-10-25
 updated: 2026-10-25
+category: tutorials
 tool: regex-tester
 tools: regex-tester, text-cleaner, text-diff-checker, remove-duplicate-lines, json-formatter, url-encoder-decoder
 ctaHeading: Try it yourself

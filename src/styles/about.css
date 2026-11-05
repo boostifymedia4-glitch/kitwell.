@@ -5,7 +5,8 @@
 @property --a { syntax: '<angle>'; inherits: false; initial-value: 360deg; }
 
 .about-page { --gold: #c9a24b; --gold-bright: #e6c677; --gold-text: #8a6a1f; --about-ease: cubic-bezier(0.22, 1, 0.36, 1); }
-@media (prefers-color-scheme: dark) { .about-page { --gold-text: #e6c677; } }
+:root[data-theme='dark'] .about-page { --gold-text: #e6c677; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme]) .about-page { --gold-text: #e6c677; } }
 .about-page .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* ---------- Scroll reveal (once) ---------- */

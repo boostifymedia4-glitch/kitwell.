@@ -3,13 +3,13 @@ import { ErrorMessage, Notice, ProcessingState } from '@/components/tool/Feedbac
 import { CheckField, Field, SelectField } from '@/components/tool/Fields';
 import { PdfSource } from '@/components/tool/PdfSource';
 import { PdfOutput, ResetButton, ResultPanel } from '@/components/tool/Results';
-import { OutputBox, Stats } from '@/components/tool/TextIO';
+import { EditableTextBox, Stats } from '@/components/tool/TextIO';
 import { Icon } from '@/components/Icon';
 import { baseName, errorMessage, formatBytes } from '@/lib/format';
 import { addTextLayer, joinPageTexts, meanConfidence, type OcrPageResult } from '@/lib/ocr';
 import { OCR_LANGUAGES, createOcrEngine, type OcrEngine } from '@/lib/ocrEngine';
 import { PdfError, parsePageList } from '@/lib/pdfOps';
-import { destroyPdf, openPdf, renderPageToCanvas } from '@/lib/pdfjs';
+import { destroyPdf, openPdf, pageIsMostlyPicture, renderPageToCanvas } from '@/lib/pdfjs';
 import { usePdfTool } from '@/lib/usePdfFile';
 import { useI18n } from '@/i18n';
 import type { ToolImplementation } from '../../types';
@@ -30,8 +30,10 @@ const DPI_OPTIONS = [
 ] as const;
 
 const MAX_PAGES = 100;
-/** Pages with at least this many characters of real text are treated as already searchable. */
-const HAS_TEXT = 20;
+/** A page with this many characters of real text is treated as already searchable, even when it also holds a picture. */
+const HAS_TEXT = 300;
+/** A page with fewer characters than this has no usable text of its own. */
+const NO_TEXT = 20;
 
 const PdfOcr: ToolImplementation = () => {
   const { t } = useI18n();
@@ -78,7 +80,9 @@ const PdfOcr: ToolImplementation = () => {
                   try {
                     const content = await page.getTextContent();
                     const chars = content.items.reduce((sum, item) => sum + ('str' in item ? item.str.trim().length : 0), 0);
-                    if (chars >= HAS_TEXT) {
+                    // Plenty of text: already searchable. Little text but a page-sized picture: a scan with a stamp or a page number.
+                    const searchable = chars >= HAS_TEXT || (chars >= NO_TEXT && !(await pageIsMostlyPicture(doc, n)));
+                    if (searchable) {
                       skipped++;
                       continue;
                     }
@@ -156,12 +160,12 @@ const PdfOcr: ToolImplementation = () => {
                   ]}
                 />
                 <p className="muted">
-                  {formatBytes(done.pdf.size)} · {t('pdfOcr.resultNote')}
+                  {formatBytes(done.pdf.size)} · {t('pdfOcr.resultNote2')}
                 </p>
                 <PdfOutput blob={done.pdf} name={`${baseName(ready.file.name)}-ocr.pdf`}>
 <ResetButton onClick={reset} />
 </PdfOutput>
-                <OutputBox label={t('pdfOcr.output')} value={done.text} rows={10} filename={`${baseName(ready.file.name)}-ocr.txt`} />
+                <EditableTextBox label={t('pdfOcr.outputEditable')} hint={t('pdfOcr.outputHint')} initial={done.text} rows={10} filename={`${baseName(ready.file.name)}-ocr.txt`} />
               </ResultPanel>
             )}
           </>

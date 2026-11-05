@@ -1,10 +1,11 @@
 ---
-title: How to Compress a PDF Without Losing Quality
+title: How to compress a PDF without losing quality
 description: Why PDFs get so large and how to shrink them without ruining text or photos, using a free method that runs in your browser and never uploads your file.
 excerpt: Find out what makes a PDF heavy, which kinds shrink well, and how to cut the size while keeping text sharp and selectable.
 imageAlt: A large PDF document being squeezed into a much smaller file, illustrated on a teal background
 published: 2026-10-09
 updated: 2026-10-15
+category: tips
 tool: compress-pdf
 tools: compress-pdf, split-pdf, merge-pdf, image-compressor, images-to-pdf, ocr-pdf
 ctaHeading: Try it yourself

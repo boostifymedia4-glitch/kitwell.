@@ -1,10 +1,11 @@
 ---
-title: How to Remove Metadata From Photos and PDFs Before Sharing
+title: How to remove metadata from photos and PDFs before sharing
 description: Photos and PDFs carry hidden details such as location, camera, author and dates. Learn what metadata is, what it can reveal and how to remove it in your browser.
 excerpt: Find out what hidden data your files carry, how to strip location and author details from photos and PDFs before you share them, and what metadata removal does not cover.
 imageAlt: A document and a photo with a tag being peeled off, on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tips
 tool: edit-pdf-metadata
 tools: edit-pdf-metadata, image-compressor, image-resizer, image-format-converter, redact-pdf, pdf-metadata-viewer
 ctaHeading: Try it yourself

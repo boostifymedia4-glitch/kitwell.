@@ -32,7 +32,6 @@ export default {
   'pdfMerge.drop': 'PDF यहाँ छोड़ें या चुनने के लिए क्लिक करें',
   'pdfMerge.needMore': 'मर्ज करने के लिए कम से कम एक और PDF जोड़ें।',
   'pdfMerge.merge': '{count} PDF मर्ज करें',
-  'pdfMerge.clear': 'सब साफ़ करें',
   'pdfMerge.processing': 'PDF मर्ज हो रही हैं…',
   'pdfMerge.ready': 'आपकी मर्ज की गई PDF तैयार है',
 

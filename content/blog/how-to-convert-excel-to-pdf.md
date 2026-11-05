@@ -1,10 +1,11 @@
 ---
-title: How to Convert Excel to PDF: Tables, Formulas and Limits
+title: How to convert Excel to PDF: tables, formulas and limits
 description: Convert an XLSX workbook to a PDF with every visible sheet as a table. Learn what is kept, why formulas need saved values and how to get a clean result.
 excerpt: Turn an Excel workbook into a PDF you can send or print, understand what the conversion keeps and drops, and prepare the file so the numbers come out right.
 imageAlt: A spreadsheet grid turning into a PDF document on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: excel-to-pdf
 tools: excel-to-pdf, word-to-pdf, powerpoint-to-pdf, merge-pdf, compress-pdf, add-page-numbers
 ctaHeading: Try it yourself

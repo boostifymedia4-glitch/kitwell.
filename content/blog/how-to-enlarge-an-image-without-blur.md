@@ -1,10 +1,11 @@
 ---
-title: How to Enlarge an Image Without Making It Look Blurry
+title: How to enlarge an image without making it look blurry
 description: Make a small picture bigger with smooth resampling, choose a factor or an exact width, sharpen slightly and learn what enlarging can and cannot fix.
 excerpt: A realistic guide to enlarging images: how resampling works, when 2x or 4x looks good, why detail cannot be invented, how sharpening helps and when to go back to the source instead.
 imageAlt: A small picture growing into a larger one with smooth edges on a teal background
 published: 2026-10-29
 updated: 2026-10-29
+category: tips
 tool: enlarge-image
 tools: enlarge-image, image-resizer, image-compressor, photo-editor, svg-converter, image-format-converter
 ctaHeading: Try it yourself

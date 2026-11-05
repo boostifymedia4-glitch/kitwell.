@@ -5,6 +5,7 @@ import {
   Merge, Minimize2, Palette, Pipette, Plus, Regex, Repeat, RotateCcw, RotateCw, Scaling, Search, ShieldCheck, Split,
   Terminal, Text, Trash2, Stamp, LockOpen, Pencil, Maximize2, EyeOff, ScanQrCode, QrCode, ChevronDown, LayoutGrid, ListOrdered, Shrink, TriangleAlert, UploadCloud, X, Zap, ZoomIn, ZoomOut, Layers, Globe, Sparkles,
   FileArchive, Mail, Send, BookOpen, ScanText, Signature, TextCursorInput, GitCompare, Film, SlidersHorizontal, RectangleHorizontal,
+  Laptop, Tablet, Smartphone, Languages, Gift, Share2, Moon, Sun, Paperclip, GripVertical, Monitor,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -22,6 +23,8 @@ const icons: Record<string, LucideIcon> = {
   stamp: Stamp, 'lock-open': LockOpen, pencil: Pencil, maximize: Maximize2, 'eye-off': EyeOff, scan: ScanQrCode, 'qr-code': QrCode,
   'file-archive': FileArchive, 'scan-text': ScanText, signature: Signature, 'text-cursor': TextCursorInput, 'git-compare': GitCompare,
   mail: Mail, send: Send, book: BookOpen, film: Film, sliders: SlidersHorizontal, redact: RectangleHorizontal,
+  laptop: Laptop, tablet: Tablet, phone: Smartphone, languages: Languages, gift: Gift, share: Share2, moon: Moon, sun: Sun,
+  paperclip: Paperclip, grip: GripVertical, monitor: Monitor,
 };
 
 interface IconProps {

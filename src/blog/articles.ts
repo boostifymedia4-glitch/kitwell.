@@ -6,6 +6,7 @@ export const articles: BlogPost[] = [
     slug: 'compress-pdf-without-losing-quality',
     published: '2026-10-09',
     updated: '2026-10-15',
+    category: 'tips',
     minutes: 7,
     tool: 'compress-pdf',
     tools: [
@@ -154,6 +155,7 @@ export const articles: BlogPost[] = [
     slug: 'convert-images-to-pdf',
     published: '2026-10-09',
     updated: '2026-10-15',
+    category: 'tutorials',
     minutes: 6,
     tool: 'images-to-pdf',
     tools: [
@@ -298,6 +300,7 @@ export const articles: BlogPost[] = [
     slug: 'hex-rgb-and-hsl-colors-explained',
     published: '2026-10-25',
     updated: '2026-10-25',
+    category: 'guides',
     minutes: 7,
     tool: 'color-converter',
     tools: [
@@ -495,6 +498,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-add-a-watermark-to-a-pdf',
     published: '2026-10-23',
     updated: '2026-10-23',
+    category: 'tutorials',
     minutes: 6,
     tool: 'watermark-pdf',
     tools: [
@@ -678,6 +682,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-add-a-watermark-to-photos',
     published: '2026-10-25',
     updated: '2026-10-25',
+    category: 'tutorials',
     minutes: 6,
     tool: 'image-watermark',
     tools: [
@@ -877,6 +882,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-add-page-numbers-to-a-pdf',
     published: '2026-10-23',
     updated: '2026-10-23',
+    category: 'tutorials',
     minutes: 6,
     tool: 'add-page-numbers',
     tools: [
@@ -1051,6 +1057,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-blur-or-pixelate-part-of-an-image',
     published: '2026-10-25',
     updated: '2026-10-25',
+    category: 'tutorials',
     minutes: 7,
     tool: 'blur-image-area',
     tools: [
@@ -1241,6 +1248,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-change-text-case-online',
     published: '2026-10-31',
     updated: '2026-10-31',
+    category: 'tutorials',
     minutes: 6,
     tool: 'case-converter',
     tools: [
@@ -1434,6 +1442,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-compare-two-pdf-files',
     published: '2026-10-23',
     updated: '2026-10-23',
+    category: 'tutorials',
     minutes: 6,
     tool: 'compare-pdf',
     tools: [
@@ -1610,9 +1619,204 @@ export const articles: BlogPost[] = [
     ]
   },
   {
+    slug: 'how-to-compare-two-texts-and-find-differences',
+    published: '2026-11-05',
+    updated: '2026-11-05',
+    category: 'tutorials',
+    minutes: 7,
+    tool: 'text-diff-checker',
+    tools: [
+      'text-diff-checker',
+      'text-cleaner',
+      'word-counter',
+      'remove-duplicate-lines',
+      'case-converter',
+      'json-formatter'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'ul',
+        id: 's1.l1',
+        items: 6
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ol',
+        id: 's2.o1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'p',
+        id: 's3.p3'
+      },
+      {
+        type: 'p',
+        id: 's3.p4'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ul',
+        id: 's5.l1',
+        items: 5
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'ul',
+        id: 's6.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'p',
+        id: 's6.p3'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'p',
+        id: 's9.p1'
+      },
+      {
+        type: 'p',
+        id: 's9.p2'
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ul',
+        id: 's10.l1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's11.h'
+      },
+      {
+        type: 'ol',
+        id: 's11.o1',
+        items: 5
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
     slug: 'how-to-convert-an-image-to-base64-and-back',
     published: '2026-10-30',
     updated: '2026-10-30',
+    category: 'tutorials',
     minutes: 7,
     tool: 'image-to-base64',
     tools: [
@@ -1800,6 +2004,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-convert-excel-to-pdf',
     published: '2026-10-23',
     updated: '2026-10-23',
+    category: 'tutorials',
     minutes: 6,
     tool: 'excel-to-pdf',
     tools: [
@@ -1961,6 +2166,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-convert-html-to-pdf',
     published: '2026-10-23',
     updated: '2026-10-23',
+    category: 'tutorials',
     minutes: 5,
     tool: 'html-to-pdf',
     tools: [
@@ -2115,6 +2321,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-convert-pdf-to-jpg',
     published: '2026-10-23',
     updated: '2026-10-23',
+    category: 'tutorials',
     minutes: 6,
     tool: 'pdf-to-jpg',
     tools: [
@@ -2288,6 +2495,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-convert-pdf-to-markdown',
     published: '2026-10-23',
     updated: '2026-10-23',
+    category: 'tutorials',
     minutes: 5,
     tool: 'pdf-to-markdown',
     tools: [
@@ -2445,6 +2653,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-convert-png-to-jpg',
     published: '2026-10-31',
     updated: '2026-10-31',
+    category: 'tutorials',
     minutes: 7,
     tool: 'png-to-jpg',
     tools: [
@@ -2638,6 +2847,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-convert-powerpoint-to-pdf',
     published: '2026-10-23',
     updated: '2026-10-23',
+    category: 'tutorials',
     minutes: 5,
     tool: 'powerpoint-to-pdf',
     tools: [
@@ -2804,6 +3014,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-convert-svg-to-png',
     published: '2026-10-25',
     updated: '2026-10-25',
+    category: 'tutorials',
     minutes: 7,
     tool: 'svg-converter',
     tools: [
@@ -2985,6 +3196,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-convert-webp-to-jpg',
     published: '2026-10-23',
     updated: '2026-10-23',
+    category: 'tutorials',
     minutes: 5,
     tool: 'webp-to-jpg',
     tools: [
@@ -3145,6 +3357,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-count-words-and-characters-online',
     published: '2026-10-25',
     updated: '2026-10-25',
+    category: 'guides',
     minutes: 8,
     tool: 'word-counter',
     tools: [
@@ -3341,6 +3554,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-create-a-qr-code',
     published: '2026-10-23',
     updated: '2026-10-23',
+    category: 'tutorials',
     minutes: 6,
     tool: 'qr-code-generator',
     tools: [
@@ -3523,6 +3737,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-crop-an-image-to-a-specific-size',
     published: '2026-10-23',
     updated: '2026-10-23',
+    category: 'tutorials',
     minutes: 6,
     tool: 'image-cropper',
     tools: [
@@ -3702,6 +3917,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-crop-pdf-pages',
     published: '2026-10-23',
     updated: '2026-10-23',
+    category: 'tutorials',
     minutes: 5,
     tool: 'crop-pdf',
     tools: [
@@ -3868,6 +4084,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-edit-a-photo-in-your-browser',
     published: '2026-10-25',
     updated: '2026-10-25',
+    category: 'tutorials',
     minutes: 7,
     tool: 'photo-editor',
     tools: [
@@ -4071,6 +4288,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-enlarge-an-image-without-blur',
     published: '2026-10-29',
     updated: '2026-10-29',
+    category: 'tips',
     minutes: 7,
     tool: 'enlarge-image',
     tools: [
@@ -4261,6 +4479,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-extract-pages-from-a-pdf',
     published: '2026-10-23',
     updated: '2026-10-23',
+    category: 'tutorials',
     minutes: 6,
     tool: 'extract-pdf-pages',
     tools: [
@@ -4419,6 +4638,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-extract-text-from-a-pdf',
     published: '2026-10-31',
     updated: '2026-10-31',
+    category: 'tutorials',
     minutes: 7,
     tool: 'extract-pdf-text',
     tools: [
@@ -4590,6 +4810,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-fill-out-a-pdf-form',
     published: '2026-10-23',
     updated: '2026-10-23',
+    category: 'tutorials',
     minutes: 6,
     tool: 'fill-pdf-forms',
     tools: [
@@ -4748,6 +4969,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-format-and-validate-json',
     published: '2026-10-15',
     updated: '2026-10-15',
+    category: 'tutorials',
     minutes: 6,
     tool: 'json-formatter',
     tools: [
@@ -4916,6 +5138,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-format-and-validate-xml',
     published: '2026-10-25',
     updated: '2026-10-25',
+    category: 'tutorials',
     minutes: 7,
     tool: 'xml-formatter',
     tools: [
@@ -5122,6 +5345,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-generate-a-strong-password',
     published: '2026-10-23',
     updated: '2026-10-23',
+    category: 'tips',
     minutes: 7,
     tool: 'password-generator',
     tools: [
@@ -5291,6 +5515,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-make-a-gif-from-images',
     published: '2026-10-25',
     updated: '2026-10-25',
+    category: 'tutorials',
     minutes: 7,
     tool: 'gif-maker',
     tools: [
@@ -5481,9 +5706,197 @@ export const articles: BlogPost[] = [
     ]
   },
   {
+    slug: 'how-to-make-a-pdf-small-enough-to-email',
+    published: '2026-11-05',
+    updated: '2026-11-05',
+    category: 'tips',
+    minutes: 7,
+    tool: 'compress-pdf',
+    tools: [
+      'compress-pdf',
+      'split-pdf',
+      'remove-pdf-pages',
+      'scan-to-pdf',
+      'image-compressor',
+      'merge-pdf'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'ul',
+        id: 's1.l1',
+        items: 2
+      },
+      {
+        type: 'p',
+        id: 's1.p3'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'ul',
+        id: 's2.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'ol',
+        id: 's3.o1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's3.p3'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'ul',
+        id: 's6.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'ul',
+        id: 's8.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's8.p2'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ol',
+        id: 's9.o1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ul',
+        id: 's10.l1',
+        items: 6
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
     slug: 'how-to-merge-pdf-files',
     published: '2026-10-15',
     updated: '2026-10-15',
+    category: 'tutorials',
     minutes: 6,
     tool: 'merge-pdf',
     tools: [
@@ -5645,6 +6058,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-minify-json-and-save-bytes',
     published: '2026-10-30',
     updated: '2026-10-30',
+    category: 'tutorials',
     minutes: 6,
     tool: 'json-minifier',
     tools: [
@@ -5835,6 +6249,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-redact-a-pdf-properly',
     published: '2026-10-23',
     updated: '2026-10-23',
+    category: 'tutorials',
     minutes: 6,
     tool: 'redact-pdf',
     tools: [
@@ -6011,6 +6426,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-remove-metadata-from-photos-and-pdfs',
     published: '2026-10-23',
     updated: '2026-10-23',
+    category: 'tips',
     minutes: 6,
     tool: 'edit-pdf-metadata',
     tools: [
@@ -6183,6 +6599,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-reorder-and-remove-pdf-pages',
     published: '2026-10-30',
     updated: '2026-10-30',
+    category: 'tutorials',
     minutes: 6,
     tool: 'reorder-pdf-pages',
     tools: [
@@ -6357,6 +6774,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-resize-an-image-without-losing-quality',
     published: '2026-10-23',
     updated: '2026-10-23',
+    category: 'tips',
     minutes: 6,
     tool: 'image-resizer',
     tools: [
@@ -6526,6 +6944,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-rotate-and-flip-an-image',
     published: '2026-10-30',
     updated: '2026-10-30',
+    category: 'tutorials',
     minutes: 7,
     tool: 'image-rotator',
     tools: [
@@ -6724,6 +7143,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-rotate-pdf-pages-permanently',
     published: '2026-10-23',
     updated: '2026-10-23',
+    category: 'tutorials',
     minutes: 6,
     tool: 'rotate-pdf',
     tools: [
@@ -6883,6 +7303,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-scan-a-qr-code-from-an-image',
     published: '2026-10-29',
     updated: '2026-10-29',
+    category: 'tutorials',
     minutes: 7,
     tool: 'qr-code-scanner',
     tools: [
@@ -7061,6 +7482,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-scan-documents-to-pdf-with-your-phone',
     published: '2026-10-31',
     updated: '2026-10-31',
+    category: 'tutorials',
     minutes: 7,
     tool: 'scan-to-pdf',
     tools: [
@@ -7247,6 +7669,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-sort-lines-and-remove-duplicates',
     published: '2026-10-29',
     updated: '2026-10-29',
+    category: 'tutorials',
     minutes: 6,
     tool: 'text-sorter',
     tools: [
@@ -7438,6 +7861,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-split-a-pdf',
     published: '2026-10-15',
     updated: '2026-10-15',
+    category: 'tutorials',
     minutes: 5,
     tool: 'split-pdf',
     tools: [
@@ -7594,6 +8018,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-test-regular-expressions',
     published: '2026-10-25',
     updated: '2026-10-25',
+    category: 'tutorials',
     minutes: 8,
     tool: 'regex-tester',
     tools: [
@@ -7799,6 +8224,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-view-pdf-properties-and-metadata',
     published: '2026-10-30',
     updated: '2026-10-30',
+    category: 'guides',
     minutes: 6,
     tool: 'pdf-metadata-viewer',
     tools: [
@@ -7979,6 +8405,7 @@ export const articles: BlogPost[] = [
     slug: 'how-to-write-and-preview-markdown',
     published: '2026-10-29',
     updated: '2026-10-29',
+    category: 'tutorials',
     minutes: 6,
     tool: 'markdown-previewer',
     tools: [
@@ -8170,6 +8597,7 @@ export const articles: BlogPost[] = [
     slug: 'jpg-vs-png-vs-webp',
     published: '2026-10-15',
     updated: '2026-10-15',
+    category: 'comparisons',
     minutes: 5,
     tool: 'jpg-to-png',
     tools: [
@@ -8315,9 +8743,218 @@ export const articles: BlogPost[] = [
     ]
   },
   {
+    slug: 'json-vs-xml-which-format-should-you-use',
+    published: '2026-11-05',
+    updated: '2026-11-05',
+    category: 'comparisons',
+    minutes: 7,
+    tool: 'json-formatter',
+    tools: [
+      'json-formatter',
+      'xml-formatter',
+      'json-validator',
+      'json-minifier',
+      'html-encoder-decoder',
+      'text-diff-checker'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'ul',
+        id: 's1.l1',
+        items: 2
+      },
+      {
+        type: 'p',
+        id: 's1.p3'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'ul',
+        id: 's4.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's4.p3'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ol',
+        id: 's5.o1',
+        items: 2
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'p',
+        id: 's5.p3'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'ul',
+        id: 's7.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's7.p2'
+      },
+      {
+        type: 'ul',
+        id: 's7.l2',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's7.p3'
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'ul',
+        id: 's8.l1',
+        items: 3
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'p',
+        id: 's9.p1'
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ol',
+        id: 's10.o1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's11.h'
+      },
+      {
+        type: 'ul',
+        id: 's11.l1',
+        items: 6
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
     slug: 'ocr-scanned-pdf-searchable',
     published: '2026-10-09',
     updated: '2026-10-15',
+    category: 'guides',
     minutes: 6,
     tool: 'ocr-pdf',
     tools: [
@@ -8467,6 +9104,7 @@ export const articles: BlogPost[] = [
     slug: 'password-protect-and-unlock-a-pdf',
     published: '2026-10-15',
     updated: '2026-10-15',
+    category: 'tutorials',
     minutes: 5,
     tool: 'protect-pdf',
     tools: [
@@ -8625,9 +9263,382 @@ export const articles: BlogPost[] = [
     ]
   },
   {
+    slug: 'pdf-vs-word-which-format-should-you-send',
+    published: '2026-11-05',
+    updated: '2026-11-05',
+    category: 'comparisons',
+    minutes: 7,
+    tool: 'word-to-pdf',
+    tools: [
+      'word-to-pdf',
+      'compress-pdf',
+      'protect-pdf',
+      'extract-pdf-text',
+      'edit-pdf-metadata',
+      'pdf-to-markdown'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'p',
+        id: 's1.p3'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'ul',
+        id: 's4.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'ul',
+        id: 's7.l1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'p',
+        id: 's8.p2'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ol',
+        id: 's9.o1',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ul',
+        id: 's10.l1',
+        items: 6
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
+    slug: 'random-or-memorable-password-which-is-safer',
+    published: '2026-11-05',
+    updated: '2026-11-05',
+    category: 'guides',
+    minutes: 8,
+    tool: 'password-generator',
+    tools: [
+      'password-generator',
+      'protect-pdf',
+      'unlock-pdf',
+      'qr-code-generator',
+      'character-counter',
+      'text-cleaner'
+    ],
+    blocks: [
+      {
+        type: 'p',
+        id: 'intro.1'
+      },
+      {
+        type: 'p',
+        id: 'intro.2'
+      },
+      {
+        type: 'takeaways',
+        id: 'sum',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 's1.h'
+      },
+      {
+        type: 'p',
+        id: 's1.p1'
+      },
+      {
+        type: 'p',
+        id: 's1.p2'
+      },
+      {
+        type: 'ol',
+        id: 's1.o1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's1.p3'
+      },
+      {
+        type: 'h2',
+        id: 's2.h'
+      },
+      {
+        type: 'p',
+        id: 's2.p1'
+      },
+      {
+        type: 'p',
+        id: 's2.p2'
+      },
+      {
+        type: 'ul',
+        id: 's2.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's2.p3'
+      },
+      {
+        type: 'p',
+        id: 's2.p4'
+      },
+      {
+        type: 'h2',
+        id: 's3.h'
+      },
+      {
+        type: 'p',
+        id: 's3.p1'
+      },
+      {
+        type: 'p',
+        id: 's3.p2'
+      },
+      {
+        type: 'ul',
+        id: 's3.l1',
+        items: 2
+      },
+      {
+        type: 'p',
+        id: 's3.p3'
+      },
+      {
+        type: 'h2',
+        id: 's4.h'
+      },
+      {
+        type: 'p',
+        id: 's4.p1'
+      },
+      {
+        type: 'p',
+        id: 's4.p2'
+      },
+      {
+        type: 'ul',
+        id: 's4.l1',
+        items: 3
+      },
+      {
+        type: 'p',
+        id: 's4.p3'
+      },
+      {
+        type: 'h2',
+        id: 's5.h'
+      },
+      {
+        type: 'p',
+        id: 's5.p1'
+      },
+      {
+        type: 'ul',
+        id: 's5.l1',
+        items: 4
+      },
+      {
+        type: 'p',
+        id: 's5.p2'
+      },
+      {
+        type: 'h2',
+        id: 's6.h'
+      },
+      {
+        type: 'p',
+        id: 's6.p1'
+      },
+      {
+        type: 'p',
+        id: 's6.p2'
+      },
+      {
+        type: 'h2',
+        id: 's7.h'
+      },
+      {
+        type: 'p',
+        id: 's7.p1'
+      },
+      {
+        type: 'ul',
+        id: 's7.l1',
+        items: 4
+      },
+      {
+        type: 'h2',
+        id: 's8.h'
+      },
+      {
+        type: 'p',
+        id: 's8.p1'
+      },
+      {
+        type: 'p',
+        id: 's8.p2'
+      },
+      {
+        type: 'h2',
+        id: 's9.h'
+      },
+      {
+        type: 'ol',
+        id: 's9.o1',
+        items: 6
+      },
+      {
+        type: 'h2',
+        id: 's10.h'
+      },
+      {
+        type: 'ul',
+        id: 's10.l1',
+        items: 6
+      },
+      {
+        type: 'faq',
+        id: 'faq',
+        items: 5
+      },
+      {
+        type: 'h2',
+        id: 'cta.h'
+      },
+      {
+        type: 'p',
+        id: 'cta.p'
+      }
+    ]
+  },
+  {
     slug: 'reduce-image-size-in-kb',
     published: '2026-10-15',
     updated: '2026-10-15',
+    category: 'tips',
     minutes: 6,
     tool: 'image-compressor',
     tools: [
@@ -8791,6 +9802,7 @@ export const articles: BlogPost[] = [
     slug: 'repair-a-corrupted-pdf',
     published: '2026-10-15',
     updated: '2026-10-15',
+    category: 'tutorials',
     minutes: 6,
     tool: 'repair-pdf',
     tools: [
@@ -8946,6 +9958,7 @@ export const articles: BlogPost[] = [
     slug: 'sign-a-pdf-without-printing',
     published: '2026-10-15',
     updated: '2026-10-15',
+    category: 'tutorials',
     minutes: 5,
     tool: 'sign-pdf',
     tools: [
@@ -9075,6 +10088,7 @@ export const articles: BlogPost[] = [
     slug: 'unix-timestamps-explained',
     published: '2026-10-25',
     updated: '2026-10-25',
+    category: 'guides',
     minutes: 7,
     tool: 'timestamp-converter',
     tools: [
@@ -9271,6 +10285,7 @@ export const articles: BlogPost[] = [
     slug: 'url-encoding-explained',
     published: '2026-10-31',
     updated: '2026-10-31',
+    category: 'guides',
     minutes: 8,
     tool: 'url-encoder-decoder',
     tools: [
@@ -9463,6 +10478,7 @@ export const articles: BlogPost[] = [
     slug: 'what-is-a-uuid-and-how-to-generate-one',
     published: '2026-10-29',
     updated: '2026-10-29',
+    category: 'guides',
     minutes: 7,
     tool: 'uuid-generator',
     tools: [
@@ -9660,6 +10676,7 @@ export const articles: BlogPost[] = [
     slug: 'what-is-base64-encoding',
     published: '2026-10-15',
     updated: '2026-10-15',
+    category: 'guides',
     minutes: 6,
     tool: 'base64-encoder-decoder',
     tools: [
@@ -9807,6 +10824,7 @@ export const articles: BlogPost[] = [
     slug: 'what-is-pdf-a-and-when-to-use-it',
     published: '2026-10-23',
     updated: '2026-10-23',
+    category: 'guides',
     minutes: 6,
     tool: 'pdf-to-pdfa',
     tools: [
@@ -9985,6 +11003,7 @@ export const articles: BlogPost[] = [
     slug: 'word-to-pdf-without-losing-formatting',
     published: '2026-10-15',
     updated: '2026-10-15',
+    category: 'tutorials',
     minutes: 5,
     tool: 'word-to-pdf',
     tools: [

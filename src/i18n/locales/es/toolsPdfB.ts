@@ -189,8 +189,6 @@ export default {
   'pdfOcr.stat.skipped': 'Páginas omitidas',
   'pdfOcr.stat.words': 'Palabras encontradas',
   'pdfOcr.stat.confidence': 'Confianza media',
-  'pdfOcr.resultNote': 'Las páginas se ven exactamente igual que antes; una capa de texto invisible permite buscarlas y copiarlas. Comprueba los números importantes con el original.',
-  'pdfOcr.output': 'Texto reconocido',
 
   'pdfProtect.hint.empty': 'Usa al menos 8 caracteres; cuanto más larga, más segura.',
   'pdfProtect.hint.short': 'Las contraseñas cortas son fáciles de adivinar. Procura que tenga 12 o más.',

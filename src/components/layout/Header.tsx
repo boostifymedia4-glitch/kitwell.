@@ -8,8 +8,8 @@ import { categories, categoryPath, groupsInCategory, toolPath, toolsInCategory, 
 import { Icon } from '../Icon';
 import { CategoryIcon } from '../ui/CategoryIcon';
 import { ToolIcon } from '../ui/ToolIcon';
-import { ToolSearch } from '../ui/ToolSearch';
 import { MegaMenu } from './MegaMenu';
+import { ThemeToggle } from './ThemeToggle';
 
 export function BrandMark() {
   return (
@@ -27,9 +27,6 @@ function MobileNav({ onNavigate }: { onNavigate: () => void }) {
   return (
     <div className="mobile-nav" id="mobile-nav">
       <div className="container">
-        <div className="mobile-search">
-          <ToolSearch onNavigate={onNavigate} />
-        </div>
         <nav aria-label={t('nav.mobile')}>
           {categories.map((c) => {
             const isOpen = expanded === c.id;
@@ -110,9 +107,8 @@ export function Header() {
             {t('nav.blog')}
           </NavLink>
         </nav>
-        <div className="header-search">
-          <ToolSearch shortcut />
-        </div>
+        <div className="header-actions">
+        <ThemeToggle />
         <button
           type="button"
           className="icon-btn menu-btn"
@@ -123,6 +119,7 @@ export function Header() {
         >
           <Icon name={open ? 'x' : 'menu'} size={22} />
         </button>
+        </div>
       </div>
       {open && <MobileNav onNavigate={() => setOpen(false)} />}
     </header>

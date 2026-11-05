@@ -31,7 +31,6 @@ export default {
   'pdfMerge.drop': '将 PDF 拖放到此处，或点击选择',
   'pdfMerge.needMore': '请至少再添加一个 PDF 进行合并。',
   'pdfMerge.merge': '合并 {count} 个 PDF',
-  'pdfMerge.clear': '全部清除',
   'pdfMerge.processing': '正在合并 PDF…',
   'pdfMerge.ready': '合并后的 PDF 已就绪',
 

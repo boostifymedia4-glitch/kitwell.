@@ -32,7 +32,6 @@ export default {
   'pdfMerge.drop': 'PDFها را اینجا رها کنید یا برای انتخاب کلیک کنید',
   'pdfMerge.needMore': 'برای ادغام، دست‌کم یک PDF دیگر اضافه کنید.',
   'pdfMerge.merge': 'ادغام {count} PDF',
-  'pdfMerge.clear': 'پاک کردن همه',
   'pdfMerge.processing': 'در حال ادغام PDFها…',
   'pdfMerge.ready': 'PDF ادغام‌شده شما آماده است',
 

@@ -1,10 +1,11 @@
 ---
-title: How to Convert Images to PDF: JPG, PNG and Mixed Photos
+title: How to convert images to PDF: JPG, PNG and mixed photos
 description: Turn photos, screenshots and scans into one tidy PDF. Choose the page order, page size and margins, keep full image quality, and do it all in your browser.
 excerpt: Combine JPG and PNG images into a single PDF with the page order, size and margins you want, without uploading anything.
 imageAlt: Several photos and screenshots stacking into a single PDF document on a teal background
 published: 2026-10-09
 updated: 2026-10-15
+category: tutorials
 tool: images-to-pdf
 tools: images-to-pdf, jpg-to-pdf, png-to-pdf, scan-to-pdf, image-compressor, image-resizer, compress-pdf, merge-pdf, split-pdf, pdf-to-jpg
 ctaHeading: Try it yourself

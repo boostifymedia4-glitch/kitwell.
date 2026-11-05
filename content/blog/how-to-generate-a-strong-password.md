@@ -1,10 +1,11 @@
 ---
-title: How to Generate a Strong Password and Actually Remember It
+title: How to generate a strong password and actually remember it
 description: What makes a password strong, why length beats complexity, when to use random or name-based passwords and how to store them safely with a manager.
 excerpt: Learn how password strength is measured, how long a password should be, the difference between fully random and memorable passwords and how to keep them safe.
 imageAlt: A key and a long password field with dots on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tips
 tool: password-generator
 tools: password-generator, protect-pdf, uuid-generator, qr-code-generator, base64-encoder-decoder, text-cleaner
 ctaHeading: Try it yourself

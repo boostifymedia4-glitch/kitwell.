@@ -33,7 +33,6 @@ export default {
   'pdfMerge.drop': 'PDF’leri buraya bırakın veya seçmek için tıklayın',
   'pdfMerge.needMore': 'Birleştirmek için en az bir PDF daha ekleyin.',
   'pdfMerge.merge': '{count} PDF’yi birleştir',
-  'pdfMerge.clear': 'Tümünü temizle',
   'pdfMerge.processing': 'PDF’ler birleştiriliyor…',
   'pdfMerge.ready': 'Birleştirilen PDF’niz hazır',
 

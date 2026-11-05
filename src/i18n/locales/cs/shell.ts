@@ -37,8 +37,6 @@ export default {
   'nav.contact': 'Kontakt',
   'footer.blog': 'Blog',
   'home.title': 'Každodenní nástroje pro soubory, PDF, text i kód',
-  'home.popular': 'Oblíbené nástroje',
-  'home.popularSub': 'Nástroje, které lidé používají nejčastěji.',
   'home.allTools': 'Všech {count} nástrojů',
   'home.viewAll': 'Zobrazit všech {count}',
 

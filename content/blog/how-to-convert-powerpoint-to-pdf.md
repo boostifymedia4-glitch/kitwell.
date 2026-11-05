@@ -1,10 +1,11 @@
 ---
-title: Convert PowerPoint to PDF: What Is Kept and What Is Not
+title: Convert PowerPoint to PDF: what is kept and what is not
 description: Turn a PPTX presentation into a PDF with one page per slide. Learn how text, pictures and shapes convert, what is left out and how to check the result.
 excerpt: Convert a PowerPoint deck to PDF in your browser, understand which elements are drawn and which are skipped, and prepare slides so the PDF looks right.
 imageAlt: A presentation slide turning into a PDF page on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: powerpoint-to-pdf
 tools: powerpoint-to-pdf, word-to-pdf, excel-to-pdf, merge-pdf, compress-pdf, extract-pdf-pages
 ctaHeading: Try it yourself

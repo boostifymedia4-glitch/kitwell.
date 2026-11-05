@@ -37,8 +37,6 @@ export default {
   'nav.contact': 'تماس',
   'footer.blog': 'وبلاگ',
   'home.title': 'ابزارهای روزمره برای فایل، PDF، متن و کد',
-  'home.popular': 'ابزارهای محبوب',
-  'home.popularSub': 'ابزارهایی که بیشتر از همه استفاده می‌شوند.',
   'home.allTools': 'همه {count} ابزار',
   'home.viewAll': 'مشاهده همه {count}',
 

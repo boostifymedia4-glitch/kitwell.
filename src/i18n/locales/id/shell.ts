@@ -32,8 +32,6 @@ export default {
   'search.none': 'Tidak ada alat yang cocok dengan “{query}”. Coba format atau tugas, seperti “png” atau “json”.',
   'search.found': '{count} alat ditemukan',
   'home.title': 'Alat sehari-hari untuk file, PDF, teks, dan kode',
-  'home.popular': 'Alat populer',
-  'home.popularSub': 'Alat yang paling sering dipakai.',
   'home.allTools': 'Semua {count} alat',
   'home.viewAll': 'Lihat semua {count}',
   'footer.popular': 'Alat populer',

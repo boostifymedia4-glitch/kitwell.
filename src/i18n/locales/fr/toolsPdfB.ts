@@ -183,8 +183,6 @@ export default {
   'pdfOcr.stat.skipped': 'Pages ignorées',
   'pdfOcr.stat.words': 'Mots trouvés',
   'pdfOcr.stat.confidence': 'Confiance moyenne',
-  'pdfOcr.resultNote': 'Les pages ont exactement le même aspect qu’avant ; une couche de texte invisible les rend consultables et copiables. Vérifiez les nombres importants avec l’original.',
-  'pdfOcr.output': 'Texte reconnu',
   'pdfProtect.hint.empty': 'Utilisez au moins 8 caractères ; plus c’est long, plus c’est sûr.',
   'pdfProtect.hint.short': 'Les mots de passe courts sont faciles à deviner. Visez 12 caractères ou plus.',
   'pdfProtect.hint.fair': 'Correct. Douze caractères ou plus, c’est mieux.',

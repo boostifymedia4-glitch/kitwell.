@@ -34,7 +34,6 @@ export default {
   'pdfMerge.drop': 'Перетягніть PDF сюди або клацніть, щоб вибрати',
   'pdfMerge.needMore': 'Додайте принаймні ще один PDF для об’єднання.',
   'pdfMerge.merge': 'Об’єднати PDF ({count})',
-  'pdfMerge.clear': 'Очистити все',
   'pdfMerge.processing': 'Об’єднання PDF…',
   'pdfMerge.ready': 'Ваш об’єднаний PDF готовий',
 

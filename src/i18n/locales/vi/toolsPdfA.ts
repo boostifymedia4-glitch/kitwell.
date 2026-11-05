@@ -31,7 +31,6 @@ export default {
   'pdfMerge.drop': 'Thả các tệp PDF vào đây hoặc nhấp để chọn',
   'pdfMerge.needMore': 'Hãy thêm ít nhất một PDF nữa để gộp.',
   'pdfMerge.merge': 'Gộp {count} PDF',
-  'pdfMerge.clear': 'Xóa tất cả',
   'pdfMerge.processing': 'Đang gộp PDF…',
   'pdfMerge.ready': 'Tệp PDF đã gộp của bạn đã sẵn sàng',
 

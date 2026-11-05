@@ -3,6 +3,8 @@ import { Link } from '@/i18n/Link';
 import { useI18n } from '@/i18n';
 import { useLocalize } from '@/i18n/useLocalize';
 import { categoryPath, getCategory, relatedTools, toolPath } from '@/tools/registry';
+import { guidesForTool } from '@/blog/posts';
+import { PostCard } from '../ui/PostCard';
 import { implLoaders } from '@/tools/impl';
 import type { ToolDef } from '@/tools/types';
 import { Icon } from '../Icon';
@@ -76,6 +78,7 @@ export function ToolPage({ tool: source }: { tool: ToolDef }) {
   const meta = usePageMeta(path);
   const cat = getCategory(tool.category);
   const related = relatedTools(tool);
+  const guides = guidesForTool(tool.slug);
 
   return (
     <>
@@ -135,6 +138,25 @@ export function ToolPage({ tool: source }: { tool: ToolDef }) {
           </div>
           <ToolGrid tools={related} />
         </section>
+
+        {guides.length > 0 && (
+          <section aria-labelledby="guides">
+            <div className="section-head">
+              <h2 id="guides">{t('tool.guides')}</h2>
+              <Link to="/blog" className="btn btn-ghost btn-sm">
+                {t('tool.allGuides')}
+                <Icon name="arrow-right" size={14} />
+              </Link>
+            </div>
+            <ul className="post-list">
+              {guides.map((p) => (
+                <li key={p.slug}>
+                  <PostCard post={p} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
       </div>
     </>
   );

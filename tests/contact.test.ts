@@ -2,9 +2,11 @@ import type { AddressInfo } from 'node:net';
 import type { Server } from 'node:http';
 import { afterEach, describe, expect, it } from 'vitest';
 // @ts-expect-error plain JS modules without types
-import { contactApp, contactConfigured, validateContact } from '../server/contact.mjs';
+import { contactApp, contactConfigured, validateAttachment, validateContact } from '../server/contact.mjs';
 
-const good = { name: 'Sam', email: 'sam@example.com', topic: 'technical', message: 'The merge tool stops at page 3.', page: '/tools/pdf/merge-pdf' };
+const good = { name: 'Sam', email: 'sam@example.com', topic: 'technical', message: 'The merge tool stops at page 3.', page: '/tools/pdf/merge-pdf', agree: true };
+// A one-pixel PNG, used as a real attachment.
+const PNG = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==';
 
 let server: Server | undefined;
 afterEach(() => new Promise<void>((resolve) => (server ? server.close(() => resolve()) : resolve())));
@@ -26,10 +28,20 @@ describe('contact validation', () => {
   it('lists every invalid field', () => {
     const r = validateContact({ name: '', email: 'nope', topic: 'x', message: 'short' });
     expect(r.ok).toBe(false);
-    expect(r.fields).toEqual(['name', 'email', 'topic', 'message']);
+    expect(r.fields).toEqual(['name', 'email', 'topic', 'message', 'agree']);
+  });
+  it('needs the Terms and Privacy agreement', () => {
+    const r = validateContact({ ...good, agree: false });
+    expect(r.ok).toBe(false);
+    expect(r.fields).toEqual(['agree']);
+    expect(validateContact({ ...good, agree: 'true' }).ok).toBe(false);
+  });
+  it('has no message limit that people would notice, only a large safety cap', () => {
+    expect(validateContact({ ...good, message: 'a'.repeat(20000) }).ok).toBe(true);
+    expect(validateContact({ ...good, message: 'a'.repeat(9) }).ok).toBe(false);
+    expect(validateContact({ ...good, message: 'a'.repeat(60000) }).ok).toBe(false);
   });
   it('rejects over-long messages and ignores non-string input', () => {
-    expect(validateContact({ ...good, message: 'a'.repeat(4001) }).ok).toBe(false);
     expect(validateContact(null).ok).toBe(false);
     expect(validateContact({ ...good, name: 42 }).ok).toBe(false);
   });
@@ -37,6 +49,35 @@ describe('contact validation', () => {
     expect(contactConfigured({})).toBe(false);
     expect(contactConfigured({ CONTACT_WEBHOOK_URL: 'javascript:alert(1)' })).toBe(false);
     expect(contactConfigured({ CONTACT_WEBHOOK_URL: 'https://hooks.example.com/x' })).toBe(true);
+  });
+});
+
+describe('contact attachment', () => {
+  it('accepts a real picture, cleans its name and reports its true size', () => {
+    const r = validateAttachment({ name: 'C:\\Users\\me/holiday photo.png', data: PNG });
+    expect(r.ok).toBe(true);
+    expect(r.value.name).toBe('holiday photo.png');
+    expect(r.value.size).toBe(70);
+  });
+  it('rejects files whose content does not match the extension', () => {
+    expect(validateAttachment({ name: 'photo.png', data: Buffer.from('not a picture at all').toString('base64') }).ok).toBe(false);
+    expect(validateAttachment({ name: 'report.pdf', data: PNG }).ok).toBe(false);
+  });
+  it('rejects types that are not on the list, empty files and files over 3 MB', () => {
+    expect(validateAttachment({ name: 'run.exe', data: PNG }).ok).toBe(false);
+    expect(validateAttachment({ name: 'page.html', data: Buffer.from('<p>x</p>').toString('base64') }).ok).toBe(false);
+    expect(validateAttachment({ name: 'a.txt', data: '' }).ok).toBe(false);
+    expect(validateAttachment({ name: 'a.txt', data: Buffer.alloc(3 * 1024 * 1024 + 1, 97).toString('base64') }).ok).toBe(false);
+    expect(validateAttachment({ name: 'a.txt', data: Buffer.alloc(1024, 97).toString('base64') }).ok).toBe(true);
+    expect(validateAttachment({ name: 'a.txt', data: 'not base64 !!!' }).ok).toBe(false);
+  });
+  it('turns a bad attachment into an invalid field of the message', () => {
+    const r = validateContact({ ...good, attachment: { name: 'run.exe', data: PNG } });
+    expect(r.ok).toBe(false);
+    expect(r.fields).toEqual(['attachment']);
+    const ok = validateContact({ ...good, attachment: { name: 'shot.png', data: PNG } });
+    expect(ok.ok).toBe(true);
+    expect(ok.value.attachment.name).toBe('shot.png');
   });
 });
 
@@ -62,6 +103,25 @@ describe('contact endpoint', () => {
     expect(calls[0].url).toBe('https://hooks.example.com/x');
     expect(calls[0].body.message).toBe(good.message);
     expect(calls[0].body.text).toContain('sam@example.com');
+  });
+
+  it('passes a valid attachment on to the webhook', async () => {
+    const calls: { body: Record<string, unknown> }[] = [];
+    const url = start({ CONTACT_WEBHOOK_URL: 'https://hooks.example.com/x' }, (async (_u: string, init: RequestInit) => {
+      calls.push({ body: JSON.parse(String(init.body)) });
+      return new Response('ok');
+    }) as unknown as typeof fetch);
+    const res = await post(url, { ...good, attachment: { name: 'shot.png', data: PNG } });
+    expect(res.status).toBe(200);
+    expect((calls[0].body.attachment as { name: string; size: number }).name).toBe('shot.png');
+    expect(String(calls[0].body.text)).toContain('shot.png');
+  });
+
+  it('does not accept a message without the agreement', async () => {
+    const url = start({ CONTACT_WEBHOOK_URL: 'https://hooks.example.com/x' });
+    const res = await post(url, { ...good, agree: false });
+    expect(res.status).toBe(400);
+    expect((await res.json()).fields).toEqual(['agree']);
   });
 
   it('reports a delivery failure when the webhook rejects the message', async () => {
@@ -118,11 +178,11 @@ describe('Vercel function /api/contact', () => {
     };
     return r;
   };
-  const call = async (body: unknown, method = 'POST') => {
+  const call = async (body: unknown, method = 'POST', extra: Record<string, string> = {}) => {
     // @ts-expect-error plain JS module without types
     const { default: handler } = await import('../api/contact.js');
     const res = fakeRes();
-    await handler({ method, body, headers: { 'x-forwarded-for': `10.0.0.${Math.floor(Math.random() * 250)}` } }, res);
+    await handler({ method, body, headers: { 'content-type': 'application/json', 'x-forwarded-for': `10.0.0.${Math.floor(Math.random() * 250)}`, ...extra } }, res);
     return res;
   };
 
@@ -131,6 +191,12 @@ describe('Vercel function /api/contact', () => {
     const res = await call(good);
     expect(res.code).toBe(503);
     expect(res.body).toEqual({ error: 'not_configured' });
+  });
+  it('refuses cross-site and non-JSON requests', async () => {
+    delete process.env.CONTACT_WEBHOOK_URL;
+    expect((await call(good, 'POST', { origin: 'https://evil.example', host: 'kitwell.vercel.app' })).code).toBe(403);
+    expect((await call(good, 'POST', { 'content-type': 'text/plain' })).code).toBe(403);
+    expect((await call(good, 'POST', { origin: 'https://kitwell.vercel.app', host: 'kitwell.vercel.app' })).code).toBe(503);
   });
   it('rejects other methods and invalid input', async () => {
     expect((await call(good, 'GET')).code).toBe(405);

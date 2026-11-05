@@ -1,9 +1,10 @@
 ---
-title: How to Split a PDF: Ranges, Single Pages and Chunks
+title: How to split a PDF: ranges, single pages and chunks
 description: Split a PDF by page ranges, into single pages or into equal parts, or extract just the pages you need, directly in your browser and without uploading the file.
 excerpt: Break a large PDF into the parts you need, by range, page by page or in fixed-size chunks, and pick the right tool for each job.
 imageAlt: One long PDF document being cut into separate smaller documents, shown on a teal background
 published: 2026-10-15
+category: tutorials
 tool: split-pdf
 tools: split-pdf, extract-pdf-pages, remove-pdf-pages, merge-pdf, reorder-pdf-pages, compress-pdf, unlock-pdf
 ctaHeading: Split your PDF now

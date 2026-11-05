@@ -1,10 +1,11 @@
 ---
-title: How to Edit a Photo in Your Browser: Adjust, Crop, Text
+title: How to edit a photo in your browser: adjust, crop, text
 description: Edit a photo online without installing software: fix brightness and colour, crop and rotate, add text and export at full quality in the format you need.
 excerpt: A step-by-step guide to editing photos in your browser: colour adjustments, filters, rotate and crop, sharpening and text, the order in which edits are applied and how to export without losing quality.
 imageAlt: A photo with sliders for brightness and colour beside it on a teal background
 published: 2026-10-25
 updated: 2026-10-25
+category: tutorials
 tool: photo-editor
 tools: photo-editor, image-cropper, image-rotator, image-resizer, image-compressor, image-watermark, blur-image-area
 ctaHeading: Try it yourself

@@ -1,10 +1,11 @@
 ---
-title: How to Count Words and Characters and Check Length Limits
+title: How to count words and characters and check length limits
 description: Count words, characters, bytes and reading time, and check your text against limits for page titles, meta descriptions, social posts and SMS messages.
 excerpt: Learn how word and character counts really work, why emoji and bytes change the totals, and how to keep titles, meta descriptions, posts and text messages inside their limits.
 imageAlt: A text document with a counter showing words and characters on a teal background
 published: 2026-10-25
 updated: 2026-10-25
+category: guides
 tool: word-counter
 tools: word-counter, character-counter, text-cleaner, case-converter, remove-duplicate-lines, text-diff-checker
 ctaHeading: Try it yourself

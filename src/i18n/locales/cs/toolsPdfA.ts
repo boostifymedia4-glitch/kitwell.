@@ -34,7 +34,6 @@ export default {
   'pdfMerge.drop': 'Přetáhněte sem PDF nebo klikněte a vyberte',
   'pdfMerge.needMore': 'Ke sloučení přidejte alespoň jedno další PDF.',
   'pdfMerge.merge': 'Sloučit PDF ({count})',
-  'pdfMerge.clear': 'Vymazat vše',
   'pdfMerge.processing': 'Slučuji PDF…',
   'pdfMerge.ready': 'Vaše sloučené PDF je připraveno',
 

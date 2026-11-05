@@ -34,7 +34,6 @@ export default {
   'pdfMerge.drop': 'Solte PDFs aqui ou clique para escolher',
   'pdfMerge.needMore': 'Adicione pelo menos mais um PDF para juntar.',
   'pdfMerge.merge': 'Juntar {count} PDFs',
-  'pdfMerge.clear': 'Limpar tudo',
   'pdfMerge.processing': 'Juntando PDFs…',
   'pdfMerge.ready': 'Seu PDF unificado está pronto',
 

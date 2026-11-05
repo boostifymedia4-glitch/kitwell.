@@ -31,7 +31,6 @@ export default {
   'pdfMerge.drop': 'PDFをここにドロップ、またはクリックして選択',
   'pdfMerge.needMore': '結合するには、PDFをもう1つ以上追加してください。',
   'pdfMerge.merge': '{count}個のPDFを結合',
-  'pdfMerge.clear': 'すべてクリア',
   'pdfMerge.processing': 'PDFを結合中…',
   'pdfMerge.ready': '結合したPDFの準備ができました',
 

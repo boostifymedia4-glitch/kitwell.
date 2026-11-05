@@ -32,7 +32,6 @@ export default {
   'pdfMerge.drop': 'PDF یہاں چھوڑیں یا منتخب کرنے کے لیے کلک کریں',
   'pdfMerge.needMore': 'جوڑنے کے لیے کم از کم ایک اور PDF شامل کریں۔',
   'pdfMerge.merge': '{count} PDF جوڑیں',
-  'pdfMerge.clear': 'سب صاف کریں',
   'pdfMerge.processing': 'PDF جوڑی جا رہی ہیں…',
   'pdfMerge.ready': 'آپ کی جوڑی ہوئی PDF تیار ہے',
 

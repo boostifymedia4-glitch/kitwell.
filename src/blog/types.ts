@@ -8,6 +8,8 @@ export type Block =
   | { type: 'ul' | 'ol' | 'takeaways'; id: string; items: number }
   | { type: 'faq'; id: string; items: number };
 
+export type BlogCategory = 'tutorials' | 'tips' | 'comparisons' | 'guides';
+
 export interface BlogPost {
   slug: string;
   /** ISO date of publication. */
@@ -16,6 +18,8 @@ export interface BlogPost {
   publishAt?: string;
   /** ISO date of the last substantive change. */
   updated: string;
+  /** The kind of article, used by the filters of the blog page. */
+  category: BlogCategory;
   /** Reading time in minutes, computed from the article text. */
   minutes: number;
   /** Tool shown first in "Tools used in this guide". */

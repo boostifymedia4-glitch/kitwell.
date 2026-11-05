@@ -8,6 +8,8 @@ export interface FileRules {
   extensions: string[];
   maxBytes: number;
   maxFiles: number;
+  /** Optional limit on the combined size of all files in the list. */
+  maxTotalBytes?: number;
 }
 
 export interface ValidationResult {
@@ -15,8 +17,9 @@ export interface ValidationResult {
   rejected: { name: string; reason: string }[];
 }
 
-export function validateFiles(files: File[], rules: FileRules, existing = 0): ValidationResult {
+export function validateFiles(files: File[], rules: FileRules, existing = 0, existingBytes = 0): ValidationResult {
   const accepted: File[] = [];
+  let total = existingBytes;
   const rejected: ValidationResult['rejected'] = [];
   for (const file of files) {
     if (existing + accepted.length >= rules.maxFiles) {
@@ -41,6 +44,11 @@ export function validateFiles(files: File[], rules: FileRules, existing = 0): Va
       });
       continue;
     }
+    if (rules.maxTotalBytes !== undefined && total + file.size > rules.maxTotalBytes) {
+      rejected.push({ name: file.name, reason: tr('err.files.totalTooLarge', { size: formatBytes(total + file.size), max: formatBytes(rules.maxTotalBytes) }) });
+      continue;
+    }
+    total += file.size;
     accepted.push(file);
   }
   return { accepted, rejected };

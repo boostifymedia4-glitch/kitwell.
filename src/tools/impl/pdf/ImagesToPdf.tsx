@@ -83,7 +83,7 @@ const ImagesToPdf: ToolImplementation = ({ tool }) => {
         onFiles={queue.add}
       />
       <RejectionList items={queue.rejections} onDismiss={queue.dismissRejections} />
-      <FileList items={queue.items} kind="image" onRemove={queue.remove} onMove={queue.move} disabled={running} />
+      <FileList items={queue.items} kind="image" onRemove={queue.remove} onMove={queue.move} onClear={() => { queue.clear(); reset(); }} disabled={running} />
       {queue.items.length > 0 && (
         <>
           <p className="hint">{t('imagesToPdf.hint')}</p>

@@ -30,7 +30,6 @@ export default {
   'pdfMerge.drop': 'Letakkan PDF di sini atau klik untuk memilih',
   'pdfMerge.needMore': 'Tambahkan setidaknya satu PDF lagi untuk digabung.',
   'pdfMerge.merge': 'Gabung {count} PDF',
-  'pdfMerge.clear': 'Kosongkan semua',
   'pdfMerge.processing': 'Menggabung PDF…',
   'pdfMerge.ready': 'PDF gabungan Anda sudah siap',
   'pdfSplit.tooMany': 'Itu akan menghasilkan lebih dari 500 file. Gunakan jumlah halaman per file yang lebih besar.',

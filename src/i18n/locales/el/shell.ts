@@ -37,8 +37,6 @@ export default {
   'nav.contact': 'Επικοινωνία',
   'footer.blog': 'Ιστολόγιο',
   'home.title': 'Καθημερινά εργαλεία για αρχεία, PDF, κείμενο και κώδικα',
-  'home.popular': 'Δημοφιλή εργαλεία',
-  'home.popularSub': 'Τα εργαλεία που χρησιμοποιούνται περισσότερο.',
   'home.allTools': 'Όλα τα {count} εργαλεία',
   'home.viewAll': 'Προβολή και των {count}',
 

@@ -37,8 +37,6 @@ export default {
   'nav.contact': 'Contact',
   'footer.blog': 'Blog',
   'home.title': 'Instrumente de zi cu zi pentru fișiere, PDF-uri, text și cod',
-  'home.popular': 'Instrumente populare',
-  'home.popularSub': 'Instrumentele folosite cel mai des.',
   'home.allTools': 'Toate cele {count} instrumente',
   'home.viewAll': 'Vezi toate cele {count}',
 

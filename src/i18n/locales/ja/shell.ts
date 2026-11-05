@@ -25,8 +25,6 @@ export default {
   'search.none': '「{query}」に一致するツールはありません。「png」や「json」のような形式や作業名をお試しください。',
   'search.found': '{count}個のツールが見つかりました',
   'home.title': 'ファイル、PDF、テキスト、コードのための毎日のツール',
-  'home.popular': '人気のツール',
-  'home.popularSub': 'よく使われているツールです。',
   'home.allTools': 'すべての{count}個のツール',
   'home.viewAll': '{count}個すべてを見る',
   'footer.popular': '人気のツール',

@@ -37,8 +37,6 @@ export default {
   'nav.contact': 'Контакти',
   'footer.blog': 'Блог',
   'home.title': 'Щоденні інструменти для файлів, PDF, тексту й коду',
-  'home.popular': 'Популярні інструменти',
-  'home.popularSub': 'Інструменти, якими користуються найчастіше.',
   'home.allTools': 'Усі інструменти ({count})',
   'home.viewAll': 'Переглянути всі ({count})',
 

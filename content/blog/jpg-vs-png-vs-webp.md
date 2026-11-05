@@ -1,9 +1,10 @@
 ---
-title: JPG vs PNG vs WebP: Which Image Format Should You Use?
+title: JPG vs PNG vs WebP: which image format should you use?
 description: Compare JPG, PNG and WebP for photos, screenshots, logos and transparency. Learn when each is best and what is lost when you convert between them.
 excerpt: Pick the right image format for photos, screenshots and logos, and learn what converting between JPG, PNG and WebP really does.
 imageAlt: Three image tiles labelled JPG, PNG and WEBP side by side on a teal background
 published: 2026-10-15
+category: comparisons
 tool: jpg-to-png
 tools: jpg-to-png, png-to-jpg, jpg-to-webp, png-to-webp, webp-to-jpg, webp-to-png, image-compressor
 ctaHeading: Convert an image now

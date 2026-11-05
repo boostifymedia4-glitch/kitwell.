@@ -1,10 +1,11 @@
 ---
-title: How to Write and Preview Markdown With Live HTML Output
+title: How to write and preview Markdown with live HTML output
 description: Learn the Markdown basics for headings, lists, links, tables and code, see a safe live preview and copy clean HTML for your page, README or documentation.
 excerpt: A practical Markdown guide: the syntax you need, how a live preview helps you catch mistakes, how GitHub-style tables and task lists work and why the preview is sanitized.
 imageAlt: Plain text on the left turning into a formatted page on the right on a teal background
 published: 2026-10-29
 updated: 2026-10-29
+category: tutorials
 tool: markdown-previewer
 tools: markdown-previewer, html-encoder-decoder, text-cleaner, word-counter, text-diff-checker, regex-tester
 ctaHeading: Try it yourself

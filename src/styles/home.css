@@ -1,0 +1,110 @@
+/*
+ * Homepage: hero text, search results area, category grids, and the trust, device and "why choose us" sections.
+ * Only design tokens are used for colour, so everything follows the light and dark themes.
+ */
+
+/* ---------- Hero ---------- */
+.hero .lead { max-width: 56rem; text-wrap: balance; }
+.hero .search { max-width: 680px; }
+.search-clear {
+  position: absolute; inset-inline-end: 10px; top: 50%; transform: translateY(-50%); display: grid; place-items: center;
+  width: 34px; height: 34px; border: 0; border-radius: 8px; background: transparent; color: var(--text-muted); cursor: pointer;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.search-clear:hover { background: var(--bg-sunken); color: var(--text); }
+.search-clear:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* ---------- Search results (above the categories) ---------- */
+.result-grid { list-style: none; display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+.result-card {
+  display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); height: 100%;
+  text-decoration: none; color: var(--text);
+}
+.result-text { display: grid; gap: 2px; min-width: 0; }
+.result-text strong { font-size: 0.9375rem; line-height: 1.25; overflow-wrap: anywhere; }
+.result-text small { font-size: var(--text-xs); color: var(--text-muted); }
+.search-empty-card { display: grid; justify-items: center; gap: var(--space-2); padding: var(--space-6) var(--space-4); text-align: center; color: var(--text-muted); }
+.search-empty-card h3 { color: var(--text); overflow-wrap: anywhere; }
+.search-empty-card p { max-width: 46ch; margin-bottom: var(--space-2); }
+
+/* ---------- Introduction ---------- */
+.home-intro { text-align: center; max-width: 62rem; margin-inline: auto; }
+.home-intro h2 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.125rem); letter-spacing: -0.02em; }
+.home-intro p { margin-top: var(--space-3); font-size: 1.0625rem; color: var(--text-muted); text-wrap: balance; }
+
+/* ---------- Category grids: four columns, two rows ---------- */
+.grid-home { grid-template-columns: 1fr; }
+@media (min-width: 560px) { .grid-home { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .grid-home { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* ---------- Feature cards (trust and why choose us) ---------- */
+.section-head-center { justify-content: center; text-align: center; }
+.section-head-center p { margin-inline: auto; text-wrap: balance; }
+.feature-grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+@media (min-width: 900px) { .feature-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.feature-card { padding: var(--space-5); transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease); }
+.feature-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--border-strong); }
+.feature-card h3 { margin: var(--space-3) 0 var(--space-2); }
+.feature-card p { color: var(--text-muted); font-size: var(--text-sm); }
+.feature-icon {
+  display: grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; color: var(--accent);
+  background: var(--accent-soft); border: 1px solid var(--accent-soft-border);
+}
+.section-foot { margin-top: var(--space-4); text-align: center; }
+.text-link { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: var(--accent); text-decoration: none; }
+.text-link:hover { text-decoration: underline; }
+
+/* ---------- Works on every device ---------- */
+.compat { display: grid; gap: var(--space-6); align-items: center; padding: var(--space-6) var(--space-5); overflow: hidden; }
+@media (min-width: 860px) { .compat { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); padding: var(--space-7) var(--space-7); } }
+.compat-text h2 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.125rem); letter-spacing: -0.02em; }
+.compat-text p { margin-top: var(--space-3); color: var(--text-muted); }
+.compat-text .compat-note { font-size: var(--text-sm); }
+.os-list { list-style: none; display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
+.os-list li {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; font-weight: 600; font-size: 0.9375rem;
+  background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent-soft-border);
+}
+
+.compat-visual { position: relative; height: 17em; font-size: 16px; max-width: 34em; width: 100%; margin-inline: auto; }
+@media (max-width: 520px) { .compat-visual { font-size: 11.5px; } }
+.device { position: absolute; margin: 0; }
+.device figcaption { margin-top: 0.6em; text-align: center; font-size: 0.78em; font-weight: 600; color: var(--text-muted); }
+.device-screen {
+  position: relative; display: grid; gap: 0.5em; align-content: start; padding: 0.7em; background: var(--bg-sunken);
+  border: 0.35em solid var(--text); border-radius: 0.9em; box-shadow: var(--shadow-md);
+}
+:root[data-theme='dark'] .device-screen { border-color: var(--border-strong); }
+.device-laptop { inset-inline-start: 0; bottom: 1.6em; width: 20em; }
+.device-laptop .device-screen { height: 12.2em; border-radius: 0.9em 0.9em 0.3em 0.3em; }
+.device-base { height: 0.8em; margin-inline: -1.4em; border-radius: 0 0 1.2em 1.2em; background: linear-gradient(var(--border-strong), var(--border)); box-shadow: var(--shadow-sm); }
+.device-tablet { inset-inline-end: 4.6em; bottom: 1.6em; width: 9.4em; }
+.device-tablet .device-screen { height: 11.4em; border-radius: 1em; }
+.device-phone { inset-inline-end: 0; bottom: 1.6em; width: 5.2em; }
+.device-phone .device-screen { height: 9.6em; border-radius: 1.1em; padding: 0.55em; }
+.mini-bar { display: block; height: 0.55em; width: 55%; border-radius: 99px; background: var(--accent); opacity: 0.85; }
+.mini-tiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.4em; }
+.device-laptop .mini-tiles { grid-template-columns: repeat(4, 1fr); }
+.mini-tiles i { display: block; height: 1.7em; border-radius: 0.4em; background: var(--bg-elevated); border: 1px solid var(--border); }
+.mini-tiles i:nth-child(3n + 1) { background: var(--accent-soft); border-color: var(--accent-soft-border); }
+.device-phone .mini-tiles i, .device-tablet .mini-tiles i { height: 1.45em; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .feature-grid.reveal-armed:not(.reveal-in) > * { opacity: 0; }
+  .feature-grid.reveal-in > * { animation: rise 460ms var(--ease-out) backwards; }
+  .feature-grid.reveal-in > :nth-child(2) { animation-delay: 90ms; }
+  .feature-grid.reveal-in > :nth-child(3) { animation-delay: 180ms; }
+  .feature-grid.reveal-in > :nth-child(4) { animation-delay: 270ms; }
+  .feature-grid.reveal-in > :nth-child(5) { animation-delay: 360ms; }
+  .feature-grid.reveal-in > :nth-child(6) { animation-delay: 450ms; }
+
+  .compat.reveal-armed:not(.reveal-in) .device { opacity: 0; transform: translateY(18px); }
+  .compat.reveal-in .device { animation: device-in 640ms var(--ease-out) backwards, device-float 7s ease-in-out 700ms infinite; }
+  .compat.reveal-in .device-tablet { animation-delay: 120ms, 820ms; }
+  .compat.reveal-in .device-phone { animation-delay: 240ms, 940ms; }
+  .compat.reveal-in .mini-tiles i { animation: tile-pop 520ms var(--ease-out) backwards; }
+  .search-area { animation: rise 260ms var(--ease-out) both; }
+}
+@keyframes device-in { from { opacity: 0; transform: translateY(18px) scale(0.97); } to { opacity: 1; transform: none; } }
+@keyframes device-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes tile-pop { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: none; } }

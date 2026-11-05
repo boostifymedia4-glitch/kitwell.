@@ -17,7 +17,14 @@
 .nav-link:hover { color: var(--text); background: var(--bg-sunken); }
 .nav-link[aria-current='page'], .mega-trigger[aria-expanded='true'] { color: var(--accent); background: var(--accent-soft); }
 .header-search { display: none; flex: 1 1 160px; max-width: 300px; min-width: 0; margin-inline-start: auto; }
-.menu-btn { margin-inline-start: auto; }
+.header-actions { display: flex; align-items: center; gap: var(--space-2); margin-inline-start: auto; }
+.theme-btn .theme-sun { display: none; }
+:root[data-theme='dark'] .theme-btn .theme-sun { display: inline-block; }
+:root[data-theme='dark'] .theme-btn .theme-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .theme-btn .theme-sun { display: inline-block; }
+  :root:not([data-theme]) .theme-btn .theme-moon { display: none; }
+}
 @media (min-width: 900px) {
   .nav { display: flex; }
   .header-search { display: block; }

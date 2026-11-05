@@ -1,10 +1,11 @@
 ---
-title: How to Reorder and Remove PDF Pages With Thumbnails
+title: How to reorder and remove PDF pages with thumbnails
 description: Delete unwanted pages from a PDF, drag pages into a new order or move them with buttons, and save a clean new file without touching your original document.
 excerpt: A practical guide to organising PDF pages: removing pages by clicking or by range, reordering with drag and drop or keyboard buttons, checking the result and avoiding common slips before you share.
 imageAlt: PDF page thumbnails being dragged into a new order with one page removed on a teal background
 published: 2026-10-30
 updated: 2026-10-30
+category: tutorials
 tool: reorder-pdf-pages
 tools: reorder-pdf-pages, remove-pdf-pages, extract-pdf-pages, rotate-pdf, merge-pdf, add-page-numbers
 ctaHeading: Try it yourself

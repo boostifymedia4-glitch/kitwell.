@@ -37,8 +37,6 @@ export default {
   'nav.contact': 'Liên hệ',
   'footer.blog': 'Blog',
   'home.title': 'Công cụ hằng ngày cho tệp, PDF, văn bản và mã nguồn',
-  'home.popular': 'Công cụ phổ biến',
-  'home.popularSub': 'Những công cụ được dùng nhiều nhất.',
   'home.allTools': 'Tất cả {count} công cụ',
   'home.viewAll': 'Xem tất cả {count}',
 

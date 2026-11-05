@@ -27,9 +27,9 @@ export function ToolCard({ tool, as: H = 'h3', showCategory = false }: CardProps
   );
 }
 
-export function ToolGrid({ tools, headingLevel = 'h3', showCategory }: { tools: ToolDef[]; headingLevel?: HeadingLevel; showCategory?: boolean }) {
+export function ToolGrid({ tools, headingLevel = 'h3', showCategory, variant }: { tools: ToolDef[]; headingLevel?: HeadingLevel; showCategory?: boolean; variant?: 'home' }) {
   return (
-    <div className="grid grid-tools">
+    <div className={variant === 'home' ? 'grid grid-tools grid-home' : 'grid grid-tools'}>
       {tools.map((tool) => (
         <ToolCard key={tool.slug} tool={tool} as={headingLevel} showCategory={showCategory} />
       ))}

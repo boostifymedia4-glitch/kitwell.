@@ -1,10 +1,11 @@
 ---
-title: How to Rotate and Flip an Image Online Without Quality Loss
+title: How to rotate and flip an image online without quality loss
 description: Turn photos by 90, 180 or 270 degrees or any custom angle, mirror them horizontally or vertically, and avoid blank corners, sideways photos and backwards text.
 excerpt: A practical guide to rotating and flipping images: quarter turns, custom angles, what happens to the corners, when to flip, why phone photos appear sideways and how to keep quality.
 imageAlt: A photo being turned by an arrow and mirrored along a dashed line on a teal background
 published: 2026-10-30
 updated: 2026-10-30
+category: tutorials
 tool: image-rotator
 tools: image-rotator, image-flipper, photo-editor, image-cropper, image-resizer, image-compressor
 ctaHeading: Try it yourself

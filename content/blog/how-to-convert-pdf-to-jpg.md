@@ -1,10 +1,11 @@
 ---
-title: How to Convert PDF to JPG: Resolution, Pages and Quality
+title: How to convert PDF to JPG: resolution, pages and quality
 description: Turn PDF pages into JPG images in your browser. Learn which DPI to pick, how to convert only some pages and when PNG is the better choice.
 excerpt: A practical guide to turning PDF pages into JPG pictures: choosing the resolution, converting selected pages, keeping file sizes sensible and avoiding common mistakes.
 imageAlt: A PDF page turning into a JPG picture on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: pdf-to-jpg
 tools: pdf-to-jpg, pdf-to-png, jpg-to-pdf, image-compressor, unlock-pdf, ocr-pdf
 ctaHeading: Try it yourself

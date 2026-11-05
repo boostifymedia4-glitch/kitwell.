@@ -190,8 +190,6 @@ export default {
   'pdfOcr.stat.skipped': 'Pominięte strony',
   'pdfOcr.stat.words': 'Znalezione słowa',
   'pdfOcr.stat.confidence': 'Średnia pewność',
-  'pdfOcr.resultNote': 'Strony wyglądają dokładnie jak wcześniej; niewidoczna warstwa tekstowa umożliwia ich przeszukiwanie i kopiowanie. Ważne liczby porównaj z oryginałem.',
-  'pdfOcr.output': 'Rozpoznany tekst',
   'pdfProtect.hint.empty': 'Użyj co najmniej 8 znaków; im dłuższe, tym silniejsze.',
   'pdfProtect.hint.short': 'Krótkie hasła łatwo odgadnąć. Postaraj się o 12 lub więcej znaków.',
   'pdfProtect.hint.fair': 'Średnie. Lepiej użyć dwunastu lub więcej znaków.',

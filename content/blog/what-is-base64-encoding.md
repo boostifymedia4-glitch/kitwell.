@@ -1,9 +1,10 @@
 ---
-title: What Is Base64 Encoding? Uses, Limits and Examples
+title: What is Base64 encoding? Uses, limits and examples
 description: Learn what Base64 is, why it makes data a third larger, where it is used and why it is not encryption, and how to encode and decode in your browser.
 excerpt: Base64 turns any data into plain text characters. Learn where it is used, what it costs and what it is not: a way to keep secrets.
 imageAlt: Binary ones and zeros turning into a string of letters and digits on a teal background
 published: 2026-10-15
+category: guides
 tool: base64-encoder-decoder
 tools: base64-encoder-decoder, image-to-base64, base64-to-image, url-encoder-decoder, json-formatter, html-encoder-decoder
 ctaHeading: Encode or decode now

@@ -1,10 +1,11 @@
 ---
-title: Unix Timestamps Explained: Convert Them to Dates and Back
+title: Unix timestamps explained: convert them to dates and back
 description: Understand Unix timestamps in seconds and milliseconds, convert them to UTC, local time and ISO 8601 dates, and avoid the usual time zone mistakes.
 excerpt: What a Unix timestamp is, how to tell seconds from milliseconds, how to read one as a date in any time zone and how to avoid the mistakes that make events appear at the wrong hour.
 imageAlt: A clock face next to a long number representing a Unix timestamp on a teal background
 published: 2026-10-25
 updated: 2026-10-25
+category: guides
 tool: timestamp-converter
 tools: timestamp-converter, json-formatter, regex-tester, uuid-generator, base64-encoder-decoder, json-validator
 ctaHeading: Try it yourself

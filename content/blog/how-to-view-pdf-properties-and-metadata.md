@@ -1,10 +1,11 @@
 ---
-title: How to View a PDF and Read Its Properties and Metadata
+title: How to view a PDF and read its properties and metadata
 description: Open a PDF privately in your browser, then inspect its title, author, dates, page count, page sizes and version, and copy the details as JSON when you need them.
 excerpt: A practical guide to viewing PDFs and reading their hidden properties: what a viewer can and cannot do, which metadata a file stores, how to spot odd dates and authors and what to do next.
 imageAlt: A PDF page with a magnifying glass over its properties list on a teal background
 published: 2026-10-30
 updated: 2026-10-30
+category: guides
 tool: pdf-metadata-viewer
 tools: pdf-metadata-viewer, pdf-viewer, edit-pdf-metadata, unlock-pdf, extract-pdf-text, compare-pdf
 ctaHeading: Try it yourself

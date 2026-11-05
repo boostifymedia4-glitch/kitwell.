@@ -11,7 +11,55 @@ export const TOPIC_LABELS = {
   privacy: 'Privacy Request',
   other: 'Other',
 };
-export const LIMITS = { name: 80, email: 120, message: 4000, minMessage: 10, page: 200 };
+/** The message has no limit that people notice; the cap only protects the server from absurdly large bodies. */
+export const LIMITS = { name: 80, email: 120, message: 50000, minMessage: 10, page: 200 };
+
+/**
+ * One optional attachment, sent as base64 inside the JSON body. It is checked again here, whatever the browser did: the
+ * extension must be on the list, the bytes must really look like that kind of file, and it must fit in 3 MB (Vercel
+ * functions accept bodies of up to 4.5 MB, and base64 adds a third).
+ */
+export const ATTACHMENT = {
+  maxBytes: 3 * 1024 * 1024,
+  extensions: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'pdf', 'txt', 'doc', 'docx'],
+};
+const startsWith = (bytes, sig, at = 0) => sig.every((b, i) => bytes[at + i] === b);
+const SIGNATURES = {
+  jpg: (b) => startsWith(b, [0xff, 0xd8, 0xff]),
+  jpeg: (b) => startsWith(b, [0xff, 0xd8, 0xff]),
+  png: (b) => startsWith(b, [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]),
+  gif: (b) => startsWith(b, [0x47, 0x49, 0x46, 0x38]),
+  webp: (b) => startsWith(b, [0x52, 0x49, 0x46, 0x46]) && startsWith(b, [0x57, 0x45, 0x42, 0x50], 8),
+  pdf: (b) => startsWith(b, [0x25, 0x50, 0x44, 0x46]),
+  doc: (b) => startsWith(b, [0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1]),
+  docx: (b) => startsWith(b, [0x50, 0x4b, 0x03, 0x04]),
+  // Plain text: no NUL bytes and valid UTF-8.
+  txt: (b) => {
+    if (b.includes(0)) return false;
+    try {
+      new TextDecoder('utf-8', { fatal: true }).decode(b);
+      return true;
+    } catch {
+      return false;
+    }
+  },
+};
+const BASE64 = /^[A-Za-z0-9+/]+={0,2}$/;
+
+/** Returns `{ ok: true, value }` (with the real size and a safe file name) or `{ ok: false }`. */
+export function validateAttachment(a) {
+  if (!a || typeof a !== 'object' || typeof a.data !== 'string' || typeof a.name !== 'string') return { ok: false };
+  // The encoded text is about a third larger than the file; refuse anything clearly too big before decoding it.
+  if (a.data.length === 0 || a.data.length > Math.ceil((ATTACHMENT.maxBytes * 4) / 3) + 8 || !BASE64.test(a.data)) return { ok: false };
+  const base = a.name.split(/[\\/]/).pop() ?? '';
+  const name = [...base].filter(keep).join('').replace(/[<>:"|?*]/g, '_').trim().slice(0, 100);
+  const ext = name.includes('.') ? name.split('.').pop().toLowerCase() : '';
+  if (!name || !ATTACHMENT.extensions.includes(ext)) return { ok: false };
+  const bytes = Buffer.from(a.data, 'base64');
+  if (bytes.length === 0 || bytes.length > ATTACHMENT.maxBytes) return { ok: false };
+  if (!SIGNATURES[ext](bytes)) return { ok: false };
+  return { ok: true, value: { name, extension: ext, size: bytes.length, data: a.data } };
+}
 
 const EMAIL = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]{2,}$/;
 /** Trims, caps the length and drops control characters (tab, line feed and carriage return are kept). */
@@ -32,10 +80,14 @@ export function validateContact(body) {
     page: clean(b.page, LIMITS.page),
   };
   const fields = [];
+  const attachment = b.attachment === undefined || b.attachment === null ? null : validateAttachment(b.attachment);
   if (!value.name) fields.push('name');
   if (!EMAIL.test(value.email)) fields.push('email');
   if (!value.topic) fields.push('topic');
   if (value.message.length < LIMITS.minMessage || value.message.length > LIMITS.message) fields.push('message');
+  if (b.agree !== true) fields.push('agree');
+  if (attachment && !attachment.ok) fields.push('attachment');
+  if (attachment && attachment.ok) value.attachment = attachment.value;
   return fields.length ? { ok: false, fields } : { ok: true, value };
 }
 
@@ -46,7 +98,7 @@ export function contactConfigured(env = process.env) {
 /** Sends the message to the webhook. Throws when the webhook does not accept it. */
 export async function forward(url, v, fetchImpl = fetch) {
   const subject = TOPIC_LABELS[v.topic] ?? v.topic;
-  const text = `New message (${subject}) from ${v.name} <${v.email}>${v.page ? ` about ${v.page}` : ''}\n\n${v.message}`;
+  const text = `New message (${subject}) from ${v.name} <${v.email}>${v.page ? ` about ${v.page}` : ''}${v.attachment ? ` with attachment ${v.attachment.name} (${v.attachment.size} bytes)` : ''}\n\n${v.message}`;
   const res = await fetchImpl(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
@@ -54,6 +106,24 @@ export async function forward(url, v, fetchImpl = fetch) {
     signal: AbortSignal.timeout(8000),
   });
   if (!res.ok) throw new Error(`webhook answered ${res.status}`);
+}
+
+/**
+ * Cross-site request check for the contact endpoint. Browsers add an Origin header to cross-site POSTs, and a form
+ * on another site can only send simple content types, so the request must be JSON and, when Origin is present, come
+ * from this site. Requests without Origin (scripts, curl) are still allowed; they are limited by the rate limiter.
+ */
+export function requestAllowed(headers = {}) {
+  const type = String(headers['content-type'] ?? '').toLowerCase();
+  if (!type.startsWith('application/json')) return false;
+  const origin = headers.origin;
+  if (!origin) return true;
+  const host = String(headers['x-forwarded-host'] ?? headers.host ?? '').split(',')[0].trim().toLowerCase();
+  try {
+    return new URL(String(origin)).host.toLowerCase() === host;
+  } catch {
+    return false;
+  }
 }
 
 /**

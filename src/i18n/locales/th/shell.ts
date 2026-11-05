@@ -37,8 +37,6 @@ export default {
   'nav.contact': 'ติดต่อ',
   'footer.blog': 'บล็อก',
   'home.title': 'เครื่องมือสำหรับงานไฟล์ PDF ข้อความ และโค้ดในชีวิตประจำวัน',
-  'home.popular': 'เครื่องมือยอดนิยม',
-  'home.popularSub': 'เครื่องมือที่คนใช้บ่อยที่สุด',
   'home.allTools': 'เครื่องมือทั้งหมด {count} รายการ',
   'home.viewAll': 'ดูทั้งหมด {count} รายการ',
 

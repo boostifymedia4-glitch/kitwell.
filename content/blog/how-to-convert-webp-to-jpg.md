@@ -1,10 +1,11 @@
 ---
-title: How to Convert WebP to JPG When a Site or App Rejects It
+title: How to convert WebP to JPG when a site or app rejects it
 description: Convert WebP images to JPG for forms, email and older software that do not accept WebP. Learn what happens to transparency, quality and animation.
 excerpt: Why websites save images as WebP, why some places still reject them, and how to convert them to widely accepted JPG files in your browser without losing the look.
 imageAlt: A WebP file badge turning into a JPG file badge on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: webp-to-jpg
 tools: webp-to-jpg, jpg-to-webp, png-to-webp, webp-to-png, image-compressor, image-format-converter
 ctaHeading: Try it yourself

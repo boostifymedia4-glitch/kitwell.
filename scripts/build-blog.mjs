@@ -7,7 +7,8 @@
  *
  * Article format
  *   ---                       front matter: title, description, excerpt, imageAlt, published, updated, tool, tools (comma list),
- *   key: value                ctaHeading, cta, and the optional publishAt (see Scheduling)
+ *   key: value                category (tutorials, tips, comparisons or guides), ctaHeading, cta, and the optional publishAt
+ *                             (see Scheduling)
  *   ---
  *   Intro paragraphs (blank-line separated)
  *   :::takeaways              optional "Key takeaways" box: one "- item" per line
@@ -54,7 +55,7 @@ function parse(file, source) {
     const kv = /^(\w+):\s*(.*)$/.exec(line);
     if (kv) meta[kv[1]] = kv[2].trim();
   }
-  for (const k of ['title', 'description', 'excerpt', 'imageAlt', 'published', 'tool', 'tools', 'ctaHeading', 'cta']) {
+  for (const k of ['title', 'description', 'excerpt', 'imageAlt', 'published', 'category', 'tool', 'tools', 'ctaHeading', 'cta']) {
     if (!meta[k]) throw new Error(`${file}: front matter "${k}" is missing`);
   }
   const text = {};
@@ -155,6 +156,9 @@ function parse(file, source) {
   text['cta.h'] = meta.ctaHeading;
   text['cta.p'] = meta.cta;
 
+  if (!['tutorials', 'tips', 'comparisons', 'guides'].includes(meta.category)) {
+    throw new Error(`${file}: category must be one of tutorials, tips, comparisons, guides`);
+  }
   if (meta.publishAt) {
     if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?([+-]\d{2}:\d{2}|Z)$/.test(meta.publishAt) || Number.isNaN(Date.parse(meta.publishAt))) {
       throw new Error(`${file}: publishAt must look like 2026-11-02T18:00:00+05:00`);
@@ -168,6 +172,7 @@ function parse(file, source) {
     slug,
     published: meta.published,
     updated: meta.updated || meta.published,
+    category: meta.category,
     minutes: Math.max(3, Math.round(words / 210)),
     tool: meta.tool,
     tools,

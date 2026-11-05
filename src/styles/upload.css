@@ -1,0 +1,66 @@
+/*
+ * File selection: the drop area with its Choose files, Google Drive and Dropbox buttons, and the grid of selected files
+ * (a picture of each file, its name, size and page count, remove and reorder controls).
+ */
+
+/* ---------- Drop area ---------- */
+.upload .dropzone { gap: var(--space-3); padding: var(--space-7) var(--space-4); cursor: default; }
+.upload .dropzone:not([data-disabled]) { cursor: pointer; }
+.upload .dropzone[data-disabled] { opacity: 0.6; }
+.dz-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--space-2); width: 100%; cursor: default; }
+.dz-actions .btn { max-width: 100%; }
+.dz-cloud { gap: 10px; background: var(--bg-elevated); }
+.provider-icon { flex: none; }
+.dz-error { flex-basis: 100%; text-align: start; }
+.upload .dz-hint { margin-top: var(--space-1); }
+
+/* Once files are selected, the drop area becomes a slim bar. */
+.upload-compact .dropzone { padding: var(--space-4); gap: var(--space-2); border-style: dashed; }
+.upload-compact .dz-icon, .upload-compact .dz-title { display: none; }
+.upload-compact .dz-actions .btn-lg { min-height: 44px; }
+
+/* ---------- Selected files ---------- */
+.file-area { display: grid; gap: var(--space-3); }
+.file-summary {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); flex-wrap: wrap;
+  padding: var(--space-2) var(--space-3); border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-sunken);
+  font-size: var(--text-sm); font-weight: 550; color: var(--text-muted);
+}
+.file-order-hint { margin: 0; }
+.file-grid { list-style: none; display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+@media (max-width: 420px) { .file-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2); } }
+
+.file-tile {
+  position: relative; display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--border);
+  border-radius: var(--radius); background: var(--bg-elevated); transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease), opacity var(--dur) var(--ease);
+}
+.file-tile:hover { border-color: var(--border-strong); box-shadow: var(--shadow-sm); }
+.file-tile[draggable='true'] { cursor: grab; }
+.file-tile[data-dragging] { opacity: 0.45; transform: scale(0.97); }
+.file-tile[data-dragover] { border-color: var(--accent); background: var(--accent-soft); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent); }
+
+.file-tile-media { position: relative; display: grid; place-items: center; aspect-ratio: 3 / 4; background: var(--bg-sunken); border-bottom: 1px solid var(--border); overflow: hidden; }
+.file-tile-media img { width: 100%; height: 100%; object-fit: contain; display: block; background: #fff; }
+.file-tile-fallback { display: grid; place-items: center; color: var(--text-subtle); }
+.file-tile-index {
+  position: absolute; inset-block-start: 6px; inset-inline-start: 6px; min-width: 24px; height: 24px; padding: 0 6px; display: grid; place-items: center;
+  border-radius: 999px; background: var(--accent); color: var(--on-accent); font-size: 0.75rem; font-weight: 700; box-shadow: var(--shadow-xs);
+}
+.file-tile-grip { position: absolute; inset-block-end: 6px; inset-inline-start: 6px; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 6px; background: color-mix(in srgb, var(--bg-elevated) 88%, transparent); color: var(--text-muted); }
+.file-tile-remove {
+  position: absolute; inset-block-start: 6px; inset-inline-end: 6px; display: grid; place-items: center; width: 30px; height: 30px; padding: 0; border: 1px solid var(--border);
+  border-radius: 999px; background: var(--bg-elevated); color: var(--text); cursor: pointer; box-shadow: var(--shadow-xs);
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.file-tile-remove:hover:not(:disabled) { background: var(--danger-soft, #fde8e8); color: var(--danger, #b42318); border-color: currentColor; }
+.file-tile-remove:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.file-tile-remove:disabled { opacity: 0.5; cursor: not-allowed; }
+.file-tile-body { display: grid; gap: 2px; padding: var(--space-2) var(--space-3); min-width: 0; }
+.file-tile .file-name { font-size: var(--text-sm); font-weight: 600; }
+.file-tile .file-sub { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; font-size: var(--text-xs); color: var(--text-subtle); }
+.file-badge { padding: 1px 6px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); font-weight: 700; font-size: 0.6875rem; letter-spacing: 0.02em; }
+.file-tile-move { display: flex; justify-content: center; gap: 4px; padding: 0 var(--space-2) var(--space-2); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .file-tile { animation: rise 240ms var(--ease-out) both; }
+}

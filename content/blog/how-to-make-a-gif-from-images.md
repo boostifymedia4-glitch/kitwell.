@@ -1,10 +1,11 @@
 ---
-title: How to Make an Animated GIF From Images and Keep It Small
+title: How to make an animated GIF from images and keep it small
 description: Turn a set of pictures into an animated GIF in your browser, set the timing, size and loop, keep transparency and shrink a GIF that came out too large.
 excerpt: A hands-on guide to making animated GIFs from photos and screenshots: frame order and timing, size and colours, transparency, looping and the best ways to reduce the file size.
 imageAlt: A stack of pictures turning into an animated GIF on a teal background
 published: 2026-10-25
 updated: 2026-10-25
+category: tutorials
 tool: gif-maker
 tools: gif-maker, image-resizer, image-compressor, images-to-pdf, image-cropper, photo-editor
 ctaHeading: Try it yourself

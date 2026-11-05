@@ -1,3 +1,4 @@
+import { useMemo, useState } from 'react';
 import { Link } from '@/i18n/Link';
 import { Icon } from '@/components/Icon';
 import { Seo } from '@/components/Seo';
@@ -5,101 +6,118 @@ import { AdSlot } from '@/components/ui/AdSlot';
 import { ToolGrid } from '@/components/ui/ToolCard';
 import { CategoryIcon } from '@/components/ui/CategoryIcon';
 import { ToolIcon } from '@/components/ui/ToolIcon';
-import { TrustIcon, type TrustKind } from '@/components/ui/TrustArt';
-import { ToolSearch } from '@/components/ui/ToolSearch';
-import { useReveal } from '@/lib/hooks';
+import { HomeSearch } from '@/components/home/HomeSearch';
+import { CompatSection, IntroSection, TrustSection, WhySection } from '@/components/home/HomeSections';
 import { useLocalize } from '@/i18n/useLocalize';
 import { useI18n, type MessageKey } from '@/i18n';
 import { usePageMeta } from '@/i18n/usePageMeta';
-import { categories, categoryPath, getTool, showcaseTools, popularTools, toolPath, toolsInCategory, tools } from '@/tools/registry';
+import { categories, categoryPath, homeCategoryOrder, homeTools, searchTools, toolPath, toolsInCategory } from '@/tools/registry';
+import type { ToolDef } from '@/tools/types';
 
-const SHORTCUTS = ['jpg-to-png', 'image-compressor', 'merge-pdf', 'pdf-to-jpg', 'json-formatter', 'word-counter']
-  .map(getTool)
-  .filter((t) => t !== undefined);
-
-const TRUST: { kind: TrustKind; title: MessageKey; text: MessageKey }[] = [
-  { kind: 'browser', title: 'home.card1.title', text: 'home.card1.text' },
-  { kind: 'account', title: 'home.card2.title', text: 'home.card2.text' },
-  { kind: 'limits', title: 'home.card3.title', text: 'home.card3.text' },
-];
-
+/** The matching tools, shown in their own area above the categories: only the name and the category of each tool. */
+function SearchResults({ query, results, onClear }: { query: string; results: ToolDef[]; onClear: () => void }) {
+  const { t } = useI18n();
+  const loc = useLocalize();
+  return (
+    <section className="section search-area" aria-labelledby="search-results-title">
+      <div className="section-head">
+        <div>
+          <h2 id="search-results-title">{t('home.search.resultsTitle')}</h2>
+          {results.length > 0 && <p>{t('search.found', { count: results.length })}</p>}
+        </div>
+        <button type="button" className="btn btn-secondary btn-sm" onClick={onClear}>
+          {t('home.search.clear')}
+        </button>
+      </div>
+      <p className="visually-hidden" role="status" aria-live="polite">
+        {t('search.found', { count: results.length })}
+      </p>
+      {results.length === 0 ? (
+        <div className="card search-empty-card">
+          <Icon name="search" size={28} />
+          <h3>{t('home.search.emptyTitle', { query })}</h3>
+          <p>{t('home.search.emptyText')}</p>
+          <Link to="/tools" className="btn btn-primary btn-sm">
+            {t('home.search.browse')} <Icon name="arrow-right" size={14} />
+          </Link>
+        </div>
+      ) : (
+        <ul className="result-grid">
+          {results.map((tool) => (
+            <li key={tool.slug}>
+              <Link to={toolPath(tool)} className="card result-card">
+                <ToolIcon tool={tool} size="sm" />
+                <span className="result-text">
+                  <strong>{loc.tool(tool).name}</strong>
+                  <small>{t(`cat.${tool.category}` as MessageKey)}</small>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  );
+}
 
 export default function Home() {
-  const trustRef = useReveal<HTMLDivElement>();
   const meta = usePageMeta('/');
   const { t } = useI18n();
   const loc = useLocalize();
+  const [query, setQuery] = useState('');
+  const q = query.trim();
+  const results = useMemo(() => {
+    if (!q) return [];
+    // Typing a whole category name, such as "PDF Tools", lists exactly that category.
+    const lower = q.toLowerCase();
+    const category = categories.find((c) => [t(`cat.${c.id}` as MessageKey), c.name, c.short].some((n) => n.toLowerCase() === lower));
+    if (category) return toolsInCategory(category.id);
+    return searchTools(q, 100, (tool) => `${loc.tool(tool).name} ${t(`cat.${tool.category}` as MessageKey)}`, false);
+  }, [q, loc, t]);
+
   return (
     <>
       {meta && <Seo {...meta} />}
       <section className="hero" aria-labelledby="hero-title">
         <div className="container">
           <h1 id="hero-title">{t('home.title')}</h1>
-          <p className="lead">
-            {t('home.lead', { count: tools.length })}
-          </p>
-          <ToolSearch variant="hero" />
-          <ul className="shortcuts" aria-label={t('home.popular')}>
-            {SHORTCUTS.map((s) => (
-              <li key={s.slug}>
-                <Link to={toolPath(s)} className="shortcut">
-                  <ToolIcon tool={s} size="sm" />
-                  {loc.tool(s).name}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <p className="lead">{t('home.hero.lead')}</p>
+          <HomeSearch value={query} onChange={setQuery} />
         </div>
       </section>
 
       <div className="container">
-        <section className="section" aria-labelledby="popular">
-          <div className="section-head">
-            <div>
-              <h2 id="popular">{t('home.popular')}</h2>
-              <p>{t('home.popularSub')}</p>
-            </div>
-            <Link to="/tools" className="btn btn-secondary btn-sm">
-              {t('home.allTools', { count: tools.length })} <Icon name="arrow-right" size={14} />
-            </Link>
-          </div>
-          <ToolGrid tools={popularTools()} showCategory />
-        </section>
+        {q ? (
+          <SearchResults query={q} results={results} onClear={() => setQuery('')} />
+        ) : (
+          <>
+            <IntroSection />
 
-        {categories.map((c) => (
-          <section key={c.id} className="section" aria-labelledby={`home-${c.id}`}>
-            <div className="section-head">
-              <div className="row" style={{ flexWrap: 'nowrap', alignItems: 'flex-start' }}>
-                <CategoryIcon id={c.id} />
-                <div>
-                  <h2 id={`home-${c.id}`}>{t(`cat.${c.id}` as MessageKey)}</h2>
-                  <p>{t(`cat.${c.id}.description`)}</p>
+            {homeCategoryOrder.map((id) => (
+              <section key={id} className="section" aria-labelledby={`home-${id}`}>
+                <div className="section-head">
+                  <div className="row" style={{ flexWrap: 'nowrap', alignItems: 'flex-start' }}>
+                    <CategoryIcon id={id} />
+                    <div>
+                      <h2 id={`home-${id}`}>{t(`cat.${id}` as MessageKey)}</h2>
+                      <p>{t(`cat.${id}.description`)}</p>
+                    </div>
+                  </div>
+                  <Link to={categoryPath(id)} className="btn btn-secondary btn-sm">
+                    {t('home.allToolsLink')} <Icon name="arrow-right" size={14} />
+                  </Link>
                 </div>
-              </div>
-              <Link to={categoryPath(c.id)} className="btn btn-secondary btn-sm">
-                {t('home.viewAll', { count: toolsInCategory(c.id).length })} <Icon name="arrow-right" size={14} />
-              </Link>
-            </div>
-            <ToolGrid tools={showcaseTools(c.id)} />
-          </section>
-        ))}
-
-        <AdSlot id="home-mid" />
-
-        <section className="section" aria-labelledby="privacy">
-          <div className="section-head">
-            <h2 id="privacy">{t('home.privacyHeading')}</h2>
-          </div>
-          <div className="trust-grid" ref={trustRef}>
-            {TRUST.map((item) => (
-              <div key={item.title} className="card trust-item">
-                <TrustIcon kind={item.kind} />
-                <h3>{t(item.title)}</h3>
-                <p>{t(item.text)}</p>
-              </div>
+                <ToolGrid tools={homeTools(id)} variant="home" />
+              </section>
             ))}
-          </div>
-        </section>
+
+            <AdSlot id="home-mid" />
+
+            <TrustSection />
+            <CompatSection />
+            <WhySection />
+          </>
+        )}
       </div>
     </>
   );

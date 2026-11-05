@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useI18n } from '@/i18n';
 import { CloudError, cloudConfigured, dropboxConfigured, googleConfigured, pickFromDropbox, pickFromGoogleDrive, saveToDropbox, saveToGoogleDrive, type CloudService } from '@/lib/cloud';
-import { Icon } from '../Icon';
 import { ErrorMessage, Notice } from './Feedback';
+import { DropboxIcon, GoogleDriveIcon } from './ProviderIcons';
 
 const SERVICE_KEY: Record<CloudService, string> = { google: 'cloud.google', dropbox: 'cloud.dropbox' };
+const ServiceIcon = ({ service }: { service: CloudService }) => (service === 'google' ? <GoogleDriveIcon /> : <DropboxIcon />);
 
 /** "Or choose a file from Google Drive / Dropbox": only the services that are configured are offered. */
 export function CloudPick({ extensions, multiple, onFiles, disabled }: { extensions: string[]; multiple: boolean; onFiles: (files: File[]) => void; disabled?: boolean }) {
@@ -28,18 +29,19 @@ export function CloudPick({ extensions, multiple, onFiles, disabled }: { extensi
 
   const services: CloudService[] = [...(googleConfigured() ? (['google'] as const) : []), ...(dropboxConfigured() ? (['dropbox'] as const) : [])];
   return (
-    <div className="stack-sm" style={{ marginTop: 'var(--space-3)' }}>
-      <div className="row" style={{ gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
-        <span className="hint">{t('cloud.or')}</span>
-        {services.map((s) => (
-          <button key={s} type="button" className="btn btn-secondary btn-sm" onClick={() => pick(s)} disabled={disabled || busy !== null} aria-busy={busy === s}>
-            <Icon name="upload" size={14} />
-            {t(SERVICE_KEY[s])}
-          </button>
-        ))}
-      </div>
-      {error && <ErrorMessage>{error}</ErrorMessage>}
-    </div>
+    <>
+      {services.map((s) => (
+        <button key={s} type="button" className="btn btn-secondary btn-lg dz-cloud" onClick={() => pick(s)} disabled={disabled || busy !== null} aria-busy={busy === s}>
+          <ServiceIcon service={s} />
+          {t(SERVICE_KEY[s])}
+        </button>
+      ))}
+      {error && (
+        <div className="dz-error">
+          <ErrorMessage>{error}</ErrorMessage>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -70,13 +72,13 @@ export function CloudSave({ blob, name }: { blob: Blob; name: string }) {
       <div className="toolbar">
         {googleConfigured() && (
           <button type="button" className="btn btn-secondary" onClick={() => save('google')} disabled={busy !== null}>
-            <Icon name="upload" size={16} />
+            <GoogleDriveIcon size={16} />
             {busy === 'google' ? t('cloud.saving', { service: t('cloud.google') }) : t('cloud.saveGoogle')}
           </button>
         )}
         {dropboxConfigured() && (
           <button type="button" className="btn btn-secondary" onClick={() => save('dropbox')} disabled={busy !== null}>
-            <Icon name="upload" size={16} />
+            <DropboxIcon size={16} />
             {busy === 'dropbox' ? t('cloud.saving', { service: t('cloud.dropbox') }) : t('cloud.saveDropbox')}
           </button>
         )}

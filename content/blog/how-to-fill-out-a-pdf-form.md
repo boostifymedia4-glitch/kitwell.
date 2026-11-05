@@ -1,10 +1,11 @@
 ---
-title: How to Fill Out a PDF Form Online, Even Without Form Fields
+title: How to fill out a PDF form online, even without form fields
 description: Fill in text boxes, checkboxes and menus of a PDF form in your browser, flatten the answers, and type onto flat PDFs and scans that have no fields.
 excerpt: Complete fillable PDF forms, decide whether to keep them editable or flatten them, and learn what to do with scanned forms and XFA forms that have no usable fields.
 imageAlt: A PDF form with filled text boxes and a ticked checkbox on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: fill-pdf-forms
 tools: fill-pdf-forms, sign-pdf, protect-pdf, merge-pdf, compress-pdf, ocr-pdf
 ctaHeading: Try it yourself

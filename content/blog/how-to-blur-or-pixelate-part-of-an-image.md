@@ -1,10 +1,11 @@
 ---
-title: How to Blur or Pixelate Part of an Image Safely
+title: How to blur or pixelate part of an image safely
 description: Hide faces, licence plates, ID numbers and private details in a photo or screenshot with blur, pixelation or a black box, and learn which one is safe.
 excerpt: Learn how to cover private details in pictures: when blur is enough, why a black box is safer, how to draw boxes accurately and what else to check before you share the image.
 imageAlt: A photo with a blurred rectangle hiding a licence plate on a teal background
 published: 2026-10-25
 updated: 2026-10-25
+category: tutorials
 tool: blur-image-area
 tools: blur-image-area, image-cropper, image-compressor, image-format-converter, image-resizer, image-watermark
 ctaHeading: Try it yourself
