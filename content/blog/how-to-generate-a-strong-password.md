@@ -5,6 +5,7 @@ excerpt: Learn how password strength is measured, how long a password should be,
 imageAlt: A key and a long password field with dots on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tips
 tool: password-generator
 tools: password-generator, protect-pdf, uuid-generator, qr-code-generator, base64-encoder-decoder, text-cleaner
 ctaHeading: Try it yourself

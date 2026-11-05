@@ -5,6 +5,7 @@ excerpt: A practical guide to exporting SVG files as PNG, JPG or WebP: how scale
 imageAlt: A vector shape being turned into a picture file on a teal background
 published: 2026-10-25
 updated: 2026-10-25
+category: tutorials
 tool: svg-converter
 tools: svg-converter, image-resizer, image-compressor, png-to-webp, image-format-converter, enlarge-image
 ctaHeading: Try it yourself

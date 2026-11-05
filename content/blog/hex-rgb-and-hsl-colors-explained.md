@@ -5,6 +5,7 @@ excerpt: A clear guide to colour codes: what HEX, RGB, HSL and HSV mean, how to 
 imageAlt: Colour swatches with hexadecimal codes next to a colour wheel on a teal background
 published: 2026-10-25
 updated: 2026-10-25
+category: guides
 tool: color-converter
 tools: color-converter, image-color-picker, qr-code-generator, svg-converter, photo-editor, markdown-previewer
 ctaHeading: Try it yourself

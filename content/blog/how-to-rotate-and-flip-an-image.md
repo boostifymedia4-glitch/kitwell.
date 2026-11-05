@@ -5,6 +5,7 @@ excerpt: A practical guide to rotating and flipping images: quarter turns, custo
 imageAlt: A photo being turned by an arrow and mirrored along a dashed line on a teal background
 published: 2026-10-30
 updated: 2026-10-30
+category: tutorials
 tool: image-rotator
 tools: image-rotator, image-flipper, photo-editor, image-cropper, image-resizer, image-compressor
 ctaHeading: Try it yourself

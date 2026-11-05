@@ -5,6 +5,7 @@ excerpt: Find out what makes a PDF heavy, which kinds shrink well, and how to cu
 imageAlt: A large PDF document being squeezed into a much smaller file, illustrated on a teal background
 published: 2026-10-09
 updated: 2026-10-15
+category: tips
 tool: compress-pdf
 tools: compress-pdf, split-pdf, merge-pdf, image-compressor, images-to-pdf, ocr-pdf
 ctaHeading: Try it yourself

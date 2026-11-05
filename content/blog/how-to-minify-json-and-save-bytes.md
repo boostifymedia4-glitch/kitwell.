@@ -5,6 +5,7 @@ excerpt: A practical guide to JSON minification: what is removed, what stays the
 imageAlt: Curly braces being squeezed into a smaller block of text on a teal background
 published: 2026-10-30
 updated: 2026-10-30
+category: tutorials
 tool: json-minifier
 tools: json-minifier, json-formatter, json-validator, text-diff-checker, base64-encoder-decoder, text-cleaner
 ctaHeading: Try it yourself

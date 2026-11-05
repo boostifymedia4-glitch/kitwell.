@@ -5,6 +5,7 @@ excerpt: Learn how to cover private details in pictures: when blur is enough, wh
 imageAlt: A photo with a blurred rectangle hiding a licence plate on a teal background
 published: 2026-10-25
 updated: 2026-10-25
+category: tutorials
 tool: blur-image-area
 tools: blur-image-area, image-cropper, image-compressor, image-format-converter, image-resizer, image-watermark
 ctaHeading: Try it yourself

@@ -5,6 +5,7 @@ excerpt: Compare an original and a revised PDF page by page, read the added and 
 imageAlt: Two PDF pages side by side with changed words highlighted in green and red on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: compare-pdf
 tools: compare-pdf, ocr-pdf, extract-pdf-text, merge-pdf, extract-pdf-pages, pdf-viewer
 ctaHeading: Try it yourself

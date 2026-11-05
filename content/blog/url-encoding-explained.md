@@ -5,6 +5,7 @@ excerpt: A clear guide to URL encoding: what percent encoding is, which characte
 imageAlt: A web address with special characters being converted into percent codes on a teal background
 published: 2026-10-31
 updated: 2026-10-31
+category: guides
 tool: url-encoder-decoder
 tools: url-encoder-decoder, html-encoder-decoder, base64-encoder-decoder, qr-code-generator, regex-tester, json-formatter
 ctaHeading: Try it yourself

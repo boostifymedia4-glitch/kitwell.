@@ -5,6 +5,7 @@ excerpt: A realistic guide to enlarging images: how resampling works, when 2x or
 imageAlt: A small picture growing into a larger one with smooth edges on a teal background
 published: 2026-10-29
 updated: 2026-10-29
+category: tips
 tool: enlarge-image
 tools: enlarge-image, image-resizer, image-compressor, photo-editor, svg-converter, image-format-converter
 ctaHeading: Try it yourself

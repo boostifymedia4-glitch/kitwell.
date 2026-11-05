@@ -5,6 +5,7 @@ excerpt: A practical guide to getting text out of PDF files: how extraction work
 imageAlt: A PDF page with lines of text flowing out into a plain text document on a teal background
 published: 2026-10-31
 updated: 2026-10-31
+category: tutorials
 tool: extract-pdf-text
 tools: extract-pdf-text, ocr-pdf, pdf-to-markdown, text-cleaner, word-counter, pdf-viewer
 ctaHeading: Try it yourself

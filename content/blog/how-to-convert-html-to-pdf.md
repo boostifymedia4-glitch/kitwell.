@@ -5,6 +5,7 @@ excerpt: Convert HTML documents, invoices and saved web pages into PDF in your b
 imageAlt: HTML code brackets turning into a PDF page on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: html-to-pdf
 tools: html-to-pdf, word-to-pdf, merge-pdf, compress-pdf, pdf-to-markdown, add-page-numbers
 ctaHeading: Try it yourself

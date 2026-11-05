@@ -5,6 +5,7 @@ excerpt: A practical guide to organising PDF pages: removing pages by clicking o
 imageAlt: PDF page thumbnails being dragged into a new order with one page removed on a teal background
 published: 2026-10-30
 updated: 2026-10-30
+category: tutorials
 tool: reorder-pdf-pages
 tools: reorder-pdf-pages, remove-pdf-pages, extract-pdf-pages, rotate-pdf, merge-pdf, add-page-numbers
 ctaHeading: Try it yourself

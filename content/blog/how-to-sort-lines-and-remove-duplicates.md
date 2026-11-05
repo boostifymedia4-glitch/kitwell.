@@ -5,6 +5,7 @@ excerpt: Learn how to sort lines alphabetically, numerically, naturally or by le
 imageAlt: A list of lines being sorted and merged into one clean list on a teal background
 published: 2026-10-29
 updated: 2026-10-29
+category: tutorials
 tool: text-sorter
 tools: text-sorter, remove-duplicate-lines, case-converter, text-cleaner, word-counter, text-diff-checker
 ctaHeading: Try it yourself

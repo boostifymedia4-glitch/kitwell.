@@ -5,6 +5,7 @@ excerpt: Learn to crop pictures for profile photos, thumbnails and print: pick a
 imageAlt: A photo with a crop frame and corner handles on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: image-cropper
 tools: image-cropper, image-resizer, image-rotator, image-compressor, image-format-converter, image-flipper
 ctaHeading: Try it yourself

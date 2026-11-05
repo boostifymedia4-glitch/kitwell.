@@ -4,6 +4,7 @@ description: Draw, type or upload a signature and place it on a PDF in your brow
 excerpt: Sign a PDF on your computer or phone without printing or scanning, and understand what a visual signature does and does not prove.
 imageAlt: A pen drawing a signature line onto a PDF page on a teal background
 published: 2026-10-15
+category: tutorials
 tool: sign-pdf
 tools: sign-pdf, protect-pdf, unlock-pdf, merge-pdf, compress-pdf, extract-pdf-pages
 ctaHeading: Sign your PDF now

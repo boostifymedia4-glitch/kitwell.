@@ -5,6 +5,7 @@ excerpt: A practical guide to scanning QR codes from pictures: what the tool sho
 imageAlt: A phone screenshot with a QR code being read and its link shown for checking on a teal background
 published: 2026-10-29
 updated: 2026-10-29
+category: tutorials
 tool: qr-code-scanner
 tools: qr-code-scanner, qr-code-generator, image-cropper, enlarge-image, url-encoder-decoder, password-generator
 ctaHeading: Try it yourself

@@ -1,7 +1,7 @@
 import { Icon } from '@/components/Icon';
 import { Link } from '@/i18n/Link';
 import { POST_THUMB_SIZE, postPath, postThumb, type BlogPost } from '@/blog/posts';
-import { useI18n } from '@/i18n';
+import { useI18n, type MessageKey } from '@/i18n';
 import { formatDate } from '@/lib/format';
 
 /** Card for one article in the blog index and the "Related guides" list. The thumbnail has the same picture description as the article page. */
@@ -13,6 +13,8 @@ export function PostCard({ post, eager = false }: { post: BlogPost; eager?: bool
       <img className="post-card-media" src={postThumb(post.slug)} width={POST_THUMB_SIZE.width} height={POST_THUMB_SIZE.height} alt={t(key('imageAlt'))} loading={eager ? 'eager' : 'lazy'} decoding="async" />
       <div className="post-card-body">
         <p className="post-meta">
+          <span className="post-category">{t(`blog.cat.${post.category}` as MessageKey)}</span>
+          <span aria-hidden="true">·</span>
           <time dateTime={post.published}>{formatDate(post.published, lang.code)}</time>
           <span aria-hidden="true">·</span>
           <span>{t('blog.minutes', { count: post.minutes })}</span>

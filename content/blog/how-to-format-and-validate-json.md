@@ -4,6 +4,7 @@ description: Learn the rules of valid JSON and the mistakes that break it, then 
 excerpt: Fix broken JSON quickly. See the syntax rules, the most common errors and how to pretty-print, validate and minify JSON.
 imageAlt: A block of curly-brace JSON code being aligned into neat indented lines on a teal background
 published: 2026-10-15
+category: tutorials
 tool: json-formatter
 tools: json-formatter, json-validator, json-minifier, url-encoder-decoder, base64-encoder-decoder, text-diff-checker
 ctaHeading: Format your JSON now

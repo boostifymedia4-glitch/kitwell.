@@ -4,6 +4,7 @@ description: Lock a PDF with AES-256 encryption, choose what readers may do, and
 excerpt: Learn how to protect a PDF with a strong password, how permissions differ from passwords, and how to unlock a file you have the password for.
 imageAlt: A PDF document with a padlock being closed, on a teal background
 published: 2026-10-15
+category: tutorials
 tool: protect-pdf
 tools: protect-pdf, unlock-pdf, password-generator, merge-pdf, sign-pdf, compress-pdf
 ctaHeading: Protect your PDF now

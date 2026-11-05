@@ -5,6 +5,7 @@ excerpt: Add DRAFT, CONFIDENTIAL or your logo to every page of a PDF, choose opa
 imageAlt: A PDF page with a diagonal translucent DRAFT stamp across it on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: watermark-pdf
 tools: watermark-pdf, protect-pdf, add-page-numbers, redact-pdf, merge-pdf, compress-pdf
 ctaHeading: Try it yourself

@@ -5,6 +5,7 @@ excerpt: Turn an Excel workbook into a PDF you can send or print, understand wha
 imageAlt: A spreadsheet grid turning into a PDF document on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: excel-to-pdf
 tools: excel-to-pdf, word-to-pdf, powerpoint-to-pdf, merge-pdf, compress-pdf, add-page-numbers
 ctaHeading: Try it yourself

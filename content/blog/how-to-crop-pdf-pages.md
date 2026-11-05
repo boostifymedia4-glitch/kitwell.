@@ -5,6 +5,7 @@ excerpt: Crop PDF pages by dragging a box or typing margins, apply it to all or 
 imageAlt: A PDF page with a crop frame trimming the white margins on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: crop-pdf
 tools: crop-pdf, redact-pdf, rotate-pdf, extract-pdf-pages, scan-to-pdf, compress-pdf
 ctaHeading: Try it yourself

@@ -1,7 +1,7 @@
 import { articles } from './articles';
-import type { Block, BlogPost } from './types';
+import type { Block, BlogCategory, BlogPost } from './types';
 
-export type { Block, BlogPost };
+export type { Block, BlogCategory, BlogPost };
 
 const moment = (p: BlogPost) => Date.parse(p.publishAt ?? p.published);
 
@@ -10,6 +10,16 @@ export const posts: BlogPost[] = [...articles].sort((a, b) => moment(b) - moment
 
 export const getPost = (slug: string) => posts.find((p) => p.slug === slug);
 export const postPath = (slug: string) => `/blog/${slug}`;
+
+/**
+ * Guides for a tool page: first the guides written about that tool, then guides that use it, newest first. The relationship
+ * comes only from each article's `tool` and `tools` lines, so a new article appears under the right tools by itself.
+ */
+export function guidesForTool(slug: string, limit = 3): BlogPost[] {
+  const own = posts.filter((p) => p.tool === slug);
+  const using = posts.filter((p) => p.tool !== slug && p.tools.includes(slug));
+  return [...own, ...using].slice(0, limit);
+}
 
 /** Address of the featured image (1200x630 JPEG, used for the article header, Open Graph and structured data) and its small WebP. */
 export const postImage = (slug: string) => `/images/blog/${slug}.jpg`;

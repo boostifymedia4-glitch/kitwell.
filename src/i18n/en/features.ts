@@ -35,6 +35,24 @@ export const features: Record<string, string> = {
   'contact.fail.soon': 'The contact form is still under development, so your message was not sent. Nothing was stored. Please try again when the website is fully live.',
   'contact.fail.invalid': 'Some details in your message could not be accepted. Please check the form and try again.',
 
+  // Blog list and related guides
+  'blog.hero.title': 'Guides, tips, and tutorials for everyday file tasks',
+  'blog.hero.lead': 'Step-by-step help for PDFs, images, text and code, written around the tools on {site}. Search the articles or pick a topic.',
+  'blog.search.label': 'Search articles',
+  'blog.search.placeholder': 'Search articles, tips, and tutorials...',
+  'blog.filter.label': 'Filter articles by topic',
+  'blog.cat.all': 'All',
+  'blog.cat.tutorials': 'Tutorials',
+  'blog.cat.tips': 'Tips',
+  'blog.cat.comparisons': 'Comparisons',
+  'blog.cat.guides': 'Guides',
+  'blog.resultsCount': 'Articles shown: {found}',
+  'blog.noResults.title': 'No articles found',
+  'blog.noResults.text': 'Try a different word, or choose another topic.',
+  'blog.clearFilters': 'Clear filters',
+  'tool.guides': 'Related guides',
+  'tool.allGuides': 'All guides',
+
   // OCR PDF
   'pdfOcr.resultNote2': 'The pages look exactly as before. The recognised text sits invisibly behind them, so you can select, search and copy it. OCR does not turn pages into editable text: to change the words, use the recognised text below. Check important numbers against the original.',
   'pdfOcr.outputEditable': 'Recognised text (you can correct it here)',

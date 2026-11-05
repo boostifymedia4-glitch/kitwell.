@@ -5,6 +5,7 @@ excerpt: Convert a PowerPoint deck to PDF in your browser, understand which elem
 imageAlt: A presentation slide turning into a PDF page on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: powerpoint-to-pdf
 tools: powerpoint-to-pdf, word-to-pdf, excel-to-pdf, merge-pdf, compress-pdf, extract-pdf-pages
 ctaHeading: Try it yourself

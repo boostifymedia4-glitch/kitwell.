@@ -5,6 +5,7 @@ excerpt: Understand PDF/A for long-term archiving: what the standard guarantees,
 imageAlt: A PDF document with an archive badge and a checkmark on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: guides
 tool: pdf-to-pdfa
 tools: pdf-to-pdfa, repair-pdf, unlock-pdf, ocr-pdf, compress-pdf, edit-pdf-metadata
 ctaHeading: Try it yourself

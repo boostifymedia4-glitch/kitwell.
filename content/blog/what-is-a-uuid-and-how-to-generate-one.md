@@ -5,6 +5,7 @@ excerpt: A clear guide to UUIDs: what the pattern means, how version 4 works, ho
 imageAlt: A long unique identifier made of hexadecimal groups on a teal background
 published: 2026-10-29
 updated: 2026-10-29
+category: guides
 tool: uuid-generator
 tools: uuid-generator, timestamp-converter, json-formatter, password-generator, base64-encoder-decoder, text-sorter
 ctaHeading: Try it yourself

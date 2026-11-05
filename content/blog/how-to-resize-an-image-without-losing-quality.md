@@ -5,6 +5,7 @@ excerpt: A practical guide to resizing pictures for web, email and print: pixels
 imageAlt: A photo being scaled down with arrows pointing inward on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tips
 tool: image-resizer
 tools: image-resizer, image-cropper, image-compressor, enlarge-image, image-format-converter, image-rotator
 ctaHeading: Try it yourself

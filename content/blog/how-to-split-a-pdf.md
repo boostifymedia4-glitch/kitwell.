@@ -4,6 +4,7 @@ description: Split a PDF by page ranges, into single pages or into equal parts, 
 excerpt: Break a large PDF into the parts you need, by range, page by page or in fixed-size chunks, and pick the right tool for each job.
 imageAlt: One long PDF document being cut into separate smaller documents, shown on a teal background
 published: 2026-10-15
+category: tutorials
 tool: split-pdf
 tools: split-pdf, extract-pdf-pages, remove-pdf-pages, merge-pdf, reorder-pdf-pages, compress-pdf, unlock-pdf
 ctaHeading: Split your PDF now

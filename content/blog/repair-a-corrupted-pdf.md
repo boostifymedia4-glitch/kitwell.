@@ -4,6 +4,7 @@ description: Learn why PDFs get damaged, which problems a rebuild can fix and wh
 excerpt: A PDF that will not open is not always lost. See what damage can be repaired, how to try it safely and what to do when it cannot be saved.
 imageAlt: A cracked PDF document being mended with a wrench and a green check mark on a teal background
 published: 2026-10-15
+category: tutorials
 tool: repair-pdf
 tools: repair-pdf, extract-pdf-text, pdf-to-jpg, compress-pdf, merge-pdf, unlock-pdf
 ctaHeading: Try to repair your PDF

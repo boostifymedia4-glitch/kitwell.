@@ -5,6 +5,7 @@ excerpt: A practical guide to QR codes: what static codes are, how to pick error
 imageAlt: A QR code on a card being scanned by a phone on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: qr-code-generator
 tools: qr-code-generator, qr-code-scanner, password-generator, url-encoder-decoder, image-compressor, image-to-base64
 ctaHeading: Try it yourself

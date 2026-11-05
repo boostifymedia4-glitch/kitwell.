@@ -5,6 +5,7 @@ excerpt: Rotate single pages or the whole PDF with thumbnail previews, learn why
 imageAlt: A sideways PDF page being turned upright with a curved arrow on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: rotate-pdf
 tools: rotate-pdf, reorder-pdf-pages, crop-pdf, extract-pdf-pages, merge-pdf, scan-to-pdf
 ctaHeading: Try it yourself

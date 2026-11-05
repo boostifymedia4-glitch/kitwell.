@@ -5,6 +5,7 @@ excerpt: A practical guide to XML: what well-formed means, how to format and min
 imageAlt: Nested XML tags being indented and checked on a teal background
 published: 2026-10-25
 updated: 2026-10-25
+category: tutorials
 tool: xml-formatter
 tools: xml-formatter, json-formatter, json-validator, html-encoder-decoder, url-encoder-decoder, text-diff-checker
 ctaHeading: Try it yourself

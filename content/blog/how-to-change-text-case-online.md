@@ -5,6 +5,7 @@ excerpt: A practical guide to changing text case: when to use title or sentence 
 imageAlt: The same sentence shown in several letter cases next to a case switch on a teal background
 published: 2026-10-31
 updated: 2026-10-31
+category: tutorials
 tool: case-converter
 tools: case-converter, text-cleaner, word-counter, remove-duplicate-lines, text-sorter, regex-tester
 ctaHeading: Try it yourself

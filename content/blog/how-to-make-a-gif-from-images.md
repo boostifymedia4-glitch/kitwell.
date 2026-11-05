@@ -5,6 +5,7 @@ excerpt: A hands-on guide to making animated GIFs from photos and screenshots: f
 imageAlt: A stack of pictures turning into an animated GIF on a teal background
 published: 2026-10-25
 updated: 2026-10-25
+category: tutorials
 tool: gif-maker
 tools: gif-maker, image-resizer, image-compressor, images-to-pdf, image-cropper, photo-editor
 ctaHeading: Try it yourself

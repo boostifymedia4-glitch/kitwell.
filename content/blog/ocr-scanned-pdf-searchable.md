@@ -5,6 +5,7 @@ excerpt: A scanned PDF is a stack of pictures. See how OCR turns it into text yo
 imageAlt: A scanned page with a magnifying glass revealing selectable text lines, on a teal background
 published: 2026-10-09
 updated: 2026-10-15
+category: guides
 tool: ocr-pdf
 tools: ocr-pdf, scan-to-pdf, extract-pdf-text, images-to-pdf, compress-pdf, compare-pdf, redact-pdf
 ctaHeading: Try it yourself

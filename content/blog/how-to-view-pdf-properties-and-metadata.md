@@ -5,6 +5,7 @@ excerpt: A practical guide to viewing PDFs and reading their hidden properties: 
 imageAlt: A PDF page with a magnifying glass over its properties list on a teal background
 published: 2026-10-30
 updated: 2026-10-30
+category: guides
 tool: pdf-metadata-viewer
 tools: pdf-metadata-viewer, pdf-viewer, edit-pdf-metadata, unlock-pdf, extract-pdf-text, compare-pdf
 ctaHeading: Try it yourself

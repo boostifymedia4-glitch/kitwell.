@@ -5,6 +5,7 @@ excerpt: A practical guide to turning PDF pages into JPG pictures: choosing the 
 imageAlt: A PDF page turning into a JPG picture on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: pdf-to-jpg
 tools: pdf-to-jpg, pdf-to-png, jpg-to-pdf, image-compressor, unlock-pdf, ocr-pdf
 ctaHeading: Try it yourself

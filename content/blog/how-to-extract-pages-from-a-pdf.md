@@ -5,6 +5,7 @@ excerpt: Select pages by thumbnail or range, save just those pages as a new PDF,
 imageAlt: Selected pages being lifted out of a stack of PDF pages into a new document on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: extract-pdf-pages
 tools: extract-pdf-pages, remove-pdf-pages, split-pdf, reorder-pdf-pages, merge-pdf, compress-pdf
 ctaHeading: Try it yourself

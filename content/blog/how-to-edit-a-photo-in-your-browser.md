@@ -5,6 +5,7 @@ excerpt: A step-by-step guide to editing photos in your browser: colour adjustme
 imageAlt: A photo with sliders for brightness and colour beside it on a teal background
 published: 2026-10-25
 updated: 2026-10-25
+category: tutorials
 tool: photo-editor
 tools: photo-editor, image-cropper, image-rotator, image-resizer, image-compressor, image-watermark, blur-image-area
 ctaHeading: Try it yourself

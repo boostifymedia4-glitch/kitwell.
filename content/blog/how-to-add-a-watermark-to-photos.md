@@ -5,6 +5,7 @@ excerpt: A practical guide to watermarking photos: text or logo, single mark or 
 imageAlt: A photo with a faint logo watermark in the corner on a teal background
 published: 2026-10-25
 updated: 2026-10-25
+category: tutorials
 tool: image-watermark
 tools: image-watermark, image-resizer, image-compressor, image-format-converter, photo-editor, watermark-pdf
 ctaHeading: Try it yourself

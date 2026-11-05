@@ -5,6 +5,7 @@ excerpt: A practical guide to numbering PDF pages: where to place the numbers, h
 imageAlt: A PDF page with a page number stamped in the bottom corner on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: add-page-numbers
 tools: add-page-numbers, merge-pdf, rotate-pdf, watermark-pdf, extract-pdf-pages, compress-pdf
 ctaHeading: Try it yourself

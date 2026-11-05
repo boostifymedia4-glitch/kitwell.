@@ -5,6 +5,7 @@ excerpt: A practical Markdown guide: the syntax you need, how a live preview hel
 imageAlt: Plain text on the left turning into a formatted page on the right on a teal background
 published: 2026-10-29
 updated: 2026-10-29
+category: tutorials
 tool: markdown-previewer
 tools: markdown-previewer, html-encoder-decoder, text-cleaner, word-counter, text-diff-checker, regex-tester
 ctaHeading: Try it yourself

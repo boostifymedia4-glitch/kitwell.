@@ -5,6 +5,7 @@ excerpt: Learn how word and character counts really work, why emoji and bytes ch
 imageAlt: A text document with a counter showing words and characters on a teal background
 published: 2026-10-25
 updated: 2026-10-25
+category: guides
 tool: word-counter
 tools: word-counter, character-counter, text-cleaner, case-converter, remove-duplicate-lines, text-diff-checker
 ctaHeading: Try it yourself

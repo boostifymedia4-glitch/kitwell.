@@ -5,6 +5,7 @@ excerpt: A practical guide to Base64 images: what a data URI is, the four output
 imageAlt: A picture turning into a long string of characters and back on a teal background
 published: 2026-10-30
 updated: 2026-10-30
+category: tutorials
 tool: image-to-base64
 tools: image-to-base64, base64-to-image, base64-encoder-decoder, image-compressor, image-resizer, svg-converter
 ctaHeading: Try it yourself

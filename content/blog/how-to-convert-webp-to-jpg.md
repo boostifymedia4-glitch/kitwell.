@@ -5,6 +5,7 @@ excerpt: Why websites save images as WebP, why some places still reject them, an
 imageAlt: A WebP file badge turning into a JPG file badge on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: webp-to-jpg
 tools: webp-to-jpg, jpg-to-webp, png-to-webp, webp-to-png, image-compressor, image-format-converter
 ctaHeading: Try it yourself

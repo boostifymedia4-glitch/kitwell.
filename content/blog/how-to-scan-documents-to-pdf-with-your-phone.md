@@ -5,6 +5,7 @@ excerpt: A practical guide to scanning with a phone: how to photograph a page, h
 imageAlt: A phone taking a photo of a paper page that becomes a clean PDF on a teal background
 published: 2026-10-31
 updated: 2026-10-31
+category: tutorials
 tool: scan-to-pdf
 tools: scan-to-pdf, ocr-pdf, images-to-pdf, compress-pdf, merge-pdf, rotate-pdf
 ctaHeading: Try it yourself

@@ -5,6 +5,7 @@ excerpt: Why a black box on top of text is not redaction, how page-to-image reda
 imageAlt: A PDF page with black redaction bars over lines of text on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: redact-pdf
 tools: redact-pdf, ocr-pdf, edit-pdf-metadata, crop-pdf, protect-pdf, compare-pdf
 ctaHeading: Try it yourself

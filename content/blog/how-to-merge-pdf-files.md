@@ -4,6 +4,7 @@ description: Combine several PDFs into one document in the right order, keep the
 excerpt: Join contracts, invoices and scans into one PDF in the order you choose, and learn what merging keeps, drops and how to keep the result small.
 imageAlt: Three separate PDF pages sliding together into one combined document on a teal background
 published: 2026-10-15
+category: tutorials
 tool: merge-pdf
 tools: merge-pdf, reorder-pdf-pages, remove-pdf-pages, split-pdf, compress-pdf, add-page-numbers, unlock-pdf
 ctaHeading: Merge your PDFs now

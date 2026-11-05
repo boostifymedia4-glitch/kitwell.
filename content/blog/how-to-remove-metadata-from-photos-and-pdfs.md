@@ -5,6 +5,7 @@ excerpt: Find out what hidden data your files carry, how to strip location and a
 imageAlt: A document and a photo with a tag being peeled off, on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tips
 tool: edit-pdf-metadata
 tools: edit-pdf-metadata, image-compressor, image-resizer, image-format-converter, redact-pdf, pdf-metadata-viewer
 ctaHeading: Try it yourself

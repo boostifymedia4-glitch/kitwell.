@@ -5,6 +5,7 @@ excerpt: A beginner-friendly guide to regular expressions: patterns, flags, grou
 imageAlt: A search pattern highlighting matches inside lines of text on a teal background
 published: 2026-10-25
 updated: 2026-10-25
+category: tutorials
 tool: regex-tester
 tools: regex-tester, text-cleaner, text-diff-checker, remove-duplicate-lines, json-formatter, url-encoder-decoder
 ctaHeading: Try it yourself

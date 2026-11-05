@@ -5,6 +5,7 @@ excerpt: Extract a PDF’s text as Markdown for notes, wikis and documentation, 
 imageAlt: A PDF page turning into lines of Markdown text on a teal background
 published: 2026-10-23
 updated: 2026-10-23
+category: tutorials
 tool: pdf-to-markdown
 tools: pdf-to-markdown, extract-pdf-text, ocr-pdf, html-to-pdf, word-to-pdf, markdown-previewer
 ctaHeading: Try it yourself
